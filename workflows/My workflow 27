@@ -1,0 +1,1215 @@
+{
+  "active": true,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "NocoDB5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-29T17:35:53.032Z",
+  "id": "kBQwmpxlfTRaZJdI",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 27",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Unsubscribe</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: linear-gradient(145deg, #333, #444);\n            padding: 50px;\n            border-radius: 15px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.2em;\n            margin-bottom: 30px;\n            text-align: center;\n            line-height: 1.5;\n        }\n        .info-section {\n            font-size: 1.5em;\n            margin-bottom: 20px;\n        }\n        .checkbox-container {\n            text-align: left;\n            margin-bottom: 30px;\n        }\n        .checkbox-container label {\n            font-size: 1.2em;\n        }\n        .button-container {\n            display: flex;\n            justify-content: center;\n        }\n        button {\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n        }\n        #unsubscribe {\n            background-color: #ff6f61;\n        }\n        #unsubscribe:hover {\n            background-color: #ff3b2f;\n        }\n\n        /* Mobile adjustments */\n        @media (max-width: 600px) {\n            .button-container {\n                flex-direction: column;\n                gap: 10px;\n            }\n        }\n    </style>\n    <script>\n        window.addEventListener(\"pageshow\", function(event) {\n            var historyTraversal = event.persisted || \n                                   (typeof window.performance != \"undefined\" && \n                                    window.performance.navigation.type === 2);\n            if (historyTraversal) {\n                window.location.reload();\n            }\n        });\n    </script>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Unsubscribe from Notifications</h1>\n        <div class=\"info-section\">\n            Please select the notifications you want to unsubscribe from:\n        </div>\n        <form id=\"unsubscribe-form\">\n            <div class=\"checkbox-container\">\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"phone-call\" />\n                    <span>Phone Call</span>\n                </label><br>\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"sms\" />\n                    <span>SMS</span>\n                </label><br>\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"email\" />\n                    <span>Email</span>\n                </label>\n            </div>\n            <div class=\"button-container\">\n                <button id=\"unsubscribe\" type=\"submit\">Unsubscribe</button>\n            </div>\n        </form>\n    </div>\n\n    <script>\n        document.getElementById('unsubscribe-form').addEventListener('submit', function(event) {\n            event.preventDefault();\n            const formData = new FormData(event.target);\n            const data = Array.from(formData.getAll('unsubscribe[]'));\n\n            fetch('https://xl.epicpc.com/webhook/26cba3df-cff6-4f69-9086-8fc659b763d8', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json'\n                },\n                body: JSON.stringify({ unsubscribe: data })\n            }).then(response => {\n                if (response.ok) {\n                    window.location.href = 'https://epichs.org';\n                }\n            }).catch(error => {\n                console.error('Error:', error);\n            });\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "c1b8d844-3ef4-41f5-b283-450cb349136a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8ca3cb71-eac1-4b71-9a60-ed202b0830b0",
+              "name": "phone",
+              "value": "={{ $json.headers.referer.match(/phone=([^&]*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "c50ca728-4bd3-418b-8e09-3dfabee212cf",
+              "name": "sms",
+              "value": "={{ $json.headers.referer.match(/sms=([^&]*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "e6df5fa4-1fef-49c8-be54-ac974e4fec2b",
+              "name": "email",
+              "value": "={{ $json.headers.referer.match(/email=([^&]*)/)[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "935dfa3a-2c14-47a9-b2bd-5da7003fa4f6",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1020,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.unsubscribe",
+        "options": {}
+      },
+      "id": "a17378fd-0600-4a9b-9468-29404b95b033",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "597f5416-0a27-4663-8137-79b91f79b623",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1440,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "20938cba-60c5-4fd2-a9dc-c4963ddcaa12",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1240,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mpudgmqfv4uh3lr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $('Loop Over Items').item.json.phone }}"
+            }
+          ]
+        }
+      },
+      "id": "6014b9ad-51b7-4857-ac43-020a2b517297",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        640
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['body.unsubscribe'] }}",
+                    "rightValue": "phone-call",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b2363f4b-4a32-49b4-98f0-7fe5275db726",
+                    "leftValue": "={{ $json['body.unsubscribe'] }}",
+                    "rightValue": "sms",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "975053b1-165a-4bff-8125-e56e1e3e1df5",
+                    "leftValue": "={{ $json['body.unsubscribe'] }}",
+                    "rightValue": "email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "005c1885-23c3-45e7-aa69-f0fe8948ab28",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1740,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mpudgmqfv4uh3lr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "sms",
+              "fieldValue": "={{ $('Loop Over Items').item.json.sms }}"
+            }
+          ]
+        }
+      },
+      "id": "0ef642b9-04ed-478a-a9e1-e5d7b8eab2a6",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        820
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mpudgmqfv4uh3lr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "email",
+              "fieldValue": "={{ $('Loop Over Items').item.json.email }}"
+            }
+          ]
+        }
+      },
+      "id": "2c0e1471-a514-411f-a201-db74e1ea77b7",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        1000
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "bd7a8f9b-cf66-411c-8a09-d21737d7aa44",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "path": "unsubscribe",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "705c6433-b791-495d-9424-9d2a3854d6ff",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        60
+      ],
+      "webhookId": "427bb2fa-f780-4e87-b4d9-339816435c76"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Unsubscribe</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: linear-gradient(145deg, #333, #444);\n            padding: 50px;\n            border-radius: 15px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.2em;\n            margin-bottom: 30px;\n            text-align: center;\n            line-height: 1.5;\n        }\n        .info-section {\n            font-size: 1.5em;\n            margin-bottom: 20px;\n        }\n        .checkbox-container {\n            text-align: left;\n            margin-bottom: 30px;\n        }\n        .checkbox-container label {\n            font-size: 1.2em;\n            display: flex;\n            align-items: center;\n            margin-bottom: 15px;\n        }\n        .checkbox-container input[type=\"text\"] {\n            margin-left: 10px;\n            flex: 1;\n            padding: 5px;\n            font-size: 1em;\n        }\n        .button-container {\n            display: flex;\n            justify-content: center;\n        }\n        button {\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n        }\n        #unsubscribe {\n            background-color: #ff6f61;\n        }\n        #unsubscribe:hover {\n            background-color: #ff3b2f;\n        }\n\n        /* Mobile adjustments */\n        @media (max-width: 600px) {\n            .button-container {\n                flex-direction: column;\n                gap: 10px;\n            }\n        }\n    </style>\n    <script>\n        window.addEventListener(\"pageshow\", function(event) {\n            var historyTraversal = event.persisted || \n                                   (typeof window.performance != \"undefined\" && \n                                    window.performance.navigation.type === 2);\n            if (historyTraversal) {\n                window.location.reload();\n            }\n        });\n    </script>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Unsubscribe from Notifications</h1>\n        <div class=\"info-section\">\n            Please select the notifications you want to unsubscribe from and provide the corresponding value:\n        </div>\n        <form id=\"unsubscribe-form\">\n            <div class=\"checkbox-container\">\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"phone\" />\n                    <span>Phone Call</span>\n                    <input type=\"text\" name=\"phone-value\" placeholder=\"Enter phone number\">\n                </label>\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"sms\" />\n                    <span>SMS</span>\n                    <input type=\"text\" name=\"sms-value\" placeholder=\"Enter SMS number\">\n                </label>\n                <label>\n                    <input type=\"checkbox\" name=\"unsubscribe[]\" value=\"email\" />\n                    <span>Email</span>\n                    <input type=\"text\" name=\"email-value\" placeholder=\"Enter email address\">\n                </label>\n            </div>\n            <div class=\"button-container\">\n                <button id=\"unsubscribe\" type=\"submit\">Unsubscribe</button>\n            </div>\n        </form>\n    </div>\n\n    <script>\n        document.getElementById('unsubscribe-form').addEventListener('submit', function(event) {\n            event.preventDefault();\n            \n            const formData = new FormData(event.target);\n            const unsubscribe = Array.from(formData.getAll('unsubscribe[]'));\n            const data = {};\n\n            unsubscribe.forEach((item) => {\n                const inputName = item === 'phone' ? 'phone-value' : item + '-value';\n                const inputValue = formData.get(inputName);\n                if (inputValue) {\n                    data[item] = inputValue;\n                }\n            });\n\n            console.log('Form Data:', data); // Debugging: Log the captured form data\n\n            fetch('https://xl.epicpc.com/webhook/99be581e-995b-4735-839b-bb51511fe3ed', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json'\n                },\n                body: JSON.stringify(data) // Send the data object directly\n            })\n            .then(response => {\n                if (response.ok) {\n                    window.location.href = 'https://epichs.org';\n                } else {\n                    console.error('Server error:', response.statusText);\n                    alert('There was a problem with the submission. Please try again.');\n                }\n            })\n            .catch(error => {\n                console.error('Network error:', error);\n                alert('There was a problem with the submission. Please check your network connection and try again.');\n            });\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "63297396-61e5-46f6-a16b-693f5463eb11",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1020,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "26cba3df-cff6-4f69-9086-8fc659b763d8",
+        "options": {}
+      },
+      "id": "2369dc2b-1999-44e3-baa8-a9d294c4a76f",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        780,
+        760
+      ],
+      "webhookId": "26cba3df-cff6-4f69-9086-8fc659b763d8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a39181a9-c457-40b6-9e3c-ed1e96402865",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "={{ $json.body.phone }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "80c3561c-9364-428f-ab6c-049666a5a705",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        1760,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a39181a9-c457-40b6-9e3c-ed1e96402865",
+              "leftValue": "={{ $json.body.sms }}",
+              "rightValue": "={{ $json.body.phone }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b6305afa-c59c-4f38-b7d5-9343991c08ea",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        1760,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a39181a9-c457-40b6-9e3c-ed1e96402865",
+              "leftValue": "={{ $json.body.email }}",
+              "rightValue": "={{ $json.body.phone }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ea539e2c-d77f-484d-9ebf-370a095c01c9",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        1760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mqx046e3oqc3zqk",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "phone",
+              "fieldValue": "={{ $('Webhook2').item.json.body.phone }}"
+            }
+          ]
+        }
+      },
+      "id": "eb3677ac-21ee-46b8-b64c-be5a75f3eef2",
+      "name": "NocoDB3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        -60
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mzhflvem76z48pu",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "sms",
+              "fieldValue": "={{ $('Webhook2').item.json.body.sms }}"
+            }
+          ]
+        }
+      },
+      "id": "8e4e60ff-34fc-48a5-a56c-db8a7247a35b",
+      "name": "NocoDB4",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pu28oweqyrjtmss",
+        "table": "mjqdbpj960n85x9",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "email",
+              "fieldValue": "={{ $('Webhook2').item.json.body.email }}"
+            }
+          ]
+        }
+      },
+      "id": "9e1a3fb9-ca24-4d3e-a6ee-697b96680cc6",
+      "name": "NocoDB5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2040,
+        300
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.unsubscribe_stop (\n    firstname,\n    lastname,\n    dob,\n    mobile,\n    email,\n    street,\n    city,\n    state,\n    zip,\n    dateofcampaign,\n    initialsofuploader,\n    purposeofcampaign,\n    mrn,\n    campaign_sender_email,\n    purpose_of_campaign,\n    business_line,\n    outcomes_desired\n) VALUES (\n    COALESCE(NULLIF(LEFT('{{ $json.firstname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.lastname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dob }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.mobile }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.email }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.street }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.city }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.state }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.zip }}', 10), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dateofcampaign }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.initialsofuploader }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.purposeofcampaign }}', 100), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.mrn }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.campaign_sender_email }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.purpose_of_campaign }}', 100), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.business_line }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.outcomes_desired }}', 100), 'undefined'), '')\n);\n",
+        "options": {}
+      },
+      "id": "b9feb4b2-f4e0-4e5f-b58f-6b0551589a6b",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        2960,
+        -80
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "fU25cLeuTSU04v6k",
+          "name": "campaign"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "cb1c1c88-b755-4b1b-961e-26811569185a",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2720,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b85553c5-2d34-460a-b702-c20238bb2329",
+              "name": "mobile",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48e4ef48-27f5-4e02-9e5b-c473300c720f",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2420,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "99be581e-995b-4735-839b-bb51511fe3ed",
+        "options": {}
+      },
+      "id": "b2e50bb6-e1aa-4ea5-b081-819eb81c9ffb",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        40
+      ],
+      "webhookId": "99be581e-995b-4735-839b-bb51511fe3ed"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb12ce0-6790-48de-b530-2e20f62b61f8",
+              "name": "mobile",
+              "value": "={{ $json.body.sms }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c4c353f-fcf3-42ec-8490-d4415c65522b",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2420,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb12ce0-6790-48de-b530-2e20f62b61f8",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3070d0db-f782-4fcf-9658-353bc9fa8659",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2420,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.unsubscribe_stop (\n    firstname,\n    lastname,\n    dob,\n    mobile,\n    email,\n    mrn,\n    dateadded,\n    methodcontacted,\n    existingpatient,\n    whichbusinessline,\n    dnc,\n    unsubscribe,\n    stop\n) VALUES (\n    COALESCE(NULLIF(LEFT('{{ $json.firstname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.lastname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dob }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.mobile }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.email }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.mrn }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dateadded }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.methodcontacted }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.existingpatient }}', 20), 'undefined')::boolean, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.whichbusinessline }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.dnc }}', 10), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.unsubscribe }}', 10), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.stop }}', 10), 'undefined'), '')\n);\n",
+        "options": {}
+      },
+      "id": "633b316e-0baa-4e79-a97d-539aaa81f081",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3140,
+        120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "fU25cLeuTSU04v6k",
+          "name": "campaign"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Unsubscribe</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: linear-gradient(145deg, #333, #444);\n            padding: 50px;\n            border-radius: 15px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.2em;\n            margin-bottom: 30px;\n            text-align: center;\n            line-height: 1.5;\n        }\n        .info-section {\n            font-size: 1.5em;\n            margin-bottom: 20px;\n        }\n        .input-container {\n            text-align: left;\n            margin-bottom: 30px;\n        }\n        .input-container label {\n            font-size: 1.2em;\n            display: flex;\n            align-items: center;\n            margin-bottom: 15px;\n        }\n        .input-container input[type=\"text\"] {\n            margin-left: 10px;\n            flex: 1;\n            padding: 10px;\n            font-size: 1em;\n            border: 2px solid #00acc1;\n            border-radius: 5px;\n            background-color: #333;\n            color: #fff;\n            outline: none;\n        }\n        .input-container input[type=\"text\"]::placeholder {\n            color: #ccc;\n        }\n        .input-container input[type=\"text\"]:focus {\n            border-color: #00e676;\n        }\n        .button-container {\n            display: flex;\n            justify-content: center;\n        }\n        button {\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n        }\n        #unsubscribe {\n            background-color: #ff6f61;\n        }\n        #unsubscribe:hover {\n            background-color: #ff3b2f;\n        }\n\n        /* Mobile adjustments */\n        @media (max-width: 600px) {\n            .button-container {\n                flex-direction: column;\n                gap: 10px;\n            }\n        }\n    </style>\n    <script>\n        window.addEventListener(\"pageshow\", function(event) {\n            var historyTraversal = event.persisted || \n                                   (typeof window.performance != \"undefined\" && \n                                    window.performance.navigation.type === 2);\n            if (historyTraversal) {\n                window.location.reload();\n            }\n        });\n    </script>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Unsubscribe from Notifications</h1>\n        <div class=\"info-section\">\n            Please enter your email address to unsubscribe:\n        </div>\n        <form id=\"unsubscribe-form\">\n            <div class=\"input-container\">\n                <label>\n                    <span>Email</span>\n                    <input type=\"text\" name=\"email-value\" placeholder=\"Enter email address\">\n                </label>\n            </div>\n            <div class=\"button-container\">\n                <button id=\"unsubscribe\" type=\"submit\">Unsubscribe</button>\n            </div>\n        </form>\n    </div>\n\n    <script>\n        document.getElementById('unsubscribe-form').addEventListener('submit', function(event) {\n            event.preventDefault();\n            \n            const formData = new FormData(event.target);\n            const email = formData.get('email-value');\n            const data = {};\n\n            if (email) {\n                data['email'] = email;\n            }\n\n            console.log('Form Data:', data); // Debugging: Log the captured form data\n\n            fetch('https://xl.epicpc.com/webhook/99be581e-995b-4735-839b-bb51511fe3ed', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json'\n                },\n                body: JSON.stringify(data) // Send the data object directly\n            })\n            .then(response => {\n                if (response.ok) {\n                    window.location.href = 'https://epichs.org';\n                } else {\n                    console.error('Server error:', response.statusText);\n                    alert('There was a problem with the submission. Please try again.');\n                }\n            })\n            .catch(error => {\n                console.error('Network error:', error);\n                alert('There was a problem with the submission. Please check your network connection and try again.');\n            });\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "4e14bc8f-249a-4f25-9aab-7919a4e5eec7",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1020,
+        -100
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6aa99fe3-f804-4c02-97dd-f594c0f32822",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b85553c5-2d34-460a-b702-c20238bb2329",
+              "name": "mobile",
+              "value": "={{ $json.phone }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c2e64fe-2f7f-4f63-8c0a-893cecb96dea",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2860,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb12ce0-6790-48de-b530-2e20f62b61f8",
+              "name": "mobile",
+              "value": "={{ $json.sms }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c84144ac-6116-4d32-9f5c-57671de557b3",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2860,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb12ce0-6790-48de-b530-2e20f62b61f8",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd568b57-c61b-4223-854e-8278a44b3c06",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2860,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.unsubscribe_stop (\n    firstname,\n    lastname,\n    dob,\n    mobile,\n    email,\n    mrn,\n    dateadded,\n    methodcontacted,\n    existingpatient,\n    whichbusinessline,\n    dnc,\n    unsubscribe,\n    stop\n) VALUES (\n    COALESCE(NULLIF(LEFT('{{ $json.firstname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.lastname }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dob }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.mobile }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.email }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.mrn }}', 20), 'undefined'), ''),\n    COALESCE(NULLIF('{{ $json.dateadded }}', 'undefined')::date, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.methodcontacted }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.existingpatient }}', 20), 'undefined')::boolean, NULL),\n    COALESCE(NULLIF(LEFT('{{ $json.whichbusinessline }}', 50), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.dnc }}', 10), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.unsubscribe }}', 10), 'undefined'), ''),\n    COALESCE(NULLIF(LEFT('{{ $json.stop }}', 10), 'undefined'), '')\n);\n",
+        "options": {}
+      },
+      "id": "2d771c9e-5bcf-4115-b5d6-9b3710f97fff",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        3300,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "fU25cLeuTSU04v6k",
+          "name": "campaign"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "8dbfad6b-a0c1-4ca0-b88e-77b8154b0f72",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "def967dd-5623-4004-a351-e82557ea385a",
+      "name": "Webhook3",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        340,
+        760
+      ],
+      "webhookId": "8dbfad6b-a0c1-4ca0-b88e-77b8154b0f72"
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "phone": "2488726322",
+          "sms": "2488726322",
+          "email": "info@mail.com"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.34",
+            "x-forwarded-for": "10.0.24.34",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "44",
+            "sec-ch-ua": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\"",
+            "content-type": "application/json",
+            "dnt": "1",
+            "sec-ch-ua-mobile": "?0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/unsubscribe?phone=2488726322&sms=2488726322&email=info@mail.com",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; __ssid=b094e84f053e7d414fe35d5a20a76ff; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiS0VpMndVRHRnS1ZXRFlaZGhZRHA4TEh2Q1pWa0dGeVNxTld2VHYrREFsZz0iLCJpYXQiOjE3MjQ4NzY3MjcsImV4cCI6MTcyNTQ4MTUyN30.6oq5JcuMI-ajJFtQiWlUBo6humkRGowoIXJ1tPlXN7U; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19heRaPrFUm00Ut61MATEM3rzDIgcSl7jbPDIXsbrAe0xH4hPRf6L0GOWFsj0L4%2BxZ6tJejmhsSUA%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BfckYcQqmSVZJf%2B61DIcyp%2BKToVKjaWhclYr6O3beX5opJ69fNo4dmvLeHc1O347kR8bA8k9QQNgQrPlWX9eISEynMDfzIFMKBtNJ8wZFI6rqpm3uviK1Q9X0PzXFuzq9axTdXw%2BY%2B46MqYfKgFeesLiIp%2Bm5GphA%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2Ba5O24b%2FMr0Rz40LlrJsP%2FFueDN%2FbrKLeixJUres%2Fe15zaQ0Ha1NGTcxwF6U17Zhnyxj034Z%2B0%2BcsiwGpt9fGDDu6VgPLSf8FpHwkZjoDb%2F%2FJ8pweJec4U5SXgJcFaJtb8Jyhd5dYA5A%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1724955252086%2C%2201919f02-f1ad-73ae-9caf-abe0d8c7b53c%22%2C1724949655981%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19foMtGw2mk3LFyRt6TODhTvcw%2F3bEYDTzpYCHVA0tI8Ajy9OtKdQi1IgwovZ1ImUK4z1gi%2Fy341%2F0dvrRPLdzRggIr5Q%2FrqwLRNsx7gX4%2BdVWZYnnOGjKMk9c2S5gwRmMH67R9DOZzBw%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "unsubscribe": [
+              "phone-call",
+              "sms",
+              "email"
+            ]
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/26cba3df-cff6-4f69-9086-8fc659b763d8",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.34",
+            "x-forwarded-for": "10.0.24.34",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "58",
+            "sec-ch-ua": "\"Chromium\";v=\"128\", \"Not;A=Brand\";v=\"24\", \"Google Chrome\";v=\"128\"",
+            "content-type": "application/json",
+            "dnt": "1",
+            "sec-ch-ua-mobile": "?0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/unsubscribe",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; __ssid=b094e84f053e7d414fe35d5a20a76ff; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiS0VpMndVRHRnS1ZXRFlaZGhZRHA4TEh2Q1pWa0dGeVNxTld2VHYrREFsZz0iLCJpYXQiOjE3MjQ4NzY3MjcsImV4cCI6MTcyNTQ4MTUyN30.6oq5JcuMI-ajJFtQiWlUBo6humkRGowoIXJ1tPlXN7U; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19rWcdAqJsCa9YKvsm3v0NAu905el96ua97wc2dvQpjgAG12qHSPlp1d1PRhrODyXdUMmDzUNyovA%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BfMfQmaH3MgVwvyx2%2FHy94JJ4ff6A1pzU89P4BLVdvbdoEmwe1FAJYferEbwnh5PHwR76Xx3c2oC2ZMn5NWm8BWlIX2hT29C7Xi%2FGHVnTqqb3YQayDbVFTkGcvsFtKORDwSgqwbbnq%2BHGIUjKiR483EmhWuReP68Q%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18vbu6tnQ%2FcsL1R4Xn7ATLfDXBEYyAHTt6II9ssmroz8lNV6oEKchLmzVVEDETy5%2FgQs5KXEpc0XbjjjF5AfI93Vh1WhEksij8xFt0rTRZHZVV8RAs49ro5Er%2F8izJhfb4j%2BNraNCfrCQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1724961184666%2C%2201919fa9-f487-7fdd-abc3-554667e74d84%22%2C1724960601223%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BmBf%2B6YXXEtLgs9D2Uin1wMf0VyBXma3ir0%2Bak1MVyyqiZPD50v%2B09H7pDfgwiY1H0u9FhizOar9IXkkTLBgdFKyXSedC7Af4RKGeLAiRv8aoKapeDC54pOdiYtWAlIGB57u35sGvLXA%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "phone": "32423334",
+            "sms": "234242",
+            "email": "sdfsafasasdf"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/99be581e-995b-4735-839b-bb51511fe3ed",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 4,
+  "updatedAt": "2024-08-29T21:22:55.539Z",
+  "versionId": "ae5bce29-00f7-4a8e-99d6-d345f974ea53"
+}
