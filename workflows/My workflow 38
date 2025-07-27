@@ -1,0 +1,169 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-02T12:38:09.022Z",
+  "id": "AeNivpDCkRRzQ01v",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 38",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e53162c7-b7f5-4fda-81cb-edd694b757ff",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "37acdf03-841e-4b94-ada5-936b00f88bd5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        200
+      ],
+      "id": "024d643a-03b0-49eb-9da9-1c5d71275588",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "APPOINTMENT_TYPE_ID",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        500,
+        120
+      ],
+      "id": "44d5c3b3-0b82-48ca-933c-bfa73fec5f53",
+      "name": "Merge"
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "IMREDEMEC_CODE": 80076,
+          "enc_chartpulltime": "2025-02-28T22:56:43.957Z",
+          "DEM_EXTERNALID": "197520",
+          "DEM_FIRSTNAME": "TEDDY",
+          "DEM_LASTNAME": "TEST",
+          "DEM_DATEOFBIRTH": "1998-09-17T00:00:00.000Z",
+          "APPOINTMENT_TYPE_ID": 80,
+          "APPOINTMENT_TYPE_DESCRIPTION": "2D ECHOCARDIOGRAM"
+        }
+      },
+      {
+        "json": {
+          "IMREDEMEC_CODE": 80076,
+          "enc_chartpulltime": "2025-02-28T22:56:43.957Z",
+          "DEM_EXTERNALID": "197520",
+          "DEM_FIRSTNAME": "TEDDY",
+          "DEM_LASTNAME": "TEST",
+          "DEM_DATEOFBIRTH": "1998-09-17T00:00:00.000Z",
+          "APPOINTMENT_TYPE_ID": 251,
+          "APPOINTMENT_TYPE_DESCRIPTION": "EXERCISE STRESS TEST"
+        }
+      },
+      {
+        "json": {
+          "IMREDEMEC_CODE": 80076,
+          "enc_chartpulltime": "2025-02-26T15:10:51.603Z",
+          "DEM_EXTERNALID": "197520",
+          "DEM_FIRSTNAME": "TEDDY",
+          "DEM_LASTNAME": "TEST",
+          "DEM_DATEOFBIRTH": "1998-09-17T00:00:00.000Z",
+          "APPOINTMENT_TYPE_ID": 80,
+          "APPOINTMENT_TYPE_DESCRIPTION": "2D ECHOCARDIOGRAM"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Patient_ID": 137836,
+          "Patient_Number": "197520",
+          "Appt_ID": 25488351,
+          "Appt_DateTime": "2025-02-28T15:30:00.000Z",
+          "Appt_Resource_ID": 1090,
+          "Appt_Resource_Descr": "Exercise Stress, Stress ABI, DEXA",
+          "Appt_Status": "S",
+          "BookedAppt": "BookedAppt",
+          "Appt_Sched_Location_Descr": "DIAG EP Southfield",
+          "Appt_Type_Abbr": "ST-GXT  ",
+          "Appointment_Type_ID": 251,
+          "Appointment_Category_ID": 171
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-02T12:38:09.022Z",
+  "versionId": "18766201-ab96-47e7-9fe6-bb1b2f739e8d"
+}
