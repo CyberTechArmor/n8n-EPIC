@@ -1,0 +1,1111 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FilterDates-Within6Days": {
+      "main": [
+        [
+          {
+            "node": "Total Pages1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total Pages1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate": {
+      "main": [
+        [
+          {
+            "node": "6Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6Days": {
+      "main": [
+        [
+          {
+            "node": "LastMonday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LastMonday": {
+      "main": [
+        [
+          {
+            "node": "Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weekly": {
+      "main": [
+        [
+          {
+            "node": "FilterDates-Within6Days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fields": {
+      "main": [
+        [
+          {
+            "node": "Weekly",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Date1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FilterDates-Within6Days1": {
+      "main": [
+        [
+          {
+            "node": "Total Pages2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total Pages2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weekly1": {
+      "main": [
+        [
+          {
+            "node": "FilterDates-Within6Days1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date1": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate1": {
+      "main": [
+        [
+          {
+            "node": "6Days1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6Days1": {
+      "main": [
+        [
+          {
+            "node": "LastMonday1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LastMonday1": {
+      "main": [
+        [
+          {
+            "node": "Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fields1": {
+      "main": [
+        [
+          {
+            "node": "Weekly1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-01T13:30:44.770Z",
+  "id": "2dE8IIdzj9A5pMxT",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "WeeklyTotal-PrintJobs",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 18 * * sun"
+            }
+          ]
+        }
+      },
+      "id": "377e2603-b634-4d40-a4f7-86912f79d71a",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6750bf60-0697-4634-85b1-fda5f1baeb32",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        180
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const currentDate = new Date();\nconst sixDaysAgo = new Date();\nsixDaysAgo.setDate(currentDate.getDate() - 6);\n\nreturn items.filter(item => {\n  const itemDate = new Date(item.json[\"Date\"]);\n  return itemDate >= sixDaysAgo && itemDate <= currentDate;\n});\n"
+      },
+      "id": "2ef86971-0783-4fa7-8eb5-18881426ccd9",
+      "name": "FilterDates-Within6Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const pagesArray = items.map(item => parseInt(item.json[\"Total Pages\"], 10) || 0);\nconst sumTotalPages = pagesArray.reduce((acc, val) => acc + val, 0);\nconst averageTotalPages = sumTotalPages / pagesArray.length;\n\nreturn [\n  {\n    json: {\n      sum_Total_Pages: sumTotalPages\n    }\n  }\n];\n"
+      },
+      "id": "8296398c-1bc3-4b3d-acec-76064ebd582c",
+      "name": "SumTotalPages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a32e65cf-48e4-47da-9c32-606f694d8deb",
+              "leftValue": "=",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "333577ef-ee96-42a9-9f7e-c169487b7bea",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.1,
+      "position": [
+        2380,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "8f991ba8-1819-45c3-b715-91d0fdef9a89",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2260,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "myonfgwyqnrevrf",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $('Total Pages1').item.json.printerName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Total Pages1').item.json.location }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $('Total Pages1').item.json.sum_Total_Pages }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.formattedDate }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $node['Fields'].json.LastDate }} to {{ $node['Fields'].json.CDate }}"
+            }
+          ]
+        }
+      },
+      "id": "e21005a7-8639-4fae-af16-5596f39c4c01",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3140,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get input items and group by location\nconst locationGroups = items.reduce((groups, item) => {\n  const location = item.json.Location;\n  if (!groups[location]) {\n    groups[location] = {\n      location: location,\n      totalPages: 0,\n      count: 0\n    };\n  }\n  \n  // Fix: Access Total_Pages correctly and ensure proper parsing\n  const pages = parseInt(item.json.Total_Pages) || parseInt(item.json['Total Pages']) || 0;\n  groups[location].totalPages += pages;\n  groups[location].count += 1;\n  \n  // Debug log to check values\n  console.log(`Location: ${location}, Pages: ${pages}, Running Total: ${groups[location].totalPages}`);\n  \n  return groups;\n}, {});\n\n// Convert to array and format output\nconst result = Object.values(locationGroups).map(group => ({\n  json: {\n    location: group.location,\n    sum_Total_Pages: group.totalPages\n  }\n}));\n\nreturn result;"
+      },
+      "id": "b9492223-3759-4714-9bed-ab6d6d1ff913",
+      "name": "Total Pages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8d1b994c-ca70-464e-86ea-925f8560c548",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2660,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "myonfgwyqnrevrf",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $('FilterDates-Within6Days').first().json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('FilterDates-Within6Days').first().json.Location }}"
+            },
+            {
+              "fieldName": "Total Pages",
+              "fieldValue": "={{ $('Total Pages').first().json.sum_Total_Pages }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('FilterDates-Within6Days').first().json.Month }}"
+            }
+          ]
+        }
+      },
+      "id": "325d34b2-4bf6-4204-947c-cbecf27f42cb",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        20
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "returnAll": true,
+        "options": {
+          "where": "=(Date,gt,10/31/2024)"
+        }
+      },
+      "id": "e25db2f2-4810-4052-831d-0b23b5e86621",
+      "name": "NocoDB3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1300,
+        180
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current month name and year\nconst currentDate = new Date();\nconst monthName = currentDate.toLocaleString('default', { month: 'long' });\nconst currentYear = currentDate.getFullYear();\n\n// Define the display month as \"Month Name - Year\"\nconst displayMonth = `${monthName} - ${currentYear}`;\n\n// Group by location and month\nconst locationGroups = items.reduce((groups, item) => {\n  const location = item.json.Location;\n  const itemDate = new Date(item.json.Date);\n  const itemMonth = itemDate.toISOString().slice(0, 7); // Extract month from date\n  const printerName = item.json.PrinterName;\n\n  // Only process items for the current month\n  if (itemMonth === currentDate.toISOString().slice(0, 7)) {\n    // Create a unique key combining location and displayMonth\n    const groupKey = `${location}-${displayMonth}`;\n    if (!groups[groupKey]) {\n      groups[groupKey] = {\n        location: location,\n        month: displayMonth,\n        printerName: printerName,\n        totalPages: 0,\n        count: 0\n      };\n    }\n\n    // Access Total Pages correctly and ensure proper parsing\n    const pages = parseInt(item.json['TotalPages']) || 0;\n    groups[groupKey].totalPages += pages;\n    groups[groupKey].count += 1;\n\n    // Debug log to check values\n    console.log(`GroupKey: ${groupKey}, Location: ${location}, Pages: ${pages}, Running Total: ${groups[groupKey].totalPages}, Month: ${groups[groupKey].month}, PrinterName: ${printerName}`);\n  }\n\n  return groups;\n}, {});\n\n// Convert to array and format output for location/month groups\nconst locationMonthResult = Object.values(locationGroups).map(group => ({\n  json: {\n    location: group.location,\n    month: group.month,\n    sum_Total_Pages: group.totalPages,\n    printerName: group.printerName\n  }\n}));\n\n// Return only the location/month groups without the overall total\nreturn locationMonthResult;\n"
+      },
+      "id": "d940e3df-555f-4328-8f04-42fb2372f36f",
+      "name": "Total Pages1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "returnAll": true,
+        "options": {
+          "where": "=(Date,gte,{{ $('LastMonday').item.json.formattedDate }}) AND (Date,lte,{{$('CurrentDate').item.json.formattedDate}})\n"
+        }
+      },
+      "id": "df2e23f1-9bad-4780-8f69-54340ad0f725",
+      "name": "Weekly",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        440
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "29593e69-1ae5-4566-b80f-733ec55a9fe5",
+      "name": "Date",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        900,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "88721158-57bb-4be1-9169-0ac41061d8fa",
+      "name": "CurrentDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "a75b0377-31b7-4b5c-b9ac-77b6bbed45ff",
+      "name": "6Days",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "options": {}
+      },
+      "id": "ff3aeaff-7ee8-4e67-af0b-717a491ce8d2",
+      "name": "LastMonday",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.month }}",
+        "format": "=MMMM-yyyy",
+        "options": {}
+      },
+      "id": "1ff03753-edcc-4af4-99f4-9a69a0dbf7af",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4fb9048a-589f-4fdb-a0c5-26febbd3b350",
+              "name": "LastDate",
+              "value": "={{ $json.formattedDate.substring(0,5) }}",
+              "type": "string"
+            },
+            {
+              "id": "f1a81bd4-5e8d-4e03-bae7-016a2f5ec2e1",
+              "name": "CDate",
+              "value": "={{ $('CurrentDate').item.json.formattedDate.substring(0,5) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "65c32663-88ce-452b-9eb8-286e5490a5ad",
+      "name": "Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "05 18 * * SUN"
+            }
+          ]
+        }
+      },
+      "id": "c3e7600e-989d-4b31-982b-7ca34e001e91",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const currentDate = new Date();\nconst sixDaysAgo = new Date();\nsixDaysAgo.setDate(currentDate.getDate() - 6);\n\nreturn items.filter(item => {\n  const itemDate = new Date(item.json[\"Date\"]);\n  return itemDate >= sixDaysAgo && itemDate <= currentDate;\n});\n"
+      },
+      "id": "307c95c6-1508-4cb0-8257-6726c6ec2f03",
+      "name": "FilterDates-Within6Days1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "md2qzfgd753r9e0",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $('Total Pages2').item.json.printerName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Total Pages2').item.json.location }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $('Total Pages2').item.json.sum_Total_Pages }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.formattedDate }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $node['Fields1'].json.LastDate }} to {{ $node['Fields1'].json.CDate }}"
+            }
+          ]
+        }
+      },
+      "id": "10511030-2f53-4e4e-9556-421a6da646f0",
+      "name": "NocoDB4",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3140,
+        900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cde24de9-8339-4db8-9ace-344d15a74923",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2660,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current month name and year\nconst currentDate = new Date();\nconst monthName = currentDate.toLocaleString('default', { month: 'long' });\nconst currentYear = currentDate.getFullYear();\n\n// Define the display month as \"Month Name - Year\"\nconst displayMonth = `${monthName} - ${currentYear}`;\n\n// Group by location and month\nconst locationGroups = items.reduce((groups, item) => {\n  const location = item.json.Location;\n  const itemDate = new Date(item.json.Date);\n  const itemMonth = itemDate.toISOString().slice(0, 7); // Extract month from date\n  const printerName = item.json.PrinterName;\n\n  // Only process items for the current month\n  if (itemMonth === currentDate.toISOString().slice(0, 7)) {\n    // Create a unique key combining location and displayMonth\n    const groupKey = `${location}-${displayMonth}`;\n    if (!groups[groupKey]) {\n      groups[groupKey] = {\n        location: location,\n        month: displayMonth,\n        printerName: printerName,\n        totalPages: 0,\n        count: 0\n      };\n    }\n\n    // Access Total Pages correctly and ensure proper parsing\n    const pages = parseInt(item.json['TotalPages']) || 0;\n    groups[groupKey].totalPages += pages;\n    groups[groupKey].count += 1;\n\n    // Debug log to check values\n    console.log(`GroupKey: ${groupKey}, Location: ${location}, Pages: ${pages}, Running Total: ${groups[groupKey].totalPages}, Month: ${groups[groupKey].month}, PrinterName: ${printerName}`);\n  }\n\n  return groups;\n}, {});\n\n// Convert to array and format output for location/month groups\nconst locationMonthResult = Object.values(locationGroups).map(group => ({\n  json: {\n    location: group.location,\n    month: group.month,\n    sum_Total_Pages: group.totalPages,\n    printerName: group.printerName\n  }\n}));\n\n// Return only the location/month groups without the overall total\nreturn locationMonthResult;\n"
+      },
+      "id": "5d18e992-d563-4616-8f9b-3ec12db62caf",
+      "name": "Total Pages2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "returnAll": true,
+        "options": {
+          "where": "=(Date,gte,{{ $('LastMonday1').item.json.formattedDate }}) AND (Date,lte,{{$('CurrentDate1').item.json.formattedDate}})\n"
+        }
+      },
+      "id": "b6903a33-af9d-4d56-aa1e-cb9b7f83b52a",
+      "name": "Weekly1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        880
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f500ff07-ce72-4633-a336-962c3cd8b234",
+      "name": "Date1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        900,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "474fbfab-c572-4587-8aea-5aade644c5d8",
+      "name": "CurrentDate1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "26f34262-a89c-40ee-ab6f-915b84a6ef5b",
+      "name": "6Days1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "options": {}
+      },
+      "id": "36a3f8de-e661-4931-8754-24c07f9bde5f",
+      "name": "LastMonday1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.month }}",
+        "format": "=MMMM-yyyy",
+        "options": {}
+      },
+      "id": "291a4f3f-ff77-477e-b19c-34c7783d2923",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4fb9048a-589f-4fdb-a0c5-26febbd3b350",
+              "name": "LastDate",
+              "value": "={{ $json.formattedDate.substring(0,5) }}",
+              "type": "string"
+            },
+            {
+              "id": "f1a81bd4-5e8d-4e03-bae7-016a2f5ec2e1",
+              "name": "CDate",
+              "value": "={{ $('CurrentDate1').item.json.formattedDate.substring(0,5) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0ced6472-f2a2-402d-8cc2-cdd0a66703e4",
+      "name": "Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        880
+      ]
+    }
+  ],
+  "pinData": {
+    "Weekly1": [
+      {
+        "json": {
+          "Id": 9,
+          "Location": "SCS",
+          "TotalPages": "91",
+          "Month": "November - 2024",
+          "WeekOf": "11/07 To 11/13",
+          "PrinterName": "SCS_HARPER_FRONT",
+          "Date": "11/12/2024",
+          "CreatedAt": "2024-11-13 00:30:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 10,
+          "Location": "Royal Oak",
+          "TotalPages": "101",
+          "Month": "November - 2024",
+          "WeekOf": "11/07 To 11/13",
+          "PrinterName": "SFD_10MILE_FRONT",
+          "Date": "11/12/2024",
+          "CreatedAt": "2024-11-13 00:30:05",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 11,
+          "Location": "HQ",
+          "TotalPages": "45",
+          "Month": "November - 2024",
+          "WeekOf": "11/07 To 11/13",
+          "PrinterName": "HQ_9MILE_CC",
+          "Date": "11/12/2024",
+          "CreatedAt": "2024-11-13 00:30:05",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 12,
+          "Location": "Southfield",
+          "TotalPages": "32",
+          "Month": "November - 2024",
+          "WeekOf": "11/07 To 11/13",
+          "PrinterName": "SFD_10MILE_ACT",
+          "Date": "11/12/2024",
+          "CreatedAt": "2024-11-13 00:30:05",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 13,
+          "Location": "SCS",
+          "TotalPages": "105",
+          "Month": "November - 2024",
+          "WeekOf": "11/08 To 11/14",
+          "PrinterName": "SCS_HARPER_FRONT",
+          "Date": "11/13/2024",
+          "CreatedAt": "2024-11-14 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 14,
+          "Location": "Royal Oak",
+          "TotalPages": "148",
+          "Month": "November - 2024",
+          "WeekOf": "11/08 To 11/14",
+          "PrinterName": "SFD_10MILE_FRONT",
+          "Date": "11/13/2024",
+          "CreatedAt": "2024-11-14 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 15,
+          "Location": "HQ",
+          "TotalPages": "8",
+          "Month": "November - 2024",
+          "WeekOf": "11/08 To 11/14",
+          "PrinterName": "HQ_9MILE_CC",
+          "Date": "11/13/2024",
+          "CreatedAt": "2024-11-14 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 16,
+          "Location": "Southfield",
+          "TotalPages": "25",
+          "Month": "November - 2024",
+          "WeekOf": "11/08 To 11/14",
+          "PrinterName": "SFD_10MILE_ACT",
+          "Date": "11/13/2024",
+          "CreatedAt": "2024-11-14 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 17,
+          "Location": "SCS",
+          "TotalPages": "89",
+          "Month": "November - 2024",
+          "WeekOf": "11/09 To 11/15",
+          "PrinterName": "SCS_HARPER_FRONT",
+          "Date": "11/14/2024",
+          "CreatedAt": "2024-11-15 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 18,
+          "Location": "Royal Oak",
+          "TotalPages": "143",
+          "Month": "November - 2024",
+          "WeekOf": "11/09 To 11/15",
+          "PrinterName": "SFD_10MILE_FRONT",
+          "Date": "11/14/2024",
+          "CreatedAt": "2024-11-15 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 19,
+          "Location": "Southfield",
+          "TotalPages": "29",
+          "Month": "November - 2024",
+          "WeekOf": "11/09 To 11/15",
+          "PrinterName": "SFD_10MILE_ACT",
+          "Date": "11/14/2024",
+          "CreatedAt": "2024-11-15 00:35:04",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 20,
+          "Location": "SCS",
+          "TotalPages": "77",
+          "Month": "November - 2024",
+          "WeekOf": "11/10 To 11/16",
+          "PrinterName": "SCS_HARPER_FRONT",
+          "Date": "11/15/2024",
+          "CreatedAt": "2024-11-16 00:35:03",
+          "UpdatedAt": null
+        }
+      },
+      {
+        "json": {
+          "Id": 21,
+          "Location": "Southfield",
+          "TotalPages": "14",
+          "Month": "November - 2024",
+          "WeekOf": "11/11 To 11/17",
+          "PrinterName": "SFD_10MILE_ACT",
+          "Date": "11/16/2024",
+          "CreatedAt": "2024-11-17 00:35:02",
+          "UpdatedAt": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2024-11-18T15:47:34.152Z",
+  "versionId": "c7bf5a69-ad0b-4f47-a34a-988260bdd6b4"
+}
