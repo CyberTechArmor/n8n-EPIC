@@ -1,0 +1,1952 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MRN find IMREDEM": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Find Patient by Phone Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request10": {
+      "main": [
+        [
+          {
+            "node": "MRN find IMREDEM",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request11": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request14": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk6": {
+      "main": [
+        [
+          {
+            "node": "Extract from File4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk7": {
+      "main": [
+        [
+          {
+            "node": "Extract from File5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "USER12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Find Patient by Phone Number": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Patient by Phone Number1": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Find Patient by Phone Number1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "USER12": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk8": {
+      "main": [
+        [
+          {
+            "node": "Extract from File7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File7": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request13": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "USER12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-20T12:42:00.172Z",
+  "id": "JtB7kzF67zvQrBxH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Limesurvey Save PDF to Chart",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "7d1dac2a-75ad-4439-8440-04ecf69f6ef4",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1453,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## SDOH Limesurvey webhooks\n** Webhook incoming to specify ID\n** HTTP request to PDF",
+        "height": 484.1433066383917,
+        "width": 465.9616916459639,
+        "color": 4
+      },
+      "id": "f56729cf-8e95-43b5-906b-abfc39da6465",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -345,
+        -247
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Process and send \n**Combine the data, remove any \" and \\n, then send to EHR",
+        "height": 291.63680788482196,
+        "width": 521.1764796477369
+      },
+      "id": "a3010956-cfae-43e1-89fa-17875fa0edae",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://forms.epicpc.com/limesurvey/index.php/plugins/direct?plugin=ResponseOutput&function=print&survey_id={{ $json[\"query\"][\"survey_id\"] }}=INLINE&token={{ $json[\"query\"][\"stoken\"] }}&pdf=true",
+        "options": {}
+      },
+      "id": "3aeeeb8f-27df-496b-825e-2b9716a97f18",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        360,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN NVARCHAR(10) = '{{ $json.result[\"attribute_1\"] }}';\n--DECLARE @MRN VARCHAR(10) = '502880';\n \nselect top 1 s.DEM_EXTERNALID as MRN,s.IMREDEM_CODE,s.PATIENT_FIRSTNAME,s.PATIENT_LASTNAME\nfrom [HPSITE].[SCHEDULE_VIEW] s \nleft join [EMR].[HPSITE].[DEMOGRAPHICS] d on d.IMREDEM_CODE=s.IMREDEM_CODE\nWHERE S.DEM_EXTERNALID = @MRN\nORDER BY S.SCHED_DATE DESC"
+      },
+      "id": "beb805b9-32c3-4422-a371-287b1cef1007",
+      "name": "MRN find IMREDEM",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        391,
+        -88
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=SaveScanDocument"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $json.IMREDEM_CODE }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.description }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=sid{{ $('Webhook').item.json[\"query\"][\"survey_id\"] }}_{{ $('MRN find IMREDEM').item.json[\"MRN\"] }}.pdf"
+            },
+            {
+              "name": "Parameter3",
+              "value": "=<docattributes><doctitle>{{ $json.description }}</doctitle></docattributes>"
+            },
+            {
+              "name": "Data",
+              "value": "={{ $json[\"data\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "3404d0bf-ea7b-447f-9a61-d818ab2acbb8",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1700,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "330f79c6-bdcd-4ae1-a70a-e546b526dbf9",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "id": "7993e7b9-c805-4592-bdf1-96485caa0010",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        620,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Identify the patient by MRN, Pull the document",
+        "height": 476.28983488215505,
+        "width": 740.9076517926998,
+        "color": 5
+      },
+      "id": "b27b4af2-7e3c-40d5-bbd2-73942960d9fe",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Thank You!</title>\n<style>\n  body {\n    font-family: 'Arial', sans-serif;\n    background-color: #f7f7f7;\n    margin: 0;\n    padding: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n    text-align: center;\n  }\n  .thank-you-container {\n    background-color: #fff;\n    padding: 40px;\n    border-radius: 15px;\n    box-shadow: 0 10px 25px rgba(0,0,0,0.1);\n    max-width: 400px;\n  }\n  h1 {\n    color: #4A90E2;\n    font-size: 2.5em;\n  }\n  p {\n    font-size: 1.2em;\n    color: #666;\n  }\n  .thank-you-note {\n    margin-top: 20px;\n  }\n</style>\n</head>\n<body>\n<div class=\"thank-you-container\">\n    <h1>Thank You.</h1>\n        <div class=\"thank-you-note\">\n        <p>Please let us know if we can do anything else for you!</p>\n    </div>\n</div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "1278e2a3-87cc-4e7b-91c6-a3ec4505b24d",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -280,
+        -120
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "52b9abcd-5b25-47ac-85e2-96c5ab563506",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -129,
+        -28
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"method\":\"get_participant_properties\",\"params\":{\"sSessionKey\":\"{{ $('HTTP Request6').item.json[\"result\"] }}\", \"iSurveyID\":\"{{ $('Webhook').item.json[\"query\"][\"survey_id\"] }}\",\"aTokenQueryProperties\":{\"token\":\"{{ $('Webhook').item.json[\"query\"][\"stoken\"] }}\"}, \"aTokenProperties\":[\"email\",\"attribute_1\",\"firstname\"]},\"id\":1}",
+        "options": {}
+      },
+      "id": "b2c101ae-ee1e-4584-89be-817b47d615bd",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -49,
+        -188
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "18e7f2fa-9c77-4e3b-8b31-34d871f50c6a",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        820,
+        845
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "66f6a8b0-5678-4325-a35f-07f1853d45a6",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -286,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"get_survey_properties\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\", \"iSurveyID\":{{ $('Webhook').item.json[\"query\"][\"survey_id\"] }}},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "476fbdf4-b937-4508-864b-5a8c49e26a5e",
+      "name": "HTTP Request11",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -86,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"list_survey_groups\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\"},    \"id\": 1}",
+        "options": {}
+      },
+      "id": "ae162df2-27f8-44a7-bf78-0017eb4574ba",
+      "name": "HTTP Request14",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        114,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "ba4fd038-5c5b-4fee-aaf6-32f2feeb7909",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        294,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.gsid }}",
+                    "rightValue": "={{ $('HTTP Request11').item.json.result.gsid }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71569c04-8ee8-4bde-adc4-2d3f0917f8e5",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        474,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "29ac3bb1-4e33-44a8-8d81-a4e7d63a0e03",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1080,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9f9f791-7ffe-48e6-b0dd-2b0c0890ef03",
+              "name": "description",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff171aa9-814e-4b12-b069-3428729fb112",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        694,
+        454
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Pulling the group description to be used as the EHR document name",
+        "height": 284.3131160107507,
+        "width": 1210.6640565223022,
+        "color": 6
+      },
+      "id": "00f5ad62-dda4-48d8-af07-32c96d554c6b",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/c1e69cfa-44fa-4309-adcd-c425ebb3a3fe",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "MRN",
+              "value": "={{ $json.result.attribute_1 }}"
+            },
+            {
+              "name": "firstname",
+              "value": "={{ $json.result.firstname }}"
+            },
+            {
+              "name": "surveyid",
+              "value": "={{ $('Webhook').item.json.query.survey_id }}"
+            },
+            {
+              "name": "Survey",
+              "value": "={{ $json.description }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "42e94179-29d9-4a7d-ada1-b1c69769eaed",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        -60
+      ],
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "d7f9396c-da2f-4b09-aac5-c02ea49cfdf5",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "3019d6af-4754-473c-bdd1-c7e832bc31f8",
+      "name": "Read/Write Files from Disk6",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        940
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "06b196c6-a209-4db0-9107-79822581ee50",
+      "name": "Extract from File4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        940
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "edd927d8-dee0-4330-aa4e-c9a8fc579680",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        260,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "bc6a1879-edb1-44b7-a48e-10a9f3cd9b1e",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        1040
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "ec872a4a-bd8d-44cc-90ae-27c3e1a3537e",
+      "name": "Read/Write Files from Disk7",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        480,
+        840
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "7f432271-e3bd-4b42-a44f-b0c48268c583",
+      "name": "Extract from File5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        620,
+        840
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json[\"data\"] }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "dc18d33f-f608-4580-8b03-b244e6c271e8",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        80,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# EHR Authentication",
+        "height": 426.115682381651,
+        "width": 1345.3668054052762,
+        "color": 4
+      },
+      "id": "bcd7f3be-756e-4d30-8b61-ae9f212b989f",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        785
+      ]
+    },
+    {
+      "parameters": {
+        "path": "ebeaedc6-ceff-4084-8363-030cb4edace7",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e6c451d6-7a1c-4684-a562-4f15890387d7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -309,
+        92
+      ],
+      "webhookId": "ebeaedc6-ceff-4084-8363-030cb4edace7"
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "6be7ec93-e785-4a37-9dee-a0c0088178da",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        700,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"filter\": {\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $json.result.attribute_1 }}\"\n    }\n}",
+        "options": {}
+      },
+      "id": "fb0a0dd6-f062-4c96-b5cf-54cd4abaec0c",
+      "name": "HTTP Request12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1360,
+        -540
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "6a16928b-6a4c-4a28-9b5f-25491d8e18f1",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1620,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"taskId\": \"{{ $json.result.task.id }}\",\n    \"fields\": {\n        \"UF_CRM_TASK\": [\"C_{{ $('HTTP Request12').first().json.result[0].ID }}\"]\n    }\n}",
+        "options": {}
+      },
+      "id": "53e4e899-de92-49b1-926a-e7d2684956f6",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1900,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Fix MRN custom field",
+        "height": 510,
+        "width": 838,
+        "color": 3
+      },
+      "id": "e6edf213-9af8-4d02-8e63-b6cf659b8229",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"{{ $json.description }}, {{ $json.result.attribute_1 }}, {{ $json.result.firstname }}\",\n       \"GROUP_ID\":\"151\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"{{ $json.description }}{{'\\\\n'}}Name: {{ $json.result.firstname }}{{'\\\\n'}}MRN: {{ $json.result.attribute_1 }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "2ffce183-dce9-4f2a-be33-85053e0e4826",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1360,
+        -300
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Loading Awesome</title>\n    <!-- Include Beer CSS from a CDN -->\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/beer.css@0.1.0/dist/beer.min.css\" />\n    <style>\n      /* Additional styling for a fancy loading screen */\n      .loading-container {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n        min-height: 100vh;\n        text-align: center;\n      }\n      .spinner {\n        border: 8px solid #f3f3f3;\n        border-top: 8px solid #3498db;\n        border-radius: 50%;\n        width: 60px;\n        height: 60px;\n        animation: spin 2s linear infinite;\n        margin-bottom: 20px;\n      }\n      @keyframes spin {\n        0% { transform: rotate(0deg); }\n        100% { transform: rotate(360deg); }\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"loading-container\">\n      <div class=\"spinner\"></div>\n      <h1>Loading Awesome</h1>\n      <p>Please wait while we process your submission...</p>\n    </div>\n\n    <!-- Hidden form to auto-submit data via POST -->\n    <form\n      id=\"redirectForm\"\n      action=\"https://xl.epicpc.com/webhook/141a4626-dfa8-4ad8-b96f-f4533a5af6ea\"\n      method=\"POST\"\n      style=\"display:none;\"\n    >\n      <input type=\"hidden\" name=\"number\" value=\"{{ $json.Patient_Cell_Phone }}\" />\n      <input type=\"hidden\" name=\"dobYear\" value=\"{{ $json.formattedDate }}\" />\n    </form>\n    <script>\n      // Define the extra query parameters (without the leading '?' for easier concatenation)\n      var extraQuery = \"campaign=&source=222825&medium=Survey&event=&other=\";\n      // Get the current window query string and remove the leading '?' if present\n      var queryString = window.location.search;\n      if(queryString) {\n        queryString = queryString.substring(1);\n      }\n      \n      var form = document.getElementById('redirectForm');\n      // Append extraQuery and any current query parameters properly to the base URL\n      if(queryString) {\n        form.action = form.action + \"?\" + extraQuery + \"&\" + queryString;\n      } else {\n        form.action = form.action + \"?\" + extraQuery;\n      }\n      \n      // Automatically submit the form to trigger the POST call\n      form.submit();\n    </script>\n  </body>\n</html>\n",
+        "options": {}
+      },
+      "id": "1223483f-d2cc-4fc3-a719-bf7c8d648085",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        940,
+        -1040
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        780,
+        -860
+      ],
+      "id": "e6cf76e5-0512-4afb-b61b-30b5f7edf277",
+      "name": "Merge5"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--APM PatientInfoWithInsInfo\nwith genpatinfo as (\n    select g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_LFI,\n           g.Patient_First_Name, g.Patient_Last_Name, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n           g.Patient_SSN, g.Patient_Sex, g.Patient_DOB, g.Patient_Age, g.Patient_Marital_Status, g.Patient_Home_Phone, g.Patient_Cell_Phone,\n           g.Patient_Primary_Phone_Number, g.Patient_Email\n    from [PM].[vwGenPatInfo] g\n),\npatid as (\n    select p.Patient_ID, p.Patient_Number, p.Date_Registered,\n           p.Comments, p.Account_ID, p.Contact_ID\n    from [PM].[Patients] p\n),\npatpol as (\n    select pp.Patient_Policy_ID, pp.Policy_ID, pp.Patient_ID,\n           pp.Coverage, pp.Verified_Date\n    from [PM].[Patient_Policies] pp\n),\ngenpol as (\n    select po.Policy_ID, po.Group_No, po.Certificate_No,\n           po.Comments, po.Effective_Date, po.Expiration_Date,\n           po.Carrier_ID, po.Insurance_Plan_ID, po.Contact_ID, po.Account_ID\n    from [PM].[Policies] po\n)\nselect g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_First_Name, g.Patient_Last_Name,\n       g.Patient_LFI, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n       g.Patient_SSN, g.Patient_Sex, convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB, g.Patient_Age, g.Patient_Marital_Status,\n       g.Patient_Home_Phone, g.Patient_Cell_Phone, g.Patient_Email,\n       p.Account_ID, p.Contact_ID, p.Date_Registered, p.Comments,\n       pp.Patient_Policy_ID, pp.Policy_ID, pp.Coverage, pp.Verified_Date,\n       po.Account_ID, po.Carrier_ID, c.Name, c.Payor_Number, i.CoPayment_Amount,\n       po.Insurance_Plan_ID, po.Carrier_ID, po.Certificate_No, po.Group_No,\n       po.Comments, po.Effective_Date, po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = g.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere (g.Patient_Number = '{{ $json.MRN }}' )   --and YEAR(g.Patient_DOB) = YEAR(CONVERT(DATE, '{{ $json.formattedDate }}', 101))"
+      },
+      "id": "269da52d-9afe-4ee8-973d-991bfe37cde9",
+      "name": "Find Patient by Phone Number",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.Patient_DOB }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        660,
+        -600
+      ],
+      "id": "ce9691db-6022-4868-b47f-0baf8bc24670",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--APM PatientInfoWithInsInfo\nwith genpatinfo as (\n    select g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_LFI,\n           g.Patient_First_Name, g.Patient_Last_Name, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n           g.Patient_SSN, g.Patient_Sex, g.Patient_DOB, g.Patient_Age, g.Patient_Marital_Status, g.Patient_Home_Phone, g.Patient_Cell_Phone,\n           g.Patient_Primary_Phone_Number, g.Patient_Email\n    from [PM].[vwGenPatInfo] g\n),\npatid as (\n    select p.Patient_ID, p.Patient_Number, p.Date_Registered,\n           p.Comments, p.Account_ID, p.Contact_ID\n    from [PM].[Patients] p\n),\npatpol as (\n    select pp.Patient_Policy_ID, pp.Policy_ID, pp.Patient_ID,\n           pp.Coverage, pp.Verified_Date\n    from [PM].[Patient_Policies] pp\n),\ngenpol as (\n    select po.Policy_ID, po.Group_No, po.Certificate_No,\n           po.Comments, po.Effective_Date, po.Expiration_Date,\n           po.Carrier_ID, po.Insurance_Plan_ID, po.Contact_ID, po.Account_ID\n    from [PM].[Policies] po\n)\nselect g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_First_Name, g.Patient_Last_Name,\n       g.Patient_LFI, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n       g.Patient_SSN, g.Patient_Sex, convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB, g.Patient_Age, g.Patient_Marital_Status,\n       g.Patient_Home_Phone, g.Patient_Cell_Phone, g.Patient_Email,\n       p.Account_ID, p.Contact_ID, p.Date_Registered, p.Comments,\n       pp.Patient_Policy_ID, pp.Policy_ID, pp.Coverage, pp.Verified_Date,\n       po.Account_ID, po.Carrier_ID, c.Name, c.Payor_Number, i.CoPayment_Amount,\n       po.Insurance_Plan_ID, po.Carrier_ID, po.Certificate_No, po.Group_No,\n       po.Comments, po.Effective_Date, po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = g.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere (g.Patient_Number = '502880' )   --and YEAR(g.Patient_DOB) = YEAR(CONVERT(DATE, '{{ $json.formattedDate }}', 101))"
+      },
+      "id": "94b73992-418d-4c36-adae-57fd9c93e72e",
+      "name": "Find Patient by Phone Number1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        480
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        440
+      ],
+      "id": "10c60dfb-5801-4015-a224-28741f662942",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b806a87b-407c-47eb-b9ba-1aca0d81400d",
+              "name": "user",
+              "value": "HEROERP",
+              "type": "string"
+            },
+            {
+              "id": "c45539b3-dcfd-4d9b-a267-54d31648d3b0",
+              "name": "password",
+              "value": "3p1c#123456",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "652f145e-5d4e-431f-875f-bc7f64239222",
+      "name": "USER12",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -460,
+        1820
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "f4ad48dd-0fb8-4e9c-af5c-ed723797eaaf",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        1820
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "dbb463a8-6373-48bb-8743-6fabb52ab4c2",
+      "name": "Extract from File6",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        1820
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "89a973fc-e744-4689-8a97-0c480c2feea6",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        260,
+        1820
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "a9105eb6-6139-4eb6-aa44-4f0c19258137",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        1920
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "4cb94e72-5646-4653-8fca-24ecdd030bfa",
+      "name": "Read/Write Files from Disk8",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1720
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "0efe0ce0-a979-4b93-acf3-66d689e90ab1",
+      "name": "Extract from File7",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        620,
+        1720
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"{{ $('USER12').item.json.user }}\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json[\"data\"] }}\",     \"Parameter1\":\"{{ $('USER12').item.json.password }}\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "9c07fe45-1b37-42d4-8d6b-671e0362db24",
+      "name": "HTTP Request13",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        80,
+        1820
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# EHR Authentication - HEROERP",
+        "height": 426.115682381651,
+        "width": 1586.9735546694517,
+        "color": 5
+      },
+      "id": "763305f3-fce8-456a-9d9e-e14c761345f5",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        1660
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "c642f127-fbe6-48c5-b13b-a3926ad6928a",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        700,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "304397e5-e3dc-4ef3-ae83-a9edd0b0782a",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        820,
+        1740
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Request10": [
+      {
+        "json": {
+          "id": 1,
+          "result": {
+            "firstname": "ROGER",
+            "email": "noemail@epicpc.com",
+            "attribute_1": "967390"
+          },
+          "error": null
+        }
+      }
+    ],
+    "Merge3": [
+      {
+        "json": {
+          "id": 1,
+          "result": {
+            "firstname": "THOMAS",
+            "email": "noemail@epicpc.com",
+            "attribute_1": "502880"
+          },
+          "error": null,
+          "description": "SDOH-CCM NOTE"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.115",
+            "x-forwarded-for": "10.0.14.115",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1346383084.1673283118"
+          },
+          "params": {},
+          "query": {
+            "mrn": "<span class='em-expression em-haveerror'  ><span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >mrn</span></span></span>",
+            "survey_id": "593425",
+            "stoken": "URWIs"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/ebeaedc6-ceff-4084-8363-030cb4edace7",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP Request12": [
+      {
+        "json": {
+          "result": [
+            {
+              "ID": "92689",
+              "POST": null,
+              "COMMENTS": "",
+              "HONORIFIC": "",
+              "NAME": "THOMAS",
+              "SECOND_NAME": "",
+              "LAST_NAME": "STILWELL",
+              "PHOTO": null,
+              "LEAD_ID": null,
+              "TYPE_ID": "1",
+              "SOURCE_ID": null,
+              "SOURCE_DESCRIPTION": "502880",
+              "COMPANY_ID": null,
+              "BIRTHDATE": "1988-01-31T19:00:00-05:00",
+              "EXPORT": "N",
+              "HAS_PHONE": "Y",
+              "HAS_EMAIL": "Y",
+              "HAS_IMOL": "N",
+              "DATE_CREATE": "2024-07-19T11:23:06-04:00",
+              "DATE_MODIFY": "2024-11-29T11:45:15-05:00",
+              "ASSIGNED_BY_ID": "19",
+              "CREATED_BY_ID": "19",
+              "MODIFY_BY_ID": "244",
+              "OPENED": "N",
+              "ORIGINATOR_ID": null,
+              "ORIGIN_ID": null,
+              "ORIGIN_VERSION": null,
+              "FACE_ID": null,
+              "LAST_ACTIVITY_TIME": "2024-11-29T11:45:15-05:00",
+              "ADDRESS": null,
+              "ADDRESS_2": null,
+              "ADDRESS_CITY": null,
+              "ADDRESS_POSTAL_CODE": null,
+              "ADDRESS_REGION": null,
+              "ADDRESS_PROVINCE": null,
+              "ADDRESS_COUNTRY": null,
+              "ADDRESS_LOC_ADDR_ID": null,
+              "UTM_SOURCE": null,
+              "UTM_MEDIUM": null,
+              "UTM_CAMPAIGN": null,
+              "UTM_CONTENT": null,
+              "UTM_TERM": null,
+              "PARENT_ID_143": null,
+              "PARENT_ID_153": null,
+              "PARENT_ID_164": null,
+              "LAST_ACTIVITY_BY": "244"
+            }
+          ],
+          "total": 1,
+          "time": {
+            "start": 1732908477.264138,
+            "finish": 1732908478.265974,
+            "duration": 1.0018360614776611,
+            "processing": 0.9429008960723877,
+            "date_start": "2024-11-29T14:27:57-05:00",
+            "date_finish": "2024-11-29T14:27:58-05:00"
+          }
+        }
+      }
+    ],
+    "Merge4": [
+      {
+        "json": {
+          "error": "JSON parameter needs to be valid JSON",
+          "result": {
+            "task": {
+              "id": "85160",
+              "parentId": null,
+              "title": "DEPRESSION QUESTIONNAIRE-CCM NOTE, 502880, THOMAS",
+              "description": "DEPRESSION QUESTIONNAIRE-CCM NOTE\nName: THOMAS\nMRN: 502880",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "1232",
+              "createdBy": "19",
+              "createdDate": "2024-11-29T14:08:47-05:00",
+              "responsibleId": "19",
+              "changedBy": "19",
+              "changedDate": "2024-11-29T14:08:47-05:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-11-29T14:08:47-05:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{2571f67c-ea83-44e2-bad0-d4c3a3d0cdd1}",
+              "xmlId": null,
+              "commentsCount": null,
+              "serviceCommentsCount": null,
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": null,
+              "forumId": null,
+              "siteId": "ie",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "1",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "flowId": null,
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-11-29T14:08:47-05:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "151",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "151",
+                "name": "Survey Responses",
+                "opened": false,
+                "membersCount": 6,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1732907327.551939,
+            "finish": 1732907328.104106,
+            "duration": 0.5521669387817383,
+            "processing": 0.49475908279418945,
+            "date_start": "2024-11-29T14:08:47-05:00",
+            "date_finish": "2024-11-29T14:08:48-05:00"
+          }
+        }
+      }
+    ],
+    "MRN find IMREDEM": [
+      {
+        "json": {
+          "MRN": "725240",
+          "IMREDEM_CODE": 200059,
+          "PATIENT_FIRSTNAME": "VERONICA",
+          "PATIENT_LASTNAME": "TEST"
+        }
+      }
+    ],
+    "Find Patient by Phone Number1": [
+      {
+        "json": {
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "02/01/1988",
+          "Patient_Age": 37,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Email": "thomas@tagarmor.com",
+          "Account_ID": [
+            172602,
+            172602
+          ],
+          "Contact_ID": 225895,
+          "Date_Registered": "2020-06-01T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": 228767,
+          "Policy_ID": 227486,
+          "Coverage": "X",
+          "Verified_Date": "2024-05-06T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "XYH913345119",
+          "Group_No": "00255346",
+          "Effective_Date": "2020-08-01T00:00:00.000Z",
+          "Expiration_Date": "2023-11-30T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-04-20T12:39:52.246Z",
+      "updatedAt": "2024-04-20T12:39:52.246Z",
+      "id": "DMUnqPRoVtM6NOgJ",
+      "name": "Save Scan Document"
+    },
+    {
+      "createdAt": "2024-07-30T19:51:02.921Z",
+      "updatedAt": "2024-07-30T19:51:10.497Z",
+      "id": "HMKqfxLOS7FSJ3Ne",
+      "name": "EHR Token"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-25T22:32:14.814Z",
+  "versionId": "8b4d586d-fc6e-40d5-bf39-39cbcabe8168"
+}
