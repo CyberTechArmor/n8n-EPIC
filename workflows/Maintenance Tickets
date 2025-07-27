@@ -1,0 +1,897 @@
+{
+  "active": true,
+  "connections": {
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bitrix24 List Tasks": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [],
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Bitrix24 List Tasks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-04T17:22:55.116Z",
+  "id": "3MOBUmMwh3Gff1RB",
+  "isArchived": false,
+  "meta": null,
+  "name": "Maintenance Tickets",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "880bc4ba-60c6-4b8b-8705-077d2370e4ac",
+        "options": {}
+      },
+      "id": "09441f39-9ef2-4b64-8403-134785ee9412",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "615d999d-b0d9-455a-86f5-8add6a4a334c",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/v289y3m2yj2tqf8u/tasks.task.add.json",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"fields\": {        \"TITLE\": \"Test Ticket: #5\",        \"GROUP_ID\":\"7\",        \"RESPONSIBLE_ID\": \"229\",         \"UF_CRM_TASK\": [\"C_7\"]    } }",
+        "options": {}
+      },
+      "id": "169f6c8f-8eb2-413b-ad4e-c53859002b77",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1100,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create Ticket\n## Email User",
+        "height": 322,
+        "width": 782
+      },
+      "id": "4f12c910-3f1c-435c-adea-a44c83923a7d",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b368958a-9e93-47f3-acb6-c02230f146b0",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1360,
+        460
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "tXTsEQND5TBpzvlH",
+          "name": "SMTP account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "fe404602-8957-4d37-a25e-e28c1ea2dcb4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "df737e8e-8475-4f13-94a1-c25229fc32e5",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        840
+      ],
+      "webhookId": "d679146d-ffa3-48f7-913b-c87c4bde324d"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/v289y3m2yj2tqf8u/tasks.task.list.json",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n  \"order\": { \"ID\": \"asc\" },\n  \"filter\": { \"GROUP_ID\": \"7\" },\n  \"select\": [ \"ID\", \"TITLE\", \"DESCRIPTION\", \"STAGE_ID\" ]\n}",
+        "options": {}
+      },
+      "id": "05671b8b-10f0-4031-97e4-e084aab11489",
+      "name": "Bitrix24 List Tasks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1060,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "id": "8b49c837-eef5-4da5-abd6-3b7fb8eaa99c",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        1160
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## URL called, get tasks",
+        "height": 246,
+        "width": 493,
+        "color": 5
+      },
+      "id": "1991148a-4a73-4a8c-aa8f-69bf4c10d187",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Do calculations",
+        "height": 187,
+        "color": 4
+      },
+      "id": "6172aab9-1ccc-4a17-b47f-5c8c4fb41585",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        1093
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Set Variables",
+        "height": 238,
+        "width": 467
+      },
+      "id": "f91d0c2c-9a9e-4c89-81b2-e24f43214953",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1></h1>\n    <h2>This is an H2 heading</h2>\n    <p>This is a paragraph</p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "c9f9b162-eec8-4282-af10-ecae1a7551aa",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        2360,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "be0b76b9-9eb3-424b-b895-d02ce75948fc",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        834
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Generate Website",
+        "height": 240.4980569401651,
+        "width": 276,
+        "color": 7
+      },
+      "id": "f9a8c4ce-06b2-470a-b858-7c036f24a75b",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        757.9122704615481
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result.tasks",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "31d6dacc-5e9d-4ee4-86ec-9988a72cd468",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>{{ $('Aggregate').item.json[\"title']\"].join(', ') }}</h1>\n    <h2>This is an H2 heading</h2>\n    <p>\"Paragraph\" </p>\n  </div>\n</body>\n</html>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3674200e-29dc-450c-be3c-cfb8302ea7ab",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "['result.tasks'].title",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "['result.tasks'].stageId",
+        "options": {}
+      },
+      "id": "9033bcc9-ce6d-476d-8b31-385ceec5274f",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "['[\\'result.tasks\\'].title']"
+            },
+            {
+              "fieldToAggregate": "['[\\'result.tasks\\'].stageId']"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d265eb5-9cab-4307-b2a7-d7b22231c9e8",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Split/Aggregate Task Details",
+        "height": 244.66962989739926,
+        "width": 425.29150890590273
+      },
+      "id": "40a80705-62aa-4a21-b16f-2677b11260c1",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        759.6335373675129
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n<html>\n<head>\n    <title>Dashboard</title>\n    <style>\n        body, html {\n            margin: 0;\n            padding: 0;\n            width: 100%;\n        }\n\n        .section {\n            display: flex;\n            width: 100%;\n            min-height: 300px;\n            border-bottom: 1px solid #000; /* Optional: just for visual separation */\n        }\n\n        .column {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            text-align: center;\n            border-right: 1px solid #000; /* Optional: just for visual separation */\n            padding: 10px; /* Optional: adds padding inside each column */\n        }\n\n        /* Adjustments for the last column in each section */\n        .section > .column:last-child {\n            border-right: none;\n        }\n\n        /* Styling for columns based on their class */\n        .half {\n            width: 50%;\n        }\n\n        .quarter {\n            width: 25%;\n        }\n\n        .full {\n            width: 100%;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"section\" id=\"section-one\">\n        <div class=\"column half\">Outages</div>\n        <div class=\"column half\">Updates</div>\n    </div>\n    <div class=\"section\" id=\"section-two\">\n        <div class=\"column quarter\">Total Tickets</div>\n        <div class=\"column quarter\">Tickets in Progress</div>\n        <div class=\"column quarter\">Current Capacity</div>\n        <div class=\"column quarter\">Tickets Over 24 Hours</div>\n    </div>\n    <div class=\"section\" id=\"section-three\">\n        <div class=\"column full\">My Tickets</div>\n    </div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fb644e65-656d-4617-ac9b-9099be1160fc",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n<html>\n<head>\n    <title>Dashboard</title>\n    <style>\n        body, html {\n            margin: 0;\n            padding: 0;\n            width: 100%;\n            font-family: Arial, sans-serif; /* Use Arial throughout */\n        }\n\n        .section {\n            display: flex;\n            width: 100%;\n            min-height: 300px;\n            border-bottom: 1px solid #000; /* Optional: just for visual separation */\n        }\n\n        .column {\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-start; /* Align content to the top */\n            align-items: flex-start; /* Align content to the left */\n            text-align: left;\n            border-right: 1px solid #000; /* Optional: just for visual separation */\n            padding: 10px;\n        }\n\n        .section > .column:last-child {\n            border-right: none;\n        }\n\n        /* Styling for the titles inside the columns */\n        .column-title {\n            font-weight: bold;\n            margin-bottom: 10px; /* Spacing between title and content */\n        }\n\n        .half, .quarter {\n            width: 100%; /* Initially set to full width */\n        }\n\n        /* Adjust the width of columns in the first and second sections */\n        #section-one .column, #section-two .column {\n            width: calc(100% / 2); /* Half width for two columns in section one */\n        }\n\n        #section-two .column {\n            width: calc(100% / 4); /* Quarter width for four columns in section two */\n        }\n\n        #section-three .column {\n            width: 100%; /* Full width for the single column in section three */\n        }\n\n        ul {\n            list-style-type: disc; /* Adds bullet points */\n            padding-left: 20px; /* Indent bullet points */\n        }\n    </style>\n</head>\n<body>\n    <div class=\"section\" id=\"section-one\">\n        <div class=\"column half\">\n            <div class=\"column-title\">Outages</div>\n            <ul>\n                <li>Content A1</li>\n                <li>Content A2</li>\n            </ul>\n        </div>\n        <div class=\"column half\">\n            <div class=\"column-title\">Updates</div>\n            <ul>\n                <li>Content B1</li>\n                <li>Content B2</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"section\" id=\"section-two\">\n        <div class=\"column quarter\">\n            <ul>\n                <li>Total Tickets Content</li>\n            </ul>\n        </div>\n        <div class=\"column quarter\">\n            <ul>\n                <li>Tickets in Progress Content</li>\n            </ul>\n        </div>\n        <div class=\"column quarter\">\n            <ul>\n                <li>Current Capacity Content</li>\n            </ul>\n        </div>\n        <div class=\"column quarter\">\n            <ul>\n                <li>Tickets Over 24 Hours Content</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"section\" id=\"section-three\">\n        <div class=\"column full\">\n            <div class=\"column-title\">My Tickets</div>\n            <ul>\n                <li>Content C1</li>\n                <li>Content C2</li>\n            </ul>\n        </div>\n    </div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5d05384e-d7a7-47d7-a0f9-b89acf7b93d0",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "repository": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "d946edde-da85-49c4-a98c-b04876a5313c",
+      "name": "GitHub",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        1120
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "mIQujOB6AgB3Seij",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n<html>\n<head>\n    <title>Dashboard</title>\n    <style>\n        body, html {\n            margin: 0;\n            padding: 0;\n            width: 100%;\n            font-family: Arial, sans-serif; /* Use Arial throughout */\n        }\n\n        .section {\n            display: flex;\n            width: 100%;\n            min-height: 300px;\n            border-bottom: 1px solid #000; /* Optional: just for visual separation */\n        }\n\n        .column {\n            display: flex;\n            flex-direction: column;\n            justify-content: flex-start; /* Align content to the top */\n            align-items: flex-start; /* Align content to the left */\n            text-align: left;\n            border-right: 1px solid #000; /* Optional: just for visual separation */\n            padding: 10px;\n        }\n\n        .section > .column:last-child {\n            border-right: none;\n        }\n\n        /* Styling for the titles inside the columns */\n        .column-title {\n            font-weight: bold;\n            margin-bottom: 10px; /* Spacing between title and content */\n        }\n\n        .half, .quarter {\n            width: 100%; /* Initially set to full width */\n        }\n\n        /* Adjust the width of columns in the first and second sections */\n        #section-one .column {\n            width: calc(100% / 2); /* Half width for two columns */\n        }\n\n        #section-two .column {\n            width: calc(100% / 4); /* Quarter width for four columns */\n        }\n\n        #section-three .column {\n            width: 100%; /* Full width for the single column */\n        }\n\n        ul {\n            list-style-type: disc; /* Adds bullet points */\n            padding-left: 20px; /* Indent bullet points */\n            margin-top: 0; /* Remove default margin from the top of lists */\n        }\n.number-display {\n    display: flex; /* Use flexbox to align items */\n    justify-content: center; /* Center children horizontally */\n    align-items: center; /* Center children vertically */\n    font-size: 24px; /* Set the font size for the content */\n}\n\n    </style>\n</head>\n<body>\n    <div class=\"section\" id=\"section-one\">\n        <div class=\"column half\">\n            <div class=\"column-title\">Outages</div>\n            <ul>\n                <li>Content A1</li>\n                <li>Content A2</li>\n            </ul>\n        </div>\n        <div class=\"column half\">\n            <div class=\"column-title\">Updates</div>\n            <ul>\n                <li>Content B1</li>\n                <li>Content B2</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"section\" id=\"section-two\">\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Total Tickets</div>\n\n <div class=\"number-display\"></div>\n\n            <!-- Content will go here -->\n        </div>\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Tickets in Progress</div>\n            <!-- Content will go here -->\n        </div>\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Current Capacity</div>\n            <!-- Content will go here -->\n        </div>\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Tickets Over 24 Hours</div>\n            <!-- Content will go here -->\n        </div>\n    </div>\n    <div class=\"section\" id=\"section-three\">\n        <div class=\"column full\">\n            <div class=\"column-title\">My Tickets</div>\n            <ul>\n                <li>{{ $('Aggregate').item.json[\"title']\"].join('</li>\\n<li> ') }}</li>\n                <li>Content C1</li>\n                <li>Content C2</li>\n            </ul>\n        </div>\n    </div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d860e40e-adae-42e7-a483-d66df507f7df",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Dashboard</title>\n    <style>\n        body {\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n        .dashboard {\n            display: flex;\n            flex-wrap: wrap;\n            padding: 20px;\n            box-sizing: border-box;\n        }\n        .column {\n            border: 1px solid #000;\n            margin: 10px;\n            padding: 10px;\n            box-sizing: border-box;\n        }\n        .half {\n            width: calc(50% - 22px);\n        }\n        .quarter {\n            width: calc(25% - 22px);\n            position: relative; /* Needed for absolute positioning inside */\n            text-align: center; /* Centers the title */\n        }\n        .column-title {\n            font-weight: bold;\n            margin-bottom: 10px; /* Space below the title */\n        }\n        .number-display {\n            font-size: 24px; /* Size of the number */\n            position: absolute; /* Absolutely position the number */\n            top: 50%; /* Position at half the height of the column */\n            left: 50%; /* Position at half the width of the column */\n            transform: translate(-50%, -50%); /* Offset the number to truly center it */\n            width: 100%; /* Ensure the container takes the full width */\n        }\n        ul {\n            padding-left: 20px;\n        }\n        li {\n            margin-bottom: 5px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"dashboard\">\n        <!-- Column 1 -->\n        <div class=\"column half\">\n            <div class=\"column-title\">Outages</div>\n            <ul>\n                <li>Content A1</li>\n                <li>Content A2</li>\n            </ul>\n        </div>\n        <!-- Column 2 -->\n        <div class=\"column half\">\n            <div class=\"column-title\">Updates</div>\n            <ul>\n                <li>Content B1</li>\n                <li>Content B2</li>\n            </ul>\n        </div>\n        <!-- Column 3 (Total Tickets) -->\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Total Tickets</div>\n            <div class=\"number-display\">12</div>\n        </div>\n        <!-- Column 4 -->\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Tickets in Progress</div>\n            <!-- Content goes here -->\n        </div>\n        <!-- Column 5 -->\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Current Capacity</div>\n            <!-- Content goes here -->\n        </div>\n        <!-- Column 6 -->\n        <div class=\"column quarter\">\n            <div class=\"column-title\">Tickets Over 24 Hours</div>\n            <!-- Content goes here -->\n        </div>\n        <!-- Column 7 -->\n        <div class=\"column half\">\n            <div class=\"column-title\">My Tickets</div>\n            <ul>\n                <li>VOV Tablet</li>\n                <li>Test Ticket</li>\n                <li>Test Ticket 2</li>\n                <li>Test Ticket: Paige</li>\n                <li>Content C1</li>\n                <li>Content C2</li>\n            </ul>\n        </div>\n    </div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf602f99-1c5b-462f-9be2-12ca429927d6",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        1660
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "html",
+              "stringValue": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Dashboard Layout</title>\n<style>\n  .dashboard-container {\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    gap: 20px;\n    padding: 20px;\n  }\n  \n  .dashboard-section {\n    border: 1px solid #000;\n    padding: 10px;\n  }\n  \n  .tickets-in-progress {\n    min-height: 150px;\n  }\n</style>\n</head>\n<body>\n<div class=\"dashboard-container\">\n  <div class=\"dashboard-section outages\">\n    <h2>Outages</h2>\n    <ul>\n      <li>Content A1</li>\n      <li>Content A2</li>\n    </ul>\n  </div>\n  \n  <div class=\"dashboard-section updates\">\n    <h2>Updates</h2>\n    <ul>\n      <li>Content B1</li>\n      <li>Content B2</li>\n    </ul>\n  </div>\n  \n  <div class=\"dashboard-section tickets-over-24-hours\">\n    <h2>Tickets Over 24 Hours</h2>\n    <div style=\"font-size: 30px; font-weight: bold; text-align: center; color:red;\">14</div>\n\n  </div>\n  \n  <div class=\"dashboard-section total-tickets\">\n    <h2>Total Tickets</h2>\n    <!-- Content goes here -->\n<div style=\"font-size: 30px; font-weight: bold; text-align: center;\">{{ $('Bitrix24 List Tasks').item.json[\"total\"] }}</div>\n\n  </div>\n  \n  <div class=\"dashboard-section tickets-in-progress\">\n    <h2>Tickets in Progress</h2>\n    <!-- Content goes here -->\n  </div>\n  \n  <div class=\"dashboard-section current-capacity\">\n    <h2>Current Capacity</h2>\n    <!-- Content goes here -->\n  </div>\n  \n  <div class=\"dashboard-section my-tickets\">\n    <h2>My Tickets</h2>\n    <ul>\n      <li>{{ $('Aggregate').item.json[\"title']\"].join('</li>\\n<li> ') }}</li>\n    </ul>\n  </div>\n  \n</div>\n</body>\n</html>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d494173-ec8b-4055-8158-e98e8eef2844",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2560,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1e59b736-95c1-49b4-8a8d-cbf41989c14b",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1760,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json['[\\'result.tasks\\'].stageId'] }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "regex",
+              "value2": 69
+            },
+            {
+              "operation": "regex",
+              "value2": 71
+            },
+            {
+              "operation": "regex",
+              "value2": 73
+            }
+          ]
+        }
+      },
+      "id": "9e75af1e-095f-477e-afdc-969006fd3600",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "4ea62412-ed90-4648-bb1e-328e8e994686",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        755,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Limesurvey",
+        "height": 259.6617059661607,
+        "width": 379.738513209462
+      },
+      "id": "155898de-0f64-4fcc-84f5-1d37b4134d86",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        700,
+        1660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={\n    \"method\": \"export_responses\",\n    \"params\": {\n        \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\",\n        \"iSurveyID\": \"{{ $('Webhook2').item.json[\"query\"][\"SID\"] }}\",\n        \"sDocumentType\": \"json\",\n        \"sLanguageCode\": \"\",\n        \"sCompletionStatus\": \"all\",\n        \"sHeadingType\": \"code\",\n        \"sResponseType\": \"short\",\n        \"iFromResponseID\": \"{{ $('Webhook2').item.json[\"query\"][\"ResponseID\"] }}\",\n        \"iToResponseID\": \"{{ $('Webhook2').item.json[\"query\"][\"ResponseID\"] }}\",\n        \"aFields\": null\n    },\n    \"id\": 1\n}\n",
+        "options": {}
+      },
+      "id": "47f11098-ee7d-4138-a9b7-42037a8cf90a",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        900,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "Support@epicpc.com",
+        "fromName": "Support",
+        "toEmail": "={{ $('Webhook2').item.json[\"query\"][\"Email\"] }}",
+        "subject": "=Maintenance Ticket: {{ $('Webhook2').item.json[\"query\"][\"ResponseID\"] }}",
+        "contentValue": "=We have received your ticket, we will update you as soon as possible.\n\nThank you,\nYour Maintenance Team (:",
+        "additionalFields": {}
+      },
+      "id": "e7396c3d-d1ad-4915-b4b8-1e8227713240",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        2560
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/cn87fkkinapze1k1/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"{{ $('Webhook2').item.json[\"query\"][\"IssueCategory\"] }}\",\n       \"GROUP_ID\":\"261\",\n       \"RESPONSIBLE_ID\": \"609\",\n       \"DESCRIPTION\": \"{{ $('Webhook2').item.json[\"query\"][\"IssueComment\"] }}{{'\\\\n'}}Name: {{ $json[\"query\"][\"Name\"] }}{{'\\\\n'}}Email: {{ $json[\"query\"][\"Email\"] }}{{'\\\\n'}}Location: {{ $json[\"query\"][\"Locatoin\"] }}{{'\\\\n'}}Requesting Role: {{ $json[\"query\"][\"RequestRole\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "55b2f6ab-681e-4f18-9fef-f9c3fa18bc91",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Thank You</title> <style>   body {     font-family: 'Arial', sans-serif;     background-color: #f4f4f9;     margin: 0;     padding: 0;     display: flex;     justify-content: center;     align-items: center;     height: 100vh;     text-align: center;   }   .container {     max-width: 600px;     background: #fff;     padding: 40px;     border-radius: 10px;     box-shadow: 0 5px 15px rgba(0,0,0,0.1);   }   .container h1 {     font-size: 24px;     color: #333;   }   .container p {     font-size: 18px;     color: #555;     line-height: 1.6;   }   .signature {     margin-top: 30px;     font-style: italic;     color: #333;   } \n\n    button {\n        padding: 10px 20px;\n        font-size: 16px;\n        cursor: pointer;\n        background-color: #d3d3d3;\n        border: 1px solid #ddd;\n        border-radius: 5px;\n        transition: all 0.3s ease;\n    }\n\n    button:hover {\n        background-color: #e7e7e7;\n    }\n\n</style> </head> <body>   <div class=\"container\">     <h1>Thank You for Submitting Your Ticket</h1>     <p>Please look in your email for ticket tracking. We will update you as soon as possible.</p>     <div class=\"signature\">       With love,<br>       The Maintenance Team     </div>  </div>\n\n <button id=\"closeButton\">Close Tab</button>\n\n    <script>\n        document.getElementById('closeButton').addEventListener('click', function() {\n            window.close();\n        });\n    </script>\n\n </body> </html>",
+        "options": {}
+      },
+      "id": "fb6d8a64-440e-4fe4-af0a-f34c3d817721",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        2100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "77a20045-6df4-4c8c-a805-8abf44ff0251",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        420,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "path": "15824ae6-a5b2-4012-82c9-42ba59bcfd7d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "18b5ceea-a88c-4304-a042-17f7c6c175e8",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        2260
+      ],
+      "webhookId": "3fb142e3-5824-44a2-8299-10f61e7b4db2"
+    }
+  ],
+  "pinData": {
+    "Edit Fields7": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.10.118",
+            "x-forwarded-for": "10.0.10.118",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "XSRF-TOKEN=eyJpdiI6ImprMm5melZPaU9UWnhvZzRzaGJGU1E9PSIsInZhbHVlIjoiXC9ObFJpcSt5bFE3VmdybU9hRjR5XC9hek5ZZFk0MTNFRldWVk1ZZ1JjN1VkcjBYaHZISjAxWTJWQ2ZPQkY3ais1IiwibWFjIjoiZjE4ZmUxYmJiZDFhYjZmZGEyYTRkOWMzODllZjU5ZmFiNzVkNTFlOTE2ZGY4NjJjNmIyOTRiMzJlMmM1M2JlMCJ9; epic_session=eyJpdiI6ImtHTzg4M1hPSGJKY2J0clhCMUdUTVE9PSIsInZhbHVlIjoiZWFZVHQwcTdGN2taVTlET3FTRlB5U0c1c2dnVnRmT1FCcDhaUlJZNWkrWUI5VWRaUTFnVXNJTkhvOFdrUWw2TSIsIm1hYyI6IjUyMTA5NWJkNDY1NjQ0MmM5MWVjZmNkYWM2NDYyZGQyMmU0MDQ2MTA5YjI4ZWUwY2NjYTU2M2RmODM0MmRlNDMifQ%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "SID": "118136",
+            "ResponseID": "29",
+            "Email": "mhannan@epicpc.com",
+            "Name": "Matthew Hannan",
+            "RequestRole": "Outside of clinic (Non-clinical, Remote, Management)",
+            "Locatoin": "Ferndale",
+            "IssueCategory": "Computer issue (any computer: laptop, desktop/Thinkcentre)",
+            "IssueComment": "I cannot log into freescout; in the lab we have been using this to view faxes sent to the lab, up until most of yesterday I could log in, but yesterday toward the end of the day and today, it says my email does not have an account set up, have we stopped using that service? Not too sure what is going on with it."
+          },
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-03-05T14:01:06.921Z",
+  "versionId": "6db0c603-5d56-4f58-8a79-76882b80f0eb"
+}
