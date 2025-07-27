@@ -1,276 +1,612 @@
-[
-  {
-    "parameters": {
-      "method": "POST",
-      "url": "https://10.0.1.46/Unity/UnityService.svc/json/GetToken",
-      "sendBody": true,
-      "specifyBody": "json",
-      "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-1eb5-NMNWokflow-prod\",      \"Password\":\"%p2CpcN1nW!6FlaWt%St9Ppc5597\"  }",
-      "options": {
-        "allowUnauthorizedCerts": true,
-        "response": {
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-01T22:54:36.588Z",
+  "id": "09Z4XhGJcO8JQ7Bc",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Med_Refill_Complete Bitrix24 to EHR",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-1eb5-NMNWokflow-prod\",      \"Password\":\"%p2CpcN1nW!6FlaWt%St9Ppc5597\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
           "response": {
-            "fullResponse": true,
-            "responseFormat": "text"
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
           }
         }
-      }
-    },
-    "id": "3897dd93-aafe-4d1d-9baa-9d80443121fe",
-    "name": "HTTP Request",
-    "type": "n8n-nodes-base.httpRequest",
-    "typeVersion": 4.1,
-    "position": [
-      320,
-      1157.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "method": "POST",
-      "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
-      "sendHeaders": true,
-      "headerParameters": {
-        "parameters": [
-          {
-            "name": "={{ $json.token }}"
-          }
-        ]
       },
-      "sendBody": true,
-      "specifyBody": "json",
-      "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json.token }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
-      "options": {
-        "allowUnauthorizedCerts": true
-      }
+      "id": "3897dd93-aafe-4d1d-9baa-9d80443121fe",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        320,
+        1157.3563914267736
+      ]
     },
-    "id": "73b0dfdd-534e-4116-ad54-7a16ae2f3db2",
-    "name": "HTTP Request1",
-    "type": "n8n-nodes-base.httpRequest",
-    "typeVersion": 4.1,
-    "position": [
-      -120,
-      1077.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "httpMethod": "POST",
-      "path": "c5f5bc60-4b5c-4382-8454-7a7d5f3ab229",
-      "options": {
-        "rawBody": false
-      }
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "={{ $json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json.token }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "73b0dfdd-534e-4116-ad54-7a16ae2f3db2",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -120,
+        1077.3563914267736
+      ]
     },
-    "id": "ab706d46-c69f-4490-95d8-2ba2edb85c20",
-    "name": "Webhook",
-    "type": "n8n-nodes-base.webhook",
-    "typeVersion": 1,
-    "position": [
-      -300,
-      597.3563914267736
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c5f5bc60-4b5c-4382-8454-7a7d5f3ab229",
+        "options": {
+          "rawBody": false
+        }
+      },
+      "id": "ab706d46-c69f-4490-95d8-2ba2edb85c20",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        597.3563914267736
+      ],
+      "webhookId": "c5f5bc60-4b5c-4382-8454-7a7d5f3ab229"
+    },
+    {
+      "parameters": {},
+      "id": "7ca53c61-6541-4177-b699-184b368d943e",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        577.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={   \"taskId\": \"{{ $json.body['document_id[2]'] }}\" }",
+        "options": {}
+      },
+      "id": "51128c80-f1d5-4e3b-884d-4c96da79cc84",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -80,
+        597.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "dataCombined",
+        "options": {}
+      },
+      "id": "57923c19-1295-4839-987b-850f21d2ad15",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        660,
+        577.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "7e3abc4d-c472-4e81-a5ef-30d9f8290c27",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        1077.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"token\": \"3354B6E3-6E44-4F04-8245-7B2F6701C169\"\n}",
+        "include": "none",
+        "options": {}
+      },
+      "id": "100b24c0-8f7f-4af9-a2d5-b858252164cb",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        -260,
+        1077.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"token\": \"{{ $json.data }}\"\n} ",
+        "include": "none",
+        "options": {}
+      },
+      "id": "0c05443a-e1c6-4fce-bfef-dbdd6699eab9",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        400,
+        977.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"token\": \"{{ $('Edit Fields').item.json.token }}\"\n} ",
+        "include": "none",
+        "options": {}
+      },
+      "id": "00c703fc-1cc7-44df-9ebd-b847a2897495",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        220,
+        977.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the data from the first item\nconst item = items[0].json;\n\n// Navigate to the 'description' field\nlet description = item.dataCombined[1].result.task.description;\n\n// If the 'description' field exists, perform the transformations\nif (description) {\n    // Remove \\n\n    description = description.replace(/\\\\n/g, ' ');\n\n    // Remove double quotes\n    description = description.replace(/\"/g, '');\n\n    // Replace multiple spaces with a single space\n    description = description.replace(/\\s+/g, ' ').trim();\n\n    // Update 'description' in the item\n    item.dataCombined[1].result.task.description = description;\n}\n\n// Return the modified item\nreturn [{json: item}];\n"
+      },
+      "id": "05522952-4466-4bc1-9320-bf56cc66f260",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        577.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\t\"Action\":\"SaveNote\",\n\t\"AppUserID\":\"HEROERP\",\n\t\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\t\"PatientID\":\"80076\",\n\t\"Token\":\"{{ $json.dataCombined[0].token }}\",\n\t\"Parameter1\":\"{{ $json.dataCombined[1].result.task.description }}\",\n\t\"Parameter2\":\"Chart\",\n\t\"Parameter3\":\"F\",\n\t\"Parameter4\":\"Y\",\n\t\"Parameter5\":\"<Note><NoteSubject>{{ $json.dataCombined[1].result.task.title }}</NoteSubject></Note>\",\n\t\"Parameter6\":\"\",\n\t\"Data\":\"\"\n}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "5771d9d8-d55c-4416-bdb6-70d58bc81f2f",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        577.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASEHR Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 377.0228454317334,
+        "width": 818.1346292238798
+      },
+      "id": "e98a0076-1b9c-4284-9b6f-28c38108f042",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        950.7226648935933
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Bitrix24 webhooks\n**Webhook incoming to specify ID\n**HTTP request to get all info from ID",
+        "height": 282.7424289736852,
+        "width": 403.6565719649137
+      },
+      "id": "cf9fd299-474f-46fc-b121-0711fc7f5ccd",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -327.1155031289094,
+        490.6732546933638
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Process and send \n**Combine the data, remove any \" and \\n, then send to EHR",
+        "height": 291.63680788482196,
+        "width": 688.2766971212859
+      },
+      "id": "f9882a3e-165b-47b1-8a95-8dbb8917c885",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        459.99999999999994
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "05f6a2c8-cbcd-4efb-b56b-01a57a9b4a66",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        1177.3563914267736
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "token": "9EFE4496-723F-433C-A556-97D1A8711011"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ],
-    "webhookId": "c5f5bc60-4b5c-4382-8454-7a7d5f3ab229"
-  },
-  {
-    "parameters": {},
-    "id": "7ca53c61-6541-4177-b699-184b368d943e",
-    "name": "Merge",
-    "type": "n8n-nodes-base.merge",
-    "typeVersion": 2.1,
-    "position": [
-      500,
-      577.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "method": "POST",
-      "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.get.json",
-      "sendBody": true,
-      "specifyBody": "json",
-      "jsonBody": "={   \"taskId\": \"{{ $json.body['document_id[2]'] }}\" }",
-      "options": {}
-    },
-    "id": "51128c80-f1d5-4e3b-884d-4c96da79cc84",
-    "name": "HTTP Request3",
-    "type": "n8n-nodes-base.httpRequest",
-    "typeVersion": 4.1,
-    "position": [
-      -80,
-      597.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "operation": "concatenateItems",
-      "aggregate": "aggregateAllItemData",
-      "destinationFieldName": "dataCombined",
-      "options": {}
-    },
-    "id": "57923c19-1295-4839-987b-850f21d2ad15",
-    "name": "Item Lists",
-    "type": "n8n-nodes-base.itemLists",
-    "typeVersion": 3,
-    "position": [
-      660,
-      577.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "conditions": {
-        "string": [
-          {
-            "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
-            "value2": "YES"
-          }
-        ]
+    "Item Lists": [
+      {
+        "json": {
+          "dataCombined": [
+            {
+              "token": "9EFE4496-723F-433C-A556-97D1A8711011"
+            },
+            {
+              "result": {
+                "task": {
+                  "id": "1249",
+                  "parentId": null,
+                  "title": "112233 Test Teddy Refill - Update",
+                  "description": "Request for:  Asprin, Med 3, Med 2 \nALL MEDS FOR REFERENCE",
+                  "mark": null,
+                  "priority": "1",
+                  "multitask": "N",
+                  "notViewed": "N",
+                  "replicate": "N",
+                  "stageId": "301",
+                  "createdBy": "7",
+                  "createdDate": "2023-10-04T02:11:37+03:00",
+                  "responsibleId": "7",
+                  "changedBy": "7",
+                  "changedDate": "2023-10-04T06:40:27+03:00",
+                  "statusChangedBy": null,
+                  "closedBy": null,
+                  "closedDate": null,
+                  "activityDate": "2023-10-04T02:11:37+03:00",
+                  "dateStart": null,
+                  "deadline": null,
+                  "startDatePlan": null,
+                  "endDatePlan": null,
+                  "guid": "{284174c6-7c2c-4eec-9e83-02293d146bb5}",
+                  "xmlId": null,
+                  "commentsCount": null,
+                  "serviceCommentsCount": null,
+                  "allowChangeDeadline": "N",
+                  "allowTimeTracking": "N",
+                  "taskControl": "N",
+                  "addInReport": "N",
+                  "forkedByTemplateId": null,
+                  "timeEstimate": "0",
+                  "timeSpentInLogs": null,
+                  "matchWorkTime": "N",
+                  "forumTopicId": null,
+                  "forumId": null,
+                  "siteId": "s1",
+                  "subordinate": "Y",
+                  "exchangeModified": null,
+                  "exchangeId": null,
+                  "outlookVersion": "31",
+                  "viewedDate": "2023-10-04T06:39:06+03:00",
+                  "sorting": "-3584.0000000",
+                  "durationFact": null,
+                  "isMuted": "N",
+                  "isPinned": "N",
+                  "isPinnedInGroup": "N",
+                  "descriptionInBbcode": "Y",
+                  "status": "2",
+                  "statusChangedDate": "2023-10-04T06:40:27+03:00",
+                  "durationPlan": null,
+                  "durationType": "days",
+                  "favorite": "N",
+                  "groupId": "45",
+                  "auditors": [],
+                  "accomplices": [],
+                  "checklist": [],
+                  "group": {
+                    "id": "45",
+                    "name": "Consumer App Medication Request",
+                    "opened": true,
+                    "membersCount": 4,
+                    "image": "",
+                    "additionalData": []
+                  },
+                  "creator": {
+                    "id": "7",
+                    "name": "Thomas Stilwell",
+                    "link": "/company/personal/user/7/",
+                    "icon": "/bitrix/images/tasks/default_avatar.png",
+                    "workPosition": null
+                  },
+                  "responsible": {
+                    "id": "7",
+                    "name": "Thomas Stilwell",
+                    "link": "/company/personal/user/7/",
+                    "icon": "/bitrix/images/tasks/default_avatar.png",
+                    "workPosition": null
+                  },
+                  "accomplicesData": [],
+                  "auditorsData": [],
+                  "newCommentsCount": 0,
+                  "action": {
+                    "accept": false,
+                    "decline": false,
+                    "complete": true,
+                    "approve": false,
+                    "disapprove": false,
+                    "start": true,
+                    "pause": false,
+                    "delegate": true,
+                    "remove": true,
+                    "edit": true,
+                    "defer": true,
+                    "renew": false,
+                    "create": true,
+                    "changeDeadline": true,
+                    "checklistAddItems": true,
+                    "addFavorite": true,
+                    "deleteFavorite": false,
+                    "rate": true,
+                    "edit.originator": false,
+                    "checklist.reorder": true,
+                    "elapsedtime.add": true,
+                    "dayplan.timer.toggle": false,
+                    "edit.plan": true,
+                    "checklist.add": true,
+                    "favorite.add": true,
+                    "favorite.delete": false
+                  },
+                  "checkListTree": {
+                    "nodeId": 0,
+                    "fields": {
+                      "id": null,
+                      "copiedId": null,
+                      "entityId": null,
+                      "userId": 7,
+                      "createdBy": null,
+                      "parentId": null,
+                      "title": "",
+                      "sortIndex": null,
+                      "displaySortIndex": "",
+                      "isComplete": false,
+                      "isImportant": false,
+                      "completedCount": 0,
+                      "members": [],
+                      "attachments": []
+                    },
+                    "action": [],
+                    "descendants": []
+                  },
+                  "checkListCanAdd": true
+                }
+              },
+              "time": {
+                "start": 1696390828.449345,
+                "finish": 1696390828.501087,
+                "duration": 0.051741838455200195,
+                "processing": 0.02562880516052246,
+                "date_start": "2023-10-04T06:40:28+03:00",
+                "date_finish": "2023-10-04T06:40:28+03:00",
+                "operating_reset_at": 1696391428,
+                "operating": 0
+              }
+            }
+          ]
+        }
       }
-    },
-    "id": "7e3abc4d-c472-4e81-a5ef-30d9f8290c27",
-    "name": "IF",
-    "type": "n8n-nodes-base.if",
-    "typeVersion": 1,
-    "position": [
-      60,
-      1077.3563914267736
     ]
   },
-  {
-    "parameters": {
-      "mode": "raw",
-      "jsonOutput": "{\n  \"token\": \"3354B6E3-6E44-4F04-8245-7B2F6701C169\"\n}",
-      "include": "none",
-      "options": {}
-    },
-    "id": "100b24c0-8f7f-4af9-a2d5-b858252164cb",
-    "name": "Edit Fields",
-    "type": "n8n-nodes-base.set",
-    "typeVersion": 3,
-    "position": [
-      -260,
-      1077.3563914267736
-    ]
+  "settings": {
+    "executionOrder": "v1"
   },
-  {
-    "parameters": {
-      "mode": "raw",
-      "jsonOutput": "={\n  \"token\": \"{{ $json.data }}\"\n} ",
-      "include": "none",
-      "options": {}
-    },
-    "id": "0c05443a-e1c6-4fce-bfef-dbdd6699eab9",
-    "name": "Edit Fields1",
-    "type": "n8n-nodes-base.set",
-    "typeVersion": 3,
-    "position": [
-      400,
-      977.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "mode": "raw",
-      "jsonOutput": "={\n  \"token\": \"{{ $('Edit Fields').item.json.token }}\"\n} ",
-      "include": "none",
-      "options": {}
-    },
-    "id": "00c703fc-1cc7-44df-9ebd-b847a2897495",
-    "name": "Edit Fields2",
-    "type": "n8n-nodes-base.set",
-    "typeVersion": 3,
-    "position": [
-      220,
-      977.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "jsCode": "// Get the data from the first item\nconst item = items[0].json;\n\n// Navigate to the 'description' field\nlet description = item.dataCombined[1].result.task.description;\n\n// If the 'description' field exists, perform the transformations\nif (description) {\n    // Remove \\n\n    description = description.replace(/\\\\n/g, ' ');\n\n    // Remove double quotes\n    description = description.replace(/\"/g, '');\n\n    // Replace multiple spaces with a single space\n    description = description.replace(/\\s+/g, ' ').trim();\n\n    // Update 'description' in the item\n    item.dataCombined[1].result.task.description = description;\n}\n\n// Return the modified item\nreturn [{json: item}];\n"
-    },
-    "id": "05522952-4466-4bc1-9320-bf56cc66f260",
-    "name": "Code",
-    "type": "n8n-nodes-base.code",
-    "typeVersion": 2,
-    "position": [
-      820,
-      577.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "method": "POST",
-      "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
-      "sendBody": true,
-      "specifyBody": "json",
-      "jsonBody": "={\n\t\"Action\":\"SaveNote\",\n\t\"AppUserID\":\"HEROERP\",\n\t\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\t\"PatientID\":\"80076\",\n\t\"Token\":\"{{ $json.dataCombined[0].token }}\",\n\t\"Parameter1\":\"{{ $json.dataCombined[1].result.task.description }}\",\n\t\"Parameter2\":\"Chart\",\n\t\"Parameter3\":\"F\",\n\t\"Parameter4\":\"Y\",\n\t\"Parameter5\":\"<Note><NoteSubject>{{ $json.dataCombined[1].result.task.title }}</NoteSubject></Note>\",\n\t\"Parameter6\":\"\",\n\t\"Data\":\"\"\n}",
-      "options": {
-        "allowUnauthorizedCerts": true
-      }
-    },
-    "id": "5771d9d8-d55c-4416-bdb6-70d58bc81f2f",
-    "name": "HTTP Request4",
-    "type": "n8n-nodes-base.httpRequest",
-    "typeVersion": 4.1,
-    "position": [
-      980,
-      577.3563914267736
-    ]
-  },
-  {
-    "parameters": {
-      "content": "## ASEHR Authentication\n**Check token: if yes (use), if no (get new)",
-      "height": 377.0228454317334,
-      "width": 818.1346292238798
-    },
-    "id": "e98a0076-1b9c-4284-9b6f-28c38108f042",
-    "name": "Sticky Note",
-    "type": "n8n-nodes-base.stickyNote",
-    "typeVersion": 1,
-    "position": [
-      -280,
-      950.7226648935933
-    ]
-  },
-  {
-    "parameters": {
-      "content": "## Bitrix24 webhooks\n**Webhook incoming to specify ID\n**HTTP request to get all info from ID",
-      "height": 282.7424289736852,
-      "width": 403.6565719649137
-    },
-    "id": "cf9fd299-474f-46fc-b121-0711fc7f5ccd",
-    "name": "Sticky Note1",
-    "type": "n8n-nodes-base.stickyNote",
-    "typeVersion": 1,
-    "position": [
-      -327.1155031289094,
-      490.6732546933638
-    ]
-  },
-  {
-    "parameters": {
-      "content": "## Process and send \n**Combine the data, remove any \" and \\n, then send to EHR",
-      "height": 291.63680788482196,
-      "width": 688.2766971212859
-    },
-    "id": "f9882a3e-165b-47b1-8a95-8dbb8917c885",
-    "name": "Sticky Note2",
-    "type": "n8n-nodes-base.stickyNote",
-    "typeVersion": 1,
-    "position": [
-      460,
-      459.99999999999994
-    ]
-  },
-  {
-    "parameters": {},
-    "id": "05f6a2c8-cbcd-4efb-b56b-01a57a9b4a66",
-    "name": "When clicking \"Execute Workflow\"",
-    "type": "n8n-nodes-base.manualTrigger",
-    "typeVersion": 1,
-    "position": [
-      140,
-      1177.3563914267736
-    ]
-  }
-]
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-14T11:53:03.889Z",
+  "versionId": "b6d99030-f857-4566-b842-51c4fa450557"
+}
