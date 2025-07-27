@@ -1,0 +1,309 @@
+{
+  "active": false,
+  "connections": {
+    "Get RMM Clients1": {
+      "main": [
+        [
+          {
+            "node": "Split Out Sites",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents1": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Sites": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site1": {
+      "main": [
+        [
+          {
+            "node": "Map Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site1": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Identify Room": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-17T17:39:44.532Z",
+  "id": "SK4qemoF4tWkrpo5",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Room Routing Testing",
+  "nodes": [
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a7d196dd-03de-40c7-ac00-02d6d73d7fdc",
+      "name": "Get RMM Clients1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        540,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "886952ae-e81c-47aa-8212-969ac493feed",
+      "name": "Retrieve All Site Agents1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "04048889-5bd7-42a6-b3e2-d9678f8437aa",
+      "name": "Split Out Sites",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        720,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e3595853-bc12-46c3-850c-d0137fb06273",
+      "name": "Filter to CDN Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        880,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "={{ $('Identify Room').item.json.LOCATION_NAME }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d1a5f16f-1077-448a-9a90-071d32223daa",
+      "name": "Map Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "GE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "endsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "bd3a0385-4589-4c0b-85a8-938f4c442405",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Identify Room').item.json.ROOM_TEXT }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "endsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "32566748-6985-4dcf-959c-696c33e9cb9c",
+      "name": "Map Room to Agent1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        775
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10) = '{{ $json[\"MRN\"] }}';\n--DECLARE @MRN VARCHAR(10) = '1102300';\nDECLARE @APPTDATE DATE = '{{ $json[\"formattedDate\"] }}';\n--DECLARE @APPTDATE DATE = '2024-03-27';\n \nselect top 25 s.DEM_EXTERNALID as MRN,s.IMREDEM_CODE,lr.LOCATION_ID,s.LOCATION_NAME,lr.ROOM_ID,lr.ROOM_ABBR_TEXT,lr.ROOM_TEXT,s.CAREGIVER_NAME,s.SCHED_DATE,s.PATIENT_FIRSTNAME,s.PATIENT_LASTNAME,\ns.SCHED_TIMEIN,s.SCHED_TIMESTART,s.SCHED_TIMEOUT,s.SCHED_STATUS\nfrom [HPSITE].[SCHEDULE_VIEW] s \nleft join [EMR].[HPSITE].[SCHEDULE_TRACKINGSTATUS] t on s.IMRESCHED_CODE=t.IMRESCHED_CODE and s.TRACKINGSTATUS_ID=t.TRACKINGSTATUS_ID\nleft join [EMR].[HPSITE].[DEMOGRAPHICS] d on d.IMREDEM_CODE=s.IMREDEM_CODE\nleft join [EMR].[HPSITE].[LOCATION_ROOM] lr on lr.LOCATION_ID=s.LOCATION_ID and lr.ROOM_ID=s.ROOM_ID\nWHERE S.DEM_EXTERNALID = @MRN AND CAST(S.SCHED_DATE AS DATE) = @APPTDATE\nORDER BY S.SCHED_DATE DESC"
+      },
+      "id": "aa753f8d-41e6-476e-b8b9-c1209d6d6f84",
+      "name": "Identify Room",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-17T17:39:44.532Z",
+  "versionId": "80d6265e-966e-4e15-8f44-d6ee86bbb336"
+}
