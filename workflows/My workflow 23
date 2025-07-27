@@ -1,0 +1,225 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-14T17:16:59.020Z",
+  "id": "OaHDAehneKtGpVa1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 23",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db82edbb-9b07-4b2a-b5b7-733dbf9891c8",
+              "name": "offset",
+              "value": 1,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d461b831-326a-461d-a6f1-777e1343cc6a",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        320,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @BatchSize INT = 100;  -- Define your batch size here\nDECLARE @Offset INT = {{ $json.offset }};       -- Initialize with the starting offset\n\nWITH appt_sched AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Sched_Location_Descr],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Confirmed_Date],\n        [Appt_Confirmed_By_Operator_Abbr],\n        [Appt_Cancelled_Date],\n        @BatchSize AS BATCH,\n        @Offset + ROW_NUMBER() OVER (ORDER BY [Appt_DateTime]) AS OFFSET\n    FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE CAST(a.Appt_DateTime AS DATE) BETWEEN DATEADD(DAY, 3, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 3, CAST(GETDATE() AS DATE))\n    AND a.Appt_Status = 's'\n    AND a.Appt_Resource_Descr NOT LIKE 'ZZ%' \n    AND a.Appt_Sched_Location_Descr NOT LIKE 'Diag%'\n),\nappt_ack AS (\n    SELECT \n        Patient_Number,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n    WHERE a.Resource_Desc NOT LIKE 'ZZ%' \n    AND a.Resource_Desc NOT LIKE 'CM%'\n    AND a.Sched_Loc_Desc NOT LIKE 'Diag%' \n    AND a.Resource_Desc NOT LIKE 'BH%' \n    AND a.Resource_Desc NOT LIKE 'Contin%'\n    AND a.Resource_Abbr NOT LIKE 'CM%' \n    AND a.Resource_Desc NOT LIKE 'CM%' \n    AND a.Resource_Abbr NOT LIKE 'PTA%' \n    AND a.Resource_Desc NOT LIKE 'PTA%' \n    AND a.Resource_Desc NOT LIKE 'Blue%'\n    GROUP BY Patient_Number\n),\nltsr AS (\n    SELECT \n        a.Patient_Number,\n        a.Total_Appointments,\n        a.Acknowledged_Appointments,\n        CAST(ROUND((a.Acknowledged_Appointments * 1.0 / a.Total_Appointments), 2) AS FLOAT) AS Acknowledged_Ratio\n    FROM appt_ack a\n),\nltsrandnew AS (\n    SELECT \n        a.Appt_Status,\n        a.Patient_ID,\n        a.Patient_Number,\n        a.Appt_ID,\n        a.Appt_Encounter_Number,\n        a.Appt_DateTime,\n        a.Appt_Booked_Date,\n        a.Appt_Sched_Location_Descr,\n        a.Appt_Resource_Descr,\n        l.Acknowledged_Ratio,\n        CASE WHEN l.Acknowledged_Ratio <= 0.5 THEN 'Fail' ELSE 'Pass' END AS LTSR,\n        CASE WHEN l.Total_Appointments = 1 THEN 'OnlyOneAppt' ELSE 'MultiplePriorAppt' END AS NewVsEst\n    FROM appt_sched a\n    LEFT JOIN ltsr l ON a.Patient_Number = l.Patient_Number\n)\nSELECT \n    l.Appt_Status,\n    l.Patient_ID,\n    l.Patient_Number,\n    l.Appt_ID,\n    l.Appt_Encounter_Number,\n    l.Appt_DateTime,\n    l.Appt_Booked_Date,\n    l.Appt_Sched_Location_Descr,\n    l.Appt_Resource_Descr,\n    l.Acknowledged_Ratio,\n    l.LTSR,\n    CASE \n        WHEN l.Acknowledged_Ratio = 0 AND l.NewVsEst = 'MultiplePriorAppt' THEN 'NewButLowLTSR'\n        WHEN l.Acknowledged_Ratio = 0 AND l.NewVsEst = 'OnlyOneAppt' THEN 'New'\n        ELSE 'Est'\n    END AS NewVsEstVsNo,\n    l.BATCH,\n    l.OFFSET\nFROM ltsrandnew l\nORDER BY l.Appt_DateTime\nOFFSET @Offset ROWS FETCH NEXT @BatchSize ROWS ONLY;\n"
+      },
+      "id": "46dbd2d4-adc8-4ecf-ae36-43da60e749ba",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        580,
+        540
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2af993e7-3432-43f7-9b73-d4635c69b5db",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        800,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5326b2bf-d690-4e90-bcfa-eb08c7b974b7",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c9c6a111-433b-4f44-bfec-f0fa33d313ed",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f5518149-90cf-4438-9cdf-24b4ba4ade5c",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19a899ef-1c7e-4933-b2ed-c7a464ffb618",
+              "name": "offset",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5101eaa7-a968-4845-acca-7f871af18f85",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        980,
+        520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "06d029f6-3a3a-4979-bc27-ac022de51340",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        140,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-14T17:16:59.020Z",
+  "versionId": "3806e2c0-79cf-499e-a094-7ad4c327d1be"
+}
