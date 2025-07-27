@@ -1,0 +1,124 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-06T18:33:33.458Z",
+  "id": "LlnGYjrN12LPrE96",
+  "isArchived": false,
+  "meta": null,
+  "name": "Survey Responses - Blue Sky",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "Support@epicpc.com",
+        "fromName": "Support",
+        "toEmail": "={{ $('Webhook2').item.json[\"query\"][\"Email\"] }}",
+        "subject": "=Maintenance Ticket: {{ $('Webhook2').item.json[\"query\"][\"ResponseID\"] }}",
+        "contentValue": "=We have received your ticket, we will update you as soon as possible.\n\nThank you,\nYour Maintenance Team (:",
+        "additionalFields": {}
+      },
+      "id": "dd0ba846-156a-45a2-b1c6-ed1f33cf7e82",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        1600
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bsb.bitrix24.com/rest/41/q1peh1vh95hch7og/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Survey Response\",\n       \"GROUP_ID\":\"23\",\n       \"RESPONSIBLE_ID\": \"41\",\n       \"DESCRIPTION\": \"We'll do this part soon\"\n   }\n}",
+        "options": {}
+      },
+      "id": "2cc1166a-6553-4925-9c07-afd23121591d",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1720,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://forms.blueskypro.org/index.php/249856?lang=en",
+        "options": {}
+      },
+      "id": "935dd6d2-7d11-433e-ad47-c6ec1ed473a1",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "path": "15824ae6-a5b2-4012-82c9-42ba59bcfd7dbs",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0e174b5e-888c-4278-b57c-25507cf03f6f",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        1300
+      ],
+      "webhookId": "0048e5ab-1c46-4308-9903-9d4986ee324a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-03-01T19:30:28.995Z",
+      "updatedAt": "2024-03-01T19:30:28.995Z",
+      "id": "xnEUKHXPb1ETPnjS",
+      "name": "Blue Sky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-06T19:33:58.033Z",
+  "versionId": "fceb3b11-845d-47aa-b696-534df4098e96"
+}
