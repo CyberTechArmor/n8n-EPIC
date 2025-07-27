@@ -1,0 +1,33 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-10-28T17:22:50.032Z",
+  "id": "sOoBMhyi2tWt1sdD",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MarianaAI Test",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9e93e10b-3de0-470e-8785-3619dcf9aa2a",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        620,
+        320
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-28T17:22:50.032Z",
+  "versionId": "457eb489-f580-4ca4-bdf4-740bd85d5a94"
+}
