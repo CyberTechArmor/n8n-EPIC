@@ -1,0 +1,135 @@
+{
+  "active": true,
+  "connections": {
+    "NocoDB14": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "NocoDB14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-13T15:48:47.561Z",
+  "id": "MVpXws35ANfsJcH6",
+  "isArchived": false,
+  "meta": null,
+  "name": "Turbo Call Clear Queue",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "ph3yguz25vxf0y1",
+        "table": "mv0nv1r5qxr5gal",
+        "returnAll": true,
+        "options": {
+          "where": "~not(CreatedAt,isWithin,pastWeek)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -300,
+        -160
+      ],
+      "id": "b4f6336e-48b2-44dc-86ac-595b4d4a3883",
+      "name": "NocoDB14",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "ph3yguz25vxf0y1",
+        "table": "mv0nv1r5qxr5gal",
+        "id": "={{ $json.Id }}"
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        20,
+        -160
+      ],
+      "id": "b70dfc59-26e6-47a7-8d01-0a7a94fd5d86",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -520,
+        -160
+      ],
+      "id": "5a0e291f-ab9c-42f6-a2bf-8307435f38c3",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -520,
+        -340
+      ],
+      "id": "70a35ced-8d6a-4aea-838c-8ea66b872ba5",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-22T20:37:13.680Z",
+  "versionId": "1726470c-ae0b-4dc9-91e0-d8712271d1cb"
+}
