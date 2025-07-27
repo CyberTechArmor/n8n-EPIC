@@ -1,0 +1,1203 @@
+{
+  "active": false,
+  "connections": {
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-14T22:22:28.379Z",
+  "id": "ikiKQ4Sg9PXeqMl2",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Delta Update Bitrix24",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.finaldeltatable ORDER BY \"MRN\" FETCH FIRST ROW ONLY;",
+        "options": {}
+      },
+      "id": "ae806040-7096-4cbc-9936-1c7e7da6ebee",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        760,
+        0
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "total",
+        "options": {}
+      },
+      "id": "d24a2702-60fc-4500-89b0-bfcdd0f18b6d",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Bitrix24ID",
+              "stringValue": "={{ $json.result.ID }}"
+            },
+            {
+              "name": "Phone",
+              "type": "numberValue",
+              "numberValue": "={{ $json.result.PHONE[0].ID }}"
+            },
+            {
+              "name": "Phone1",
+              "stringValue": "={{ $json.result.PHONE[1].ID }}"
+            },
+            {
+              "name": "Phone2",
+              "stringValue": "={{ $json.result.PHONE[2].ID }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json.result.EMAIL[0].ID }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "cd5b9fd7-7662-45cf-b207-94f2557c6877",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1780,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.result.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe7fbcb3-d9ea-4244-9fb0-87fa9d156066",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1600,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create Contact in Bitrix24",
+        "height": 263.14620301943586,
+        "width": 218.51607481796185,
+        "color": 4
+      },
+      "id": "2a747040-af43-43b1-a0ee-61cb6244a1d2",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Find the contact in Bitrix24 by MRN",
+        "height": 945.6322183298983,
+        "width": 574.0264413087
+      },
+      "id": "f14676a1-6132-41da-b082-de2762bba609",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        933.8783205960619,
+        -789.0147880093264
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## If single match, move forward",
+        "height": 249.40901659171172,
+        "width": 399.7194982074818,
+        "color": 4
+      },
+      "id": "6239c6be-077f-483b-b031-2115b6753f97",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -787.5307304730711
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Update Bitrix24",
+        "height": 275.85825592076213,
+        "width": 219.42176870748298,
+        "color": 5
+      },
+      "id": "f9538fbb-cd4e-4d5a-aa15-402e0d9c5452",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        -791
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delete Record if successful",
+        "height": 233.04337396375564,
+        "width": 204.43564266205425
+      },
+      "id": "66a88fd1-ac1d-47b3-8b50-778fe65b8b69",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delta Table:\nFETCH FIRST ROW",
+        "height": 254.6598639455782,
+        "width": 168.6621315192744
+      },
+      "id": "0810e47e-6f90-44c4-992a-a0a64ad7bf7c",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "1df454f9-318c-4da8-bc78-b7860bc53021",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        -340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f7540140-2787-49b1-b6d9-cc8dcca1d3c5",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -780
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "true",
+              "operation": "regex",
+              "value2": "={{ $json.result }}"
+            }
+          ]
+        }
+      },
+      "id": "7b399dc5-5e8f-49c7-9510-24685ba23c76",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 1 minute trigger check",
+        "height": 308.2992207233829,
+        "width": 162.38576968785608
+      },
+      "id": "b602aa0b-b4b0-4836-9894-f29a2bd61730",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/v289y3m2yj2tqf8u/crm.contact.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n        \"NAME\": \"{{ $('Postgres5').item.json[\"First Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Postgres5').item.json[\"Last Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Postgres5').item.json[\"Source information\"].padStart(6, '0') }}\",\n        \"BIRTHDATE\": \"{{ $('Postgres5').item.json[\"Date Of Birth\"]}}\",\n        \"UF_CRM_1701895631\": \"{{ $('Postgres5').item.json[\"Street\"] }}\",\n        \"UF_CRM_1701895642\": \"{{ $('Postgres5').item.json[\"City\"] }}\",\n        \"UF_CRM_1701895652\": \"{{ $('Postgres5').item.json[\"State\"] }}\",\n        \"UF_CRM_1701895672\": \"{{ $('Postgres5').item.json[\"ZipCode\"] }}\",\n        \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"].padStart(6, '0') }}\",\n        \"UF_CRM_1701945675\": \"{{ $('Postgres5').item.json[\"Patient_FirstDateRegistered_InPMSystem\"] }}\",\n        \"UF_CRM_1701945715\": \"{{ $('Postgres5').item.json[\"Patient_ActiveOrInactive_InPMSystem\"] }}\",\n        \"UF_CRM_1701945745\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_1701945783\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_1701945802\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_1701946007\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_1701946033\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_1701946094\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_1701946120\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_1701946151\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n        \"UF_CRM_1701946191\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_1701946209\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\", \n        \"UF_CRM_1701946388\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n        \"UF_CRM_1701946429\": \"{{ $('Postgres5').item.json[\"CCM_Last_Updated\"] }}\",\n        \"UF_CRM_1701946464\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Mobile\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Home\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Other\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home E-mail\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "a5a3941a-9eb2-4f3d-8dbf-a5596df94e28",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"SOURCE_DESCRIPTION\": \"197520\" } }",
+        "options": {}
+      },
+      "id": "40b97c2f-a62e-42f5-819f-7ab8b6249dba",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1078,
+        -1160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"id\": \"{{ $json[\"result\"][0][\"ID\"] }}\" }",
+        "options": {}
+      },
+      "id": "67c602f6-7dbc-453b-b1a3-23b01e0131a5",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1278,
+        -1160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Manual Bitrix24 search by MRN return all values",
+        "height": 251.6320627802038,
+        "width": 584.5777548649412,
+        "color": 7
+      },
+      "id": "365bd960-fae3-43ff-9301-aa049ef621aa",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -1240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "863a12dd-ef62-4bc7-a8b7-426f90f07051",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "bc060047-7f8b-4f84-913b-90f4f5990f80",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1593,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Duplicate Patients in Bitrix24\",\n       \"GROUP_ID\":\"159\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"{{ $('Item Lists2').item.json[\"NameMRNBitrixid\"].join('\\\\n') }} {{'\\\\n'}} {{ $json[\"data\"]}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "b92d5eea-e7d0-498b-9698-279de236a8f1",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2393,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "NameMRNBitrixid",
+              "stringValue": "={{ $json.result.NAME }} {{ $json.result.LAST_NAME }}, {{ $json.result.SOURCE_DESCRIPTION }}, Bitrix24 ID: {{ $json.result.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7064f940-d243-4031-aa17-619824eb6a3e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1733,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "NameMRNBitrixid"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d81e8a55-ad7b-4251-b94c-cbd17326fcff",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1893,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "75a971be-b2bc-4e4e-a2a0-8618aa00e85d",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2213,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Duplicate: Create task in Bitrix24",
+        "height": 294.94572239205206,
+        "width": 972.3719909955817,
+        "color": 3
+      },
+      "id": "57c36ecc-dc2d-4439-ae2b-9008d3b1b5be",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.deltadata_cleaned;",
+        "options": {}
+      },
+      "id": "1605ea70-46d6-400b-92f6-15e12ac61881",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1600,
+        -1160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## How many in the database",
+        "height": 254.99507348126937,
+        "width": 392.39482136350114,
+        "color": 7
+      },
+      "id": "bc11863d-2f0a-4882-9bff-0e7d4ccb0589",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        -1240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.deltadata_cleaned ORDER BY \"MRN\" FETCH FIRST ROW ONLY;",
+        "options": {}
+      },
+      "id": "d80d4f49-1275-45af-b77a-94ed55a10809",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1792,
+        -1160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Delete sql entry",
+        "height": 219.95231594214619,
+        "width": 217.14056395959776,
+        "color": 3
+      },
+      "id": "03d2887f-4240-42ab-8bbc-7f0b58956f10",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM public.finaldeltatable\nWHERE \"MRN\" IN (\n    SELECT \"MRN\"\n    FROM public.finaldeltatable\n    ORDER BY \"MRN\"\n    LIMIT 1\n);",
+        "options": {}
+      },
+      "id": "6f837e39-1f61-453a-b4e6-9245f30d4b8c",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2960,
+        -440
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 0.02,
+        "unit": "seconds"
+      },
+      "id": "60095d4d-5fe3-4a84-9d9e-18438277919a",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -200
+      ],
+      "webhookId": "6bf28468-5dd1-4ebb-96ca-9cf6679940eb"
+    },
+    {
+      "parameters": {
+        "amount": 0.02,
+        "unit": "seconds"
+      },
+      "id": "7b37c8fd-067a-4bed-9287-e8d2746561ab",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2700,
+        0
+      ],
+      "webhookId": "6bf28468-5dd1-4ebb-96ca-9cf6679940eb",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"BIRTHDATE\": \"{{ $json[\"Date Of Birth\"] }}\", \"NAME\":\"{{ $json[\"First Name\"] }}\", \"LAST_NAME\":\"{{ $json[\"Last Name\"] }}\" } }",
+        "options": {}
+      },
+      "id": "08198a80-f659-474a-9200-bbe4356e79c9",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.05,
+        "unit": "seconds"
+      },
+      "id": "311033a7-1c91-49ff-a729-e4c896c123f8",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        -420
+      ],
+      "webhookId": "6bf28468-5dd1-4ebb-96ca-9cf6679940eb"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"] }}\" } }",
+        "options": {}
+      },
+      "id": "ea44de8c-af8d-4620-a7b4-5ea9eba86900",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1580,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "value1": "={{ $json.total }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "equal",
+              "value2": 1,
+              "outputKey": "result"
+            },
+            {
+              "value2": 1,
+              "outputKey": "CreateNewContact"
+            },
+            {
+              "operation": "larger",
+              "value2": 1,
+              "outputKey": "Duplicate"
+            }
+          ]
+        }
+      },
+      "id": "09f0c75f-0e90-4c75-8008-979422ab7c9c",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "value1": "={{ $json.total }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "equal",
+              "value2": 1,
+              "outputKey": "result"
+            },
+            {
+              "value2": 1,
+              "outputKey": "CreateNewContact"
+            },
+            {
+              "operation": "larger",
+              "value2": 1,
+              "outputKey": "Duplicate"
+            }
+          ]
+        }
+      },
+      "id": "ce207e2f-8659-41c6-a0c6-9b64527e86f7",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"ID\": {{ $json[\"Bitrix24ID\"] }},\n   \"fields\": {\n        \"NAME\": \"{{ $('Postgres5').item.json[\"First Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Postgres5').item.json[\"Last Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Postgres5').item.json[\"MRN\"].padStart(6, '0') }}\",\n        \"BIRTHDATE\": \"{{ $('Postgres5').item.json[\"Date Of Birth\"]}}\",\n        \"UF_CRM_65264864F0B8D\": [],\n        \"UF_CRM_1701895631\": \"{{ $('Postgres5').item.json[\"Street\"] }}\",\n        \"UF_CRM_1701895642\": \"{{ $('Postgres5').item.json[\"City\"] }}\",\n        \"UF_CRM_1701895652\": \"{{ $('Postgres5').item.json[\"State\"] }}\",\n        \"UF_CRM_1701895672\": \"{{ $('Postgres5').item.json[\"ZipCode\"] }}\",\n        \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"].padStart(6, '0') }}\",\n        \"UF_CRM_1701945675\": \"{{ $('Postgres5').item.json[\"Patient_FirstDateRegistered_InPMSystem\"] }}\",\n        \"UF_CRM_1701945715\": \"{{ $('Postgres5').item.json[\"Patient_ActiveOrInactive_InPMSystem\"] }}\",\n        \"UF_CRM_1701945745\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_1701945783\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_1701945802\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_1701946007\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_1701946033\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_1701946094\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_1701946120\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_1701946151\": \"{{$('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n        \"UF_CRM_1701946191\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_1701946209\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\",\n        \"UF_CRM_1701946388\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n        \"UF_CRM_1701946429\": \"{{ $('Postgres5').item.json[\"CCM_Last_Updated\"] }}\",\n        \"UF_CRM_1701946464\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \"ID\": \"{{ $json[\"Phone\"] }}\",\n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Mobile\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone1\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone2\"] }}\",\n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Other Phone Number\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \"ID\": \"{{ $json[\"Email\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home E-mail\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    }\n}",
+        "options": {}
+      },
+      "id": "d42b5330-1006-4572-837f-b80966485607",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "95a71e6c-03b2-4308-b310-d4c4741417c4",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2060,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## MRN Validation Check",
+        "height": 233.15019532928727,
+        "width": 626.3244690827985,
+        "color": 2
+      },
+      "id": "d1264e2d-4c4e-45c1-8e3a-23d41346226b",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -485.1453796444425
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.finaldeltatable;",
+        "options": {}
+      },
+      "id": "3d302422-7e6a-4af8-8eab-c8ea172f5b28",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        760,
+        240
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"ID\": {{ $json[\"Bitrix24ID\"] }},\n   \"fields\": {\n        \"NAME\": \"{{ $('Postgres5').item.json[\"First Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Postgres5').item.json[\"Last Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Postgres5').item.json[\"Source information\"] }}\",\n        \"BIRTHDATE\": \"{{ $('Postgres5').item.json[\"Date Of Birth\"]}}\",\n        \"UF_CRM_65264864F0B8D\": [],\n        \"UF_CRM_1701895631\": \"{{ $('Postgres5').item.json[\"Street\"] }}\",\n        \"UF_CRM_1701895642\": \"{{ $('Postgres5').item.json[\"City\"] }}\",\n        \"UF_CRM_1701895652\": \"{{ $('Postgres5').item.json[\"State\"] }}\",\n        \"UF_CRM_1701895672\": \"{{ $('Postgres5').item.json[\"ZipCode\"] }}\",\n        \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"] }}\",\n        \"UF_CRM_1701945675\": \"{{ $('Postgres5').item.json[\"Patient_FirstDateRegistered_InPMSystem\"] }}\",\n        \"UF_CRM_1701945715\": \"{{ $('Postgres5').item.json[\"Patient_ActiveOrInactive_InPMSystem\"] }}\",\n        \"UF_CRM_1701945745\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_1701945783\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_1701945802\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_1701946007\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_1701946033\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_1701946094\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_1701946120\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_1701946151\": \"{{$('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n        \"UF_CRM_1701946191\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_1701946209\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\",\n        \"UF_CRM_1701946388\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n        \"UF_CRM_1701946429\": \"{{ $('Postgres5').item.json[\"CCM_Last_Updated\"] }}\",\n        \"UF_CRM_1701946464\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \"ID\": \"{{ $json[\"Phone\"] }}\",\n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Mobile\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone1\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Home\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone2\"] }}\",\n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Other\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \"ID\": \"{{ $json[\"Email\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home E-mail\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    }\n}",
+        "options": {}
+      },
+      "id": "91448940-7958-4162-b3b5-b0a7d383e4fd",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "var num = 1;\n\ntry {\n var last =$node[\"Code1\"].json[\"New\"]\n\nif (last) {\n  num = last\n  \n}\n} catch (e) {\n  // statements to handle any exceptions\n  //logMyErrors(e); // pass exception object to error handler\n}\n\nreturn [{\n  \"num\": num\n  }];"
+      },
+      "id": "9f50d925-082c-49be-b521-9fcc540c6d37",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2920,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "77711a1d-d782-4fdb-9b67-34cf77f5e66e",
+              "leftValue": "={{ $node[\"Code\"].json[\"num\"] }}",
+              "rightValue": 65,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "108f8c20-100f-43d2-a545-8ce3c401f0c8",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3140,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nvar num_pre = $node[\"Code\"].json[\"num\"];\nnum_pre +=1;\n\nreturn [{\n  \"New\": num_pre\n  }];"
+      },
+      "id": "aa716dfa-3a39-453c-a355-a140c9924e71",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3360,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "none",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-25T21:54:51.388Z",
+  "versionId": "cd5bdc86-80b0-4573-bd20-5c390be1344a"
+}
