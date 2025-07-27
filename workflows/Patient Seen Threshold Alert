@@ -1,0 +1,65 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-30T21:24:34.335Z",
+  "id": "M7c4Bh1XN4Yq7Ojd",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Patient Seen Threshold Alert",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "516ff779-7279-4b19-a0c0-e38f2fc3651b",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH TimeBuckets AS (\n\n    SELECT \n\n        a.Appt_Resource_Descr,\n\n        CASE \n\n            WHEN CAST(a.Appt_DateTime AS time) < '12:00:00' THEN 'BeforeNoon'\n\n            WHEN CAST(a.Appt_DateTime AS time) < '18:00:00' THEN 'By6PM'\n\n            ELSE 'After6PM'\n\n        END AS Time_Bucket\n\n    FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n\n    WHERE \n\n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date)\n\n        AND a.Appt_Status IN ('A')\n\n        AND a.Appt_Resource_Descr NOT LIKE 'PA,%'\n\n\t\tand a.Appt_Resource_Descr not like 'US%'\n\n\t\tand a.Appt_Resource_Descr not like 'BH%'\n\n\t\tand a.Appt_Resource_Descr not like 'Mamm%'\n\n\t\tand a.Appt_Resource_Descr not like 'exer%'\n\n\t\tand a.Appt_Resource_Descr not like 'Aller%'\n\n)\n \n, Counts AS (\n\n    SELECT \n\n        Appt_Resource_Descr,\n\n        SUM(CASE WHEN Time_Bucket = 'BeforeNoon' THEN 1 ELSE 0 END) AS Appts_BeforeNoon,\n\n        SUM(CASE WHEN Time_Bucket IN ('BeforeNoon', 'By6PM') THEN 1 ELSE 0 END) AS Appts_By6PM\n\n    FROM TimeBuckets\n\n    GROUP BY Appt_Resource_Descr\n\n)\n \nSELECT \n\n    Appt_Resource_Descr,\n\n    Appts_BeforeNoon,\n\n    Appts_By6PM,\n\n    CASE WHEN Appts_BeforeNoon > 10 THEN 'On Track' ELSE 'NOT on track' END AS BeforeNoon_Status,\n\n    CASE WHEN Appts_By6PM >= 20 THEN 'On Track' ELSE 'NOT on track' END AS By6PM_Status\n\nFROM Counts\n\nORDER BY Appts_By6PM DESC;\n\n "
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "9427e724-5163-46b1-a07a-3c9e4ba3eb2f",
+      "name": "Microsoft SQL",
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-30T21:24:59.643Z",
+  "versionId": "9bf02bcc-abb3-4faf-95a1-f8434f376cd8"
+}
