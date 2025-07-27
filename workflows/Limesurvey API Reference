@@ -1,0 +1,404 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "get_session_key",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_session_key": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get_survey_properties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_survey_properties": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "list_survey_groups",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "list_survey_groups": {
+      "main": [
+        [
+          {
+            "node": "Split Out_survey_group_result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out_survey_group_result": {
+      "main": [
+        [
+          {
+            "node": "Match gsid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-22T18:14:01.953Z",
+  "id": "jKzpOs14Rt2VINjj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Limesurvey API Reference",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('get_session_key').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "cfae43e1-f57f-4f6d-8311-b271a5572ec8",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        740,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8ccfa3a2-c49c-46c8-9bce-a061a668ebaf",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result.attributedescriptions",
+        "include": "=",
+        "options": {}
+      },
+      "id": "543d981e-beda-47df-8f97-bc2846230cb3",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        980,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "c5a0b63c-d674-4bef-87ac-c119a4e8d983",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7eeece8b-68f1-44b2-9290-b60844b66aaa",
+              "name": "data",
+              "value": "={{ $json['result.attributedescriptions'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4fa97e12-c78d-4562-9a60-77b7cc5e7c7e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1160,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"get_group_properties\",    \"params\": {  \"sSessionKey\": \"{{ $('get_session_key').item.json[\"result\"] }}\",         \"iGroupID\": {{ $json[\"result\"][\"gsid\"] }},\n        \"aGroupSettings\": [\"title\", \"description\"]},  \"id\": 1}\n",
+        "options": {}
+      },
+      "id": "56995b93-b2c7-43e3-a741-fffe5f8201c3",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_groups\",    \"params\": {  \"sSessionKey\": \"{{ $('get_session_key').item.json[\"result\"] }}\",\n        \"iSurveyID\": \"655628\"\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "0db56002-9712-4c4f-be72-01eba49eea9c",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{   \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnsend\",        \"password\": \"5endUs3r#123456\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "0e23e190-7ca4-4652-a3a5-8d0ddf4aff60",
+      "name": "get_session_key",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"get_survey_properties\",    \"params\": {  \"sSessionKey\": \"{{ $('get_session_key').item.json[\"result\"] }}\",         \"iSurveyID\": 655628,\n        \"aSurveySettings\": null},  \"id\": 1}",
+        "options": {}
+      },
+      "id": "ee082a52-fd05-428d-a0cf-9a9887955ff2",
+      "name": "get_survey_properties",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        600,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_survey_groups\",    \"params\": {  \"sSessionKey\": \"{{ $('get_session_key').item.json[\"result\"] }}\", \"sUsername\": null},  \"id\": 1}\n",
+        "options": {}
+      },
+      "id": "36998166-1081-42bc-ad60-badf52d3665c",
+      "name": "list_survey_groups",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "5ebd385e-db76-4e1d-849d-7b1f2d10552b",
+      "name": "Split Out_survey_group_result",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.result.gsid }}",
+                    "rightValue": "={{ $('get_survey_properties').item.json.result.gsid }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3caa2c8-912f-4752-9040-d97fa51c3787",
+      "name": "Match gsid",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        840
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-22T20:18:25.981Z",
+  "versionId": "58024f5f-0838-4ced-b56e-f00c9d9f53a2"
+}
