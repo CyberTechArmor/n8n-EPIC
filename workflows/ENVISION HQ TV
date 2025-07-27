@@ -1,0 +1,97 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-10T14:34:32.101Z",
+  "id": "6oHd4Wb32DnggCkH",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ENVISION HQ TV",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b8bcafaf-f643-4a13-a4d7-045d72defdbf",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        620,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png",
+        "options": {}
+      },
+      "id": "f2a1db43-b361-4462-a220-d749aa39288a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1060,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "path": "fba1b9bf-fb9d-4752-b23d-e6035791681f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5fd18655-4d75-4c78-911f-ccaac00e90ac",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        840,
+        320
+      ],
+      "webhookId": "fba1b9bf-fb9d-4752-b23d-e6035791681f"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>EPIC Health Wall</title>\n  <style>\n    html, body {\n      height: 100%;\n      margin: 0;\n      overflow: hidden;\n    }\n    /* Container holding the iframe and the click overlay */\n    #iframe-container {\n      position: relative;\n      width: 100%;\n      height: 100%;\n    }\n    /* The iframe displaying the image */\n    #image-iframe {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      border: 0;\n      overflow: hidden;\n    }\n    /* Transparent overlay to capture tap/click events */\n    #click-overlay {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: transparent;\n      z-index: 10;\n      cursor: pointer;\n    }\n  </style>\n</head>\n<body>\n  <div id=\"iframe-container\">\n    <iframe \n      id=\"image-iframe\"\n      src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\" \n      scrolling=\"no\">\n    </iframe>\n    <div id=\"click-overlay\" onclick=\"playAudio()\"></div>\n  </div>\n  <audio id=\"audio\" src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/Audio/welcome_to_EPIC.mp3\"></audio>\n  <script>\n    function playAudio() {\n      var audio = document.getElementById('audio');\n      // Only play if not already playing\n      if (audio.paused) {\n        audio.play();\n      }\n    }\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        560
+      ],
+      "id": "032ead44-1f22-4b73-9298-75366821185b",
+      "name": "Respond to Webhook1",
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-02T12:28:11.404Z",
+  "versionId": "9d377095-f096-48f2-b8e8-988482437e2a"
+}
