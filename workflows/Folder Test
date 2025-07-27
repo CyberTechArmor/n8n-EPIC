@@ -1,0 +1,19 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-06T17:43:21.849Z",
+  "id": "Hs7BMnevIe4rzvwI",
+  "isArchived": false,
+  "meta": null,
+  "name": "Folder Test",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-06T17:43:21.849Z",
+  "versionId": "3b58e626-9c94-4da3-be00-83f0e58ccc70"
+}
