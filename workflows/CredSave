@@ -1,0 +1,133 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-01T20:48:08.147Z",
+  "id": "ttT5M3XxdaNnPQb8",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CredSave",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3aaf62b4-45c7-4613-a015-d574939f2c04",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "command": "n8n export:credentials --all --decrypted --output=credsexport1.json"
+      },
+      "id": "e999d8ec-70a5-4773-b4aa-5ac0c758e736",
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        100,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "fileName": "credsexport1.json",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "8498a7cb-82e1-4aef-854b-5bfa00712cfc",
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {
+          "useRawData": false
+        }
+      },
+      "id": "a5ab5df3-aec2-4834-957b-6617dd68900d",
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "BF0oHL3CW3fcvu8x",
+        "options": {}
+      },
+      "id": "5d92bd88-8eef-413f-9433-2d9de9639975",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        300,
+        720
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-12-10T18:27:58.618Z",
+      "updatedAt": "2023-12-10T18:27:58.618Z",
+      "id": "eBHTGhF29brO8Pmk",
+      "name": "Credentials"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-23T22:50:01.768Z",
+  "versionId": "247f8495-e749-4f45-8ab2-9f31037b1483"
+}
