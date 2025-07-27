@@ -1,0 +1,464 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Grab the latest tasks from a workgroup (50 max)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Pasring the description",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Parsing the title (Removing the User's Name)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pasring the description": {
+      "main": [
+        [
+          {
+            "node": "Merge of Title, Date, and Description",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Counting Tickets per Week": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsing the title (Removing the User's Name)": {
+      "main": [
+        [
+          {
+            "node": "Merge of Title, Date, and Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge of Title, Date, and Description": {
+      "main": [
+        [
+          {
+            "node": "Counting Tickets per Week",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge of ticketCount and directMessages": {
+      "main": [
+        [
+          {
+            "node": "Total Ticket for the Week",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grab the latest tasks from a workgroup (50 max)": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Count of Direct Messages": {
+      "main": [
+        [
+          {
+            "node": "Merge of ticketCount and directMessages",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Total Ticket for the Week": {
+      "main": [
+        []
+      ]
+    },
+    "Week of March 31 to April 4": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Grab the latest tasks from a workgroup (50 max)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-05T13:42:18.458Z",
+  "id": "iSJXSAqEyfMm2qtG",
+  "isArchived": false,
+  "meta": null,
+  "name": "Ticket Report",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/v289y3m2yj2tqf8u/tasks.task.list.json",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n  \"order\": { \"ID\": \"asc\" },\n  \"filter\": { \"GROUP_ID\": \"7\" },\n  \"select\": [ \"ID\", \"TITLE\", \"DESCRIPTION\", \"STAGE_ID\" ]\n}",
+        "options": {}
+      },
+      "id": "7e7b286e-21e4-498e-ac84-35d1dccdbed9",
+      "name": "Bitrix24 List Tasks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -260,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nit.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"POC Down, ECG\",\n       \"GROUP_ID\":\"74\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"ECG Down\"\n   }\n}",
+        "options": {}
+      },
+      "id": "67a9a4d0-519c-4c45-8960-c4a3cc71f5c1",
+      "name": "ECG Ticket Bitrix24",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -20,
+        -700
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        -260
+      ],
+      "id": "cfff52ef-6fd5-4bcf-ae02-35564fb93ca7",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result.tasks",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -260
+      ],
+      "id": "1dfafd2e-8dcc-43b4-9781-20571fb3314a",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa57699e-7828-421f-8d82-77071c95f6e6",
+              "name": "title",
+              "value": "={{ $json.title.split(\",\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        -520
+      ],
+      "id": "a5c87bd1-c287-4fea-8a2a-d04da2b973fa",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        -280
+      ],
+      "id": "4fcb0e5b-e9f3-4f9e-be5d-c74c0140f61b",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all input items\nconst items = $input.all();\n\nreturn items.map(item => {\n  let description = item.json.description || \"\"; // Ensure it's a string\n\n  // Define regex patterns to extract structured fields\n  const patterns = {\n    name: /Name:\\s*(.*)/i,\n    email: /Email:\\s*(.*)/i,\n    location: /Location:\\s*(.*)/i,\n    role: /Requesting Role:\\s*(.*)/i\n  };\n\n  // Extract field values using regex\n  const extractedData = {};\n  for (const key in patterns) {\n    const match = description.match(patterns[key]);\n    extractedData[key] = match ? match[1].trim() : \"\";\n  }\n\n  // Remove structured fields from the description to keep only the main message\n  let mainMessage = description\n    .replace(patterns.name, \"\")\n    .replace(patterns.email, \"\")\n    .replace(patterns.location, \"\")\n    .replace(patterns.role, \"\")\n    .trim();\n\n  return {\n    json: {\n      mainMessage,\n      name: extractedData.name,\n      email: extractedData.email,\n      location: extractedData.location,\n      requestingRole: extractedData.role\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        -260
+      ],
+      "id": "b01dafc4-9f23-4e3e-a0cc-7ebfa54e4ccd",
+      "name": "Pasring the description"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming the Merge node outputs an array of items\nconst tickets = items.map(item => item.json);\nconst ticketStatsByDate = {};\n\n// Define allowed IT requester emails\nconst allowedEmails = [\n  \"IT | jyang@epichs.org\",\n  \"IT | nasfar@epichs.org\"\n];\n\n// Iterate over all tickets\ntickets.forEach(ticket => {\n    const createDate = ticket.create_date;\n    const requester = ticket.modified || \"\";\n\n    if (!createDate) return;\n\n    // Initialize date entry if not present\n    if (!ticketStatsByDate[createDate]) {\n        ticketStatsByDate[createDate] = {\n            ticketCount: 0,\n            itTicket: 0\n        };\n    }\n\n    // Always increment total ticket count\n    ticketStatsByDate[createDate].ticketCount += 1;\n\n    // Increment IT-specific count if it matches\n    if (allowedEmails.includes(requester)) {\n        ticketStatsByDate[createDate].itTicket += 1;\n    }\n});\n\n// Return as array\nreturn Object.keys(ticketStatsByDate).map(date => ({\n    json: {\n        date: date,\n        ticketCount: ticketStatsByDate[date].ticketCount,\n        itTicket: ticketStatsByDate[date].itTicket\n    }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        -280
+      ],
+      "id": "1397d6eb-54e3-4b25-a50b-d4de9522b421",
+      "name": "Counting Tickets per Week",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all input items\nconst items = $input.all();\n\n// Process each item\nreturn items.map(item => {\n  let originalString = item.json.title; // Extract title field\n  let createDate = item.json.createdDate ? item.json.createdDate.split('T')[0] : \"N/A\"; // Extract only the date portion\n\n  try {\n    // Parse JSON string into an array if necessary\n    let parsedArray = JSON.parse(originalString);\n\n    // Ensure it's an array before proceeding\n    if (Array.isArray(parsedArray)) {\n      // Remove the first element and join the rest with commas\n      let processedString = parsedArray.length > 1 ? parsedArray.slice(1).join(', ').trim() : parsedArray[0];\n\n      return {\n        json: {\n          modified: processedString,\n          create_date: createDate // Store only the date part\n        }\n      };\n    }\n  } catch (error) {\n    console.error(\"Error parsing JSON:\", error);\n  }\n\n  // If parsing fails, return the original string as modified\n  return {\n    json: {\n      original: originalString,\n      modified: originalString,\n      create_date: createDate\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        -520
+      ],
+      "id": "6d948f01-dcd7-4922-b4bf-b340aa89c434",
+      "name": "Parsing the title (Removing the User's Name)"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        820,
+        -280
+      ],
+      "id": "cbea0eb1-a57a-4e89-b6ca-5e0b1800d085",
+      "name": "Merge of Title, Date, and Description"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "date",
+        "joinMode": "enrichInput2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1040,
+        180
+      ],
+      "id": "d29f2229-6c36-40dd-a668-350df9b74ac8",
+      "name": "Merge of ticketCount and directMessages",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map(item => {\n  return {\n    json: {\n      date: item.json.date,\n      ticketCount: item.json.ticketCount,\n      directMessage: item.json.directMessage,\n      inPersonRequest: item.json.inPersonRequest,\n      total: item.json.ticketCount + item.json.directMessage\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        180
+      ],
+      "id": "3548739b-f605-4b43-81ad-9f648a12ce54",
+      "name": "Total Ticket for the Week"
+    },
+    {
+      "parameters": {
+        "url": "https://nit.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.list.json",
+        "sendQuery": true,
+        "specifyQuery": "json",
+        "jsonQuery": "{\n  \"start\" : 0,\n  \"order\": { \"ID\": \"\" },  \n  \"filter\": { \"GROUP_ID\": \"74\" },  \n  \"select\": [\"ID\", \"TITLE\", \"DESCRIPTION\", \"CREATED_DATE\", \"CLOSED_DATE\"]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -140,
+        -260
+      ],
+      "id": "8560ac91-d4ea-4914-ac47-4abc45c16ecb",
+      "name": "Grab the latest tasks from a workgroup (50 max)"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n/**\n    {json: {\"date\": \"2025-04-25\",\n            \"directMessage\": 0, \n            \"inPersonRequest\": 0}},\n    {json: {\"date\": \"2025-04-24\",\n            \"directMessage\": 0, \n            \"inPersonRequest\": 0}},\n */\n    {json: {\"date\": \"2025-04-30\",\n            \"directMessage\": 0, \n            \"inPersonRequest\": 0}},\n    {json: {\"date\": \"2025-04-29\",\n            \"directMessage\": 0, \n            \"inPersonRequest\": 0}},\n    {json: {\"date\": \"2025-04-28\",\n            \"directMessage\": 0, \n            \"inPersonRequest\": 0}}\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        200
+      ],
+      "id": "3ecd3faa-521e-4c13-a528-a06898bd0c4c",
+      "name": "Manual Count of Direct Messages"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n    {json: {\"date\": \"2025-04-04\",\n            \"directMessage\": 4, \n            \"inPersonRequest\": 0}},\n    {json: {\"date\": \"2025-04-03\", \n           \"directMessage\": 2 + 9,\n           \"inPersonRequest\": 0} },\n    {json: {\"date\": \"2025-04-02\", \n            \"directMessage\": 1 + 17,\n            \"inPersonRequest\": 0} },\n    {json: {\"date\": \"2025-04-01\", \n            \"directMessage\": 7 + 11,\n            \"inPersonRequest\": 0} },\n    {json: {\"date\": \"2025-03-31\", \n            \"directMessage\": 2 + 7,\n            \"inPersonRequest\": 0} }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ],
+      "id": "2cbabc71-6118-4838-a060-42e9749dfa87",
+      "name": "Week of March 31 to April 4"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n    {json: {\"date\": \"2025-04-11\",\n            \"directMessage\": 3, \n            \"inPersonRequest\": 2}},\n    {json: {\"date\": \"2025-04-10\",\n            \"directMessage\": 3, \n            \"inPersonRequest\": 2}},\n    {json: {\"date\": \"2025-04-09\",\n            \"directMessage\": 1 + 6, \n            \"inPersonRequest\": 3}},\n    {json: {\"date\": \"2025-04-08\",\n            \"directMessage\": 2 + 5, \n            \"inPersonRequest\": 1}},\n    {json: {\"date\": \"2025-04-07\",\n            \"directMessage\": 5 + 18, \n            \"inPersonRequest\": 0}}\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        300
+      ],
+      "id": "980a2ea5-46a3-4fd1-af91-a0e4208dd512",
+      "name": "Week of April 7 - 11"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nlet htmlContent = `\n  <html>\n    <head>\n      <title>Ticket Report</title>\n      <style>\n        body { font-family: Arial, sans-serif; padding: 20px; }\n        table { border-collapse: collapse; width: 100%; }\n        th, td { border: 1px solid #ddd; padding: 8px; }\n        th { background-color: #f2f2f2; }\n      </style>\n    </head>\n    <body>\n      <h2>May's Ticket Count</h2>\n      <table>\n        <tr>\n          <th>Date</th>\n          <th>Ticket Count</th>\n          <th>Ticket by IT</th>\n        </tr>\n`;\n\nfor (const item of items) {\n  htmlContent += `\n    <tr>\n      <td>${item.json.date}</td>\n      <td>${item.json.ticketCount}</td>\n      <td>${item.json.itTicket}</td>\n    </tr>\n  `;\n}\n\nhtmlContent += `\n      </table>\n    </body>\n  </html>\n`;\n\nreturn [\n  {\n    json: {\n      html: htmlContent\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        -500
+      ],
+      "id": "9f48cf16-8d89-4cda-a6fb-5f00b6bdb9a0",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        -500
+      ],
+      "id": "30a647cf-1799-42cf-99dd-8f187a66777e",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "81d991b4-dd53-4018-a253-6deb0740c16a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -340,
+        -420
+      ],
+      "id": "5081cbb5-f94d-44da-b2b7-db39074e408e",
+      "name": "Webhook",
+      "webhookId": "81d991b4-dd53-4018-a253-6deb0740c16a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-03-05T13:42:49.833Z",
+      "updatedAt": "2025-03-05T13:42:49.833Z",
+      "id": "V2yr8dcrczQDwiJM",
+      "name": "John"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-12T12:44:46.786Z",
+  "versionId": "a3f9ba0e-dedb-4dfa-9d29-d98044f0ed20"
+}
