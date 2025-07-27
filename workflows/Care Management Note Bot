@@ -1,0 +1,154 @@
+{
+  "active": true,
+  "connections": {
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-22T13:55:34.441Z",
+  "id": "fzE4buEWUXGs7YQE",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Care Management Note Bot",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pmt26megkrwbf93",
+        "table": "ms85ulsz9o9kggw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "mrn",
+              "fieldValue": "={{ $json.query.mrn }}"
+            },
+            {
+              "fieldName": "user",
+              "fieldValue": "={{ $json.query.user }}"
+            },
+            {
+              "fieldName": "documenttype",
+              "fieldValue": "={{ $json.query.documenttype }}"
+            },
+            {
+              "fieldName": "note",
+              "fieldValue": "={{ $json.body.note }}"
+            },
+            {
+              "fieldName": "time",
+              "fieldValue": "={{ $json.query.time }}"
+            }
+          ]
+        }
+      },
+      "id": "9076289b-68ae-4ef7-80f9-6fd5d48bf3ef",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "46f1e3c1-56db-4d84-a00a-d38e4550ec34",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d3fee135-bcb4-4f3e-ad73-b46749fdf0e4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1c86d827-e848-4339-97fe-c6b4405deb47",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "d3fee135-bcb4-4f3e-ad73-b46749fdf0e4"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.161",
+            "x-forwarded-for": "10.0.1.161",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "29",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {
+            "mrn": "502880",
+            "user": "Thomas Stilwell",
+            "documenttype": "CCM Note",
+            "time": "10"
+          },
+          "body": {
+            "note": "This is a \"note\""
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/d3fee135-bcb4-4f3e-ad73-b46749fdf0e4",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-23T11:32:05.621Z",
+  "versionId": "907f09d1-538d-426e-abdd-4ecf7c790a36"
+}
