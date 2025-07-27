@@ -1,0 +1,1028 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Bitrix24_ID",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bitrix24_ID": {
+      "main": [
+        [
+          {
+            "node": "Get Contacts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contacts1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-21T16:41:11.517Z",
+  "id": "D0MA48gc2gighDbc",
+  "isArchived": false,
+  "meta": null,
+  "name": "Pull Bitrix24 Records",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $json.start }}"
+            },
+            {
+              "name": "count",
+              "value": "50"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {}
+          }
+        }
+      },
+      "id": "baf79ae9-ca8f-4ec6-8f4d-ce2dfe7caef3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1060,
+        940
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ab481432-e681-4aed-9dbf-9bb5997aedc5",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "start",
+              "type": "numberValue",
+              "numberValue": "={{ $json.next }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "d3b193af-0875-4699-a5f1-bc0b66376542",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1360,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "total",
+              "stringValue": "={{ $json.total }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "83e9f2b5-e859-4b61-bddc-1abd6b26f81c",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1360,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "9d18ad48-4b48-488d-b051-572a85c7ffd7",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1600,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.total }}",
+              "value2": "={{ $json.start }}"
+            }
+          ]
+        },
+        "combineConditions": "OR"
+      },
+      "id": "6b3d8641-e3dd-49a0-b26c-89351924afb4",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "start",
+              "type": "numberValue",
+              "numberValue": "=0"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "7e62e154-1174-4c51-800e-2c0603a763c8",
+      "name": "Start",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        640,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "start",
+              "type": "numberValue",
+              "numberValue": "={{ $json.start }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "56e9f61a-8526-4286-90e4-e989e85391f8",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        860,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.start }}",
+              "operation": "isEmpty"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "e872907f-9fe1-4cb0-a81e-feaf5e2d1f0c",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "2023d855-9162-46b0-8e66-202968a3c0ba",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1360,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \n\"id\": {{ $json[\"result\"][\"ID\"] }},\n\"fields\": { \"SOURCE_DESCRIPTION\": \"{{ $json[\"result\"][\"UF_CRM_1699956282\"] }}\"}\n }",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 0,
+              "batchInterval": 200
+            }
+          }
+        }
+      },
+      "id": "5c426008-a3fa-4531-ba67-f02985e14756",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json?ID={{ $json.ID }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "value": "={{ $('Item Lists').item.json.ID }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 0,
+              "batchInterval": 200
+            }
+          }
+        }
+      },
+      "id": "0b16b45a-7e10-4bf8-8404-4173495cfcdf",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "09387aa9-3e12-43ba-a16a-8646a375a379",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        1100
+      ],
+      "webhookId": "869554f3-b7bb-43a0-8d61-d077539d58c7"
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "5b13eba1-931e-4c12-9109-8d9a4f056c97",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        640
+      ],
+      "webhookId": "a56f562b-c423-481c-9bc1-219aa70caf4d",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.SOURCE_DESCRIPTION }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "85283760-cce3-446d-97aa-45d9a739f614",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cfa54d72-e385-430b-97aa-7b338b80e08c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "35274845-9103-48ea-a964-a683e90b60ad",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -760
+      ],
+      "webhookId": "cfa54d72-e385-430b-97aa-7b338b80e08c",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "= {{ $json.body.PLACEMENT_OPTIONS }}",
+        "include": "none",
+        "options": {}
+      },
+      "id": "920eb95e-6b3b-4bc9-91f8-04ff48db849d",
+      "name": "Bitrix24_ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        740,
+        -760
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html> <body> {{ $json.result.LAST_NAME }}, {{ $json.result.NAME }}\n<br>User has been updated! Please refresh the page.\n<br>\n<br>Here is other relevant information about the user for quick reference\n<script type=\"text/javascript\">\n  (function(d, t) {\n      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];\n      v.onload = function() {\n        window.voiceflow.chat.load({\n          verify: { projectID: '645a9f82ae0c18000706e0be' },\n          url: 'https://general-runtime.voiceflow.com',\n          versionID: 'production'\n        });\n      }\n      v.src = \"https://cdn.voiceflow.com/widget/bundle.mjs\"; v.type = \"text/javascript\"; s.parentNode.insertBefore(v, s);\n  })(document, 'script');\n</script> </body> </html>",
+        "options": {}
+      },
+      "id": "4f61c593-8182-4e72-a78c-52df43b1e620",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        -760
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.ID }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 50000
+            }
+          }
+        }
+      },
+      "id": "b46789cb-607f-4c42-ac76-28291fc36b95",
+      "name": "Get Contacts1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        -760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.deltadata;\n",
+        "options": {}
+      },
+      "id": "1f6651d4-0b23-47d4-b183-336639962c81",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        460,
+        -540
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "aduserlogs",
+          "mode": "list",
+          "cachedResultName": "aduserlogs"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.ID }}",
+            "name": "={{ $json.NAME }}",
+            "second_name": "={{ $json.SECOND_NAME }}",
+            "last_name": "={{ $json.LAST_NAME }}",
+            "source_description": "={{ $json.SOURCE_DESCRIPTION }}",
+            "birthday": "={{ $json.BIRTHDATE }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "post",
+              "displayName": "post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "honorific",
+              "displayName": "honorific",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "source_description",
+              "displayName": "source_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "birthday",
+              "displayName": "birthday",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eaf7a1fb-67c4-487a-ba1b-75db5bf4edd0",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1940,
+        200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE aduserlogs\n--ADD COLUMN ID VARCHAR(255),\nADD COLUMN POST VARCHAR(255),\nADD COLUMN COMMENTS VARCHAR(255),\nADD COLUMN HONORIFIC VARCHAR(255),\nADD COLUMN NAME VARCHAR(255),\nADD COLUMN LAST_NAME VARCHAR(255),\n--ADD COLUMN LEAD_ID VARCHAR(255),\n--ADD COLUMN TYPE_ID VARCHAR(255),\n--ADD COLUMN SOURCE_ID VARCHAR(255),\nADD COLUMN SOURCE_DESCRIPTION VARCHAR(255),\nADD COLUMN BIRTHDAY VARCHAR(255);\n--ADD COLUMN lastLogoff VARCHAR(255);\n",
+        "options": {}
+      },
+      "id": "1893a0d8-39db-47bc-9c14-894d3b09c769",
+      "name": "SET Columns",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1020,
+        -200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM aduserlogs;",
+        "options": {}
+      },
+      "id": "5ae75864-752f-44d9-aa04-ef0a6f85a9d8",
+      "name": "Get all records",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1020,
+        40
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "aduserlogs",
+          "mode": "list",
+          "cachedResultName": "aduserlogs"
+        },
+        "options": {}
+      },
+      "id": "7d1d8530-33a3-4f2f-b7ee-7f625d5f30cb",
+      "name": "Remove all records",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1020,
+        220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE aduserlogs (\nID VARCHAR(255)\n);",
+        "options": {}
+      },
+      "id": "f0884182-a7ed-48b4-8dfb-746537d7a778",
+      "name": "SET Columns1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        720,
+        -160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "include": "selected",
+        "includeFields": "ID,NAME,LAST_NAME,SOURCE_DESCRIPTION,BIRTHDATE",
+        "options": {}
+      },
+      "id": "274faf13-6211-4501-b904-e406a0db2919",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1620,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "aduserlogs",
+          "mode": "list",
+          "cachedResultName": "aduserlogs"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.ID }}",
+            "name": "={{ $json.NAME }}",
+            "second_name": "={{ $json.SECOND_NAME }}",
+            "last_name": "={{ $json.LAST_NAME }}",
+            "source_description": "={{ $json.SOURCE_DESCRIPTION }}",
+            "birthday": "={{ $json.BIRTHDATE }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "post",
+              "displayName": "post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "honorific",
+              "displayName": "honorific",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "source_description",
+              "displayName": "source_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "birthday",
+              "displayName": "birthday",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "skipOnConflict": true,
+          "replaceEmptyStrings": true
+        }
+      },
+      "id": "fd133622-b5ec-4dff-a0aa-166c014eae56",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1940,
+        340
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE aduserlogs\n--ADD COLUMN ID VARCHAR(255),\nADD COLUMN SECOND_NAME VARCHAR(255);\n--ADD COLUMN lastLogoff VARCHAR(255);\n",
+        "options": {}
+      },
+      "id": "3e68fe12-11d2-4a10-a7da-fda11e753310",
+      "name": "SET Columns2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1260,
+        -200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-14T18:16:55.445Z",
+  "versionId": "b3223d05-d22f-4646-bff6-d2e877306b57"
+}
