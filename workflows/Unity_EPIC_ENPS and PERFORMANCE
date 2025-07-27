@@ -1,0 +1,784 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Add 3 days",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add 3 days": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Email to Manager",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Email to Employee1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-24T15:20:55.556Z",
+  "id": "NDScdt9sAjq64A0n",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Unity_EPIC_ENPS and PERFORMANCE",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "51b5515a-c9d3-447c-ac33-fc74985e75e3",
+        "options": {}
+      },
+      "id": "e23ce8d2-2eaa-4789-9185-d3beb673db88",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        60,
+        1880
+      ],
+      "webhookId": "51b5515a-c9d3-447c-ac33-fc74985e75e3"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "The Unity Team",
+        "toEmail": "={{ $('Webhook').item.json.query.email }}",
+        "subject": "🌟 Your Voice Matters – Let’s Shape Our Future Together!",
+        "contentValue": "=Hello {{ $('Webhook').item.json[\"query\"][\"name\"] }},\nAs you celebrate your {{ $('Webhook').item.json[\"query\"][\"bucket\"][1] }}-day milestone at [Company Name], we invite you to share your experiences and insights through our Employee Net Promoter Score (eNPS) survey.\n\n**What is eNPS?** It’s a quick survey that measures employee satisfaction and loyalty. Your feedback is vital—it helps us identify what we’re doing well and where we can improve, ensuring [Company Name] continues to be a great place to work.\n\n**Steps to Complete Your eNPS Survey:**1. **Access the Survey:** Click the link below to open the survey.2. **Complete the Survey:** It should take only 3-5 minutes to complete.3. **Submit Your Feedback:** Your responses are confidential and will be automatically submitted once you complete the survey.\n\n👉 https://forms.myunitycare.com/index.php/{{  $('Switch2').item.json[\"sid\"] }}?lang=en\n\nThank you for helping us shape the future of [Company Name]. We’re excited to hear from you!\n\nWarm regards,\n[Your HR Team]",
+        "additionalFields": {}
+      },
+      "id": "da0da769-8f66-4760-85bb-4970d8d1207c",
+      "name": "Email to Employee",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        1620
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "The Unity Team",
+        "toEmail": "=austin@myunity.com",
+        "subject": "🌟 Your Voice Matters – Let’s Shape Our Future Together!",
+        "contentValue": "=Hello {{ $('Webhook').item.json[\"query\"][\"name\"] }},\nAs you celebrate your {{ $('Webhook').item.json[\"query\"][\"bucket\"][1] }}-day \n\n[Manager Name],\n\nIt's time for the scheduled {{ $('Webhook').item.json[\"query\"][\"bucket\"][1] }}-day performance review for {{ $('Webhook').item.json[\"query\"][\"name\"] }}. This review is crucial for assessing their early contributions and integration into our team, as well as setting the stage for their continued success at [Company Name].\n**Importance of Timely Performance Reviews:**\n- **Feedback:** Provides valuable insights into employee progress.\n- **Development:** Identifies areas for growth and future goals.\n- **Alignment:** Ensures efforts are in sync with our strategic objectives.\n\n**Please Follow These Steps to Complete the Review:**1. **Prepare:** Reflect on {{ $('Webhook').item.json[\"query\"][\"name\"] }}'s performance, using any notes or feedback you’ve collected.2. **Access the Form:** Click the link below to fill out the performance review form.3. **Complete and Submit:** Provide detailed feedback and achievable goals by  $('Date & Time1').item.json[\"formattedDate\"] .\n\n👉  https://forms.myunitycare.com/index.php/ $('Switch1').item.json[\"sid\"] ?lang=en\n\nYour input is essential for {{ $('Webhook').item.json[\"query\"][\"name\"] }}'s development and our team's success. Thank you for your thorough and thoughtful participation.\nBest,\n[Your HR Team]",
+        "additionalFields": {}
+      },
+      "id": "6614fb56-366e-4cb6-a00b-5d47b498719f",
+      "name": "Email to Manager",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        1900
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "The Unity Team",
+        "toEmail": "={{ $('Webhook').item.json.query.email }}",
+        "subject": "🌟 Your Voice Matters – Let’s Shape Our Future Together!",
+        "contentValue": "=[Manager Name],\n\n[Employee Name] has just completed their eNPS survey for their [30/60/90]-day review period. This feedback is invaluable as it provides insights into their engagement and satisfaction levels, helping us better support their journey at [Company Name].\n\n**Next Steps:**1. **Review the Feedback:** We will analyze the results and provide you with a summary.2. **Discuss at Next Meeting:** We’ll explore key takeaways and potential action points in our upcoming managerial review meeting.3. **Plan Improvements:** Based on the feedback, we’ll collaborate on strategies to enhance our team's work environment.\nThank you for promoting an open feedback culture and looking forward to our continuous improvement.\n\nBest regards,\n[Your HR Team]",
+        "additionalFields": {}
+      },
+      "id": "8e256076-f9e9-459b-bc8e-955ea15c9dbf",
+      "name": "Email to Manager After eNPS Completion",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        900,
+        2920
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "The Unity Team",
+        "toEmail": "={{ $('Webhook').item.json.query.email }}",
+        "subject": "🌟 Your Voice Matters – Let’s Shape Our Future Together!",
+        "contentValue": "=[Employee Name],\n\nWe're pleased to announce that your [30/60/90]-day performance review has been completed. This is a significant milestone in your journey with us at [Company Name], and your feedback and development are crucial to our mutual success.\n**What’s Next?**1. **Review Meeting:** [Manager Name] will schedule a meeting to discuss the review outcomes and any feedback in detail.2. **Development Goals:** Together, you will set realistic goals for the next period to help you continue to grow and succeed.3. **Ongoing Support:** We are committed to providing you with the tools and resources needed to achieve these goals.\n\nThank you for your hard work and dedication. We value your contributions and are excited to support your career development.\n\nCheers,\n[Your HR Team]",
+        "additionalFields": {}
+      },
+      "id": "482a2e1d-ab4a-47b9-a0a2-82ab03897f84",
+      "name": "Email to Employee After Performance Review Completion",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        900,
+        3100
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "43a32821-3ba5-4828-8de2-c98191ad7f27",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        520,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date from the input variable\nconst currentDate = new Date(items[0].json.currentDate);\n\n// Add 3 days to the current date\ncurrentDate.setDate(currentDate.getDate() + 3);\n\n// Return the new date as output\nreturn [{ json: { newDate: currentDate.toISOString() } }];\n"
+      },
+      "id": "bc109198-29dc-4a63-a1b3-cfd36f9edae7",
+      "name": "Add 3 days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        2020
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ec353c04-fa66-42fa-8a26-4ccec47d8440",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1960,
+        1900
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "options": {}
+      },
+      "id": "8fad58d3-3f84-47ba-8d03-809e062e244f",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        880,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnmyunity\",        \"password\": \"Let5GetUnited123\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "e5ff8bdd-f43c-45e4-8cfd-388d93833e26",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "b05d29ce-ee7f-4cc3-b05c-b105748e2cce",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "c667a373-9aef-43b8-bc91-7e30d1e56432",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnmyunity\",        \"password\": \"Let5GetUnited123\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "90b8db56-4fc9-447a-a66d-a5d33804a84f",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2680,
+        947
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"get_survey_properties\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request3').item.json[\"result\"] }}\", \"iSurveyID\":{{ $('Switch1').item.json[\"sid\"] }}},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "0d795810-8dd2-4c0f-a2b0-5129dd89eb71",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2840,
+        947
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.surveyls_title }}",
+                    "rightValue": "={{ $('Webhook').item.json.query.bucket[1] }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d513792-8eb2-4a66-aaeb-8c53936aa01a",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1660,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnmyunity\",        \"password\": \"Let5GetUnited123\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "63b54959-0282-40ca-add7-c49ea77857e7",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.myunitycare.com/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request5').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "7404325e-fa15-47a4-b41c-5ac85559dad5",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "ae408bdb-f398-4fcd-87f0-1d7c13249896",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Get the corresponding survey",
+        "height": 909.2131519625467,
+        "width": 765.6259809580174,
+        "color": 4
+      },
+      "id": "78af9fa1-6ebb-4b33-a98a-511471c7b549",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        1495.3032375270304
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Date Format",
+        "height": 261.9871306336452,
+        "width": 542.0388099534879
+      },
+      "id": "1185c45f-0c04-4bc5-b1a4-f9eb75d1c213",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        1940
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Email",
+        "height": 728.7743823799449,
+        "width": 287.0709833693745,
+        "color": 5
+      },
+      "id": "4b85cfb3-6861-4d75-b48a-1f99dc7a92b1",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2818.554997588641,
+        1474.8644679444274
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Bucket Automation",
+        "height": 991.5873728589514,
+        "width": 3170.168714743574,
+        "color": 7
+      },
+      "id": "2845f684-e89e-4480-9366-7c9cc3ebee59",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -65.62598095801695,
+        1416.0774180525518
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Limesurvey Reference",
+        "height": 329.8018247798734,
+        "width": 517.2284611656304,
+        "color": 4
+      },
+      "id": "86bb2954-3c41-442f-ac63-f162f63309f4",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "The Unity Team",
+        "toEmail": "={{ $('Webhook').item.json.query.email }}",
+        "subject": "🌟 Your Voice Matters – Let’s Shape Our Future Together!",
+        "contentType": "text/html",
+        "contentValue": "=<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body { font-family: Arial, sans-serif; }\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            margin-top: 10px;\n            font-size: 16px;\n            color: white;\n            background-color: #007BFF;\n            text-decoration: none;\n            border-radius: 5px;\n        }\n        .button:hover {\n            background-color: #0056b3;\n        }\n    </style>\n</head>\n<body>\n    <p>Hello {{ $('Webhook').item.json[\"query\"][\"name\"] }},</p>\n\n    <p>As you celebrate your {{ $('Webhook').item.json[\"query\"][\"bucket\"] }}-day milestone in your new position, we invite you to share your experiences and insights through our Employee Net Promoter Score (eNPS) survey.</p>\n    \n    <p><strong>What is eNPS?</strong><br>\n    It’s a quick survey that measures employee satisfaction and allows your employer to make improvements in their company processes, culture and operations.</p>\n    \n    <p>Your feedback is vital—it helps us identify what we’re doing well and where we can improve, ensuring your company continues to be a great place to work.</p>\n\n    <p><strong>Steps to Complete Your eNPS Survey:</strong></p>\n    <ol>\n        <li><strong>Access the Survey:</strong> Click the link below to open the survey.</li>\n        <li><strong>Complete the Survey:</strong> It should take only 3-5 minutes to complete.</li>\n        <li><strong>Submit Your Feedback:</strong> Your responses are confidential and will be automatically submitted once you complete the survey.</li>\n    </ol>\n    \n    <p>Please complete the survey now:</p>\n    <a href=\"<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body { font-family: Arial, sans-serif; }\n        .button {\n            display: inline-block;\n            padding: 10px 20px;\n            margin-top: 10px;\n            font-size: 16px;\n            color: white;\n            background-color: #007BFF;\n            text-decoration: none;\n            border-radius: 5px;\n        }\n        .button:hover {\n            background-color: #0056b3;\n        }\n    </style>\n</head>\n<body>\n    <p>Hello [Employee Name],</p>\n\n    <p>As you celebrate your {{ $('Webhook').item.json[\"query\"][\"bucket\"] }}-day milestone in your new position, we invite you to share your experiences and insights through our Employee Net Promoter Score (eNPS) survey.</p>\n    \n    <p><strong>What is eNPS?</strong><br>\n    It’s a quick survey that measures employee satisfaction and allows your employer to make improvements in their company processes, culture and operations.</p>\n    \n    <p>Your feedback is vital—it helps us identify what we’re doing well and where we can improve, ensuring your company continues to be a great place to work.</p>\n\n    <p><strong>Steps to Complete Your eNPS Survey:</strong></p>\n    <ol>\n        <li><strong>Access the Survey:</strong> Click the link below to open the survey.</li>\n        <li><strong>Complete the Survey:</strong> It should take only 3-5 minutes to complete.</li>\n        <li><strong>Submit Your Feedback:</strong> Your responses are confidential and will be automatically submitted once you complete the survey.</li>\n    </ol>\n    \n    <p>Please complete the survey now:</p>\n    \n<a href=\"https://forms.myunitycare.com/index.php/{{  $('Switch2').item.json[\"sid\"] }}?lang=en\" target=\"_blank\" style=\"color: blue; text-decoration: underline;\"></a><a href=\"https://forms.myunitycare.com/index.php/{{  $('Switch2').item.json[\"sid\"] }}?lang=en\" target=\"_blank\" style=\"color: blue; text-decoration: underline;\">Take the Survey</a>\n\n    <p>Thank you for helping us shape the future of our workplace.</p>\n    \n    <p>We’re excited to hear from you!</p>\n\n    <p>Warm regards,<br>\n    The UNITY Team</p>\n</body>\n</html>",
+        "additionalFields": {}
+      },
+      "id": "f4c9c0c0-14db-4ce3-8719-c558ba3494fa",
+      "name": "Email to Employee1",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1520
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.surveyls_title }}",
+                    "rightValue": "=First {{ $('Webhook').item.json.query.bucket }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e44b76f5-d925-4cfb-9bb7-14a93e9aca47",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1660,
+        1620
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "52.29.163.104",
+            "x-forwarded-for": "52.29.163.104",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "349",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "id": "873",
+            "name": "Thomas Stilwell",
+            "bucket": [
+              "Pending",
+              "60"
+            ],
+            "groupid": "17",
+            "email": "thomas@tagarmor.com"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "873",
+            "auth[domain]": "unity.bitrix24.com",
+            "auth[client_endpoint]": "https://unity.bitrix24.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "525edae03c0342b91a32d3fc0ff88501"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/51b5515a-c9d3-447c-ac33-fc74985e75e3",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Date & Time1": [
+      {
+        "json": {
+          "formattedDate": "05/11/2024"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-24T11:35:46.572Z",
+  "versionId": "74225197-8714-41e0-95ef-654ad7e99b7b"
+}
