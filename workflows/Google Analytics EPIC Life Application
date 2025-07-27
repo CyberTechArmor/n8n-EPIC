@@ -1,0 +1,87 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Google Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-24T15:30:20.133Z",
+  "id": "Y8MN2GKnApHBBdce",
+  "isArchived": false,
+  "meta": null,
+  "name": "Google Analytics EPIC Life Application",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "358ce26e-174b-4626-804b-93b84c6cf44b",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "propertyId": {
+          "__rl": true,
+          "value": "404198441",
+          "mode": "id"
+        },
+        "metricsGA4": {
+          "metricValues": [
+            {
+              "listName": "other",
+              "name": "screenPageViewsPerSession"
+            },
+            {
+              "listName": "sessions"
+            },
+            {
+              "listName": "sessionsPerUser"
+            },
+            {}
+          ]
+        },
+        "dimensionsGA4": {
+          "dimensionValues": [
+            {}
+          ]
+        },
+        "additionalFields": {}
+      },
+      "id": "16328151-0d2b-46d1-8ecc-02bf958a4ffe",
+      "name": "Google Analytics",
+      "type": "n8n-nodes-base.googleAnalytics",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        460
+      ],
+      "credentials": {
+        "googleAnalyticsOAuth2": {
+          "id": "BphqaUbvLZO0zYUA",
+          "name": "Google Analytics n8nAutoXL"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-24T21:29:45.324Z",
+  "versionId": "6e2f6fb1-38f0-4025-abe1-e5ebb563e9df"
+}
