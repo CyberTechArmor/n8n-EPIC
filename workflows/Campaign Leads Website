@@ -1,0 +1,577 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-03-27T15:11:28.469Z",
+  "id": "LGnIf3euOO64EnFe",
+  "isArchived": false,
+  "meta": null,
+  "name": "Campaign Leads Website",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "2d7255da-e56b-4e45-950a-1c080a1764cf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b444415f-097b-4b73-b9aa-61fd016d9af3",
+      "name": "Webhook",
+      "webhookId": "2d7255da-e56b-4e45-950a-1c080a1764cf"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      html: `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Campaign Leads</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 40px;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n    }\n    .title {\n      font-size: 42px;\n      font-weight: bold;\n      margin-bottom: 40px;\n      padding: 10px 20px;\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .form-container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      width: 100%;\n      max-width: 600px;\n    }\n    .label-container {\n      width: 100%;\n      margin-bottom: 8px;\n      text-align: left;\n    }\n    .input-container {\n      width: 100%;\n      margin-bottom: 20px;\n      text-align: left;\n    }\n    label {\n      font-size: 18px;\n    }\n    input[type=\"file\"],\n    textarea {\n      width: 100%;\n      max-width: 100%;\n      padding: 10px;\n      font-size: 16px;\n      border: 1px solid #ccc;\n      border-radius: 4px;\n      margin-top: 8px;\n    }\n    textarea {\n      resize: vertical;\n      min-height: 100px;\n    }\n    .button-container {\n      width: 100%;\n      display: flex;\n      justify-content: flex-end;\n    }\n    button[type=\"submit\"] {\n      background-color: #000;\n      color: #fff;\n      padding: 10px 20px;\n      font-size: 16px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    button[type=\"submit\"]:hover {\n      background-color: #333;\n    }\n    button[type=\"submit\"]:disabled {\n      background-color: #aaa;\n      cursor: not-allowed;\n    }\n    .overlay {\n      display: none;\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.5);\n      z-index: 1000;\n      align-items: center;\n      justify-content: center;\n      color: #fff;\n      font-size: 24px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"title\" id=\"systemTitle\">Campaign Leads</div>\n  <div class=\"form-container\">\n    <form id=\"uploadForm\">\n      <div class=\"label-container\">\n        <label for=\"csvFile\">Upload CSV File:</label>\n      </div>\n      <div class=\"input-container\">\n        <input type=\"file\" id=\"csvFile\" name=\"csvFile\" accept=\".csv\" required />\n      </div>\n      <div class=\"label-container\">\n        <label for=\"additionalInfo\">Additional Info:</label>\n      </div>\n      <div class=\"input-container\">\n        <textarea id=\"additionalInfo\" name=\"additionalInfo\" placeholder=\"Enter any additional information here...\"></textarea>\n      </div>\n      <div class=\"button-container\">\n        <button type=\"submit\" id=\"submitBtn\">Submit</button>\n      </div>\n    </form>\n  </div>\n  <div class=\"overlay\" id=\"overlay\">Uploading...</div>\n  <script>\n    const uploadForm = document.getElementById(\"uploadForm\");\n    const submitBtn = document.getElementById(\"submitBtn\");\n    const overlay = document.getElementById(\"overlay\");\n\n    uploadForm.addEventListener(\"submit\", async function(event) {\n      event.preventDefault();\n      const fileInput = document.getElementById(\"csvFile\");\n      const additionalInfo = document.getElementById(\"additionalInfo\").value;\n      if (fileInput.files.length === 0) {\n        alert(\"Please select a CSV file.\");\n        return;\n      }\n      // Disable the submit button and show the overlay\n      submitBtn.disabled = true;\n      overlay.style.display = \"flex\";\n\n      const file = fileInput.files[0];\n      const formData = new FormData();\n      formData.append(\"csvFile\", file);\n      formData.append(\"additionalInfo\", additionalInfo);\n\n      try {\n        const response = await fetch(\"https://xl.epicpc.com/webhook/c106eba7-e172-4344-bab6-c8b233438f26\", {\n          method: \"POST\",\n          body: formData\n        });\n        if (!response.ok) {\n          throw new Error(\"Upload failed with status \" + response.status);\n        }\n        // Reload the page after successful upload\n        window.location.reload();\n      } catch (error) {\n        alert(\"Error during upload: \" + error.message);\n        submitBtn.disabled = false;\n        overlay.style.display = \"none\";\n      }\n    });\n  </script>\n</body>\n</html>`\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "7cb07424-bd43-4761-9acf-b9bd0a7cdee1",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "78aad3e3-8ac7-4e5d-a60a-1d6352ccda30",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c106eba7-e172-4344-bab6-c8b233438f26",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "id": "0631c9d8-7042-44b4-b62d-db2954c4d2dd",
+      "name": "Webhook1",
+      "webhookId": "c106eba7-e172-4344-bab6-c8b233438f26"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "csvFile",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        220,
+        320
+      ],
+      "id": "c01438ba-c543-44e8-92b3-77f5801ebe33",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        480,
+        220
+      ],
+      "id": "b858c969-b085-48ff-a6fa-a4125331c92c",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9889a681-c04d-4a9a-b115-f24ef61785ec",
+              "name": "Info",
+              "value": "={{ $json.body.additionalInfo }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        280,
+        200
+      ],
+      "id": "92b61b5d-df26-4569-8353-e8a0c58fbde4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        700,
+        220
+      ],
+      "id": "ff98a3ee-8edb-4ca1-8235-0f184c79641b",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Lead: {{ $json.Info }}\",\n       \"GROUP_ID\": 235,\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": {{ JSON.stringify($json.description) }},\n      \"TAGS\": [\"\"]\n   }\n}\n",
+        "options": {}
+      },
+      "id": "c184274f-a8da-4bfc-a229-43767b1a3bc1",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1340,
+        260
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        80
+      ],
+      "id": "a93f853a-bf8a-452a-821b-917bf5e892a3",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  let description = '';\n  \n  for (const [key, value] of Object.entries(item.json)) {\n    // [b] for bold; add \\n for line breaks\n    description += `[b]${key}[/b]: ${value}\\n`;\n  }\n  \n  return {\n    json: {\n      description\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        360
+      ],
+      "id": "377fb156-f86f-4b62-935e-6c6ad3169e1e",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06793c03-4279-40c9-88d1-9b8be7c48fa1",
+              "name": "Info",
+              "value": "={{ $json.Info }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        940,
+        180
+      ],
+      "id": "43f0bc16-7ffe-4c46-b84b-f318427fc344",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1140,
+        260
+      ],
+      "id": "c651c909-7787-48f7-b42e-6158a991563d",
+      "name": "Merge1"
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.50",
+            "x-forwarded-for": "10.0.24.50",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "3708",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+            "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Microsoft Edge\";v=\"134\"",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryiVm5alJZJiAZveZ4",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/2d7255da-e56b-4e45-950a-1c080a1764cf",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bi2wlGyWUrU8csBnMpC2ky94UMvv6i1l8%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BlOAQjwoHJTIaa%2BnRWw%2FuYu7Q4OoFm%2BVc%3D; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiJkOGU0ZmExYy0yMTk2LTQ3ODAtYjFhMi0zNGI5NzYyYWZhMjciLCJpbmJveF9pZCI6MX0.0lRACgYRzS4v3ie0Q3KCpE2J2om9Qu4ndLgNQa8saXU; theme=light; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiYW9ldjhjM1NoOG5jMDNLc1A4R2dYK1dkUElNWFVaTWE0ejl6WjNZVndjZz0iLCJpYXQiOjE3NDI5MzkyNDAsImV4cCI6MTc0MzU0NDA0MH0.0umWGspOdMMPr83pwIpLNaOtc-Uip7vyTYTkQUZ7508; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19cQDlUOmVyvD%2BE6%2BLhXEXDezcgrXoybzf7u7ZrXL9E%2FuiwdS567mGJeAOb0EwJtwrNqkVwecp3Gg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19PIBsDvTr0OMomLqmQDUA%2FWTAqRNxim9BaerM%2Bdu2FGV67pTyndQs4ECiJQJ7fLxefCTFfN%2Bm4y%2F%2Fs%2FM9QBIietsNo6gvo4uFGZOoFNGu1blAyHGXabP3Wwi4uX6sFoq2%2FeUQ%2Fe7XOgWbVi4tN9cQhn%2BtQQjEsaXU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18uvLn9R8I9bHb7NMDd9rCaUbtmK8HPDIucXdrk7CyIUrbbFErEcTn5sMtltPShB%2B2xf6bo%2F4RB9jTT9dOhVj94i5AWGIG8FFrMYlA%2FAMC4zR0mdiA5fbwb50wxXhROhovTYJecKluCBQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1743089006703%2C%220195d81c-d7e8-7d7e-974b-382be3d4cf7e%22%2C1743087523816%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19TZ12wmX63HCorn%2FYYwe1elvmhcPJj0KeXHpwlh4YK%2F%2Bn%2FY8NOuX%2B44uLuCX4tA7dvuSGJWIvX0Xvl0dYG8bUdnjfzyKR1FmbB7n310EyfCYJKYR68bCkEls2%2FZKh64tx2EnHVa8uFSg%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "additionalInfo": "Here is the other stuff"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/c106eba7-e172-4344-bab6-c8b233438f26",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP 24 Bitrix24 Check": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "283495",
+              "parentId": null,
+              "title": "tstilwell@epichs.org | Turbo Ticketing",
+              "description": "What location?: FER\nWhich roles?: Provider\nFuture date: \nAdd csv: sfadfa",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "1007",
+              "createdBy": "19",
+              "createdDate": "2025-03-26T14:56:22-04:00",
+              "responsibleId": "19",
+              "changedBy": "19",
+              "changedDate": "2025-03-26T14:56:22-04:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2025-03-26T14:56:22-04:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{2bcc9323-1c9c-49f5-bf36-421bc0fce78a}",
+              "xmlId": null,
+              "commentsCount": null,
+              "serviceCommentsCount": null,
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": null,
+              "forumId": null,
+              "siteId": "ie",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "1",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "flowId": null,
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2025-03-26T14:56:22-04:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "126",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "126",
+                "name": "_Workflow Automations",
+                "opened": false,
+                "membersCount": 3,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1743015382.570514,
+            "finish": 1743015383.168443,
+            "duration": 0.5979290008544922,
+            "processing": 0.5377731323242188,
+            "date_start": "2025-03-26T14:56:22-04:00",
+            "date_finish": "2025-03-26T14:56:23-04:00"
+          }
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Info": "stuff",
+          "Appointment_ID": "25521423",
+          "Patient_ID": "238014",
+          "Patient_Number": "1134660",
+          "Patient_Name": "ROBERT DAVIS",
+          "start": "1620",
+          "location": "EPS10Mil",
+          "date": "2025-03-20T00:00:00.000Z",
+          "provider_name": "Kalabat, Amber",
+          "Id": "4839",
+          "CreatedAt": "2025-03-19 11:16:22",
+          "SchedulingLink": "https://xl.epicpc.com/webhook/141a4626-dfa8-4ad8-b96f-f4533a5af6ea?campaign=&source=222825&medium=Survey&event=&other=&&mrn=&survey_id=144716&stoken=kuBuv",
+          "Scheduler": "Self-Scheduled",
+          "PatientPhone": "7342184491",
+          "PatientSex": "M",
+          "Insurance": "Zing Choice MI (HMO) (MA)",
+          "newDate": "2025-03-19T10:57:54.070-04:00"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-27T17:05:37.813Z",
+  "versionId": "ca36529f-23d2-4022-a106-48d31d483442"
+}
