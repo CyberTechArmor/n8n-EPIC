@@ -1,0 +1,695 @@
+{
+  "active": false,
+  "connections": {
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Check Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token1": {
+      "main": [
+        [
+          {
+            "node": "Code29",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token21",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token21": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token21": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow12": {
+      "main": [
+        [
+          {
+            "node": "USER18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields13": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "USER18": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code29": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "PM Patient Info2": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Create Walk-in1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-23T20:57:48.550Z",
+  "id": "vJhWbmyRjaqcQ7kg",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 46",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $json.user }}.txt",
+        "options": {}
+      },
+      "id": "ab64017d-5bbb-4ec5-89f0-5ac6cbcf987e",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        240
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "820603b1-b86c-499d-97e1-a2b9791f5cc3",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        40,
+        240
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"{{ $('USER18').item.json.user }}\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"{{ $('USER18').item.json.password }}\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "23f86706-7d59-43ac-8a46-f534509dcc8f",
+      "name": "Check Token1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        220,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "81d39303-0a04-4440-8fe6-da2331b9c012",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        340
+      ],
+      "webhookId": "666ea0a7-be04-4fbf-80a1-d71780f7eac8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "83566527-cca2-4828-9846-9be2b9eaf47d",
+      "name": "IF PM Token Valid1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        500,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication ELISEAI",
+        "height": 373.491094826977,
+        "width": 1498.6041394020742,
+        "color": 6
+      },
+      "id": "1c3a91c2-e191-479a-baab-69e2811779fa",
+      "name": "Sticky Note24",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $('USER18').item.json.user }}.txt",
+        "options": {}
+      },
+      "id": "d89fc3c4-37be-42de-8e18-b26c867b7aaf",
+      "name": "Read PM Token21",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        720,
+        180
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "3d808f4a-3db1-496a-991c-bf200504fdb1",
+      "name": "Extract PM Token21",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        860,
+        180
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "851f61ec-8d19-4531-aa98-de31c0b4ae25",
+      "name": "Execute Workflow12",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        840,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9906435a-cf38-4211-8963-a9d937267763",
+      "name": "Edit Fields13",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1020,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b806a87b-407c-47eb-b9ba-1aca0d81400d",
+              "name": "user",
+              "value": "eliseai",
+              "type": "string"
+            },
+            {
+              "id": "c45539b3-dcfd-4d9b-a267-54d31648d3b0",
+              "name": "password",
+              "value": "L3tsC0nnect!C0nf",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c18e4489-13c3-443f-b75f-5addd25331f3",
+      "name": "USER18",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -260,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "6ec8fb02-5c27-4189-af6e-79346552cbdc",
+      "name": "Code29",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "b6e4b047-52b3-42eb-b8eb-f8d0b5c13161",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n\nWHERE Patient_Number = '{{ $json.params.patientId }}'"
+      },
+      "id": "f4718158-5127-4c74-8468-f6820ed7b59c",
+      "name": "PM Patient Info2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        540
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "af42545b-c431-49e9-83b3-a350913f3f02",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SaveForcedAppointment"
+            },
+            {
+              "name": "AppUserID",
+              "value": "eliseai"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $json.Patient_ID }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "=<appt><appointmentDateTime>{{ $json.body.selectedDetails.date_start_combined }}</appointmentDateTime>{{ $json.body.selectedDetails.duration }}<appointmentDuration></appointmentDuration><appointmentType>{{ $json.body.selectedDetails.AT_Abbreviation }}</appointmentType><schedulingLocation>{{ $json.body.selectedDetails.location }}</schedulingLocation><schedulingDepartment>EPIC PC</schedulingDepartment><resource>{{ $json.body.selectedDetails.resource_abbr }}</resource><comments>Quick Scheduler</comments><bypassOverlap>Y</bypassOverlap></appt>"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "decd3cce-b97a-4cab-a03c-5efc4d22da47",
+      "name": "HTTP Create Walk-in1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1680,
+        440
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "696c859b-7696-4a23-a186-b45a04e17407",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over all incoming items\nitems.forEach(item => {\n  const now = new Date();\n\n  // Format date part as MM/DD/YYYY\n  const month = String(now.getMonth() + 1).padStart(2, '0');\n  const day   = String(now.getDate()).padStart(2, '0');\n  const year  = now.getFullYear();\n\n  // Format time part as hh:mm AM/PM\n  let hours = now.getHours();\n  const minutes = String(now.getMinutes()).padStart(2, '0');\n  const ampm = hours >= 12 ? 'PM' : 'AM';\n  hours = hours % 12 || 12; // convert 0 to 12\n  const hoursFormatted = String(hours).padStart(2, '0');\n\n  // Combine into one string\n  item.json.currentDateTime = `${month}/${day}/${year} ${hoursFormatted}:${minutes} ${ampm}`;\n});\n\n// Return the modified items\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "db965e9a-f415-4e00-8b6d-ec5a3dc8b2d7",
+      "name": "Code"
+    }
+  ],
+  "pinData": {
+    "PM Patient Info2": [
+      {
+        "json": {
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "thomas@tagarmor.com",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      }
+    ],
+    "Merge4": [
+      {
+        "json": {
+          "Token": "6B0AD061-E828-4C02-9884-5C9777AEA713",
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 37,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "thomas@tagarmor.com",
+          "BitrixPatientStatus": "EHS Patient",
+          "params": {
+            "fullName": "THOMAS+STILWELL",
+            "patientId": "502880",
+            "reference": "4C95DE31-8A69-430F-8F8F-8A478E9E2628",
+            "LTSR": "Fail",
+            "caretype": "PCARE",
+            "schedule": "%7B%22index%22%3A251%2C%22slots_available%22%3A0%2C%22start_fixer%22%3A%2210%3A40%22%2C%22start%22%3A%2210%3A40%20AM%22%2C%22end%22%3A%2210%3A50%22%2C%22location%22%3A%22EPSTel%20%20%22%2C%22date%22%3A%2203-26-2025%22%2C%22day%22%3A%22Wednesday%22%2C%22location_description%22%3A%22EPIC%20Southfield%20Telegraph%22%2C%22provider_name%22%3A%22KURISHI%2C%20YASMINE%22%2C%22duration%22%3A%2210%22%2C%22provider%22%3A%22YK-PA%20%20%20%22%2C%22res_appointment_group_id%22%3A42%2C%22resource_abbr%22%3A%22YK-PA%20%20%20%22%2C%22orderkeytime%22%3A%222025-03-26%2010%3A40%3A00%22%7D"
+          },
+          "schedule": {
+            "index": 251,
+            "slots_available": 0,
+            "start_fixer": "10:40",
+            "start": "10:40 AM",
+            "end": "10:50",
+            "location": "EPSTel  ",
+            "date": "03-26-2025",
+            "day": "Wednesday",
+            "location_description": "EPIC Southfield Telegraph",
+            "provider_name": "KURISHI, YASMINE",
+            "duration": "10",
+            "provider": "YK-PA   ",
+            "res_appointment_group_id": 42,
+            "resource_abbr": "YK-PA   ",
+            "orderkeytime": "2025-03-26 10:40:00"
+          },
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "692",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+            "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Microsoft Edge\";v=\"134\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/b4264e0e-085f-49c0-9471-1009eafa4ce01?fullName=THOMAS%2BSTILWELL&patientId=502880&reference=4C95DE31-8A69-430F-8F8F-8A478E9E2628&LTSR=Fail&caretype=PCARE&schedule=%257B%2522index%2522%253A251%252C%2522slots_available%2522%253A0%252C%2522start_fixer%2522%253A%252210%253A40%2522%252C%2522start%2522%253A%252210%253A40%2520AM%2522%252C%2522end%2522%253A%252210%253A50%2522%252C%2522location%2522%253A%2522EPSTel%2520%2520%2522%252C%2522date%2522%253A%252203-26-2025%2522%252C%2522day%2522%253A%2522Wednesday%2522%252C%2522location_description%2522%253A%2522EPIC%2520Southfield%2520Telegraph%2522%252C%2522provider_name%2522%253A%2522KURISHI%252C%2520YASMINE%2522%252C%2522duration%2522%253A%252210%2522%252C%2522provider%2522%253A%2522YK-PA%2520%2520%2520%2522%252C%2522res_appointment_group_id%2522%253A42%252C%2522resource_abbr%2522%253A%2522YK-PA%2520%2520%2520%2522%252C%2522orderkeytime%2522%253A%25222025-03-26%252010%253A40%253A00%2522%257D",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bi2wlGyWUrU8csBnMpC2ky94UMvv6i1l8%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BlOAQjwoHJTIaa%2BnRWw%2FuYu7Q4OoFm%2BVc%3D; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiJkOGU0ZmExYy0yMTk2LTQ3ODAtYjFhMi0zNGI5NzYyYWZhMjciLCJpbmJveF9pZCI6MX0.0lRACgYRzS4v3ie0Q3KCpE2J2om9Qu4ndLgNQa8saXU; theme=light; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiYW9ldjhjM1NoOG5jMDNLc1A4R2dYK1dkUElNWFVaTWE0ejl6WjNZVndjZz0iLCJpYXQiOjE3NDI0NzA5ODIsImV4cCI6MTc0MzA3NTc4Mn0.SUi197F9Wjms2xMfAxyA81FlSUFVqQaEefVC-ak6PZM; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2B%2Futxgm6J1Uz2le9hWo5QpkDovTKVSFCt1MqWGcfEP2XAG%2BLM2Kou08rmS%2BrP0qHnpQbVUGxbQSA%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19Ho4uk0ZtAeXs%2BnlcdBhv0YxntvKpUcAI9tyGjd8uA%2FJPBi9IPhRj1wWAuKgA%2FnMGx%2Bri3oMF%2Fa%2FdoepfZRjA15BAdNCrlZgDUD%2FfUH8ojs2Y9KImgn0GG46IUgefi7%2BYHQesaFPuzORyhuwDSWes4W49k3W4FPoU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FLFRpinzDhaBwR7wZebGdWz3lxGTQgdQ6Cn3210IfdzzA8h%2BKUZPIxkZtU%2BgPNbAHIGlCFe%2BgOhszbwl1G%2BIHd6%2BsPVBSpAUpKY3ee1Hh1J0cj6fgQzAbbWhK3zUa7g2bhtpQQcDskaw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1742763602149%2C%220195c4bf-b146-7e40-a05d-b91490f414e3%22%2C1742762651974%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19cwaIXmR8pFy5dyg3PhNBKGt0HV5OdDMwt3yt2rSRa9qB1o%2B0BTC1UlrW%2FOTybey2SnjdGtdA1arOzfjhVYRWisODg93X8Pocv%2FS3nNI5%2BTonozZYkliY%2FFIIYG%2FFVCsEGDlcOwsxVaw%3D%3D"
+          },
+          "query": {},
+          "body": {
+            "selectedDetails": {
+              "index": 251,
+              "slots_available": 0,
+              "start_fixer": "10:40",
+              "start": "10:40 AM",
+              "end": "10:50",
+              "location": "EPSTel  ",
+              "date": "03/26/2025",
+              "day": "Wednesday",
+              "location_description": "EPIC Southfield Telegraph",
+              "provider_name": "KURISHI, YASMINE",
+              "duration": "10",
+              "provider": "YK-PA   ",
+              "res_appointment_group_id": 42,
+              "resource_abbr": "YK-PA   ",
+              "orderkeytime": "2025-03-26 10:40:00",
+              "date_start_combined": "03/26/2025 10:40 AM",
+              "Appointment_Type_ID": 234,
+              "AT_Abbreviation": "ACT OV  ",
+              "AppoinmentTypeToDisplay": "Regular Office Visit",
+              "Description": "ACT -  Office Visit",
+              "Virtual_Visit": false,
+              "Appointment_Group_ID": 42,
+              "AG_Abbreviation": "ACT     ",
+              "AG_Description": "ACT - Advanced Care Team "
+            }
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/071d4348-0cab-4636-a74e-675d0942f05e",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP Create Walk-in1": [
+      {
+        "json": {
+          "saveforcedappointmentinfo": [
+            {
+              "Encounter_Number": "",
+              "Appointment_ID": "25375783"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-23T20:57:48.550Z",
+  "versionId": "b7efcb58-1817-445f-943a-8c9bc0295002"
+}
