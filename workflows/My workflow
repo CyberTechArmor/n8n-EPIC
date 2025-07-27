@@ -1,0 +1,81 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-01T23:02:51.136Z",
+  "id": "XkBE6aDvPDCzwud5",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f7127169-9463-48d3-8b06-b467a70332a5",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nWITH icdcpt AS (\n  SELECT \n    s.Service_ID,\n    s.Patient_Number AS MRN,\n    s.Service_Date_From,\n    s.Diagnosis_Code,s.Diagnosis_Descr,\n    s.Procedure_Code,\n    s.Procedure_Insurance_Descr,\n    s.Voucher_ID,\n    s.Billing_Carrier_Name,\n    s.Actual_Dr_Name,\n    ROW_NUMBER() OVER (PARTITION BY s.patient_number,s.diagnosis_code ORDER BY s.Service_Date_From DESC) AS RowNum\n  FROM [PM].[vwGenSvcDiagInfo] s\n  WHERE s.Procedure_Code IN (\n    '99381','99382','99383','99384','99385','99386','99387','99391','99392','99393','99394','99395','99396','99397','G0402','G0438','G0439')\n  AND s.Service_Diagnosis_Position != 1\n  AND s.Service_Date_From  BETWEEN DATEADD(DAY,-910,GETDATE()) AND DATEADD(DAY,0,GETDATE())\n  AND (s.Diagnosis_Code LIKE 'z00%' OR s.Diagnosis_Code LIKE 'Z01.419')\n)\n,\ndemo as(select p.Patient_Number as MRN,p.Patient_First_Name,p.Patient_Last_Name,p.Patient_Home_Phone, p.Patient_Cell_Phone,\np.Patient_Age,p.Patient_Email,p.Patient_DOB\nfrom [dbo].[vwGenPatInfo] p),\n\ndaylook42day as(SELECT \na.Patient_Number as MRN,\na.Appt_DateTime,a.Appt_Sched_Location_Descr,a.Appt_Status,a.Appt_Type_Descr,\n'SCHEDULED42DayFromToday' as '42dayLookFromToday'\nFROM [PM].[vwGenPatApptInfo] a\nWHERE\n    CAST(a.Appt_DateTime AS DATE) BETWEEN DATEADD(DAY, -1, GETDATE()) AND DATEADD(DAY, 42, GETDATE())\n    AND a.Appt_Sched_Location_Abbr NOT IN ('CMV', 'PALAB')\n    AND a.Appt_Sched_Location_Abbr NOT LIKE 'DIAG%'\n    AND a.Appt_Sched_Location_Descr NOT LIKE 'BH%'\n    AND (\n        (\n            a.Appt_Type_Abbr LIKE 'DUAL%'\n            OR a.Appt_Type_Abbr LIKE '%PHYSIC%'\n            OR a.Appt_Type_Abbr LIKE '%WELL%'\n            OR a.Appt_Type_Abbr LIKE '%PHYS%'\n            OR a.Appt_Comments LIKE '%physical%'\n            OR a.Appt_Comments LIKE '%awv%'\n            OR a.Appt_Comments LIKE '%cwe%'\n            OR a.Appt_Comments LIKE '%pap%'\n            OR a.Appt_Comments LIKE '%well%'\n        )\n    )\n    AND a.Appt_Status = 'S'\n    and (a.Appt_Canc_Reason_Abbr != 'BUMPED' or a.Appt_Canc_Reason_Abbr is null))\n\n\n\nselect i.Service_ID,i.Service_Date_From,i.Diagnosis_Code,i.Diagnosis_Descr,\ni.Procedure_Code,i.Procedure_Insurance_Descr,i.Voucher_ID,i.Billing_Carrier_Name,i.Actual_Dr_Name,\nd.*,f.Appt_DateTime,f.[42dayLookFromToday],f.Appt_Sched_Location_Descr,f.Appt_Status,f.Appt_Type_Descr\nfrom icdcpt i\nleft join demo d on i.MRN=d.MRN\nleft join daylook42day f on i.MRN=f.MRN\nwhere i.RowNum =1\n\n"
+      },
+      "id": "35fc0fbb-37b3-40af-82b5-534d14184d3a",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        360
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "298fdcd7-4063-4ff3-8517-46114cf259e7",
+        "options": {}
+      },
+      "id": "d81e4ae7-9e57-4a47-977d-629bbb4dd298",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "298fdcd7-4063-4ff3-8517-46114cf259e7"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-24T12:32:01.060Z",
+  "versionId": "f61fb3e2-4d4d-43c7-abcd-1be2556e19e9"
+}
