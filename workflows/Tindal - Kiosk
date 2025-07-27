@@ -1,0 +1,169 @@
+{
+  "active": true,
+  "connections": {
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-28T19:28:34.263Z",
+  "id": "DGBr0M1RUy4PzGzS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Tindal - Kiosk",
+  "nodes": [
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Image Carousel with Rotation</title>\n<style>\n  body, html {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n  }\n  .carousel-container {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    overflow: hidden;\n  }\n  .carousel-slide {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n    opacity: 0;\n    transition: opacity 2s ease-in-out;\n    z-index: -1; /* Keep slides in the background */\n  }\n  .active {\n    opacity: 1;\n    z-index: 1; /* Make active slide appear on top */\n  }\n  .button-container {\n    position: absolute;\n    bottom: 20px;\n    width: 100%;\n    text-align: center;\n    z-index: 2; /* Ensure buttons are on top */\n  }\n  .nav-btn {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    padding: 10px 20px;\n    border: none;\n    background-color: #007bff;\n    color: white;\n    cursor: pointer;\n    font-size: 16px;\n    z-index: 2; /* Ensure nav buttons are on top */\n  }\n  #prevBtn {\n    left: 20px;\n  }\n  #nextBtn {\n    right: 20px;\n  }\n  .learn-more-btn {\n    padding: 10px 20px;\n    font-size: 18px;\n    color: #fff;\n    background-color: #007bff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"carousel-container\">\n  <div class=\"carousel-slide active\" style=\"background-image: url('https://file.cybertech.app/Kiosk/Tindel/epic_providers.png');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://file.cybertech.app/Kiosk/Tindel/family.png');\"></div>\n   <div class=\"carousel-slide\" style=\"background-image: url('https://file.cybertech.app/Kiosk/Tindel/no_insurance.png');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://file.cybertech.app/Kiosk/Tindel/pain.png');\"></div>\n\n\n  <div class=\"button-container\">\n    <button id=\"prevBtn\" class=\"nav-btn\">Prev</button>\n    <button id=\"nextBtn\" class=\"nav-btn\">Next</button>\n<!--    <button class=\"learn-more-btn\" id=\"learnMoreBtn\">Learn More</button> -->\n  </div>\n</div>\n\n<script>\n  const slides = document.querySelectorAll('.carousel-slide');\n  const learnMoreBtn = document.getElementById('learnMoreBtn');\n  const prevBtn = document.getElementById('prevBtn');\n  const nextBtn = document.getElementById('nextBtn');\n  const links = [\"https://mariomorrow.com/\", \"https://www.healthykidzinc.org/\", \"https://epichs.org\",\"https://blueskypro.org/\" ,\"https://myunitycare.com/\"];\n  let currentSlide = 0;\n\n  function goToSlide(slide) {\n    slides[currentSlide].classList.remove('active');\n    currentSlide = slide;\n    slides[currentSlide].classList.add('active');\n    learnMoreBtn.setAttribute('onclick', `location.href='${links[currentSlide]}'`);\n  }\n\n  function nextSlide() {\n    const nextIndex = (currentSlide + 1) % slides.length;\n    goToSlide(nextIndex);\n  }\n\n  function prevSlide() {\n    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;\n    goToSlide(prevIndex);\n  }\n\n  prevBtn.addEventListener('click', prevSlide);\n  nextBtn.addEventListener('click', nextSlide);\n\n  // Automatically cycle through slides every 20 seconds\n  setInterval(nextSlide, 20000);\n\n  // Set initial link\n  learnMoreBtn.setAttribute('onclick', `location.href='${links[0]}'`);\n</script>\n\n</body>\n</html>\n"
+      },
+      "id": "aecdb53f-0f41-43ea-b2d7-cc160abe668d",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $('HTML').params[\"html\"] }}",
+        "options": {}
+      },
+      "id": "58bab950-048a-4688-a0dd-e78e20dbba6a",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "path": "9c2b39d4-aa9e-4e52-9d59-263c7b352b20",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d53103b2-f377-4597-b7bb-99d0a8088d29",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        720,
+        360
+      ],
+      "webhookId": "9c2b39d4-aa9e-4e52-9d59-263c7b352b20"
+    },
+    {
+      "parameters": {
+        "content": "## Original",
+        "height": 248,
+        "width": 452,
+        "color": 3
+      },
+      "id": "b1d1a0bf-ec15-4c06-bdf6-c1d561462c2e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://file.cybertech.app/Kiosk/Tindel?json",
+        "options": {}
+      },
+      "id": "6828396d-7fb2-4d19-98dd-68ae120681f7",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the paths array from the previous node (HTTP Request Node)\nconst pathsArray = items[0].json.paths;\n\n// Define your domain URL and suffix\nconst domainURL = 'https://file.cybertech.app/Kiosk/Tindel/';\nconst suffix = ''; // You can add a suffix if needed\n\n// Initialize an empty string to hold the concatenated HTML for slides\nlet slidesHTML = '';\n\n// Loop through the paths array and concatenate the HTML strings for slides\nfor (let i = 0; i < pathsArray.length; i++) {\n  if (pathsArray[i].path_type === 'File') {\n    const activeClass = i === 0 ? ' active' : '';\n    slidesHTML += `<div class=\"carousel-slide${activeClass}\" style=\"background-image: url('${domainURL}${pathsArray[i].name}${suffix}');\"></div>\\n`;\n  }\n}\n\n// Complete HTML with the slidesHTML inserted\nconst completeHTML = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Image Carousel with Rotation</title>\n<style>\n  body, html {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n  }\n  .carousel-container {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    overflow: hidden;\n  }\n  .carousel-slide {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n    opacity: 0;\n    transition: opacity 2s ease-in-out;\n    z-index: -1; /* Keep slides in the background */\n  }\n  .active {\n    opacity: 1;\n    z-index: 1; /* Make active slide appear on top */\n  }\n  .button-container {\n    position: absolute;\n    bottom: 20px;\n    width: 100%;\n    text-align: center;\n    z-index: 2; /* Ensure buttons are on top */\n  }\n  .nav-btn {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    padding: 10px 20px;\n    border: none;\n    background-color: #007bff;\n    color: white;\n    cursor: pointer;\n    font-size: 16px;\n    z-index: 2; /* Ensure nav buttons are on top */\n  }\n  #prevBtn {\n    left: 20px;\n  }\n  #nextBtn {\n    right: 20px;\n  }\n  .learn-more-btn {\n    padding: 10px 20px;\n    font-size: 18px;\n    color: #fff;\n    background-color: #007bff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"carousel-container\">\n  ${slidesHTML}\n  <div class=\"button-container\">\n    <button id=\"prevBtn\" class=\"nav-btn\">Prev</button>\n    <button id=\"nextBtn\" class=\"nav-btn\">Next</button>\n    <!-- <button class=\"learn-more-btn\" id=\"learnMoreBtn\">Learn More</button> -->\n  </div>\n</div>\n\n<script>\n  const slides = document.querySelectorAll('.carousel-slide');\n  const learnMoreBtn = document.getElementById('learnMoreBtn');\n  const prevBtn = document.getElementById('prevBtn');\n  const nextBtn = document.getElementById('nextBtn');\n  const links = [\"https://mariomorrow.com/\", \"https://www.healthykidzinc.org/\", \"https://epichs.org\",\"https://blueskypro.org/\" ,\"https://myunitycare.com/\"];\n  let currentSlide = 0;\n\n  function goToSlide(slide) {\n    slides[currentSlide].classList.remove('active');\n    currentSlide = slide;\n    slides[currentSlide].classList.add('active');\n    learnMoreBtn.setAttribute('onclick', \\`location.href='\\${links[currentSlide]}'\\`);\n  }\n\n  function nextSlide() {\n    const nextIndex = (currentSlide + 1) % slides.length;\n    goToSlide(nextIndex);\n  }\n\n  function prevSlide() {\n    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;\n    goToSlide(prevIndex);\n  }\n\n  prevBtn.addEventListener('click', prevSlide);\n  nextBtn.addEventListener('click', nextSlide);\n\n  // Automatically cycle through slides every 20 seconds\n  setInterval(nextSlide, 20000);\n\n  // Set initial link\n  learnMoreBtn.setAttribute('onclick', \\`location.href='\\${links[0]}'\\`);\n</script>\n\n</body>\n</html>\n`;\n\n// Return the complete HTML\nreturn [{\n  json: {\n    completeHTML: completeHTML\n  }\n}];\n"
+      },
+      "id": "46797ea3-95b9-4bee-a7aa-a4fb03d2f5c2",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.completeHTML }}",
+        "options": {}
+      },
+      "id": "79680173-0852-485e-9dad-f1c87ef2fcc0",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        360
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-07T13:46:11.225Z",
+  "versionId": "7d1a0de0-a322-4ed3-ab70-9822463abe7f"
+}
