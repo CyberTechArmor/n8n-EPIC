@@ -1,0 +1,846 @@
+{
+  "active": false,
+  "connections": {
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Compare Datasets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets1",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-19T15:58:26.676Z",
+  "id": "5Uj7L85I92gF2u8L",
+  "isArchived": false,
+  "meta": null,
+  "name": "Update Contacts",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @STARTDATE DATETIME = '2023-01-01';\nDECLARE @ENDDATE DATETIME = cast(DATEADD(DAY,0,GETDATE()) as date);\nDECLARE @MRN VARCHAR(25) = '197520';\n\nWITH \npatientlist AS (\n    SELECT\n        g.Patient_Number AS MRN,\n        g.Patient_First_Name AS FirstName,\n        g.Patient_Last_Name AS LastName,\n        g.Patient_DOB AS DOB,\n        g.Patient_Email AS Email,\n        '+1' + g.Patient_Cell_Phone AS Mobile,\n        '+1' + g.Patient_Home_Phone AS Home_Phone,\n        '+1' + g.Patient_Primary_Phone_Number AS Other_Phone_Contact,\n        g.Patient_Marital_Status,\n        g.Patient_Date_Reg as PatientRegistrationDate,\n        g.Patient_Is_Inactive as PatientActivityStatus,\n        g.Patient_Sex AS Gender,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Guarantor_LFI,\n        g.Guarantor_Cell_Phone,\n        g.Guarantor_Home_Phone,\n        '' AS PreferredContactMethod\n\n    FROM\n        [Ntier_EPIC].[PM].[vwGenPatInfo] g\n),\nrankedlastappt AS (\n    SELECT\n        v.[Patient_Number],\n        v.[Patient_Last_Name],\n        v.[Patient_First_Name],\n        CAST(v.[Appointment_DateTime] AS date) AS Appt_Date,\n        v.Resource_Desc,\n        v.Sched_Loc_Desc,\n        v.[Status_Desc],\n        ROW_NUMBER() OVER (PARTITION BY v.[patient_number],v.[Status_Desc] ORDER BY CAST(v.[Appointment_DateTime] AS date) DESC) AS RankedAppt\n    FROM\n        [Ntier_EPIC].[PM].[vwApptDetail] v\n),\nlastappt AS (\n    SELECT\n        r.[Patient_Number],\n        r.[Patient_Last_Name],\n        r.[Patient_First_Name],\n        cast(r.Appt_Date as date) as Appt_Date,\n        r.Resource_Desc,\n        r.Sched_Loc_Desc,\n        r.[Status_Desc]\n    FROM\n        rankedlastappt r\n    WHERE\n        r.Patient_Last_Name IS NOT NULL\n        AND r.Status_Desc ='Acknowledged'\n        AND r.RankedAppt=1\n)\nSELECT p.*,r.Appt_Date as Last_Appt_Date\nFROM\n    patientlist p\nINNER JOIN\n    lastappt r\nON\n    r.Patient_Number=p.MRN\nWHERE r.Appt_date between @STARTDATE AND @ENDDATE \n"
+      },
+      "id": "ac65c9a8-d298-4db8-b256-e4c43509dce8",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        240,
+        440
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "MRN",
+              "field2": "SOURCE_DESCRIPTION"
+            }
+          ]
+        },
+        "resolve": "mix",
+        "exceptWhenMix": "ID",
+        "options": {}
+      },
+      "id": "1756e1ba-3e93-4b5d-8e51-313fb13b88fc",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1380,
+        440
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start",
+              "value": "={{ $json.start }}"
+            },
+            {
+              "name": "count",
+              "value": "50"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aaeac2e1-728d-4726-aeb5-9b4a250ae7d0",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        80,
+        980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "42d281c8-4184-4be9-9743-922d9fa8f18e",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "start",
+              "type": "numberValue",
+              "numberValue": "={{ $json.next }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "d70b2d0a-596c-4ef8-92a3-5f3691f7f2d0",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "total",
+              "stringValue": "={{ $json.total }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "453593fe-c000-43ae-91d6-08c467b232ae",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "4d128460-7128-423e-928c-a479d5c52988",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.total }}",
+              "value2": "={{ $json.start }}"
+            }
+          ]
+        },
+        "combineConditions": "OR"
+      },
+      "id": "92a37aec-63dc-4d7b-926b-828eb333f7c2",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.start }}",
+              "operation": "isEmpty"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "a11ac90c-dc03-4ac3-af16-c6005deaec64",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        760,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "f435900f-794e-48fd-98ef-6708e20dfa07",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        360,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n\"MRN\": \n\"197520\",\n\"FirstName\": \n\"TEDDY\",\n\"LastName\": \n\"TEST\",\n\"DOB\": \n\"1971-02-01T00:00:00.000Z\",\n\"Email\": \n\"test@gmail.com\",\n\"Mobile\": \n\"+12489159678\",\n\"Home_Phone\": \n\"+12342329342\",\n\"Other_Phone_Contact\": \nnull,\n\"Patient_Marital_Status\": \n\"Separated\",\n\"PatientRegistrationDate\": \n\"2011-12-16T00:00:00.000Z\",\n\"PatientActivityStatus\": \n0,\n\"Gender\": \n\"M\",\n\"Patient_Street1\": \n\"1111 Providence Dr.,\",\n\"Patient_City\": \n\"GROSS POINTE\",\n\"Patient_State\": \n\"MI\",\n\"Patient_Zip_Code\": \n\"48230\",\n\"Guarantor_LFI\": \n\"TEST, TEDDY\",\n\"Guarantor_Cell_Phone\": \n\"2489159678\",\n\"Guarantor_Home_Phone\": \n\"2342329342\",\n\"PreferredContactMethod\": \n\"\",\n\"Last_Appt_Date\": \n\"2023-10-06T00:00:00.000Z\",\n\"ID\": \n\"5\"\n}",
+        "options": {}
+      },
+      "id": "ac768649-66ba-4a82-82c1-96e401e660d7",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1720,
+        1020
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \n\"id\": {{ $json[\"ID\"] }},\n\"fields\": { \n\n\"NAME\": \"{{ $json[\"FirstName\"] }}\",\n\"LAST_NAME\": \"{{ $json[\"LastName\"] }}\",\n\"BIRTHDATE\": \"{{ $json[\"DOB\"] }}\",\n\"SOURCE_DESCRIPTION\": \"{{ $json[\"MRN\"]}}\",\n\n\"UF_CRM_1698659280\": \"{{ $json[\"Email\"] }}\",\n\n\"UF_CRM_1698434807\": \"{{ $json[\"Patient_Street1\"] }}\",\n\"UF_CRM_1698659418\": \"{{ $json[\"Patient_City\"] }}\",\n\"UF_CRM_1698659434\": \"{{ $json[\"Patient_State\"] }}\",\n\"UF_CRM_1698659453\": \"{{ $json[\"Patient_Zip_Code\"] }}\"\n\n\n\n\n\n\n} }",
+        "options": {}
+      },
+      "id": "e314eae9-cf8d-464b-bfd5-25dba117a62d",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1680,
+        560
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json }}",
+        "options": {}
+      },
+      "id": "897876db-c6ac-4af5-be63-f1c3911dc2c8",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        780,
+        420
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO\nDECLARE \n    json_data JSON := '{{ $json }}';\nBEGIN\n    INSERT INTO your_table (\n        ID, POST, COMMENTS, HONORIFIC, NAME, SECOND_NAME, LAST_NAME, PHOTO, LEAD_ID, TYPE_ID, SOURCE_ID, SOURCE_DESCRIPTION, COMPANY_ID, BIRTHDATE, EXPORT, HAS_PHONE, HAS_EMAIL, HAS_IMOL, DATE_CREATE, DATE_MODIFY, ASSIGNED_BY_ID, CREATED_BY_ID, MODIFY_BY_ID, OPENED, ORIGINATOR_ID, ORIGIN_ID, ORIGIN_VERSION, FACE_ID, LAST_ACTIVITY_TIME, ADDRESS, ADDRESS_2, ADDRESS_CITY, ADDRESS_POSTAL_CODE, ADDRESS_REGION, ADDRESS_PROVINCE, ADDRESS_COUNTRY, ADDRESS_LOC_ADDR_ID, UTM_SOURCE, UTM_MEDIUM, UTM_CAMPAIGN, UTM_CONTENT, UTM_TERM, LAST_ACTIVITY_BY\n    )\n    SELECT \n        (p->>'ID')::INT,\n        p->>'POST',\n        p->>'COMMENTS',\n        p->>'HONORIFIC',\n        p->>'NAME',\n        p->>'SECOND_NAME',\n        p->>'LAST_NAME',\n        p->>'PHOTO',\n        (p->>'LEAD_ID')::INT,\n        p->>'TYPE_ID',\n        p->>'SOURCE_ID',\n        p->>'SOURCE_DESCRIPTION',\n        (p->>'COMPANY_ID')::INT,\n        NULLIF(p->>'BIRTHDATE', '')::DATE,\n        p->>'EXPORT',\n        p->>'HAS_PHONE',\n        p->>'HAS_EMAIL',\n        p->>'HAS_IMOL',\n        (p->>'DATE_CREATE')::TIMESTAMPTZ,\n        (p->>'DATE_MODIFY')::TIMESTAMPTZ,\n        (p->>'ASSIGNED_BY_ID')::INT,\n        (p->>'CREATED_BY_ID')::INT,\n        (p->>'MODIFY_BY_ID')::INT,\n        p->>'OPENED',\n        p->>'ORIGINATOR_ID',\n        (p->>'ORIGIN_ID')::INT,\n        p->>'ORIGIN_VERSION',\n        (p->>'FACE_ID')::INT,\n        (p->>'LAST_ACTIVITY_TIME')::TIMESTAMPTZ,\n        p->>'ADDRESS',\n        p->>'ADDRESS_2',\n        p->>'ADDRESS_CITY',\n        p->>'ADDRESS_POSTAL_CODE',\n        p->>'ADDRESS_REGION',\n        p->>'ADDRESS_PROVINCE',\n        p->>'ADDRESS_COUNTRY',\n        (p->>'ADDRESS_LOC_ADDR_ID')::INT,\n        p->>'UTM_SOURCE',\n        p->>'UTM_MEDIUM',\n        p->>'UTM_CAMPAIGN',\n        p->>'UTM_CONTENT',\n        p->>'UTM_TERM',\n        (p->>'LAST_ACTIVITY_BY')::INT\n    FROM json_populate_recordset(null::your_table, json_data) AS p;\nEND ;\n",
+        "options": {}
+      },
+      "id": "2a1bc2bc-61c3-4cff-9cbd-91b093d035f5",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        780,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "899b34a3-6086-4225-80a6-e55a4592ef25",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1140,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "show TABLE patienttobitrix;",
+        "options": {}
+      },
+      "id": "a544a2f2-c69e-43fb-a8a9-2a37e4aff762",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1300,
+        700
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {}
+      },
+      "id": "dd6cf2a8-7a03-44b7-9d16-c264b639fab6",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1900,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "postgres create table",
+              "stringValue": "CREATE TABLE patienttobitrix (     ID INT PRIMARY KEY,     POST TEXT,     COMMENTS TEXT,     HONORIFIC TEXT,     NAME TEXT,     SECOND_NAME TEXT,     LAST_NAME TEXT,     PHOTO TEXT,     LEAD_ID INT,     TYPE_ID TEXT,     SOURCE_ID TEXT,     SOURCE_DESCRIPTION TEXT,     COMPANY_ID INT,     BIRTHDATE DATE,     EXPORT CHAR(1),     HAS_PHONE CHAR(1),     HAS_EMAIL CHAR(1),     HAS_IMOL CHAR(1),     DATE_CREATE TIMESTAMP WITH TIME ZONE,     DATE_MODIFY TIMESTAMP WITH TIME ZONE,     ASSIGNED_BY_ID INT,     CREATED_BY_ID INT,     MODIFY_BY_ID INT,     OPENED CHAR(1),     ORIGINATOR_ID TEXT,     ORIGIN_ID INT,     ORIGIN_VERSION TEXT,     FACE_ID INT,     LAST_ACTIVITY_TIME TIMESTAMP WITH TIME ZONE,     ADDRESS TEXT,     ADDRESS_2 TEXT,     ADDRESS_CITY TEXT,     ADDRESS_POSTAL_CODE TEXT,     ADDRESS_REGION TEXT,     ADDRESS_PROVINCE TEXT,     ADDRESS_COUNTRY TEXT,     ADDRESS_LOC_ADDR_ID INT,     UTM_SOURCE TEXT,     UTM_MEDIUM TEXT,     UTM_CAMPAIGN TEXT,     UTM_CONTENT TEXT,     UTM_TERM TEXT,     LAST_ACTIVITY_BY INT );"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86c4cbc8-de9a-47b1-9126-4f0a0ecf1fbf",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1800,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "value": "=$json",
+          "mode": "name"
+        },
+        "table": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "id": "c7ca0983-5b14-4bc1-b9e5-da11ff5343ae",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        780,
+        820
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {}
+      },
+      "id": "09381604-a1f5-46c1-aa45-0fcd71edf081",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -300,
+        1680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1a7d4d59-f1c5-40cb-85c5-d4073728b116",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9028e2af-d7b3-4d24-b8c0-264e342b1d57",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        620,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3206a60f-64ff-44f0-830d-ce1e95eaa1bd",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        300,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "d7db8c0e-0105-4df7-b64f-fbb539cedda2",
+      "name": "Compare Datasets1",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        840,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.deltadata;\n",
+        "options": {}
+      },
+      "id": "1ff1a5c3-c8b3-467f-9d3b-69aee699abcb",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -300,
+        2220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "60569468-17be-4cf1-8735-9825d015d1aa",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        2220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "26447c3c-3f3e-443f-b7f3-e2f56b78655b",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        400,
+        2220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "88c71169-9f56-4da1-a28f-eddc9d0b32f8",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        160,
+        2220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {}
+      },
+      "id": "274ae743-ca0e-4403-9247-87ff047bdfa9",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        600,
+        2220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-19T16:20:25.580Z",
+  "versionId": "61465064-5649-44f2-b4a6-6c5755efe4fe"
+}
