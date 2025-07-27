@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "connections": {
+    "CDN": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-22T17:10:55.705Z",
+  "id": "7N7US65WydQa6q4h",
+  "isArchived": false,
+  "meta": null,
+  "name": "RMM Install",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "5019266d-e82d-4a2c-a739-9ebf32edec95",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2891dc71-a6b7-486b-9808-b992b101fcbe",
+      "name": "CDN",
+      "webhookId": "5019266d-e82d-4a2c-a739-9ebf32edec95"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://api.wiretapped.app/clients/d30f6426-940b-4fa7-b67d-ee1721e9dabf/deploy/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "d00c4f5f-ab70-43f0-83dd-c1cc51a48adc",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T17:11:43.826Z",
+  "versionId": "8daed502-a1f7-436a-9601-e70c31e9bf23"
+}
