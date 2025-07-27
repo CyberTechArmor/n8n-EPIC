@@ -1,0 +1,3501 @@
+{
+  "active": true,
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate": {
+      "main": [
+        [
+          {
+            "node": "MonthOf",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MonthOf": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "6DaysAgo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate2": {
+      "main": [
+        [
+          {
+            "node": "Current",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6DaysAgo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CurrentDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "SCS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RO",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ferndale",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clawson",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "7Mile",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Livernois",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Davison",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HQ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Southfield",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Eastpointe",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegraph",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "LDAP1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate1": {
+      "main": [
+        [
+          {
+            "node": "MonthOf1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MonthOf1": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "6DaysAgo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6DaysAgo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate3": {
+      "main": [
+        [
+          {
+            "node": "Current1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CurrentDate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "SCS1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Southfield1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RO1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ferndale1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clawson1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "7Mile1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Livernois1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Davison1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HQ1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Eastpointe1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegraph1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Flint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-08T21:59:37.831Z",
+  "id": "6g986tCZLvxlcqEu",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "UserPrintJobs",
+  "nodes": [
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $json.UserName }}",
+        "limit": 1,
+        "options": {}
+      },
+      "id": "aa7f3871-156a-4a2d-ba76-43377c4eb54d",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        940,
+        400
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1ae28fab-6de6-49b1-b8c2-fa6f0f7ebae0",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.PrinterTotals",
+        "options": {}
+      },
+      "id": "7ff77681-8d97-4bb5-862d-80addac62d67",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        620,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "returnAll": true,
+        "options": {
+          "where": "(User,eq,ma)"
+        }
+      },
+      "id": "972a1cef-5c6c-408c-ba4a-c4377b8fd05f",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        460,
+        -680
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "sum",
+              "field": "Total Pages"
+            }
+          ]
+        },
+        "fieldsToSplitBy": "User",
+        "options": {}
+      },
+      "id": "fe92f0c3-8cb0-40b3-8ac7-6ab18cfa0eed",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        900,
+        -680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95300455-5560-40c8-9fde-2126e283fd97",
+              "name": "Total Pages",
+              "value": "={{ $json['Total Pages'] }}",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "25e67cda-8e30-47ff-82dc-a65f6eb0b488",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        680,
+        -680
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/New_York"
+        }
+      },
+      "id": "70b0cc35-de43-42d6-a52d-db592778fa16",
+      "name": "CurrentDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        500,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "=MMMM - yyyy",
+        "options": {}
+      },
+      "id": "0a68f41b-53d4-4555-8a47-ebdb4b6fe9d1",
+      "name": "MonthOf",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        700,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate').item.json.currentDate }}",
+        "format": "=MM/dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "be3e9a29-cf54-435a-80bb-19aad62cc96b",
+      "name": "Current",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "73ce37c0-4324-46de-87ab-125c9b74a523",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "9cd7b426-0345-4ad4-b27f-ddcb8d7001f6",
+      "name": "6DaysAgo",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate').item.json.currentDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "02858949-e02d-4108-b09d-5ccfb1645951",
+      "name": "CurrentDate2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        900,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "c24cb9a2-d366-46ae-894c-c655d0511d1b",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1860,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3bd6f008-a067-44d7-82c7-4fa8ea69449b",
+              "name": "6DaysAgo",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "3acb24e2-8709-4891-997e-a011b529e71b",
+              "name": "CurrentDate",
+              "value": "={{ $('Current').item.json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "52e1cb08-28e5-40f1-977e-6e62034318c5",
+              "name": "MonthOf",
+              "value": "={{ $('MonthOf').item.json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "360fed06-afb8-40d8-b1a7-7039527ed5b4",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Royal Oak"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "e2cb758f-8abc-47e0-8224-4ed2ecc1e3bf",
+      "name": "RO",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2800,
+        -280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Ferndale"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "b2156170-a85a-4bcc-b3cd-295327790694",
+      "name": "Ferndale",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2820,
+        -80
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Clawson"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "1ad8f18b-ceba-417b-8abb-f31cb947a703",
+      "name": "Clawson",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2840,
+        100
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "7Mile"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "a1ff40c5-54e5-4816-aec8-7cc68c7118fb",
+      "name": "7Mile",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        260
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Livernois"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "0270587e-a141-4a87-915f-03993908000e",
+      "name": "Livernois",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Davison"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "f46cc314-2f9d-4b91-bb7b-901fa02b239a",
+      "name": "Davison",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        600
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "HQ"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "8de0978b-b8ef-40bd-9cba-66464b33a55d",
+      "name": "HQ",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        780
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Southfield"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "31ebbfcf-62c4-42f3-98c6-1cf0f2bc6b12",
+      "name": "Southfield",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        920
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Eastpointe"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "17d0dc31-74dc-4801-ba18-7d59679ab0e5",
+      "name": "Eastpointe",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        1100
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "SCS"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "8b071738-cf34-4df8-a7cc-1e7349cf07c7",
+      "name": "SCS",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2800,
+        -480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "UserPrintJob200",
+        "options": {}
+      },
+      "id": "1ed9ad8d-e23b-4d5a-98e5-6729d87fbd13",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        300,
+        380
+      ],
+      "webhookId": "ae678887-1ec6-4ce0-b122-1d92da35938e"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SCS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SCS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "281c1b71-dbe8-4152-ac11-cb0c7b7b2bef",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "RO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Royal Oak"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7f5e69de-71f3-4449-870d-3e63c878da84",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ferndale"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b42d38b9-0db4-4eaf-b470-16f8ba2540d9",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "CLAW",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Clawson"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e6b4c4b9-4aac-442e-a8e1-23a35a175e59",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "7Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "7Mile"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7b89f6b2-51a9-4b72-a9a6-e76032eb6afb",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Liv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Livernois"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "846b0afb-4a50-4731-8d64-684960bc0374",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Dav",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Davison"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cfa55fc5-edff-4de6-af3c-b9770f1af692",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "HQ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HQ"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e900c102-76ec-4cee-8346-d4957e1ddcd2",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SFD",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SFD"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "f13b79a5-2809-4cb1-8e38-bb3701a8bc53",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "EP",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Eastpointe"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a3e87cc4-9d0e-4eaf-8f40-5f2b54cf35e3",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FARM",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Farmbrook"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3faa6ba-fe57-4b99-930b-5abf187258da",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        2300,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a95b4983-c0f0-491c-b8ca-c945a73878f6",
+              "name": "FirstName",
+              "value": "={{ $json.givenName }}",
+              "type": "string"
+            },
+            {
+              "id": "b06b320b-e370-41a3-8a3a-740d5c330eb1",
+              "name": "LastName",
+              "value": "={{ $json.sn }}",
+              "type": "string"
+            },
+            {
+              "id": "5704f777-1e99-4cd1-8698-8a58923184b1",
+              "name": "UserName",
+              "value": "={{ $('Split Out').item.json.UserName }}",
+              "type": "string"
+            },
+            {
+              "id": "59ac9191-732b-40c0-89f4-b1ceaabb4899",
+              "name": "TotalPagesPrinted",
+              "value": "={{ $('Split Out').item.json.TotalPagesPrinted }}",
+              "type": "number"
+            },
+            {
+              "id": "d1d889ce-85cd-4d48-937c-ab203df2225f",
+              "name": "PrinterName",
+              "value": "={{ $('Split Out').item.json.PrinterName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c255ad6a-3fa8-423d-a3f0-c757ba150917",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mtca07i5ly74ibj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Telegraph"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "3fb01a87-6e1e-4b63-b0a1-45531aa74ccd",
+      "name": "Telegraph",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        1280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $json.UserName }}",
+        "limit": 1,
+        "options": {}
+      },
+      "id": "f7570f08-e84a-438d-9f72-87dfd7c7c6c5",
+      "name": "LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        2520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.PrinterTotals",
+        "options": {}
+      },
+      "id": "dd68943a-4979-4ed0-a5f5-8673237a93ce",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        700,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "outputFieldName": "currentDate1",
+        "options": {
+          "timezone": "America/New_York"
+        }
+      },
+      "id": "62a59ce4-8c0e-4a22-82f4-4481bf581a2b",
+      "name": "CurrentDate1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        580,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate1 }}",
+        "format": "=MMMM - yyyy",
+        "options": {}
+      },
+      "id": "226efc41-e273-40c2-8df7-b5c804780be3",
+      "name": "MonthOf1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        780,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate1').item.json.currentDate1 }}",
+        "format": "=MM/dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "eeea68f7-2edd-4d05-9512-517e1022f57d",
+      "name": "Current1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "fb0fdd2e-d5f0-4389-8de0-b80f2a80ab26",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "29391128-5da3-4ce2-b799-81ada03effa5",
+      "name": "6DaysAgo1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate1').item.json.currentDate1 }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "5b0718bb-aaa9-4539-87b9-de900801abb0",
+      "name": "CurrentDate3",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        980,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "a27a2681-337f-4623-8273-447a9efb816f",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1940,
+        2400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3bd6f008-a067-44d7-82c7-4fa8ea69449b",
+              "name": "6DaysAgo",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "3acb24e2-8709-4891-997e-a011b529e71b",
+              "name": "CurrentDate",
+              "value": "={{ $('Current1').item.json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "52e1cb08-28e5-40f1-977e-6e62034318c5",
+              "name": "MonthOf",
+              "value": "={{ $('MonthOf1').item.json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a7e8d51b-e168-457a-a548-8e02dc028aea",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Royal Oak"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "aca0a6b7-d738-4758-ab10-ac668afced9a",
+      "name": "RO1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        1840
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Ferndale"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "cf49fe18-598c-4eb4-b2fa-68e8d4035ee7",
+      "name": "Ferndale1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        2040
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Clawson"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "ae67afc5-279b-4d7a-8296-4b3e60e811c7",
+      "name": "Clawson1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        2220
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "7Mile"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "a987bf98-8d2d-4ef8-9618-d42aa26dfa40",
+      "name": "7Mile1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        2380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Livernois"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "051dc7cb-e8ae-4e69-8cd9-52ee503cf1b7",
+      "name": "Livernois1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        2540
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Davison"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "b53bad6d-b107-4f45-898c-e38f30b43cf8",
+      "name": "Davison1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2960,
+        2720
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "HQ"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "9a970012-6ed6-4c95-86a0-91c672053b7c",
+      "name": "HQ1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2980,
+        2900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Southfield"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "2ff6c0b7-6071-4b7d-b20b-6e5b675bc45f",
+      "name": "Southfield1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2980,
+        3040
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Eastpointe"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "77fa5b63-2737-4962-bbc4-1c172e1efbc9",
+      "name": "Eastpointe1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3000,
+        3220
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "SCS"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "cd8e4961-24d0-46d2-9c6f-c2009a96973c",
+      "name": "SCS1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        1640
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a95b4983-c0f0-491c-b8ca-c945a73878f6",
+              "name": "FirstName",
+              "value": "={{ $json.givenName }}",
+              "type": "string"
+            },
+            {
+              "id": "b06b320b-e370-41a3-8a3a-740d5c330eb1",
+              "name": "LastName",
+              "value": "={{ $json.sn }}",
+              "type": "string"
+            },
+            {
+              "id": "5704f777-1e99-4cd1-8698-8a58923184b1",
+              "name": "UserName",
+              "value": "={{ $('Split Out1').item.json.UserName }}",
+              "type": "string"
+            },
+            {
+              "id": "59ac9191-732b-40c0-89f4-b1ceaabb4899",
+              "name": "TotalPagesPrinted",
+              "value": "={{ $('Split Out1').item.json.TotalPagesPrinted }}",
+              "type": "number"
+            },
+            {
+              "id": "d1d889ce-85cd-4d48-937c-ab203df2225f",
+              "name": "PrinterName",
+              "value": "={{ $('Split Out1').item.json.PrinterName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08629e05-72bb-4017-a534-e006b07dee18",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        2520
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Telegraph"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "51191e5b-c92f-4c23-bbbe-ba6aa9cdba55",
+      "name": "Telegraph1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3020,
+        3400
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "UserPrintJob190",
+        "options": {}
+      },
+      "id": "99bae254-f156-4639-9ad4-553a30e0e3d1",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        380,
+        2500
+      ],
+      "webhookId": "ae678887-1ec6-4ce0-b122-1d92da35938e"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SCS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SCS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "e900c102-76ec-4cee-8346-d4957e1ddcd2",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SFD_10MILE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SFD"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "281c1b71-dbe8-4152-ac11-cb0c7b7b2bef",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "RO_WOOD",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Royal Oak"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7f5e69de-71f3-4449-870d-3e63c878da84",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FER_9MILE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ferndale"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "b42d38b9-0db4-4eaf-b470-16f8ba2540d9",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "CLAW_MAPLE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Clawson"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "e6b4c4b9-4aac-442e-a8e1-23a35a175e59",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "DET_7MILE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "7Mile"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "7b89f6b2-51a9-4b72-a9a6-e76032eb6afb",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "DET_LIV",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Livernois"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "846b0afb-4a50-4731-8d64-684960bc0374",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "HAM_DAV",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Davison"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "cfa55fc5-edff-4de6-af3c-b9770f1af692",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "HQ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HQ"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "f13b79a5-2809-4cb1-8e38-bb3701a8bc53",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "EP",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Eastpointe"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "a3e87cc4-9d0e-4eaf-8f40-5f2b54cf35e3",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SFD_FARM",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Farmbrook"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "576bd875-ff78-46a1-bfb2-10b492db0fa5",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FLINT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Flint"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ecf2612-7ff8-4ad6-9f7b-ec911cc7d833",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        2380,
+        2340
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mxou2nxs9s6lk9j",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.UserName }}"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.TotalPagesPrinted }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "Telegraph"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $json.MonthOf }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.FirstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.LastName }}"
+            }
+          ]
+        }
+      },
+      "id": "7ec3f669-8e8c-4f5c-b3bc-55699126a304",
+      "name": "Flint",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2700,
+        3200
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.200",
+            "x-forwarded-for": "10.0.1.200",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "10879",
+            "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 6.2; en-US) WindowsPowerShell/4.0",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "PrinterTotals": [
+              {
+                "UserName": "awatko",
+                "TotalPagesPrinted": 12,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 25,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "nwilson",
+                "TotalPagesPrinted": 5,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 6,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "dmckinney",
+                "TotalPagesPrinted": 8,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "asufi",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "sprovencher",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "FER FrontDesk"
+              },
+              {
+                "UserName": "rbiondo",
+                "TotalPagesPrinted": 7,
+                "PrinterName": "FER FrontDesk"
+              },
+              {
+                "UserName": "cwright1",
+                "TotalPagesPrinted": 13,
+                "PrinterName": "RO WW FrontDesk"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "CLAW FrontDesk"
+              },
+              {
+                "UserName": "bbarnett",
+                "TotalPagesPrinted": 50,
+                "PrinterName": "CLAW FrontDesk"
+              },
+              {
+                "UserName": "emozurkewich",
+                "TotalPagesPrinted": 11,
+                "PrinterName": "FER SouthHallway"
+              },
+              {
+                "UserName": "abouier",
+                "TotalPagesPrinted": 22,
+                "PrinterName": "DET 7Mile Front"
+              },
+              {
+                "UserName": "lhollins",
+                "TotalPagesPrinted": 14,
+                "PrinterName": "DET 7Mile Front"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 28,
+                "PrinterName": "FER WestHallway"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 16,
+                "PrinterName": "DET Liv ACTArea"
+              },
+              {
+                "UserName": "msareini",
+                "TotalPagesPrinted": 27,
+                "PrinterName": "DET Liv ACTArea"
+              },
+              {
+                "UserName": "hgodbold",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "jbalint",
+                "TotalPagesPrinted": 15,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "ldbouk",
+                "TotalPagesPrinted": 20,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "bfatima",
+                "TotalPagesPrinted": 34,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "mstevenson",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "ddouglas",
+                "TotalPagesPrinted": 19,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "dwash",
+                "TotalPagesPrinted": 9,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "ladams",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 47,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "cgadoua",
+                "TotalPagesPrinted": 10,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "asufi",
+                "TotalPagesPrinted": 18,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "swebster",
+                "TotalPagesPrinted": 38,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "tda-silva",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "eolsen",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "akalabat",
+                "TotalPagesPrinted": 15,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "sowens1",
+                "TotalPagesPrinted": 10,
+                "PrinterName": "SCSMidPrinter"
+              },
+              {
+                "UserName": "jpatton",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "SCSMidPrinter"
+              },
+              {
+                "UserName": "kcunningham1",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "rjoseph",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "bhnatio",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "abouier",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "cpelzer",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "DET Dav FrontDesk"
+              },
+              {
+                "UserName": "vjones",
+                "TotalPagesPrinted": 58,
+                "PrinterName": "DET Dav FrontDesk"
+              },
+              {
+                "UserName": "cstraughter",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "dwilliams",
+                "TotalPagesPrinted": 16,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "rnewkirk",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "mbabcock",
+                "TotalPagesPrinted": 7,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "danderson",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "lmitchell",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "HQ CC Printer"
+              }
+            ],
+            "TotalPagesToday": 601
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/UserPrintJob200",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.200",
+            "x-forwarded-for": "10.0.1.200",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "10879",
+            "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 6.2; en-US) WindowsPowerShell/4.0",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "PrinterTotals": [
+              {
+                "UserName": "awatko",
+                "TotalPagesPrinted": 12,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 25,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "nwilson",
+                "TotalPagesPrinted": 5,
+                "PrinterName": "SCS ACT"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 6,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "dmckinney",
+                "TotalPagesPrinted": 8,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "asufi",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "RO WW ACT"
+              },
+              {
+                "UserName": "sprovencher",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "FER FrontDesk"
+              },
+              {
+                "UserName": "rbiondo",
+                "TotalPagesPrinted": 7,
+                "PrinterName": "FER FrontDesk"
+              },
+              {
+                "UserName": "cwright1",
+                "TotalPagesPrinted": 13,
+                "PrinterName": "RO WW FrontDesk"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "CLAW FrontDesk"
+              },
+              {
+                "UserName": "bbarnett",
+                "TotalPagesPrinted": 50,
+                "PrinterName": "CLAW FrontDesk"
+              },
+              {
+                "UserName": "emozurkewich",
+                "TotalPagesPrinted": 11,
+                "PrinterName": "FER SouthHallway"
+              },
+              {
+                "UserName": "abouier",
+                "TotalPagesPrinted": 22,
+                "PrinterName": "DET 7Mile Front"
+              },
+              {
+                "UserName": "lhollins",
+                "TotalPagesPrinted": 14,
+                "PrinterName": "DET 7Mile Front"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 28,
+                "PrinterName": "FER WestHallway"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 16,
+                "PrinterName": "DET Liv ACTArea"
+              },
+              {
+                "UserName": "msareini",
+                "TotalPagesPrinted": 27,
+                "PrinterName": "DET Liv ACTArea"
+              },
+              {
+                "UserName": "hgodbold",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "jbalint",
+                "TotalPagesPrinted": 15,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "ldbouk",
+                "TotalPagesPrinted": 20,
+                "PrinterName": "DET Dav Mid Area"
+              },
+              {
+                "UserName": "bfatima",
+                "TotalPagesPrinted": 34,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "mstevenson",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "ddouglas",
+                "TotalPagesPrinted": 19,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "dwash",
+                "TotalPagesPrinted": 9,
+                "PrinterName": "DET Liv FrontDesk"
+              },
+              {
+                "UserName": "ladams",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "ma",
+                "TotalPagesPrinted": 47,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "cgadoua",
+                "TotalPagesPrinted": 10,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "asufi",
+                "TotalPagesPrinted": 18,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "swebster",
+                "TotalPagesPrinted": 38,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "tda-silva",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "eolsen",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "akalabat",
+                "TotalPagesPrinted": 15,
+                "PrinterName": "SFD Mid Printer"
+              },
+              {
+                "UserName": "sowens1",
+                "TotalPagesPrinted": 10,
+                "PrinterName": "SCSMidPrinter"
+              },
+              {
+                "UserName": "jpatton",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "SCSMidPrinter"
+              },
+              {
+                "UserName": "kcunningham1",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "rjoseph",
+                "TotalPagesPrinted": 4,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "bhnatio",
+                "TotalPagesPrinted": 3,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "abouier",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "DET 7Mile Mid Area"
+              },
+              {
+                "UserName": "cpelzer",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "DET Dav FrontDesk"
+              },
+              {
+                "UserName": "vjones",
+                "TotalPagesPrinted": 58,
+                "PrinterName": "DET Dav FrontDesk"
+              },
+              {
+                "UserName": "cstraughter",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "dwilliams",
+                "TotalPagesPrinted": 16,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "rnewkirk",
+                "TotalPagesPrinted": 2,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "mbabcock",
+                "TotalPagesPrinted": 7,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "danderson",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "HQ CC Printer"
+              },
+              {
+                "UserName": "lmitchell",
+                "TotalPagesPrinted": 1,
+                "PrinterName": "HQ CC Printer"
+              }
+            ],
+            "TotalPagesToday": 601
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/UserPrintJob200",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-02-04T15:33:50.764Z",
+  "versionId": "5025c745-7402-41f9-aadb-daf0ae2928fc"
+}
