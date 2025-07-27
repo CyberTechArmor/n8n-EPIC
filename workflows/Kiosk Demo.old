@@ -1,0 +1,102 @@
+{
+  "active": false,
+  "connections": {
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-19T12:05:23.336Z",
+  "id": "Bh3deRQ9xezC28cy",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Kiosk Demo.old",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $('HTML').params[\"html\"] }}",
+        "options": {}
+      },
+      "id": "02792a91-2646-41c9-b1a3-5823cfa77d5a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Image Carousel with Rotation</title>\n<style>\n  body, html {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n  }\n  .carousel-container {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    overflow: hidden;\n  }\n  .carousel-slide {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n    opacity: 0;\n    transition: opacity 2s ease-in-out;\n    z-index: -1; /* Keep slides in the background */\n  }\n  .active {\n    opacity: 1;\n    z-index: 1; /* Make active slide appear on top */\n  }\n  .button-container {\n    position: absolute;\n    bottom: 20px;\n    width: 100%;\n    text-align: center;\n    z-index: 2; /* Ensure buttons are on top */\n  }\n  .nav-btn {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    padding: 10px 20px;\n    border: none;\n    background-color: #007bff;\n    color: white;\n    cursor: pointer;\n    font-size: 16px;\n    z-index: 2; /* Ensure nav buttons are on top */\n  }\n  #prevBtn {\n    left: 20px;\n  }\n  #nextBtn {\n    right: 20px;\n  }\n  .learn-more-btn {\n    padding: 10px 20px;\n    font-size: 18px;\n    color: #fff;\n    background-color: #007bff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"carousel-container\">\n  <div class=\"carousel-slide active\" style=\"background-image: url('https://mariomorrow.com/wp-content/uploads/2020/01/Mario-2-scaled-e1666029434511.jpg');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Aerial_View_of_Downtown_Detroit_and_Rennaissance_Center.jpg/1200px-Aerial_View_of_Downtown_Detroit_and_Rennaissance_Center.jpg');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://www.deviceplus.com/wp-content/uploads/2020/07/remote-health-consultations.jpg');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://toms.app/tools/bluesky.png');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://toms.app/tools/unity.png');\"></div>\n\n  <div class=\"button-container\">\n    <button id=\"prevBtn\" class=\"nav-btn\">Prev</button>\n    <button id=\"nextBtn\" class=\"nav-btn\">Next</button>\n    <button class=\"learn-more-btn\" id=\"learnMoreBtn\">Learn More</button>\n  </div>\n</div>\n\n<script>\n  const slides = document.querySelectorAll('.carousel-slide');\n  const learnMoreBtn = document.getElementById('learnMoreBtn');\n  const prevBtn = document.getElementById('prevBtn');\n  const nextBtn = document.getElementById('nextBtn');\n  const links = [\"https://mariomorrow.com/\", \"https://www.healthykidzinc.org/\", \"https://epichs.org\",\"https://blueskypro.org/\" ,\"https://myunitycare.com/\"];\n  let currentSlide = 0;\n\n  function goToSlide(slide) {\n    slides[currentSlide].classList.remove('active');\n    currentSlide = slide;\n    slides[currentSlide].classList.add('active');\n    learnMoreBtn.setAttribute('onclick', `location.href='${links[currentSlide]}'`);\n  }\n\n  function nextSlide() {\n    const nextIndex = (currentSlide + 1) % slides.length;\n    goToSlide(nextIndex);\n  }\n\n  function prevSlide() {\n    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;\n    goToSlide(prevIndex);\n  }\n\n  prevBtn.addEventListener('click', prevSlide);\n  nextBtn.addEventListener('click', nextSlide);\n\n  // Automatically cycle through slides every 20 seconds\n  setInterval(nextSlide, 20000);\n\n  // Set initial link\n  learnMoreBtn.setAttribute('onclick', `location.href='${links[0]}'`);\n</script>\n\n</body>\n</html>\n"
+      },
+      "id": "eb828d0a-f2aa-490e-bd15-e050d8b88409",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Image Carousel with Rotation</title>\n<style>\n  body, html {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n  }\n  .carousel-container {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    overflow: hidden;\n  }\n  .carousel-slide {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n    opacity: 0;\n    transition: opacity 2s ease-in-out;\n    z-index: -1; /* Ensure slides are behind the button */\n  }\n  .active {\n    opacity: 1;\n    z-index: 1; /* Make active slide appear on top */\n  }\n  .button-container {\n    position: absolute;\n    bottom: 20px;\n    width: 100%;\n    text-align: center;\n    z-index: 2; /* Ensure button is always on top */\n  }\n  .learn-more-btn {\n    padding: 10px 20px;\n    font-size: 18px;\n    color: #fff;\n    background-color: #007bff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"carousel-container\">\n  <div class=\"carousel-slide active\" style=\"background-image: url('https://mariomorrow.com/wp-content/uploads/2020/01/Mario-2-scaled-e1666029434511.jpg');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Aerial_View_of_Downtown_Detroit_and_Rennaissance_Center.jpg/1200px-Aerial_View_of_Downtown_Detroit_and_Rennaissance_Center.jpg');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://www.deviceplus.com/wp-content/uploads/2020/07/remote-health-consultations.jpg');\"></div>\n <div class=\"carousel-slide\" style=\"background-image: url('https://toms.app/tools/bluesky.png');\"></div>\n  <div class=\"carousel-slide\" style=\"background-image: url('https://toms.app/tools/unity.png');\"></div>\n\n  <!-- Add iframed web pages below \n  <div class=\"carousel-slide\">\n    <iframe src=\"https://blueskypro.org/\" frameborder=\"0\" style=\"width: 100%; height: 100%;\"></iframe>\n  </div>\n  <div class=\"carousel-slide\">\n    <iframe src=\"https://myunitycare.com/\" frameborder=\"0\" style=\"width: 100%; height: 100%;\"></iframe>\n  </div> -->>\n  \n  <div class=\"button-container\">\n    <button class=\"learn-more-btn\" id=\"learnMoreBtn\">Learn More</button>\n  </div>\n</div>\n\n<script>\n  const slides = document.querySelectorAll('.carousel-slide');\n  const learnMoreBtn = document.getElementById('learnMoreBtn');\n  const links = [\"https://mariomorrow.com/\", \"https://www.healthykidzinc.org/\", \"https://epichs.org\",\"https://blueskypro.org/\" ,\"https://myunitycare.com/\"];\n  let currentSlide = 0;\n\n  function goToSlide(slide) {\n    slides.forEach((slide, index) => {\n      slide.classList.remove('active');\n      if (index === slide) {\n        slide.classList.add('active');\n      }\n    });\n    learnMoreBtn.setAttribute('onclick', `location.href='${links[slide]}'`);\n  }\n\n  function nextSlide() {\n    currentSlide = (currentSlide + 1) % slides.length;\n    slides.forEach((slide, index) => {\n      slide.classList.remove('active');\n    });\n    slides[currentSlide].classList.add('active');\n    learnMoreBtn.setAttribute('onclick', `location.href='${links[currentSlide]}'`);\n  }\n\n  // Automatically cycle through slides every 20 seconds\n  setInterval(nextSlide, 20000);\n\n  // Set initial link\n  learnMoreBtn.setAttribute('onclick', `location.href='${links[0]}'`);\n</script>\n\n</body>\n</html>"
+      },
+      "id": "e3b99ca4-b34f-432f-a1a0-fa8dd288caa8",
+      "name": "HTML1",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "path": "36ef01fd-b57b-4a0d-9a95-bbb21b4f2150",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f9702120-dd50-4362-9e91-7f4a0ebd3c1b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "36ef01fd-b57b-4a0d-9a95-bbb21b4f2150"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-10T13:14:51.740Z",
+  "versionId": "9ed50c04-3d48-4d1d-b561-56a5fc1f83c7"
+}
