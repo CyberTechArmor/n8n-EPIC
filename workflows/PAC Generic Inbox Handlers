@@ -1,0 +1,591 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI3": {
+      "main": [
+        [
+          {
+            "node": "OpenAI4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scheduling Link Sent Task": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-14T11:58:16.430Z",
+  "id": "fBgvN488wzhpHSLx",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "PAC Generic Inbox Handlers",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "93a648bc-1cc2-4850-8c04-fce6622c200a",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        1140,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @startdate DATETIME = dateadd(day,-7,getdate());\nDECLARE @enddate DATETIME = DATEADD(day,0,getdate());\n \nSELECT TOP (1000) \n    d.DEM_EXTERNALID as MRN,d.DEM_FIRSTNAME\n\t,d.DEM_LASTNAME,d.DEM_DATEOFBIRTH\n\t,[MSG_TRANSACTIONDATE]   \n    ,c1.PROV_FULLNAME as 'PROV_FULLNAME' -- Adjusted this line\n    ,c2.PROV_FULLNAME as 'TO_PROV_FULLNAME' -- New line to get the provider name for MSG_TOPROVCODE\n    ,[MSG_SUBJECT]\n\t,n.NOTE_TEXT\nFROM \n    [EMR].[HPSITE].[MESSAGE] m\nLEFT JOIN \n    [EMR].[HPSITE].[CAREGIVER_VIEW] c1\nON \n    m.MSG_FROMPROVCODE = c1.IMREPROV_CODE\nLEFT JOIN\n    [EMR].[HPSITE].[CAREGIVER_VIEW] c2\nON\n    ISNULL(m.MSG_TOPROVCODE,0) = c2.IMREPROV_CODE\nLEFT JOIN [EMR].[HPSITE].[NOTES_TEXTDATA] n\nON n.IMRENOTE_CODE=m.IMRENOTE_CODE\nLEFT JOIN [EMR].[HPSITE].[DEMOGRAPHICS_VIEW] d on d.IMREDEM_CODE=m.IMREDEM_CODE\nWHERE \n   c2.PROV_FULLNAME like '%sched%' AND \n\tcast(m.MSG_TRANSACTIONDATE as date) between @startdate and @enddate\nORDER BY \n    M.MSG_TRANSACTIONDATE DESC;"
+      },
+      "id": "b3a833d5-d851-4980-a4e3-0e810056325e",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        560
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e5a81098-bd05-43be-b33a-a72797fdad55",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1800,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "NOTE_TEXT"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73dd8fb1-2ae3-4014-ae42-dfa9b20372f4",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b6902f75-2d9c-4e74-bd8d-a76b01b5aefd",
+              "name": "NOTE_TEXT",
+              "value": "={{ $json.NOTE_TEXT }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b334b45-b289-40e9-8355-123f2fed9884",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.message.content }}"
+            },
+            {
+              "content": "=There is a GPT that is reading messages and provides messages that it does not understand.\n\nPlease define what is unclear in this message that the GPT would not understand.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c930c44-daee-4469-aa71-8f690eb16265",
+      "name": "OpenAI3",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        3760,
+        760
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "tBlX54NLPUi0gLnn",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.message.content }}"
+            },
+            {
+              "content": "=Please tell me how I can prompt the GPT to understand this context. Please provide the example clarification as a system message to the GPT that will allow it to reference and understand",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb042be0-d3e0-4dad-b72c-fa4dc8e94f72",
+      "name": "OpenAI4",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        4120,
+        760
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "tBlX54NLPUi0gLnn",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Unclear Message (MRN: Place holder)\",\n       \"GROUP_ID\": \"78\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"{{ $json.message.content.replace(/[\"\\n\\\\]/g, '') }}\",\n       \"TAGS\": [\"Test\"]\n   }\n}\n",
+        "options": {}
+      },
+      "id": "27db3501-420a-4040-9eef-fd7244047612",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3120,
+        700
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "85a9d138-4a62-4ec1-ac40-67004a02f241",
+        "options": {}
+      },
+      "id": "1e35d34f-abfa-4f1c-9176-54442f56033d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        3980,
+        1000
+      ],
+      "webhookId": "85a9d138-4a62-4ec1-ac40-67004a02f241",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"id\":\"28726\"\n}\n",
+        "options": {}
+      },
+      "id": "81a5c8c0-95fe-4646-b0dc-274601910614",
+      "name": "HTTP 24 Bitrix24 Check1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4160,
+        1000
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Schedule Link Sent: (MRN: Place holder)\",\n       \"GROUP_ID\": \"78\",\n       \"STAGE_ID\": \"553\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"\",\n       \"TAGS\": [\"Test\"]\n   }\n}\n",
+        "options": {}
+      },
+      "id": "7ae9d02d-98f4-4997-a4fe-7f9104d40312",
+      "name": "Scheduling Link Sent Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3120,
+        480
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.NOTE_TEXT }}"
+            },
+            {
+              "content": "=VOV: Visit Office Visit – indicates a recent office visit.\nOV: Office Visit – a routine or follow-up appointment.\nAS: Attempted to Schedule – refers to efforts to contact the patient for scheduling.\nLVM: Left Voicemail – a voicemail message was left for the patient.\n\n\nPlease specify 3 messages you don't understand, and specify why, and what.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d2ea1f71-f6fd-4f6a-8be2-b055445a4b0e",
+      "name": "OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        2040,
+        1360
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "tBlX54NLPUi0gLnn",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the message content from the input\nlet content = $input.first().json.message.content;\n\n// Function to parse content into separate fields\nfunction parseContent(content) {\n    // Split the content by new lines\n    let lines = content.split('\\n');\n    let parsedFields = {};\n\n    lines.forEach(line => {\n        // Split each line by the first colon to get key and value\n        let [key, value] = line.split(/:(.*)/); // Split by the first colon only\n        if (key && value) {\n            // Trim spaces and add to the parsedFields object\n            parsedFields[key.trim()] = value.trim();\n        }\n    });\n\n    return parsedFields;\n}\n\n// Using the function to get parsed fields\nlet fields = parseContent(content);\n\n// Return the parsed fields as an item in the required n8n format\nreturn [{ json: fields }];\n\n// Return the parsed fields as an item in the required n8n format\nreturn [{ json: fields }];\n"
+      },
+      "id": "189e87a7-c49f-4027-b450-44f2b20a113b",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        560
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ac99e582-6144-4084-bf37-4ef261526a52",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        580
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "eb2dc134-aff9-48a9-91cf-c6b84524ae27",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.NOTE_TEXT }}"
+            },
+            {
+              "content": "=Please determine if requesting to schedule: If yes, tag and respond with \"Schedule\" only.\n\nVOV: Visit Office Visit – indicates a recent office visit.\nOV: Office Visit – a routine or follow-up appointment.\nAS: Attempted to Schedule – refers to efforts to contact the patient for scheduling.\nLVM: Left Voicemail – a voicemail message was left for the patient.\n\nOutput the reason for schduling as: \"RFS\": {reason}\nOutput if unstood as: \"Understanding\": \"Clear\"/\"Unclear\"\n\n\nOnly provide All requested output.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ead4a8b3-7137-4e74-8715-2eca649c82d4",
+      "name": "OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [
+        2100,
+        560
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "tBlX54NLPUi0gLnn",
+          "name": "OpenAi account 2"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "maxItems": 300,
+        "keep": "lastItems"
+      },
+      "id": "eea17131-177e-4baf-8326-f5499420c25a",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        560
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "e49c342a-41cf-48a0-8da6-26cd6be45fa7",
+              "leftValue": "={{ $json.Understanding }}",
+              "rightValue": "Unclear",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "0a64b60e-bad0-42b3-9d47-5aaf4b8e7d84",
+              "leftValue": "={{ $json.Understanding }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "41c07377-5eb3-4958-91c8-9f90218a2640",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        2820,
+        560
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-09-14T14:37:11.901Z",
+  "versionId": "48173793-4a6d-4efb-8820-f54c79d69b19"
+}
