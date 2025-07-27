@@ -1,0 +1,62 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-25T18:57:30.620Z",
+  "id": "yzCrBY43OSEad4Wm",
+  "isArchived": true,
+  "meta": null,
+  "name": "QR Net Promoter",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "f94578b2-fb78-4d30-810d-e17641cc985b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "65aaf063-3173-48f7-957d-d7ed72ca6b3e",
+      "name": "Webhook",
+      "webhookId": "f94578b2-fb78-4d30-810d-e17641cc985b"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "fc14b440-1d37-4fbe-8b33-ed07e5d00c60",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-17T13:18:10.641Z",
+  "versionId": "832bfb8f-56dd-4139-a484-441e06085dcd"
+}
