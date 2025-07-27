@@ -1,0 +1,274 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-28T12:51:22.665Z",
+  "id": "hFOhpVAx8x1Sd1fc",
+  "isArchived": false,
+  "meta": null,
+  "name": "900",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ed566d78-f21c-4c41-819f-2a5404f5a6a5",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7c7c2f5d-02fa-42ee-843c-daa469ffe5f0",
+      "name": "Webhook",
+      "webhookId": "ed566d78-f21c-4c41-819f-2a5404f5a6a5"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Professional Display</title>\n  <style>\n    :root {\n      --neon-color: #00f; /* Initial blue neon color */\n    }\n    \n    * {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n      font-family: 'Inter', sans-serif;\n    }\n\n    body {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      width: 100vw;\n      background-color: #f4f4f5;\n    }\n\n    .container {\n      position: relative;\n      width: 90vw;\n      height: 90vh;\n      display: flex;\n      flex-direction: row;\n      justify-content: space-around;\n      align-items: center;\n      background: white;\n      border: 1px solid #ddd;\n      border-radius: 0;\n      padding: 20px;\n      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n    }\n\n    /* Always visible neon glow border */\n    .container::before {\n      content: \"\";\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      border: 2px solid var(--neon-color);\n      border-radius: inherit;\n      box-shadow: 0 0 10px var(--neon-color);\n      pointer-events: none;\n    }\n\n    .content {\n      flex: 1;\n      text-align: center;\n      padding: 20px;\n    }\n\n    .qr-code {\n      flex: 0 0 auto;\n      padding: 20px;\n    }\n\n    h1 {\n      font-size: 5vw;\n      margin-bottom: 2vh;\n    }\n\n    p {\n      font-size: 3vw;\n      font-weight: 500;\n      margin-bottom: 1vh;\n    }\n\n    .button {\n      margin-top: 5vh;\n      padding: 2vh 4vw;\n      background: #333;\n      color: white;\n      font-size: 3vw;\n      border: none;\n      border-radius: 6px;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n\n    .button:hover {\n      background: #555;\n    }\n\n    audio {\n      display: none;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"content\">\n      <h1>IS EVERYTHING YOU'RE</h1>\n      <p>Doing Revolving around...</p>\n      <p>600/375?</p>\n      <p>10/2/1?</p>\n      <p>4K/mo NC²?</p>\n      <button class=\"button\" onclick=\"playAudio()\">Pinch Me 😉</button>\n\n      <!-- Hidden Audio Element -->\n      <audio id=\"audioPlayer\">\n        <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\" />\n        Your browser does not support the audio element.\n      </audio>\n    </div>\n\n    <div class=\"qr-code\">\n      <!-- QR Code generated using QR Server API -->\n      <img src=\"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://xl.epicpc.com/webhook/285f3a87-cc82-4152-b79d-11457802b221\" alt=\"QR Code\" />\n    </div>\n  </div>\n\n  <script>\n    // Generate a random neon color using HSL.\n    function changeNeonColor() {\n      const hue = Math.floor(Math.random() * 360);\n      const newColor = `hsl(${hue}, 100%, 50%)`;\n      document.documentElement.style.setProperty('--neon-color', newColor);\n    }\n\n    function playAudio() {\n      changeNeonColor(); // Change neon border color on each button press\n      const audio = document.getElementById(\"audioPlayer\");\n      audio.currentTime = 0; // Reset to the beginning\n      audio.play();\n    }\n\n    function speak900() {\n      let utterance = new SpeechSynthesisUtterance(\"900\");\n      utterance.lang = \"en-US\";\n      speechSynthesis.speak(utterance);\n    }\n\n    // Speak \"900\" every hour\n    setInterval(() => {\n      speak900();\n    }, 3600000);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e1638dbc-1e3a-4baa-820a-3aa622babdd0",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Professional Display</title>\n    <style>\n        * {\n            box-sizing: border-box;\n            margin: 0;\n            padding: 0;\n            font-family: 'Inter', sans-serif;\n        }\n\n        body {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            width: 100vw;\n            background-color: #f4f4f5;\n        }\n\n        .container {\n            width: 100vw;\n            height: 100vh;\n            display: flex;\n            flex-direction: column;\n            justify-content: center;\n            align-items: center;\n            background: white;\n            border: 1px solid #ddd;\n            border-radius: 0px; /* No border-radius for full screen */\n            padding: 20px;\n            text-align: center;\n            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n        }\n\n        h1 {\n            font-size: 5vw;\n            margin-bottom: 2vh;\n        }\n\n        p {\n            font-size: 3vw;\n            font-weight: 500;\n            margin-bottom: 1vh;\n        }\n\n        .button {\n            margin-top: 5vh;\n            padding: 2vh 4vw;\n            background: #333;\n            color: white;\n            font-size: 3vw;\n            border: none;\n            border-radius: 6px;\n            cursor: pointer;\n            transition: background 0.3s ease;\n        }\n\n        .button:hover {\n            background: #555;\n        }\n\n        audio {\n            display: none; /* Hides the audio player */\n        }\n    </style>\n</head>\n<body>\n\n    <div class=\"container\">\n        <h1>IS EVERYTHING YOU'RE</h1>\n        <p>Doing Revolving around...</p>\n        <p>600/375?</p>\n        <p>10/1/1?</p>\n        <p>4K/mo NC²?</p>\n\n        <button class=\"button\" onclick=\"playAudio()\">Press Me</button>\n        \n        <!-- Hidden Audio Element -->\n        <audio id=\"audioPlayer\">\n            <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\">\n            Your browser does not support the audio element.\n        </audio>\n    </div>\n\n    <script>\n        function playAudio() {\n            const audio = document.getElementById(\"audioPlayer\");\n            audio.currentTime = 0; // Reset to the beginning\n            audio.play();\n        }\n\n        function speak900() {\n            let utterance = new SpeechSynthesisUtterance(\"900\");\n            utterance.lang = \"en-US\";\n            speechSynthesis.speak(utterance);\n        }\n\n        // Speak \"900\" every hour\n        setInterval(() => {\n            speak900();\n        }, 3600000); // 3600000ms = 1 hour\n    </script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -160
+      ],
+      "id": "7dab3d67-fc21-4698-95c0-306314450120",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Professional Display</title>\n  <style>\n    :root {\n      --neon-color: #00f; /* Initial blue neon color */\n    }\n    \n    * {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n      font-family: 'Inter', sans-serif;\n    }\n\n    body {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      width: 100vw;\n      background-color: #f4f4f5;\n    }\n\n    .container {\n      position: relative;\n      width: 100vw;\n      height: 100vh;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      background: white;\n      border: 1px solid #ddd;\n      border-radius: 0;\n      padding: 20px;\n      text-align: center;\n      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n      /* Removed overflow: hidden so the pseudo-element is not clipped */\n    }\n\n    /* Always visible neon glow border */\n    .container::before {\n      content: \"\";\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      border: 2px solid var(--neon-color);\n      border-radius: inherit;\n      box-shadow: 0 0 10px var(--neon-color);\n      pointer-events: none;\n    }\n\n    h1 {\n      font-size: 5vw;\n      margin-bottom: 2vh;\n    }\n\n    p {\n      font-size: 3vw;\n      font-weight: 500;\n      margin-bottom: 1vh;\n    }\n\n    .button {\n      margin-top: 5vh;\n      padding: 2vh 4vw;\n      background: #333;\n      color: white;\n      font-size: 3vw;\n      border: none;\n      border-radius: 6px;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n\n    .button:hover {\n      background: #555;\n    }\n\n    audio {\n      display: none;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>IS EVERYTHING YOU'RE</h1>\n    <p>Doing Revolving around...</p>\n    <p>600/375?</p>\n    <p>10/2/1?</p>\n    <p>4K/mo NC²?</p>\n    <button class=\"button\" onclick=\"playAudio()\">Press Me</button>\n\n    <!-- Hidden Audio Element -->\n    <audio id=\"audioPlayer\">\n      <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\" />\n      Your browser does not support the audio element.\n    </audio>\n  </div>\n\n  <script>\n    // Generate a random neon color using HSL.\n    function changeNeonColor() {\n      const hue = Math.floor(Math.random() * 360);\n      const newColor = `hsl(${hue}, 100%, 50%)`;\n      document.documentElement.style.setProperty('--neon-color', newColor);\n    }\n\n    function playAudio() {\n      changeNeonColor(); // Change neon border color on each button press\n      const audio = document.getElementById(\"audioPlayer\");\n      audio.currentTime = 0; // Reset to the beginning\n      audio.play();\n    }\n\n    function speak900() {\n      let utterance = new SpeechSynthesisUtterance(\"900\");\n      utterance.lang = \"en-US\";\n      speechSynthesis.speak(utterance);\n    }\n\n    // Speak \"900\" every hour\n    setInterval(() => {\n      speak900();\n    }, 3600000);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -320
+      ],
+      "id": "011ceefe-a9a1-452e-b6a4-a3f88d0c7b7c",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "path": "285f3a87-cc82-4152-b79d-11457802b221",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        60,
+        440
+      ],
+      "id": "06edfa7e-5cfa-4e7f-a0a6-7731db90840e",
+      "name": "Webhook1",
+      "webhookId": "285f3a87-cc82-4152-b79d-11457802b221"
+    },
+    {
+      "parameters": {
+        "url": "https://n8n.cybertech.app/webhook/d8c356b5-e6ed-473f-bd26-374222301573",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        440
+      ],
+      "id": "3f0f6917-dc10-414b-bf6b-70554ad45f27",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "path": "964e5e08-d2c7-47fc-8f81-a2d11212bcac",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        480,
+        440
+      ],
+      "id": "de125b6e-24ab-4e5a-b80d-895c066ae2d5",
+      "name": "Webhook2",
+      "webhookId": "964e5e08-d2c7-47fc-8f81-a2d11212bcac"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Broken Display</title>\n  <style>\n    :root {\n      --neon-color: #00f; /* Initial blue neon color */\n    }\n    \n    * {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n      font-family: 'Inter', sans-serif;\n    }\n    \n    body {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      width: 100vw;\n      background-color: #f4f4f5;\n      overflow: hidden;\n    }\n    \n    .container {\n      position: relative;\n      width: 90vw;\n      height: 90vh;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      background: white;\n      border: 1px solid #ddd;\n      border-radius: 0;\n      padding: 20px;\n      text-align: center;\n      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n      /* Glitch effect for a broken look */\n      animation: glitch 1s infinite;\n    }\n    \n    /* Neon border with glowing effect */\n    .container::before {\n      content: \"\";\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      border: 2px solid var(--neon-color);\n      border-radius: inherit;\n      box-shadow: 0 0 10px var(--neon-color);\n      pointer-events: none;\n    }\n    \n    @keyframes glitch {\n      0% { transform: translate(0); }\n      20% { transform: translate(-2px, 2px); }\n      40% { transform: translate(2px, -2px); }\n      60% { transform: translate(-2px, -2px); }\n      80% { transform: translate(2px, 2px); }\n      100% { transform: translate(0); }\n    }\n    \n    h1 {\n      font-size: 5vw;\n      margin-bottom: 2vh;\n      text-transform: uppercase;\n    }\n    \n    p {\n      font-size: 3vw;\n      font-weight: 500;\n      margin-bottom: 1vh;\n    }\n    \n    .button {\n      margin-top: 5vh;\n      padding: 2vh 4vw;\n      background: #333;\n      color: white;\n      font-size: 3vw;\n      border: none;\n      border-radius: 6px;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n    \n    .button:hover {\n      background: #555;\n    }\n    \n    audio {\n      display: none;\n    }\n    \n    /* Popup Styles */\n    .popup {\n      display: none;\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0, 0, 0, 0.8);\n      justify-content: center;\n      align-items: center;\n      z-index: 9999;\n    }\n    \n    .popup.active {\n      display: flex;\n    }\n    \n    .popup-content {\n      background: #fff;\n      padding: 40px;\n      border-radius: 10px;\n      border: 4px solid var(--neon-color);\n      text-align: center;\n      /* Also glitchy! */\n      animation: glitch 0.5s infinite;\n    }\n    \n    .popup-content p {\n      font-size: 4vw;\n      font-weight: bold;\n      color: #333;\n      margin: 0;\n    }\n    \n    /* Floating Button Styles */\n    #fixButton {\n      position: fixed;\n      z-index: 10000;\n      padding: 20px 40px;\n      background: #333;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      font-size: 2rem;\n      /* Hide button until popup shows */\n      display: none;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>IS EVERYTHING YOU'RE</h1>\n    <p>Doing Revolving around...</p>\n    <p>600/375?</p>\n    <p>10/2/1?</p>\n    <p>4K/mo NC²?</p>\n    <button class=\"button\" onclick=\"playAudio()\">Press Me</button>\n    \n    <!-- Hidden Audio Element for the \"Press Me\" button -->\n    <audio id=\"audioPlayer\">\n      <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\" />\n      Your browser does not support the audio element.\n    </audio>\n  </div>\n  \n  <!-- Popup Element -->\n  <div id=\"brokenPopup\" class=\"popup\">\n    <div class=\"popup-content\">\n      <p>You broke it!</p>\n    </div>\n  </div>\n  \n  <!-- Floating \"900 to fix\" Button -->\n  <button id=\"fixButton\">900 to fix</button>\n  \n  <!-- Hidden Audio Element for the fix button -->\n  <audio id=\"fixAudio\">\n    <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\" />\n    Your browser does not support the audio element.\n  </audio>\n  \n  <script>\n    // Function to generate a random neon color using HSL.\n    function changeNeonColor() {\n      const hue = Math.floor(Math.random() * 360);\n      const newColor = `hsl(${hue}, 100%, 50%)`;\n      document.documentElement.style.setProperty('--neon-color', newColor);\n    }\n    \n    function playAudio() {\n      changeNeonColor(); // Change neon border color on each button press\n      const audio = document.getElementById(\"audioPlayer\");\n      audio.currentTime = 0; // Reset to the beginning\n      audio.play();\n    }\n    \n    function speak900() {\n      let utterance = new SpeechSynthesisUtterance(\"900\");\n      utterance.lang = \"en-US\";\n      speechSynthesis.speak(utterance);\n    }\n    \n    // Speak \"900\" every hour.\n    setInterval(() => {\n      speak900();\n    }, 3600000);\n    \n    // Show popup after 2 seconds and start the fix button animation.\n    setTimeout(() => {\n      document.getElementById('brokenPopup').classList.add('active');\n      startButtonAnimation();\n    }, 2000);\n    \n    // Repeating \"You broke it\" audio on user click/touch.\n    let repeatingAudio = false;\n    \n    function repeatYouBrokeIt() {\n      if (!repeatingAudio) return;\n      const utterance = new SpeechSynthesisUtterance(\"You broke it\");\n      utterance.lang = \"en-US\";\n      // When the utterance ends, call repeatYouBrokeIt again if still enabled.\n      utterance.onend = function() {\n        if (repeatingAudio) {\n          repeatYouBrokeIt();\n        }\n      };\n      speechSynthesis.speak(utterance);\n    }\n    \n    function startRepeatingAudio() {\n      if (!repeatingAudio) {\n        repeatingAudio = true;\n        repeatYouBrokeIt();\n      }\n    }\n    \n    // Listen for any click or touch on the document.\n    document.addEventListener(\"click\", startRepeatingAudio);\n    document.addEventListener(\"touchstart\", startRepeatingAudio);\n    \n    // Play the fix audio when the floating button is clicked.\n    document.getElementById(\"fixButton\").addEventListener(\"click\", function(event) {\n      event.stopPropagation(); // Prevent triggering other click events.\n      const fixAudio = document.getElementById(\"fixAudio\");\n      fixAudio.currentTime = 0;\n      fixAudio.play();\n    });\n    \n    // Fluid movement of the fix button like a bouncing ball.\n    function startButtonAnimation() {\n      const fixButton = document.getElementById('fixButton');\n      // Ensure the button is visible.\n      fixButton.style.display = 'block';\n      // Start with a random position.\n      let posX = Math.random() * (window.innerWidth - fixButton.offsetWidth);\n      let posY = Math.random() * (window.innerHeight - fixButton.offsetHeight);\n      // Set initial velocities (pixels per second).\n      let velX = 200;\n      let velY = 150;\n      let lastTime = performance.now();\n      \n      function animate(time) {\n        let delta = (time - lastTime) / 1000; // Convert to seconds.\n        lastTime = time;\n        posX += velX * delta;\n        posY += velY * delta;\n        \n        // Bounce off the viewport edges.\n        if (posX <= 0) {\n          posX = 0;\n          velX = Math.abs(velX);\n        }\n        if (posX + fixButton.offsetWidth >= window.innerWidth) {\n          posX = window.innerWidth - fixButton.offsetWidth;\n          velX = -Math.abs(velX);\n        }\n        if (posY <= 0) {\n          posY = 0;\n          velY = Math.abs(velY);\n        }\n        if (posY + fixButton.offsetHeight >= window.innerHeight) {\n          posY = window.innerHeight - fixButton.offsetHeight;\n          velY = -Math.abs(velY);\n        }\n        \n        fixButton.style.left = posX + 'px';\n        fixButton.style.top = posY + 'px';\n        requestAnimationFrame(animate);\n      }\n      \n      requestAnimationFrame(animate);\n    }\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        440
+      ],
+      "id": "986eba56-fed3-4daa-a5a9-31940bbc281d",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Broken Display</title>\n  <style>\n    :root {\n      --neon-color: #00f; /* Initial blue neon color */\n    }\n    \n    * {\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0;\n      font-family: 'Inter', sans-serif;\n    }\n    \n    body {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      width: 100vw;\n      background-color: #f4f4f5;\n    }\n    \n    .container {\n      position: relative;\n      width: 90vw;\n      height: 90vh;\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      background: white;\n      border: 1px solid #ddd;\n      border-radius: 0;\n      padding: 20px;\n      text-align: center;\n      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);\n      /* Glitch effect for a broken look */\n      animation: glitch 1s infinite;\n    }\n    \n    /* Neon border with glowing effect */\n    .container::before {\n      content: \"\";\n      position: absolute;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      border: 2px solid var(--neon-color);\n      border-radius: inherit;\n      box-shadow: 0 0 10px var(--neon-color);\n      pointer-events: none;\n    }\n    \n    @keyframes glitch {\n      0% { transform: translate(0); }\n      20% { transform: translate(-2px, 2px); }\n      40% { transform: translate(2px, -2px); }\n      60% { transform: translate(-2px, -2px); }\n      80% { transform: translate(2px, 2px); }\n      100% { transform: translate(0); }\n    }\n    \n    h1 {\n      font-size: 5vw;\n      margin-bottom: 2vh;\n      text-transform: uppercase;\n    }\n    \n    p {\n      font-size: 3vw;\n      font-weight: 500;\n      margin-bottom: 1vh;\n    }\n    \n    .button {\n      margin-top: 5vh;\n      padding: 2vh 4vw;\n      background: #333;\n      color: white;\n      font-size: 3vw;\n      border: none;\n      border-radius: 6px;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n    \n    .button:hover {\n      background: #555;\n    }\n    \n    audio {\n      display: none;\n    }\n    \n    /* Popup Styles */\n    .popup {\n      display: none;\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0, 0, 0, 0.8);\n      justify-content: center;\n      align-items: center;\n      z-index: 9999;\n    }\n    \n    .popup.active {\n      display: flex;\n    }\n    \n    .popup-content {\n      background: #fff;\n      padding: 40px;\n      border-radius: 10px;\n      border: 4px solid var(--neon-color);\n      text-align: center;\n      /* Also glitchy! */\n      animation: glitch 0.5s infinite;\n    }\n    \n    .popup-content p {\n      font-size: 4vw;\n      font-weight: bold;\n      color: #333;\n      margin: 0;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>IS EVERYTHING YOU'RE</h1>\n    <p>Doing Revolving around...</p>\n    <p>600/375?</p>\n    <p>10/2/1?</p>\n    <p>4K/mo NC²?</p>\n    <button class=\"button\" onclick=\"playAudio()\">Press Me</button>\n    \n    <!-- Hidden Audio Element -->\n    <audio id=\"audioPlayer\">\n      <source src=\"https://file.taskfire.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\" type=\"audio/mp3\" />\n      Your browser does not support the audio element.\n    </audio>\n  </div>\n  \n  <!-- Popup Element -->\n  <div id=\"brokenPopup\" class=\"popup\">\n    <div class=\"popup-content\">\n      <p>You broke it!</p>\n    </div>\n  </div>\n  \n  <script>\n    // Function to generate a random neon color using HSL.\n    function changeNeonColor() {\n      const hue = Math.floor(Math.random() * 360);\n      const newColor = `hsl(${hue}, 100%, 50%)`;\n      document.documentElement.style.setProperty('--neon-color', newColor);\n    }\n    \n    function playAudio() {\n      changeNeonColor(); // Change neon border color on each button press\n      const audio = document.getElementById(\"audioPlayer\");\n      audio.currentTime = 0; // Reset to the beginning\n      audio.play();\n    }\n    \n    function speak900() {\n      let utterance = new SpeechSynthesisUtterance(\"900\");\n      utterance.lang = \"en-US\";\n      speechSynthesis.speak(utterance);\n    }\n    \n    // Speak \"900\" every hour.\n    setInterval(() => {\n      speak900();\n    }, 3600000);\n    \n    // Show popup after 2 seconds\n    setTimeout(() => {\n      document.getElementById('brokenPopup').classList.add('active');\n    }, 2000);\n    \n    // Repeating \"You broke it\" audio on user click/touch\n    let repeatingAudio = false;\n    \n    function repeatYouBrokeIt() {\n      if (!repeatingAudio) return;\n      const utterance = new SpeechSynthesisUtterance(\"You broke it\");\n      utterance.lang = \"en-US\";\n      // When the utterance ends, call repeatYouBrokeIt again if still enabled.\n      utterance.onend = function() {\n        if (repeatingAudio) {\n          repeatYouBrokeIt();\n        }\n      };\n      speechSynthesis.speak(utterance);\n    }\n    \n    function startRepeatingAudio() {\n      if (!repeatingAudio) {\n        repeatingAudio = true;\n        repeatYouBrokeIt();\n      }\n    }\n    \n    // Listen for any click or touch on the document\n    document.addEventListener(\"click\", startRepeatingAudio);\n    document.addEventListener(\"touchstart\", startRepeatingAudio);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        300
+      ],
+      "id": "9ce2ff3e-d7da-40c1-a16e-fbaa523f90b3",
+      "name": "Respond to Webhook4"
+    },
+    {
+      "parameters": {
+        "path": "46252afe-c917-47f8-86d0-49653992976a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        120,
+        680
+      ],
+      "id": "32dabbeb-d1ca-41db-8bbf-d5085f280329",
+      "name": "Webhook3",
+      "webhookId": "46252afe-c917-47f8-86d0-49653992976a"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Break It</title>\n  <style>\n    /* Center content vertically and horizontally */\n    body, html {\n      height: 100%;\n      margin: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background-color: #f0f0f0;\n    }\n    /* Shadcn black styled button */\n    button {\n      padding: 0.75rem 1.5rem;\n      font-size: 1.125rem;\n      font-weight: 600;\n      border: none;\n      border-radius: 0.375rem;\n      background-color: #000;\n      color: #fff;\n      cursor: pointer;\n      transition: background-color 0.2s;\n    }\n    button:hover {\n      background-color: #333;\n    }\n  </style>\n</head>\n<body>\n  <button id=\"breakBtn\">Break It</button>\n  <script>\n    document.getElementById(\"breakBtn\").addEventListener(\"click\", function() {\n      // Send GET request to the provided URL\n      fetch(\"https://xl.epicpc.com/webhook/285f3a87-cc82-4152-b79d-11457802b221\")\n        .then(response => {\n          if (response.ok) {\n            console.log(\"GET request successful\");\n          } else {\n            console.error(\"GET request failed\");\n          }\n        })\n        .catch(error => console.error(\"Error:\", error));\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        680
+      ],
+      "id": "03ef7c63-7ee3-4328-b848-5d7f24631b3f",
+      "name": "Respond to Webhook5"
+    },
+    {
+      "parameters": {
+        "path": "85487346-3d3d-42b2-b7c5-2b5974c053b9",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        60
+      ],
+      "id": "daa44fc9-dcd8-4bf9-851d-0bd174203d90",
+      "name": "Webhook4",
+      "webhookId": "85487346-3d3d-42b2-b7c5-2b5974c053b9"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Audio Player</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 20px;\n      background-color: #f5f5f5;\n      font-family: Arial, sans-serif;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100vh;\n    }\n    .text-display {\n      font-size: 48px;\n      margin-bottom: 20px;\n    }\n    .controls {\n      display: flex;\n      gap: 10px;\n    }\n    button {\n      background-color: #000;\n      color: #fff;\n      border: none;\n      width: 150px;\n      height: 50px;\n      cursor: pointer;\n      border-radius: 8px;\n      font-size: 16px;\n    }\n  </style>\n</head>\n<body>\n  <!-- Main text -->\n  <div class=\"text-display\">900</div>\n  \n  <!-- Control buttons -->\n  <div class=\"controls\">\n    <button id=\"playButton\">Play Again</button>\n    <button id=\"closeButton\">Close</button>\n  </div>\n\n  <!-- Audio element -->\n  <audio id=\"audioPlayer\" src=\"https://file.cybertech.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3\"></audio>\n\n  <script>\n    const audioPlayer = document.getElementById('audioPlayer');\n    const playButton = document.getElementById('playButton');\n    const closeButton = document.getElementById('closeButton');\n\n    // Automatically play the audio on page load.\n    window.addEventListener('load', () => {\n      audioPlayer.play().catch(error => {\n        console.log('Autoplay prevented:', error);\n      });\n    });\n\n    // Reset and play the audio from the beginning.\n    playButton.addEventListener('click', () => {\n      audioPlayer.currentTime = 0;\n      audioPlayer.play();\n    });\n\n    // Attempt to close the tab.\n    closeButton.addEventListener('click', () => {\n      window.close();\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        60
+      ],
+      "id": "cdc47501-1cea-400e-9e89-1c31c017a917",
+      "name": "Respond to Webhook6"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 5,
+  "updatedAt": "2025-03-12T11:43:31.229Z",
+  "versionId": "b6f56f1b-0989-45e2-a1ad-c82ecf69aad2"
+}
