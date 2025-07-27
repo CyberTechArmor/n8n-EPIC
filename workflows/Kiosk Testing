@@ -1,0 +1,114 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-06T17:34:17.231Z",
+  "id": "1uy9j29OPN0WYhns",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Kiosk Testing",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.completeHTML }}",
+        "options": {}
+      },
+      "id": "8e95f80f-4d7e-4009-86b7-44d81eab7013",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://192.168.88.70:5000/Kiosk/Tindel?json",
+        "options": {}
+      },
+      "id": "4dba22b4-aead-4cb5-aea7-cf8346f4f55c",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the paths array from the previous node (HTTP Request Node)\nconst pathsArray = items[0].json.paths;\n\n// Define your domain URL and suffix\nconst domainURL = 'https://file.cybertech.app/Kiosk/Tindel/';\nconst suffix = ''; // You can add a suffix if needed\n\n// Initialize an empty string to hold the concatenated HTML for slides\nlet slidesHTML = '';\n\n// Loop through the paths array and concatenate the HTML strings for slides\nfor (let i = 0; i < pathsArray.length; i++) {\n  if (pathsArray[i].path_type === 'File') {\n    const activeClass = i === 0 ? ' active' : '';\n    slidesHTML += `<div class=\"carousel-slide${activeClass}\" style=\"background-image: url('${domainURL}${pathsArray[i].name}${suffix}');\"></div>\\n`;\n  }\n}\n\n// Complete HTML with the slidesHTML inserted\nconst completeHTML = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Image Carousel with Rotation</title>\n<style>\n  body, html {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 100%;\n    overflow: hidden;\n  }\n  .carousel-container {\n    width: 100%;\n    height: 100%;\n    position: relative;\n    overflow: hidden;\n  }\n  .carousel-slide {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n    opacity: 0;\n    transition: opacity 2s ease-in-out;\n    z-index: -1; /* Keep slides in the background */\n  }\n  .active {\n    opacity: 1;\n    z-index: 1; /* Make active slide appear on top */\n  }\n  .button-container {\n    position: absolute;\n    bottom: 20px;\n    width: 100%;\n    text-align: center;\n    z-index: 2; /* Ensure buttons are on top */\n  }\n  .nav-btn {\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    padding: 10px 20px;\n    border: none;\n    background-color: #007bff;\n    color: white;\n    cursor: pointer;\n    font-size: 16px;\n    z-index: 2; /* Ensure nav buttons are on top */\n  }\n  #prevBtn {\n    left: 20px;\n  }\n  #nextBtn {\n    right: 20px;\n  }\n  .learn-more-btn {\n    padding: 10px 20px;\n    font-size: 18px;\n    color: #fff;\n    background-color: #007bff;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"carousel-container\">\n  ${slidesHTML}\n  <div class=\"button-container\">\n    <button id=\"prevBtn\" class=\"nav-btn\">Prev</button>\n    <button id=\"nextBtn\" class=\"nav-btn\">Next</button>\n    <!-- <button class=\"learn-more-btn\" id=\"learnMoreBtn\">Learn More</button> -->\n  </div>\n</div>\n\n<script>\n  const slides = document.querySelectorAll('.carousel-slide');\n  const learnMoreBtn = document.getElementById('learnMoreBtn');\n  const prevBtn = document.getElementById('prevBtn');\n  const nextBtn = document.getElementById('nextBtn');\n  const links = [\"https://mariomorrow.com/\", \"https://www.healthykidzinc.org/\", \"https://epichs.org\",\"https://blueskypro.org/\" ,\"https://myunitycare.com/\"];\n  let currentSlide = 0;\n\n  function goToSlide(slide) {\n    slides[currentSlide].classList.remove('active');\n    currentSlide = slide;\n    slides[currentSlide].classList.add('active');\n    learnMoreBtn.setAttribute('onclick', \\`location.href='\\${links[currentSlide]}'\\`);\n  }\n\n  function nextSlide() {\n    const nextIndex = (currentSlide + 1) % slides.length;\n    goToSlide(nextIndex);\n  }\n\n  function prevSlide() {\n    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;\n    goToSlide(prevIndex);\n  }\n\n  prevBtn.addEventListener('click', prevSlide);\n  nextBtn.addEventListener('click', nextSlide);\n\n  // Automatically cycle through slides every 20 seconds\n  setInterval(nextSlide, 20000);\n\n  // Set initial link\n  learnMoreBtn.setAttribute('onclick', \\`location.href='\\${links[0]}'\\`);\n</script>\n\n</body>\n</html>\n`;\n\n// Return the complete HTML\nreturn [{\n  json: {\n    completeHTML: completeHTML\n  }\n}];\n"
+      },
+      "id": "c7704951-2773-4442-b660-933e65d88da9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "path": "52a276f8-b88f-4c5a-8e4d-229c6d41fca4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "211d4925-687e-499d-a623-23d098a23827",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        900,
+        440
+      ],
+      "webhookId": "52a276f8-b88f-4c5a-8e4d-229c6d41fca4"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-06T18:41:37.991Z",
+  "versionId": "6f12f17f-26a5-4646-8a40-35fe063f3e0e"
+}
