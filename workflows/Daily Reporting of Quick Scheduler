@@ -1,0 +1,6092 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "If14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Username": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Username",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Location",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Resource",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "VisitType",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Location": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resource": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VisitType": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Convert to File2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Convert to File3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Convert to File4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Limit2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File2": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File4": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Summarize2": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing3": {
+      "main": [
+        [
+          {
+            "node": "Merge22",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate4": {
+      "main": [
+        [
+          {
+            "node": "Code10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit4": {
+      "main": [
+        [
+          {
+            "node": "Aggregate4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate5": {
+      "main": [
+        [
+          {
+            "node": "Code11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code10": {
+      "main": [
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge7": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge8": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge10": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code11": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge9": {
+      "main": [
+        [
+          {
+            "node": "Aggregate6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate6": {
+      "main": [
+        [
+          {
+            "node": "Merge11",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Summarize3": {
+      "main": [
+        [
+          {
+            "node": "Merge11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge11": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Convert to File5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Username1": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Convert to File6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code12": {
+      "main": [
+        [
+          {
+            "node": "Convert to File7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code13": {
+      "main": [
+        [
+          {
+            "node": "Convert to File8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code14": {
+      "main": [
+        [
+          {
+            "node": "Sort1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Username1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Location1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Resource1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "VisitType1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Location1": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resource1": {
+      "main": [
+        [
+          {
+            "node": "Code12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VisitType1": {
+      "main": [
+        [
+          {
+            "node": "Code13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date1": {
+      "main": [
+        [
+          {
+            "node": "Code14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Code15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit6": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File7": {
+      "main": [
+        [
+          {
+            "node": "Merge12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File8": {
+      "main": [
+        [
+          {
+            "node": "Merge12",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File9": {
+      "main": [
+        [
+          {
+            "node": "Merge13",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge12": {
+      "main": [
+        [
+          {
+            "node": "Merge13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge13": {
+      "main": [
+        [
+          {
+            "node": "Merge14",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge14": {
+      "main": [
+        [
+          {
+            "node": "Merge15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing4": {
+      "main": [
+        [
+          {
+            "node": "Merge23",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge15": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "SendGrid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code15": {
+      "main": [
+        [
+          {
+            "node": "Merge16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate7": {
+      "main": [
+        [
+          {
+            "node": "Code16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code16": {
+      "main": [
+        [
+          {
+            "node": "Merge16",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge16": {
+      "main": [
+        [
+          {
+            "node": "Merge18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate8": {
+      "main": [
+        [
+          {
+            "node": "Code17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit7": {
+      "main": [
+        [
+          {
+            "node": "Aggregate8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code17": {
+      "main": [
+        [
+          {
+            "node": "Merge17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate9": {
+      "main": [
+        [
+          {
+            "node": "Code18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit8": {
+      "main": [
+        [
+          {
+            "node": "Aggregate9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code18": {
+      "main": [
+        [
+          {
+            "node": "Merge17",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate10": {
+      "main": [
+        [
+          {
+            "node": "Code19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit9": {
+      "main": [
+        [
+          {
+            "node": "Aggregate10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code19": {
+      "main": [
+        [
+          {
+            "node": "Merge19",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge17": {
+      "main": [
+        [
+          {
+            "node": "Merge19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge18": {
+      "main": [
+        [
+          {
+            "node": "Aggregate11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge19": {
+      "main": [
+        [
+          {
+            "node": "Merge18",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate11": {
+      "main": [
+        [
+          {
+            "node": "Merge20",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Summarize4": {
+      "main": [
+        [
+          {
+            "node": "Merge20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge20": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File10": {
+      "main": [
+        [
+          {
+            "node": "Merge21",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File11": {
+      "main": [
+        [
+          {
+            "node": "Merge22",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge22": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File12": {
+      "main": [
+        [
+          {
+            "node": "Merge23",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge23": {
+      "main": [
+        [
+          {
+            "node": "Merge15",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Convert to File14",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "SendGrid3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge31",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File14": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File15": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge30",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Merge24",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code20": {
+      "main": [
+        [
+          {
+            "node": "Merge24",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge24": {
+      "main": [
+        [
+          {
+            "node": "If9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Check Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token4": {
+      "main": [
+        [
+          {
+            "node": "Code21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid2": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow3": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge25",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Create Walk-in": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "If11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Merge26",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If10": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge25",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code21": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge25": {
+      "main": [
+        [
+          {
+            "node": "HTTP Create Walk-in",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge26",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge26": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If11": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File15",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code22",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code22": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB3": {
+      "main": [
+        [
+          {
+            "node": "Merge27",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Merge27",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge27": {
+      "main": [
+        [
+          {
+            "node": "If12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If12": {
+      "main": [
+        [
+          {
+            "node": "If13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code23": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code24": {
+      "main": [
+        [
+          {
+            "node": "Merge28",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If13": {
+      "main": [
+        [
+          {
+            "node": "Code24",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File13",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code25",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code25": {
+      "main": [
+        [
+          {
+            "node": "Merge28",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge28": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge31",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        []
+      ]
+    },
+    "Merge29": {
+      "main": [
+        [
+          {
+            "node": "Merge30",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Convert to File13": {
+      "main": [
+        [
+          {
+            "node": "Merge29",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File16": {
+      "main": [
+        [
+          {
+            "node": "Merge29",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge30": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge31": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date Range": {
+      "main": [
+        [
+          {
+            "node": "Campaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Campaign": {
+      "main": [
+        [
+          {
+            "node": "Manual Call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Call": {
+      "main": [
+        [
+          {
+            "node": "Code27",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB4": {
+      "main": [
+        [
+          {
+            "node": "Date Range",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code27": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If14": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time3": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB34": {
+      "main": [
+        [
+          {
+            "node": "If16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB35": {
+      "main": [
+        [
+          {
+            "node": "If15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If15": {
+      "main": [
+        [
+          {
+            "node": "Code29",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing2": {
+      "main": [
+        [
+          {
+            "node": "NocoDB34",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB35",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If16": {
+      "main": [
+        [
+          {
+            "node": "Code31",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code28",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code28": {
+      "main": [
+        [
+          {
+            "node": "Merge32",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code29": {
+      "main": [
+        [
+          {
+            "node": "Merge32",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge32": {
+      "main": [
+        [
+          {
+            "node": "Code30",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code30": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook65",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code31": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook65",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-11T12:32:33.768Z",
+  "id": "NUrEGt1eJHFRXf2m",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Daily Reporting of Quick Scheduler",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1360,
+        2480
+      ],
+      "id": "f912de5f-3563-4236-a5be-163cf7b4c181",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": ""
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -240,
+        2240
+      ],
+      "id": "638b02f8-64f4-483d-8be2-336438516466",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        -400
+      ],
+      "id": "8190af88-677b-4730-aa7b-85a26128c3cc",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.UserName }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        -400
+      ],
+      "id": "c7c9e9a2-ccf7-4ad1-9a4a-cb6601363a59",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.SchedulingLink }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "d1ef866f-da53-4435-bad1-b8182858604e",
+              "leftValue": "={{ $json.UserName }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "a52188be-9f8a-485d-a36f-b8c267ee57d0",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "UserName",
+              "value": "={{ $json.UserName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -400
+      ],
+      "id": "f31d5dd4-ada5-48ea-af48-64bbce9e2b99",
+      "name": "Username"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        -200
+      ],
+      "id": "f3598ae9-b933-4d3c-bc95-a3a230082ed8",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.Location }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        -200
+      ],
+      "id": "cd65286c-bca0-4c77-8245-9a378b79aeea",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        20
+      ],
+      "id": "5243e7d8-60c7-4c39-9d18-1e44bede0add",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.Resource }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        20
+      ],
+      "id": "b0d6f6be-b08a-4d58-9909-c15dcb7d0420",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        240
+      ],
+      "id": "c4a6b331-6810-4c87-b88f-07261c6b0525",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.VisitType }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        240
+      ],
+      "id": "3eda3b33-453c-4468-9252-2490f9a1a146",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        460
+      ],
+      "id": "ec27ebde-41d2-4166-bff2-b3a7c0036957",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f886bdf6-ccd2-4e35-bcfd-1bd146826898",
+              "leftValue": "={{ $json.Date }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1480,
+        460
+      ],
+      "id": "4bb4ab89-3a9f-4d97-86d4-ac711535bb84",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -80
+      ],
+      "id": "9342b13f-c922-4472-8fb2-0af3ec43b757",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Location",
+              "value": "={{ $json.location_description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -200
+      ],
+      "id": "2277ef9e-4c97-460a-8c05-0c8498d5a63f",
+      "name": "Location"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Resource",
+              "value": "={{ $json.provider_name }} | {{ $json.resource_abbr }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        20
+      ],
+      "id": "5bcdd4b2-a0b1-48e3-822a-e3b07417ac9f",
+      "name": "Resource"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "VisitType",
+              "value": "={{ $json.AppoinmentTypeToDisplay }} | {{ $json.Description }} | {{ $json.AT_Abbreviation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        240
+      ],
+      "id": "63c0a699-8911-437e-9265-07ceaeaf8414",
+      "name": "VisitType"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Date",
+              "value": "={{ $json.date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        460
+      ],
+      "id": "ab4a49fd-de81-4beb-93ed-51c1886f10b9",
+      "name": "Date"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Date"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        460
+      ],
+      "id": "12c28363-68fb-4f2a-8022-3b43c20fa35a",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b34dc93a-4bb8-428c-ab34-a49e06cfe5a3",
+              "leftValue": "={{ $json.CallSid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        520,
+        3040
+      ],
+      "id": "8f3cc359-4d29-45ba-86f4-ed602864220e",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": ""
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -60,
+        3240
+      ],
+      "id": "98e10fde-0967-4dfe-a64e-6a541dcd6a80",
+      "name": "NocoDB2",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 18,
+              "triggerAtMinute": 45
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1040,
+        1900
+      ],
+      "id": "2b58f3ac-90b9-479a-8b35-21a33c9b9713",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/0807aa23-f0ae-4af0-9ee3-f74603c8156e",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Report",
+              "value": "=<b>Quick Scheduler Report (Top 10):</b> </br>Total Scheduled Today: {{ $json.count_Appointment_ID }}</br></br> {{ $json.message }}</br></br>*Automated Report (top 10 here, email with full list is distributed)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3960,
+        -1320
+      ],
+      "id": "5e3e82e0-e488-45ae-9e42-9dca947192a9",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -1120
+      ],
+      "id": "14238d6e-81fb-4929-b445-c6598c390aba",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -1120
+      ],
+      "id": "7617989f-9b14-4b83-84be-8c815bb2e194",
+      "name": "Limit2"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "ithelpdesk@epicpc.com",
+        "fromName": "Quick Scheduler Reporting",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "=Daily Report - Today's Total: {{ $json.count_Appointment_ID }}",
+        "contentValue": "=Quick Scheduler Total: {{ $json.count_Appointment_ID }}",
+        "additionalFields": {
+          "attachments": "User,Location,resource,visittype,date,fulllist"
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3880,
+        660
+      ],
+      "id": "7adc07c8-fd50-48d1-a69b-4632f348656b",
+      "name": "SendGrid",
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "User",
+        "options": {
+          "fileName": "user.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        200
+      ],
+      "id": "ac73b139-7a3f-460f-a401-c8478537aa80",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "Location",
+        "options": {
+          "fileName": "location.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        380
+      ],
+      "id": "d58d3033-bbc6-4aea-bd89-29aeefed5235",
+      "name": "Convert to File1"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "resource",
+        "options": {
+          "fileName": "resource.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        560
+      ],
+      "id": "8a31f0e1-513f-4a01-8a86-07192a93599e",
+      "name": "Convert to File2"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "visittype",
+        "options": {
+          "fileName": "visittype"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        760
+      ],
+      "id": "9f9cb3fc-ee04-4e16-a8b2-0a10c79d4436",
+      "name": "Convert to File3"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "date",
+        "options": {
+          "fileName": "date"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        960
+      ],
+      "id": "9cd6a7a7-d9a8-4bca-9a5b-e321616fdd5e",
+      "name": "Convert to File4"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2600,
+        460
+      ],
+      "id": "6638b33c-bbaf-4348-ad24-3f573ff5d2eb",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2600,
+        640
+      ],
+      "id": "d2a34803-f55a-4d0a-91c3-b8f1b8928e37",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        720
+      ],
+      "id": "844c8f80-54ff-4816-bccc-41fbc7364923",
+      "name": "Merge4"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3140,
+        600
+      ],
+      "id": "8d8b98de-e4e1-41ae-a6cc-468b8e20d544",
+      "name": "Merge5"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Appointment_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        980,
+        1000
+      ],
+      "id": "fbc24267-ac12-4c14-ab68-8b76a4598cd1",
+      "name": "Summarize2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        1120
+      ],
+      "id": "81d73423-acfe-48bb-9bb3-e30f8a2f2aae",
+      "name": "No Operation, do nothing3"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3440,
+        640
+      ],
+      "id": "03a313d3-1cdf-42e8-84ff-ccbc9ae65920",
+      "name": "Merge6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd4a027c-ddcf-4b04-855b-17f0f328aadd",
+              "name": "emails",
+              "value": "=phartwig@epichs.org,tstilwell@epichs.org,tnaman@epichs.org,gnaman@epichs.org,jzreik@epichs.org,jgreene@epichs.org,amaya@epichs.org,vhabbo@epichs.org,aadams@epichs.org",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3680,
+        640
+      ],
+      "id": "619154fb-a79c-48f6-95de-b2d5477d6103",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        -1120
+      ],
+      "id": "bc8b6245-0e48-4ba5-93cc-edb06b3643f2",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -940
+      ],
+      "id": "136664b7-1582-430b-9570-840197bb8a2e",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -940
+      ],
+      "id": "6945a2e0-e80d-4c0c-b5fd-6d558b6d6909",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        -940
+      ],
+      "id": "76bf9a0f-21b6-4ff3-a330-42dec99fae9b",
+      "name": "Code6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        -1040
+      ],
+      "id": "a3a02a3c-4457-447d-af89-23990d56fb3a",
+      "name": "Merge7"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -780
+      ],
+      "id": "7df2d7c9-c91a-41a5-b145-b7e150c8d75c",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -780
+      ],
+      "id": "5d9d0c8b-693e-4f2b-8aab-833f03787a25",
+      "name": "Limit3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        -780
+      ],
+      "id": "cc2de6c3-a3ba-426c-a155-a74180ea1164",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -600
+      ],
+      "id": "9e81da46-8221-4885-b97d-49a74cd4189a",
+      "name": "Aggregate4"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -600
+      ],
+      "id": "b8053e56-96dd-4799-a7ff-b80e0011d02b",
+      "name": "Limit4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        -600
+      ],
+      "id": "feb1e786-9fe9-4b26-8b68-c09f59af44a9",
+      "name": "Code10"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -420
+      ],
+      "id": "2294cb19-d049-45ea-b2a2-4be2741b2eaf",
+      "name": "Aggregate5"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -420
+      ],
+      "id": "7d629188-8a8a-4eb3-b360-708da8e43491",
+      "name": "Limit5"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        -420
+      ],
+      "id": "65f8b856-d48b-44be-afd6-bdab8ffdb48b",
+      "name": "Code11"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        -720
+      ],
+      "id": "8852a8bf-ab6e-4f5c-9ca1-ecac6e553a31",
+      "name": "Merge8"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3260,
+        -720
+      ],
+      "id": "aec5c2d2-1f8f-4215-b829-54cfb42896b8",
+      "name": "Merge9"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        -700
+      ],
+      "id": "e783d7ce-ba0b-4bc2-83a4-d1406529fada",
+      "name": "Merge10"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "message"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3480,
+        -720
+      ],
+      "id": "360d8f31-d824-4420-8997-99e0680b49dc",
+      "name": "Aggregate6"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Appointment_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        1160,
+        -1360
+      ],
+      "id": "be38ef42-b6f5-4095-a9be-553c901a05e5",
+      "name": "Summarize3"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3740,
+        -1320
+      ],
+      "id": "8669b0d7-ebaa-4755-9b00-59af2106fd1b",
+      "name": "Merge11"
+    },
+    {
+      "parameters": {
+        "content": "# Today's Appintments",
+        "height": 3060,
+        "width": 4360,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -140,
+        -1620
+      ],
+      "typeVersion": 1,
+      "id": "024c5682-f0e7-44ca-81bd-b8ff2d81167e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "height": 1700,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1100,
+        1680
+      ],
+      "typeVersion": 1,
+      "id": "6739dcb9-2b75-4edd-9347-9f0d87e1a9db",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        2680
+      ],
+      "id": "890d507a-16ed-4a46-b732-7b7258c55f40",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "UserName",
+              "value": "={{ $json.From.slice(7) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        2680
+      ],
+      "id": "6204335f-7de2-4e59-bc46-1de1aca01f28",
+      "name": "Username1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        2880
+      ],
+      "id": "9caf16a2-8958-4c8a-898a-b25b98ea243d",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        3100
+      ],
+      "id": "f127792e-f900-46c3-9cb2-60d7b4fc68f6",
+      "name": "Code12"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        3320
+      ],
+      "id": "7410cc69-bcb6-43d4-83d1-296bf522e405",
+      "name": "Code13"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an object to hold counts for each unique value.\nconst counts = {};\n\n// Determine the key dynamically from the first item.\n// If an object has more than one key, adjust accordingly.\nconst firstItemKeys = Object.keys(items[0].json);\nif (firstItemKeys.length !== 1) {\n\t// If there are multiple keys, choose one or adjust this logic as needed.\n\tconsole.warn(\"Multiple keys found. Using the first key:\", firstItemKeys[0]);\n}\nconst key = firstItemKeys[0];\n\n// Iterate over all items and count the values.\nfor (const item of items) {\n\tconst value = item.json[key];\n\tcounts[value] = (counts[value] || 0) + 1;\n}\n\n// Convert the counts object into an array of [value, count] pairs and sort it descending.\nconst sortedEntries = Object.entries(counts).sort((a, b) => b[1] - a[1]);\n\n// Map the sorted entries into an array of objects for output.\nconst result = sortedEntries.map(([value, count]) => ({\n\tjson: { [key]: value, count }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        3540
+      ],
+      "id": "3c063fad-7b0c-48d0-9627-acb1d1bb4c66",
+      "name": "Code14"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        980,
+        3000
+      ],
+      "id": "4d1e3e48-f5bc-4f5c-a866-1aa32a7458ea",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Location",
+              "value": "={{ $json.location_description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        2880
+      ],
+      "id": "fc912ba3-c661-4a95-90b4-8fc41ff2add4",
+      "name": "Location1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Resource",
+              "value": "={{ $json.provider_name }} | {{ $json.resource_abbr }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        3100
+      ],
+      "id": "eec9802e-0757-4baf-aef7-4a03b9825032",
+      "name": "Resource1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "VisitType",
+              "value": "={{ $json.AppoinmentTypeToDisplay }} | {{ $json.Description }} | {{ $json.AT_Abbreviation }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        3320
+      ],
+      "id": "ee3dd937-4da1-4ceb-8b0a-8b688b93fc35",
+      "name": "VisitType1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8a41b52e-c02d-45bd-af28-91daa41ca02d",
+              "name": "Date",
+              "value": "={{ $json.date }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        3540
+      ],
+      "id": "b627e512-1d9e-4d07-aaf0-486290001ec1",
+      "name": "Date1"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Date"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        3540
+      ],
+      "id": "51b1ec71-5076-4e9a-8db1-e2919f952303",
+      "name": "Sort1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/0807aa23-f0ae-4af0-9ee3-f74603c8156e",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Report",
+              "value": "=<b>Turbo Call Report (Top 10):</b> </br>Total Scheduled Today: {{ $json.count_Appointment_ID }}</br></br> {{ $json.message }}</br></br>*Automated Report (top 10 here, email with full list is distributed)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4000,
+        1760
+      ],
+      "id": "f795778b-e938-4186-aef6-ee39e2e919e4",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        1960
+      ],
+      "id": "fb2a0694-d27f-4e9a-93e2-32be8e28adeb",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        1960
+      ],
+      "id": "528be73c-9fe4-4fbe-8e45-f6550b97367c",
+      "name": "Limit6"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "ithelpdesk@epicpc.com",
+        "fromName": "Turbo Call Reporting",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "=Daily Report - Today's Total: {{ $json.count_Appointment_ID }}",
+        "contentValue": "=Turbo Call Scheduled Total: {{ $json.count_Appointment_ID }}",
+        "additionalFields": {
+          "attachments": "User,Location,resource,visittype,date,fulllist"
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3920,
+        3720
+      ],
+      "id": "c3ab3244-e8e7-4e89-9b3f-5202d4313997",
+      "name": "SendGrid1",
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "User",
+        "options": {
+          "fileName": "user.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        3280
+      ],
+      "id": "bb3be1c5-e8be-4702-97e9-a6f4393574f5",
+      "name": "Convert to File5"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "Location",
+        "options": {
+          "fileName": "location.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        3460
+      ],
+      "id": "995a3b2b-114b-4fd1-8cd5-c11cea7b303d",
+      "name": "Convert to File6"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "resource",
+        "options": {
+          "fileName": "resource.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        3640
+      ],
+      "id": "7ed70050-c002-4a45-8d97-94e932b23312",
+      "name": "Convert to File7"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "visittype",
+        "options": {
+          "fileName": "visittype"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        3840
+      ],
+      "id": "db748a1c-e086-4418-893a-8fc5318118e0",
+      "name": "Convert to File8"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "date",
+        "options": {
+          "fileName": "date"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        4040
+      ],
+      "id": "9cf2d8f4-ebc5-4bb9-8b78-febcf5d516a8",
+      "name": "Convert to File9"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2640,
+        3540
+      ],
+      "id": "2cf5eece-a3d6-42a8-8573-c4a71342224e",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2640,
+        3720
+      ],
+      "id": "3d409627-82cb-4b13-835c-97e301f8326c",
+      "name": "Merge12"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        3800
+      ],
+      "id": "79b66e42-b1f0-4ad8-b50f-2d7c87aa09ad",
+      "name": "Merge13"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3180,
+        3680
+      ],
+      "id": "0a7acee7-1f38-41fc-a6b8-a0ca9820c762",
+      "name": "Merge14"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Appointment_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        1020,
+        4080
+      ],
+      "id": "c79ceba8-f38f-4565-9bea-a313e2a69f61",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        4260
+      ],
+      "id": "b2ea86a0-533e-477c-a825-dd5dc665e91c",
+      "name": "No Operation, do nothing4"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3480,
+        3720
+      ],
+      "id": "d96dfbf0-8942-4373-8783-9d9b06937485",
+      "name": "Merge15"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd4a027c-ddcf-4b04-855b-17f0f328aadd",
+              "name": "emails",
+              "value": "=phartwig@epichs.org,tstilwell@epichs.org,tnaman@epichs.org,gnaman@epichs.org,jzreik@epichs.org,jgreene@epichs.org,amaya@epichs.org,vhabbo@epichs.org,aadams@epichs.org",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3640,
+        3720
+      ],
+      "id": "2e794834-e348-406e-919f-c03f4384c7f7",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        1960
+      ],
+      "id": "01fa1f6d-5d19-4288-9be9-8be49f910e79",
+      "name": "Code15"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        2140
+      ],
+      "id": "7e8d073c-04b7-4fb2-9183-8edc73afc573",
+      "name": "Aggregate7"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        2140
+      ],
+      "id": "4159dd5d-ee96-4b6b-beb6-a95238a2b363",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        2140
+      ],
+      "id": "88ba0fdf-ee2f-4add-b07c-8c63846cd259",
+      "name": "Code16"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        2040
+      ],
+      "id": "e05748a3-d93b-467c-8052-093e8e8770a7",
+      "name": "Merge16"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        2300
+      ],
+      "id": "05d43d90-ed22-4032-8de5-4544d6e927be",
+      "name": "Aggregate8"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        2300
+      ],
+      "id": "35c3f5ff-87b0-4a8c-a0c9-0733dad0042c",
+      "name": "Limit7"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        2380
+      ],
+      "id": "675cabfe-878b-48c6-b841-c1d874a10232",
+      "name": "Code17"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        2480
+      ],
+      "id": "9839ada6-166f-4915-b6a1-7ff8eba1d605",
+      "name": "Aggregate9"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        2480
+      ],
+      "id": "87239bf8-5419-4ffb-837f-17243ad18a73",
+      "name": "Limit8"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        2560
+      ],
+      "id": "5e34f58f-87f0-49fe-90d0-5972d1fab2a7",
+      "name": "Code18"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        2660
+      ],
+      "id": "7c8922da-0323-4b69-bb1a-1ad524403b56",
+      "name": "Aggregate10"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        2660
+      ],
+      "id": "aec5ea0c-8163-40ac-8d44-8b8360cd829d",
+      "name": "Limit9"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json.data;\n\n// If 'data' is not an array or is empty, return a default message.\nif (!Array.isArray(data) || data.length === 0) {\n  return [\n    {\n      json: {\n        message: \"No data found\"\n      }\n    }\n  ];\n}\n\n// Dynamically get headers from the first object\nconst headers = Object.keys(data[0]);\n\n// Build the HTML table with basic styling\nlet htmlTable = '<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\">';\n\n// Build header row\nhtmlTable += '<thead><tr>';\nheaders.forEach(header => {\n  htmlTable += `<th>${header}</th>`;\n});\nhtmlTable += '</tr></thead>';\n\n// Build body rows\nhtmlTable += '<tbody>';\ndata.forEach(row => {\n  htmlTable += '<tr>';\n  headers.forEach(header => {\n    htmlTable += `<td>${row[header] ?? \"\"}</td>`;\n  });\n  htmlTable += '</tr>';\n});\nhtmlTable += '</tbody>';\nhtmlTable += '</table>';\n\n// Return the table as the 'message' property\nreturn [\n  {\n    json: {\n      message: htmlTable\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2760,
+        2700
+      ],
+      "id": "96164874-7561-4ea0-b075-2f89b177680d",
+      "name": "Code19"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        2360
+      ],
+      "id": "8ca695b3-058a-47b1-8971-6d5da4c69882",
+      "name": "Merge17"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3380,
+        2440
+      ],
+      "id": "9695dcb2-9771-4637-8978-6b8c17d476d4",
+      "name": "Merge18"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3120,
+        2380
+      ],
+      "id": "8a6a074e-001a-4aa6-bea0-e8615946efc7",
+      "name": "Merge19"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "message"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        2360
+      ],
+      "id": "09163057-9453-4245-91d7-3ed5f1ccb6f1",
+      "name": "Aggregate11"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Appointment_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        1720
+      ],
+      "id": "39ec351e-3440-4f42-ac29-49654889165b",
+      "name": "Summarize4"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3780,
+        1760
+      ],
+      "id": "a341466d-d68f-417f-8d76-a528ac164750",
+      "name": "Merge20"
+    },
+    {
+      "parameters": {
+        "content": "# Turbo Call",
+        "height": 3060,
+        "width": 4360,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -120,
+        1560
+      ],
+      "typeVersion": 1,
+      "id": "4e98f676-ac37-4fdf-96b7-0f3125be7646",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# Need to send full report",
+        "height": 520,
+        "width": 780,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2220,
+        1640
+      ],
+      "typeVersion": 1,
+      "id": "92c2eb13-af30-49df-9906-fb2432a9431b",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -1800,
+        1860
+      ],
+      "id": "b02968a2-6bed-48e3-8d3c-96fcc9f011c1",
+      "name": "Merge21"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "fulllist",
+        "options": {
+          "fileName": "full_list.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -2040,
+        1880
+      ],
+      "id": "bc6b5279-7dfd-41d5-80e6-caaff7f6c4b0",
+      "name": "Convert to File10"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3120,
+        1260
+      ],
+      "id": "08bea76b-805b-40ff-8095-aca2f49bf1ff",
+      "name": "Merge22"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "fulllist",
+        "options": {
+          "fileName": "full_list.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        1260
+      ],
+      "id": "f8dfc2f7-45d0-43e5-8f3a-e4438233272d",
+      "name": "Convert to File11"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3060,
+        4400
+      ],
+      "id": "e3fcf63b-bf55-423b-88af-e193c15e5503",
+      "name": "Merge23"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "fulllist",
+        "options": {
+          "fileName": "full_list.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        4420
+      ],
+      "id": "bf75120b-5487-4eb1-b8d1-1e78811b7c7a",
+      "name": "Convert to File12"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "32f969be-cba1-4f01-80d4-a91929b3c5e6",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "A",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2060,
+        5240
+      ],
+      "id": "4e94581e-eb6b-44c7-9fe2-b76f4d6f7eb5",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "acknowledged",
+        "options": {
+          "fileName": "Acknowledged.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2360,
+        5160
+      ],
+      "id": "04b114af-977b-4fdd-add8-0e5d7bfc3061",
+      "name": "Convert to File14"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "all",
+        "options": {
+          "fileName": "All_Appointments_Status.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2360,
+        5340
+      ],
+      "id": "f83b3f63-14f0-41e3-a4f5-5a4831637602",
+      "name": "Convert to File15"
+    },
+    {
+      "parameters": {
+        "content": "# Weekly Acknowledged",
+        "height": 373,
+        "width": 607,
+        "color": 7
+      },
+      "id": "9be496b2-f2c0-4996-9872-72a40934e3d2",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        5140
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "ithelpdesk@epicpc.com",
+        "fromName": "Appointment Status (Marketing)",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "=Marketing Tracked: Appointment Status By Date",
+        "contentValue": "=Appointment Status by Date (Marketing)",
+        "additionalFields": {
+          "attachments": "acknowledged,all"
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        4860,
+        5280
+      ],
+      "id": "12a4924d-d5ca-432b-bc20-588de8c0e993",
+      "name": "SendGrid2",
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd4a027c-ddcf-4b04-855b-17f0f328aadd",
+              "name": "emails",
+              "value": "=sfietsam@epichs.org,tstilwell@epichs.org,tnaman@epichs.org,gnaman@epichs.org,jzreik@epichs.org,jgreene@epichs.org,amaya@epichs.org,vhabbo@epichs.org,aadams@epichs.org",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4580,
+        5280
+      ],
+      "id": "db6a4e02-1b55-4154-a9de-39575a0c9d50",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/0807aa23-f0ae-4af0-9ee3-f74603c8156e",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Report",
+              "value": "=<style>\n  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');\n  body {\n    font-family: 'Nunito', sans-serif;\n  }\n  .title {\n    font-size: 1.8em;\n    font-weight: bold;\n    margin-bottom: 10px;\n  }\n</style>\n\n<b class=\"title\">Marketing Tracked:</b></br></br>\n{{ $json.message }}</br></br>\n{{ $json.message2 }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3160,
+        5020
+      ],
+      "id": "1c8e452d-8145-45b2-a7fe-1da8890f7a1e",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "32b00df4-c62f-465a-8a27-26669072fe81",
+              "name": "message",
+              "value": "={{ $json.html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2660,
+        5020
+      ],
+      "id": "937e6d7a-b41e-4776-9e2b-40ece077dde6",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4060,
+        5280
+      ],
+      "id": "8ea9fcca-7831-4812-8183-b426638fc99c",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fe717b40-60f2-4634-9f4c-30e31087aa5a",
+              "leftValue": "={{ $json.UserName }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5f1f4124-2df3-4dc5-8493-17f012f2524b",
+              "leftValue": "={{ $json.SchedulingLink }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "c0660876-bbe6-41fc-a24d-91a64b02f4fe",
+              "leftValue": "={{ $json.Appointment_ID }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        120,
+        5560
+      ],
+      "id": "da3f4988-f447-4931-99b3-0004a3f57038",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": "(Appointment_ID,isnot,null)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -60,
+        5560
+      ],
+      "id": "d24f8e63-a507-4258-8044-8a571e9861c1",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b19566e2-fea3-4e6e-8928-e276c105e96b",
+              "leftValue": "={{ $json.date }}",
+              "rightValue": "={{ $json.today }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "beforeOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        5560
+      ],
+      "id": "47ee51b8-cd95-4162-b08e-5b99dc68974a",
+      "name": "If9"
+    },
+    {
+      "parameters": {
+        "jsCode": "const now = new Date();\n\nfunction pad(num) {\n  return num.toString().padStart(2, '0');\n}\n\nfunction formatDate(date) {\n  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +\n         `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;\n}\n\nconst today = formatDate(now);\nconst yesterday = formatDate(new Date(now.getTime() - 24 * 60 * 60 * 1000));\nconst priorweek = formatDate(new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000));\n\nreturn [\n  {\n    json: {\n      today,\n      yesterday,\n      priorweek\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        5680
+      ],
+      "id": "c3bc7cbe-4a05-4dd2-8bc4-c44871020276",
+      "name": "Code20"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        560,
+        5560
+      ],
+      "id": "0058d647-bd47-4f09-8cfd-34aafc4891e9",
+      "name": "Merge24"
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "ff11cafb-d4d8-4bcb-a0ae-3c80bf5c11e5",
+      "name": "Read PM Token4",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        5700
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "01981075-2d88-4527-9e9e-0ae674ecc27c",
+      "name": "Extract PM Token4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        5700
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"wkiosk\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"L3tsgetC0nn3cted!!\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "7c473b60-f5ba-46af-b3e2-af9d55187d4d",
+      "name": "Check Token4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1900,
+        5700
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "ea806461-1513-4c8e-878d-6dde4ad18eb2",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        5800
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "d8cfb9b4-6210-485f-ba15-487b7f20a8db",
+      "name": "IF PM Token Valid2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        5700
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "a28d02d6-2640-4c8f-b600-1198c046a105",
+      "name": "Read PM Token5",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        5640
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "f7df183d-31af-49d7-ad8d-0303efb9c162",
+      "name": "Extract PM Token5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        2540,
+        5640
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "ef3218b6-6ed9-4fc4-b823-61e43e82d592",
+      "name": "Execute Workflow3",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        5800
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73d4f356-534e-4f3a-9929-4654f1e9011e",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2700,
+        5640
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication wkiosk",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "b4d11724-73df-45b0-b174-2aad81b984ca",
+      "name": "Sticky Note16",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        5620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetAppointmentById"
+            },
+            {
+              "name": "AppUserID",
+              "value": "wkiosk"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $json.Patient_ID }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.Appointment_ID }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "1e72fb61-714e-40f7-9558-562cae618170",
+      "name": "HTTP Create Walk-in",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3100,
+        5540
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        5540
+      ],
+      "id": "ce29e12e-4ba3-465a-ad8b-161f8e14518d",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getappointmentbyidinfo",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        5740
+      ],
+      "id": "9f802a6f-54df-4ac2-8ee4-494624aff35b",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b19566e2-fea3-4e6e-8928-e276c105e96b",
+              "leftValue": "={{ $json.date }}",
+              "rightValue": "={{ $json.priorweek }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        5540
+      ],
+      "id": "b40ae3af-40fc-4a99-a2cd-c7097f45c3b3",
+      "name": "If10"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "9f6f737c-ec43-432e-a60e-f7f13bf2d6e8",
+      "name": "Code21",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        5700
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2900,
+        5540
+      ],
+      "id": "57744526-56da-48b5-8a04-fabf00c32363",
+      "name": "Merge25"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        5960
+      ],
+      "id": "86275090-dd50-4a3b-b276-98bc8d0bf484",
+      "name": "Merge26"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f714e6b2-37ef-460e-aa71-f000bb8f6992",
+              "leftValue": "={{ $json.ExcludeRecord }}",
+              "rightValue": "Out of date range",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        5280
+      ],
+      "id": "f82039d7-1062-435f-926c-9dc809a7500b",
+      "name": "If11"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d52bb8f2-af27-4dc2-ac3f-2f122a7e813b",
+              "name": "ExcludeRecord",
+              "value": "Out of date range",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1100,
+        5780
+      ],
+      "id": "7f50d901-a53f-4c77-8b4c-e631194722b0",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "jsCode": "/*********************************************\n * 1) Define the statuses to track (A, X, N).\n *********************************************/\nconst statuses = [\"A\", \"X\", \"N\"];\n\n/*********************************************\n * 2) Helper: Format a Date object as \"YYYY-MM-DD\"\n *********************************************/\nfunction formatDate(dateObj) {\n  const year = dateObj.getFullYear();\n  const month = String(dateObj.getMonth() + 1).padStart(2, '0');\n  const day = String(dateObj.getDate()).padStart(2, '0');\n  return `${year}-${month}-${day}`;\n}\n\n/*********************************************\n * 3) Helper: Extract the date portion from\n * Appointment_DateTime string.\n * Expected format: \"MM/DD/YYYY h:mmAM/PM\"\n *********************************************/\nfunction parseAppointmentDate(dateString) {\n  if (!dateString) return null;\n  const parts = dateString.trim().split(\" \");\n  if (parts.length < 1) return null;\n  const datePart = parts[0];\n  const arr = datePart.split(\"/\");\n  if (arr.length !== 3) return null;\n  const month = arr[0].padStart(2, \"0\");\n  const day = arr[1].padStart(2, \"0\");\n  const year = arr[2];\n  return `${year}-${month}-${day}`;\n}\n\n/*********************************************\n * 4) Generate the last 7 days as objects\n * Each object contains:\n *   key: \"YYYY-MM-DD\" (for matching)\n *   display: \"MM-DD-YYYY\" (for display)\n *   dayName: Day of the week (e.g. \"Monday\")\n *********************************************/\nconst today = new Date();\nconst last7DaysInfo = [];\nfor (let i = 0; i < 7; i++) {\n  const d = new Date(today);\n  d.setDate(today.getDate() - i);\n  const key = formatDate(d); // \"YYYY-MM-DD\"\n  const display = `${String(d.getMonth() + 1).padStart(2, \"0\")}-${String(d.getDate()).padStart(2, \"0\")}-${d.getFullYear()}`;\n  const dayName = d.toLocaleDateString('en-US', { weekday: 'long' });\n  last7DaysInfo.push({ key, display, dayName });\n}\nlast7DaysInfo.reverse(); // Oldest day first\nconst last7DaysKeys = last7DaysInfo.map(info => info.key);\n\n/*********************************************\n * 5) Initialize counts object.\n *********************************************/\nconst counts = {};\nstatuses.forEach(status => {\n  counts[status] = {};\n  last7DaysKeys.forEach(date => {\n    counts[status][date] = new Set();\n  });\n});\n\n/*********************************************\n * 6) Process each incoming record.\n *********************************************/\nfor (const item of items) {\n  const data = item.json;\n  const recordStatus = data.Status;\n  if (statuses.includes(recordStatus)) {\n    const appointmentDateStr = parseAppointmentDate(data.Appointment_DateTime);\n    if (!appointmentDateStr) continue;\n    if (last7DaysKeys.includes(appointmentDateStr)) {\n      counts[recordStatus][appointmentDateStr].add(data.Appointment_ID);\n    }\n  }\n}\n\n/*********************************************\n * 7) Calculate Totals\n *********************************************/\nlet totalAppointments = 0;\nconst totalByStatus = { \"A\": 0, \"X\": 0, \"N\": 0 };\n\nstatuses.forEach(status => {\n  last7DaysKeys.forEach(date => {\n    const cnt = counts[status][date].size;\n    totalAppointments += cnt;\n    totalByStatus[status] += cnt;\n  });\n});\n\n/*********************************************\n * 8) Build the main pivot HTML table\n * Columns: DAY, Date (MM-DD-YYYY), A, X, N, Total\n *********************************************/\nlet tableHtml = `<table border=\"1\" style=\"border-collapse: collapse; margin-top:10px;\">`;\n// Header row\ntableHtml += `<thead><tr>\n  <th style=\"padding: 8px;\">DAY</th>\n  <th style=\"padding: 8px;\">Date</th>`;\nstatuses.forEach(status => {\n  tableHtml += `<th style=\"padding: 8px;\">${status}</th>`;\n});\ntableHtml += `<th style=\"padding: 8px;\">Total</th>`;\ntableHtml += `</tr></thead>`;\n\n// Body rows: one row per day\ntableHtml += `<tbody>`;\nlast7DaysInfo.forEach(info => {\n  tableHtml += `<tr>`;\n  // DAY column\n  tableHtml += `<td style=\"padding: 8px;\">${info.dayName}</td>`;\n  // Date column\n  tableHtml += `<td style=\"padding: 8px;\">${info.display}</td>`;\n  \n  // For each status column, get count\n  let rowTotal = 0;\n  statuses.forEach(status => {\n    const countVal = counts[status][info.key].size;\n    rowTotal += countVal;\n    tableHtml += `<td style=\"padding: 8px;\">${countVal}</td>`;\n  });\n  // \"Total\" column for this row\n  tableHtml += `<td style=\"padding: 8px;\">${rowTotal}</td>`;\n  tableHtml += `</tr>`;\n});\ntableHtml += `</tbody>`;\n\n// Create the date range string for the footer in \"MM/DD - MM/DD\" format.\n// Extract month/day from the first and last display strings.\nconst firstDisplayParts = last7DaysInfo[0].display.split('-'); // [MM, DD, YYYY]\nconst lastDisplayParts = last7DaysInfo[last7DaysInfo.length - 1].display.split('-');\nconst firstMD = `${firstDisplayParts[0]}/${firstDisplayParts[1]}`;\nconst lastMD = `${lastDisplayParts[0]}/${lastDisplayParts[1]}`;\nconst dateRange = `${firstMD} - ${lastMD}`;\n\n// Footer row: Summation of each status + final total, with the date range in the Date column.\ntableHtml += `<tfoot><tr>\n  <td style=\"padding: 8px;\"><b>Total</b></td>\n  <td style=\"padding: 8px;\"><b>${dateRange}</b></td>\n  <td style=\"padding: 8px;\"><b>${totalByStatus[\"A\"]}</b></td>\n  <td style=\"padding: 8px;\"><b>${totalByStatus[\"X\"]}</b></td>\n  <td style=\"padding: 8px;\"><b>${totalByStatus[\"N\"]}</b></td>\n  <td style=\"padding: 8px;\"><b>${totalAppointments}</b></td>\n</tr></tfoot>`;\ntableHtml += `</table>`;\n\n/*********************************************\n * 9) Build the overall HTML output.\n * Updated to include a single header:\n * \"Appointment Status by Date:\"\n *********************************************/\nlet htmlOutput = `<p><b>Appointment Status by Date:</b></p>`;\nhtmlOutput += tableHtml;\n\n/*********************************************\n * 10) Remove any \"\\n\" characters and return.\n *********************************************/\nhtmlOutput = htmlOutput.replace(/\\n/g, '');\n\n// Return the final HTML\nreturn [\n  {\n    json: {\n      html: htmlOutput\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        5040
+      ],
+      "id": "83e2fdf7-387b-4de6-9d57-bd96f37e4e14",
+      "name": "Code22"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7,
+              "triggerAtMinute": 45
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1040,
+        3020
+      ],
+      "id": "695ed0c6-dd2f-4640-bcb0-0ae95e3b1e5e",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "height": 1360,
+        "width": 4340,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -120,
+        4880
+      ],
+      "typeVersion": 1,
+      "id": "1b3ba6a3-9395-43b6-ad56-cc318d21ccb0",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": "(UserName,is,null)~and(CallSid,is,null)~and(SchedulingLink,isnot,null)~not(Patient_Name,like,%test%)~and(Patient_Number,isnot,502880)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        20,
+        6500
+      ],
+      "id": "b576c37f-2647-48c4-9c91-e48856874e1c",
+      "name": "NocoDB3",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b19566e2-fea3-4e6e-8928-e276c105e96b",
+              "leftValue": "={{ $json.CreatedAt }}",
+              "rightValue": "={{ $json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        540,
+        6520
+      ],
+      "id": "00618e60-419c-442c-97f0-1eb14cf58c25",
+      "name": "If12"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        340,
+        6520
+      ],
+      "id": "c8c64197-5d84-41bc-89f2-f8d548c5683e",
+      "name": "Merge27"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $now }}",
+        "duration": 7,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        180,
+        6680
+      ],
+      "id": "a7ff44aa-3611-4c8d-b224-f09ca2cea6fc",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the expected scheduler types\nconst expectedSchedulers = [\"New Patient Signup\", \"Self-Scheduled\"];\n\n// Initialize an object for grouping with default values for each expected scheduler\nconst grouped = {};\n\n// Set up each expected scheduler with default values\nexpectedSchedulers.forEach(scheduler => {\n    grouped[scheduler] = {\n        Scheduler: scheduler,\n        Count: 0,\n        Records: []\n    };\n});\n\n// Loop through each incoming item and group them by the Scheduler field\nfor (const item of items) {\n    const schedulerValue = item.json.Scheduler;\n    // Only aggregate if the scheduler is one of the expected types\n    if (grouped[schedulerValue]) {\n        grouped[schedulerValue].Count++;\n        grouped[schedulerValue].Records.push(item.json);\n    }\n}\n\n// Return the output as an array of records (always two records)\nreturn Object.values(grouped).map(group => ({ json: group }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        6600
+      ],
+      "id": "d6aaa099-2956-41d0-89a5-c555c747ca48",
+      "name": "Code23"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Scheduler }}",
+                    "rightValue": "New Patient Signup",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d6da48b6-5cec-46fe-9ced-84eae3aaa634"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "08a473e1-7cf2-4ac0-bf42-c89be253263d",
+                    "leftValue": "={{ $json.Scheduler }}",
+                    "rightValue": "Self-Scheduled",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3540,
+        6440
+      ],
+      "id": "f54ece66-bd71-4922-9fbc-565d1a5615f1",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "Records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3760,
+        6800
+      ],
+      "id": "85e12b07-d26d-4481-b085-97fb840a6bb6",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "Records",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3760,
+        6660
+      ],
+      "id": "18101588-0cfc-49cc-9f97-78975a1cebd8",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Helper function to format dates as MM-DD-YYYY\nfunction formatDate(date) {\n  const month = (date.getMonth() + 1).toString().padStart(2, '0');\n  const day = date.getDate().toString().padStart(2, '0');\n  const year = date.getFullYear();\n  return `${month}-${day}-${year}`;\n}\n\n// Helper function to convert a date string from MM-DD-YYYY to MM/DD/YY format (for the range)\nfunction formatForRange(dateStr) {\n  const parts = dateStr.split('-'); // parts: [MM, DD, YYYY]\n  return `${parts[0]}/${parts[1]}/${parts[2].slice(-2)}`;\n}\n\n// Create an object to store aggregated counts per date\nlet aggregatedData = {};\n\n// Loop over each incoming item and group them by the date portion of CreatedAt\nfor (const item of items) {\n  const createdAtStr = item.json.CreatedAt;\n  if (!createdAtStr) continue; // Skip items without CreatedAt\n  \n  // Parse the CreatedAt date, ignoring the time\n  let createdAt = new Date(createdAtStr);\n  createdAt.setHours(0, 0, 0, 0);\n  const dateStr = formatDate(createdAt);\n  \n  // Initialize the date key if it doesn't exist yet\n  if (!(dateStr in aggregatedData)) {\n    aggregatedData[dateStr] = { newPatientSignup: 0, selfScheduled: 0 };\n  }\n  \n  // Count occurrence based on Scheduler value\n  const scheduler = item.json.Scheduler;\n  if (scheduler === \"New Patient Signup\") {\n    aggregatedData[dateStr].newPatientSignup += 1;\n  } else if (scheduler === \"Self-Scheduled\") {\n    aggregatedData[dateStr].selfScheduled += 1;\n  }\n}\n\n// Sort the dates in ascending order\n// (Note: Lexicographical sort on MM-DD-YYYY strings works if data is from one year; otherwise, consider sorting via Date objects.)\nconst sortedDates = Object.keys(aggregatedData).sort();\n\n// Build the HTML table with an added Day-of-Week column\nlet html = '<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">';\nhtml += '<thead>';\nhtml += '<tr>';\nhtml += '<th><b>Day</b></th>';\nhtml += '<th><b>Date</b></th>';\nhtml += '<th><b>New Patient Signup</b></th>';\nhtml += '<th><b>Self-Scheduled</b></th>';\nhtml += '<th><b>Total</b></th>';\nhtml += '</tr>';\nhtml += '</thead>';\nhtml += '<tbody>';\n\nlet grandTotalNewPatient = 0;\nlet grandTotalSelfScheduled = 0;\n\n// For each date, create a row with the aggregated data and the day of week\nfor (const dateStr of sortedDates) {\n  // Parse dateStr (MM-DD-YYYY) to construct a Date object for computing the day of the week\n  const parts = dateStr.split('-');\n  const dt = new Date(parts[2], parts[0] - 1, parts[1]);\n  const dayOfWeek = dt.toLocaleDateString('en-US', { weekday: 'long' });\n  \n  const newPatientSignup = aggregatedData[dateStr].newPatientSignup;\n  const selfScheduled = aggregatedData[dateStr].selfScheduled;\n  const total = newPatientSignup + selfScheduled;\n  grandTotalNewPatient += newPatientSignup;\n  grandTotalSelfScheduled += selfScheduled;\n  \n  html += `<tr><td>${dayOfWeek}</td><td>${dateStr}</td><td>${newPatientSignup}</td><td>${selfScheduled}</td><td>${total}</td></tr>`;\n}\n\n// Calculate overall totals\nconst grandTotal = grandTotalNewPatient + grandTotalSelfScheduled;\n\n// Determine the date range using the first and last dates (if available)\nlet dateRange = '';\nif (sortedDates.length > 0) {\n  const startRange = formatForRange(sortedDates[0]);\n  const endRange = formatForRange(sortedDates[sortedDates.length - 1]);\n  dateRange = `${startRange}-${endRange}`;\n}\n\n// Append the summary row with \"Total\" in the Day column and the date range in the Date column\nhtml += `<tr><td><b>Total</b></td><td><b>${dateRange}</b></td><td><b>${grandTotalNewPatient}</b></td><td><b>${grandTotalSelfScheduled}</b></td><td><b>${grandTotal}</b></td></tr>`;\n\nhtml += '</tbody></table>';\n\n// Return the HTML table as an output property named htmlTable\nreturn [{ json: { htmlTable: html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        6440
+      ],
+      "id": "e98fcb97-ad55-4d4c-9c71-6e28860fb74c",
+      "name": "Code24"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<style>\n  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');\n  body {\n    font-family: 'Nunito', sans-serif;\n  }\n  .title {\n    font-size: 1.5em;\n    font-weight: bold;\n    margin-bottom: 10px;\n  }\n</style>\n\n<b class=\"title\">Marketing Captured:</b></br>\n{{ $json.htmlTable }}</br></br>\n<b class=\"title\">APCM Scheduled:</b></br>\n{{ $json.survey }}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2360,
+        6400
+      ],
+      "id": "a46ae25c-60a9-4325-8805-95079759e85d",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "e7628cf9-0519-4ea7-a457-eb1dc0b30a51",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1060,
+        2560
+      ],
+      "id": "d2e50270-3eee-46f6-881d-b483427f9a7a",
+      "name": "Webhook",
+      "webhookId": "e7628cf9-0519-4ea7-a457-eb1dc0b30a51"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "baaac86b-cae8-4ef3-917a-cb5aefd27196",
+              "leftValue": "={{ $json.SchedulingLink }}",
+              "rightValue": "medium=Survey",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        6500
+      ],
+      "id": "10e61088-c6ea-4253-97b5-605a1a05f712",
+      "name": "If13"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Helper function to format dates as MM-DD-YYYY\nfunction formatDate(date) {\n  const month = (date.getMonth() + 1).toString().padStart(2, '0');\n  const day = date.getDate().toString().padStart(2, '0');\n  const year = date.getFullYear();\n  return `${month}-${day}-${year}`;\n}\n\n// Helper function to convert a date string from MM-DD-YYYY to MM/DD/YY format (for the range)\nfunction formatForRange(dateStr) {\n  const parts = dateStr.split('-'); // parts: [MM, DD, YYYY]\n  return `${parts[0]}/${parts[1]}/${parts[2].slice(-2)}`;\n}\n\n// Create an object to store aggregated counts per date\nlet aggregatedData = {};\n\n// Loop over each incoming item and group them by the date portion of CreatedAt\nfor (const item of items) {\n  const createdAtStr = item.json.CreatedAt;\n  if (!createdAtStr) continue; // Skip items without CreatedAt\n  \n  // Parse the CreatedAt date, ignoring the time\n  let createdAt = new Date(createdAtStr);\n  createdAt.setHours(0, 0, 0, 0);\n  const dateStr = formatDate(createdAt);\n  \n  // Initialize the date key if it doesn't exist yet\n  if (!(dateStr in aggregatedData)) {\n    aggregatedData[dateStr] = { newPatientSignup: 0, selfScheduled: 0 };\n  }\n  \n  // Count occurrence based on Scheduler value\n  const scheduler = item.json.Scheduler;\n  if (scheduler === \"New Patient Signup\") {\n    aggregatedData[dateStr].newPatientSignup += 1;\n  } else if (scheduler === \"Self-Scheduled\") {\n    aggregatedData[dateStr].selfScheduled += 1;\n  }\n}\n\n// Sort the dates in ascending order\n// (Note: Lexicographical sort on MM-DD-YYYY strings works if data is from one year; otherwise, consider sorting via Date objects.)\nconst sortedDates = Object.keys(aggregatedData).sort();\n\n// Build the HTML table with an added Day-of-Week column\nlet html = '<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">';\nhtml += '<thead>';\nhtml += '<tr>';\nhtml += '<th><b>Day</b></th>';\nhtml += '<th><b>Date</b></th>';\nhtml += '<th><b>New Patient Signup</b></th>';\nhtml += '<th><b>Self-Scheduled</b></th>';\nhtml += '<th><b>Total</b></th>';\nhtml += '</tr>';\nhtml += '</thead>';\nhtml += '<tbody>';\n\nlet grandTotalNewPatient = 0;\nlet grandTotalSelfScheduled = 0;\n\n// For each date, create a row with the aggregated data and the day of week\nfor (const dateStr of sortedDates) {\n  // Parse dateStr (MM-DD-YYYY) to construct a Date object for computing the day of the week\n  const parts = dateStr.split('-');\n  const dt = new Date(parts[2], parts[0] - 1, parts[1]);\n  const dayOfWeek = dt.toLocaleDateString('en-US', { weekday: 'long' });\n  \n  const newPatientSignup = aggregatedData[dateStr].newPatientSignup;\n  const selfScheduled = aggregatedData[dateStr].selfScheduled;\n  const total = newPatientSignup + selfScheduled;\n  grandTotalNewPatient += newPatientSignup;\n  grandTotalSelfScheduled += selfScheduled;\n  \n  html += `<tr><td>${dayOfWeek}</td><td>${dateStr}</td><td>${newPatientSignup}</td><td>${selfScheduled}</td><td>${total}</td></tr>`;\n}\n\n// Calculate overall totals\nconst grandTotal = grandTotalNewPatient + grandTotalSelfScheduled;\n\n// Determine the date range using the first and last dates (if available)\nlet dateRange = '';\nif (sortedDates.length > 0) {\n  const startRange = formatForRange(sortedDates[0]);\n  const endRange = formatForRange(sortedDates[sortedDates.length - 1]);\n  dateRange = `${startRange}-${endRange}`;\n}\n\n// Append the summary row with \"Total\" in the Day column and the date range in the Date column\nhtml += `<tr><td><b>Total</b></td><td><b>${dateRange}</b></td><td><b>${grandTotalNewPatient}</b></td><td><b>${grandTotalSelfScheduled}</b></td><td><b>${grandTotal}</b></td></tr>`;\n\nhtml += '</tbody></table>';\n\n// Return the HTML table as an output property named htmlTable\nreturn [{ json: { survey: html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        6660
+      ],
+      "id": "bf1481be-167f-4d49-ba2c-af58a47a5a5a",
+      "name": "Code25"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1460,
+        6460
+      ],
+      "id": "29922b00-5620-4c4e-af42-38612ae75ad8",
+      "name": "Merge28"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/0807aa23-f0ae-4af0-9ee3-f74603c8156e",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Report",
+              "value": "=<b>Marketing Tracked:</b></br></br>{{ $json.message }}</br></br>*Automated Report (email with full list is distributed)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2240,
+        6560
+      ],
+      "id": "20ad1e8c-8859-41a8-a1a7-a4fe86866928",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "32b00df4-c62f-465a-8a27-26669072fe81",
+              "name": "message2",
+              "value": "=<style>\n  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');\n  body {\n    font-family: 'Nunito', sans-serif;\n  }\n  .title {\n    font-size: 1.5em;\n    font-weight: bold;\n    margin-bottom: 10px;\n  }\n</style>\n\n<b class=\"title\">Marketing Captured:</b></br>\n{{ $json.htmlTable }}</br></br>\n<b class=\"title\">APCM Scheduled:</b></br>\n{{ $json.survey }}\n\n</br>\n</br>\n*Automated report (for list check email)",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1740,
+        6560
+      ],
+      "id": "ccebdc48-68cf-49dd-b8f0-85a213aa4053",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "marketing-scheduled",
+        "options": {
+          "fileName": "marketing-scheduled.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1160,
+        6920
+      ],
+      "id": "0504029e-9f37-4d27-8cfa-c35fcb115bda",
+      "name": "Convert to File13"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "survey",
+        "options": {
+          "fileName": "survey.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1160,
+        7100
+      ],
+      "id": "438c4a74-8c2e-49eb-861b-3d0cc69dfa20",
+      "name": "Convert to File16"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Helper function to format dates as YYYY-MM-DD\nfunction formatDate(date) {\n  const year = date.getFullYear();\n  const month = (date.getMonth() + 1).toString().padStart(2, '0');\n  const day = date.getDate().toString().padStart(2, '0');\n  return `${year}-${month}-${day}`;\n}\n\n// Create an object to store aggregated counts per date\nlet aggregatedData = {};\n\n// Loop over each incoming item and group them by the date portion of CreatedAt\nfor (const item of items) {\n  const createdAtStr = item.json.CreatedAt;\n  if (!createdAtStr) continue; // Skip items without CreatedAt\n  \n  // Parse the CreatedAt date, ignoring the time\n  let createdAt = new Date(createdAtStr);\n  createdAt.setHours(0, 0, 0, 0);\n  const dateStr = formatDate(createdAt);\n  \n  // Initialize the date key if it doesn't exist yet\n  if (!(dateStr in aggregatedData)) {\n    aggregatedData[dateStr] = { newPatientSignup: 0, selfScheduled: 0 };\n  }\n  \n  // Count occurrence based on Scheduler value\n  const scheduler = item.json.Scheduler;\n  if (scheduler === \"New Patient Signup\") {\n    aggregatedData[dateStr].newPatientSignup += 1;\n  } else if (scheduler === \"Self-Scheduled\") {\n    aggregatedData[dateStr].selfScheduled += 1;\n  }\n}\n\n// Sort the dates in ascending order\nconst sortedDates = Object.keys(aggregatedData).sort();\n\n// Build the HTML table with bold headers\nlet html = '<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\">';\nhtml += '<thead>';\nhtml += '<tr><th><b>Date</b></th><th><b>New Patient Signup</b></th><th><b>Self-Scheduled</b></th><th><b>Total</b></th></tr>';\nhtml += '</thead>';\nhtml += '<tbody>';\n\nlet grandTotalNewPatient = 0;\nlet grandTotalSelfScheduled = 0;\n\n// For each date, create a row with the aggregated data\nfor (const dateStr of sortedDates) {\n  const newPatientSignup = aggregatedData[dateStr].newPatientSignup;\n  const selfScheduled = aggregatedData[dateStr].selfScheduled;\n  const total = newPatientSignup + selfScheduled;\n  grandTotalNewPatient += newPatientSignup;\n  grandTotalSelfScheduled += selfScheduled;\n  \n  html += `<tr><td>${dateStr}</td><td>${newPatientSignup}</td><td>${selfScheduled}</td><td>${total}</td></tr>`;\n}\n\n// Calculate overall totals and append the summary row\nconst grandTotal = grandTotalNewPatient + grandTotalSelfScheduled;\nhtml += `<tr><td><b>Total</b></td><td><b>${grandTotalNewPatient}</b></td><td><b>${grandTotalSelfScheduled}</b></td><td><b>${grandTotal}</b></td></tr>`;\n\nhtml += '</tbody></table>';\n\n// Return the HTML table as an output property named htmlTable\nreturn [{ json: { survey: html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        6760
+      ],
+      "id": "b4283183-b078-4b69-9d11-279ca0d03c8d",
+      "name": "Code26"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "ithelpdesk@epicpc.com",
+        "fromName": "Marketing/APCM",
+        "toEmail": "={{ $json.emails }}",
+        "subject": "=Marketing Tracked: Appointment Status By Date and Scheduled",
+        "contentValue": "=New Patient and Scheduled Patient by Date (Marketing/APCM (Suryve))",
+        "additionalFields": {
+          "attachments": "acknowledged,all,marketing-scheduled,survey"
+        }
+      },
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        4860,
+        5460
+      ],
+      "id": "f0e199d3-d043-4999-af47-4c26c20609df",
+      "name": "SendGrid3",
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd4a027c-ddcf-4b04-855b-17f0f328aadd",
+              "name": "emails",
+              "value": "=sfietsam@epichs.org,tstilwell@epichs.org,tnaman@epichs.org,gnaman@epichs.org,jzreik@epichs.org,jgreene@epichs.org,amaya@epichs.org,vhabbo@epichs.org,aadams@epichs.org",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3400,
+        7000
+      ],
+      "id": "93792a1d-a27a-4116-8507-0f7a1493c203",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1500,
+        7000
+      ],
+      "id": "6a39eef1-64a1-49fa-bb45-7541f7242d69",
+      "name": "Merge29"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        4300,
+        5460
+      ],
+      "id": "d352204f-7747-4ce9-9d62-5028c310f120",
+      "name": "Merge30"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2960,
+        5020
+      ],
+      "id": "3691fced-adf5-44bc-a38f-73dcd21683fd",
+      "name": "Merge31"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "347963da-8ee6-4453-ae6b-c76c1ac37c2d",
+              "leftValue": "={{ $json.CreatedAt }}",
+              "rightValue": "={{ $('Date & Time1').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        400,
+        7660
+      ],
+      "id": "ac172f94-33af-4a97-b9e3-dc211de40572",
+      "name": "Date Range"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a0e8d442-abe5-47e1-b13d-76f3316bae63",
+              "leftValue": "={{ $json.CampaignID }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        7660
+      ],
+      "id": "25db8835-8268-4fe6-a311-e42ac6943238",
+      "name": "Campaign"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "173065a4-3c07-471e-806e-4711a93a91c0",
+              "leftValue": "={{ $json.Caller }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        7660
+      ],
+      "id": "7b79e07a-08a2-4eed-832b-3153c207b141",
+      "name": "Manual Call"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pxegwq0dw2f1rby",
+        "table": "mlotq4op5hlvdpx",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        200,
+        7660
+      ],
+      "id": "a98ceeb6-acf2-487c-9c1e-6f826dc61850",
+      "name": "NocoDB4",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $now }}",
+        "duration": 7,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        7660
+      ],
+      "id": "97fa9924-5bb4-4040-bb99-c6581210ec91",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "jsCode": "/*********************************************\n * Helper: Format a Date object as \"YYYY-MM-DD\"\n *********************************************/\nfunction formatDate(dateObj) {\n  const year = dateObj.getFullYear();\n  const month = String(dateObj.getMonth() + 1).padStart(2, '0');\n  const day = String(dateObj.getDate()).padStart(2, '0');\n  return `${year}-${month}-${day}`;\n}\n\n/*********************************************\n * Build last 7 days info array (oldest first)\n *********************************************/\nconst today = new Date();\nconst last7DaysInfo = [];\nfor (let i = 0; i < 7; i++) {\n  const d = new Date(today);\n  d.setDate(today.getDate() - i);\n  const key = formatDate(d);\n  const display = `${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}-${d.getFullYear()}`;\n  const dayName = d.toLocaleDateString('en-US', { weekday: 'long' });\n  last7DaysInfo.push({ key, display, dayName });\n}\nlast7DaysInfo.reverse(); // oldest first\nconst last7DaysKeys = last7DaysInfo.map(info => info.key);\n\n// For the first table’s footer, we’ll show the LAST day in the 7-day range.\nconst lastDayName = last7DaysInfo[last7DaysInfo.length - 1].dayName;\nconst lastDayDisplay = last7DaysInfo[last7DaysInfo.length - 1].display;\n\n/*********************************************\n * Compute Top Campaigns (for last 7 days)\n *********************************************/\nconst records = items.map(item => item.json);\nconst campaignTotals = {};\nrecords.forEach(record => {\n  const createdDate = new Date(record.CreatedAt);\n  if (isNaN(createdDate)) return;\n  const dateKey = formatDate(createdDate);\n  if (!last7DaysKeys.includes(dateKey)) return;\n  const campaign = record.CampaignTitle || \"Unknown\";\n  if (!campaignTotals[campaign]) {\n    campaignTotals[campaign] = 0;\n  }\n  campaignTotals[campaign]++;\n});\nconst sortedCampaigns = Object.keys(campaignTotals).sort((a, b) => campaignTotals[b] - campaignTotals[a]);\nconst topCampaigns = sortedCampaigns.slice(0, 3);\n\n/*********************************************\n * Build First Output: \"Calls made by agent\"\n *********************************************/\n// Group records by Caller + date\nconst table1Groups = {};\nrecords.forEach(record => {\n  const createdDate = new Date(record.CreatedAt);\n  if (isNaN(createdDate)) return;\n  const dateKey = formatDate(createdDate);\n  if (!last7DaysKeys.includes(dateKey)) return;\n  const caller = record.Caller || \"Unknown\";\n  const groupKey = `${caller}__${dateKey}`;\n  if (!table1Groups[groupKey]) {\n    table1Groups[groupKey] = {\n      caller: caller,\n      dateKey: dateKey,\n      total: 0,\n      campaignCounts: {}\n    };\n    topCampaigns.forEach(campaign => {\n      table1Groups[groupKey].campaignCounts[campaign] = 0;\n    });\n  }\n  table1Groups[groupKey].total++;\n  const campaign = record.CampaignTitle || \"Unknown\";\n  if (topCampaigns.includes(campaign)) {\n    table1Groups[groupKey].campaignCounts[campaign]++;\n  }\n});\n\n// Sort the groups for table output\nconst table1Rows = Object.values(table1Groups).sort((a, b) => {\n  if (a.dateKey === b.dateKey) {\n    return a.caller.localeCompare(b.caller);\n  }\n  return a.dateKey.localeCompare(b.dateKey);\n});\n\n// Build the HTML for the first table\nlet table1Html = `<table style=\"border-collapse: collapse; margin-top:10px;\">`;\ntable1Html += `<thead>\n  <tr>\n    <th style=\"padding: 8px; border: 1px solid #ccc;\">Caller</th>\n    <th style=\"padding: 8px; border: 1px solid #ccc;\">DAY</th>\n    <th style=\"padding: 8px; border: 1px solid #ccc;\">Date</th>`;\ntopCampaigns.forEach(campaign => {\n  table1Html += `<th style=\"padding: 8px; border: 1px solid #ccc;\">${campaign}</th>`;\n});\ntable1Html += `<th style=\"padding: 8px; border: 1px solid #ccc;\">Total Calls</th>\n  </tr>\n</thead>\n<tbody>`;\ntable1Rows.forEach(row => {\n  const dayInfo = last7DaysInfo.find(info => info.key === row.dateKey);\n  const dayName = dayInfo ? dayInfo.dayName : row.dateKey;\n  const displayDate = dayInfo ? dayInfo.display : row.dateKey;\n  table1Html += `<tr>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\">${row.caller}</td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\">${dayName}</td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\">${displayDate}</td>`;\n  topCampaigns.forEach(campaign => {\n    table1Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\">${row.campaignCounts[campaign]}</td>`;\n  });\n  table1Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\">${row.total}</td>\n  </tr>`;\n});\ntable1Html += `</tbody>`;\n\n// Footer for the first table\nlet footerTotalCalls = 0;\nconst footerCampaignTotals = {};\ntopCampaigns.forEach(campaign => {\n  footerCampaignTotals[campaign] = 0;\n});\nfor (const key in table1Groups) {\n  footerTotalCalls += table1Groups[key].total;\n  topCampaigns.forEach(campaign => {\n    footerCampaignTotals[campaign] += table1Groups[key].campaignCounts[campaign];\n  });\n}\n\n// Instead of \"All Days\" and the range, we’ll display the last day name & date\ntable1Html += `<tfoot>\n  <tr>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\"><b>Total</b></td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${lastDayName}</b></td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${lastDayDisplay}</b></td>`;\ntopCampaigns.forEach(campaign => {\n  table1Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${footerCampaignTotals[campaign]}</b></td>`;\n});\ntable1Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${footerTotalCalls}</b></td>\n  </tr>\n</tfoot>\n</table>`;\n\n\n/*********************************************\n * Build Second Output: \"Total calls by date (last 7 days)\"\n *********************************************/\n// Prepare pivot\nconst pivotCounts = {};\ntopCampaigns.forEach(campaign => {\n  pivotCounts[campaign] = {};\n  last7DaysKeys.forEach(date => {\n    pivotCounts[campaign][date] = 0;\n  });\n});\n\n// Count calls\nrecords.forEach(record => {\n  const createdDate = new Date(record.CreatedAt);\n  if (isNaN(createdDate)) return;\n  const dateKey = formatDate(createdDate);\n  if (!last7DaysKeys.includes(dateKey)) return;\n  const campaign = record.CampaignTitle || \"Unknown\";\n  if (topCampaigns.includes(campaign)) {\n    pivotCounts[campaign][dateKey]++;\n  }\n});\n\n// Build the HTML for the second table\nlet table2Html = `<table style=\"border-collapse: collapse; margin-top:10px;\">`;\ntable2Html += `<thead>\n  <tr>\n    <th style=\"padding: 8px; border: 1px solid #ccc;\">DAY</th>\n    <th style=\"padding: 8px; border: 1px solid #ccc;\">Date</th>`;\ntopCampaigns.forEach(campaign => {\n  table2Html += `<th style=\"padding: 8px; border: 1px solid #ccc;\">${campaign}</th>`;\n});\ntable2Html += `<th style=\"padding: 8px; border: 1px solid #ccc;\">Total</th>\n  </tr>\n</thead>\n<tbody>`;\nlast7DaysInfo.forEach(info => {\n  let rowTotal = 0;\n  table2Html += `<tr>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\">${info.dayName}</td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\">${info.display}</td>`;\n  topCampaigns.forEach(campaign => {\n    const cnt = pivotCounts[campaign][info.key];\n    rowTotal += cnt;\n    table2Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\">${cnt}</td>`;\n  });\n  table2Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\">${rowTotal}</td>\n  </tr>`;\n});\ntable2Html += `</tbody>`;\n\n// Footer for the second table\nlet totalCallsTable2 = 0;\nconst totalByCampaign = {};\ntopCampaigns.forEach(campaign => {\n  totalByCampaign[campaign] = 0;\n  last7DaysKeys.forEach(date => {\n    totalByCampaign[campaign] += pivotCounts[campaign][date];\n    totalCallsTable2 += pivotCounts[campaign][date];\n  });\n});\n\n// We can still show the entire date range in the second table’s footer if desired\nconst firstDisplayParts = last7DaysInfo[0].display.split('-');\nconst lastDisplayParts = last7DaysInfo[last7DaysInfo.length - 1].display.split('-');\nconst firstMD = `${firstDisplayParts[0]}/${firstDisplayParts[1]}`;\nconst lastMD = `${lastDisplayParts[0]}/${lastDisplayParts[1]}`;\nconst dateRange = `${firstMD} - ${lastMD}`;\n\ntable2Html += `<tfoot>\n  <tr>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\"><b>Total</b></td>\n    <td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${dateRange}</b></td>`;\ntopCampaigns.forEach(campaign => {\n  table2Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${totalByCampaign[campaign]}</b></td>`;\n});\ntable2Html += `<td style=\"padding: 8px; border: 1px solid #ccc;\"><b>${totalCallsTable2}</b></td>\n  </tr>\n</tfoot>\n</table>`;\n\n\n/*********************************************\n * Combine outputs with styling\n *********************************************/\nlet htmlOutput = `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Call Report</title>\n  <style>\n    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');\n    body {\n      font-family: 'Nunito', sans-serif;\n      margin: 20px;\n    }\n    .title {\n      font-size: 1.5em;\n      font-weight: bold;\n      margin-bottom: 10px;\n    }\n  </style>\n</head>\n<body>\n  <p class=\"title\">Calls Made by Agent (Turbo Call):</p>\n  ${table1Html}\n  <p class=\"title\">Total Calls by Date (last 7 days):</p>\n  ${table2Html}\n</body>\n</html>\n`;\n\n// Optionally remove newlines\nhtmlOutput = htmlOutput.replace(/\\n/g, '');\n\n// Return the final HTML\nreturn [\n  {\n    json: {\n      html: htmlOutput\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        7660
+      ],
+      "id": "22e90ce9-7be9-4e78-ba26-c23eca4beb17",
+      "name": "Code27"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/0807aa23-f0ae-4af0-9ee3-f74603c8156e",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Report",
+              "value": "={{ $json.html }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        7660
+      ],
+      "id": "cdd8af51-a72e-4376-93f0-6c7219defc3b",
+      "name": "HTTP Request4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9a85ef27-3c8e-4bf4-b6bc-e4aadcac4606",
+              "leftValue": "={{ $json.CreatedAt }}",
+              "rightValue": "={{ $('Date & Time3').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -40,
+        2260
+      ],
+      "id": "6f48e1a3-b320-4e43-bfe5-6ab044bacffa",
+      "name": "If14"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -680,
+        1960
+      ],
+      "id": "f0c2ee34-6279-486f-98a6-c85b48646e07",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "timeUnit": "hours",
+        "duration": 15,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        1960
+      ],
+      "id": "e67475e2-63be-4462-b685-5e83889f001a",
+      "name": "Date & Time3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        3260,
+        -540
+      ],
+      "id": "09c17dcf-ae5c-4e6a-9d42-9c8636fa657c",
+      "name": "Merge33"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pxegwq0dw2f1rby",
+        "table": "mlotq4op5hlvdpx",
+        "returnAll": true,
+        "options": {
+          "where": "(CreatedAt,eq,today)~and(Caller,isnot,null)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4800,
+        2760
+      ],
+      "id": "aa0f4f7e-dc77-4623-ba7c-08aa7e15c157",
+      "name": "NocoDB34",
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": "(CreatedAt,eq,today)~and(Caller,isnot,null)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4800,
+        2980
+      ],
+      "id": "09cf5f09-9c54-419f-8eeb-48a1c71d4ce4",
+      "name": "NocoDB35",
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ef24b0a3-a6cd-416f-b824-8df460c65cf6",
+              "leftValue": "={{ $json.Caller }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5020,
+        2980
+      ],
+      "id": "838dd5e6-b69e-4f3a-bfa7-468eee9bdba1",
+      "name": "If15"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        2880
+      ],
+      "id": "3ac3528c-3fc6-49d6-952d-56af1e7ba09c",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        6140,
+        2800
+      ],
+      "id": "82d2dd2f-491c-4af9-b6f2-1a0741004d90",
+      "name": "Respond to Webhook65",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "65ae8fdf-a4ca-42a1-819a-f39b432a5674",
+              "leftValue": "Caller",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4940,
+        2760
+      ],
+      "id": "20ad2cb4-4687-4770-a488-c49f58fb5c4e",
+      "name": "If16"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Map over the incoming items to extract JSON data\nconst inputData = items.map(item => item.json);\n\n// Create an object to hold call counts for each user\nconst callCounts = {};\n\n// Iterate through each call record and count occurrences by Caller\ninputData.forEach(call => {\n  const user = call.Caller;\n  callCounts[user] = (callCounts[user] || 0) + 1;\n});\n\n// Transform the callCounts object into an array of records with \"User\" and \"Calls\" fields\nconst result = Object.keys(callCounts).map(user => ({\n  json: {\n    User: user,\n    Calls: callCounts[user]\n  }\n}));\n\n// Return the resulting array of records\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5260,
+        2760
+      ],
+      "id": "ae9a7f8a-e24b-4987-9f16-a03b2e0edf4e",
+      "name": "Code28"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Map the incoming items to extract the JSON data\nconst inputData = items.map(item => item.json);\n\n// Create an object to count the scheduled appointments per user (grouped by \"Caller\")\nconst scheduledCounts = {};\n\n// Iterate through each record\ninputData.forEach(record => {\n  // Group by Caller field; if it is null, you can assign a default value like \"Unknown\"\n  const user = record.Caller || \"Unknown\";\n  scheduledCounts[user] = (scheduledCounts[user] || 0) + 1;\n});\n\n// Convert the counts into an array of records with \"User\" and \"Scheduled\" fields\nconst result = Object.keys(scheduledCounts).map(user => ({\n  json: {\n    User: user.slice(7),\n    Scheduled: scheduledCounts[user]\n  }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5260,
+        2980
+      ],
+      "id": "b1bccf38-bb2c-4245-b74a-a7f52a436143",
+      "name": "Code29"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "User",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        5700,
+        2800
+      ],
+      "id": "557674b4-f3d2-43b2-88ae-a40edc7b6c34",
+      "name": "Merge32"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract JSON from incoming items\nconst data = items.map(item => item.json);\n\n// Sort records in descending order by \"Scheduled\"\ndata.sort((a, b) => (b.Scheduled || 0) - (a.Scheduled || 0));\n\n// Begin constructing the HTML table\nlet html = `\n<table style=\"\n  width: 100%;\n  max-width: 600px;\n  margin: 0 auto;\n  border-collapse: separate;\n  border-spacing: 0;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  font-family: Arial, sans-serif;\n  color: black;\n\">\n  <thead style=\"background-color: #f2f2f2;\">\n    <tr style=\"border-bottom: 1px solid #ddd;\">\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Medal</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">User</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Calls</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Scheduled</th>\n    </tr>\n  </thead>\n  <tbody>\n`;\n\n// Build rows\ndata.forEach((record, index) => {\n  let rowStyle = \"border-bottom: 1px solid #ddd;\";\n\n  // Determine if this row is top 3 (Gold, Silver, Bronze)\n  if (index === 0) {\n    rowStyle += \" background-color: gold; font-weight: bold; font-size: 1.5em; color: black;\";\n  } else if (index === 1) {\n    rowStyle += \" background-color: silver; font-weight: bold; font-size: 1.5em; color: black;\";\n  } else if (index === 2) {\n    rowStyle += \" background-color: #cd7f32; font-weight: bold; font-size: 1.5em; color: black;\";\n  }\n  // Otherwise, apply zebra striping\n  else if (index % 2 === 0) {\n    rowStyle += \" background-color: #f9f9f9;\";\n  } else {\n    rowStyle += \" background-color: #fff;\";\n  }\n\n  // Determine medal text\n  let medal = \"\";\n  if (index === 0) medal = \"Gold\";\n  else if (index === 1) medal = \"Silver\";\n  else if (index === 2) medal = \"Bronze\";\n\n  // Construct each table row\n  html += `\n    <tr style=\"${rowStyle}\">\n      <td style=\"padding: 12px 15px;\">${medal}</td>\n      <td style=\"padding: 12px 15px;\">${record.User || \"\"}</td>\n      <td style=\"padding: 12px 15px;\">${record.Calls || 0}</td>\n      <td style=\"padding: 12px 15px;\">${record.Scheduled || 0}</td>\n    </tr>\n  `;\n});\n\nhtml += `\n  </tbody>\n</table>\n`;\n\n// Return the resulting HTML table\nreturn [\n  {\n    json: {\n      html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5920,
+        2800
+      ],
+      "id": "6d719094-9489-4f79-a25d-e2ecd47f01a8",
+      "name": "Code30"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Check if there are any incoming items\nif (!items || items.length === 0) {\n  // Return a record with styled HTML showing \"No Calls Made\" in large, bold red text\n  return [{\n    json: {\n      message: '<div style=\"color: red; font-size: 72px; font-weight: bold;\">No Calls Made</div>'\n    }\n  }];\n}\n\n// Map over the incoming items to extract JSON data\nconst inputData = items.map(item => item.json);\n\n// Create an object to hold call counts for each user\nconst callCounts = {};\n\n// Iterate through each call record and count occurrences by Caller\ninputData.forEach(call => {\n  const user = call.Caller;\n  callCounts[user] = (callCounts[user] || 0) + 1;\n});\n\n// Transform the callCounts object into an array of records with \"User\" and \"Calls\" fields\nconst result = Object.keys(callCounts).map(user => ({\n  json: {\n    User: user,\n    Calls: callCounts[user]\n  }\n}));\n\n// Return the resulting array of records\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5920,
+        2660
+      ],
+      "id": "99e251dd-f570-4663-a086-7cde86792af6",
+      "name": "Code31"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c9df1039-d3ea-4d0f-975e-ba4cddeb155f",
+              "name": "message",
+              "value": "={{ $json.html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6340,
+        2400
+      ],
+      "id": "e293deeb-896c-46e2-b7f0-899e5166d9ae",
+      "name": "Edit Fields8"
+    },
+    {
+      "parameters": {
+        "path": "f9541015-65f0-41b5-bb0f-cd7f9161840c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1420,
+        4600
+      ],
+      "id": "390eaeb1-f9cb-46c1-a3a1-2de12065939a",
+      "name": "Webhook1",
+      "webhookId": "f9541015-65f0-41b5-bb0f-cd7f9161840c"
+    }
+  ],
+  "pinData": {
+    "Date & Time1": [
+      {
+        "json": {
+          "newDate": "2025-03-14T18:11:06.722-04:00"
+        }
+      }
+    ],
+    "Merge33": [
+      {
+        "json": {
+          "message": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\"><thead><tr><th>UserName</th><th>count</th></tr></thead><tbody><tr><td>KHAGGERTY</td><td>134</td></tr><tr><td>ATOUBIA</td><td>21</td></tr><tr><td>NJAHAN</td><td>17</td></tr><tr><td>AHOBSON</td><td>17</td></tr><tr><td>KRANKIN</td><td>15</td></tr><tr><td>SKRIKO</td><td>12</td></tr><tr><td>ENIEMI</td><td>12</td></tr><tr><td>DCHABAAN</td><td>12</td></tr><tr><td>TLEWIS</td><td>10</td></tr><tr><td>DWRIGHT</td><td>10</td></tr></tbody></table>"
+        }
+      },
+      {
+        "json": {
+          "message": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\"><thead><tr><th>Location</th><th>count</th></tr></thead><tbody><tr><td>EPIC Detroit Livernois</td><td>162</td></tr><tr><td>EPIC SCS Harper</td><td>64</td></tr><tr><td>EPIC Hamtramck Davison</td><td>38</td></tr><tr><td>EPIC Ferndale 9 Mile</td><td>30</td></tr><tr><td>EPIC Southfield 10 Mile</td><td>27</td></tr><tr><td>EPIC Flint Linden</td><td>21</td></tr><tr><td>Specialist at Southfield Telegraph</td><td>19</td></tr><tr><td>EPIC Southfield Telegraph</td><td>11</td></tr><tr><td>EPIC Detroit 7 Mile</td><td>5</td></tr><tr><td>EPIC Royal Oak Woodward</td><td>3</td></tr></tbody></table>"
+        }
+      },
+      {
+        "json": {
+          "message": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\"><thead><tr><th>Resource</th><th>count</th></tr></thead><tbody><tr><td>WALK, MONIQUE | MW-NP   </td><td>43</td></tr><tr><td>ADAMS, AUDRA | AA-PA   </td><td>33</td></tr><tr><td>HAGGERTY, KIMBERLY | HK-PA   </td><td>30</td></tr><tr><td>TOUBIA, ALLEN | AT-FNP  </td><td>22</td></tr><tr><td>NIEMI, EMILY | EN-PA   </td><td>22</td></tr><tr><td>GEORGE, CHRISTINA | CG-FN   </td><td>21</td></tr><tr><td>DBOUK, LINDA | LD-PA   </td><td>19</td></tr><tr><td>HOBSON, ALISON | AH-PA   </td><td>19</td></tr><tr><td>DAVIS, JANELLE | JD-PA   </td><td>14</td></tr><tr><td>LENNOX, MEGAN | ML-NP   </td><td>13</td></tr></tbody></table>"
+        }
+      },
+      {
+        "json": {
+          "message": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\"><thead><tr><th>VisitType</th><th>count</th></tr></thead><tbody><tr><td>Regular Office Visit | ACT -  Office Visit | ACT OV  </td><td>242</td></tr><tr><td>Physical Exam can be Regular or Dual | DUAL - CWE + OV | 2OVCWE  </td><td>84</td></tr><tr><td>Gyn Office Visit with PCP | GYN - Office Visit | GYNOV   </td><td>15</td></tr><tr><td>Gyn Office Visit with GYN | GYN - Office Visit | GYNOV   </td><td>13</td></tr><tr><td>Physical Exam can include AWV for > 65 | DUAL - AWV + OV | 2OVAWV  </td><td>9</td></tr><tr><td> |  | Lab/Xray</td><td>6</td></tr><tr><td>Cardiology Office Visit | Cardiology - Office Visit | CARD-FU </td><td>3</td></tr><tr><td>PT Visit Follow Up | Physical Therapy - Follow Up | PT FU   </td><td>3</td></tr><tr><td>Pain and Substance Use Office Visit with PCP | PAIN - Office Visit | PAINOV  </td><td>3</td></tr><tr><td>Pain and Substance Use Office Visit | PAIN - Office Visit | PAINOV  </td><td>3</td></tr></tbody></table>"
+        }
+      },
+      {
+        "json": {
+          "message": "<table border=\"1\" cellspacing=\"0\" cellpadding=\"5\" style=\"border-collapse: collapse;\"><thead><tr><th>Date</th><th>count</th></tr></thead><tbody><tr><td>03/11/2025</td><td>28</td></tr><tr><td>03/11/2026</td><td>1</td></tr><tr><td>03/12/2025</td><td>35</td></tr><tr><td>03/13/2025</td><td>39</td></tr><tr><td>03/14/2025</td><td>3</td></tr><tr><td>03/17/2025</td><td>64</td></tr><tr><td>03/18/2025</td><td>28</td></tr><tr><td>03/19/2025</td><td>2</td></tr><tr><td>03/20/2025</td><td>3</td></tr><tr><td>03/24/2025</td><td>23</td></tr></tbody></table>"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 4,
+  "updatedAt": "2025-04-16T12:02:50.232Z",
+  "versionId": "230a3788-4685-410b-8814-df0ac4d5ef67"
+}
