@@ -1,0 +1,753 @@
+{
+  "active": true,
+  "connections": {
+    "EnVision Room Display": {
+      "main": [
+        [
+          {
+            "node": "Crypto5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Manual Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto5": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell CMD to RMM Agent5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Record1": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "EnVision Room Display",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Record2": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Manual Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-16T17:22:18.238Z",
+  "id": "dlnjmdowNJdAbf33",
+  "isArchived": false,
+  "meta": null,
+  "name": "Tablet Testing / Huddle Board",
+  "nodes": [
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "197fc9f0-e0e1-4572-8214-1e4a7c65e3de",
+      "name": "Crypto5",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting0.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "c1454fca-095b-48ab-9cde-095e8256ef0f",
+      "name": "Send Powershell CMD to RMM Agent1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        280,
+        0
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID=502880&password=mp&redirect=true&role=MODERATOR&userdata-bbb_auto_join_audio=true&userdata-bbb_skip_check_audio=true&userdata-bbb_skip_check_audio_on_first_join=true&userdata-bbb_skip_echotest_if_previous_device=true&userdata-bbb_listen_only_mode=false&userdata-bbb_force_listen_only=false&userdata-bbb_auto_share_webcam=true&userdata-bbb_skip_video_preview=true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "291f08d0-fe50-43de-a025-2c50f4e026d9",
+      "name": "EnVision Room Display",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -260,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        120
+      ],
+      "id": "5ff6c11d-a4db-4d11-ac87-10ce8f5fdb81",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "6faf8c81-4cc2-4771-9ab7-1e58f71e4c31",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "0b54a496-1fe4-4847-90ea-e49cf804489c",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -60,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&autoStartRecording=false&attendeePW=ap&meetingID=502880&moderatorPW=mp&name=Thomas&record=true&disabledFeatures=sharedNotes%2Cchat&preUploadedPresentation=https%3A%2F%2Ftoms.app%2Ftools%2Fblank.pdf&meta_bbb-recording-ready-url=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F7177fb4a-db76-43af-8847-c8400d2b7438&meta_endCallbackUrl=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F7177fb4a-db76-43af-8847-c8400d2b7438%3Fagent=chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU&endWhenNoModerator=true&endWhenNoModeratorDelayInMinutes=1&logo=https%3A%2F%2Fi0.wp.com%2Fepichs.org%2Fwp-content%2Fuploads%2F2024%2F01%2FSide-Black-Font.png&logoutURL=https://epichs.org&userdata-bbb_auto_join_audio=true&userdata-bbb_skip_check_audio=true&userdata-bbb_auto_share_webcam=true&userdata-bbb_skip_video_preview=true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9c732177-b446-482c-8dee-9dd95dd4421d",
+      "name": "Manual Record1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -360,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "86810cc5-edab-4541-b25d-dec3509b1d0c",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        280,
+        -160
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&autoStartRecording=false&attendeePW=ap&meetingID=502880&moderatorPW=mp&name=Thomas&record=true&disabledFeatures=sharedNotes,chat&preUploadedPresentation=https://toms.app/tools/blank.pdf&meta_bbb-recording-ready-url=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F4ca2f260-d673-4671-a207-99868dab5c75&meta_endCallbackUrl=https://xl.epicpc.com/webhook/cbfc9f1f-9f13-4243-830a-bcf54f2a218f&endWhenNoModerator=true&endWhenNoModeratorDelayInMinutes=1&logo=https://i0.wp.com/epichs.org/wp-content/uploads/2024/01/Side-Black-Font.png&logoutURL=https://epichs.org&meta_endCallbackUrl=https%3A%2F%2Fepichs.org"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "11283fc6-98fa-4601-b01f-64cd80131453",
+      "name": "Manual Record",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -360,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "path": "7177fb4a-db76-43af-8847-c8400d2b7438",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        500,
+        -360
+      ],
+      "id": "379b6c2e-97b2-4905-a2e0-a0e01328d1a5",
+      "name": "Webhook",
+      "webhookId": "7177fb4a-db76-43af-8847-c8400d2b7438"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $json.query.agent }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\envisioncdn.bat'\",\"timeout\":3,\"custom_shell\":null,\"run_as_user\":true,\"output\":\"forget\"}",
+        "options": {}
+      },
+      "id": "5081e3e3-6c3f-4d0c-8cfd-8f82899a22b3",
+      "name": "Send Powershell CMD to RMM Agent2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        740,
+        -360
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://xl.epicpc.com/webhook/7c618e8c-8659-44d0-82c7-9989b6c03122' --edge-kiosk-type=fullscreen --autoplay-policy=no-user-gesture-required\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "980b4a45-4bac-4f9f-9fcf-f2082b509cdc",
+      "name": "Send Powershell CMD to RMM Agent3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        40
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "path": "7c618e8c-8659-44d0-82c7-9989b6c03122",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        980,
+        -160
+      ],
+      "id": "993a22cc-1db5-494f-b645-ac07e98c75b9",
+      "name": "Webhook1",
+      "webhookId": "7c618e8c-8659-44d0-82c7-9989b6c03122"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1420,
+        -160
+      ],
+      "id": "fe966f79-236a-4128-9bd5-e19c4f5e959b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node\n\n// 1. Gather and sanitize incoming announcements\nconst announcements = items\n  .map(item => ({\n    title: item.json.title  || '',\n    message: item.json.message || ''\n  }))\n  .filter(a => a.title || a.message);\n\n// 2. Fallback placeholder if empty\nif (announcements.length === 0) {\n  announcements.push({\n    title: 'Welcome to the Huddle Board',\n    message: 'No announcements available right now.'\n  });\n}\n\n// 3. Your custom jingle URL\nconst jingleUrl = 'https://file.cybertech.app/EPIC/Audio/Other/laser-326316.mp3';\n\n// 4. Build the HTML\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\"/>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>Huddle Board</title>\n  <style>\n    html, body {\n      margin:0; padding:0;\n      width:100%; height:100%;\n      background:#222; color:#fff;\n      font-family:sans-serif; overflow:hidden;\n    }\n    #board {\n      display:flex; flex-direction:column;\n      justify-content:center; align-items:center;\n      height:100%; text-align:center;\n      padding:2rem;\n    }\n    .item { margin:1rem 0; }\n    .title { font-size:5vw; font-weight:bold; }\n    .message { font-size:3vw; }\n    #unlock {\n      position:absolute; top:0; left:0;\n      width:100%; height:100%;\n      display:none; cursor:pointer;\n      z-index:10;\n    }\n  </style>\n</head>\n<body>\n  <div id=\"board\"></div>\n  <div id=\"unlock\"></div>\n  <audio id=\"jingle\" src=\"${jingleUrl}\" preload=\"auto\"></audio>\n\n  <script>\n    const data = ${JSON.stringify(announcements)};\n    const board = document.getElementById('board');\n    const unlock = document.getElementById('unlock');\n    const audio = document.getElementById('jingle');\n    let idx = 0;\n\n    function showNext() {\n      const { title, message } = data[idx];\n      board.innerHTML = \\`\n        <div class=\"item\">\n          <div class=\"title\">\\${title}</div>\n          <div class=\"message\">\\${message}</div>\n        </div>\\`;\n      idx = (idx + 1) % data.length;\n    }\n\n    window.addEventListener('load', () => {\n      // rotate announcements every 8s\n      showNext();\n      setInterval(showNext, 8000);\n\n      // try to play on load\n      audio.play().catch(() => {\n        // blocked by autoplay policy\n        unlock.style.display = 'block';\n      });\n    });\n\n    // on first tap/click, unlock and play\n    unlock.addEventListener('click', () => {\n      audio.play();\n      unlock.style.display = 'none';\n    }, { once: true });\n  </script>\n</body>\n</html>`;\n\n// 5. Return the HTML so Respond to Webhook can serve it\nreturn [\n  {\n    json: { html }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        -160
+      ],
+      "id": "0118632a-41b1-4cc0-9435-7542c2ecfeeb",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"shell\": \"powershell\",\n  \"cmd\": \"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://xl.epicpc.com/webhook/7c618e8c-8659-44d0-82c7-9989b6c03122' --edge-kiosk-type=fullscreen --autoplay-policy=no-user-gesture-required --no-first-run\",\n  \"timeout\": 30,\n  \"custom_shell\": null,\n  \"run_as_user\": true\n}\n",
+        "options": {}
+      },
+      "id": "acb25708-3c56-4ec8-a4f4-efe0cfcca331",
+      "name": "Send Powershell CMD to RMM Agent4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        840,
+        120
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&autoStartRecording=false&attendeePW=ap&meetingID=502880&moderatorPW=mp&name=Thomas&record=true&disabledFeatures=sharedNotes%2Cchat&preUploadedPresentation=https%3A%2F%2Ftoms.app%2Ftools%2Fblank.pdf&meta_bbb-recording-ready-url=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F7177fb4a-db76-43af-8847-c8400d2b7438&meta_endCallbackUrl=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F7177fb4a-db76-43af-8847-c8400d2b7438%3Fagent=chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU&endWhenNoModerator=true&endWhenNoModeratorDelayInMinutes=1&logo=https%3A%2F%2Fi0.wp.com%2Fepichs.org%2Fwp-content%2Fuploads%2F2024%2F01%2FSide-Black-Font.png&logoutURL=https://epichs.org"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e582021e-a4a4-4ee7-8412-8c15280cfdbc",
+      "name": "Manual Record2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -360,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID=502880&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "918481e2-8ba4-4645-937f-84218ac23434",
+      "name": "EnVision Room Display1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -260,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/chjoIetGNkaVUoTbQoHSxAGsPXJqrvmzOoeZhyGU/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting2.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "ddebbc43-d1ba-42b6-8ed0-c89dd5e53199",
+      "name": "Send Powershell CMD to RMM Agent5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        280,
+        -360
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "path": "ffe6bfdf-b7af-4d6a-90ab-e4d35ee3510d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        -440
+      ],
+      "id": "da65e1b0-acad-45ba-88a3-d4cd09778442",
+      "name": "Webhook2",
+      "webhookId": "ffe6bfdf-b7af-4d6a-90ab-e4d35ee3510d"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"slides\": [\n    {\n      \"slideIndex\": 1,\n      \"totalSlides\": 3,\n      \"logoUrl\": \"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\",\n      \"heading\": \"Your Unit Text Heading\",\n      \"dateTime\": \"2025-06-19T09:00:00Z\",\n      \"mainContent\": {\n        \"type\": \"image\",\n        \"value\": \"https://example.com/slide1-background.jpg\"\n      },\n      \"extraContent\": {\n        \"type\": \"text\",\n        \"value\": \"Room Reservations\"\n      },\n      \"bottomContent\": {\n        \"type\": \"text\",\n        \"value\": \"Local weather: 72\\u00B0F / Sunny\"\n      },\n      \"duration\": 15\n    },\n    {\n      \"slideIndex\": 2,\n      \"totalSlides\": 3,\n      \"logoUrl\": \"https://example.com/pennstate-logo.png\",\n      \"heading\": \"Upcoming Events\",\n      \"dateTime\": \"2025-06-19T09:00:00Z\",\n      \"mainContent\": {\n        \"type\": \"text\",\n        \"value\": \"Don't miss Summer Fest on July 4th!\"\n      },\n      \"extraContent\": null,\n      \"bottomContent\": {\n        \"type\": \"text\",\n        \"value\": \"Campus news: New research grant awarded\"\n      },\n      \"duration\": 10\n    },\n    {\n      \"slideIndex\": 3,\n      \"totalSlides\": 3,\n      \"logoUrl\": \"https://example.com/pennstate-logo.png\",\n      \"heading\": \"Department Spotlight\",\n      \"dateTime\": \"2025-06-19T09:00:00Z\",\n      \"mainContent\": {\n        \"type\": \"video\",\n        \"value\": \"https://example.com/highlight-video.mp4\"\n      },\n      \"extraContent\": {\n        \"type\": \"image\",\n        \"value\": \"https://example.com/floorplan.png\"\n      },\n      \"bottomContent\": null,\n      \"duration\": 20\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1720,
+        -440
+      ],
+      "id": "0438741d-c225-4f22-ab5a-5718d037d2b8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1) pull in slides (either wrapped under slides[] or each item.json is a slide)\nlet slides = [];\nif (items.length === 1 && Array.isArray(items[0].json.slides)) {\n  slides = items[0].json.slides;\n} else {\n  slides = items.map(item => item.json);\n}\n\n// 2) auto‐inject slideIndex and totalSlides\nconst total = slides.length;\nconst enriched = slides.map((slide, i) => ({\n  ...slide,\n  slideIndex: i + 1,\n  totalSlides: total,\n}));\n\n// 3) helper to render content blocks\nconst renderBlock = (block, cssClass) => {\n  if (!block || !block.type) return \"\";\n  switch (block.type) {\n    case \"image\":\n      return `<div class=\"${cssClass}\">\n                <img src=\"${block.value}\" style=\"width:100%;height:100%;object-fit:cover;\" />\n              </div>`;\n    case \"video\":\n      return `<div class=\"${cssClass}\">\n                <video autoplay muted loop style=\"width:100%;height:100%;object-fit:cover;\">\n                  <source src=\"${block.value}\" type=\"video/mp4\" />\n                </video>\n              </div>`;\n    case \"html\":\n      return `<div class=\"${cssClass}\">${block.value}</div>`;\n    case \"text\":\n    default:\n      return `<div class=\"${cssClass}\">\n                <p style=\"margin:1rem; font-size:2rem; line-height:1.3;\">${block.value}</p>\n              </div>`;\n  }\n};\n\n// 4) build each slide’s HTML\nconst slideHtml = enriched\n  .map(slide => {\n    const {\n      slideIndex,\n      totalSlides,\n      logoUrl,\n      heading,\n      mainContent,\n      extraContent,\n      bottomContent,\n      duration = 10,\n    } = slide;\n\n    // default title\n    const titleText = heading && heading.trim()\n      ? heading.trim()\n      : \"Huddle Board Updates\";\n\n    return `\n      <div class=\"slide\" data-duration=\"${duration}\">\n        <header class=\"top-bar\">\n          ${logoUrl ? `<img src=\"${logoUrl}\" class=\"logo\" />` : \"\"}\n          <div class=\"heading\">${titleText}</div>\n          <div class=\"date-time\"></div>\n        </header>\n\n        <div class=\"content-row\">\n          ${renderBlock(mainContent, \"main-content\")}\n          ${renderBlock(extraContent, \"extra-content\")}\n        </div>\n\n        ${renderBlock(bottomContent, \"bottom-bar\")}\n\n        <div class=\"pager\">${slideIndex} / ${totalSlides}</div>\n      </div>\n    `;\n  })\n  .join(\"\\n\");\n\n// 5) wrap with Epic Health CSS + JS for clock & rotator\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Digital Signage</title>\n  <!-- Epic Health font -->\n  <link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap\" rel=\"stylesheet\">\n  <style>\n    :root {\n      --brand-yellow: #FFD600;\n      --brand-black:  #000000;\n      --brand-white:  #FFFFFF;\n    }\n    body, html {\n      margin:0; padding:0;\n      width:100%; height:100%; overflow:hidden;\n      background: var(--brand-white);\n      color: var(--brand-black);\n      font-family: 'Poppins', sans-serif;\n    }\n    .slide {\n      display:none;\n      width:100%; height:100%;\n      flex-direction:column;\n      position:relative;\n    }\n    .slide.active {\n      display:flex;\n    }\n    /* Top Bar */\n    .top-bar {\n      display:flex; align-items:center;\n      background: var(--brand-black);\n      padding: 1rem 2rem;\n    }\n    .logo {\n      height: 4rem;\n      margin-right: 1.5rem;\n    }\n    .heading {\n      flex:1;\n      font-size: 3rem;\n      text-transform: uppercase;\n      color: var(--brand-yellow);\n      text-align: center;\n    }\n    .date-time {\n      font-size: 1.5rem;\n      color: var(--brand-white);\n      white-space: nowrap;\n    }\n    /* Content Row */\n    .content-row {\n      display:flex;\n      flex:1;\n    }\n    .main-content {\n      position:relative;\n      flex:3;\n    }\n    .main-content img {\n      width:100%; height:100%;\n      object-fit:cover;\n    }\n    /* yellow overlay on main image */\n    .main-content::after {\n      content: \"\";\n      position:absolute;\n      top:0; right:0; bottom:0; left:0;\n      background: rgba(255,214,0,0.3);\n    }\n    .extra-content {\n      flex:1;\n      background: rgba(255,214,0,0.1);\n      display:flex;\n      align-items:center;\n      justify-content:center;\n      padding:1rem;\n    }\n    .extra-content p {\n      font-size:1.5rem;\n      margin:0;\n    }\n    /* Bottom Bar */\n    .bottom-bar {\n      background: var(--brand-black);\n      color: var(--brand-yellow);\n      padding:1rem;\n      text-align:center;\n      font-size:1.8rem;\n    }\n    /* Pager */\n    .pager {\n      position:absolute;\n      bottom:1rem; right:1rem;\n      background: var(--brand-yellow);\n      color: var(--brand-black);\n      font-size:1.2rem;\n      padding: .3rem .6rem;\n      border-radius: .3rem;\n      opacity: 0.9;\n    }\n  </style>\n</head>\n<body>\n  ${slideHtml}\n\n  <script>\n    // dynamic Detroit/EST clock\n    function updateDateTime() {\n      const now = new Date().toLocaleString('en-US', {\n        timeZone: 'America/Detroit',\n        month: 'numeric', day: 'numeric', year: 'numeric',\n        hour: 'numeric', minute: 'numeric', second: 'numeric'\n      });\n      document.querySelectorAll('.date-time').forEach(el => el.textContent = now);\n    }\n    updateDateTime();\n    setInterval(updateDateTime, 1000);\n\n    // slide rotator\n    let current = 0;\n    const slides = document.querySelectorAll('.slide');\n    function showSlide(idx) {\n      slides.forEach((s,i) => s.classList.toggle('active', i===idx));\n      const dur = parseInt(slides[idx].dataset.duration, 10)*1000;\n      clearTimeout(window._rotator);\n      window._rotator = setTimeout(() => {\n        showSlide((idx+1) % slides.length);\n      }, dur);\n    }\n    if (slides.length) showSlide(0);\n  </script>\n</body>\n</html>\n`;\n\n// 6) return the final HTML\nreturn [{ json: { html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        -440
+      ],
+      "id": "d7da6006-2ca0-4702-acdd-aabac95a7d3e",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        2160,
+        -440
+      ],
+      "id": "3b4be48f-33b3-4056-9ff0-5af70c8297c9",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1) figure out where the slides actually live\nlet slides = [];\nif (\n  items.length === 1 &&\n  items[0].json.slides &&\n  Array.isArray(items[0].json.slides)\n) {\n  slides = items[0].json.slides;\n} else {\n  slides = items.map(item => item.json);\n}\n\n// 2) enrich each slide with index and total count\nconst total = slides.length;\nconst enriched = slides.map((slide, i) => ({\n  ...slide,\n  slideIndex: i + 1,\n  totalSlides: total,\n}));\n\n// 3) helper to render content blocks\nconst renderBlock = (block, cssClass) => {\n  if (!block || !block.type) return \"\";\n  switch (block.type) {\n    case \"image\":\n      return `<div class=\"${cssClass}\">\n                <img src=\"${block.value}\" style=\"width:100%;height:100%;object-fit:cover;\" />\n              </div>`;\n    case \"video\":\n      return `<div class=\"${cssClass}\">\n                <video autoplay muted loop style=\"width:100%;height:100%;object-fit:cover;\">\n                  <source src=\"${block.value}\" type=\"video/mp4\" />\n                </video>\n              </div>`;\n    case \"html\":\n      return `<div class=\"${cssClass}\">${block.value}</div>`;\n    case \"text\":\n    default:\n      return `<div class=\"${cssClass}\">\n                <p style=\"padding:1rem;font-size:1.5rem;\">${block.value}</p>\n              </div>`;\n  }\n};\n\n// 4) build each slide’s HTML\nconst slideHtml = enriched\n  .map(slide => {\n    const {\n      slideIndex,\n      totalSlides,\n      logoUrl,\n      heading,\n      dateTime,\n      mainContent,\n      extraContent,\n      bottomContent,\n      duration = 10, // fallback duration\n    } = slide;\n\n    // format the date (or show nothing if invalid)\n    let dateStr = \"\";\n    if (dateTime) {\n      const d = new Date(dateTime);\n      if (!isNaN(d)) dateStr = d.toLocaleString();\n    }\n\n    return `\n      <div class=\"slide\" data-duration=\"${duration}\">\n        <header class=\"top-bar\">\n          ${logoUrl ? `<img src=\"${logoUrl}\" class=\"logo\" />` : \"\"}\n          <div class=\"heading\">${heading || \"\"}</div>\n          <div class=\"date-time\">${dateStr}</div>\n        </header>\n\n        <div class=\"content-row\">\n          ${renderBlock(mainContent, \"main-content\")}\n          ${renderBlock(extraContent, \"extra-content\")}\n        </div>\n\n        ${renderBlock(bottomContent, \"bottom-bar\")}\n\n        <div class=\"pager\">${slideIndex} / ${totalSlides}</div>\n      </div>\n    `;\n  })\n  .join(\"\\n\");\n\n// 5) wrap it all up with the CSS + rotator script\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Digital Signage</title>\n  <style>\n    body,html { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#12345a; color:#fff; }\n    .slide { display:none; width:100%; height:100%; flex-direction:column; }\n    .slide.active { display:flex; }\n    .top-bar { display:flex; align-items:center; background:#00285c; padding:0.5rem; }\n    .logo { height:3rem; margin-right:1rem; }\n    .heading { flex:1; font-size:2rem; text-align:center; }\n    .date-time { font-size:1rem; }\n    .content-row { display:flex; flex:1; }\n    .main-content { flex:3; }\n    .extra-content { flex:1; background:rgba(0,0,0,0.2); }\n    .bottom-bar { background:#00285c; padding:0.5rem; text-align:center; }\n    .pager { position:absolute; bottom:1rem; right:1rem; font-size:1rem; opacity:0.7; }\n  </style>\n</head>\n<body>\n  ${slideHtml}\n\n  <script>\n    let current = 0;\n    const slides = document.querySelectorAll('.slide');\n    function showSlide(idx) {\n      slides.forEach((s,i) => s.classList.toggle('active', i===idx));\n      const dur = parseInt(slides[idx].dataset.duration, 10) * 1000;\n      clearTimeout(window._rotator);\n      window._rotator = setTimeout(() => {\n        showSlide((idx+1) % slides.length);\n      }, dur);\n    }\n    if (slides.length) showSlide(0);\n  </script>\n</body>\n</html>\n`;\n\n// 6) output a single item with the HTML\nreturn [{ json: { html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2060,
+        -300
+      ],
+      "id": "f0ed1cc7-f004-4b31-9a57-ceba014662a0",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1) pull in slides (either wrapped under slides[] or each item.json is a slide)\nlet slides = [];\nif (\n  items.length === 1 &&\n  Array.isArray(items[0].json.slides)\n) {\n  slides = items[0].json.slides;\n} else {\n  slides = items.map(item => item.json);\n}\n\n// 2) auto-inject slideIndex and totalSlides\nconst total = slides.length;\nconst enriched = slides.map((slide, i) => ({\n  ...slide,\n  slideIndex: i + 1,\n  totalSlides: total,\n}));\n\n// 3) helper to render content blocks\nconst renderBlock = (block, cssClass) => {\n  if (!block || !block.type) return \"\";\n  switch (block.type) {\n    case \"image\":\n      return `<div class=\"${cssClass}\">\n                <img src=\"${block.value}\" style=\"width:100%;height:100%;object-fit:cover;\" />\n              </div>`;\n    case \"video\":\n      return `<div class=\"${cssClass}\">\n                <video autoplay muted loop style=\"width:100%;height:100%;object-fit:cover;\">\n                  <source src=\"${block.value}\" type=\"video/mp4\" />\n                </video>\n              </div>`;\n    case \"html\":\n      return `<div class=\"${cssClass}\">${block.value}</div>`;\n    case \"text\":\n    default:\n      return `<div class=\"${cssClass}\">\n                <p style=\"padding:1rem;font-size:1.5rem;\">${block.value}</p>\n              </div>`;\n  }\n};\n\n// 4) build each slide’s HTML\nconst slideHtml = enriched\n  .map(slide => {\n    const {\n      slideIndex,\n      totalSlides,\n      logoUrl,\n      heading,\n      dateTime,\n      mainContent,\n      extraContent,\n      bottomContent,\n      duration = 10\n    } = slide;\n\n    // default title\n    const titleText = heading && heading.trim()\n      ? heading.trim()\n      : \"Huddle Board Updates\";\n\n    // choose slide date or now\n    const dt = dateTime ? new Date(dateTime) : new Date();\n    let dateStr = \"\";\n    if (!isNaN(dt)) {\n      dateStr = dt.toLocaleString(\"en-US\", {\n        timeZone: \"America/Detroit\",\n        month: \"numeric\",\n        day: \"numeric\",\n        year: \"numeric\",\n        hour: \"numeric\",\n        minute: \"numeric\",\n        second: \"numeric\",\n      });\n    }\n\n    return `\n      <div class=\"slide\" data-duration=\"${duration}\">\n        <header class=\"top-bar\">\n          ${logoUrl ? `<img src=\"${logoUrl}\" class=\"logo\" />` : \"\"}\n          <div class=\"heading\">${titleText}</div>\n          <div class=\"date-time\">${dateStr}</div>\n        </header>\n\n        <div class=\"content-row\">\n          ${renderBlock(mainContent, \"main-content\")}\n          ${renderBlock(extraContent, \"extra-content\")}\n        </div>\n\n        ${renderBlock(bottomContent, \"bottom-bar\")}\n\n        <div class=\"pager\">${slideIndex} / ${totalSlides}</div>\n      </div>\n    `;\n  })\n  .join(\"\\n\");\n\n// 5) wrap with CSS + auto-rotate script\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Digital Signage</title>\n  <style>\n    body,html { margin:0; padding:0; width:100%; height:100%; overflow:hidden; background:#12345a; color:#fff; }\n    .slide { display:none; width:100%; height:100%; flex-direction:column; }\n    .slide.active { display:flex; }\n    .top-bar { display:flex; align-items:center; background:#00285c; padding:0.5rem; }\n    .logo { height:3rem; margin-right:1rem; }\n    .heading { flex:1; font-size:2rem; text-align:center; }\n    .date-time { font-size:1rem; }\n    .content-row { display:flex; flex:1; }\n    .main-content { flex:3; }\n    .extra-content { flex:1; background:rgba(0,0,0,0.2); }\n    .bottom-bar { background:#00285c; padding:0.5rem; text-align:center; }\n    .pager { position:absolute; bottom:1rem; right:1rem; font-size:1rem; opacity:0.7; }\n  </style>\n</head>\n<body>\n  ${slideHtml}\n\n  <script>\n    let current = 0;\n    const slides = document.querySelectorAll('.slide');\n    function showSlide(idx) {\n      slides.forEach((s,i) => s.classList.toggle('active', i===idx));\n      const dur = parseInt(slides[idx].dataset.duration, 10) * 1000;\n      clearTimeout(window._rotator);\n      window._rotator = setTimeout(() => {\n        showSlide((idx+1) % slides.length);\n      }, dur);\n    }\n    if (slides.length) showSlide(0);\n  </script>\n</body>\n</html>\n`;\n\n// 6) return it\nreturn [{ json: { html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        -180
+      ],
+      "id": "b45ae5d1-0c8e-474a-85bc-34ddf5930fc3",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1) Pull in slides (either wrapped under slides[] or each item.json is a slide)\nlet slides = [];\nif (items.length === 1 && Array.isArray(items[0].json.slides)) {\n  slides = items[0].json.slides;\n} else {\n  slides = items.map(item => item.json);\n}\n\n// 2) Auto-inject slideIndex and totalSlides\nconst total = slides.length;\nconst enriched = slides.map((slide, i) => ({\n  ...slide,\n  slideIndex: i + 1,\n  totalSlides: total,\n}));\n\n// 3) Helper to render content blocks\nconst renderBlock = (block, cssClass) => {\n  if (!block || !block.type) return \"\";\n  switch (block.type) {\n    case \"image\":\n      return `<div class=\"${cssClass}\">\n                <img src=\"${block.value}\" style=\"width:100%;height:100%;object-fit:cover;\" />\n              </div>`;\n    case \"video\":\n      return `<div class=\"${cssClass}\">\n                <video autoplay muted loop style=\"width:100%;height:100%;object-fit:cover;\">\n                  <source src=\"${block.value}\" type=\"video/mp4\" />\n                </video>\n              </div>`;\n    case \"html\":\n      return `<div class=\"${cssClass}\">${block.value}</div>`;\n    case \"text\":\n    default:\n      return `<div class=\"${cssClass}\">\n                <p style=\"margin:1rem; font-size:2rem; line-height:1.3;\">${block.value}</p>\n              </div>`;\n  }\n};\n\n// 4) Build each slide’s HTML\nconst slideHtml = enriched\n  .map(slide => {\n    const {\n      slideIndex,\n      totalSlides,\n      logoUrl,\n      heading,\n      mainContent,\n      extraContent,\n      bottomContent,\n      duration = 10,\n    } = slide;\n\n    // Default title if none provided\n    const titleText = heading && heading.trim()\n      ? heading.trim()\n      : \"Huddle Board Updates\";\n\n    return `\n      <div class=\"slide\" data-duration=\"${duration}\">\n        <header class=\"top-bar\">\n          ${logoUrl ? `<img src=\"${logoUrl}\" class=\"logo\" />` : \"\"}\n          <div class=\"heading\">${titleText}</div>\n          <div class=\"date-time\"></div>\n        </header>\n\n        <div class=\"content-row\">\n          ${renderBlock(mainContent, \"main-content\")}\n          ${renderBlock(extraContent, \"extra-content\")}\n        </div>\n\n        ${renderBlock(bottomContent, \"bottom-bar\")}\n\n        <div class=\"pager\">${slideIndex} / ${totalSlides}</div>\n      </div>\n    `;\n  })\n  .join(\"\\n\");\n\n// 5) Wrap with CSS + JS for auto-rotate + dynamic time\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Digital Signage</title>\n  <style>\n    /* Global */\n    body, html {\n      margin:0;\n      padding:0;\n      width:100%;\n      height:100%;\n      overflow:hidden;\n      background:#12345a;\n      color:#fff;\n      font-family: Arial, sans-serif;\n    }\n    .slide {\n      display:none;\n      width:100%;\n      height:100%;\n      flex-direction:column;\n    }\n    .slide.active {\n      display:flex;\n    }\n\n    /* Top bar */\n    .top-bar {\n      display:flex;\n      align-items:center;\n      background:#00285c;\n      padding:1rem;\n    }\n    .logo {\n      height:3.5rem;\n      margin-right:1rem;\n    }\n    .heading {\n      flex:1;\n      font-size:3rem;\n      text-align:center;\n    }\n    .date-time {\n      font-size:1.5rem;\n      white-space:nowrap;\n    }\n\n    /* Content row */\n    .content-row {\n      display:flex;\n      flex:1;\n    }\n    .main-content {\n      flex:3;\n    }\n    .extra-content {\n      flex:1;\n      background:rgba(0,0,0,0.2);\n    }\n\n    /* Bottom bar */\n    .bottom-bar {\n      background:#00285c;\n      padding:1rem;\n      font-size:1.8rem;\n      text-align:center;\n    }\n\n    /* Pager */\n    .pager {\n      position:absolute;\n      bottom:1rem;\n      right:1rem;\n      font-size:1.2rem;\n      opacity:0.8;\n    }\n  </style>\n</head>\n<body>\n  ${slideHtml}\n\n  <script>\n    // Update all .date-time elements every second\n    function updateDateTime() {\n      const now = new Date().toLocaleString('en-US', {\n        timeZone: 'America/Detroit',\n        month: 'numeric',\n        day: 'numeric',\n        year: 'numeric',\n        hour: 'numeric',\n        minute: 'numeric',\n        second: 'numeric'\n      });\n      document.querySelectorAll('.date-time').forEach(el => el.textContent = now);\n    }\n    updateDateTime();\n    setInterval(updateDateTime, 1000);\n\n    // Slide rotator\n    let current = 0;\n    const slides = document.querySelectorAll('.slide');\n    function showSlide(idx) {\n      slides.forEach((s,i) => s.classList.toggle('active', i===idx));\n      const dur = parseInt(slides[idx].dataset.duration, 10) * 1000;\n      clearTimeout(window._rotator);\n      window._rotator = setTimeout(() => {\n        showSlide((idx+1) % slides.length);\n      }, dur);\n    }\n    if (slides.length) showSlide(0);\n  </script>\n</body>\n</html>\n`;\n\n// 6) Output the HTML\nreturn [{ json: { html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        -20
+      ],
+      "id": "5229a6c6-ae31-496e-ba33-dd8c268f0426",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "path": "DEMO-Instant_Visits",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -600,
+        -200
+      ],
+      "id": "29ee8a50-ceee-44f2-a6cf-ef3c8fdb88ab",
+      "name": "Webhook3",
+      "webhookId": "87bee04c-c333-431d-b78e-c8f8932377af"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        280,
+        -680
+      ],
+      "id": "dd5bb635-592c-40b6-ac20-839a5da17037",
+      "name": "Respond to Webhook2"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.160",
+            "x-forwarded-for": "10.0.1.160",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "user-agent": "Apache-HttpAsyncClient/4.1.5 (Java/17.0.15)"
+          },
+          "params": {},
+          "query": {
+            "recordingmarks": "false",
+            "meetingID": "502880"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/7177fb4a-db76-43af-8847-c8400d2b7438",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 4,
+  "updatedAt": "2025-06-26T12:18:04.727Z",
+  "versionId": "f3d9182e-9400-461d-bf3f-d44812c637be"
+}
