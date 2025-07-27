@@ -1,0 +1,374 @@
+{
+  "active": false,
+  "connections": {
+    "Limesurvey Authenication": {
+      "main": [
+        [
+          {
+            "node": "Limesurve GET list_surveys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Limesurvey Authenication",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limesurve GET list_surveys": {
+      "main": [
+        [
+          {
+            "node": "Limesurve GET list_surveys1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limesurve GET list_surveys1": {
+      "main": [
+        [
+          {
+            "node": "Base64Decoded",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Base64Decoded": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-05-02T18:13:14.542Z",
+  "id": "cGABQWMMKylvrAid",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Ted - Limesurvey API and Database",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "3d227e2d-1b02-4166-8092-76401a15338d",
+      "name": "Limesurvey Authenication",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        580,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('Limesurvey Authenication').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "cc4b0c8f-4810-4ed3-8f10-005c3b3448fb",
+      "name": "Limesurve GET list_surveys",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        780,
+        260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "88211530-560a-4b80-9c8d-7326da79e7ab",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "path": "9875d7c9-c4fd-4829-a802-634632bec4aa",
+        "options": {}
+      },
+      "id": "c14ef2c7-6f0b-459c-9d01-25b26aa26a4f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        480,
+        80
+      ],
+      "webhookId": "9875d7c9-c4fd-4829-a802-634632bec4aa",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={\n  \"method\": \"export_responses\",\n  \"params\": {\n    \"sSessionKey\": \"{{ $('Limesurvey Authenication').item.json.result }}\",\n    \"iSurveyID\":\"{{ $json.result[44].sid }}\", \n    \"sDocumentType\": \"csv\",\n    \"sLanguageCode\": \"en\",\n    \"sCompletionStatus\": \"all\",\n    \"sHeadingType\": \"full\",\n    \"sResponseType\": \"long\",\n\"aAdditionalOptions\":\"export\"\n  },\n  \"id\": 1\n}\n  ",
+        "options": {}
+      },
+      "id": "dc6be336-3772-45ee-bbbf-99dd99038cff",
+      "name": "Limesurve GET list_surveys1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the base64 encoded data\nconst base64Data = items[0].json.result; // Ensure the field path is correct\n\n// Decode the base64 data\nconst decodedData = Buffer.from(base64Data, 'base64').toString('utf-8');\n\n// Split the decoded data into lines\nconst lines = decodedData.split('\\r\\n');\n\n// Extract the headers from the first line\nconst headers = lines[0].split(';').map(header => header.replace(/\"/g, ''));\n\n// Initialize an array to hold the table rows\nconst tableRows = [];\n\n// Loop through each line after the headers to extract row data\nfor (let i = 1; i < lines.length; i++) {\n  // Split the line into individual values\n  const values = lines[i].split(';').map(value => value.replace(/\"/g, ''));\n\n  // Create an object to hold the row data\n  const row = {};\n\n  // Assign the values to the corresponding headers\n  headers.forEach((header, index) => {\n    row[header] = values[index];\n  });\n\n  // Add the row to the table rows array\n  tableRows.push(row);\n}\n\n// Log the table rows for debugging\nconsole.log(\"Table Rows:\", tableRows);\n\n// Return the table rows as JSON\nreturn [\n  {\n    json: {\n      tableRows\n    }\n  }\n];\n"
+      },
+      "id": "9ca9e9a1-65b4-4470-a9e5-8d2d7a140dcc",
+      "name": "Base64Decoded",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ $json.createTableSQL }}",
+        "options": {}
+      },
+      "id": "78cee6aa-5e1a-4f41-8543-03a6c5f5ba21",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1420,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zWApk9TuNHcgRU7F",
+          "name": "limesurveyresponses"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "tableRows",
+        "options": {}
+      },
+      "id": "8613191d-f978-4ba2-b719-531d414cae42",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fbbdfcce-81d1-4064-9c01-ba6512700e86",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1640,
+        260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "fa69364b-bead-4c4f-8075-ffec60e258a7",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the base64 encoded data\nconst base64Data = items[0].json.result;\n\n// Decode the base64 data\nconst decodedData = Buffer.from(base64Data, 'base64').toString('utf-8');\n\n// Split the decoded data into lines\nconst lines = decodedData.split('\\r\\n');\n\n// Get the first line (column headers)\nconst columnHeaders = lines[0].split(';').map(header => header.replace(/\"/g, '').trim());\n\n// Generate the CREATE TABLE SQL statement\nlet createTableSQL = 'CREATE TABLE IF NOT EXISTS sdohshort (\\n';\ncolumnHeaders.forEach((header, index) => {\n  createTableSQL += `  \"${header}\" TEXT`;\n  if (index < columnHeaders.length - 1) {\n    createTableSQL += ',\\n';\n  }\n});\ncreateTableSQL += '\\n);';\n\n// Log the SQL statement for debugging\nconsole.log(\"Create Table SQL:\", createTableSQL);\n\n// Return the SQL statement for execution\nreturn [\n  {\n    json: {\n      createTableSQL\n    }\n  }\n];\n\n"
+      },
+      "id": "426fd2cb-ff8f-482d-be5a-18d15d2e98a1",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        560
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO sdohshort (\n    \"Response ID\",\n    \"Date submitted\",\n    \"Last page\",\n    \"Start language\",\n    \"Seed\",\n    \"Access code\",\n    \"Date started\",\n    \"Date last action\",\n    \"IP address\",\n    \"Referrer URL\",\n    \"Please fill out the information below. [Patient's First Name]\",\n    \"Please fill out the information below. [Patient's Last Name]\",\n    \"Please fill out the information below. [Patient's Date of Birth]\",\n    \"Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?\",\n    \"Do you have problems with any of the following? [Do you have lead, mold, poor air quality and overcrowding in your home?]\",\n    \"Do you have problems with any of the following? [Are you experiencing problems with neighbors?]\",\n    \"Do you have problems with any of the following? [Do you live in a foster home and/or having problems there?]\",\n    \"Do you have problems with any of the following? [Have been homeless in the past 12 months?]\",\n    \"Within the past 12 months, were you worried that your food would run out before you got money to buy more?\",\n    \"Do you reschedule or neglect going to the doctor because of transportation issues?\",\n    \"In the past 12 months, has the electric, gas, oil, or water company threatened to shut off services in your home?\",\n    \"Do problems with child care make it difficult for you to work or go to school?\",\n    \"Have you been sexually harassed at work?\",\n    \"Do you have a job?\",\n    \"Is your work schedule and job tasks stressful?\",\n    \"Do you have reading issues with literacy?\",\n    \"Have you failed High School and have no diploma?\",\n    \"In the last 12 months did you skip medications to save money?\",\n    \"In the last 12 months, was there a time when you needed to see a doctor but could not because of cost?\",\n    \"Do you feel physically and emotionally safe where you currently live?\",\n    \"Are you going through a separation or divorce?\",\n    \"Would you like help with any of these needs? [Housing Inadequacy]\",\n    \"Would you like help with any of these needs? [Food Insecurity]\",\n    \"Would you like help with any of these needs? [Transportation Insecurity]\",\n    \"Would you like help with any of these needs? [Material Hardship]\",\n    \"Would you like help with any of these needs? [Employment]\",\n    \"Would you like help with any of these needs? [Education]\",\n    \"Would you like help with any of these needs? [Medical Cost Burden]\",\n    \"Would you like help with any of these needs? [Personal Safety]\",\n    \"Did a Care Coordinator or Care Manager assist in the survey?\",\n    \"Would you need assistance with Michigan Bridges program?\"\n) VALUES (\n    '{{ $json[\"Response ID\"] || 'NULL' }}',\n    '{{ $json[\"Date submitted\"] || 'NULL' }}',\n    '{{ $json[\"Last page\"] || 'NULL' }}',\n    '{{ $json[\"Start language\"] || 'NULL' }}',\n    '{{ $json[\"Seed\"] || 'NULL' }}',\n    '{{ $json[\"Access code\"] || 'NULL' }}',\n    '{{ $json[\"Date started\"] || 'NULL' }}',\n    '{{ $json[\"Date last action\"] || 'NULL' }}',\n    '{{ $json[\"IP address\"] || 'NULL' }}',\n    '{{ $json[\"Referrer URL\"] || 'NULL' }}',\n    '{{ $json[\"Please fill out the information below. [Patient's First Name]\"] || 'NULL' }}',\n    '{{ $json[\"Please fill out the information below. [Patient's Last Name]\"] || 'NULL' }}',\n    '{{ $json[\"Please fill out the information below. [Patient's Date of Birth]\"] || 'NULL' }}',\n    '{{ $json[\"Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?\"] || 'NULL' }}',\n    '{{ $json[\"Do you have problems with any of the following? [Do you have lead, mold, poor air quality and overcrowding in your home?]\"] || 'NULL' }}',\n    '{{ $json[\"Do you have problems with any of the following? [Are you experiencing problems with neighbors?]\"] || 'NULL' }}',\n    '{{ $json[\"Do you have problems with any of the following? [Do you live in a foster home and/or having problems there?]\"] || 'NULL' }}',\n    '{{ $json[\"Do you have problems with any of the following? [Have been homeless in the past 12 months?]\"] || 'NULL' }}',\n    '{{ $json[\"Within the past 12 months, were you worried that your food would run out before you got money to buy more?\"] || 'NULL' }}',\n    '{{ $json[\"Do you reschedule or neglect going to the doctor because of transportation issues?\"] || 'NULL' }}',\n    '{{ $json[\"In the past 12 months, has the electric, gas, oil, or water company threatened to shut off services in your home?\"] || 'NULL' }}',\n    '{{ $json[\"Do problems with child care make it difficult for you to work or go to school?\"] || 'NULL' }}',\n    '{{ $json[\"Have you been sexually harassed at work?\"] || 'NULL' }}',\n    '{{ $json[\"Do you have a job?\"] || 'NULL' }}',\n    '{{ $json[\"Is your work schedule and job tasks stressful?\"] || 'NULL' }}',\n    '{{ $json[\"Do you have reading issues with literacy?\"] || 'NULL' }}',\n    '{{ $json[\"Have you failed High School and have no diploma?\"] || 'NULL' }}',\n    '{{ $json[\"In the last 12 months did you skip medications to save money?\"] || 'NULL' }}',\n    '{{ $json[\"In the last 12 months, was there a time when you needed to see a doctor but could not because of cost?\"] || 'NULL' }}',\n    '{{ $json[\"Do you feel physically and emotionally safe where you currently live?\"] || 'NULL' }}',\n    '{{ $json[\"Are you going through a separation or divorce?\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Housing Inadequacy]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Food Insecurity]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Transportation Insecurity]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Material Hardship]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Employment]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Education]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Medical Cost Burden]\"] || 'NULL' }}',\n    '{{ $json[\"Would you like help with any of these needs? [Personal Safety]\"] || 'NULL' }}',\n    '{{ $json[\"Did a Care Coordinator or Care Manager assist in the survey?\"] || 'NULL' }}',\n    '{{ $json[\"Would you need assistance with Michigan Bridges program?\"] || 'NULL' }}'\n);\n",
+        "options": {}
+      },
+      "id": "ef6a2701-4cd5-4a32-bfcd-536c307b2b30",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1960,
+        580
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zWApk9TuNHcgRU7F",
+          "name": "limesurveyresponses"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nlet query = '';\n\nitems.forEach(item => {\n  const data = item.json;\n\n  const values = [\n    data[\"Response ID\"] ? data[\"Response ID\"] : 'NULL',\n    data[\"Date submitted\"] ? `'${data[\"Date submitted\"]}'` : 'NULL',\n    data[\"Last page\"] ? data[\"Last page\"] : 'NULL',\n    data[\"Start language\"] ? `'${data[\"Start language\"]}'` : 'NULL',\n    data[\"Seed\"] ? `'${data[\"Seed\"]}'` : 'NULL',\n    data[\"Access code\"] ? `'${data[\"Access code\"]}'` : 'NULL',\n    data[\"Date started\"] ? `'${data[\"Date started\"]}'` : 'NULL',\n    data[\"Date last action\"] ? `'${data[\"Date last action\"]}'` : 'NULL',\n    data[\"IP address\"] ? `'${data[\"IP address\"]}'` : 'NULL',\n    data[\"Referrer URL\"] ? `'${data[\"Referrer URL\"]}'` : 'NULL',\n    data[\"Please fill out the information below. [Patient's First Name]\"] ? `'${data[\"Please fill out the information below. [Patient's First Name]\"]}'` : 'NULL',\n    data[\"Please fill out the information below. [Patient's Last Name]\"] ? `'${data[\"Please fill out the information below. [Patient's Last Name]\"]}'` : 'NULL',\n    data[\"Please fill out the information below. [Patient's Date of Birth]\"] ? `'${data[\"Please fill out the information below. [Patient's Date of Birth]\"]}'` : 'NULL',\n    data[\"Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?\"] ? `'${data[\"Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?\"]}'` : 'NULL',\n    data[\"Do you have problems with any of the following? [Do you have lead, mold, poor air quality and overcrowding in your home?]\"] ? `'${data[\"Do you have problems with any of the following? [Do you have lead, mold, poor air quality and overcrowding in your home?]\"]}'` : 'NULL',\n    data[\"Do you have problems with any of the following? [Are you experiencing problems with neighbors?]\"] ? `'${data[\"Do you have problems with any of the following? [Are you experiencing problems with neighbors?]\"]}'` : 'NULL',\n    data[\"Do you have problems with any of the following? [Do you live in a foster home and/or having problems there?]\"] ? `'${data[\"Do you have problems with any of the following? [Do you live in a foster home and/or having problems there?]\"]}'` : 'NULL',\n    data[\"Do you have problems with any of the following? [Have been homeless in the past 12 months?]\"] ? `'${data[\"Do you have problems with any of the following? [Have been homeless in the past 12 months?]\"]}'` : 'NULL',\n    data[\"Within the past 12 months, were you worried that your food would run out before you got money to buy more?\"] ? `'${data[\"Within the past 12 months, were you worried that your food would run out before you got money to buy more?\"]}'` : 'NULL',\n    data[\"Do you reschedule or neglect going to the doctor because of transportation issues?\"] ? `'${data[\"Do you reschedule or neglect going to the doctor because of transportation issues?\"]}'` : 'NULL',\n    data[\"In the past 12 months, has the electric, gas, oil, or water company threatened to shut off services in your home?\"] ? `'${data[\"In the past 12 months, has the electric, gas, oil, or water company threatened to shut off services in your home?\"]}'` : 'NULL',\n    data[\"Do problems with child care make it difficult for you to work or go to school?\"] ? `'${data[\"Do problems with child care make it difficult for you to work or go to school?\"]}'` : 'NULL',\n    data[\"Have you been sexually harassed at work?\"] ? `'${data[\"Have you been sexually harassed at work?\"]}'` : 'NULL',\n    data[\"Do you have a job?\"] ? `'${data[\"Do you have a job?\"]}'` : 'NULL',\n    data[\"Is your work schedule and job tasks stressful?\"] ? `'${data[\"Is your work schedule and job tasks stressful?\"]}'` : 'NULL',\n    data[\"Do you have reading issues with literacy?\"] ? `'${data[\"Do you have reading issues with literacy?\"]}'` : 'NULL',\n    data[\"Have you failed High School and have no diploma?\"] ? `'${data[\"Have you failed High School and have no diploma?\"]}'` : 'NULL',\n    data[\"In the last 12 months did you skip medications to save money?\"] ? `'${data[\"In the last 12 months did you skip medications to save money?\"]}'` : 'NULL',\n    data[\"In the last 12 months, was there a time when you needed to see a doctor but could not because of cost?\"] ? `'${data[\"In the last 12 months, was there a time when you needed to see a doctor but could not because of cost?\"]}'` : 'NULL',\n    data[\"Do you feel physically and emotionally safe where you currently live?\"] ? `'${data[\"Do you feel physically and emotionally safe where you currently live?\"]}'` : 'NULL',\n    data[\"Are you going through a separation or divorce?\"] ? `'${data[\"Are you going through a separation or divorce?\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Housing Inadequacy]\"] ? `'${data[\"Would you like help with any of these needs? [Housing Inadequacy]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Food Insecurity]\"] ? `'${data[\"Would you like help with any of these needs? [Food Insecurity]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Transportation Insecurity]\"] ? `'${data[\"Would you like help with any of these needs? [Transportation Insecurity]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Material Hardship]\"] ? `'${data[\"Would you like help with any of these needs? [Material Hardship]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Employment]\"] ? `'${data[\"Would you like help with any of these needs? [Employment]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Education]\"] ? `'${data[\"Would you like help with any of these needs? [Education]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Medical Cost Burden]\"] ? `'${data[\"Would you like help with any of these needs? [Medical Cost Burden]\"]}'` : 'NULL',\n    data[\"Would you like help with any of these needs? [Personal Safety]\"] ? `'${data[\"Would you like help with any of these needs? [Personal Safety]\"]}'` : 'NULL',\n    data[\"Did a Care Coordinator or Care Manager assist in the survey?\"] ? `'${data[\"Did a Care Coordinator or Care Manager assist in the survey?\"]}'` : 'NULL',\n    data[\"Would you need assistance with Michigan Bridges program?\"] ? `'${data[\"Would you need assistance with Michigan Bridges program?\"]}'` : 'NULL'\n  ];\n\n  const queryPart = `(${values.join(', ')})`;\n  query += `INSERT INTO sdohshort (\n    \"Response ID\",\n    \"Date submitted\",\n    \"Last page\",\n    \"Start language\",\n    \"Seed\",\n    \"Access code\",\n    \"Date started\",\n    \"Date last action\",\n    \"IP address\",\n    \"Referrer URL\",\n    \"Please fill out the information below. [Patient's First Name]\",\n    \"Please fill out the information below. [Patient's Last Name]\",\n    \"Please fill out the information below. [Patient's Date of Birth]\",\n    \"Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?\",\n    \"Do you have problems with any of the following? [Do you have lead, mold, poor air quality\n"
+      },
+      "id": "96f424fd-bac1-4d08-9c26-b2286bb20543",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "662c44cd-ced6-444a-b950-ca1e551ac7ee",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1860,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-20T15:02:19.575Z",
+  "versionId": "d4c0dff6-153d-46d2-b6b2-1469899c3155"
+}
