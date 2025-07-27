@@ -1,0 +1,435 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSO Provider": {
+      "main": [
+        []
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Original": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-03-24T19:53:40.400Z",
+  "id": "s2rIS3GuotvZJ01X",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Doublebook Testing",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        20
+      ],
+      "id": "f876be77-9853-4f94-982b-05d93f9d1dc2",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @PROVIDER VARCHAR(250)='%{{ $json.UserName.slice(1) }}%';\nDECLARE @STARTDATE DATE='2025-03-24';\nDECLARE @ENDDATE DATE='2025-03-24';\nDECLARE @LOC VARCHAR(250)='%%';\n \nSELECT [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n      ,[Appt_Sched_Location_ID]\n      ,[Appt_Sched_Location_Abbr]\n      ,[Appt_Sched_Location_Descr]\n      ,[Appt_Sched_Department_ID]\n      ,[Appt_Sched_Department_Abbr]\n      ,[Appt_Sched_Department_Descr]\n      ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Potential_Patient_ID]\n      ,[Appt_Ailment]\n      ,[Appt_Potential_Patient_First_Name]\n      ,[Appt_Potential_Patient_MI]\n      ,[Appt_Potential_Patient_Last_Name]\n      ,[Appt_Potential_Patient_Suffix]\n      ,[Appt_Refer_Dr_ID]\n      ,[Appt_Refer_Dr_Abbr]\n      ,[Appt_Refer_Dr_Name]\n      ,[Appt_Refer_Dr_LFI]\n      ,[Appt_Refer_Dr_First_Name]\n      ,[Appt_Refer_Dr_MI]\n      ,[Appt_Refer_Dr_Last_Name]\n      ,[Appt_Refer_Dr_Suffix]\n      ,[Appt_Refer_Dr_Phone]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date]\n      ,[Appt_Cancelled_By_Operator_Abbr]\n      ,[Appt_Canc_Reason_Abbr]\n      ,[Appt_Canc_Reason_Descr]\n      ,[Appt_Is_Forced]\n      ,[Appt_Is_Memo]\n      ,[Appt_Is_Linked]\n      ,[Appt_Ref_Missing]\n      ,[Appt_Started_Time]\n      ,[Appt_Check_Out_Time]\n      ,[Appt_Bumped_Date]\n      ,[Appt_Bumped_By_Operator_Abbr]\n      ,[Appt_Bump_Reason_Abbr]\n      ,[Appt_Bump_Reason_Descr]\n      ,[Coverage_Type]\n      ,[Appt_Acknowledged_Date]\n      ,[Appt_Ack_By_Operator_Abbr]\n      ,[Coverage]\n      ,[Appt_NoShow_Date]\n      ,[Appt_NoShow_By_Operator_Abbr]\n      ,[TimeZone_Abbreviation]\n      ,[Tenant_ID]\n      ,[Tenant_Name]\n      ,[Appt_Sign_In_Time]\n      ,[Appt_Visit_Type_Abbr]\n      ,[Appt_Visit_Type_Descr]\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n  where cast(a.Appt_DateTime as date) between @STARTDATE and @ENDDATE\n  and a.Appt_Resource_Assoc_Prov_LFI like @PROVIDER\n  AND a.Appt_Sched_Location_Descr like @LOC\n  --and a.Appt_Status in ('s','n','x','c','b')  -- can add not in to remove as well"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -40,
+        160
+      ],
+      "id": "08fedd9a-7a38-47d4-be32-84f8af1b92a7",
+      "name": "Microsoft SQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with Colored Schedule Buttons,\n * dynamic sorting by any column, search, filters, and pagination.\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = items.map(item => item.json);\n\n// 2) Group by (Location, Provider, Appt_DateTime) and capture correct fields.\nfunction getStatus(appt) {\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  if (appt.Appt_Status === \"X\") return \"X\";\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  // Use the correct fields for location and provider details.\n  const locationAbbr = appt.Appt_Sched_Location_Abbr || \"\";\n  const locationDescr = appt.Appt_Sched_Location_Descr || \"\";\n  const providerName = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const providerAbbr = appt.Appt_Resource_Abbr || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  // Group by the full location description, provider full name, and date/time.\n  const key = `${locationDescr}||${providerName}||${dt}`;\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      locationAbbr,         // abbreviated location\n      locationDescr,        // full location description\n      providerName,         // provider full name\n      providerAbbr,         // provider abbreviation (resource)\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n      appointments: []\n    });\n  }\n  const entry = grouped.get(key);\n  const status = getStatus(appt);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n  entry.appointments.push(appt);\n}\n\n// 3) Convert grouped data to an array, format date/time for display, and add a sortDate.\n// Also store the raw date/time for payload formatting.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\", d: new Date() };\n  // Adjust the date as in the original formatting.\n  d.setHours(d.getHours() + 4);\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time, d };\n}\n\nlet groupedArr = Array.from(grouped.values()).map((g, index) => {\n  const formatted = formatDateTime(g.apptDateTime);\n  // Create a sortDate based on the adjusted date (as ISO string) for reliable comparisons.\n  const sortDate = formatted.d.toISOString();\n  return {\n    locationAbbr: g.locationAbbr,           // abbreviated location for payload & display\n    locationDescr: g.locationDescr,         // full location description for payload\n    providerName: g.providerName,           // provider full name for payload & display\n    providerAbbr: g.providerAbbr,           // provider abbreviation for payload\n    day: formatted.day,\n    date: formatted.date,\n    time: formatted.time,\n    schedule: g.countS + g.countB,\n    index,\n    rawDateTime: g.apptDateTime,  // used when building the payload\n    sortDate,                   // ISO string of the adjusted date/time\n    appointments: g.appointments\n  };\n});\n\n// 4) Compute an \"originalRank\" based on schedule count so that the button color stays consistent.\nlet sortedRows = groupedArr.slice().sort((a, b) => a.schedule - b.schedule);\nsortedRows.forEach((row, idx) => {\n  row.originalRank = idx;\n});\nconst n = groupedArr.length;\nconst greenThreshold = Math.floor(n / 3);\nconst redThreshold = Math.floor(2 * n / 3);\n\n// 5) Global variables for sorting, filtering, and pagination.\nlet currentSortColumn = \"\"; // empty means default sort (by date then time)\nlet currentSortDirection = 1; // 1 for ascending, -1 for descending\nlet currentSearchQuery = \"\";\nlet currentLocationFilter = \"All\";\nlet currentDayFilter = \"All\";\nlet currentDateFilter = \"All\";\nlet currentPage = 1;\nconst itemsPerPage = 10;\nlet showAll = false;\n\n// 6) Generate HTML with filter dropdowns, search, table, and pagination controls.\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body { font-family: Arial, sans-serif; margin: 20px; }\n    .frame { background: #f0f0f0; padding: 20px; border-radius: 8px; }\n    table { width: 100%; border-collapse: collapse; margin-top: 10px; }\n    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; cursor: pointer; }\n    th { background-color: #333; color: #fff; }\n    tr:hover { background-color: #f9fafb; }\n    .btn-green { background: green; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-green:hover { background: darkgreen; }\n    .btn-default { background: #f59e0b; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-default:hover { background: #d97706; }\n    .btn-red { background: red; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-red:hover { background: darkred; }\n    #filters-container, #search-container, #pagination-container { margin-bottom: 10px; }\n    #filters-container select, #search-container input { padding: 6px; font-size: 14px; margin-right: 10px; }\n    th span { font-size: 12px; margin-left: 5px; }\n    #pagination-container button { padding: 6px 12px; margin-right: 10px; }\n  </style>\n</head>\n<body>\n  <div class=\"frame\">\n    <h2>Appointments</h2>\n    <div id=\"filters-container\">\n      <label for=\"location-filter\">Location:</label>\n      <select id=\"location-filter\" onchange=\"updateFilters()\"></select>\n      <label for=\"day-filter\">Day:</label>\n      <select id=\"day-filter\" onchange=\"updateFilters()\"></select>\n      <label for=\"date-filter\">Date:</label>\n      <select id=\"date-filter\" onchange=\"updateFilters()\"></select>\n    </div>\n    <div id=\"search-container\">\n      <input type=\"text\" id=\"search-input\" placeholder=\"Search...\" onkeyup=\"updateSearch()\" />\n    </div>\n    <table>\n      <thead>\n        <tr>\n          <th onclick=\"setSort('location')\">Location <span id=\"sort-location\"></span></th>\n          <th onclick=\"setSort('provider')\">Provider <span id=\"sort-provider\"></span></th>\n          <th onclick=\"setSort('day')\">Day <span id=\"sort-day\"></span></th>\n          <th onclick=\"setSort('date')\">Date <span id=\"sort-date\"></span></th>\n          <th onclick=\"setSort('time')\">Time <span id=\"sort-time\"></span></th>\n          <th onclick=\"setSort('schedule')\">Schedule <span id=\"sort-schedule\"></span></th>\n        </tr>\n      </thead>\n      <tbody id=\"table-body\">\n        <!-- Table rows will be injected here -->\n      </tbody>\n    </table>\n    <div id=\"pagination-container\">\n      <button onclick=\"prevPage()\" id=\"prev-btn\">Previous</button>\n      <span id=\"page-info\"></span>\n      <button onclick=\"nextPage()\" id=\"next-btn\">Next</button>\n      <button onclick=\"toggleShowAll()\" id=\"toggle-show-btn\">Show All</button>\n    </div>\n  </div>\n  <script>\n    // Embedded appointments data.\n    const appointments = ${JSON.stringify(groupedArr)};\n\n    // Populate filter options based on unique values from appointments.\n    function populateFilterOptions() {\n      const locationSet = new Set(), daySet = new Set(), dateSet = new Set();\n      appointments.forEach(row => {\n        locationSet.add(row.locationAbbr);\n        daySet.add(row.day);\n        dateSet.add(row.date);\n      });\n      const locations = Array.from(locationSet).sort();\n      const days = Array.from(daySet).sort();\n      const dates = Array.from(dateSet).sort((a,b) => new Date(a) - new Date(b));\n\n      const locSelect = document.getElementById('location-filter');\n      const daySelect = document.getElementById('day-filter');\n      const dateSelect = document.getElementById('date-filter');\n      \n      // Helper to create options.\n      function createOptions(selectEl, values) {\n        let options = '<option value=\"All\">All</option>';\n        values.forEach(val => {\n          options += '<option value=\"' + val + '\">' + val + '</option>';\n        });\n        selectEl.innerHTML = options;\n      }\n      \n      createOptions(locSelect, locations);\n      createOptions(daySelect, days);\n      createOptions(dateSelect, dates);\n    }\n\n    // Global variables for filtering and pagination.\n    let currentSortColumn = \"\";\n    let currentSortDirection = 1;\n    let currentSearchQuery = \"\";\n    let currentLocationFilter = \"All\";\n    let currentDayFilter = \"All\";\n    let currentDateFilter = \"All\";\n    let currentPage = 1;\n    const itemsPerPage = ${itemsPerPage};\n    let showAll = false;\n\n    // Render the table based on current filters, sorting, and pagination.\n    function renderTable() {\n      // Apply search and filter criteria.\n      let filtered = appointments.filter(row => {\n        // Search filter (case-insensitive).\n        const q = currentSearchQuery.toLowerCase();\n        const searchMatch = !q || \n          row.locationAbbr.toLowerCase().includes(q) ||\n          row.providerName.toLowerCase().includes(q) ||\n          row.day.toLowerCase().includes(q) ||\n          row.date.toLowerCase().includes(q) ||\n          row.time.toLowerCase().includes(q) ||\n          String(row.schedule).toLowerCase().includes(q);\n        // Dropdown filters.\n        const locationMatch = (currentLocationFilter === \"All\" || row.locationAbbr === currentLocationFilter);\n        const dayMatch = (currentDayFilter === \"All\" || row.day === currentDayFilter);\n        const dateMatch = (currentDateFilter === \"All\" || row.date === currentDateFilter);\n        return searchMatch && locationMatch && dayMatch && dateMatch;\n      });\n      \n      // Sort the filtered results.\n      filtered.sort((a, b) => compareRows(a, b));\n      \n      // Pagination.\n      let pageData = filtered;\n      if (!showAll) {\n        const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;\n        if (currentPage > totalPages) currentPage = totalPages;\n        const startIdx = (currentPage - 1) * itemsPerPage;\n        pageData = filtered.slice(startIdx, startIdx + itemsPerPage);\n        document.getElementById('page-info').innerText = 'Page ' + currentPage + ' of ' + totalPages;\n        document.getElementById('prev-btn').disabled = (currentPage === 1);\n        document.getElementById('next-btn').disabled = (currentPage === totalPages);\n      } else {\n        document.getElementById('page-info').innerText = 'Showing all results';\n        document.getElementById('prev-btn').disabled = true;\n        document.getElementById('next-btn').disabled = true;\n      }\n      \n      // Render rows.\n      const tbody = document.getElementById('table-body');\n      tbody.innerHTML = '';\n      pageData.forEach(row => {\n        // Use originalRank (from schedule count) for button color.\n        let btnClass = (row.originalRank < ${greenThreshold}) ? \"btn-green\" :\n                       (row.originalRank >= ${redThreshold}) ? \"btn-red\" : \"btn-default\";\n        const tr = document.createElement('tr');\n        tr.innerHTML = \\`\n          <td>\\${row.locationAbbr}</td>\n          <td>\\${row.providerName}</td>\n          <td>\\${row.day}</td>\n          <td>\\${row.date}</td>\n          <td>\\${row.time}</td>\n          <td>\n            \\${row.schedule}\n            <button class=\"\\${btnClass}\" style=\"margin-left: 10px;\" onclick='scheduleAppointment(\\${JSON.stringify(row)})'>Schedule</button>\n          </td>\n        \\`;\n        tbody.appendChild(tr);\n      });\n      updateSortIndicators();\n    }\n    \n    // Compare function for sorting.\n    function compareRows(a, b) {\n      let result = 0;\n      if (!currentSortColumn) {\n        // Default: sort by date then time.\n        result = compareByDate(a, b);\n        if (result === 0) result = compareByTime(a, b);\n      } else {\n        switch (currentSortColumn) {\n          case 'location':\n            result = a.locationAbbr.localeCompare(b.locationAbbr);\n            break;\n          case 'provider':\n            result = a.providerName.localeCompare(b.providerName);\n            break;\n          case 'day':\n            result = a.day.localeCompare(b.day);\n            break;\n          case 'date':\n            result = compareByDate(a, b);\n            break;\n          case 'time':\n            result = compareByTime(a, b);\n            break;\n          case 'schedule':\n            result = a.schedule - b.schedule;\n            break;\n          default:\n            result = 0;\n        }\n      }\n      return result * currentSortDirection;\n    }\n    \n    // Helper: compare only date portions.\n    function compareByDate(a, b) {\n      const da = new Date(a.sortDate);\n      const db = new Date(b.sortDate);\n      const dateA = new Date(da.getFullYear(), da.getMonth(), da.getDate());\n      const dateB = new Date(db.getFullYear(), db.getMonth(), db.getDate());\n      return dateA - dateB;\n    }\n    \n    // Helper: compare only time portions.\n    function compareByTime(a, b) {\n      const da = new Date(a.sortDate);\n      const db = new Date(b.sortDate);\n      const timeA = da.getHours() * 60 + da.getMinutes();\n      const timeB = db.getHours() * 60 + db.getMinutes();\n      return timeA - timeB;\n    }\n    \n    // Set sort column when header is clicked.\n    function setSort(column) {\n      if (currentSortColumn === column) {\n        currentSortDirection = -currentSortDirection;\n      } else {\n        currentSortColumn = column;\n        currentSortDirection = 1;\n      }\n      renderTable();\n    }\n    \n    // Update sort indicators in table header.\n    function updateSortIndicators() {\n      const columns = ['location', 'provider', 'day', 'date', 'time', 'schedule'];\n      columns.forEach(col => {\n        const span = document.getElementById('sort-' + col);\n        if (currentSortColumn === col) {\n          span.innerText = currentSortDirection === 1 ? '▲' : '▼';\n        } else {\n          span.innerText = '';\n        }\n      });\n    }\n    \n    // Search filter.\n    function updateSearch() {\n      currentSearchQuery = document.getElementById('search-input').value;\n      currentPage = 1;\n      renderTable();\n    }\n    \n    // Dropdown filters update.\n    function updateFilters() {\n      currentLocationFilter = document.getElementById('location-filter').value;\n      currentDayFilter = document.getElementById('day-filter').value;\n      currentDateFilter = document.getElementById('date-filter').value;\n      currentPage = 1;\n      renderTable();\n    }\n    \n    // Pagination controls.\n    function prevPage() {\n      if (currentPage > 1) {\n        currentPage--;\n        renderTable();\n      }\n    }\n    function nextPage() {\n      currentPage++;\n      renderTable();\n    }\n    function toggleShowAll() {\n      showAll = !showAll;\n      // Update button text.\n      document.getElementById('toggle-show-btn').innerText = showAll ? 'Paginate' : 'Show All';\n      if (!showAll) currentPage = 1;\n      renderTable();\n    }\n    \n    // Fallback for showLoader.\n    if (typeof showLoader !== \"function\") {\n      function showLoader() { console.log(\"Loader triggered...\"); }\n    }\n    \n    // Schedule button click handler.\n    function scheduleAppointment(appointmentGroup) {\n      if (appointmentGroup) {\n        showLoader();\n        const dt = new Date(appointmentGroup.rawDateTime);\n        const payload = {\n          index: appointmentGroup.index,\n          slots_available: appointmentGroup.schedule,\n          start_fixer: formatTime24(dt),\n          start: formatTime12(dt),\n          end: formatTime24(new Date(dt.getTime() + 10 * 60000)),\n          location: appointmentGroup.locationAbbr,\n          date: formatDateMMDDYYYY(dt),\n          day: appointmentGroup.day,\n          location_description: appointmentGroup.locationDescr,\n          provider_name: appointmentGroup.providerName,\n          duration: \"10\",\n          provider: appointmentGroup.providerAbbr,\n          res_appointment_group_id: 42,\n          resource_abbr: appointmentGroup.providerAbbr,\n          orderkeytime: formatOrderKeyTime(dt)\n        };\n        const scheduleData = encodeURIComponent(JSON.stringify(payload));\n        const webhookUrl = new URL(\"https://xl.epicpc.com/webhook/b4264e0e-085f-49c0-9471-1009eafa4ce01\");\n        const currentParams = new URLSearchParams(window.location.search);\n        currentParams.forEach((value, key) => {\n          webhookUrl.searchParams.set(key, value);\n        });\n        webhookUrl.searchParams.set('schedule', scheduleData);\n        webhookUrl.searchParams.set('caretype', 'PCARE');\n        setTimeout(() => { window.location.href = webhookUrl.toString(); }, 100);\n      } else {\n        alert('Appointment data not found.');\n      }\n    }\n    \n    // Utility formatting functions.\n    function formatTime24(dateObj) {\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;\n    }\n    function formatTime12(dateObj) {\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      const ampm = hours >= 12 ? 'PM' : 'AM';\n      hours = hours % 12;\n      hours = hours ? hours : 12;\n      return hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;\n    }\n    function formatDateMMDDYYYY(dateObj) {\n      let month = dateObj.getMonth() + 1;\n      let day = dateObj.getDate();\n      let year = dateObj.getFullYear();\n      return (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day + '-' + year;\n    }\n    function formatOrderKeyTime(dateObj) {\n      let year = dateObj.getFullYear();\n      let month = dateObj.getMonth() + 1;\n      let day = dateObj.getDate();\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      let seconds = dateObj.getSeconds();\n      return year + '-' +\n             (month < 10 ? '0' : '') + month + '-' +\n             (day < 10 ? '0' : '') + day + ' ' +\n             (hours < 10 ? '0' : '') + hours + ':' +\n             (minutes < 10 ? '0' : '') + minutes + ':' +\n             (seconds < 10 ? '0' : '') + seconds;\n    }\n    \n    // Initial population and render.\n    populateFilterOptions();\n    renderTable();\n  </script>\n</body>\n</html>\n`;\n\n// 7) Return the HTML content.\nreturn [{ json: { htmlContent: html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ],
+      "id": "62140a8b-f4ed-4a52-b233-cd983ee495c9",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.htmlContent }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        0
+      ],
+      "id": "998e742d-24be-47ef-b82a-04cce7103d8d",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "050c6792-8813-4fa8-a882-53f6e69dbd5c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -340,
+        -120
+      ],
+      "id": "b394421a-5c80-4449-a920-4e7af6898221",
+      "name": "Webhook",
+      "webhookId": "050c6792-8813-4fa8-a882-53f6e69dbd5c"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "885942f8-7369-4f27-8140-a3047362cc15",
+              "leftValue": "={{ $json.UserName }}",
+              "rightValue": "={{ $json.Appt_Resource_Assoc_Prov_LFI.split(',')[0].trim() }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        -80
+      ],
+      "id": "b01360c0-9083-405e-9a81-b8d12daa45cd",
+      "name": "If",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "fe00f8ed-4864-48dd-85de-7e3a7e79d60c",
+      "name": "SSO Provider",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -720,
+        -500
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        100,
+        -100
+      ],
+      "id": "38b8aa69-9b44-4aec-be76-82d53159ac48",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Appt_ID",
+        "outputDataFrom": "input2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        460,
+        40
+      ],
+      "id": "5983cb84-3108-44bc-b873-b578cc52765a",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "  {\n    \"SingleSignOnToken\": \"047F539E-F1A7-4CBC-982D-0142CEBF4A5B\",\n    \"SessionToken\": \"84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712\",\n    \"UserName\": \"ENiemi\",\n    \"CreatedOn\": \"2024-02-22T09:25:02.490Z\",\n    \"EncounterID\": \"21105855\",\n    \"PatientID\": \"158536\",\n    \"MRN\": \"502880\",\n    \"DEM_FIRSTNAME\": \"THOMAS\",\n    \"DEM_LASTNAME\": \"STILWELL\",\n    \"DEM_DATEOFBIRTH\": \"1988-02-01T00:00:00.000Z\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -380,
+        260
+      ],
+      "id": "c8a46f08-c34e-4d38-b116-8c30353b3dcb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with S/B/Total\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = [];\n\n// If each item is one appointment object, do:\nrawAppointments = items.map(item => item.json);\n\n// If you have a single item with an array, you'd do something like:\n// rawAppointments = items[0].json;\n\n// 2) Group by (Location, Provider, Appt_DateTime).\nfunction getStatus(appt) {\n  // If Appt_Status is \"B\" or if Appt_Canc_Reason_Abbr is \"BUMPED\", treat it as \"Bumped\"\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  // If Appt_Status is \"X\", treat it as \"X\"\n  if (appt.Appt_Status === \"X\") return \"X\";\n  // Otherwise, treat as \"S\"\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  const location = appt.Appt_Sched_Location_Descr || \"\";\n  const provider = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  const key = `${location}||${provider}||${dt}`;\n\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      location,\n      provider,\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n    });\n  }\n\n  const status = getStatus(appt);\n  const entry = grouped.get(key);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n}\n\n// 3) Convert grouped data to an array, format the date/time, and sort.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n\n  // Add 4 hours to adjust the time\n  d.setHours(d.getHours() + 4);\n\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time };\n}\n\nlet groupedArr = Array.from(grouped.values());\n\n// Sort by Appt_DateTime ascending\ngroupedArr.sort((a, b) => {\n  const dateA = new Date(a.apptDateTime).getTime();\n  const dateB = new Date(b.apptDateTime).getTime();\n  return dateA - dateB;\n});\n\n// Build final array with columns\ngroupedArr = groupedArr.map((g, index) => {\n  const { day, date, time } = formatDateTime(g.apptDateTime);\n  return {\n    location: g.location,\n    provider: g.provider,\n    day,\n    date,\n    time,\n    scheduled: g.countS,      // S\n    bumped: g.countB,         // B\n    total: g.countS + g.countB,\n    index,\n  };\n});\n\n// 4) Generate HTML\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 20px;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 20px;\n    }\n    th, td {\n      border: 1px solid #ddd;\n      padding: 10px;\n      text-align: left;\n    }\n    th {\n      background-color: #333;\n      color: #fff;\n    }\n    tr:hover {\n      background-color: #f9fafb;\n    }\n    button {\n      padding: 6px 12px;\n      background: #f59e0b;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    button:hover {\n      background: #d97706;\n    }\n  </style>\n</head>\n<body>\n  <h2>Appointments</h2>\n  <table>\n    <thead>\n      <tr>\n        <th>Location</th>\n        <th>Provider</th>\n        <th>Day</th>\n        <th>Date</th>\n        <th>Time</th>\n        <th>Scheduled</th>\n        <th>Bumped</th>\n        <th>Total</th>\n        <th>Schedule</th>\n      </tr>\n    </thead>\n    <tbody>\n      ${groupedArr.map(row => `\n        <tr>\n          <td>${row.location}</td>\n          <td>${row.provider}</td>\n          <td>${row.day}</td>\n          <td>${row.date}</td>\n          <td>${row.time}</td>\n          <td>${row.scheduled}</td>\n          <td>${row.bumped}</td>\n          <td>${row.total}</td>\n          <td><button onclick=\"alert('Scheduling row #${row.index}...')\">Schedule</button></td>\n        </tr>\n      `).join('')}\n    </tbody>\n  </table>\n</body>\n</html>\n`;\n\n// 5) Return a single item with the entire HTML table in \"htmlContent\".\nreturn [\n  {\n    json: {\n      htmlContent: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        220
+      ],
+      "id": "56ed9352-06ee-4f93-9748-5df2d5d75d77",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with S/B/Total\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = [];\n\n// If each item is one appointment object, do:\nrawAppointments = items.map(item => item.json);\n\n// If you have a single item with an array, you'd do something like:\n// rawAppointments = items[0].json;\n\n// 2) Group by (Location, Provider, Appt_DateTime).\nfunction getStatus(appt) {\n  // If Appt_Status is \"B\" or if Appt_Canc_Reason_Abbr is \"BUMPED\", treat it as \"Bumped\"\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  // If Appt_Status is \"X\", treat it as \"X\"\n  if (appt.Appt_Status === \"X\") return \"X\";\n  // Otherwise, treat as \"S\"\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  const location = appt.Appt_Sched_Location_Descr || \"\";\n  const provider = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  const key = `${location}||${provider}||${dt}`;\n\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      location,\n      provider,\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n    });\n  }\n\n  const status = getStatus(appt);\n  const entry = grouped.get(key);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n}\n\n// 3) Convert grouped data to an array, format the date/time, and sort.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time };\n}\n\nlet groupedArr = Array.from(grouped.values());\n\n// Sort by Appt_DateTime ascending\ngroupedArr.sort((a, b) => {\n  const dateA = new Date(a.apptDateTime).getTime();\n  const dateB = new Date(b.apptDateTime).getTime();\n  return dateA - dateB;\n});\n\n// Build final array with columns\ngroupedArr = groupedArr.map((g, index) => {\n  const { day, date, time } = formatDateTime(g.apptDateTime);\n  return {\n    location: g.location,\n    provider: g.provider,\n    day,\n    date,\n    time,\n    scheduled: g.countS,      // S\n    bumped: g.countB,         // B\n    total: g.countS + g.countB,\n    index,\n  };\n});\n\n// 4) Generate HTML\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 20px;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 20px;\n    }\n    th, td {\n      border: 1px solid #ddd;\n      padding: 10px;\n      text-align: left;\n    }\n    th {\n      background-color: #333;\n      color: #fff;\n    }\n    tr:hover {\n      background-color: #f9fafb;\n    }\n    button {\n      padding: 6px 12px;\n      background: #f59e0b;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    button:hover {\n      background: #d97706;\n    }\n  </style>\n</head>\n<body>\n  <h2>Appointments</h2>\n  <table>\n    <thead>\n      <tr>\n        <th>Location</th>\n        <th>Provider</th>\n        <th>Day</th>\n        <th>Date</th>\n        <th>Time</th>\n        <th>Scheduled</th>\n        <th>Bumped</th>\n        <th>Total</th>\n        <th>Schedule</th>\n      </tr>\n    </thead>\n    <tbody>\n      ${groupedArr.map(row => `\n        <tr>\n          <td>${row.location}</td>\n          <td>${row.provider}</td>\n          <td>${row.day}</td>\n          <td>${row.date}</td>\n          <td>${row.time}</td>\n          <td>${row.scheduled}</td>\n          <td>${row.bumped}</td>\n          <td>${row.total}</td>\n          <td><button onclick=\"alert('Scheduling row #${row.index}...')\">Schedule</button></td>\n        </tr>\n      `).join('')}\n    </tbody>\n  </table>\n</body>\n</html>\n`;\n\n// 5) Return a single item with the entire HTML table in \"htmlContent\".\nreturn [\n  {\n    json: {\n      htmlContent: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        320
+      ],
+      "id": "1ecc4d15-f166-4d53-9ae6-1a6f138ea14b",
+      "name": "Original"
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with S/B/Total\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = [];\n\n// If each item is one appointment object, do:\nrawAppointments = items.map(item => item.json);\n\n// If you have a single item with an array, you'd do something like:\n// rawAppointments = items[0].json;\n\n// 2) Group by (Location, Provider, Appt_DateTime).\nfunction getStatus(appt) {\n  // If Appt_Status is \"B\" or if Appt_Canc_Reason_Abbr is \"BUMPED\", treat it as \"Bumped\"\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  // If Appt_Status is \"X\", treat it as \"X\"\n  if (appt.Appt_Status === \"X\") return \"X\";\n  // Otherwise, treat as \"S\"\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  const location = appt.Appt_Sched_Location_Descr || \"\";\n  const provider = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  const key = `${location}||${provider}||${dt}`;\n\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      location,\n      provider,\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n    });\n  }\n\n  const status = getStatus(appt);\n  const entry = grouped.get(key);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n}\n\n// 3) Convert grouped data to an array, format the date/time, and sort.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n\n  // Add 4 hours to adjust the time\n  d.setHours(d.getHours() + 4);\n\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time };\n}\n\nlet groupedArr = Array.from(grouped.values());\n\n// Sort by Appt_DateTime ascending\ngroupedArr.sort((a, b) => {\n  const dateA = new Date(a.apptDateTime).getTime();\n  const dateB = new Date(b.apptDateTime).getTime();\n  return dateA - dateB;\n});\n\n// Build final array with columns\n// \"Schedule\" column now shows the combined (Scheduled + Bumped) count\ngroupedArr = groupedArr.map((g, index) => {\n  const { day, date, time } = formatDateTime(g.apptDateTime);\n  return {\n    location: g.location,\n    provider: g.provider,\n    day,\n    date,\n    time,\n    schedule: g.countS + g.countB,\n    index,\n  };\n});\n\n// 4) Generate HTML (combined \"Scheduled\" count and Schedule button in one column)\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 20px;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 20px;\n    }\n    th, td {\n      border: 1px solid #ddd;\n      padding: 10px;\n      text-align: left;\n    }\n    th {\n      background-color: #333;\n      color: #fff;\n    }\n    tr:hover {\n      background-color: #f9fafb;\n    }\n    button {\n      padding: 6px 12px;\n      background: #f59e0b;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    button:hover {\n      background: #d97706;\n    }\n  </style>\n</head>\n<body>\n  <h2>Appointments</h2>\n  <table>\n    <thead>\n      <tr>\n        <th>Location</th>\n        <th>Provider</th>\n        <th>Day</th>\n        <th>Date</th>\n        <th>Time</th>\n        <th>Schedule</th>\n      </tr>\n    </thead>\n    <tbody>\n      ${groupedArr.map(row => `\n        <tr>\n          <td>${row.location}</td>\n          <td>${row.provider}</td>\n          <td>${row.day}</td>\n          <td>${row.date}</td>\n          <td>${row.time}</td>\n          <td>\n            ${row.schedule}\n            <button style=\"margin-left: 10px;\" onclick=\"alert('Scheduling row #${row.index}...')\">Schedule</button>\n          </td>\n        </tr>\n      `).join('')}\n    </tbody>\n  </table>\n</body>\n</html>\n`;\n\n// 5) Return a single item with the entire HTML table in \"htmlContent\".\nreturn [\n  {\n    json: {\n      htmlContent: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -100
+      ],
+      "id": "63f35680-2d44-470f-9711-8880eb3ca608",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @PROVIDER VARCHAR(250)='%Deena%';\nDECLARE @STARTDATE DATE='2025-04-01';\nDECLARE @ENDDATE DATE='2025-04-01';\nDECLARE @LOC VARCHAR(250)='%%';\n \nSELECT [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n      ,[Appt_Sched_Location_ID]\n      ,[Appt_Sched_Location_Abbr]\n      ,[Appt_Sched_Location_Descr]\n      ,[Appt_Sched_Department_ID]\n      ,[Appt_Sched_Department_Abbr]\n      ,[Appt_Sched_Department_Descr]\n      ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Potential_Patient_ID]\n      ,[Appt_Ailment]\n      ,[Appt_Potential_Patient_First_Name]\n      ,[Appt_Potential_Patient_MI]\n      ,[Appt_Potential_Patient_Last_Name]\n      ,[Appt_Potential_Patient_Suffix]\n      ,[Appt_Refer_Dr_ID]\n      ,[Appt_Refer_Dr_Abbr]\n      ,[Appt_Refer_Dr_Name]\n      ,[Appt_Refer_Dr_LFI]\n      ,[Appt_Refer_Dr_First_Name]\n      ,[Appt_Refer_Dr_MI]\n      ,[Appt_Refer_Dr_Last_Name]\n      ,[Appt_Refer_Dr_Suffix]\n      ,[Appt_Refer_Dr_Phone]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date]\n      ,[Appt_Cancelled_By_Operator_Abbr]\n      ,[Appt_Canc_Reason_Abbr]\n      ,[Appt_Canc_Reason_Descr]\n      ,[Appt_Is_Forced]\n      ,[Appt_Is_Memo]\n      ,[Appt_Is_Linked]\n      ,[Appt_Ref_Missing]\n      ,[Appt_Started_Time]\n      ,[Appt_Check_Out_Time]\n      ,[Appt_Bumped_Date]\n      ,[Appt_Bumped_By_Operator_Abbr]\n      ,[Appt_Bump_Reason_Abbr]\n      ,[Appt_Bump_Reason_Descr]\n      ,[Coverage_Type]\n      ,[Appt_Acknowledged_Date]\n      ,[Appt_Ack_By_Operator_Abbr]\n      ,[Coverage]\n      ,[Appt_NoShow_Date]\n      ,[Appt_NoShow_By_Operator_Abbr]\n      ,[TimeZone_Abbreviation]\n      ,[Tenant_ID]\n      ,[Tenant_Name]\n      ,[Appt_Sign_In_Time]\n      ,[Appt_Visit_Type_Abbr]\n      ,[Appt_Visit_Type_Descr]\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n  where cast(a.Appt_DateTime as date) between @STARTDATE and @ENDDATE\n  and a.Appt_Resource_Assoc_Prov_LFI like @PROVIDER\n  AND a.Appt_Sched_Location_Descr like @LOC\n  --and a.Appt_Status in ('s','n','x','c','b')  -- can add not in to remove as well"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        320
+      ],
+      "id": "287f4bc0-1b81-4729-b5a2-c6f208d7b8c7",
+      "name": "Microsoft SQL1",
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with Colored Schedule Buttons\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = [];\n\n// If each item is one appointment object, do:\nrawAppointments = items.map(item => item.json);\n\n// If you have a single item with an array, you'd do something like:\n// rawAppointments = items[0].json;\n\n// 2) Group by (Location, Provider, Appt_DateTime).\nfunction getStatus(appt) {\n  // If Appt_Status is \"B\" or if Appt_Canc_Reason_Abbr is \"BUMPED\", treat it as \"Bumped\"\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  // If Appt_Status is \"X\", treat it as \"X\"\n  if (appt.Appt_Status === \"X\") return \"X\";\n  // Otherwise, treat as \"S\"\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  const location = appt.Appt_Sched_Location_Descr || \"\";\n  const provider = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  const key = `${location}||${provider}||${dt}`;\n\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      location,\n      provider,\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n    });\n  }\n\n  const status = getStatus(appt);\n  const entry = grouped.get(key);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n}\n\n// 3) Convert grouped data to an array, format the date/time, and sort.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n\n  // Add 4 hours to adjust the time\n  d.setHours(d.getHours() + 4);\n\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time };\n}\n\nlet groupedArr = Array.from(grouped.values());\n\n// Sort by Appt_DateTime ascending (display order remains by time)\ngroupedArr.sort((a, b) => {\n  const dateA = new Date(a.apptDateTime).getTime();\n  const dateB = new Date(b.apptDateTime).getTime();\n  return dateA - dateB;\n});\n\n// Build final array with columns\n// \"schedule\" now is the combined count of scheduled (S) and bumped (B)\ngroupedArr = groupedArr.map((g, index) => {\n  const { day, date, time } = formatDateTime(g.apptDateTime);\n  return {\n    location: g.location,\n    provider: g.provider,\n    day,\n    date,\n    time,\n    schedule: g.countS + g.countB,\n    index,\n  };\n});\n\n// 4) Rank rows by schedule count to determine button color.\n// Create a sorted copy (by schedule count ascending)\nlet sortedRows = groupedArr.slice().sort((a, b) => a.schedule - b.schedule);\nsortedRows.forEach((row, idx) => {\n  // Annotate each row with its rank (0 = lowest schedule count)\n  row.rank = idx;\n});\n\n// Determine thresholds for the lowest 1/3 and highest 1/3.\nconst n = groupedArr.length;\nconst greenThreshold = Math.floor(n / 3);\nconst redThreshold = Math.floor(2 * n / 3);\n// Note: If n is small the distribution might assign all rows to one category.\n\n// 5) Generate HTML with a combined \"Schedule\" column that shows the count and a button with spacing.\n// The button's color is determined by the row's rank.\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 20px;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 20px;\n    }\n    th, td {\n      border: 1px solid #ddd;\n      padding: 10px;\n      text-align: left;\n    }\n    th {\n      background-color: #333;\n      color: #fff;\n    }\n    tr:hover {\n      background-color: #f9fafb;\n    }\n    /* Button styles for different ranking groups */\n    .btn-green {\n      background: green;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-green:hover {\n      background: darkgreen;\n    }\n    .btn-default {\n      background: #f59e0b;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-default:hover {\n      background: #d97706;\n    }\n    .btn-red {\n      background: red;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-red:hover {\n      background: darkred;\n    }\n  </style>\n</head>\n<body>\n  <h2>Appointments</h2>\n  <table>\n    <thead>\n      <tr>\n        <th>Location</th>\n        <th>Provider</th>\n        <th>Day</th>\n        <th>Date</th>\n        <th>Time</th>\n        <th>Schedule</th>\n      </tr>\n    </thead>\n    <tbody>\n      ${groupedArr.map(row => {\n        // Determine button class based on the row's rank.\n        let btnClass = \"\";\n        if (row.rank < greenThreshold) {\n          btnClass = \"btn-green\";\n        } else if (row.rank >= redThreshold) {\n          btnClass = \"btn-red\";\n        } else {\n          btnClass = \"btn-default\";\n        }\n        return `\n        <tr>\n          <td>${row.location}</td>\n          <td>${row.provider}</td>\n          <td>${row.day}</td>\n          <td>${row.date}</td>\n          <td>${row.time}</td>\n          <td>\n            ${row.schedule}\n            <button class=\"${btnClass}\" style=\"margin-left: 10px;\" onclick=\"alert('Scheduling row #${row.index}...')\">Schedule</button>\n          </td>\n        </tr>\n        `;\n      }).join('')}\n    </tbody>\n  </table>\n</body>\n</html>\n`;\n\n// 6) Return a single item with the entire HTML table in \"htmlContent\".\nreturn [\n  {\n    json: {\n      htmlContent: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -180
+      ],
+      "id": "9fb32c53-4129-4da8-b065-7173ff1b51a7",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with Colored Schedule Buttons\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = [];\n\n// If each item is one appointment object, do:\nrawAppointments = items.map(item => item.json);\n\n// 2) Group by (Location, Provider, Appt_DateTime).\nfunction getStatus(appt) {\n  // If Appt_Status is \"B\" or if Appt_Canc_Reason_Abbr is \"BUMPED\", treat it as \"Bumped\"\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  // If Appt_Status is \"X\", treat it as \"X\"\n  if (appt.Appt_Status === \"X\") return \"X\";\n  // Otherwise, treat as \"S\"\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  const location = appt.Appt_Sched_Location_Descr || \"\";\n  const provider = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  const key = `${location}||${provider}||${dt}`;\n\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      location,\n      provider,\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n      appointments: [] // Store all correlated appointments\n    });\n  }\n\n  const entry = grouped.get(key);\n  const status = getStatus(appt);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n  entry.appointments.push(appt); // Save the correlated appointment\n}\n\n// 3) Convert grouped data to an array, format the date/time, and sort.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n\n  // Add 4 hours to adjust the time\n  d.setHours(d.getHours() + 4);\n\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time };\n}\n\nlet groupedArr = Array.from(grouped.values());\n\n// Sort by Appt_DateTime ascending (display order remains by time)\ngroupedArr.sort((a, b) => {\n  const dateA = new Date(a.apptDateTime).getTime();\n  const dateB = new Date(b.apptDateTime).getTime();\n  return dateA - dateB;\n});\n\n// Build final array with columns, including the correlated appointments.\ngroupedArr = groupedArr.map((g, index) => {\n  const { day, date, time } = formatDateTime(g.apptDateTime);\n  return {\n    location: g.location,\n    provider: g.provider,\n    day,\n    date,\n    time,\n    schedule: g.countS + g.countB,\n    index,\n    appointments: g.appointments  // Include all correlated items\n  };\n});\n\n// 4) Rank rows by schedule count to determine button color.\nlet sortedRows = groupedArr.slice().sort((a, b) => a.schedule - b.schedule);\nsortedRows.forEach((row, idx) => {\n  // Annotate each row with its rank (0 = lowest schedule count)\n  row.rank = idx;\n});\n\n// Determine thresholds for the lowest 1/3 and highest 1/3.\nconst n = groupedArr.length;\nconst greenThreshold = Math.floor(n / 3);\nconst redThreshold = Math.floor(2 * n / 3);\n\n// 5) Generate HTML with a combined \"Schedule\" column that shows the count and a button.\n// The button's color is determined by the row's rank.\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      margin: 20px;\n    }\n    .frame {\n      background: #f0f0f0;\n      padding: 20px;\n      border-radius: 8px;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      margin-top: 20px;\n    }\n    th, td {\n      border: 1px solid #ddd;\n      padding: 10px;\n      text-align: left;\n    }\n    th {\n      background-color: #333;\n      color: #fff;\n    }\n    tr:hover {\n      background-color: #f9fafb;\n    }\n    /* Button styles for different ranking groups */\n    .btn-green {\n      background: green;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-green:hover {\n      background: darkgreen;\n    }\n    .btn-default {\n      background: #f59e0b;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-default:hover {\n      background: #d97706;\n    }\n    .btn-red {\n      background: red;\n      border: none;\n      border-radius: 4px;\n      padding: 6px 12px;\n      cursor: pointer;\n    }\n    .btn-red:hover {\n      background: darkred;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"frame\">\n    <h2>Appointments</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>Location</th>\n          <th>Provider</th>\n          <th>Day</th>\n          <th>Date</th>\n          <th>Time</th>\n          <th>Schedule</th>\n        </tr>\n      </thead>\n      <tbody>\n        ${groupedArr.map(row => {\n          // Determine button class based on the row's rank.\n          let btnClass = \"\";\n          if (row.rank < greenThreshold) {\n            btnClass = \"btn-green\";\n          } else if (row.rank >= redThreshold) {\n            btnClass = \"btn-red\";\n          } else {\n            btnClass = \"btn-default\";\n          }\n          return `\n          <tr>\n            <td>${row.location}</td>\n            <td>${row.provider}</td>\n            <td>${row.day}</td>\n            <td>${row.date}</td>\n            <td>${row.time}</td>\n            <td>\n              ${row.schedule}\n              <button class=\"${btnClass}\" style=\"margin-left: 10px;\" onclick='scheduleAppointment(${JSON.stringify(row)})'>Schedule</button>\n            </td>\n          </tr>\n          `;\n        }).join('')}\n      </tbody>\n    </table>\n  </div>\n  <script>\n    // Fallback definition for showLoader if not defined elsewhere.\n    if (typeof showLoader !== \"function\") {\n      function showLoader() {\n        console.log(\"Loader triggered...\");\n      }\n    }\n  \n    // Updated function: when the Schedule button is clicked.\n    function scheduleAppointment(appointmentGroup) {\n      if (appointmentGroup) {\n        showLoader();  // Show the loader.\n        // Encode the appointment group data.\n        const appointmentData = encodeURIComponent(JSON.stringify(appointmentGroup));\n        // Create a new URL object based on the webhook endpoint.\n        const webhookUrl = new URL(\"https://xl.epicpc.com/webhook/b4264e0e-085f-49c0-9471-1009eafa4ce01\");\n        // Get all current URL parameters from the current page.\n        const currentParams = new URLSearchParams(window.location.search);\n        // Copy each current parameter to the webhook URL.\n        currentParams.forEach((value, key) => {\n          webhookUrl.searchParams.set(key, value);\n        });\n        // Set/update the \"schedule\" parameter with the appointment data.\n        webhookUrl.searchParams.set('schedule', appointmentData);\n        // Update or set caretype to \"PCARE\"\n        webhookUrl.searchParams.set('caretype', 'PCARE');\n        // Redirect to the webhook URL.\n        setTimeout(() => { window.location.href = webhookUrl.toString(); }, 100);\n      } else {\n        alert('Appointment data not found.');\n      }\n    }\n  </script>\n</body>\n</html>\n`;\n\n// 6) Return a single item with the entire HTML table in \"htmlContent\".\nreturn [\n  {\n    json: {\n      htmlContent: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -240
+      ],
+      "id": "36ba7386-e830-4a47-9dc0-f1d8ca4897ac",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "jsCode": "/********************************************\n * n8n Code Node: Table with Colored Schedule Buttons,\n * dynamic sorting by any column and a search filter.\n * Appt_Status \"B\" or Appt_Canc_Reason_Abbr \"BUMPED\"\n * both count as \"Bumped\"\n ********************************************/\n\n// 1) Gather ALL appointments from the incoming items.\nlet rawAppointments = items.map(item => item.json);\n\n// 2) Group by (Location, Provider, Appt_DateTime) and capture correct fields.\nfunction getStatus(appt) {\n  if (appt.Appt_Status === \"B\" || appt.Appt_Canc_Reason_Abbr === \"BUMPED\") return \"B\";\n  if (appt.Appt_Status === \"X\") return \"X\";\n  return \"S\";\n}\n\nconst grouped = new Map();\n\nfor (const appt of rawAppointments) {\n  // Use the correct fields for location and provider details.\n  const locationAbbr = appt.Appt_Sched_Location_Abbr || \"\";\n  const locationDescr = appt.Appt_Sched_Location_Descr || \"\";\n  const providerName = appt.Appt_Resource_Assoc_Prov_LFI || \"\";\n  const providerAbbr = appt.Appt_Resource_Abbr || \"\";\n  const dt = appt.Appt_DateTime || \"\";\n  // Group by the full location description, provider full name, and date/time.\n  const key = `${locationDescr}||${providerName}||${dt}`;\n  if (!grouped.has(key)) {\n    grouped.set(key, {\n      locationAbbr,         // abbreviated location\n      locationDescr,        // full location description\n      providerName,         // provider full name\n      providerAbbr,         // provider abbreviation (resource)\n      apptDateTime: dt,\n      countS: 0,\n      countB: 0,\n      countX: 0,\n      appointments: []\n    });\n  }\n  const entry = grouped.get(key);\n  const status = getStatus(appt);\n  if (status === \"S\") entry.countS++;\n  if (status === \"B\") entry.countB++;\n  if (status === \"X\") entry.countX++;\n  entry.appointments.push(appt);\n}\n\n// 3) Convert grouped data to an array, format date/time for display, and add a sortDate.\n// Also store the raw date/time for payload formatting.\nfunction formatDateTime(dtString) {\n  const d = new Date(dtString);\n  if (isNaN(d)) return { day: \"\", date: \"\", time: \"\" };\n  // Adjust the date as in the original formatting.\n  d.setHours(d.getHours() + 4);\n  const day  = d.toLocaleString(\"en-US\", { weekday: \"long\" });\n  const date = d.toLocaleDateString(\"en-US\");\n  const time = d.toLocaleTimeString(\"en-US\", { hour: \"2-digit\", minute: \"2-digit\" });\n  return { day, date, time, d };\n}\n\nlet groupedArr = Array.from(grouped.values()).map((g, index) => {\n  const formatted = formatDateTime(g.apptDateTime);\n  // Create a sortDate based on the adjusted date (as ISO string) for reliable comparisons.\n  const sortDate = formatted.d.toISOString();\n  return {\n    locationAbbr: g.locationAbbr,           // abbreviated location for payload & display\n    locationDescr: g.locationDescr,         // full location description for payload\n    providerName: g.providerName,           // provider full name for payload & display\n    providerAbbr: g.providerAbbr,           // provider abbreviation for payload\n    day: formatted.day,\n    date: formatted.date,\n    time: formatted.time,\n    schedule: g.countS + g.countB,\n    index,\n    rawDateTime: g.apptDateTime,  // used when building the payload\n    sortDate,                   // ISO string of the adjusted date/time\n    appointments: g.appointments\n  };\n});\n\n// 4) Compute an \"originalRank\" based on schedule count so that the button color stays consistent.\nlet sortedRows = groupedArr.slice().sort((a, b) => a.schedule - b.schedule);\nsortedRows.forEach((row, idx) => {\n  row.originalRank = idx;\n});\nconst n = groupedArr.length;\nconst greenThreshold = Math.floor(n / 3);\nconst redThreshold = Math.floor(2 * n / 3);\n\n// 5) Generate HTML with a search filter and dynamic sorting.\n// The appointments array is embedded as JSON to be used on the client side.\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Appointments</title>\n  <style>\n    body { font-family: Arial, sans-serif; margin: 20px; }\n    .frame { background: #f0f0f0; padding: 20px; border-radius: 8px; }\n    table { width: 100%; border-collapse: collapse; margin-top: 10px; }\n    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; cursor: pointer; }\n    th { background-color: #333; color: #fff; }\n    tr:hover { background-color: #f9fafb; }\n    .btn-green { background: green; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-green:hover { background: darkgreen; }\n    .btn-default { background: #f59e0b; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-default:hover { background: #d97706; }\n    .btn-red { background: red; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer; }\n    .btn-red:hover { background: darkred; }\n    #search-container { margin-bottom: 10px; }\n    #search-input { width: 300px; padding: 6px; font-size: 14px; }\n    th span { font-size: 12px; margin-left: 5px; }\n  </style>\n</head>\n<body>\n  <div class=\"frame\">\n    <h2>Appointments</h2>\n    <div id=\"search-container\">\n      <input type=\"text\" id=\"search-input\" placeholder=\"Search...\" onkeyup=\"updateSearch()\" />\n    </div>\n    <table>\n      <thead>\n        <tr>\n          <th onclick=\"setSort('location')\">Location <span id=\"sort-location\"></span></th>\n          <th onclick=\"setSort('provider')\">Provider <span id=\"sort-provider\"></span></th>\n          <th onclick=\"setSort('day')\">Day <span id=\"sort-day\"></span></th>\n          <th onclick=\"setSort('date')\">Date <span id=\"sort-date\"></span></th>\n          <th onclick=\"setSort('time')\">Time <span id=\"sort-time\"></span></th>\n          <th onclick=\"setSort('schedule')\">Schedule <span id=\"sort-schedule\"></span></th>\n        </tr>\n      </thead>\n      <tbody id=\"table-body\">\n        <!-- Table rows will be injected here -->\n      </tbody>\n    </table>\n  </div>\n  <script>\n    // Global variables for dynamic sorting and filtering.\n    const appointments = ${JSON.stringify(groupedArr)};\n    let currentSortColumn = \"\"; // empty means default (sort by date then time)\n    let currentSortDirection = 1; // 1 for ascending, -1 for descending\n    let currentSearchQuery = \"\";\n    \n    // Render the table body based on the current sort and search filter.\n    function renderTable() {\n      // Filter appointments based on search query (case-insensitive).\n      let filtered = appointments.filter(row => {\n        if (!currentSearchQuery) return true;\n        const q = currentSearchQuery.toLowerCase();\n        return row.locationAbbr.toLowerCase().includes(q) ||\n               row.providerName.toLowerCase().includes(q) ||\n               row.day.toLowerCase().includes(q) ||\n               row.date.toLowerCase().includes(q) ||\n               row.time.toLowerCase().includes(q) ||\n               String(row.schedule).toLowerCase().includes(q);\n      });\n      \n      // Sort the filtered results.\n      filtered.sort((a, b) => compareRows(a, b));\n      \n      // Render the rows.\n      const tbody = document.getElementById('table-body');\n      tbody.innerHTML = '';\n      filtered.forEach(row => {\n        // Use the originalRank (based on schedule count) for button color.\n        let btnClass = (row.originalRank < ${greenThreshold}) ? \"btn-green\" :\n                       (row.originalRank >= ${redThreshold}) ? \"btn-red\" : \"btn-default\";\n        const tr = document.createElement('tr');\n        tr.innerHTML = \\`\n          <td>\\${row.locationAbbr}</td>\n          <td>\\${row.providerName}</td>\n          <td>\\${row.day}</td>\n          <td>\\${row.date}</td>\n          <td>\\${row.time}</td>\n          <td>\n            \\${row.schedule}\n            <button class=\"\\${btnClass}\" style=\"margin-left: 10px;\" onclick='scheduleAppointment(\\${JSON.stringify(row)})'>Schedule</button>\n          </td>\n        \\`;\n        tbody.appendChild(tr);\n      });\n      updateSortIndicators();\n    }\n    \n    // Compare function for sorting rows based on the selected column.\n    function compareRows(a, b) {\n      let result = 0;\n      if (!currentSortColumn) {\n        // Default sort: ascending by date then by time.\n        result = compareByDate(a, b);\n        if (result === 0) result = compareByTime(a, b);\n      } else {\n        switch (currentSortColumn) {\n          case 'location':\n            result = a.locationAbbr.localeCompare(b.locationAbbr);\n            break;\n          case 'provider':\n            result = a.providerName.localeCompare(b.providerName);\n            break;\n          case 'day':\n            result = a.day.localeCompare(b.day);\n            break;\n          case 'date':\n            result = compareByDate(a, b);\n            break;\n          case 'time':\n            result = compareByTime(a, b);\n            break;\n          case 'schedule':\n            result = a.schedule - b.schedule;\n            break;\n          default:\n            result = 0;\n        }\n      }\n      return result * currentSortDirection;\n    }\n    \n    // Helper: Compare only the date portions (year, month, day) of sortDate.\n    function compareByDate(a, b) {\n      const da = new Date(a.sortDate);\n      const db = new Date(b.sortDate);\n      const dateA = new Date(da.getFullYear(), da.getMonth(), da.getDate());\n      const dateB = new Date(db.getFullYear(), db.getMonth(), db.getDate());\n      return dateA - dateB;\n    }\n    \n    // Helper: Compare only the time portions (hours and minutes) of sortDate.\n    function compareByTime(a, b) {\n      const da = new Date(a.sortDate);\n      const db = new Date(b.sortDate);\n      const timeA = da.getHours() * 60 + da.getMinutes();\n      const timeB = db.getHours() * 60 + db.getMinutes();\n      return timeA - timeB;\n    }\n    \n    // Called when a header is clicked to set the sort column.\n    function setSort(column) {\n      if (currentSortColumn === column) {\n        // Toggle direction if the same column is clicked.\n        currentSortDirection = -currentSortDirection;\n      } else {\n        currentSortColumn = column;\n        currentSortDirection = 1;\n      }\n      renderTable();\n    }\n    \n    // Update the search query from the input field.\n    function updateSearch() {\n      currentSearchQuery = document.getElementById('search-input').value;\n      renderTable();\n    }\n    \n    // Update sort indicators (arrows) in the table header.\n    function updateSortIndicators() {\n      const columns = ['location', 'provider', 'day', 'date', 'time', 'schedule'];\n      columns.forEach(col => {\n        const span = document.getElementById('sort-' + col);\n        if (currentSortColumn === col) {\n          span.innerHTML = currentSortDirection === 1 ? '▲' : '▼';\n        } else {\n          span.innerHTML = '';\n        }\n      });\n    }\n    \n    // Fallback for showLoader.\n    if (typeof showLoader !== \"function\") {\n      function showLoader() { console.log(\"Loader triggered...\"); }\n    }\n    \n    // Schedule button click handler remains unchanged except for using new row properties.\n    function scheduleAppointment(appointmentGroup) {\n      if (appointmentGroup) {\n        showLoader();\n        const dt = new Date(appointmentGroup.rawDateTime);\n        const payload = {\n          index: appointmentGroup.index,\n          slots_available: appointmentGroup.schedule,\n          start_fixer: formatTime24(dt),\n          start: formatTime12(dt),\n          end: formatTime24(new Date(dt.getTime() + 10 * 60000)),\n          location: appointmentGroup.locationAbbr,\n          date: formatDateMMDDYYYY(dt),\n          day: appointmentGroup.day,\n          location_description: appointmentGroup.locationDescr,\n          provider_name: appointmentGroup.providerName,\n          duration: \"10\",\n          provider: appointmentGroup.providerAbbr,\n          res_appointment_group_id: 42,\n          resource_abbr: appointmentGroup.providerAbbr,\n          orderkeytime: formatOrderKeyTime(dt)\n        };\n        const scheduleData = encodeURIComponent(JSON.stringify(payload));\n        const webhookUrl = new URL(\"https://xl.epicpc.com/webhook/b4264e0e-085f-49c0-9471-1009eafa4ce01\");\n        const currentParams = new URLSearchParams(window.location.search);\n        currentParams.forEach((value, key) => {\n          webhookUrl.searchParams.set(key, value);\n        });\n        webhookUrl.searchParams.set('schedule', scheduleData);\n        webhookUrl.searchParams.set('caretype', 'PCARE');\n        setTimeout(() => { window.location.href = webhookUrl.toString(); }, 100);\n      } else {\n        alert('Appointment data not found.');\n      }\n    }\n    \n    // Utility functions for formatting.\n    function formatTime24(dateObj) {\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;\n    }\n    function formatTime12(dateObj) {\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      const ampm = hours >= 12 ? 'PM' : 'AM';\n      hours = hours % 12;\n      hours = hours ? hours : 12;\n      return hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;\n    }\n    function formatDateMMDDYYYY(dateObj) {\n      let month = dateObj.getMonth() + 1;\n      let day = dateObj.getDate();\n      let year = dateObj.getFullYear();\n      return (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day + '-' + year;\n    }\n    function formatOrderKeyTime(dateObj) {\n      let year = dateObj.getFullYear();\n      let month = dateObj.getMonth() + 1;\n      let day = dateObj.getDate();\n      let hours = dateObj.getHours();\n      let minutes = dateObj.getMinutes();\n      let seconds = dateObj.getSeconds();\n      return year + '-' +\n             (month < 10 ? '0' : '') + month + '-' +\n             (day < 10 ? '0' : '') + day + ' ' +\n             (hours < 10 ? '0' : '') + hours + ':' +\n             (minutes < 10 ? '0' : '') + minutes + ':' +\n             (seconds < 10 ? '0' : '') + seconds;\n    }\n    \n    // Initial render.\n    renderTable();\n  </script>\n</body>\n</html>\n`;\n\n// 6) Return the HTML content.\nreturn [{ json: { htmlContent: html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -340
+      ],
+      "id": "68c2133d-52e6-4568-98b4-6ffc3b899aa1",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Create an empty array to hold the output items\nconst items = [];\n\n// Get today's date and add 14 days (two weeks)\nconst currentDate = new Date();\ncurrentDate.setDate(currentDate.getDate() + 14);\n\n// Format the date as YYYY-MM-DD\nconst year = currentDate.getFullYear();\nconst month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed\nconst day = String(currentDate.getDate()).padStart(2, '0');\nconst formattedDate = `${year}-${month}-${day}`;\n\n// Add the variable to the output as part of the JSON object\nitems.push({\n  json: {\n    endDate: formattedDate\n  }\n});\n\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        -280
+      ],
+      "id": "37d831c2-e1ee-4a70-a2d8-da357e0c6700",
+      "name": "Two Weeks Out"
+    }
+  ],
+  "pinData": {
+    "SSO Provider": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "ENiemi",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Two Weeks Out": [
+      {
+        "json": {
+          "endDate": "2025-04-15"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-01T22:14:29.970Z",
+  "versionId": "bfb17ebb-8e92-4a55-8dbd-0ba96486c284"
+}
