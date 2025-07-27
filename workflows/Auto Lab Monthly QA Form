@@ -1,0 +1,97 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-16T03:05:06.450Z",
+  "id": "TcEcy079wFhwqSqf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Auto Lab Monthly QA Form",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtDayOfMonth": 3,
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "ef2055b3-d92c-4151-bf1a-7be7fcb5350c",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 278,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"Lab Lead\",\n      \"email\": \"labtech@epichs.org\"},\n    {\n      \"role\": \"Consultant\",\n      \"email\": \"lawrenceda08@gmail.com\"\n    },\n    {\"role\": \"Lab Manager\",\n      \"email\": \"wwong@epichs.org\"\n    },\n    {\n     \"role\": \"Lab Director\",\n     \"email\": \"tnaman@epichs.org\"\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "26af3be0-bcc2-43cf-a4ee-d5582e3cd535",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-11-16T03:03:49.897Z",
+      "updatedAt": "2024-11-16T03:03:49.897Z",
+      "id": "quzhQBMKVBr9D9nv",
+      "name": "Whitney"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-17T20:03:34.951Z",
+  "versionId": "31e2032c-e3e0-42b3-a5a8-2e0e4b5f9759"
+}
