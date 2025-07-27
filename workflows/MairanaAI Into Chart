@@ -1,0 +1,75 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-02T21:06:08.861Z",
+  "id": "dv8loPv3R1IR29CJ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MairanaAI Into Chart",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "6891142d-933e-4172-9774-7b4b9d6a1dd1",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        620,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://app.marianaai.com/transcribe?scheduleId=epichs-24233554",
+        "options": {}
+      },
+      "id": "6cac3ad2-aa92-48c8-b0c1-1defa73a8920",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        840,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "61e86017-5912-487e-af2f-c62caab2a4f8",
+        "options": {}
+      },
+      "id": "c60ba432-f94f-4468-b3b5-7b7300bf057f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        620,
+        180
+      ],
+      "webhookId": "61e86017-5912-487e-af2f-c62caab2a4f8"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-04T20:54:58.268Z",
+  "versionId": "450c8794-42fd-4822-bed8-08170385bb65"
+}
