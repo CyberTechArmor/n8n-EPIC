@@ -1,0 +1,591 @@
+{
+  "active": false,
+  "connections": {
+    "Read PM Token10": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token10": {
+      "main": [
+        [
+          {
+            "node": "Check Token10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token10": {
+      "main": [
+        [
+          {
+            "node": "Code11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code11": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait6": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid5": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token11": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token11": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow6": {
+      "main": [
+        [
+          {
+            "node": "USER3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "USER3": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "HTTP Confirm2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-12T18:17:09.123Z",
+  "id": "Iq9FUCUsoFjjonnv",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TESTING Bed 2",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $json.user }}.txt",
+        "options": {}
+      },
+      "id": "fd24dfdf-ae03-4844-bb9f-1ce005401f6d",
+      "name": "Read PM Token10",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        660,
+        560
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "35158e99-8ac4-412f-b87a-adc7c00dc344",
+      "name": "Extract PM Token10",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        800,
+        560
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"{{ $('USER3').item.json.user }}\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"{{ $('USER3').item.json.password }}\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "8d8a853c-8d86-4a73-a9c1-04e78201270c",
+      "name": "Check Token10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "b3cb74d3-8a7b-4b75-9be0-acc3fd8fd9c4",
+      "name": "Code11",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "663a4cff-860b-41e0-a664-73cdb123e7da",
+      "name": "Wait6",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        660
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "b2ad38e8-ff87-47cf-8bec-b3f8c017757f",
+      "name": "IF PM Token Valid5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication enbverify",
+        "height": 373.491094826977,
+        "width": 1498.6041394020742,
+        "color": 6
+      },
+      "id": "4fdc3a20-3a04-4667-a058-a8164b6fe640",
+      "name": "Sticky Note28",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $('USER3').item.json.user }}.txt",
+        "options": {}
+      },
+      "id": "5ee85d7f-b6be-458e-b5f9-ac13c4588eab",
+      "name": "Read PM Token11",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        500
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "a7737641-b038-4a8a-8f12-70087b8a6cd7",
+      "name": "Extract PM Token11",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        500
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "10177e8d-30d1-445f-978d-b7560968be29",
+      "name": "Execute Workflow6",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b806a87b-407c-47eb-b9ba-1aca0d81400d",
+              "name": "user",
+              "value": "enbverify",
+              "type": "string"
+            },
+            {
+              "id": "c45539b3-dcfd-4d9b-a267-54d31648d3b0",
+              "name": "password",
+              "value": "C0nn3ctme#1234",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48051008-ebbd-457a-8f8e-4ede343a1b3a",
+      "name": "USER3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97912602-34f8-4f3b-a1c5-863673510b6b",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1780,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Pass Verification",
+        "height": 265.07578857059883,
+        "color": 4
+      },
+      "id": "a07db44b-d90b-492e-8c3a-885907c4ae6b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"SavePatientNote\",\n\"AppUserID\":\"enbverify\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"{{ $json.Patient_ID }}\",\n\"Token\":\"{{ $json.Token }}\",\n  \"Parameter1\": \"<PatientNote><Text>E&B Passed Verification | Date passed: {{ $json.formattedDate }} | Note by: EV </Text><Subject></Subject><NoteTypeID>55</NoteTypeID><ExpDate></ExpDate></PatientNote>\",\n  \"Parameter2\": \"\",\n  \"Parameter3\": \"\",\n  \"Parameter4\": \"\",\n  \"Parameter5\": \"\",\n  \"Parameter6\": \"\",\n  \"Data\": \"\"\n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "1a4489b9-82e1-4a05-a5d5-2641cddd9249",
+      "name": "HTTP Confirm2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "7d31b33b-0ba4-4800-9e95-04bc638caf47",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/disk.folder.uploadfile.json",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "69593"
+            },
+            {
+              "name": "file",
+              "value": "test"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85274011-ba1a-41da-8cb1-f88b1c1119e0",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        840,
+        -160
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.result.uploadUrl }}",
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "b2a3de65-139f-4af2-9d49-4a9d15da1515",
+      "name": "HTTP 24 Bitrix24 Check1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        -140
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1060,
+        -160
+      ],
+      "id": "1fde5bbf-87e6-457e-b83e-3daf0470ea2c",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "time.start",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        60
+      ],
+      "id": "98826103-f513-4f42-9ad1-508e1515c0c1",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.result.uploadUrl }}",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8fac9a06-a08e-4ff5-b912-e8cb7477eefc",
+      "name": "HTTP 24 Bitrix24 Check2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        20
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "HTTP 24 Bitrix24 Check": [
+      {
+        "json": {
+          "result": {
+            "field": "file",
+            "uploadUrl": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/upload/?token=disk%7CaWQ9Njk1OTMmZ2VuZXJhdGVVbmlxdWVOYW1lPTAmXz1VdTh3Q09LYmFONkVhNkFkemtibG9UWjFEbkpqQ2dHdw%3D%3D%7CInVwbG9hZHxkaXNrfGFXUTlOamsxT1RNbVoyVnVaWEpoZEdWVmJtbHhkV1ZPWVcxbFBUQW1YejFWZFRoM1EwOUxZbUZPTmtWaE5rRmtlbXRpYkc5VVdqRkVia3BxUTJkSGR3PT18MTl8b3FrOWYweDZ5MGtvcGppcSI%3D.FFJImoBA6DBFCq3iCY9LTw9Oj6iY8VfeS%2BNWknfw3yQ%3D"
+          },
+          "time": {
+            "start": 1743800854.537976,
+            "finish": 1743800854.622333,
+            "duration": 0.08435702323913574,
+            "processing": 0.02252483367919922,
+            "date_start": "2025-04-04T17:07:34-04:00",
+            "date_finish": "2025-04-04T17:07:34-04:00"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-05T09:07:31.323Z",
+  "versionId": "d39659a2-bf2c-42cc-8ac5-a512cb9a5a1a"
+}
