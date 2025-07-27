@@ -1,0 +1,1672 @@
+{
+  "active": true,
+  "connections": {
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Patient App Link": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP PM Patient Demographics": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio": {
+      "main": [
+        [
+          {
+            "node": "HTTP Patient App Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP PM Patient Demographics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Not PAIN": {
+      "main": [
+        [
+          {
+            "node": "LTSR FAIL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LTSR PASS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If PAIN": {
+      "main": [
+        [
+          {
+            "node": "LTSR FAIL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LTSR PASS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LTSR FAIL": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LTSR PASS": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "If PAIN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If Not PAIN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-13T16:12:38.536Z",
+  "id": "QgdD5GHBytgoCPvN",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Appointment Confirmation S-CARE Message Out",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "78661fef-4f06-4fb4-be12-8fb7b8fb66fd",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1126.3506516930297
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "4ebefffa-2fbd-4140-bc7f-cb5e3f77ccd3",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        740,
+        1126.3506516930297
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"C0nn3ctme#1234\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "7d71ded2-0714-44fa-8d50-bc720bfa8683",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "c9c56644-c41a-4959-9bf1-7c4d26fbcaf2",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "0d448110-281c-411d-bc59-8e1cfde88a08",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1400,
+        1226.3506516930297
+      ],
+      "webhookId": "69ba44a3-f30d-47cf-9ad8-2b98a5de5868"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "c40f542c-d0f1-41e9-ac5f-694edfdcd541",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication APPTCONF",
+        "height": 373.491094826977,
+        "width": 1403.1472052879556,
+        "color": 6
+      },
+      "id": "9913305e-562b-48b8-83b9-3d0f0a07e292",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1026.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "938bf45a-9b02-445f-991a-a2522571a6c1",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1066.3506516930297
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "1b2e7618-2263-4934-b6d8-c7f0a99328ce",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1066.3506516930297
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "d7e55adf-6e9b-42d1-b66c-613e0947281b",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        1226.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with  appt_ack AS (\n    SELECT \n        a.Patient_ID,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments,\n\t\tSUM(CASE WHEN Status_Desc = 'No Show' THEN 1 ELSE 0 END) AS Noshowed_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE \n\ta.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc not LIKE 'Diag%' \n\t  and a.Resource_Desc not like 'BH%' \n\t  and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' \n\t  and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' \n\t  and a.Resource_Desc not like 'Blue%'\n\t  and cast(a.Appointment_DateTime as date) between DATEADD(year,-3,cast(getdate() as date)) and DATEADD(day,5,cast(getdate() as date)) \n\t  and a.Patient_Number != '(potential patient)'\n    GROUP BY a.Patient_ID\n),\nltsr as(\nSELECT \n        a.Patient_ID,\n        a.Total_Appointments,\n        a.Acknowledged_Appointments,\n        CAST(ROUND((a.Acknowledged_Appointments + a.Noshowed_Appointments) * 1.0 / a.Total_Appointments, 2) AS FLOAT) AS Acknowledged_Ratio\n    FROM appt_ack a\n),\nltsrandnew as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,\ncase when l.Acknowledged_Ratio <= {{ $json.showrate }} then 'Fail'\nelse 'Pass'\nend as LTSR,\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\nelse 'MultiplePriorAppt'\nend NewVsEst\nfrom ltsr l\n),\nack_ltsr_new as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,l.LTSR,\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\nelse 'Est'\nend as NewVsEstVsNo\nfrom ltsrandnew l\n)\nselect a.Patient_ID,a.Patient_Number,\n\t\t[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n       ,[Appt_Sched_Location_Descr]\n       ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date],\n\t  l.Acknowledged_Ratio,l.LTSR,l.NewVsEstVsNo\nfrom [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a \nleft join ack_ltsr_new l on a.Patient_ID=l.Patient_ID\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE)) and DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE))\n  and a.Appt_Status ='s'\n  and a.Appt_Resource_Descr not like 'ZZ%' \n  and a.Appt_Sched_Location_Descr not like 'EPIC Care Management'\n  and a.Appt_Sched_Location_Descr not like 'Diag%'  \n  and a.Appt_Resource_Descr not like 'ultra%' \n  and a.Appt_Resource_Descr not like 'echo%'\n  and a.Appt_Type_Descr not like 'bs%'  and a.Appt_Sched_Location_Descr not like '%bill%'\n  and a.Appt_Resource_Descr not like 'PA, Lab X-Ray'\n  and a.Appt_Resource_Descr not like 'BH%'\n  and a.Appt_Resource_Descr not like 'PTA%'\n  and a.Appt_Resource_Descr not like 'Therapy%'\n  and a.Appt_Type_Abbr not like 'Colonoscopy - Screening'\nand a.Appt_Resource_Descr not like 'mammo%'\n  and a.Appt_Resource_Descr not like 'exer%' \n  AND a.Appt_Sched_Location_Descr like 'SPEC%'"
+      },
+      "id": "f26d6779-7fdb-4d33-8699-92cf6c887c38",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        860,
+        580
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "a1d4485e-010d-4336-9e06-6877ee9476a9",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "776302bd-8047-481b-9c69-c8050b4f7b5c",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PM Call\n## (S=Scheduled, C=Confirmed, B=Bumped)\n{\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"137836\",\n\"Token\":\"54FB415A-CACD-4689-BBC2-C0DD95B25F54\",\n\"Parameter1\":\"25201003\", ###AppointmentID\n\"Parameter2\":\"C\",     ###Status\n\"Parameter3\":\"\",\n\"Parameter4\":\"1342\",   ###time\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "height": 422.7415980472874,
+        "width": 384.54932771519174,
+        "color": 4
+      },
+      "id": "eb897cd0-bbea-4aba-9a92-a841ba273bb3",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        986.3506516930298
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Duplicate Patients in Bitrix24\",\n       \"GROUP_ID\":\"159\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"{{ $('Item Lists2').item.json[\"NameMRNBitrixid\"].join('\\\\n') }} {{'\\\\n'}} {{ $json[\"data\"]}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "909ea97f-4eea-46bb-8ae9-29f6e59a4c79",
+      "name": "HTTP Patient App Link",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3580,
+        600
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Appointment Confirmation Send Link",
+        "height": 478.8029986885761,
+        "width": 3815.0385873639025,
+        "color": 7
+      },
+      "id": "a6943307-cf95-406d-8155-ff468e3ee04f",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        540,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "6aa5cc1a-5ff3-401a-be6b-ad6824eb0ccb",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2960,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8fe84b32-377c-48e0-b9f8-64859034d9d6",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1760,
+        1066.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetPatientDemographics"
+            },
+            {
+              "name": "AppUserID",
+              "value": "apptconf"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "="
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Active"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Microsoft SQL').item.json.Patient_ID }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "1ddb62e1-34b7-4c29-9295-58903012c1f5",
+      "name": "HTTP PM Patient Demographics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3140,
+        600
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "path": "c4dd3506-881c-4ea6-a853-24ff94d5ab18",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f5eb3765-c255-4530-ba26-f1f55859fa34",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        1286.3506516930297
+      ],
+      "webhookId": "c4dd3506-881c-4ea6-a853-24ff94d5ab18",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "from": "+13133514769",
+        "to": "=+1{{ $json.getpatientdemographicsinfo[0].Cell_Phone }}",
+        "message": "=EPIC Health here and we're excited to see you! 🎉\n\nYour appointment is on {{ new Date($('Merge').item.json.Appt_DateTime.replaceAll(\"T\", \" \").replaceAll(\":00.000Z\", \"\")).toLocaleDateString(\"en-US\", { month: \"2-digit\", day: \"2-digit\", year: \"numeric\" }) }}, please navigate to the link and Confirm or Cancel/Reschedule.\n\nTo keep your appointment with your provider please confirm within 24 hours of receiving this link:\n\nhttps://xl.epicpc.com/webhook/confirm?appt={{ $('Loop Over Items').item.json.Appt_ID }}&LTSR={{ $('Loop Over Items').item.json.LTSR.slice(0,1) }}",
+        "options": {}
+      },
+      "id": "c53af4ad-66c9-4d26-9315-b62c9418754e",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        600
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Bad Number: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&SR={{ $('Merge').item.json[\"LTSR\"] }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "494419ad-2f60-4481-99c5-6ad523ddff09",
+      "name": "HTTP 24 Bitrix24 Check3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3360,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Confirm Check: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}&SR={{ $('Merge').item.json[\"LTSR\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "c1187ba8-c6c2-42e8-a0f4-edd4a221be98",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4120,
+        420
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "ccd66e97-4194-4326-8131-28f224e3e95d",
+              "leftValue": "={{ $('Merge').item.json.LTSR }}",
+              "rightValue": "Fail",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "f74198da-25a7-4524-8de8-eccc025ee7ec",
+              "leftValue": "={{ $('Merge').item.json.NewVsEstVsNo }}",
+              "rightValue": "New",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5112e905-d037-49bd-aeae-cd8141c38c49",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3780,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0bbb0567-57c8-4e07-a9ef-30f3e4a6e78a",
+              "name": "=RowNum",
+              "value": "={{ $('Merge').item.json.RowNum }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d63d8b3a-2a01-42f8-b55c-9bdf613868c4",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4160,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9789fb0a-56f8-4098-bce6-6b63c72bd3fe",
+              "name": "daysout",
+              "value": 5,
+              "type": "number"
+            },
+            {
+              "id": "3d5ad0a4-d185-4b12-9414-d713514064d3",
+              "name": "showrate",
+              "value": 0.6,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0026a5e6-31ed-41a4-a0b8-e5c39b51ea77",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        720,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with  appt_ack AS (\n\n    SELECT \n\n        a.Patient_ID,\n\n        COUNT(*) AS Total_Appointments,\n\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments,\n\n\t\tSUM(CASE WHEN Status_Desc = 'No Show' THEN 1 ELSE 0 END) AS Noshowed_Appointments\n\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\n\tWHERE \n\n\ta.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n\n      AND a.Sched_Loc_Desc not LIKE 'Diag%' \n\n\t  and a.Resource_Desc not like 'BH%' \n\n\t  and a.Resource_Desc not like 'Contin%' \n\n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' \n\n\t  and a.Resource_Abbr not like 'PTA%' \n\n\t  and a.Resource_Desc not like 'PTA%' \n\n\t  and a.Resource_Desc not like 'Blue%'\n\n\t  and cast(a.Appointment_DateTime as date) between DATEADD(year,-3,cast(getdate() as date)) and DATEADD(day,5,cast(getdate() as date)) \n\n\t  and a.Patient_Number != '(potential patient)'\n\n    GROUP BY a.Patient_ID\n\n),\n\nltsr as(\n\nSELECT \n\n        a.Patient_ID,\n\n        a.Total_Appointments,\n\n        a.Acknowledged_Appointments,\n\n        CAST(ROUND((a.Acknowledged_Appointments + a.Noshowed_Appointments) * 1.0 / a.Total_Appointments, 2) AS FLOAT) AS Acknowledged_Ratio\n\n    FROM appt_ack a\n\n),\n\nltsrandnew as(\n\nselect l.Patient_ID,\n\nl.Acknowledged_Ratio,\n\ncase when l.Acknowledged_Ratio <= {{ $json.showrate }} then 'Fail'\n\nelse 'Pass'\n\nend as LTSR,\n\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\n\nelse 'MultiplePriorAppt'\n\nend NewVsEst\n\nfrom ltsr l\n\n),\n\nack_ltsr_new as(\n\nselect l.Patient_ID,\n\nl.Acknowledged_Ratio,l.LTSR,\n\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\n\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\n\nelse 'Est'\n\nend as NewVsEstVsNo\n\nfrom ltsrandnew l\n\n)\n\nselect a.Patient_ID,a.Patient_Number,\n\n\t\t[Appt_ID]\n\n      ,[Appt_DateTime]\n\n      ,[Appt_Encounter_Number]\n\n       ,[Appt_Sched_Location_Descr]\n\n       ,[Appt_Resource_ID]\n\n      ,[Appt_Resource_Abbr]\n\n      ,[Appt_Resource_Descr]\n\n      ,[Appt_Resource_Assoc_Prov_LFI]\n\n      ,[Appt_Type_Abbr]\n\n      ,[Appt_Type_Descr]\n\n      ,[Appt_Duration]\n\n      ,[Appt_Comments]\n\n      ,[Appt_Status]\n\n      ,[Appt_Time_In]\n\n      ,[Appt_Booked_Date]\n\n      ,[Appt_Booked_By_Operator_Abbr]\n\n      ,[Appt_Confirmed_Date]\n\n      ,[Appt_Confirmed_By_Operator_Abbr]\n\n      ,[Appt_Cancelled_Date],\n\n\t  l.Acknowledged_Ratio,l.LTSR,l.NewVsEstVsNo\n\nfrom [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a \n\nleft join ack_ltsr_new l on a.Patient_ID=l.Patient_ID\n\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE)) and DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE))\n\n  and a.Appt_Status ='S'\n\n  and a.Appt_Resource_Descr not like 'ZZ%' \n\n  and a.Appt_Sched_Location_Descr not like 'EPIC Care Management'\n\n  and (a.Appt_Sched_Location_Descr  like 'Diag%'  or a.Appt_Resource_Descr like 'PT%' )\n\n  and a.Appt_Type_Descr not like 'bs%'  and a.Appt_Sched_Location_Descr not like '%bill%'\n\n  and a.Appt_Resource_Descr not like 'PA, Lab X-Ray'\n\n  and a.Appt_Resource_Descr not like 'BH%'\n\n  and a.Appt_Resource_Descr not like 'mammo%'\n\n  and a.Appt_Resource_Descr not like 'US%'\n\n  and a.Appt_Resource_Descr not like 'exer%'\n\n   and a.Appt_Resource_Descr not like 'ECHO%'\n\n "
+      },
+      "id": "b4e8be9f-2b6a-4457-b938-7dabe0bc42db",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        580,
+        180
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# 🔥 Turn the Heat up addition 🔥",
+        "height": 931.3510331887796,
+        "width": 1677.0759440262077,
+        "color": 3
+      },
+      "id": "f6c3cd29-2408-4f01-9a7d-c71cf992e9dd",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1071.9579505534662,
+        -595.3795130611178
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PAIN 25% 🔥",
+        "height": 80,
+        "width": 252.80014443604324,
+        "color": 7
+      },
+      "id": "f43c8f72-476d-46e5-92a7-29465cff930b",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1586.8770544652161,
+        -500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6b988071-e17b-4b5f-8084-e2ff80b80ca6",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# S-CARE Rest 45% 🔥",
+        "height": 80,
+        "width": 392.4845627382192,
+        "color": 7
+      },
+      "id": "de363578-e927-47a4-9964-e7b741c89df0",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "/\\bmammo\\b/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "eec47956-947c-423a-b4ab-578755a45a16",
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "/exer|ST-/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2f0cd61-ceeb-46ad-a9a4-3cd304ffc545",
+                    "leftValue": "={{$json[\"Appt_Resource_Abbr\"]}}",
+                    "rightValue": "/us|echo|ultra/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "25fd264e-1af2-4647-b441-2bf1961e5c01",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        920,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "4fed2474-bcc5-413e-a16f-a634c0b4eeb5",
+              "leftValue": "={{ Number($json.Acknowledged_Ratio) }}",
+              "rightValue": "={{ Number(0.45) }}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "40f6b7c7-8fad-4564-9635-0fcd2a56ad07",
+              "leftValue": "={{ $json.NewVsEstVsNo }}",
+              "rightValue": "Est",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "4d5068ed-fc6b-4252-b9dd-7f888f92f3d2",
+      "name": "If Not PAIN",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "4fed2474-bcc5-413e-a16f-a634c0b4eeb5",
+              "leftValue": "={{ Number($json.Acknowledged_Ratio) }}",
+              "rightValue": "={{ Number(0.25) }}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "40f6b7c7-8fad-4564-9635-0fcd2a56ad07",
+              "leftValue": "={{ $json.NewVsEstVsNo }}",
+              "rightValue": "Est",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "5ff1aa04-18e6-453a-8f8d-4f7a1fcf480b",
+      "name": "If PAIN",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f74eb71d-c9e0-4643-bd56-4c839ae197d1",
+              "name": "LTSR",
+              "value": "=Fail",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "LTSR",
+        "options": {}
+      },
+      "id": "2423014f-a3da-4be4-bea8-0ffdb749ded6",
+      "name": "LTSR FAIL",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f74eb71d-c9e0-4643-bd56-4c839ae197d1",
+              "name": "LTSR",
+              "value": "=Pass",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "LTSR",
+        "options": {}
+      },
+      "id": "a0ac681b-5796-4e6b-9de1-5c6047531242",
+      "name": "LTSR PASS",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Type_Abbr }}",
+                    "rightValue": "PAIN",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "ade31274-9944-4327-a8bc-d7d912ab616e",
+                    "leftValue": "={{ $json.Appt_Type_Abbr }}",
+                    "rightValue": "=PAIN",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notStartsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "17dd1c25-7617-4809-be7a-cd267af11cfd",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1300,
+        -200
+      ]
+    }
+  ],
+  "pinData": {
+    "Microsoft SQL": [
+      {
+        "json": {
+          "Patient_ID": 199977,
+          "Patient_Number": "754910",
+          "Appt_ID": 25368972,
+          "Appt_DateTime": "2024-11-27T08:45:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "PAINOV",
+          "Appt_Type_Descr": "GYN - Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-22T12:42:06.663Z",
+          "Appt_Booked_By_Operator_Abbr": "jreed   ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.56,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 181310,
+          "Patient_Number": "569450",
+          "Appt_ID": 25371292,
+          "Appt_DateTime": "2024-11-27T10:00:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNOV   ",
+          "Appt_Type_Descr": "GYN - Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T09:33:19.083Z",
+          "Appt_Booked_By_Operator_Abbr": "tlong   ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.39,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 218498,
+          "Patient_Number": "939800",
+          "Appt_ID": 25371407,
+          "Appt_DateTime": "2024-11-27T10:15:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNNEWOV",
+          "Appt_Type_Descr": "GYN - New Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": "PM_11/25 GYN",
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T10:12:07.270Z",
+          "Appt_Booked_By_Operator_Abbr": "PACpm   ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.57,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 237177,
+          "Patient_Number": "1126440",
+          "Appt_ID": 25372865,
+          "Appt_DateTime": "2024-11-27T10:30:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNOV   ",
+          "Appt_Type_Descr": "GYN - Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": "",
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-26T08:16:52.607Z",
+          "Appt_Booked_By_Operator_Abbr": "HEROERP ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.44,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 240151,
+          "Patient_Number": "1155780",
+          "Appt_ID": 25371483,
+          "Appt_DateTime": "2024-11-27T13:00:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1050,
+          "Appt_Resource_Abbr": "OQ MD   ",
+          "Appt_Resource_Descr": "Cardiology",
+          "Appt_Resource_Assoc_Prov_LFI": "Cardiology, Ferndale",
+          "Appt_Type_Abbr": "CARD-NP ",
+          "Appt_Type_Descr": "Cardiology - New Patient",
+          "Appt_Duration": 5,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T10:37:43.887Z",
+          "Appt_Booked_By_Operator_Abbr": "PACskum3",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.39,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 189447,
+          "Patient_Number": "650290",
+          "Appt_ID": 25372459,
+          "Appt_DateTime": "2024-11-27T13:10:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1050,
+          "Appt_Resource_Abbr": "OQ MD   ",
+          "Appt_Resource_Descr": "Cardiology",
+          "Appt_Resource_Assoc_Prov_LFI": "Cardiology, Ferndale",
+          "Appt_Type_Abbr": "CARD-FU ",
+          "Appt_Type_Descr": "Cardiology - Office Visit",
+          "Appt_Duration": 5,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T16:21:27.153Z",
+          "Appt_Booked_By_Operator_Abbr": "PACskum3",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.43,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 181522,
+          "Patient_Number": "571520",
+          "Appt_ID": 25370867,
+          "Appt_DateTime": "2024-11-27T13:20:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1050,
+          "Appt_Resource_Abbr": "OQ MD   ",
+          "Appt_Resource_Descr": "Cardiology",
+          "Appt_Resource_Assoc_Prov_LFI": "Cardiology, Ferndale",
+          "Appt_Type_Abbr": "CARD-NP ",
+          "Appt_Type_Descr": "Cardiology - New Patient",
+          "Appt_Duration": 5,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-23T13:04:26.583Z",
+          "Appt_Booked_By_Operator_Abbr": "kbennett",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.34,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 173737,
+          "Patient_Number": "494120",
+          "Appt_ID": 25373270,
+          "Appt_DateTime": "2024-11-27T13:30:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNNEWOV",
+          "Appt_Type_Descr": "GYN - New Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-26T10:49:19.180Z",
+          "Appt_Booked_By_Operator_Abbr": "PAClr   ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.52,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 215829,
+          "Patient_Number": "913180",
+          "Appt_ID": 25368633,
+          "Appt_DateTime": "2024-11-27T13:45:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNNEWOV",
+          "Appt_Type_Descr": "GYN - New Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-22T10:49:37.657Z",
+          "Appt_Booked_By_Operator_Abbr": "jwalls  ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.25,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 193228,
+          "Patient_Number": "687920",
+          "Appt_ID": 25370807,
+          "Appt_DateTime": "2024-11-27T13:50:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1050,
+          "Appt_Resource_Abbr": "OQ MD   ",
+          "Appt_Resource_Descr": "Cardiology",
+          "Appt_Resource_Assoc_Prov_LFI": "Cardiology, Ferndale",
+          "Appt_Type_Abbr": "CARD-NP ",
+          "Appt_Type_Descr": "Cardiology - New Patient",
+          "Appt_Duration": 5,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-23T10:37:23.050Z",
+          "Appt_Booked_By_Operator_Abbr": "OAcpelze",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.39,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 252710,
+          "Patient_Number": "1281050",
+          "Appt_ID": 25372248,
+          "Appt_DateTime": "2024-11-27T14:00:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNNEWOV",
+          "Appt_Type_Descr": "GYN - New Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T15:12:10.710Z",
+          "Appt_Booked_By_Operator_Abbr": "PACvmase",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.5,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 168245,
+          "Patient_Number": "439510",
+          "Appt_ID": 25372150,
+          "Appt_DateTime": "2024-11-27T14:15:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1245,
+          "Appt_Resource_Abbr": "BSB-MD  ",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Resource_Assoc_Prov_LFI": "Brodsky, Burton",
+          "Appt_Type_Abbr": "GYNOV   ",
+          "Appt_Type_Descr": "GYN - Office Visit",
+          "Appt_Duration": 10,
+          "Appt_Comments": "new pt",
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-25T14:30:57.643Z",
+          "Appt_Booked_By_Operator_Abbr": "PACeraj ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.46,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 216583,
+          "Patient_Number": "920690",
+          "Appt_ID": 25372978,
+          "Appt_DateTime": "2024-11-27T15:10:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_ID": 1050,
+          "Appt_Resource_Abbr": "OQ MD   ",
+          "Appt_Resource_Descr": "Cardiology",
+          "Appt_Resource_Assoc_Prov_LFI": "Cardiology, Ferndale",
+          "Appt_Type_Abbr": "CARD-NP ",
+          "Appt_Type_Descr": "Cardiology - New Patient",
+          "Appt_Duration": 5,
+          "Appt_Comments": null,
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-11-26T09:11:18.120Z",
+          "Appt_Booked_By_Operator_Abbr": "ladams  ",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.54,
+          "LTSR": "Fail",
+          "NewVsEstVsNo": "Est"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-30T19:51:18.228Z",
+      "updatedAt": "2024-07-30T19:51:18.228Z",
+      "id": "mYyg5mNB1CnaZkvV",
+      "name": "PM Token"
+    },
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-06T20:07:20.781Z",
+  "versionId": "8971b118-e86f-4b07-b911-d477e36d6b73"
+}
