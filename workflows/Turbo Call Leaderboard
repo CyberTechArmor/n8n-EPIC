@@ -1,0 +1,415 @@
+{
+  "active": true,
+  "connections": {
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time3": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-23T13:31:10.463Z",
+  "id": "1bqxix2IXC9Nzqft",
+  "isArchived": false,
+  "meta": null,
+  "name": "Turbo Call Leaderboard",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "473872aa-d5cc-4a4d-b9f6-65f0701893fb",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pxegwq0dw2f1rby",
+        "table": "mlotq4op5hlvdpx",
+        "returnAll": true,
+        "options": {
+          "where": "(CreatedAt,eq,daysAgo,2)~and(Caller,isnot,null)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        240,
+        0
+      ],
+      "id": "236566dc-753c-4270-8f40-bb3dced29fa4",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9a85ef27-3c8e-4bf4-b6bc-e4aadcac4606",
+              "leftValue": "={{ $json.CreatedAt }}",
+              "rightValue": "={{ $('Date & Time3').item.json.newDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        660,
+        -260
+      ],
+      "id": "19611362-8ecd-49bb-a756-28e39e8c83b5",
+      "name": "If14"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        220,
+        -260
+      ],
+      "id": "750951fd-5b3d-4f01-bda7-790b13804d45",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "timeUnit": "hours",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        440,
+        -260
+      ],
+      "id": "529e1e7d-542a-4c56-a41b-5f052a7a6866",
+      "name": "Date & Time3"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {
+          "where": "(CreatedAt,isWithin,pastWeek)~and(Caller,isnot,null)"
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        240,
+        220
+      ],
+      "id": "264d4ad7-6e12-4a9e-8e5a-23a2592c8e20",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1000,
+        -160
+      ],
+      "id": "3ad72548-10e2-4243-ad46-31a6c17334ee",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Map over the incoming items to extract JSON data\nconst inputData = items.map(item => item.json);\n\n// Create an object to hold call counts for each user\nconst callCounts = {};\n\n// Iterate through each call record and count occurrences by Caller\ninputData.forEach(call => {\n  const user = call.Caller;\n  callCounts[user] = (callCounts[user] || 0) + 1;\n});\n\n// Transform the callCounts object into an array of records with \"User\" and \"Calls\" fields\nconst result = Object.keys(callCounts).map(user => ({\n  json: {\n    User: user,\n    Calls: callCounts[user]\n  }\n}));\n\n// Return the resulting array of records\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        0
+      ],
+      "id": "978d1569-738b-4ff2-ade7-d24df40ea754",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Map the incoming items to extract the JSON data\nconst inputData = items.map(item => item.json);\n\n// Create an object to count the scheduled appointments per user (grouped by \"Caller\")\nconst scheduledCounts = {};\n\n// Iterate through each record\ninputData.forEach(record => {\n  // Group by Caller field; if it is null, you can assign a default value like \"Unknown\"\n  const user = record.Caller || \"Unknown\";\n  scheduledCounts[user] = (scheduledCounts[user] || 0) + 1;\n});\n\n// Convert the counts into an array of records with \"User\" and \"Scheduled\" fields\nconst result = Object.keys(scheduledCounts).map(user => ({\n  json: {\n    User: user.slice(7),\n    Scheduled: scheduledCounts[user]\n  }\n}));\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        220
+      ],
+      "id": "f71fd284-df68-4965-a483-0268a395ad44",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ef24b0a3-a6cd-416f-b824-8df460c65cf6",
+              "leftValue": "={{ $json.Caller }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        220
+      ],
+      "id": "32d8dcf9-16d1-455c-b679-8420bb134334",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "User",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        40
+      ],
+      "id": "ee953e82-795b-40b8-b451-61062188fb79",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract JSON from incoming items\nconst data = items.map(item => item.json);\n\n// Sort records in descending order by \"Scheduled\"\ndata.sort((a, b) => (b.Scheduled || 0) - (a.Scheduled || 0));\n\n// Begin constructing the HTML table\nlet html = `\n<table style=\"\n  width: 100%;\n  max-width: 600px;\n  margin: 0 auto;\n  border-collapse: separate;\n  border-spacing: 0;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n  font-family: Arial, sans-serif;\n  color: black;\n\">\n  <thead style=\"background-color: #f2f2f2;\">\n    <tr style=\"border-bottom: 1px solid #ddd;\">\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Medal</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">User</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Calls</th>\n      <th style=\"padding: 12px 15px; text-align: left; font-weight: 600;\">Scheduled</th>\n    </tr>\n  </thead>\n  <tbody>\n`;\n\n// Build rows\ndata.forEach((record, index) => {\n  let rowStyle = \"border-bottom: 1px solid #ddd;\";\n\n  // Determine if this row is top 3 (Gold, Silver, Bronze)\n  if (index === 0) {\n    rowStyle += \" background-color: gold; font-weight: bold; font-size: 1.5em; color: black;\";\n  } else if (index === 1) {\n    rowStyle += \" background-color: silver; font-weight: bold; font-size: 1.5em; color: black;\";\n  } else if (index === 2) {\n    rowStyle += \" background-color: #cd7f32; font-weight: bold; font-size: 1.5em; color: black;\";\n  }\n  // Otherwise, apply zebra striping\n  else if (index % 2 === 0) {\n    rowStyle += \" background-color: #f9f9f9;\";\n  } else {\n    rowStyle += \" background-color: #fff;\";\n  }\n\n  // Determine medal text\n  let medal = \"\";\n  if (index === 0) medal = \"Gold\";\n  else if (index === 1) medal = \"Silver\";\n  else if (index === 2) medal = \"Bronze\";\n\n  // Construct each table row\n  html += `\n    <tr style=\"${rowStyle}\">\n      <td style=\"padding: 12px 15px;\">${medal}</td>\n      <td style=\"padding: 12px 15px;\">${record.User || \"\"}</td>\n      <td style=\"padding: 12px 15px;\">${record.Calls || 0}</td>\n      <td style=\"padding: 12px 15px;\">${record.Scheduled || 0}</td>\n    </tr>\n  `;\n});\n\nhtml += `\n  </tbody>\n</table>\n`;\n\n// Return the resulting HTML table\nreturn [\n  {\n    json: {\n      html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        40
+      ],
+      "id": "4105a049-d332-4aa7-b9eb-c6ea54218d13",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        40
+      ],
+      "id": "0c7161cd-4583-4724-9026-842d2fb0d90d",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "03ca2f6f-6472-4929-96db-8d52d1791f1f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        -80
+      ],
+      "id": "747eb3ce-e55f-4c51-a540-5d46f28f94d6",
+      "name": "Webhook",
+      "webhookId": "03ca2f6f-6472-4929-96db-8d52d1791f1f"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract JSON from incoming items\nconst data = items.map(item => item.json);\n\n// Sort records in descending order based on \"Scheduled\" count\ndata.sort((a, b) => (b.Scheduled || 0) - (a.Scheduled || 0));\n\n// Begin constructing the HTML table with all-black font\nlet html = '<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-collapse: collapse; font-family: Arial, sans-serif; color: black;\">';\n\n// Define the table header with columns: Medal, User, Calls, Scheduled\nhtml += '<thead><tr><th>Medal</th><th>User</th><th>Calls</th><th>Scheduled</th></tr></thead>';\nhtml += '<tbody>';\n\n// Loop through sorted data to build each row\ndata.forEach((record, index) => {\n  let medal = '';\n  let medalStyle = '';\n  \n  // For the top three, assign a medal with the corresponding background color\n  if (index === 0) {\n    medal = 'Gold';\n    medalStyle = 'background-color: gold; color: black;';\n  } else if (index === 1) {\n    medal = 'Silver';\n    medalStyle = 'background-color: silver; color: black;';\n  } else if (index === 2) {\n    medal = 'Bronze';\n    medalStyle = 'background-color: #cd7f32; color: black;';\n  }\n  \n  // Build the table row with Medal, User, Calls, and Scheduled columns\n  html += '<tr>';\n  html += `<td style=\"${medalStyle}\">${medal}</td>`;\n  html += `<td>${record.User || ''}</td>`;\n  html += `<td>${record.Calls || 0}</td>`;\n  html += `<td>${record.Scheduled || 0}</td>`;\n  html += '</tr>';\n});\n\nhtml += '</tbody></table>';\n\n// Return the resulting HTML table as a single output item\nreturn [{ json: { html } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        -100
+      ],
+      "id": "830e8fe9-41f8-4ec3-b301-5d7fd6734ba0",
+      "name": "Code3"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-23T19:09:48.755Z",
+  "versionId": "a22cda82-6384-4fb2-9fdf-b81c691516d0"
+}
