@@ -1,0 +1,1470 @@
+{
+  "active": true,
+  "connections": {
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Patient App Link": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP PM Patient Demographics": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio": {
+      "main": [
+        [
+          {
+            "node": "HTTP Patient App Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP PM Patient Demographics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Mammo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If US": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If EXER": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "If Mammo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If US",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If EXER",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-12T22:44:37.179Z",
+  "id": "n3JZdJpCGrJj8sBu",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Appointment Confirmation D-CARE Message Out",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "2019c11d-eeb2-4145-b680-6e5635fe0f6f",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1126.3506516930297
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "f1a4d894-28ca-4fad-8e60-2cd1d6450da8",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        740,
+        1126.3506516930297
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"C0nn3ctme#1234\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "9daf9628-0c73-4020-8e6b-a46542e6432a",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "6f6cb89d-d533-42cb-bb4b-9d4486abb8ed",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "4825c326-4321-4cbf-bece-4976280bb4fa",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1400,
+        1226.3506516930297
+      ],
+      "webhookId": "9a5ca4f9-00ca-4a76-bc97-5dea02c9cdc3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "b52de811-c005-4676-b1e0-b73807f332fc",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        1126.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication APPTCONF",
+        "height": 373.491094826977,
+        "width": 1403.1472052879556,
+        "color": 6
+      },
+      "id": "c64d2580-fbfc-4941-b6fc-a04879c3cabd",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1026.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "0f910fee-e639-438f-8832-8a748fdfcba8",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1066.3506516930297
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "d51d37cf-5032-4fee-abb8-3ccbc0fa3544",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1066.3506516930297
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "5a11bbe1-c0a6-479a-895c-e3370101cc3e",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        1226.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with  appt_ack AS (\n    SELECT \n        a.Patient_ID,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments,\n\t\tSUM(CASE WHEN Status_Desc = 'No Show' THEN 1 ELSE 0 END) AS Noshowed_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE \n\ta.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc not LIKE 'Diag%' \n\t  and a.Resource_Desc not like 'BH%' \n\t  and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' \n\t  and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' \n\t  and a.Resource_Desc not like 'Blue%'\n\t  and cast(a.Appointment_DateTime as date) between DATEADD(year,-3,cast(getdate() as date)) and DATEADD(day,5,cast(getdate() as date)) \n\t  and a.Patient_Number != '(potential patient)'\n    GROUP BY a.Patient_ID\n),\nltsr as(\nSELECT \n        a.Patient_ID,\n        a.Total_Appointments,\n        a.Acknowledged_Appointments,\n        CAST(ROUND((a.Acknowledged_Appointments + a.Noshowed_Appointments) * 1.0 / a.Total_Appointments, 2) AS FLOAT) AS Acknowledged_Ratio\n    FROM appt_ack a\n),\nltsrandnew as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,\ncase when l.Acknowledged_Ratio <= {{ $json.showrate }} then 'Fail'\nelse 'Pass'\nend as LTSR,\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\nelse 'MultiplePriorAppt'\nend NewVsEst\nfrom ltsr l\n),\nack_ltsr_new as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,l.LTSR,\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\nelse 'Est'\nend as NewVsEstVsNo\nfrom ltsrandnew l\n)\nselect a.Patient_ID,a.Patient_Number,\n\t\t[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n       ,[Appt_Sched_Location_Descr]\n       ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date],\n\t  l.Acknowledged_Ratio,l.LTSR,l.NewVsEstVsNo\nfrom [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a \nleft join ack_ltsr_new l on a.Patient_ID=l.Patient_ID\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE)) and DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE))\n  and a.Appt_Status ='s'\n  and a.Appt_Resource_Descr not like 'ZZ%' \n  and a.Appt_Sched_Location_Descr not like 'EPIC Care Management'\n  and (a.Appt_Sched_Location_Descr  like 'Diag%'  or a.Appt_Resource_Descr like 'US%' or a.Appt_Resource_Descr like 'mammo%'\n  or a.Appt_Resource_Descr like 'US%' or a.Appt_Resource_Descr like 'exer%' or a.Appt_Resource_Descr like 'ultra%' or a.Appt_Resource_Descr like 'echo%'\n \n  )\n  and a.Appt_Type_Descr not like 'bs%'  and a.Appt_Sched_Location_Descr not like '%bill%'\n  and a.Appt_Resource_Descr not like 'PA, Lab X-Ray'\n  and a.Appt_Resource_Descr not like 'BH%'\n  and a.Appt_Resource_Descr not like 'PTA%'\n  and a.Appt_Resource_Descr not like 'Therapy%'\n  and a.Appt_Type_Abbr not like 'Colonoscopy - Screening'"
+      },
+      "id": "1dcf8cab-3b77-46b9-8c66-e9417c1a9200",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        860,
+        580
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "28158f15-c878-4580-aad2-6d147e3e4a09",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4efc6179-af10-437f-83e0-af7446c447a8",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PM Call\n## (S=Scheduled, C=Confirmed, B=Bumped)\n{\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"137836\",\n\"Token\":\"54FB415A-CACD-4689-BBC2-C0DD95B25F54\",\n\"Parameter1\":\"25201003\", ###AppointmentID\n\"Parameter2\":\"C\",     ###Status\n\"Parameter3\":\"\",\n\"Parameter4\":\"1342\",   ###time\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "height": 422.7415980472874,
+        "width": 384.54932771519174,
+        "color": 4
+      },
+      "id": "8b5b566a-008b-4395-bb5c-d24808b0782d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        986.3506516930298
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Duplicate Patients in Bitrix24\",\n       \"GROUP_ID\":\"159\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"{{ $('Item Lists2').item.json[\"NameMRNBitrixid\"].join('\\\\n') }} {{'\\\\n'}} {{ $json[\"data\"]}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "d0b65103-4614-47be-b8ba-12b3c65a5fb3",
+      "name": "HTTP Patient App Link",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3580,
+        600
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Appointment Confirmation Send Link",
+        "height": 478.8029986885761,
+        "width": 3815.0385873639025,
+        "color": 7
+      },
+      "id": "916e47ee-3afd-4969-9c38-f150c0b9bcc7",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        540,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "4a8f664c-459a-46b2-8117-8a6ea5bcfe80",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2960,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff54aaf3-44dd-4dd5-94f3-31f6beb8c04e",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1760,
+        1066.3506516930297
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetPatientDemographics"
+            },
+            {
+              "name": "AppUserID",
+              "value": "apptconf"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "="
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Active"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Microsoft SQL').item.json.Patient_ID }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "33ad53fb-8b09-40f1-921f-eb4d3073e8f6",
+      "name": "HTTP PM Patient Demographics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3140,
+        600
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "path": "8c3c0f8b-d803-4baf-94b1-e1bdeb5fe7d6",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6b20e7b6-48e5-475d-8cee-d803281c6e55",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        1286.3506516930297
+      ],
+      "webhookId": "8c3c0f8b-d803-4baf-94b1-e1bdeb5fe7d6",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "from": "+13133514769",
+        "to": "=+1{{ $json.getpatientdemographicsinfo[0].Cell_Phone }}",
+        "message": "=EPIC Health here and we're excited to see you! 🎉\n\nYour appointment is on {{ new Date($('Merge').item.json.Appt_DateTime.replaceAll(\"T\", \" \").replaceAll(\":00.000Z\", \"\")).toLocaleDateString(\"en-US\", { month: \"2-digit\", day: \"2-digit\", year: \"numeric\" }) }}, please navigate to the link and Confirm or Cancel/Reschedule.\n\nTo keep your appointment with your provider please confirm within 24 hours of receiving this link:\n\nhttps://xl.epicpc.com/webhook/confirm?appt={{ $('Loop Over Items').item.json.Appt_ID }}&LTSR={{ $('Loop Over Items').item.json.LTSR.slice(0,1) }}",
+        "options": {}
+      },
+      "id": "087440b2-77cf-4b02-811e-c114c85b3041",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        600
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Bad Number: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&SR={{ $('Merge').item.json[\"LTSR\"] }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "a7416d74-3df5-4cb0-b2c8-77c78cfc8623",
+      "name": "HTTP 24 Bitrix24 Check3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3360,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Confirm Check: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}&SR={{ $('Merge').item.json[\"LTSR\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "edf98ba1-2099-4277-a75c-7e117d55cdc2",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4120,
+        420
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "ccd66e97-4194-4326-8131-28f224e3e95d",
+              "leftValue": "={{ $('Merge').item.json.LTSR }}",
+              "rightValue": "Fail",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "f74198da-25a7-4524-8de8-eccc025ee7ec",
+              "leftValue": "={{ $('Merge').item.json.NewVsEstVsNo }}",
+              "rightValue": "New",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3fef9da9-a3d6-4ff9-9088-592a26a81681",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3780,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0bbb0567-57c8-4e07-a9ef-30f3e4a6e78a",
+              "name": "=RowNum",
+              "value": "={{ $('Merge').item.json.RowNum }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f4783ff3-a4bc-4918-8832-0ffe5b900dd1",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4160,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9789fb0a-56f8-4098-bce6-6b63c72bd3fe",
+              "name": "daysout",
+              "value": 6,
+              "type": "number"
+            },
+            {
+              "id": "3d5ad0a4-d185-4b12-9414-d713514064d3",
+              "name": "showrate",
+              "value": 0.55,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2a0a6361-5590-4fb7-89b6-99c8d80d48f5",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        720,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with  appt_ack AS (\n\n    SELECT \n\n        a.Patient_ID,\n\n        COUNT(*) AS Total_Appointments,\n\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments,\n\n\t\tSUM(CASE WHEN Status_Desc = 'No Show' THEN 1 ELSE 0 END) AS Noshowed_Appointments\n\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\n\tWHERE \n\n\ta.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n\n      AND a.Sched_Loc_Desc not LIKE 'Diag%' \n\n\t  and a.Resource_Desc not like 'BH%' \n\n\t  and a.Resource_Desc not like 'Contin%' \n\n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' \n\n\t  and a.Resource_Abbr not like 'PTA%' \n\n\t  and a.Resource_Desc not like 'PTA%' \n\n\t  and a.Resource_Desc not like 'Blue%'\n\n\t  and cast(a.Appointment_DateTime as date) between DATEADD(year,-3,cast(getdate() as date)) and DATEADD(day,5,cast(getdate() as date)) \n\n\t  and a.Patient_Number != '(potential patient)'\n\n    GROUP BY a.Patient_ID\n\n),\n\nltsr as(\n\nSELECT \n\n        a.Patient_ID,\n\n        a.Total_Appointments,\n\n        a.Acknowledged_Appointments,\n\n        CAST(ROUND((a.Acknowledged_Appointments + a.Noshowed_Appointments) * 1.0 / a.Total_Appointments, 2) AS FLOAT) AS Acknowledged_Ratio\n\n    FROM appt_ack a\n\n),\n\nltsrandnew as(\n\nselect l.Patient_ID,\n\nl.Acknowledged_Ratio,\n\ncase when l.Acknowledged_Ratio <= {{ $json.showrate }} then 'Fail'\n\nelse 'Pass'\n\nend as LTSR,\n\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\n\nelse 'MultiplePriorAppt'\n\nend NewVsEst\n\nfrom ltsr l\n\n),\n\nack_ltsr_new as(\n\nselect l.Patient_ID,\n\nl.Acknowledged_Ratio,l.LTSR,\n\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\n\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\n\nelse 'Est'\n\nend as NewVsEstVsNo\n\nfrom ltsrandnew l\n\n)\n\nselect a.Patient_ID,a.Patient_Number,\n\n\t\t[Appt_ID]\n\n      ,[Appt_DateTime]\n\n      ,[Appt_Encounter_Number]\n\n       ,[Appt_Sched_Location_Descr]\n\n       ,[Appt_Resource_ID]\n\n      ,[Appt_Resource_Abbr]\n\n      ,[Appt_Resource_Descr]\n\n      ,[Appt_Resource_Assoc_Prov_LFI]\n\n      ,[Appt_Type_Abbr]\n\n      ,[Appt_Type_Descr]\n\n      ,[Appt_Duration]\n\n      ,[Appt_Comments]\n\n      ,[Appt_Status]\n\n      ,[Appt_Time_In]\n\n      ,[Appt_Booked_Date]\n\n      ,[Appt_Booked_By_Operator_Abbr]\n\n      ,[Appt_Confirmed_Date]\n\n      ,[Appt_Confirmed_By_Operator_Abbr]\n\n      ,[Appt_Cancelled_Date],\n\n\t  l.Acknowledged_Ratio,l.LTSR,l.NewVsEstVsNo\n\nfrom [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a \n\nleft join ack_ltsr_new l on a.Patient_ID=l.Patient_ID\n\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE)) and DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE))\n\n  and a.Appt_Status ='S'\n\n  and a.Appt_Resource_Descr not like 'ZZ%' \n\n  and a.Appt_Sched_Location_Descr not like 'EPIC Care Management'\n\n  and (a.Appt_Sched_Location_Descr  like 'Diag%'  or a.Appt_Resource_Descr like 'PT%' )\n\n  and a.Appt_Type_Descr not like 'bs%'  and a.Appt_Sched_Location_Descr not like '%bill%'\n\n  and a.Appt_Resource_Descr not like 'PA, Lab X-Ray'\n\n  and a.Appt_Resource_Descr not like 'BH%'\n\n  and a.Appt_Resource_Descr not like 'mammo%'\n\n  and a.Appt_Resource_Descr not like 'US%'\n\n  and a.Appt_Resource_Descr not like 'exer%'\n\n   and a.Appt_Resource_Descr not like 'ECHO%'\n\n "
+      },
+      "id": "797ca136-1112-4333-9796-47b8c32400ea",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        580,
+        180
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f74eb71d-c9e0-4643-bd56-4c839ae197d1",
+              "name": "LTSR",
+              "value": "=Fail",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "LTSR",
+        "options": {}
+      },
+      "id": "83e61826-a3ed-4609-9edd-0dafbf8f7215",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 🔥 Turn the Heat up addition 🔥",
+        "height": 931.3510331887796,
+        "width": 1677.0759440262077,
+        "color": 3
+      },
+      "id": "c27e6518-d9f3-4898-9ade-b9fbfb99ab61",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1071.9579505534662,
+        -595.3795130611178
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 75% 🔥",
+        "height": 80,
+        "width": 159.67719890125946,
+        "color": 7
+      },
+      "id": "82ebec4e-23f9-4e55-8dd1-fe6702f4b8c7",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        -500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c50b3206-c277-481b-8008-fb3510ea0bd1",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "4fed2474-bcc5-413e-a16f-a634c0b4eeb5",
+              "leftValue": "={{ Number($json.Acknowledged_Ratio) }}",
+              "rightValue": "={{ Number(0.75) }}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "40f6b7c7-8fad-4564-9635-0fcd2a56ad07",
+              "leftValue": "={{ $json.NewVsEstVsNo }}",
+              "rightValue": "Est",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "85586f76-f810-4edc-b3ef-f249abb0ef26",
+      "name": "If Mammo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "4fed2474-bcc5-413e-a16f-a634c0b4eeb5",
+              "leftValue": "={{ Number($json.Acknowledged_Ratio) }}",
+              "rightValue": "={{ Number(0.75) }}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "40f6b7c7-8fad-4564-9635-0fcd2a56ad07",
+              "leftValue": "={{ $json.NewVsEstVsNo }}",
+              "rightValue": "Est",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "201cb16f-c55f-4688-a536-dc45f8b6536c",
+      "name": "If US",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "4fed2474-bcc5-413e-a16f-a634c0b4eeb5",
+              "leftValue": "={{ Number($json.Acknowledged_Ratio) }}",
+              "rightValue": "={{ Number(0.8) }}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "40f6b7c7-8fad-4564-9635-0fcd2a56ad07",
+              "leftValue": "={{ $json.NewVsEstVsNo }}",
+              "rightValue": "Est",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "391d3d71-11fd-43ad-82ab-dad2aadea159",
+      "name": "If EXER",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 75% 🔥",
+        "height": 80,
+        "width": 159.67719890125946,
+        "color": 7
+      },
+      "id": "04adc970-a84d-40b4-81ab-22a22640d567",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# 80% 🔥",
+        "height": 80,
+        "width": 159.67719890125946,
+        "color": 7
+      },
+      "id": "5d1557bf-06a0-474b-a5af-129c0af38e96",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f74eb71d-c9e0-4643-bd56-4c839ae197d1",
+              "name": "LTSR",
+              "value": "=Pass",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "include": "except",
+        "excludeFields": "LTSR",
+        "options": {}
+      },
+      "id": "058687a0-9dba-4ee9-a349-dd7b5e5edec2",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "/\\bmammo\\b/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "eec47956-947c-423a-b4ab-578755a45a16",
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "/exer|ST-/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2f0cd61-ceeb-46ad-a9a4-3cd304ffc545",
+                    "leftValue": "={{$json[\"Appt_Resource_Abbr\"]}}",
+                    "rightValue": "/us|echo|ultra/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9cfe09e9-bd07-44ef-9480-af7e840aa1fb",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        920,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "=/mammo/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "ade31274-9944-4327-a8bc-d7d912ab616e",
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "=/us|echo|ultra/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "901f7cb5-8498-4203-83d7-45cccecbb2df",
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "=/exer|ST-/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "f0ac3455-a1a3-4994-90da-9f79a623bc9f",
+                    "leftValue": "={{ $json.Appt_Resource_Abbr }}",
+                    "rightValue": "=/^(?!(?=.*mammo)(?=.*(?:us|echo|ultra))(?=.*(?:exer|ST-))).*$/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "id": "90ddc5aa-b6ef-4b95-b534-b8cce06982a3",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1300,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        920,
+        -300
+      ],
+      "id": "b1151aff-9a02-4eeb-bcd1-92f1ac9f62f6",
+      "name": "Loop Over Items1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-30T19:51:18.228Z",
+      "updatedAt": "2024-07-30T19:51:18.228Z",
+      "id": "mYyg5mNB1CnaZkvV",
+      "name": "PM Token"
+    },
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-18T19:33:19.164Z",
+  "versionId": "24080167-abf0-4617-ad1f-c806503a8ae1"
+}
