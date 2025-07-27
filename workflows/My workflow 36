@@ -1,0 +1,67 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-17T23:24:33.161Z",
+  "id": "g2lSZNQhXzspVkaJ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 36",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "65c27870-2797-441d-8b34-b730538cfc5d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "from": "+13133514769",
+        "to": "+15866256303",
+        "message": "JANUARY – Metabolic Health: Managing Diabetes and Weight Subject: Start the Year Strong: Take Control of Your Blood Sugar & Weight Dear [Patient's Name], New year, new health goals! Managing your metabolism is key to preventing diabetes, obesity, and heart disease. Here’s how you can stay on track: ✅ Eat Smart – Focus on whole foods, fiber, and lean proteins to keep your blood sugar stable. ✅ Stay Active – Even light activity like stretching or a short walk can help manage weight. ✅ Monitor Your Numbers – Keep track of your blood sugar, blood pressure, and weight. ✅ Check In with Your Doctor – Annual wellness visits and screenings are important for your care plan. Need help managing your condition? Call us at [Clinic Phone Number] for support!  ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "723480c4-7ea9-4796-ac2d-4b13cc258269",
+      "name": "Twilio",
+      "credentials": {
+        "twilioApi": {
+          "id": "UC7eFoliSFqVPETZ",
+          "name": "Twilio Account EPIC"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-17T23:24:33.161Z",
+  "versionId": "f861a8e5-7f0f-401f-8d8e-393b1f68674c"
+}
