@@ -1,0 +1,414 @@
+{
+  "active": true,
+  "connections": {
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-20T10:41:30.640Z",
+  "id": "xYAYIrSVjK6sCB8b",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "PDAVIS EPIC Initiated Scheduling Websites",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# VSN (webhook url) No Show Website",
+        "height": 665.8038605728834,
+        "width": 1198.1092358928672,
+        "color": 3
+      },
+      "id": "1424f9a2-3d7c-4c56-aa89-47ca24e1cf30",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        720,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<style>\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n    }\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n    .header {\n        text-align: center;\n        padding: 20px 0;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        /* 16:9 Aspect Ratio */\n        padding-bottom: 56.25%;\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    .iframe-wrapper {\n        flex: 1;\n        width: 100%;\n        overflow: hidden;\n    }\n    .iframe-wrapper iframe {\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today!</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"https://www.youtube.com/embed/iAEwLZr8l8A?si=ZrIgeB_zqht1XaWM\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Iframe Below the Video -->\n        <div class=\"iframe-wrapper\">\n            <iframe src=\"https://visit.epicpc.com/?fullName=THOMAS+STILWELL&patientId=502880\"></iframe>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "a6b456d8-53b0-41e5-aacc-634b3e1eba41",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    /* Reset and Fonts */\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n    }\n    /* Container */\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n    }\n    /* Header */\n    .header {\n        text-align: center;\n        padding: 20px 10px;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    /* Responsive Video Embed */\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        /* 16:9 Aspect Ratio */\n        padding-bottom: 56.25%;\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Iframe Wrapper */\n    .iframe-wrapper {\n        flex: 1;\n        width: 100%;\n        overflow: hidden;\n    }\n    .iframe-wrapper iframe {\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Responsive Adjustments */\n    @media (max-width: 600px) {\n        .header h1 {\n            font-size: 2em;\n        }\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today!</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"https://www.youtube.com/embed/iAEwLZr8l8A?si=ZrIgeB_zqht1XaWM\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Iframe Below the Video -->\n        <div class=\"iframe-wrapper\">\n            <iframe id=\"epic-iframe\" src=\"https://visit.epicpc.com/?fullName=THOMAS+STILWELL&patientId=502880\"></iframe>\n        </div>\n    </div>\n\n    <!-- JavaScript to Detect Mobile Device and Adjust Iframe -->\n    <script>\n        // Function to detect mobile devices\n        function isMobileDevice() {\n            return (typeof window.orientation !== \"undefined\") || navigator.userAgent.indexOf('IEMobile') !== -1;\n        }\n\n        // Adjust iframe src if on mobile\n        (function() {\n            var iframe = document.getElementById('epic-iframe');\n            if (isMobileDevice()) {\n                // If the site has a mobile version, set the iframe src to that URL\n                // For example:\n                // iframe.src = 'https://visit.epicpc.com/mobile';\n                // Or if it uses responsive design, the viewport meta tag should suffice\n            }\n        })();\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "0b3e1879-af60-4b86-be36-ec9abb94f7c2",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    /* Reset and Fonts */\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n        overflow: hidden; /* Prevent background scrolling when modal is open */\n    }\n    /* Container */\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n    }\n    /* Header */\n    .header {\n        text-align: center;\n        padding: 20px 10px;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    /* Responsive Video Embed */\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        /* Default Aspect Ratio (Mobile) */\n        padding-bottom: 56.25%; /* 16:9 */\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Schedule Now Button */\n    .schedule-button {\n        margin: 20px 0;\n        padding: 15px 30px;\n        font-size: 1.2em;\n        font-weight: bold;\n        color: #fff;\n        background-color: #007BFF;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n    }\n    .schedule-button:hover {\n        background-color: #0056b3;\n    }\n    /* Modal Styles */\n    .modal {\n        display: none; /* Hidden by default */\n        position: fixed;\n        z-index: 1000;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        overflow: hidden;\n        background-color: rgba(0,0,0,0.7);\n    }\n    .modal-content {\n        position: relative;\n        margin: 0 auto;\n        width: 100%;\n        height: 100%;\n        max-width: 900px;\n        max-height: 100%;\n        background-color: #fff;\n        overflow: hidden;\n    }\n    .modal-iframe {\n        width: 125%;\n        height: 125%;\n        border: none;\n        transform: scale(0.8);\n        transform-origin: 0 0;\n    }\n    /* Close Button */\n    .close-button {\n        position: absolute;\n        top: 10px;\n        right: 15px;\n        font-size: 2em;\n        font-weight: bold;\n        color: #fff;\n        cursor: pointer;\n        z-index: 1001;\n    }\n    .close-button:hover {\n        color: #ccc;\n    }\n    /* Responsive Adjustments */\n    @media (min-width: 768px) {\n        /* Adjust Header Font Size on Desktop */\n        .header h1 {\n            font-size: 2em;\n        }\n        /* Adjust Video Height on Desktop */\n        .video-wrapper {\n            padding-bottom: 0;\n            height: 400px; /* Set a fixed height for the video */\n        }\n        /* Adjust Modal Content for Desktop */\n        .modal-content {\n            width: 90%;\n            height: 90%;\n            border-radius: 5px;\n            margin-top: 2.5%;\n        }\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"https://www.youtube.com/embed/iAEwLZr8l8A?si=ZrIgeB_zqht1XaWM\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Schedule Now Button -->\n        <button class=\"schedule-button\" id=\"open-modal\">Schedule Now</button>\n    </div>\n\n    <!-- Modal -->\n    <div id=\"schedule-modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"close-button\" id=\"close-modal\">&times;</span>\n            <iframe class=\"modal-iframe\" src=\"https://visit.epicpc.com?fullName=THOMAS+STILWELL&patientId=502880&status=g\"></iframe>\n        </div>\n    </div>\n\n    <!-- JavaScript for Modal Functionality -->\n    <script>\n        // Get elements\n        var modal = document.getElementById('schedule-modal');\n        var openModalBtn = document.getElementById('open-modal');\n        var closeModalBtn = document.getElementById('close-modal');\n\n        // Open modal on button click\n        openModalBtn.addEventListener('click', function() {\n            modal.style.display = 'block';\n            document.body.style.overflow = 'hidden'; // Prevent background scrolling\n        });\n\n        // Close modal on 'X' click\n        closeModalBtn.addEventListener('click', function() {\n            modal.style.display = 'none';\n            document.body.style.overflow = 'auto'; // Restore background scrolling\n        });\n\n        // Close modal when clicking outside the modal content\n        window.addEventListener('click', function(event) {\n            if (event.target == modal) {\n                modal.style.display = 'none';\n                document.body.style.overflow = 'auto'; // Restore background scrolling\n            }\n        });\n\n        // Adjust modal content for mobile devices\n        function isMobileDevice() {\n            return (typeof window.orientation !== \"undefined\") || navigator.userAgent.indexOf('IEMobile') !== -1;\n        }\n\n        if (isMobileDevice()) {\n            var modalContent = document.querySelector('.modal-content');\n            modalContent.style.width = '100%';\n            modalContent.style.height = '100%';\n            modalContent.style.margin = '0';\n            // Adjust iframe scaling for mobile if necessary\n            var modalIframe = document.querySelector('.modal-iframe');\n            modalIframe.style.transform = 'scale(1)';\n            modalIframe.style.width = '100%';\n            modalIframe.style.height = '100%';\n        }\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "d1463ada-8f2f-4f6a-a9c6-c2fdc5c3412c",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "d9b4cb35-9c76-47da-a94a-a97eeab74c01",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pkcn1xguo9xrl3w",
+        "table": "mk3z01nqsorzjca",
+        "returnAll": true,
+        "options": {
+          "where": "=(LocationAbbreviation,eq,{{ $json.query.code }})"
+        }
+      },
+      "id": "ccc86360-dc77-47f9-96ad-7958b92fbc64",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        640
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    /* Reset and Fonts */\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n        overflow: hidden; /* Prevent background scrolling when modal is open */\n    }\n    /* Container */\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n    }\n    /* Header */\n    .header {\n        text-align: center;\n        padding: 20px 10px;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    /* Responsive Video Embed */\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Schedule Now Button */\n    .schedule-button {\n        margin: 20px 0;\n        padding: 15px 30px;\n        font-size: 1.2em;\n        font-weight: bold;\n        color: #fff;\n        background-color: #FFDD57;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n    }\n    .schedule-button:hover {\n        background-color: #FFCC00;\n    }\n    /* Modal Styles */\n    .modal {\n        display: none; /* Hidden by default */\n        position: fixed;\n        z-index: 1000;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgba(0,0,0,0.7);\n        overflow: auto;\n    }\n    .modal-content {\n        position: relative;\n        margin: 5% auto;\n        width: 90%;\n        max-width: 900px;\n        height: 90%;\n        background-color: #fff;\n        border-radius: 5px;\n        overflow: hidden;\n    }\n    .modal-iframe-wrapper {\n        position: relative;\n        width: 100%;\n        height: 100%;\n        overflow: hidden;\n    }\n    .modal-iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 1280px; /* Adjust this to the width of the iframe content */\n        height: 100%;\n        border: none;\n        transform: scale(0.7); /* Adjust the scale factor as needed */\n        transform-origin: top left;\n    }\n    /* Close Button */\n    .close-button {\n        position: absolute;\n        top: 10px;\n        right: 15px;\n        font-size: 2em;\n        font-weight: bold;\n        color: #fff;\n        cursor: pointer;\n        z-index: 1001;\n    }\n    .close-button:hover {\n        color: #ccc;\n    }\n    /* Responsive Adjustments */\n    @media (max-width: 767px) {\n        /* Mobile Devices */\n        .modal-content {\n            width: 100%;\n            height: 100%;\n            margin: 0;\n            border-radius: 0;\n        }\n        .modal-iframe-wrapper, .modal-iframe {\n            width: 100%;\n            height: 100%;\n            transform: none;\n        }\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"{{ $('NocoDB1').item.json.VideoLink }}\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Schedule Now Button -->\n        <button class=\"schedule-button\" id=\"open-modal\">Schedule Now</button>\n    </div>\n\n    <!-- Modal -->\n    <div id=\"schedule-modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"close-button\" id=\"close-modal\">&times;</span>\n            <div class=\"modal-iframe-wrapper\">\n                <iframe class=\"modal-iframe\" src=\"https://xl.epicpc.com/webhook/740dec40-0ecd-4ce3-964c-bea05503f4e1?campaign=&source=missAppt&medium=sms&event=&other=\"></iframe>\n            </div>\n        </div>\n    </div>\n\n    <!-- JavaScript for Modal Functionality -->\n    <script>\n        // Get elements\n        var modal = document.getElementById('schedule-modal');\n        var openModalBtn = document.getElementById('open-modal');\n        var closeModalBtn = document.getElementById('close-modal');\n\n        // Open modal on button click\n        openModalBtn.addEventListener('click', function() {\n            modal.style.display = 'block';\n            document.body.style.overflow = 'hidden'; // Prevent background scrolling\n        });\n\n        // Close modal on 'X' click\n        closeModalBtn.addEventListener('click', function() {\n            modal.style.display = 'none';\n            document.body.style.overflow = 'auto'; // Restore background scrolling\n        });\n\n        // Close modal when clicking outside the modal content\n        window.addEventListener('click', function(event) {\n            if (event.target == modal) {\n                modal.style.display = 'none';\n                document.body.style.overflow = 'auto'; // Restore background scrolling\n            }\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "12d64491-cb0c-49aa-beec-6009262810e1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "path": "vsn",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "8e958022-fb74-4c31-a19a-568cda7244e3",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        780
+      ],
+      "webhookId": "478d16c2-3631-4dc9-b1b1-55ae54aa301f"
+    },
+    {
+      "parameters": {
+        "content": "# Ordered Procedure Website",
+        "height": 452.7141270401279,
+        "width": 1198.1092358928672,
+        "color": 5
+      },
+      "id": "58f895d5-25be-48a9-97bf-3895ca26b68f",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        720,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pkcn1xguo9xrl3w",
+        "table": "mk3z01nqsorzjca",
+        "returnAll": true,
+        "options": {
+          "where": "=(LocationAbbreviation,eq,{{ $json.query.code }})"
+        }
+      },
+      "id": "7ebf886d-c0b3-4e6b-85a7-3600a73605ee",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        1120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "de78bc60-346a-40b8-9eb7-4319e0759bb0",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    /* Reset and Fonts */\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n        overflow: hidden; /* Prevent background scrolling when modal is open */\n    }\n    /* Container */\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n    }\n    /* Header */\n    .header {\n        text-align: center;\n        padding: 20px 10px;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    /* Responsive Video Embed */\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Schedule Now Button */\n    .schedule-button {\n        margin: 20px 0;\n        padding: 15px 30px;\n        font-size: 1.2em;\n        font-weight: bold;\n        color: #fff;\n        background-color: #FFDD57;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n    }\n    .schedule-button:hover {\n        background-color: #FFCC00;\n    }\n    /* Modal Styles */\n    .modal {\n        display: none; /* Hidden by default */\n        position: fixed;\n        z-index: 1000;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgba(0,0,0,0.7);\n        overflow: auto;\n    }\n    .modal-content {\n        position: relative;\n        margin: 5% auto;\n        width: 90%;\n        max-width: 900px;\n        height: 90%;\n        background-color: #fff;\n        border-radius: 5px;\n        overflow: hidden;\n    }\n    .modal-iframe-wrapper {\n        position: relative;\n        width: 100%;\n        height: 100%;\n        overflow: hidden;\n    }\n    .modal-iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 1280px; /* Adjust this to the width of the iframe content */\n        height: 100%;\n        border: none;\n        transform: scale(0.7); /* Adjust the scale factor as needed */\n        transform-origin: top left;\n    }\n    /* Close Button */\n    .close-button {\n        position: absolute;\n        top: 10px;\n        right: 15px;\n        font-size: 2em;\n        font-weight: bold;\n        color: #fff;\n        cursor: pointer;\n        z-index: 1001;\n    }\n    .close-button:hover {\n        color: #ccc;\n    }\n    /* Responsive Adjustments */\n    @media (max-width: 767px) {\n        /* Mobile Devices */\n        .modal-content {\n            width: 100%;\n            height: 100%;\n            margin: 0;\n            border-radius: 0;\n        }\n        .modal-iframe-wrapper, .modal-iframe {\n            width: 100%;\n            height: 100%;\n            transform: none;\n        }\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"{{ $('NocoDB').item.json.UpcomingVisitVideoLink }}\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Schedule Now Button -->\n        <button class=\"schedule-button\" id=\"open-modal\">Schedule Now</button>\n    </div>\n\n    <!-- Modal -->\n    <div id=\"schedule-modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"close-button\" id=\"close-modal\">&times;</span>\n            <div class=\"modal-iframe-wrapper\">\n                <iframe class=\"modal-iframe\" src=\"https://appointment.epicpc.com?fullName={{ encodeURIComponent($json.query.fullName).replaceAll(\" \",\"+\") }}\n&patientId={{ $json.query.patientId }}&status={{ $json.query.status }}&code={{ encodeURIComponent($json.query.code) }}&visit_type={{ $('Webhook1').item.json.query.visit_type }}&title={{ $('Webhook1').item.json.query.title }}\"></iframe>\n            </div>\n        </div>\n    </div>\n\n    <!-- JavaScript for Modal Functionality -->\n    <script>\n        // Get elements\n        var modal = document.getElementById('schedule-modal');\n        var openModalBtn = document.getElementById('open-modal');\n        var closeModalBtn = document.getElementById('close-modal');\n\n        // Open modal on button click\n        openModalBtn.addEventListener('click', function() {\n            modal.style.display = 'block';\n            document.body.style.overflow = 'hidden'; // Prevent background scrolling\n        });\n\n        // Close modal on 'X' click\n        closeModalBtn.addEventListener('click', function() {\n            modal.style.display = 'none';\n            document.body.style.overflow = 'auto'; // Restore background scrolling\n        });\n\n        // Close modal when clicking outside the modal content\n        window.addEventListener('click', function(event) {\n            if (event.target == modal) {\n                modal.style.display = 'none';\n                document.body.style.overflow = 'auto'; // Restore background scrolling\n            }\n        });\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "5c16ae50-e411-4d30-a8e9-baa2b8036ba5",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "path": "osl",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ce387584-c6e0-4fc3-9911-b8898f39d1a3",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        1260
+      ],
+      "webhookId": "478d16c2-3631-4dc9-b1b1-55ae54aa301f"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Schedule with EPIC Today</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<style>\n    /* Reset and Fonts */\n    html, body {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        font-family: 'Arial', sans-serif;\n        overflow: hidden; /* Prevent background scrolling when modal is open */\n    }\n    /* Container */\n    .container {\n        max-width: 900px;\n        margin: 0 auto;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n    }\n    /* Header */\n    .header {\n        text-align: center;\n        padding: 20px 10px;\n    }\n    .header h1 {\n        font-size: 2.5em;\n        font-weight: bold;\n        margin: 0;\n    }\n    /* Responsive Video Embed */\n    .video-wrapper {\n        position: relative;\n        width: 100%;\n        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */\n    }\n    .video-wrapper iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        border: none;\n    }\n    /* Schedule Now Button */\n    .schedule-button {\n        margin: 20px 0;\n        padding: 15px 30px;\n        font-size: 1.2em;\n        font-weight: bold;\n        color: #fff;\n        background-color: #FFDD57;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n    }\n    .schedule-button:hover {\n        background-color: #FFCC00;\n    }\n    /* Modal Styles */\n    .modal {\n        display: none; /* Hidden by default */\n        position: fixed;\n        z-index: 1000;\n        left: 0;\n        top: 0;\n        width: 100%;\n        height: 100%;\n        background-color: rgba(0,0,0,0.7);\n        overflow: auto;\n    }\n    .modal-content {\n        position: relative;\n        margin: 5% auto;\n        width: 90%;\n        max-width: 900px;\n        height: 90%;\n        background-color: #fff;\n        border-radius: 5px;\n        overflow: hidden;\n    }\n    .modal-iframe-wrapper {\n        position: relative;\n        width: 100%;\n        height: 100%;\n        overflow: hidden;\n    }\n    .modal-iframe {\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 1280px; /* Adjust this to the width of the iframe content */\n        height: 100%;\n        border: none;\n        transform: scale(0.7); /* Adjust the scale factor as needed */\n        transform-origin: top left;\n    }\n    /* Close Button */\n    .close-button {\n        position: absolute;\n        top: 10px;\n        right: 15px;\n        font-size: 2em;\n        font-weight: bold;\n        color: #fff;\n        cursor: pointer;\n        z-index: 1001;\n    }\n    .close-button:hover {\n        color: #ccc;\n    }\n    /* Responsive Adjustments */\n    @media (max-width: 767px) {\n        /* Mobile Devices */\n        .modal-content {\n            width: 100%;\n            height: 100%;\n            margin: 0;\n            border-radius: 0;\n        }\n        .modal-iframe-wrapper, .modal-iframe {\n            width: 100%;\n            height: 100%;\n            transform: none;\n        }\n    }\n</style>\n</head>\n<body>\n    <div class=\"container\">\n        <!-- Header -->\n        <div class=\"header\">\n            <h1>Schedule with EPIC Today</h1>\n        </div>\n        <!-- YouTube Video -->\n        <div class=\"video-wrapper\">\n            <iframe src=\"{{ $('NocoDB1').item.json.VideoLink }}\" title=\"YouTube video player\" allowfullscreen></iframe>\n        </div>\n        <!-- Schedule Now Button -->\n        <button class=\"schedule-button\" id=\"open-modal\">Schedule Now</button>\n    </div>\n\n    <!-- Modal -->\n    <div id=\"schedule-modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"close-button\" id=\"close-modal\">&times;</span>\n            <div class=\"modal-iframe-wrapper\">\n                <iframe class=\"modal-iframe\" src=\"https://appointment.epicpc.com?fullName={{ encodeURIComponent($json.query.fullName).replaceAll(\" \",\"+\") }}\n&patientId={{ $json.query.patientId }}&status={{ $json.query.status }}&code={{ encodeURIComponent($json.query.code) }}&visit_type={{ $('Webhook').item.json.query.visit_type }}&title={{ $('Webhook').item.json.query.title }}\"></iframe>\n            </div>\n        </div>\n    </div>\n\n    <!-- JavaScript for Modal Functionality -->\n    <script>\n        // Get elements\n        var modal = document.getElementById('schedule-modal');\n        var openModalBtn = document.getElementById('open-modal');\n        var closeModalBtn = document.getElementById('close-modal');\n\n        // Open modal on button click\n        openModalBtn.addEventListener('click', function() {\n            modal.style.display = 'block';\n            document.body.style.overflow = 'hidden'; // Prevent background scrolling\n        });\n\n        // Close modal on 'X' click\n        closeModalBtn.addEventListener('click', function() {\n            modal.style.display = 'none';\n            document.body.style.overflow = 'auto'; // Restore background scrolling\n        });\n\n        // Close modal when clicking outside the modal content\n        window.addEventListener('click', function(event) {\n            if (event.target == modal) {\n                modal.style.display = 'none';\n                document.body.style.overflow = 'auto'; // Restore background scrolling\n            }\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "a4165a95-5b75-40f1-b359-08231614d8df",
+      "name": "Respond to Webhook5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1940,
+        760
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.17",
+            "x-forwarded-for": "10.0.24.17",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Google Chrome\";v=\"129\", \"Not=A?Brand\";v=\"8\", \"Chromium\";v=\"129\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19UCS5YrmF%2Bm06Ff8KmkYhZ1lw0dfu5oBo%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19KFsX8zHSY8R9vkYyEMra3%2FYkC%2Fapujog%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiZnRhdFJNSHQ2dThEVWlnNmtZUGdVb2pIRlhmQ0FDeGlxaUEvRHpRaGlKMD0iLCJpYXQiOjE3Mjg2NzQzODksImV4cCI6MTcyOTI3OTE4OX0.6zBy2SxAQpgVJD73koQAxVm1vhssCOc3b-Tcr_fpTX8; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bz%2F5bMt8iU9hr%2F6s1AETo8%2Ft9NQqUv2SepbR0ex6%2BgdFsKtVVSGUXaq5zn7SAy64MTwGHkuI3eXw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2Bh5ngjnsFT0qvtSFcCOkEO%2BmJVdwRtX%2FX%2BW20LqR9Il%2F7%2BOZfjoiznfP5gIA1H%2FSxWffAGf5UIXRJbbO1RkqXkSgVqLz6eAw7VCEWtfj28uXasH71r1xa5GYyN56EB98nGK5NCmwC%2BV9OYsXc1h1gm0humYgQd62w%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19FekkfV4voiYVHi097JlC%2BySgfUqJlidY6SLHsmIGFQGhZz1zTI9ERGV7Cl%2BzKi8ZyXFc1XoghCWLz3h9TXfmvQd7AeQ3LHXbAqXujWAbLqXEf6sK8eCJCDljpfCQMw8tHY8yxQHmkAg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1729096286772%2C%220192962b-8235-758d-a6a6-8ba0ad6b4042%22%2C1729096286772%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BgDIZEpxrBlQ3s%2B9TYueia8IqZaH26oZExsqHbXBVTNQJQjKVhnqnDYM4n7t4uhZphPpHJ7%2Bm8NfUIrRrq5fXLrei7s7Q0WN8gs6aLJQr2rVH9HJ9MriiX%2FtO32JWAKTRfwovr%2FE%2FC4A%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "fullName": "Ted Naman",
+            "patientId": "197520",
+            "status": "g",
+            "code": "EPDLiv",
+            "visit_type": "251",
+            "title": "OfficeVisit"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/vsn",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.17",
+            "x-forwarded-for": "10.0.24.17",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Google Chrome\";v=\"129\", \"Not=A?Brand\";v=\"8\", \"Chromium\";v=\"129\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19UCS5YrmF%2Bm06Ff8KmkYhZ1lw0dfu5oBo%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19KFsX8zHSY8R9vkYyEMra3%2FYkC%2Fapujog%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiZnRhdFJNSHQ2dThEVWlnNmtZUGdVb2pIRlhmQ0FDeGlxaUEvRHpRaGlKMD0iLCJpYXQiOjE3Mjg2NzQzODksImV4cCI6MTcyOTI3OTE4OX0.6zBy2SxAQpgVJD73koQAxVm1vhssCOc3b-Tcr_fpTX8; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bz%2F5bMt8iU9hr%2F6s1AETo8%2Ft9NQqUv2SepbR0ex6%2BgdFsKtVVSGUXaq5zn7SAy64MTwGHkuI3eXw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2Bh5ngjnsFT0qvtSFcCOkEO%2BmJVdwRtX%2FX%2BW20LqR9Il%2F7%2BOZfjoiznfP5gIA1H%2FSxWffAGf5UIXRJbbO1RkqXkSgVqLz6eAw7VCEWtfj28uXasH71r1xa5GYyN56EB98nGK5NCmwC%2BV9OYsXc1h1gm0humYgQd62w%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19FekkfV4voiYVHi097JlC%2BySgfUqJlidY6SLHsmIGFQGhZz1zTI9ERGV7Cl%2BzKi8ZyXFc1XoghCWLz3h9TXfmvQd7AeQ3LHXbAqXujWAbLqXEf6sK8eCJCDljpfCQMw8tHY8yxQHmkAg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1729096286772%2C%220192962b-8235-758d-a6a6-8ba0ad6b4042%22%2C1729096286772%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BgDIZEpxrBlQ3s%2B9TYueia8IqZaH26oZExsqHbXBVTNQJQjKVhnqnDYM4n7t4uhZphPpHJ7%2Bm8NfUIrRrq5fXLrei7s7Q0WN8gs6aLJQr2rVH9HJ9MriiX%2FtO32JWAKTRfwovr%2FE%2FC4A%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "fullName": "Ted Naman",
+            "patientId": "197520",
+            "status": "g",
+            "code": "EPDLiv",
+            "visit_type": "251",
+            "title": "OfficeVisit"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/vsn",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-04-23T16:09:43.922Z",
+  "versionId": "f075033a-a478-472b-8a4d-342e19c81a30"
+}
