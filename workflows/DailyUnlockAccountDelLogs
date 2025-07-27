@@ -1,0 +1,121 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "GetAllRows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAllRows": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-23T18:35:29.428Z",
+  "id": "LtUxundn8GEzBFhE",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "DailyUnlockAccountDelLogs",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "ae566c86-1dbb-4e92-a445-722b5857c991",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mpygd4o98ajh3bv",
+        "id": "={{ $json.Id }}"
+      },
+      "id": "6c32a71c-67f8-40a3-81f0-77f220fc4ff0",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mpygd4o98ajh3bv",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "d840dfd9-6991-4fd1-be90-2e7d3bad114a",
+      "name": "GetAllRows",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        840,
+        380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-09T13:16:32.685Z",
+  "versionId": "9f8ebe50-1d76-4612-93a7-92f630d448e4"
+}
