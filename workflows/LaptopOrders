@@ -1,0 +1,1077 @@
+{
+  "active": true,
+  "connections": {
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "User Does Not Exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckedOutList": {
+      "main": [
+        [
+          {
+            "node": "FindUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FindUser": {
+      "main": [
+        [
+          {
+            "node": "Chekcs If Laptop Exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chekcs If Laptop Exist": {
+      "main": [
+        [
+          {
+            "node": "ReplacementRequest1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ReplacementRequest1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ReplacementRequest": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LaptopRequest": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetToLowerCase": {
+      "main": [
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "ReplacementRequest",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ReplacementRequest1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CheckedOutList",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LaptopRequest",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CheckedOutList1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DesktopRequest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DesktopRequest": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckedOutList1": {
+      "main": [
+        [
+          {
+            "node": "FindUser1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FindUser1": {
+      "main": [
+        [
+          {
+            "node": "Chekcs If Thinkcentre Exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chekcs If Thinkcentre Exist": {
+      "main": [
+        [
+          {
+            "node": "ReplacementRequest1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ReplacementRequest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SetToLowerCase",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-04T19:03:16.324Z",
+  "id": "EM0knC9nkFCtOji1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LaptopOrders",
+  "nodes": [
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $('SetToLowerCase').item.json.query.Username }}",
+        "limit": 1,
+        "options": {}
+      },
+      "id": "9d608058-df3f-4323-b228-429d92eaed59",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>This User Does Not Exist</h1>\n    <h2>Please try again</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\">IT-Laptop Order Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "dfbdb927-02d8-47bb-b5ab-66a070d4284a",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        380,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "e876b684-6915-4471-8a23-fe6ef76dcc27",
+      "name": "User Does Not Exist",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mg0zgyzpos3fyp1",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Webhook').item.json.query.Description }}"
+            },
+            {
+              "fieldName": "RequestType",
+              "fieldValue": "={{ $('Webhook').item.json.query.RequestType }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Webhook').item.json.query.Location }}"
+            }
+          ]
+        }
+      },
+      "id": "85ffca01-0344-46a8-b9a0-2c7b85e21da8",
+      "name": "LaptopRequest",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        700,
+        720
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mg0zgyzpos3fyp1",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $json.Role }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $json.Username }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Webhook').item.json.query.Description }}"
+            },
+            {
+              "fieldName": "RequestType",
+              "fieldValue": "={{ $('Webhook').item.json.query.RequestType }}"
+            },
+            {
+              "fieldName": "Serial #",
+              "fieldValue": "={{ $json.Serial }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Location }}"
+            }
+          ]
+        }
+      },
+      "id": "1e65e432-075a-4b81-8697-6c483841dcac",
+      "name": "ReplacementRequest",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3036224f-f619-4469-8a5c-311c5469e0d6",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('LDAP').item.json.sAMAccountName }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "dbe95de4-42e1-404d-8487-d346ad8c2073",
+              "leftValue": "={{ $json.Category }}",
+              "rightValue": "Laptop",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ad6d1839-bf2d-4442-b897-277824b97388",
+      "name": "FindUser",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        640,
+        360
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "ed02b0f3-3f39-47ab-88bb-da0756cc6f4b",
+      "name": "CheckedOutList",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        500,
+        360
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mg0zgyzpos3fyp1",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Webhook').item.json.query.Description }}"
+            },
+            {
+              "fieldName": "RequestType",
+              "fieldValue": "={{ $('Webhook').item.json.query.RequestType }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Webhook').item.json.query.Location }}"
+            }
+          ]
+        }
+      },
+      "id": "0bcc1cd6-7c26-4690-ad55-1e314c86651a",
+      "name": "ReplacementRequest1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1240,
+        140
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f6e7ea0f-193b-4495-8ac7-93fa05ebd983",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e942299c-deaa-4ef2-986b-48877a04d961",
+      "name": "Chekcs If Laptop Exist",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        920,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a175c995-e071-48a8-8f4b-f49105bd74b7",
+              "name": "query.Username",
+              "value": "={{ $json.query.Username.toLowerCase().replaceAll(' ','' )}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d8172f14-ae1d-48f8-8cbe-f2eaf58cc81e",
+      "name": "SetToLowerCase",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -300,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('FindUser').item.json.Id }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "Pending"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "Replacement Request"
+            }
+          ]
+        }
+      },
+      "id": "ab0cbd93-a150-4878-a5f9-860214354d79",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1500,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "7caf5018-e1e7-4ebe-aed0-f093b5dd0626",
+              "leftValue": "={{ $('CheckedOutList').item.json.Category }}",
+              "rightValue": "Laptop",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fb91563e-4b10-4338-8624-3466dd712e0a",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mg0zgyzpos3fyp1",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Webhook').item.json.query.Description }}"
+            },
+            {
+              "fieldName": "RequestType",
+              "fieldValue": "={{ $('Webhook').item.json.query.RequestType }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Webhook').item.json.query.Location }}"
+            }
+          ]
+        }
+      },
+      "id": "1c00e76e-4d9e-4467-b6b5-539da82c6bd0",
+      "name": "DesktopRequest",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        700,
+        940
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.cn }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IsEmpty"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "4af42c7e-e7bd-4d55-8a5f-b15bc7ebf71b",
+                    "leftValue": "={{ $('Webhook').item.json.query.RequestType }}",
+                    "rightValue": "Replacement Request - Laptop",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Replacement Request - Laptop"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "053cb918-d7de-450d-8c7f-bfd6577f4139",
+                    "leftValue": "={{ $('Webhook').item.json.query.RequestType }}",
+                    "rightValue": "Laptop Request",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Laptop Request"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "0eb5561c-ee4a-4af3-a9c5-174370eb39d8",
+                    "leftValue": "={{ $('Webhook').item.json.query.RequestType }}",
+                    "rightValue": "Replacement Request - Desktop",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Replacement Request - Desktop"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9014f704-a482-409f-aa75-de6ee6c59952",
+                    "leftValue": "={{ $('Webhook').item.json.query.RequestType }}",
+                    "rightValue": "Desktop Request",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Desktop Request"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73dce88c-d976-4a9c-9578-4ccff954f380",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        20,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3036224f-f619-4469-8a5c-311c5469e0d6",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('LDAP').item.json.sAMAccountName }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "dd5df9c5-3bdc-4b25-9ca7-f1cc060a8148",
+              "leftValue": "={{ $json.Category }}",
+              "rightValue": "Thinkcentre",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "01753cd7-2f73-4c40-a34f-68ee5df1a917",
+      "name": "FindUser1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        640,
+        540
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "889f2a24-ecca-46a0-bdf2-cf7faa720835",
+      "name": "CheckedOutList1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        480,
+        540
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f6e7ea0f-193b-4495-8ac7-93fa05ebd983",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4e3bd6ee-3e49-4069-a0fc-24ecd12b2afa",
+      "name": "Chekcs If Thinkcentre Exist",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        840,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Order have been placed.</h1>\n    <h2>Click here to be redirected back</h2>\n    <p><a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\">IT-HelpDesk</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "d2cc6013-35d8-440e-8270-89cf9d1786e6",
+      "name": "HTML1",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> <img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\">\n      </div>\n                <h1 class=\"cs-text\">\n   \t\t\t\tYour request order have been placed in a que, thank you.\n                </h1>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "f03518b3-a9de-43bb-9385-885d28086b9d",
+      "name": "RequestPlaced",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Order have been placed.</h1>\n    <h2>Click here to be redirected back</h2>\n    <p><a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\">IT-HelpDesk</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "13bdf7c1-4900-451a-8e7d-1c4e0c4c1279",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Laptop Replacement Request\",\n       \"GROUP_ID\":\"74\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"Description: {{ $json.query.Description }}{{'\\\\n'}}RequestType:{{ $json.query.RequestType }}{{'\\\\n'}}User:{{ $json.query.Username.toLowerCase() }}{{'\\\\n'}}Requester: {{ $json.query.Requester }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "25d7190a-0c08-4599-9b2f-8dc92e41b3db",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -280,
+        280
+      ],
+      "notes": "\"GROUP_ID\":\"74\", Group ID\n\"RESPONSIBLE_ID\": \"19\", Responsible person"
+    },
+    {
+      "parameters": {
+        "path": "EPIC-Laptop-OrderForm",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f937f250-f253-44a5-a17b-6db50734441a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        500
+      ],
+      "webhookId": "21aeb4d9-551b-41a5-87e6-56e25a20a940"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.110",
+            "x-forwarded-for": "10.0.14.110",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Google Chrome\";v=\"129\", \"Not=A?Brand\";v=\"8\", \"Chromium\";v=\"129\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19hj%2B5rb8rddZeMEepl3BnhGzIHBb9V%2Fmc%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19FiJvvM2qzNPcTXpZPQ%2Fg8YDUQM6GH4PI%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1MjllZGY2LTg2NDAtNDUzZC1hMzdjLWFjZDdlMjIxMzNlNSIsImhhc2giOiJhOWE0UWsxQzltIiwiYnJvd3NlcklkIjoiWnNQcFFEQ3UvSWsxUXlIWVZQRnViTTk1a08rRklBNExOQjRHK2padUVYMD0iLCJpYXQiOjE3MzE5NDQyODQsImV4cCI6MTczMjU0OTA4NH0.VRwxIn8adJqESQCSpDS4bPpIck2BusYSq6_OvDHhvIQ; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bz02JUlDS0FA0aVgHmUfzoQoWYVTZc79XO%2BFeyOVLjpxow54r6Rk03j3d8%2BsZLuZ7Uo4b14apjXg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BbAdCoYsrpORyLB4KPDmoZw9tdF3VaYjQOtPBf0PTigEVztb27FhiBwledZJUDXH09NitfFkHgEVy0WjcV5%2Fc%2Fdj33Pzf8cQioNLHe37tWeJqDZ%2BK9lxdLtXXpEK2HZWC3OIkYXQlqbMIfniS0%2FjZZJ2tNBA2il2k%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19IkdIYtkz%2B48j0T2kpL%2FPber7QPWY8wS%2B67DQ%2Bh%2BwAoc%2B8EJFPVrCeevowcFfoaQqKUyitFMtzU63wKo6VPdHjP2F5UJMr0pTysXdUZzdNum9v0IFv7o2Bbog1BBoxs0cBcgFiIwKY%2BQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%230529edf6-8640-453d-a37c-acd7e22133e5%22%2C%22%24sesid%22%3A%5B1732201908618%2C%2201934f24-f3f0-7edf-a485-273f0c0f0efe%22%2C1732199642096%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19ZRTDTLdJTarE%2BzKNeI5ZW5yfAD0Igi9nTKS6i9ShCTpmzHJPzm3w2%2FeuF8YJllQPTTz3CiWb8bNCuMYryzD8QpWOicjsdBI63vFRV0CKnaMJrygpssMxhnS0afadxZCs02EizNA8JXg%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "Username": "rpak",
+            "RequestType": "Replacement Request - Laptop",
+            "Description": "Test",
+            "Role": "IT",
+            "Location": "HQ",
+            "Requester": "Ricky Pak"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/EPIC-Laptop-OrderForm",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-21T15:28:20.836Z",
+  "versionId": "20948cbc-a767-4678-94fb-2c987a0dc830"
+}
