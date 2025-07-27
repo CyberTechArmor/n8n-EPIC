@@ -1,0 +1,91 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read Binary Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Binary Files": {
+      "main": [
+        [
+          {
+            "node": "Compression",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-01T20:48:34.671Z",
+  "id": "BF0oHL3CW3fcvu8x",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CredsZip",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "credsexport1.json"
+      },
+      "id": "7434c2b7-ee81-4c7d-adc9-5344780afd2e",
+      "name": "Read Binary Files",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        640,
+        460
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e84369b4-d27e-4566-bae0-5c5ebfe06667",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "compress",
+        "outputFormat": "zip",
+        "fileName": "n8n.zip"
+      },
+      "id": "26d87e8f-94ef-439c-8a3b-b095837f2d32",
+      "name": "Compression",
+      "type": "n8n-nodes-base.compression",
+      "typeVersion": 1,
+      "position": [
+        860,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-12-10T18:27:58.618Z",
+      "updatedAt": "2023-12-10T18:27:58.618Z",
+      "id": "eBHTGhF29brO8Pmk",
+      "name": "Credentials"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-23T22:49:38.127Z",
+  "versionId": "35cf2b71-d963-40c8-bc53-c53b0e67f2aa"
+}
