@@ -1,0 +1,106 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-08T19:07:56.420Z",
+  "id": "UTiLammb76tJ5gMV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Lab Barcode Scan",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "419845b6-28db-42a7-b38d-bae334072914",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        620,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Barcode Scanner</title>\n  <script src=\"https://unpkg.com/@zxing/library@latest\"></script>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      text-align: center;\n      padding: 20px;\n    }\n    #video {\n      width: 100%;\n      max-width: 400px;\n      border: 2px solid black;\n    }\n    #result {\n      margin-top: 20px;\n      font-size: 1.2em;\n      color: green;\n    }\n    #error {\n      color: red;\n    }\n    #status {\n      margin-top: 10px;\n      color: blue;\n    }\n  </style>\n</head>\n<body>\n  <h1>Barcode Scanner</h1>\n  <video id=\"video\" autoplay></video>\n  <p id=\"status\">Scanning...</p>\n  <p id=\"result\">Scan a barcode to see the result here.</p>\n  <p id=\"error\"></p>\n\n  <script>\n    const video = document.getElementById('video');\n    const resultElement = document.getElementById('result');\n    const errorElement = document.getElementById('error');\n    const statusElement = document.getElementById('status');\n\n    // Initialize the ZXing Barcode Reader\n    const codeReader = new ZXing.BrowserBarcodeReader();\n\n    // Define camera constraints for the rear camera\n    const constraints = {\n      video: {\n        facingMode: { exact: \"environment\" }  // Use the rear camera\n      }\n    };\n\n    // Start barcode scanning\n    navigator.mediaDevices.getUserMedia(constraints)\n      .then(stream => {\n        video.srcObject = stream;\n        // Start decoding from the video stream\n        codeReader.decodeFromVideoElement(video, (result, err) => {\n          if (result) {\n            // Barcode found\n            resultElement.textContent = `Scanned result: ${result.text}`;\n            statusElement.textContent = \"Barcode found!\";\n            console.log(\"Scanned result: \", result.text);\n          }\n          if (err && !(err instanceof ZXing.NotFoundException)) {\n            // Handle decoding errors except for \"not found\"\n            errorElement.textContent = `Error scanning: ${err}`;\n            statusElement.textContent = \"Error during scanning.\";\n            console.error(\"Scanning error: \", err);\n          }\n        });\n      })\n      .catch(err => {\n        errorElement.textContent = `Camera access error: ${err.name} - ${err.message}`;\n        statusElement.textContent = \"Camera access error.\";\n        console.error(\"Camera access error: \", err);\n      });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "1c52fa8d-7b6d-460d-8605-3c4bd6620b8e",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1380,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "path": "f2bc9768-6c3c-4c31-a6c6-52143fa990fe",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f3a0f8da-1d95-4dfc-998a-f784be6c1411",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        220
+      ],
+      "webhookId": "f2bc9768-6c3c-4c31-a6c6-52143fa990fe"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Barcode Scanner</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      text-align: center;\n      padding: 20px;\n    }\n    #video {\n      width: 100%;\n      max-width: 400px;\n      border: 2px solid black;\n    }\n    #result {\n      margin-top: 20px;\n      font-size: 1.2em;\n      color: green;\n    }\n    #error {\n      color: red;\n    }\n  </style>\n</head>\n<body>\n  <h1>Barcode Scanner</h1>\n  <video id=\"video\" autoplay></video>\n  <button id=\"capture\">Capture Barcode</button>\n  <canvas id=\"canvas\" style=\"display:none;\"></canvas>\n  <p id=\"result\">Scan a barcode to see the result here.</p>\n  <p id=\"error\"></p>\n\n  <script>\n    const video = document.getElementById('video');\n    const canvas = document.getElementById('canvas');\n    const result = document.getElementById('result');\n    const errorElement = document.getElementById('error');\n    \n    // Access camera\n    navigator.mediaDevices.getUserMedia({ video: { facingMode: \"environment\" } })\n      .then(stream => {\n        video.srcObject = stream;\n      })\n      .catch(err => {\n        errorElement.textContent = `Camera access error: ${err.name} - ${err.message}`;\n      });\n\n    document.getElementById('capture').addEventListener('click', () => {\n      // Draw the current video frame to a canvas element\n      canvas.width = video.videoWidth;\n      canvas.height = video.videoHeight;\n      const context = canvas.getContext('2d');\n      context.drawImage(video, 0, 0, canvas.width, canvas.height);\n\n      // Convert the canvas to an image data URL\n      const imageData = canvas.toDataURL('image/png');\n\n      // Display the captured image data URL (for debugging)\n      result.textContent = `Captured barcode image. (Process this image for scanning)`;\n      \n      // This is where you would send the image to a barcode processing API or \n      // implement a JavaScript-based barcode decoding library for processing\n    });\n  </script>\n</body>\n</html>\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Barcode Scanner</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      text-align: center;\n      padding: 20px;\n    }\n    #video {\n      width: 100%;\n      max-width: 400px;\n      border: 2px solid black;\n    }\n    #result {\n      margin-top: 20px;\n      font-size: 1.2em;\n      color: green;\n    }\n    #error {\n      color: red;\n    }\n  </style>\n</head>\n<body>\n  <h1>Barcode Scanner</h1>\n  <video id=\"video\" autoplay></video>\n  <button id=\"capture\">Capture Barcode</button>\n  <canvas id=\"canvas\" style=\"display:none;\"></canvas>\n  <p id=\"result\">Scan a barcode to see the result here.</p>\n  <p id=\"error\"></p>\n\n  <script>\n    const video = document.getElementById('video');\n    const canvas = document.getElementById('canvas');\n    const result = document.getElementById('result');\n    const errorElement = document.getElementById('error');\n    \n    // Access camera\n    navigator.mediaDevices.getUserMedia({ video: { facingMode: \"environment\" } })\n      .then(stream => {\n        video.srcObject = stream;\n      })\n      .catch(err => {\n        errorElement.textContent = `Camera access error: ${err.name} - ${err.message}`;\n      });\n\n    document.getElementById('capture').addEventListener('click', () => {\n      // Draw the current video frame to a canvas element\n      canvas.width = video.videoWidth;\n      canvas.height = video.videoHeight;\n      const context = canvas.getContext('2d');\n      context.drawImage(video, 0, 0, canvas.width, canvas.height);\n\n      // Convert the canvas to an image data URL\n      const imageData = canvas.toDataURL('image/png');\n\n      // Display the captured image data URL (for debugging)\n      result.textContent = `Captured barcode image. (Process this image for scanning)`;\n      \n      // This is where you would send the image to a barcode processing API or \n      // implement a JavaScript-based barcode decoding library for processing\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "e8272930-770e-4103-b167-ee27b2a955e4",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1380,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>QR Barcode Scanner</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      text-align: center;\n      padding: 1rem;\n    }\n    #video {\n      width: 100%;\n      max-width: 400px;\n      margin: 1rem auto;\n      border: 1px solid #ccc;\n    }\n    #result {\n      font-size: 1.2rem;\n      margin-top: 1rem;\n      color: green;\n    }\n    #canvas {\n      display: none; /* used for scanning, but hidden from view */\n    }\n  </style>\n</head>\n<body>\n  <h1>QR Barcode Scanner</h1>\n  <button id=\"startButton\">Scan Me</button>\n  <br />\n  <video id=\"video\" autoplay muted playsinline></video>\n  <canvas id=\"canvas\"></canvas>\n  <p id=\"result\"></p>\n\n  <!-- jsQR library loaded from CDN -->\n  <script src=\"https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js\"></script>\n  <script>\n    const video = document.getElementById('video');\n    const canvas = document.getElementById('canvas');\n    const resultElement = document.getElementById('result');\n    const startButton = document.getElementById('startButton');\n    const context = canvas.getContext('2d');\n\n    let scanning = false;\n    let videoStream = null;\n\n    // Start the camera and scanning process\n    function startScanner() {\n      navigator.mediaDevices.getUserMedia({ video: { facingMode: \"environment\" } })\n        .then(stream => {\n          videoStream = stream;\n          video.srcObject = stream;\n          video.setAttribute(\"playsinline\", true); // required to tell iOS safari we don't want fullscreen\n          video.play();\n          scanning = true;\n          tick(); // start processing video frames\n        })\n        .catch(err => {\n          console.error(err);\n          alert(\"Error accessing camera: \" + err);\n        });\n    }\n\n    // Continuously capture video frames and check for a QR code\n    function tick() {\n      if (!scanning) return;\n\n      if (video.readyState === video.HAVE_ENOUGH_DATA) {\n        // Set canvas dimensions to match the video stream\n        canvas.hidden = false;\n        canvas.height = video.videoHeight;\n        canvas.width = video.videoWidth;\n        context.drawImage(video, 0, 0, canvas.width, canvas.height);\n        \n        // Get image data from the canvas\n        const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\n        // Use jsQR to look for a QR code in the image data\n        const code = jsQR(imageData.data, imageData.width, imageData.height, {\n          inversionAttempts: \"dontInvert\"\n        });\n\n        if (code) {\n          // QR code found! Stop scanning.\n          scanning = false;\n          drawLine(code.location.topLeftCorner, code.location.topRightCorner, \"#FF3B58\");\n          drawLine(code.location.topRightCorner, code.location.bottomRightCorner, \"#FF3B58\");\n          drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, \"#FF3B58\");\n          drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, \"#FF3B58\");\n          resultElement.innerText = \"QR Code Data: \" + code.data;\n\n          // Stop all video tracks to turn off the camera\n          videoStream.getTracks().forEach(track => track.stop());\n        } else {\n          // Continue scanning\n          requestAnimationFrame(tick);\n        }\n      } else {\n        // Wait for the video to be ready, then scan again\n        requestAnimationFrame(tick);\n      }\n    }\n\n    // Draw a line on the canvas (to outline the detected QR code)\n    function drawLine(begin, end, color) {\n      context.beginPath();\n      context.moveTo(begin.x, begin.y);\n      context.lineTo(end.x, end.y);\n      context.lineWidth = 4;\n      context.strokeStyle = color;\n      context.stroke();\n    }\n\n    // Start scanning when the button is clicked\n    startButton.addEventListener(\"click\", startScanner);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "0749bd4e-f068-4e82-bdcf-843f591e905e",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        480
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-06T10:43:08.566Z",
+  "versionId": "6e4c8b6c-25b5-4811-9964-44e093f96a02"
+}
