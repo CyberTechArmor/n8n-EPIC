@@ -1,0 +1,113 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-21T14:58:04.954Z",
+  "id": "jSbkCnjjyoH6jtLU",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 26",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with  appt_ack AS (\n    SELECT \n        a.Patient_ID,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments,\n\t\tSUM(CASE WHEN Status_Desc = 'No Show' THEN 1 ELSE 0 END) AS Noshowed_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE a.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc NOT LIKE 'Diag%' and a.Resource_Desc not like 'BH%' and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' and a.Resource_Desc not like 'Blue%'\n\t  and cast(a.Appointment_DateTime as date) between DATEADD(year,-3,cast(getdate() as date)) and DATEADD(day,4,cast(getdate() as date)) \n\t  and a.Patient_Number != '(potential patient)'\n    GROUP BY a.Patient_ID\n),\nltsr as(\nSELECT \n        a.Patient_ID,\n        a.Total_Appointments,\n        a.Acknowledged_Appointments,\n        CAST(ROUND((a.Acknowledged_Appointments + a.Noshowed_Appointments) * 1.0 / a.Total_Appointments, 2) AS FLOAT) AS Acknowledged_Ratio\n    FROM appt_ack a\n),\nltsrandnew as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,\ncase when l.Acknowledged_Ratio <= {{ $json.showrate }} then 'Fail'\nelse 'Pass'\nend as LTSR,\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\nelse 'MultiplePriorAppt'\nend NewVsEst\nfrom ltsr l\n),\nack_ltsr_new as(\nselect l.Patient_ID,\nl.Acknowledged_Ratio,l.LTSR,\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\nelse 'Est'\nend as NewVsEstVsNo\nfrom ltsrandnew l\n)\nselect a.Patient_ID,a.Patient_Number,\n\t\t[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n       ,[Appt_Sched_Location_Descr]\n       ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date],\n\t  l.Acknowledged_Ratio,l.LTSR,l.NewVsEstVsNo\nfrom [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a \nleft join ack_ltsr_new l on a.Patient_ID=l.Patient_ID\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE)) and DATEADD(DAY, {{ $json.daysout }}, CAST(GETDATE() AS DATE))\n  and a.Appt_Status ='s'\n  and a.Appt_Resource_Descr not like 'ZZ%' \n  and a.Appt_Sched_Location_Descr not like 'Diag%' \n  and a.Appt_Type_Descr not like 'bs%'  and a.Appt_Sched_Location_Descr not like '%bill%'\n  and a.Appt_Resource_Descr not like 'PA, Lab X-Ray'"
+      },
+      "id": "17c75fe7-a1b9-447b-bb0e-9834701b9e8c",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        740,
+        460
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "7fa2fb81-a923-4520-a5e7-bbe811057bfc",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9789fb0a-56f8-4098-bce6-6b63c72bd3fe",
+              "name": "daysout",
+              "value": 3,
+              "type": "number"
+            },
+            {
+              "id": "3d5ad0a4-d185-4b12-9414-d713514064d3",
+              "name": "showrate",
+              "value": 0.3,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb845c66-0146-4719-8f2f-1090182cc960",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        600,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-21T14:58:04.954Z",
+  "versionId": "878a851a-21ff-41b2-bb35-28d36d24d4c5"
+}
