@@ -1,0 +1,547 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request10": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Get Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-12T19:11:53.742Z",
+  "id": "eze0XZZd9UgIITFZ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Blue Sky In-Between Communication Limesurvey",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"method\":\"get_participant_properties\",\"params\":{\"sSessionKey\":\"{{ $json[\"result\"] }}\", \"iSurveyID\":\"{{ $('Webhook').item.json[\"query\"][\"SID\"] }}\",\"aTokenQueryProperties\":{\"token\":\"{{ $('Webhook').item.json[\"query\"][\"stoken\"] }}\"}, \"aTokenProperties\":[\"email\",\"attribute_1\",\"firstname\",\"lastname\"]},\"id\":1}",
+        "options": {}
+      },
+      "id": "fe7e4754-fdf0-4cef-8ed9-615f2c32b22f",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1420,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnbluesky\",        \"password\": \"Blu3SkyForL!fe\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "73d22da5-e992-4cf2-bd98-50e82757dda3",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bsb.bitrix24.com/rest/41/q1peh1vh95hch7og//tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"{{ $json[\"surveyls_title\"] }}, {{ $json[\"result\"][\"firstname\"] }} {{ $json[\"result\"][\"lastname\"] }}\",\n       \"GROUP_ID\":\"23\",\n       \"RESPONSIBLE_ID\": \"14\",\n       \"DESCRIPTION\": \"Survey: {{ $json[\"surveyls_title\"] }}{{'\\\\n'}}Name: {{ $json[\"result\"][\"firstname\"] }}{{'\\\\n'}}Email: {{ $json[\"result\"][\"email\"] }}{{'\\\\n'}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "64e2ada3-8246-48cb-ace1-5265b14da10d",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2740,
+        320
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "a82f46ab-7170-45f7-b141-93dfe1b8f5b8",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1420,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "08477bdf-825e-4c78-951c-236a2a6bd1ca",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "74e65253-803f-499c-882e-d45603134370",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "44516b3f-5474-476e-86eb-573860c86e47",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1720,
+        80
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "89b89270-64b4-4781-bf40-af129ceeeb98",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "819d0a79-3fe4-4619-9bc5-a66a44ce32e6",
+              "leftValue": "={{ $json.sid }}",
+              "rightValue": "={{ $('Webhook').item.json.query.SID }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "b2cc726c-9c23-46d4-b2f1-2809166a03b3",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/31be979c-bf26-4789-8ac0-79f8b680046e",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "Survey",
+              "value": "={{ $json.surveyls_title.replaceAll(\"'\",\"\") }}"
+            },
+            {
+              "name": "FirstName",
+              "value": "={{ $json.result.firstname }}"
+            },
+            {
+              "name": "LastName",
+              "value": "={{ $json.result.lastname }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $json.result.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d723d7e-9d4c-429a-88d0-46b644c5b5f5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2060,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n.cybertech.app/webhook/34cebf04-9c86-4264-a354-92f377c76b46-BS?ID={{ $json[\"ID\"] }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "d9b224e5-e7f8-4b70-b994-69499d93064c",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2220,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "06731bcb-4dd8-4fdb-8d81-e7316b6604ee",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2380,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e3576c94-e53c-4a5a-804a-2b5bfd6c68df",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e2b8750-ac83-45b0-8403-c9cdce2a5fc4",
+      "name": "Get Contacts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2620,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "path": "16d9a2e3-c9e6-487c-8602-e311cec17660",
+        "options": {}
+      },
+      "id": "d948b21a-7b1a-4443-a9ab-401ed1b8a3d4",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        960,
+        460
+      ],
+      "webhookId": "16d9a2e3-c9e6-487c-8602-e311cec17660"
+    }
+  ],
+  "pinData": {
+    "Get Contacts": [
+      {
+        "json": {
+          "data": [
+            {
+              "result": {
+                "ID": "37",
+                "POST": "",
+                "COMMENTS": "",
+                "HONORIFIC": "",
+                "NAME": "Thomas",
+                "SECOND_NAME": "",
+                "LAST_NAME": "Stilwell",
+                "PHOTO": null,
+                "LEAD_ID": null,
+                "TYPE_ID": "CLIENT",
+                "SOURCE_ID": "CALL",
+                "SOURCE_DESCRIPTION": "502880",
+                "COMPANY_ID": null,
+                "BIRTHDATE": "",
+                "EXPORT": "Y",
+                "HAS_PHONE": "Y",
+                "HAS_EMAIL": "N",
+                "HAS_IMOL": "N",
+                "DATE_CREATE": "2024-03-06T20:42:51+03:00",
+                "DATE_MODIFY": "2024-04-30T22:21:00+03:00",
+                "ASSIGNED_BY_ID": "29",
+                "CREATED_BY_ID": "29",
+                "MODIFY_BY_ID": "14",
+                "OPENED": "Y",
+                "ORIGINATOR_ID": null,
+                "ORIGIN_ID": null,
+                "ORIGIN_VERSION": null,
+                "FACE_ID": null,
+                "LAST_ACTIVITY_TIME": "2024-03-06T20:42:51+03:00",
+                "ADDRESS": null,
+                "ADDRESS_2": null,
+                "ADDRESS_CITY": null,
+                "ADDRESS_POSTAL_CODE": null,
+                "ADDRESS_REGION": null,
+                "ADDRESS_PROVINCE": null,
+                "ADDRESS_COUNTRY": null,
+                "ADDRESS_LOC_ADDR_ID": null,
+                "UTM_SOURCE": null,
+                "UTM_MEDIUM": null,
+                "UTM_CAMPAIGN": null,
+                "UTM_CONTENT": null,
+                "UTM_TERM": null,
+                "LAST_ACTIVITY_BY": "29",
+                "PHONE": [
+                  {
+                    "ID": "87551",
+                    "VALUE_TYPE": "MOBILE",
+                    "VALUE": "+12488726322",
+                    "TYPE_ID": "PHONE"
+                  }
+                ]
+              },
+              "time": {
+                "start": 1714568920.038028,
+                "finish": 1714568920.065759,
+                "duration": 0.027730941772460938,
+                "processing": 0.010988950729370117,
+                "date_start": "2024-05-01T16:08:40+03:00",
+                "date_finish": "2024-05-01T16:08:40+03:00",
+                "operating_reset_at": 1714569520,
+                "operating": 0
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.108",
+            "x-forwarded-for": "10.0.24.108",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.blueskypro.org/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; __ssid=b094e84f053e7d414fe35d5a20a76ff; _I_=6577f9ebcbbc9a7779553af2ebf08a47312f9282642c70ef10707680590c2466-1717620499; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiS0VpMndVRHRnS1ZXRFlaZGhZRHA4TEh2Q1pWa0dGeVNxTld2VHYrREFsZz0iLCJpYXQiOjE3MTgyMjE2MjcsImV4cCI6MTcxODgyNjQyN30.Fo1WDxlGQ9emLSL3i4n7JLLUAWPG2ICzM0DsSjPtQV4; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FQHxwFtzVbrbZTuGRj3v8Spd7QXRshVxzMjwwxgZNqrmbcj6ZA4mXPWkVAX2dFpS0qZKriAQHpzw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2FOlh%2B1QWYtwqFeIDOIw%2FMaRvIZz8F5r0rn0AV5JksIZzpKwMYC4EbqDeqVpnleZwIyc721iABlxzRYH3PkBlQEBkp2ypfE6ka3vM6BeTDHhiVMtAh9JVd%2BTOxMveI22InF1aba3C3KJKlEWJdt%2Fp177QDIKPE72Jw%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BPR9tzYHYm1nE3wzvX1O9ndHxH7O76BUn8OHUDyPvU8qtHAieMoXMeXk%2B640aHwOuV6jzP4aU62zEjdaFAkDWP6nZNlMs5cyiogW8Yb93ne4CaL1WratDCziQDag6sMq2aeGxAtkxMog%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1718224283261%2C%2201900da4-caa0-78cf-a415-6b8ab9761214%22%2C1718215821984%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19U3WSWt8p1EFE5HmiBkFOvuJw9ahwo8D9A8gQ9IFFsy%2BqqfLRCSuu%2FFUvbKgTRnKK66nS6%2BM1LbF2DC6QPtXPcmcFvkLkYiVQIajNKCcYAgW%2BoUYdk9B7hjF8h5HO4dBnXleWIa2tGSw%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "SID": "434832",
+            "stoken": "B5lufrAkGzU8VPW",
+            "firstname": "<span class='em-expression em-haveerror'  ><span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >firstname</span></span></span>"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/16d9a2e3-c9e6-487c-8602-e311cec17660",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-12T22:30:48.673Z",
+  "versionId": "d967b15a-33f7-4786-b225-38d07b0bd003"
+}
