@@ -1,0 +1,76 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-16T19:57:22.252Z",
+  "id": "x9WpNuxeyz1afqMv",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Website CassComm",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9b97d24d-54a6-47c1-90e4-51e15226e8f6",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        820,
+        420
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "path": "tessa",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b244215f-ddb2-497d-bbd8-253c8cea891a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        220
+      ],
+      "webhookId": "7ea39887-56ba-4659-8ea1-6eda35577bc6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Congratulations Tessa!</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);\n            font-family: 'Arial', sans-serif;\n            overflow: hidden;\n        }\n        .message {\n            position: absolute;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            text-align: center;\n            color: #fff;\n            animation: fadeIn 2s;\n        }\n        .message h1 {\n            font-size: 4em;\n            margin: 0;\n        }\n        .message p {\n            font-size: 2em;\n            margin: 0;\n        }\n        @keyframes fadeIn {\n            from { opacity: 0; }\n            to   { opacity: 1; }\n        }\n    </style>\n</head>\n<body>\n\n<div class=\"message\">\n    <h1>Congratulations Tessa!</h1>\n    <p>You passed the bar exam!</p>\n</div>\n\n<canvas id=\"confetti-canvas\"></canvas>\n\n<!-- Confetti JS Library -->\n<script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n\n<script>\n    // Confetti settings\n    var duration = 5 * 1000;\n    var animationEnd = Date.now() + duration;\n    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };\n\n    function randomInRange(min, max) {\n      return Math.random() * (max - min) + min;\n    }\n\n    var interval = setInterval(function() {\n      var timeLeft = animationEnd - Date.now();\n\n      if (timeLeft <= 0) {\n        return clearInterval(interval);\n      }\n\n      var particleCount = 50 * (timeLeft / duration);\n      // Since particles fall down, start a bit higher than random\n      confetti(Object.assign({}, defaults, { \n        particleCount, \n        origin: { x: randomInRange(0, 1), y: Math.random() - 0.2 }\n      }));\n    }, 250);\n</script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "c4c81c47-10cd-4e02-9897-9c80255eefa4",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-16T20:05:21.450Z",
+  "versionId": "85a38845-eab6-4c25-bb62-9eb42418102c"
+}
