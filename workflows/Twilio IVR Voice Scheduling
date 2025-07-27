@@ -1,0 +1,19 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-07T16:40:21.236Z",
+  "id": "vR8i5pSejEZnv294",
+  "isArchived": false,
+  "meta": null,
+  "name": "Twilio IVR Voice Scheduling",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-07T16:40:21.236Z",
+  "versionId": "b7a14523-400f-4d04-a1bf-82640745ff8a"
+}
