@@ -1,0 +1,35 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-03-27T11:23:09.178Z",
+  "id": "6vzIKeXSxUsOLjmb",
+  "isArchived": false,
+  "meta": null,
+  "name": "Report Issue HERO Care Management Chart",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "75c2ab82-bd4f-424f-9f4a-18d6d6254360",
+        "options": {}
+      },
+      "id": "3e519293-1ff9-41eb-ac0f-46cebd3010e1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "75c2ab82-bd4f-424f-9f4a-18d6d6254360"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-27T11:23:14.042Z",
+  "versionId": "9d9988fa-a8d4-401e-8817-08602dace285"
+}
