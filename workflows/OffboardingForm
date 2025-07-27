@@ -1,0 +1,2079 @@
+{
+  "active": true,
+  "connections": {
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "User Does Not Exist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetToLowerCase": {
+      "main": [
+        [
+          {
+            "node": "LastDay",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "User Does Not Exist1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckedOutDB": {
+      "main": [
+        [
+          {
+            "node": "FindUserInCheckedOut",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FindUserInCheckedOut": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateCheckOut": {
+      "main": [
+        [
+          {
+            "node": "Offboarding1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LastDay": {
+      "main": [
+        [
+          {
+            "node": "ResignDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ResignDate": {
+      "main": [
+        [
+          {
+            "node": "OffboardingLog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offboarding1": {
+      "main": [
+        [
+          {
+            "node": "Deactivate\\",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offboarding": {
+      "main": [
+        [
+          {
+            "node": "Deactivate\\1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deactivate\\": {
+      "main": [
+        [
+          {
+            "node": "Deactivated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deactivate\\1": {
+      "main": [
+        [
+          {
+            "node": "Deactivated1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeactivatedDN": {
+      "main": [
+        [
+          {
+            "node": "CheckedOutDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OwnerDN": {
+      "main": [
+        [
+          {
+            "node": "CheckedOutDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IT-DN": {
+      "main": [
+        [
+          {
+            "node": "CheckedOutDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckedOutDB1": {
+      "main": [
+        [
+          {
+            "node": "FindUserInCheckedOut1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "UpdateCheckOut1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Offboarding6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FindUserInCheckedOut1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateCheckOut1": {
+      "main": [
+        [
+          {
+            "node": "Offboarding5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate": {
+      "main": [
+        [
+          {
+            "node": "FormatCurrentDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormatCurrentDate": {
+      "main": [
+        [
+          {
+            "node": "LastDayNumerix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Offboarding",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Offboarding2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offboarding2": {
+      "main": [
+        [
+          {
+            "node": "PendingDeactivate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "UpdateCheckOut",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateCheckOut2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateCheckOut2": {
+      "main": [
+        [
+          {
+            "node": "Offboarding3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offboarding3": {
+      "main": [
+        [
+          {
+            "node": "PendingDeactivate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manager": {
+      "main": [
+        [
+          {
+            "node": "CheckedOutDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LastDayNumerix": {
+      "main": [
+        [
+          {
+            "node": "CurrentDateNumerix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDateNumerix": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OffboardingLog": {
+      "main": [
+        [
+          {
+            "node": "OffboardingForm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OffboardingForm": {
+      "main": [
+        [
+          {
+            "node": "If-LogExists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If-LogExists": {
+      "main": [
+        [
+          {
+            "node": "HTML8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML8": {
+      "main": [
+        [
+          {
+            "node": "OffboardingLogExists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "DeactivatedDN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OwnerDN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IT-DN",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Manager",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CheckedOutDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SetToLowerCase",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-06T19:35:48.088Z",
+  "id": "qiyKISFWavjiEMQy",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "OffboardingForm",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3e8cb0be-68dd-4b58-bb8c-b69ac0a50d59",
+              "leftValue": "={{ $('Webhook').item.json.query.Username }}",
+              "rightValue": "ECOE",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "8840f8ae-4985-4bcc-8b15-cdb176ca2cb6",
+              "leftValue": "={{ $('Webhook').item.json.query.Username }}",
+              "rightValue": "ecoe",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "5aa1dce2-9d63-41b2-af36-c4af6e694b87",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>This User Does Not Exist</h1>\n    <h2>Please try again</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "3d010b29-27f0-4e84-bb18-5135e4c69a5b",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }} ",
+        "options": {}
+      },
+      "id": "62e2fdb1-753d-457b-824a-7df98ab3e52c",
+      "name": "User Does Not Exist",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1500,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $('Webhook').item.json.query.Username }}",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "0fa1f693-0f02-4d85-b4bf-f9d2570a0bc0",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        440
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a175c995-e071-48a8-8f4b-f49105bd74b7",
+              "name": "query.Username",
+              "value": "={{ $json.query.Username.toLowerCase().replaceAll(' ','' )}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f726ca35-5a6e-479b-a7a0-44efcf6798d4",
+      "name": "SetToLowerCase",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -180,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>This User Does Not Exist</h1>\n    <h2>Please try again</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "17931b5b-34da-4457-b1ee-1fe87440596a",
+      "name": "HTML1",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1740,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "1b69bd6b-891b-4873-886e-1022c7b3c9b7",
+      "name": "User Does Not Exist1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1920,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "2eb1b5ba-3df7-4c8c-9997-a8b423548ed8",
+      "name": "CheckedOutDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        980
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "de2a2a6d-a022-4767-9d0a-d0054e800e21",
+              "leftValue": "={{ $('FindUserInCheckedOut').item.json.Username }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "2e48b47c-db74-4ac6-9c62-b071f00905e7",
+              "leftValue": "={{ $('FindUserInCheckedOut').item.json.Static }}",
+              "rightValue": "Y",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e64f6b0b-8505-48f0-8833-cda1c4cafb23",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2540,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "32ed304d-b62b-4b93-b505-38ef05f7b99e",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d96355fc-256f-4074-b5c2-b613f0dd3d64",
+      "name": "FindUserInCheckedOut",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        980
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $json.cn }} is  under the Owner Role can't be deactivated</h1>\n    <h2>Your Request will be set to Pending for review</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "391af88c-ebad-4015-8bde-ec2a20f9b82e",
+      "name": "OwnerDN",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $json.cn }} is already deactivated</h1>\n    <h2>Request will be marked as completed.</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "35403366-20ea-45ef-990a-c4e65ecb455d",
+      "name": "DeactivatedDN",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $json.cn }} is under the IT Role can't be deactivated</h1>\n    <h2>Your Request will be set to Pending for review</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "759bac81-92cf-4413-9859-d4a3d21c00ca",
+      "name": "IT-DN",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Id }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "Pending"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "={{ $json.Category }} Needs to be claimed"
+            }
+          ]
+        }
+      },
+      "id": "5586b0d8-b16a-4d93-9127-92b551b83277",
+      "name": "UpdateCheckOut",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        700
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Model }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Serial }}"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "Teams and Laptop need to be collected"
+            },
+            {
+              "fieldName": "LDAP Status",
+              "fieldValue": "Deactivated"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "6d6e47d2-b4b5-4e5c-8bb7-ee3ca01719b6",
+      "name": "Offboarding1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        700
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Webhook').item.json.query.LastDay }}",
+        "options": {}
+      },
+      "id": "97a45ef4-d121-49d6-aa7c-5e6f57420c29",
+      "name": "LastDay",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        40,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Webhook').item.json.query.ResignDate }}",
+        "options": {}
+      },
+      "id": "ff1df2ea-9e19-41bc-bf0e-c881f1f94ee5",
+      "name": "ResignDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        260,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "LDAP Status",
+              "fieldValue": "Deactivated"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "0644d4a7-72ae-420e-9a20-1f563192f6f8",
+      "name": "Offboarding",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3000,
+        1080
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $('LDAP').item.json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "userAccountControl",
+              "value": "514"
+            }
+          ]
+        }
+      },
+      "id": "b7dc895f-9c8c-4526-a45a-49fe406fe2ee",
+      "name": "Deactivate\\",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        700
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $('LDAP').item.json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "userAccountControl",
+              "value": "514"
+            }
+          ]
+        }
+      },
+      "id": "bd0f8f3b-ce04-4330-a379-209678c3c7e9",
+      "name": "Deactivate\\1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        1080
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $('LDAP').item.json.cn }} is deactivated.</h1>\n    <h2>Laptop needs to be reclaimed.</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "6aca40d2-0002-40a1-b549-6a74d21050dc",
+      "name": "Deactivated",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3480,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $('LDAP').item.json.cn }} is deactivated.</h1>\n    <h2>Form is documented into the Database.</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "bb1bcc5b-7541-4298-b574-f1fbe961bf4b",
+      "name": "Deactivated1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3380,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "f69fff59-db35-4af2-b740-37798dd101a7",
+      "name": "CheckedOutDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2440,
+        360
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "de2a2a6d-a022-4767-9d0a-d0054e800e21",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "2e48b47c-db74-4ac6-9c62-b071f00905e7",
+              "leftValue": "={{ $json.Static }}",
+              "rightValue": "Y",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a13f3031-8e7a-4999-8655-ce820cfcd504",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2840,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "32ed304d-b62b-4b93-b505-38ef05f7b99e",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b7113d9f-26e3-49ac-b24e-821766ce6d63",
+      "name": "FindUserInCheckedOut1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2620,
+        360
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $json.Id }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "Pending"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "={{ $json.Category }} Needs to be claimed"
+            }
+          ]
+        }
+      },
+      "id": "d4758ee0-c62f-4122-8df2-a607f0a18eb9",
+      "name": "UpdateCheckOut1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        260
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('If3').item.json.Username }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $('FindUserInCheckedOut1').item.json.Model }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $('FindUserInCheckedOut1').item.json.Serial }}"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "Teams and Laptop need to be collected"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "d6be13fe-27c4-4dd5-8850-acb9d9b8e5e2",
+      "name": "Offboarding5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3320,
+        260
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('If3').item.json.Username }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "68687ad7-d4dc-4f24-a8e0-fd57071a2ee3",
+      "name": "Offboarding6",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3060,
+        440
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c55d8e80-766d-408b-a503-aed7a7d32fc1",
+      "name": "CurrentDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "e4fceace-43e8-4033-9497-b56665d25d3b",
+      "name": "FormatCurrentDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "639abd0b-a6ab-427e-9420-6eaa5873d91e",
+              "leftValue": "={{ $('CurrentDateNumerix').item.json.CurrentDateNumerix.toInt() }}",
+              "rightValue": "={{ $('LastDayNumerix').item.json.LastDayNumerix.toInt() }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7881744c-09bf-46b3-9419-6be700df4de2",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2780,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "e3093777-1e6a-484c-b170-1f37afc8754b",
+      "name": "Offboarding2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3100,
+        1280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "639abd0b-a6ab-427e-9420-6eaa5873d91e",
+              "leftValue": "={{ $('CurrentDateNumerix').item.json.CurrentDateNumerix.toInt() }}",
+              "rightValue": "={{ $('LastDayNumerix').item.json.LastDayNumerix.toInt() }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6ca8a16f-c7c2-431d-8b6d-e17921cbad80",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2760,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Id }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "Pending"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "={{ $json.Category }} Needs to be claimed"
+            }
+          ]
+        }
+      },
+      "id": "32c4a125-b5e8-46a0-bc94-3a6f34e45d2e",
+      "name": "UpdateCheckOut2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3020,
+        900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('Webhook').item.json.query.Role }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('Webhook').item.json.query.ReasonOfLeave }}"
+            },
+            {
+              "fieldName": "Last day of Employment",
+              "fieldValue": "={{ $('LastDay').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('ResignDate').item.json.formattedDate }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('Webhook').item.json.query.Department }}"
+            },
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Model }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $('FindUserInCheckedOut').item.json.Serial }}"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "Teams and Laptop need to be collected"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "e9d24a95-efed-4414-8e0d-864fb95b634f",
+      "name": "Offboarding3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3180,
+        900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $('LDAP').item.json.cn }} will deactivated on {{ $json['Last day of Employment'] }} </h1>\n    <h2>Laptop needs to be reclaimed.</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script> ",
+        "options": {}
+      },
+      "id": "c8a72008-fe79-4b31-88ac-5cce9a7bf02b",
+      "name": "PendingDeactivate",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3380,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $('LDAP').item.json.cn }} will deactivated on {{ $json['Last day of Employment'] }} </h1>\n    <h2>Request posted</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script> ",
+        "options": {}
+      },
+      "id": "14b52a37-f1d4-418e-9653-599f9bae727d",
+      "name": "PendingDeactivate1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3300,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>{{ $json.cn }} is under the Manager Role can't be deactivated</h1>\n    <h2>Your Request will be set to Pending for review</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>",
+        "options": {}
+      },
+      "id": "1b8bd00e-e339-4189-ad46-ac884a4ca2e4",
+      "name": "Manager",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1900,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('LastDay').item.json.formattedDate }}",
+        "format": "x",
+        "outputFieldName": "LastDayNumerix",
+        "options": {}
+      },
+      "id": "c82ee4cd-bcd4-490b-b626-45cfb7bfc57d",
+      "name": "LastDayNumerix",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate').item.json.currentDate }}",
+        "format": "x",
+        "outputFieldName": "CurrentDateNumerix",
+        "options": {}
+      },
+      "id": "cd917718-5b6c-43c8-877a-f90b3efec720",
+      "name": "CurrentDateNumerix",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6bf916db-5dda-47e1-8527-c52d13971521",
+      "name": "OffboardingLog",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        480,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a1d03877-23a7-4b1f-be95-f47c839d93a8",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6a6e25eb-74e1-440e-addb-dcae2d44d013",
+      "name": "OffboardingForm",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        700,
+        420
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "331f7ad3-d30d-4f53-98bb-61581659b2cc",
+              "leftValue": "={{ $json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4d930cc1-15c0-4fbe-976d-ac2f3eb6ce45",
+      "name": "If-LogExists",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        920,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    <h1>Someone Already filled out a form for this user</h1>\n    <h2>User is already deactivated or in pending</h2>\n    <p>Please Click Here to be Redirected <a href=\"https://forms.epicpc.com/limesurvey/index.php/162797?newtest=Y&lang=en\">Offboarding Form</a></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 20px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 40px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 30px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "1ca9d942-9c44-4fb9-b24d-64622cab5443",
+      "name": "HTML8",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }} ",
+        "options": {}
+      },
+      "id": "8d3c3067-5fd0-4e05-a6ef-c6d5eb23f7e3",
+      "name": "OffboardingLogExists",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1500,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.dn }}",
+                    "rightValue": "OU=8.0 Deactivated ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ContainsDeactivated"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7fea476c-7931-496f-b51a-aec3f0daa2b7",
+                    "leftValue": "={{ $json.dn }}",
+                    "rightValue": "0.0 Company Owners",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Owner"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "73fab5e2-a4b7-4cac-9544-c8b65289d970",
+                    "leftValue": "={{ $json.dn }}",
+                    "rightValue": "6.0 Information Technology",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "bbd76784-0b33-4d4c-b72e-05dc0ca5d436",
+                    "leftValue": "={{ $json.dn }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IsEmpty"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "1c9f51a1-302b-46a8-901b-0bc23973310b",
+                    "leftValue": "={{ $json.dn }}",
+                    "rightValue": "Manager",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IsManager"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "1247a413-cf91-48b0-b315-16db73cccf46",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "path": "EPIC-Offboarding",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f5ed4e6a-b489-49fe-b772-c49300000424",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -360,
+        420
+      ],
+      "webhookId": "15727c38-1c7c-4974-9ea9-757f3b31bc5c"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "HR-Offboarding",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        920
+      ],
+      "id": "39aa758d-f05e-47be-be8d-1446e1ba9701",
+      "name": "Webhook1",
+      "webhookId": "9f005ac7-776b-424a-82d2-6962a4280a68"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"fields\": {\n        \"TITLE\": \"Offboarding\",\n        \"GROUP_ID\": \"74\",\n        \"RESPONSIBLE_ID\": \"19\",\n        \"DESCRIPTION\": \"Username: {{ $json.query.Username }}{{ '\\\\n' }}SignOff: {{ $json.query.SignOff }}{{ '\\\\n' }}ReasonOfLeave: {{ $json.query.ReasonOfLeave }}{{ '\\\\n' }}LastDay:{{ $json.query.LastDay }}\"\n    }\n}\n",
+        "options": {}
+      },
+      "id": "3390ef69-2ecd-4f11-b8b0-f74b6ca9f384",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -100,
+        140
+      ],
+      "notes": "\"GROUP_ID\":\"74\", Group ID\n\"RESPONSIBLE_ID\": \"19\", Responsible person"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Laptop Replacement Request\",\n       \"GROUP_ID\":\"74\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"Description: {{ $json.query.Description }}{{'\\\\n'}}RequestType:{{ $json.query.RequestType }}{{'\\\\n'}}User:{{ $json.query.Username.toLowerCase() }}{{'\\\\n'}}Requester: {{ $json.query.Requester }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "4366801f-07f9-4fc4-af9b-59e793956638",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        20
+      ],
+      "notes": "\"GROUP_ID\":\"74\", Group ID\n\"RESPONSIBLE_ID\": \"19\", Responsible person"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.199",
+            "x-forwarded-for": "10.0.14.199",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "Username": "amoore",
+            "LastDay": "2024-06-14 00:00",
+            "Department": "Care Management",
+            "Role": "Care Manager",
+            "ReasonOfLeave": "Job abandonment, no call no show for three consecutive days.",
+            "ResignDate": "2024-06-20 00:00",
+            "SignOff": "Shawna Lasenby"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/EPIC-Offboarding",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2025-01-20T16:46:46.598Z",
+  "versionId": "3f56a290-a84a-497e-a1e6-8fba2e9b4d8b"
+}
