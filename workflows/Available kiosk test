@@ -1,0 +1,498 @@
+{
+  "active": false,
+  "connections": {
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointment Time": {
+      "main": [
+        [
+          {
+            "node": "If Block in Current Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop - Provider List": {
+      "main": [
+        [],
+        [
+          {
+            "node": "GetAvailableTimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetAvailableTimeBlocks": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over TimeBlocks": {
+      "main": [
+        [
+          {
+            "node": "Limit2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Block in Current Time": {
+      "main": [
+        [
+          {
+            "node": "If Not on Lunch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Not on Lunch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Create Walk-in",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Appointment Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Limit2": {
+      "main": [
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-03T14:44:54.059Z",
+  "id": "R042dT2vUrJITeBk",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Available kiosk test",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "getavailabletimeblocksinfo",
+        "options": {}
+      },
+      "id": "bfe61ac5-4cd0-410f-b181-6a0f53f1712d",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1148.1711804143397,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date from the previous node\nconst currentDate = new Date($json.currentDate);\n\n// Function to adjust time by offset in hours\nfunction adjustTimezone(date, offset) {\n  const utc = date.getTime() + (date.getTimezoneOffset() * 60000);\n  return new Date(utc + (3600000 * offset));\n}\n\n// Adjust to the desired timezone (-5 hours for example)\nconst adjustedDate = adjustTimezone(currentDate, -5);\n\n// Format the adjusted date\nconst options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };\nlet formattedDate = adjustedDate.toLocaleString('en-US', options);\n\n// Remove the comma from the formatted date\nformattedDate = formattedDate.replace(',', '');\n\n// Your existing logic for time processing\nconst startTime = parseInt(items[0].json.Start_Time);\nconst endTime = parseInt(items[0].json.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Check if there are available appointment types\nconst availableAppointmentTypes = items[0].json.Appointment_Types || [];\n\n// Determine the classification based on available appointment types\nlet classification;\nif (availableAppointmentTypes.length === 0) {\n    classification = 'Unavailable';\n} else {\n    classification = 'Available';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\nitems[0].json.FormattedDate = formattedDate;\n\nreturn items;\n"
+      },
+      "id": "4e16803b-e6f9-43ff-843e-4c3a9e798127",
+      "name": "Appointment Time",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1828.1711804143397,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# On lunch?",
+        "height": 332.2300236817687,
+        "width": 1754.0220686443854,
+        "color": 5
+      },
+      "id": "15080cbd-7f9e-43d5-b79f-4b76066eac08",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {}
+      },
+      "id": "bfba594d-b0cb-477c-8ada-902cdd33d647",
+      "name": "Loop - Provider List",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        708.1711804143397,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "="
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAvailableTimeBlocks"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "8c380fbe-fd2c-4801-a2e3-78a36e52688a",
+      "name": "GetAvailableTimeBlocks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        968.1711804143397,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3c9ce592-c042-4027-8140-cc7f218c132c",
+      "name": "Loop Over TimeBlocks",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1308.1711804143397,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9a72af13-9cea-4d50-88f3-ebdedbf850f9",
+              "leftValue": "={{ $json.IsCurrentTimeBetween }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9357392b-fcfc-4bae-b1f9-a477114b26bc",
+      "name": "If Block in Current Time",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2008.1711804143397,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "80e8493c-038e-480e-9dc8-951dbbef4c63",
+              "leftValue": "={{ $json.Classification }}",
+              "rightValue": "Unavailable",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9f831f40-2bf3-4f83-ab2d-6ade1d7b2992",
+      "name": "If Not on Lunch",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2248.1711804143397,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SaveForcedAppointment"
+            },
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json[\"Patient_ID\"] }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "=<appt><appointmentDateTime>{{ $('Appointment Time').item.json[\"FormattedDate\"] }}</appointmentDateTime><appointmentDuration>5</appointmentDuration><appointmentType>WIOV</appointmentType><schedulingLocation>{{ $('Webhook3').item.json[\"body\"][\"locationAbbreviation\"] }}</schedulingLocation><schedulingDepartment>EPIC PC</schedulingDepartment><resource>{{ $('Merge').item.json[\"Appt_Resource_Abbr\"] }}</resource><comments>Walkin-Kiosk {In five words why are you here?} </comments></appt>"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "2d76ecef-6119-43b4-a61a-07cd1a034648",
+      "name": "HTTP Create Walk-in",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2468.1711804143397,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "338cb66a-3a8c-4916-bf39-a21179a145d7",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1688.1711804143397,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c5b9b565-283b-43f5-9701-02c9945c74d6",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1508.1711804143397,
+        600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "476a4a42-4f39-4269-8efb-1e7c4d02ae79",
+      "name": "Limit2",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        488.1711804143397,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1afe6c6e-3679-4984-8b8d-898f82ba2b33",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        960
+      ]
+    }
+  ],
+  "pinData": {
+    "Appointment Time": [
+      {
+        "json": {
+          "Available_Day_ID": "279526",
+          "EligApptTypes": "ACT PHY|WINP-PE|WINP-WH|TM15|NP WH|ACTNPVOV|ACTVOV|2NPOVAWV|ACTSV-CV|ACT-VBR|NPOV10|NCWEK|ACTEP|ACT AWV|2OVCWE|2OVWH|2NPOVCWE|ACT OV|WI-WH|ACTNPOV|ACTNPAWV|ACTNPPHY|WINP-OV|WIOV|WIPHY|ACTWIAWV|ACTPHGYN|2NPOVWH|ACTTOC|2OVAWV|2OVVBR|VOVVBR|VOVDUAL|VOVVBRAW|ACTNETOC|VOVTOC|ACTERFU|VOVERFU|VOVAWV|VOVNPAWV|VOVWIOV|VOVWNPOV|VOV-OV|STOP APT|2OVCWEV|ACTPPWOV|2CWEPPWK|2AWVPPWK|2womPPWK|ACTNPppw|2NEWPPOV|2NAWVPPW|2NWOMPPW|TeleAWV|VOVNPOV|VOVONSIT|INSTPAIN|INSTOBGY|INSTCARD",
+          "SchedDept": "EPIC PC ",
+          "SchedLoc": "EPS10Mil",
+          "Start_Time": "800",
+          "Available_Date": "06/24/2024",
+          "End_Time": "810",
+          "currentDate": "2024-06-24T08:25:54.079-04:00",
+          "Duration": "0 hours 10 minutes",
+          "Classification": "Available",
+          "IsCurrentTimeBetween": false,
+          "FormattedDate": "06/24/2024 08:25 AM"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-03T14:44:54.059Z",
+  "versionId": "cdd03abf-96cd-4608-b4a3-7311e61ef823"
+}
