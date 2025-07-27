@@ -1,0 +1,1610 @@
+{
+  "active": false,
+  "connections": {
+    "Most Available Provider": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Check Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "GetAppointmentsByChangeDTTM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Paitient": {
+      "main": [
+        []
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetScheduleByPatientID": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Most Available Provider1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GetScheduleByPatientID",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-19T20:14:02.551Z",
+  "id": "Vqp6OniWwHrieB1r",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APM Testing",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SaveForcedAppointment"
+            },
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json[\"Patient_ID\"] }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "=<appt><appointmentDateTime>{{ $('Appointment Time').item.json[\"formattedDate\"] }}</appointmentDateTime><appointmentDuration>5</appointmentDuration><appointmentType>WIOV</appointmentType><schedulingLocation>EPS10Mil</schedulingLocation><schedulingDepartment>EPIC PC</schedulingDepartment><resource>{{ $('Merge').item.json[\"Appt_Resource_Abbr\"] }}</resource><comments>Walkin-Kiosk {In five words why are you here?} </comments></appt>"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "4c62877f-8156-47da-a549-af566c634c67",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2820,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @LOC VARCHAR(200) = 'EPIC Southfield 10 Mile';\n \nWITH ApptData AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time)) \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND \n        a.Appt_Sched_Location_Descr = @LOC AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and\n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and\n        a.Appt_Status IN ('A', 'S') AND \n        a.Appt_Check_Out_Time IS NULL\n),\nResourceSummary AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr,\n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count\n    FROM \n        ApptData\n    GROUP BY \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr\n),\nRankedResources AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n        A_Count,\n        S_Count,Appt_Sched_Location_Descr,\n        RANK() OVER (ORDER BY A_Count, S_Count asc) AS AvailRank\n    FROM \n        ResourceSummary\n)\nSELECT \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n    r.A_Count,\n    r.S_Count,\n    r.AvailRank AS MostAvail,\n\tr.Appt_Sched_Location_Descr\nFROM \n    RankedResources r\n \nORDER BY \n    r.AvailRank"
+      },
+      "id": "b226df19-c07f-480d-9572-290d717a3a7f",
+      "name": "Most Available Provider",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        700,
+        760
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Schedule the walk-in",
+        "height": 336.62479116762086,
+        "width": 2761.4086814864677,
+        "color": 4
+      },
+      "id": "b1c6d18d-631f-4645-937c-97f081ddcdcd",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "cb8a6d7c-bbb4-4920-a0b3-5071841b2364",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2400,
+        760
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c5b40dd2-2fe6-4bfe-91fa-0e82adbcd5a5",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        520,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "a859be39-8278-425f-8acf-f515fe49dbe6",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1139,
+        1121
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "pmtoken.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "19e7349f-d1fd-4fc0-9667-d9f6b972814e",
+      "name": "Read/Write Files from Disk1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "data",
+        "options": {}
+      },
+      "id": "1be15878-b1a3-4988-b617-9ead3b151f2c",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1940,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "7f5c7433-1f69-41df-b4ed-fa46135592a2",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1319,
+        1121
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "a91c8b54-9120-4200-ae8f-060d801be292",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1599,
+        1361
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "2142d928-ddfb-4f39-a4c3-c2329a96639c",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1459,
+        1361
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "74671374-4b4a-4f5c-9b3f-15e83c28ea7a",
+      "name": "Check Token1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1319,
+        1361
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASPM Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 666.2861090173772,
+        "width": 1290.8012866477518,
+        "color": 2
+      },
+      "id": "55b4f26b-05c5-4293-8f9a-e29cc95cd901",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1099,
+        1033
+      ]
+    },
+    {
+      "parameters": {
+        "height": 362.7737573665016,
+        "width": 646.6471275914764,
+        "color": 4
+      },
+      "id": "02b227c3-f2cd-413d-9412-8d0df95bd2a1",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "height": 294.96556026709675,
+        "width": 656.1571203767965,
+        "color": 3
+      },
+      "id": "fb56ee47-c90c-4101-94eb-33bf462e3a96",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1735,
+        1406
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-d6d4-NMNWokflow-prod\",      \"Password\":\"%p3CpcN3nW!eFlfWt%St7Pp0435@\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "d3534de1-38db-4e1f-9888-904aa4c6dc8a",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1779,
+        1521
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "f24d3603-b11e-4e25-9711-da494b9eb34f",
+      "name": "Read/Write Files from Disk2",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1899,
+        1161
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "4c3dc56f-8d9a-4dbd-b680-adc90fca611b",
+      "name": "Extract from File1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        2159,
+        1161
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4f76ce24-3ad6-4bb1-a9d7-54aa2d8bd975",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        760
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json.Patient_ID }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Most Available Provider1').item.json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAvailableTimeBlocks"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "d0fba02d-40f7-43c6-8458-21bb32590e31",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2600,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "13891d6e-9eac-4746-92a6-da681bcce9e8",
+      "name": "Paitient",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1000,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getavailabletimeblocksinfo",
+        "options": {}
+      },
+      "id": "6abaaebe-1ea9-4464-83fb-126dfb45f646",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2820,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f62196b5-6ad3-42c1-9c73-f9e3b85e1b3b",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3040,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const startTime = parseInt(items[0].json.Start_Time);\nconst endTime = parseInt(items[0].json.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Determine the classification\nlet classification;\nif (durationMinutes >= 60) {\n    classification = 'Lunch';\n} else if (durationMinutes >= 10 && durationMinutes <= 40) {\n    classification = 'Available';\n} else {\n    classification = 'Unavailable';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\n\nreturn items;\n"
+      },
+      "id": "1dc242c6-9961-4eea-add6-1797189ce996",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3260,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "63820fc4-1f1d-44d0-95bd-b8b3d89767b0",
+              "leftValue": "={{ $json.IsCurrentTimeBetween }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "843d97b0-9552-4061-baec-1213eccc9e5f",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3480,
+        760
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "30acadf4-9dc8-49a0-af9f-5d81ea986e73",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4080,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @LOC VARCHAR(200) = 'EPIC Southfield 10 Mile';\n \nWITH ApptData AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time)) \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND \n        a.Appt_Sched_Location_Descr = @LOC AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and\n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and\n        a.Appt_Status IN ('A', 'S','C') AND \n        a.Appt_Check_Out_Time IS NULL\n),\nResourceSummary AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr,\n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count,\n\t\tSUM(CASE WHEN Appt_Status = 'C' THEN 1 ELSE 0 END) AS C_Count\n    FROM \n        ApptData\n    GROUP BY \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr\n),\nRankedResources AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n        A_Count,C_Count,\n        S_Count,Appt_Sched_Location_Descr,\n        RANK() OVER (ORDER BY A_Count, S_Count,C_Count asc) AS AvailRank\n    FROM \n        ResourceSummary\n)\nSELECT \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n    r.A_Count,\n    r.S_Count,\n\tr.C_Count,\n    r.AvailRank AS MostAvail,\n\tr.Appt_Sched_Location_Descr\nFROM \n    RankedResources r\n \nORDER BY \n    r.AvailRank"
+      },
+      "id": "6671225c-2f9e-41e6-b8cd-861a98603d53",
+      "name": "Most Available Provider1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        320,
+        340
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e4c4691e-7585-4fa8-b933-473600680b96",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3036.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "63820fc4-1f1d-44d0-95bd-b8b3d89767b0",
+              "leftValue": "={{ $json.IsCurrentTimeBetween }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "450ceea6-7db0-435b-8452-6da2317ef0b0",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3476.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Check for Lunch",
+        "height": 410.0472558381438,
+        "width": 1586.4083006669282
+      },
+      "id": "ef2d877b-6bdb-4ce5-9bfb-0abc6824a8bd",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2540,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json.Patient_ID }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Most Available Provider1').item.json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetScheduleByPatientID"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "5476f793-6682-4c68-8b33-0accb496d884",
+      "name": "GetScheduleByPatientID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4376.650914720619,
+        -68.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5b4ea724-44fd-4ab9-8635-4087e4d5ce01",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        4596.650914720619,
+        -68.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getavailabletimeblocksinfo",
+        "options": {}
+      },
+      "id": "ca4edcd5-b19c-4f74-8565-267c4dfdf3f9",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2816.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const startTime = parseInt(items[0].json.Start_Time);\nconst endTime = parseInt(items[0].json.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Determine the classification\nlet classification;\nif (durationMinutes >= 60) {\n    classification = 'Lunch';\n} else if (durationMinutes >= 10 && durationMinutes <= 40) {\n    classification = 'Available';\n} else {\n    classification = 'Unavailable';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\n\nreturn items;\n"
+      },
+      "id": "a775274b-99c7-4a91-9f46-24c503766d04",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3256.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json.Patient_ID }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Most Available Provider1').item.json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAvailableTimeBlocks"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "947a4300-1289-418a-bd95-b19408d324ca",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2636.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Lunch",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "d6f0a812-1747-48a7-8616-f3611676e3e1",
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Available",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "4365869f-8d9f-4e7e-b165-cd843f25316b",
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Unavailable",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "03d23836-b6ca-4f09-b88e-5fa8f92b58e0",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3836.650914720619,
+        -188.9949576730371
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3cbec22a-4271-4aa1-a53c-8618f276a99a",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2200,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e4191721-4da6-4b86-b08f-9ffca7b12860",
+      "name": "Loop Over Items3",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        540,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Lunch",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "d6f0a812-1747-48a7-8616-f3611676e3e1",
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Available",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "4365869f-8d9f-4e7e-b165-cd843f25316b",
+                    "leftValue": "={{ $json.Classification }}",
+                    "rightValue": "Unavailable",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "23e624cc-f67e-417e-bfa2-53c47c783e28",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3840,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "="
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAppointmentsByChangeDTTM"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "08f0dd50-0568-4a1e-859a-39961ce46c88",
+      "name": "GetAppointmentsByChangeDTTM",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2500,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        a.Appt_Sched_Location_Descr like '%10%' AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and\n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and\n        a.Appt_Status IN ('A', 'S','C') AND \n        a.Appt_Check_Out_Time IS NULL\nand a.[Appt_Comments] like '%walk%'"
+      },
+      "id": "8f4378e2-7a2e-43e6-830d-664446f40055",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        300
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Paitient": [
+      {
+        "json": {
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "02/01/1988",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Email": "thomas@tagarmor.com",
+          "Account_ID": [
+            172602,
+            172602
+          ],
+          "Contact_ID": 225895,
+          "Date_Registered": "2020-06-01T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": 228767,
+          "Policy_ID": 227486,
+          "Coverage": "X",
+          "Verified_Date": "2024-05-06T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "XYH913345119",
+          "Group_No": "00255346",
+          "Effective_Date": "2020-08-01T00:00:00.000Z",
+          "Expiration_Date": "2023-11-30T00:00:00.000Z"
+        }
+      }
+    ],
+    "Most Available Provider": [
+      {
+        "json": {
+          "Appt_Resource_ID": 1231,
+          "Appt_Resource_Descr": "Zawisa PA, Hannah",
+          "Appt_Resource_Abbr": "HZ-PA   ",
+          "A_Count": 1,
+          "S_Count": 0,
+          "MostAvail": "1",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1009,
+          "Appt_Resource_Descr": "Kalabat, Amber",
+          "Appt_Resource_Abbr": "AK-NP   ",
+          "A_Count": 2,
+          "S_Count": 0,
+          "MostAvail": "2",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 133,
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Resource_Abbr": "SW PAC  ",
+          "A_Count": 2,
+          "S_Count": 1,
+          "MostAvail": "3",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1018,
+          "Appt_Resource_Descr": "Gadoua, Christopher",
+          "Appt_Resource_Abbr": "CG-PA   ",
+          "A_Count": 3,
+          "S_Count": 0,
+          "MostAvail": "4",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1085,
+          "Appt_Resource_Descr": "Yaldoo, Mary",
+          "Appt_Resource_Abbr": "MG-PAC  ",
+          "A_Count": 9,
+          "S_Count": 0,
+          "MostAvail": "5",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-20T20:25:06.227Z",
+  "versionId": "bcb7e234-2c6d-4a6a-bb53-a58550528271"
+}
