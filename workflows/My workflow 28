@@ -1,0 +1,48 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-09-19T21:22:49.852Z",
+  "id": "QEw2N24vWAt4Vqwq",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 28",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e6d26a12-39e1-4c64-8ea5-a0ef7eed9d06",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        820,
+        420
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "path": "9f1f8899-f0b4-442b-baf8-dcc14dc30292",
+        "options": {}
+      },
+      "id": "c4e7c36a-26f8-40e3-93a8-5e069b4747ac",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        420
+      ],
+      "webhookId": "9f1f8899-f0b4-442b-baf8-dcc14dc30292"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-19T21:22:51.013Z",
+  "versionId": "d1d9caa2-4f18-4ef3-8b25-7992ead4c47b"
+}
