@@ -1,0 +1,221 @@
+{
+  "active": false,
+  "connections": {
+    "Get Contacts": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Tasks: Add",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get Contacts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-01T22:55:01.131Z",
+  "id": "Oozd4HQS72Di9EbL",
+  "isArchived": false,
+  "meta": null,
+  "name": "Bitrix24_Find_Add_PatientTask",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0ed4b430-f4da-46c9-9e73-2a5656834b07",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        660,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"112233 {{ $('IF').item.json[\"NAME\"] }} {{ $('IF').item.json[\"LAST_NAME\"] }} Refill - Stage\",\n       \"GROUP_ID\":\"45\",\n       \"STAGE_ID\":\"299\",\n       \"RESPONSIBLE_ID\": \"7\",\n        \"UF_CRM_TASK\": [\"C_{{ $('IF').item.json[\"ID\"] }}\"]\n   }\n}",
+        "options": {}
+      },
+      "id": "1995a21e-f1f4-43f0-bfd4-a15e7e71370f",
+      "name": "Tasks: Add",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1360,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.list.json",
+        "options": {}
+      },
+      "id": "72623ab2-6cc5-4758-8892-0498b6e43792",
+      "name": "Get Contacts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        660,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.NAME }}",
+              "operation": "contains",
+              "value2": "={{ $('Webhook').item.json.query.NAME }}"
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        640
+      ],
+      "id": "ef1c328a-2260-4a67-8202-10578d4c3b91"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "4e2389b0-3fb5-40eb-a0a3-9a917a5ed049",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        820,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ec20e717-7e81-4644-85e3-20b995e38368",
+        "options": {}
+      },
+      "id": "db11ec94-a9db-4ae8-95e0-d7060f36c312",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "ec20e717-7e81-4644-85e3-20b995e38368"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cybertech.app/webhook/ec20e717-7e81-4644-85e3-20b995e38368",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "NAME",
+              "value": "Ted"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9bf3045e-f137-4741-9c35-3e47c592eedb",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        720
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "99f15d9f-79b8-4069-a4ac-2d26b3c46ce3",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        480
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-01T22:55:01.131Z",
+  "versionId": "796ab89b-3dfe-424b-b801-f006524b48cd"
+}
