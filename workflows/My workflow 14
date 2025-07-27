@@ -1,0 +1,910 @@
+{
+  "active": false,
+  "connections": {
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ExpiredDate": {
+      "main": [
+        [
+          {
+            "node": "PwdExpiredEnabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PwdExpiredEnabled": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ExpiredDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "LDAP-MARKETING-STAFF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Counter": {
+      "main": [
+        [
+          {
+            "node": "Increment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Increment": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Increment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "testname": {
+      "main": [
+        [
+          {
+            "node": "Counter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP2": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-28T14:15:18.868Z",
+  "id": "yNR2tTJqt3b4AfNe",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 14",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ec0d52ce-bc84-4c99-8d14-4bd3e39d6d7c",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "=tbot1",
+        "options": {}
+      },
+      "id": "94ce4142-99e6-46e9-acfc-3e9df68c6ec2",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        200,
+        160
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to calculate password expiration date\nfunction calculatePasswordExpiry(pwdLastSet, maxPwdAgeDays) {\n    const pwdLastSetDate = ldapTimestampToDate(pwdLastSet);\n    const expiryDate = new Date(pwdLastSetDate);\n    expiryDate.setDate(expiryDate.getDate() + maxPwdAgeDays);\n    return expiryDate;\n}\n\n// Function to check if the date is within the current month\nfunction isDateInCurrentMonth(date) {\n    const now = new Date();\n    return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();\n}\n\n// Function to check if the date is before the current date\nfunction isDateExpired(date) {\n    const now = new Date();\n    return date < now;\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item and check if the password expires within the current month or has already expired\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const pwdExpiryDate = calculatePasswordExpiry(pwdLastSetValue, maxPwdAgeDays);\n    const expiresInCurrentMonth = isDateInCurrentMonth(pwdExpiryDate);\n    const isExpired = isDateExpired(pwdExpiryDate);\n\n    // Return the item with the new pwdExpiryDate, expiresInCurrentMonth, and isExpired fields\n    return {\n        json: {\n            ...item.json,\n            pwdExpiryDate: pwdExpiryDate.toISOString(), // Convert date to ISO string for readability\n            expiresInCurrentMonth,\n            isExpired\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "dab80f2b-1fdb-4f9d-9074-a0c0783dd87d",
+      "name": "ExpireThisMonth or Have Expired Already",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to calculate password expiration date\nfunction calculatePasswordExpiry(pwdLastSet, maxPwdAgeDays) {\n    const pwdLastSetDate = ldapTimestampToDate(pwdLastSet);\n    const expiryDate = new Date(pwdLastSetDate);\n    expiryDate.setDate(expiryDate.getDate() + maxPwdAgeDays);\n    return expiryDate;\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item and calculate the password expiration date\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const pwdExpiryDate = calculatePasswordExpiry(pwdLastSetValue, maxPwdAgeDays);\n\n    // Return the item with the new pwdExpiryDate field\n    return {\n        json: {\n            ...item.json,\n            pwdExpiryDate: pwdExpiryDate.toISOString() // Convert date to ISO string for readability\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "bb10ac19-c924-43fa-90ea-ba872c5c03cf",
+      "name": "ExpiredDate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to calculate password expiration date\nfunction calculatePasswordExpiry(pwdLastSet, maxPwdAgeDays) {\n    const pwdLastSetDate = ldapTimestampToDate(pwdLastSet);\n    const expiryDate = new Date(pwdLastSetDate);\n    expiryDate.setDate(expiryDate.getDate() + maxPwdAgeDays);\n    return expiryDate;\n}\n\n// Function to check if the date is within the current month\nfunction isDateInCurrentMonth(date) {\n    const now = new Date();\n    return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item and check if the password expires within the current month\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const pwdExpiryDate = calculatePasswordExpiry(pwdLastSetValue, maxPwdAgeDays);\n    const expiresInCurrentMonth = isDateInCurrentMonth(pwdExpiryDate);\n\n    // Return the item with the new pwdExpiryDate and expiresInCurrentMonth fields\n    return {\n        json: {\n            ...item.json,\n            pwdExpiryDate: pwdExpiryDate.toISOString(), // Convert date to ISO string for readability\n            expiresInCurrentMonth\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "23267e10-a925-4255-bebb-ab53d99c9d9f",
+      "name": "ExpiresThisMonth",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('ExpiredDate').item.json.pwdExpiryDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "af9ed424-942b-4e0a-a1b1-fe22f632ad18",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        960,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "d46553c2-1107-4d00-b05a-cf522c5f6d09",
+              "leftValue": "={{ $('PwdExpiredEnabled').item.json.passwordExpirationEnabled }}",
+              "rightValue": "false",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "e1db63f6-811c-4f4d-9a0a-9f03fcbe8fa3",
+              "leftValue": "={{ $('LDAP').item.json.sAMAccountName }} ",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8ef3b5be-d0e7-4e1d-a5fc-3e2594089246",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8acd62e8-4300-4c13-9c50-25c4971dc9b5",
+              "name": "formattedDate",
+              "value": "={{ $('Date & Time').item.json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1d41afd8-1c9f-46e8-a4ce-647f22dbdfa2",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1360,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to check if the password expiration is enabled\nfunction isPasswordExpirationEnabled(userAccountControl) {\n    // The DONT_EXPIRE_PASSWORD flag is 0x10000 (65536)\n    const DONT_EXPIRE_PASSWORD = 0x10000;\n    // Check if the flag is set\n    return (userAccountControl & DONT_EXPIRE_PASSWORD) === 0;\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item to determine password expiration status and date\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const userAccountControlValue = item.json.userAccountControl;\n    const msDSUserPasswordExpiryTimeComputedValue = item.json[\"msDS-UserPasswordExpiryTimeComputed\"];\n\n    let passwordExpirationEnabled = isPasswordExpirationEnabled(userAccountControlValue);\n    let pwdExpiryDate;\n\n    // If msDS-UserPasswordExpiryTimeComputed is available, use it\n    if (msDSUserPasswordExpiryTimeComputedValue) {\n        pwdExpiryDate = ldapTimestampToDate(msDSUserPasswordExpiryTimeComputedValue);\n    } else if (passwordExpirationEnabled) {\n        // Calculate expiration date using pwdLastSet and maxPwdAgeDays\n        const pwdLastSetDate = ldapTimestampToDate(pwdLastSetValue);\n        pwdExpiryDate = new Date(pwdLastSetDate);\n        pwdExpiryDate.setDate(pwdExpiryDate.getDate() + maxPwdAgeDays);\n    } else {\n        pwdExpiryDate = 'Password does not expire';\n    }\n\n    // Return the item with the new fields\n    return {\n        json: {\n            ...item.json,\n            passwordExpirationEnabled,\n            pwdExpiryDate: pwdExpiryDate instanceof Date ? pwdExpiryDate.toISOString() : pwdExpiryDate\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "f7f56564-bede-4101-a05f-4f87e4f4cdb4",
+      "name": "PwdExpiredEnabled",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "17fcdbe7-8c46-4995-b6dc-5d66e154ad16",
+              "leftValue": "={{ parseInt($('LDAP').item.json.lockoutTime) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "09241e65-3afa-4738-9678-ee6deb1cac84",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "31604fa6-5b4f-4844-9491-178f95140a3c",
+              "leftValue": "={{ $json.cn }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "32734711-8875-4c9c-9ca6-7faa6c99a059",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        380,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<style>\n/*-- -------------------------- -->\n<---          Services          -->\n<--- -------------------------- -*/\n\n/* Mobile - 360px */\n@media only screen and (min-width: 0rem) {\n\t#services-690{\n    background: #F5DF4D;\n    height:100%\n    }\n    \n    #services-690 .cs-titles{\n    font-size=\"50px\";\n    }\n\n    \n    #services-690 {\n        padding: var(--sectionPadding);\n    }\n    #services-690 .cs-container {\n        width: 100%;\n        /* changes to 1280px at tablet */\n        max-width: 34.375rem;\n        margin: auto;\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        /* 48px - 64px */\n        gap: clamp(3rem, 6vw, 4rem);\n        \n    }\n    #services-690 .cs-content {\n        /* set text align to left if content needs to be left aligned */\n        text-align: left;\n        width: 100%;\n        display: flex;\n        flex-direction: column;\n        /* centers content horizontally, set to flex-start to left align */\n        align-items: flex-start;\n        \n    }\n    #services-690 .cs-flex-group {\n        /* prevents flexbox from squishing it */\n        /*flex: none; */\n    }\n\n    #services-690 .cs-color {\n        color: var(--primary);\n    }\n\n    #services-690 .cs-card-group {\n        width: 100%;\n        height: 70%;\n        margin: 0;\n        padding: 0;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        flex-wrap: wrap;\n        flex-direction: column;\n        row-gap: 1rem;\n        background-color:#363945;\n    }\n    #services-690 .cs-item {\n        list-style: none;\n        width: 100%;\n        /* 24px - 40px top & bottom */\n        padding: clamp(1.25rem, 4vw, 2.5rem) 1.5rem;\n        background-color: #f7f8f8;\n        box-sizing: border-box;\n        transition:\n            background-color 0.3s,\n            transform 0.3s,\n            box-shadow 0.3s;\n    }\n    #services-690 .cs-item:hover {\n        background-color: #fff;\n        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 50px;\n        transform: translateY(-0.4375rem);\n    }\n    #services-690 .cs-item:hover .cs-picture:before {\n        width: 100%;\n        height: 100%;\n        opacity: 1;\n    }\n    #services-690 .cs-link {\n        text-decoration: none;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        flex-direction: column;\n    }\n    #services-690 .cs-picture {\n        width: 4rem;\n        height: 4rem;\n        margin: 0;\n        margin-bottom: 1.5rem;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        border-radius: 50%;\n        background-color: #fff;\n        box-shadow: 0px 12px 30px rgba(26, 26, 26, 0.04);\n        position: relative;\n        z-index: 1;\n    }\n    #services-690 .cs-icon {\n        height: 2rem;\n        width: auto;\n       \n    }\n    #services-690 .cs-h3 {\n        font-size: 1.25rem;\n        font-weight: 900;\n        text-align: center;\n        line-height: 1.2em;\n        margin: 0;\n        margin-bottom: 0.75rem;\n        color: var(--headerColor);\n        transition: color 0.3s;\n    }\n    #services-690 .cs-item-text {\n        /* 14px - 16px */\n        font-size: clamp(0.875rem, 1.5vw, 1rem);\n        text-align: center;\n        line-height: 1.5em;\n        margin: 0;\n        color: var(--bodyTextColor);\n        transition: color 0.3s;\n    }\n}\n/* Tablet - 768px */\n@media only screen and (min-width: 48rem) {\n    #services-690 .cs-container {\n        max-width: 80rem;\n    }\n    #services-690 .cs-content {\n        flex-direction: row;\n        justify-content: space-between;\n        align-items: center;\n        gap: 3rem;\n        color: var(--bodyTextColor);\n       \n    }\n    #services-690 .cs-flex-group {\n        width: 60%;\n        \n    }\n    #services-690 .cs-card-group {\n        /* pushes down the same amount the 2nd cards are translated down to maintain the even spacing at the bottom of the cs-card-group */\n        margin-bottom: 2.5rem;\n        flex-direction: row;\n        justify-content: center;\n        flex-wrap: wrap;\n        column-gap: 1.25rem;\n    }\n    #services-690 .cs-item {\n        width: 30vw;\n        max-width: 25.8125rem;\n    }\n    #services-690 .cs-item:nth-of-type(2) {\n        transform: translateY(2.5rem);\n    }\n    #services-690 .cs-item:nth-of-type(2):hover {\n        /* make these cards a separate hover translate amount, they're already translated 40px down, so to match the same hover animations as the other cards we just subtract their translate values from the 40px and they will move up by the same amount as the other cards */\n        transform: translateY(2.0625rem);\n    }\n}\n\n                                \n</style>\n\n\n<section id=\"services-690\">\n    <div class=\"cs-container\">\n        <div class=\"cs-content\">\n        \n            <div class=\"cs-flex-group\">\n                <span class=\"cs-topper\">Unlock/Reset Results</span>\n                <h1 class=\"cs-title\" >{{ $('Webhook').item.json.query.Username }} Does not exist </h1>\n            </div>\n            \n        <img class=\"cs-watermark\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://picsvg.com/svg/XGrGdT.jpg\" alt=\"icon\" width=\"420\" height=\"140\">\n    </div>\n        </div>\n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <img class=\"cs-icon\" src=\"https://picsvg.com/svg/RPTM85.jpg\" loading=\"lazy\" decoding=\"async\" alt=\"icon\" width=\"32\" height=\"32\" aria-hidden=\"true\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock/Reset Form</h3>\n                    <p class=\"cs-item-text\">\n                        Click Here to be redirected back to the Unlock/Reset Form.\n                    </p>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <img class=\"cs-icon\" src=\"https://picsvg.com/svg/M6I7Jo.jpg\" loading=\"lazy\" decoding=\"async\" alt=\"icon\" width=\"32\" height=\"32\" aria-hidden=\"true\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        Click Here if you want to place a ticket.\n                    </p>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fpipes.svg\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fpipes.svg\" loading=\"lazy\" decoding=\"async\" alt=\"icon\" width=\"32\" height=\"32\" aria-hidden=\"true\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        Click Here if you want to place a ticket about Maintenance.\n                    </p>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "26a59483-c481-4964-a114-b0488a1994ca",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0a2f7100-3f29-434b-bc2f-4612203008e1",
+              "name": "Counter",
+              "value": 0,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6dcd249b-8ba5-41e4-834b-14640913f359",
+      "name": "Counter",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1000,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27c4a0ea-9958-4ca0-928e-733ece8c150a",
+              "name": "Counter",
+              "value": "={{ $json.Counter+1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0395ccad-72e1-46fe-8c91-b3683aa43ef7",
+      "name": "Increment",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1220,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c472f7b2-0517-4650-8d7b-cc0586277142",
+              "leftValue": 10,
+              "rightValue": "={{ $json.Counter }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "bcda20e7-591e-41b3-8872-6ba5b77b2cd7",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cf152682-7fe7-4f63-96d7-b93e21cf2726",
+              "name": "name",
+              "value": "test",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "524e8255-63ba-48d0-903c-daf35b129d03",
+      "name": "testname",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        780,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<style>\n\n/* Mobile - 360px */\n@media only screen and (min-width: 0rem) {\n  #meet-team-1765 {\n    padding: var(--sectionPadding);\n    background-color: #1a1a1a;\n    position: relative;\n    z-index: 1;\n    overflow: hidden;\n  }\n  #meet-team-1765 .cs-container {\n    width: 100%;\n    max-width: 80rem;\n    margin: auto;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    /* 48px - 64px */\n    gap: clamp(3rem, 6.5vw, 4rem);\n  }\n  #meet-team-1765 .cs-content {\n    /* set text align to center if content needs to be center aligned */\n    text-align: left;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: flex-start;\n  }\n  #meet-team-1765 .cs-flex-wrapper {\n    max-width: 37.5rem;\n    /* lets the div's contents act as though it doesn't exist and can be children of the next surrounding parent div, in this case the cs-content. That way we can place the button under the cs-wrapper on mobile, but bring it back under the header on tablet */\n    display: contents;\n  }\n  #meet-team-1765 .cs-title {\n    margin: 0;\n    /* 16px - 32px */\n    margin-bottom: clamp(1rem, 3vw, 2rem);\n    color: var(--bodyTextColorWhite);\n  }\n  #meet-team-1765 .cs-wrapper {\n    max-width: 39.5rem;\n  }\n  #meet-team-1765 .cs-text {\n    margin: 0 0 2rem 0;\n    color: var(--bodyTextColorWhite);\n    opacity: 0.8;\n  }\n  #meet-team-1765 .cs-button-solid {\n    font-size: 1rem;\n    font-weight: 700;\n    /* 46px - 56px */\n    line-height: clamp(2.875rem, 5.5vw, 3.5rem);\n    text-align: center;\n    text-decoration: none;\n    min-width: 9.375rem;\n    margin: 0;\n    margin-top: 2rem;\n    /* prevents padding from adding to the width */\n    box-sizing: border-box;\n    padding: 0 1.5rem;\n    color: #fff;\n    background-color: var(--primary);\n    display: inline-block;\n    position: relative;\n    z-index: 1;\n  }\n  #meet-team-1765 .cs-button-solid:before {\n    content: \"\";\n    width: 0%;\n    height: 100%;\n    background: #000;\n    opacity: 1;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: -1;\n    transition: width 0.3s;\n  }\n  #meet-team-1765 .cs-button-solid:hover:before {\n    width: 100%;\n  }\n  #meet-team-1765 .cs-button-solid {\n    margin: 0;\n    display: inline-block;\n    order: 2;\n  }\n  #meet-team-1765 .cs-text {\n    max-width: 40rem;\n    margin-bottom: 1.5rem;\n    position: relative;\n    z-index: 1;\n  }\n  #meet-team-1765 .cs-ul {\n    max-width: 39.375rem;\n    margin: 0 0 2rem 0;\n    padding: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 0.75rem;\n  }\n  #meet-team-1765 .cs-li {\n    font-size: var(--bodyFontSize);\n    list-style: none;\n    line-height: 1.5em;\n    width: 100%;\n    color: var(--bodyTextColorWhite);\n    opacity: 0.8;\n    display: flex;\n    justify-content: flex-start;\n    align-items: center;\n    gap: 0.5rem;\n  }\n  #meet-team-1765 .cs-check-icon {\n    width: 1.5rem;\n    height: auto;\n    /* adds extra space between the icon and top of parent so it's more centered */\n    margin-top: 1px;\n    display: block;\n  }\n  #meet-team-1765 .cs-card-group {\n    width: 100%;\n    margin: 0;\n    padding: 0;\n    display: grid;\n    flex-direction: column;\n    grid-template-columns: repeat(12, 1fr);\n    /* 16px - 20px */\n    gap: 1.5rem;\n    position: relative;\n  }\n  #meet-team-1765 .cs-item {\n    list-style: none;\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    justify-content: flex-end;\n    align-items: center;\n    grid-column: span 12;\n    /* 16px - 20px */\n    gap: clamp(1rem, 2vw, 1.25rem);\n    position: relative;\n  }\n  #meet-team-1765 .cs-item:hover .cs-picture img {\n    opacity: 0.4;\n    transform: scale(1.2);\n  }\n  #meet-team-1765 .cs-item:hover .cs-link {\n    opacity: 1;\n    transform: translateY(0);\n  }\n  #meet-team-1765 .cs-item:hover .cs-link:hover {\n    /* we need to add the hover styles for the cs-link inside the cs-item hover for specifcity. There's a transform none on the cs-link when we hover over the cs-item, so for the transform to work when we hover over the cs-link, we add it while the hover is active on the cs-item. This allows it to be more specific and override the transform 0 it adds to the cs-link */\n    transform: scale(1.15);\n    transition: transform 0.3s;\n    transition-delay: 0;\n  }\n  #meet-team-1765 .cs-item:hover .cs-job {\n    color: var(--primary);\n  }\n  #meet-team-1765 .cs-image-group {\n    width: 100%;\n    height: auto;\n    margin: 0;\n    position: relative;\n    z-index: 1;\n    aspect-ratio: 0.91691395;\n    flex: 1 0 0;\n  }\n  #meet-team-1765 .cs-picture {\n    width: 100%;\n    height: 100%;\n    /* removed at tablet */\n    aspect-ratio: 328/260;\n    background-color: #000;\n    /* clips the img corners */\n    /* clips img tag from overflowing it on hover */\n    display: block;\n    position: relative;\n    overflow: hidden;\n  }\n  #meet-team-1765 .cs-picture img {\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    /* makes sure the top of the image is at the top of the parent, heads won't get cut off this way */\n    object-position: top;\n    position: absolute;\n    top: 0;\n    left: 0;\n    transition: transform 0.7s, opacity 0.3s;\n  }\n  #meet-team-1765 .cs-social {\n    display: flex;\n    flex-direction: column;\n    align-items: flex-end;\n    gap: 0.5rem;\n    position: absolute;\n    top: 1rem;\n    right: 1rem;\n    z-index: 1;\n  }\n  #meet-team-1765 .cs-link {\n    width: 2.5rem;\n    height: 2.5rem;\n    padding: 0.5rem;\n    background-color: #F7F7F7;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    opacity: 0;\n    transform: translateY(-1rem);\n    transition: transform 0.6s, opacity 0.6s;\n  }\n  #meet-team-1765 .cs-link:nth-of-type(2) {\n    transition-delay: 0.08s;\n  }\n  #meet-team-1765 .cs-link:nth-of-type(3) {\n    transition-delay: 0.16s;\n  }\n  #meet-team-1765 .cs-icon {\n    width: 1.25rem;\n    height: auto;\n    display: block;\n  }\n  #meet-team-1765 .cs-info {\n    width: 100%;\n    /* prevents padding and border from affecting height and width */\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 0.5rem;\n    transition: background-color 0.3s;\n  }\n  #meet-team-1765 .cs-name {\n    font-size: 1.25rem;\n    font-weight: 700;\n    line-height: 1.2em;\n    text-transform: uppercase;\n    margin: 0;\n    color: var(--bodyTextColorWhite);\n    display: block;\n    transition: color 0.3s;\n  }\n  #meet-team-1765 .cs-job {\n    font-size: 1rem;\n    font-weight: 700;\n    line-height: 1.2em;\n    margin: 0;\n    color: var(--bodyTextColorWhite);\n    opacity: 0.8;\n    display: block;\n    transition: color 0.3s;\n  }\n}\n/* Tablet - 768px */\n@media only screen and (min-width: 48rem) {\n  #meet-team-1765 .cs-container {\n    max-width: 107.5rem;\n    /* 48px - 64px */\n    gap: clamp(3rem, 6vw, 4rem);\n  }\n  #meet-team-1765 .cs-content {\n    text-align: left;\n    max-width: 80rem;\n    height: auto;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: flex-start;\n    gap: 3rem;\n    columns: 2;\n  }\n  #meet-team-1765 .cs-flex-wrapper {\n    width: 40vw;\n    display: block;\n    /* prevents flexbox from squishing it */\n    flex: none;\n  }\n  #meet-team-1765 .cs-ul {\n    margin: 0;\n  }\n  #meet-team-1765 .cs-card-group {\n    /* 16px - 20px */\n    column-gap: clamp(1rem, 2vw, 1.25rem);\n    row-gap: 2.5rem;\n  }\n  #meet-team-1765 .cs-item {\n    grid-column: span 4;\n  }\n  #meet-team-1765 .cs-picture {\n    /* 260px - 440px */\n    height: clamp(16.25rem, 33.2vw, 27.5rem);\n    aspect-ratio: initial;\n  }\n}\n/* Large Desktop - 1300px */\n@media only screen and (min-width: 81.25rem) {\n  #meet-team-1765 .cs-ul {\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  #meet-team-1765 .cs-li {\n    width: 48%;\n  }\n  #meet-team-1765 .cs-card-group {\n    grid-template-columns: repeat(10, 1fr);\n  }\n  #meet-team-1765 .cs-item {\n    grid-column: span 2;\n  }\n}\n</style>\n                                \n\n<section id=\"meet-team-1765\">\n    <div class=\"cs-container\">\n        <div class=\"cs-content\">\n            <div class=\"cs-flex-wrapper\">\n                <div class=\"cs-flex\">\n                    <span class=\"cs-topper\">Our Trainers</span>\n                    <h2 class=\"cs-title\">We’re Making People Healthier, Happier\n                </div>\n                <a href=\"\" class=\"cs-button-solid\">View Our Team Members</a>\n            </div>\n            <div class=\"cs-wrapper\">\n                <p class=\"cs-text\">\n                    We are confident that our staff and facility can help you to reach your fitness goals. Whether you’re a beginner or a pro, we’re here to help. After spending time in our facility and with our team we want our members to walk out of our doors after a workout and feel like they are a better version of themselves.\n                </p>\n                <ul class=\"cs-ul\">\n                    <li class=\"cs-li\">\n                        <img class=\"cs-check-icon\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/orange-check.svg\" alt=\"checkmark\" width=\"20\" height=\"20\">\n                        You will achieve your goals\n                    </li>\n                    <li class=\"cs-li\">\n                        <img class=\"cs-check-icon\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/orange-check.svg\" alt=\"checkmark\" width=\"20\" height=\"20\">\n                        You’ll learn something new\n                    </li>\n                    <li class=\"cs-li\">\n                        <img class=\"cs-check-icon\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/orange-check.svg\" alt=\"checkmark\" width=\"20\" height=\"20\">\n                        You’ll find the help useful\n                    </li>\n                    <li class=\"cs-li\">\n                        <img class=\"cs-check-icon\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/orange-check.svg\" alt=\"checkmark\" width=\"20\" height=\"20\">\n                        You’ll gain confidence\n                    </li>\n                    <li class=\"cs-li\">\n                        <img class=\"cs-check-icon\" aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/orange-check.svg\" alt=\"checkmark\" width=\"20\" height=\"20\">\n                        You’ll have unlimited support\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <div class=\"cs-image-group\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-1.png\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-1.png\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-1.png\" alt=\"person\" width=\"305\" height=\"440\">\n                    </picture>\n                    <div class=\"cs-social\">\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-grey.svg\" alt=\"facebook\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Twitter\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/x-grey.svg\" alt=\"twitter\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram-grey.svg\" alt=\"instagram\" width=\"20\" height=\"20\">\n                        </a>\n                    </div>\n                </div>\n                <div class=\"cs-info\">\n                    <span class=\"cs-name\">Michael Semple</span>\n                    <span class=\"cs-job\">Fitness Instructor</span>\n                </div>\n            </li>\n            <li class=\"cs-item\">\n                <div class=\"cs-image-group\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-2.png\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-2.png\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-2.png\" alt=\"person\" width=\"305\" height=\"440\">\n                    </picture>\n                    <div class=\"cs-social\">\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-grey.svg\" alt=\"facebook\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Twitter\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/x-grey.svg\" alt=\"twitter\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram-grey.svg\" alt=\"instagram\" width=\"20\" height=\"20\">\n                        </a>\n                    </div>\n                </div>\n                <div class=\"cs-info\">\n                    <span class=\"cs-name\">Jose Hawthorne</span>\n                    <span class=\"cs-job\">Nutritionist</span>\n                </div>\n            </li>\n            <li class=\"cs-item\">\n                <div class=\"cs-image-group\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-3.png\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-3.png\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-meet-team-3.png\" alt=\"person\" width=\"305\" height=\"440\">\n                    </picture>\n                    <div class=\"cs-social\">\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-grey.svg\" alt=\"facebook\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Twitter\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/x-grey.svg\" alt=\"twitter\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram-grey.svg\" alt=\"instagram\" width=\"20\" height=\"20\">\n                        </a>\n                    </div>\n                </div>\n                <div class=\"cs-info\">\n                    <span class=\"cs-name\">Timothy Andrews</span>\n                    <span class=\"cs-job\">Fitness Instructor</span>\n                </div>\n            </li>\n            <li class=\"cs-item\">\n                <div class=\"cs-image-group\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person.png\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person.png\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person.png\" alt=\"person\" width=\"305\" height=\"440\">\n                    </picture>\n                    <div class=\"cs-social\">\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-grey.svg\" alt=\"facebook\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Twitter\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/x-grey.svg\" alt=\"twitter\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram-grey.svg\" alt=\"instagram\" width=\"20\" height=\"20\">\n                        </a>\n                    </div>\n                </div>\n                <div class=\"cs-info\">\n                    <span class=\"cs-name\">Kathy Vangilder</span>\n                    <span class=\"cs-job\">Nutritionist</span>\n                </div>\n            </li>\n            <li class=\"cs-item\">\n                <div class=\"cs-image-group\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person2.png\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person2.png\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/gym-person2.png\" alt=\"person\" width=\"305\" height=\"440\">\n                    </picture>\n                    <div class=\"cs-social\">\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Facebook\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/facebook-grey.svg\" alt=\"facebook\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Twitter\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/x-grey.svg\" alt=\"twitter\" width=\"20\" height=\"20\">\n                        </a>\n                        <a href=\"\" class=\"cs-link\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\">\n                            <img class=\"cs-icon\" loading=\"lazy\" decoding=\"async\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/instagram-grey.svg\" alt=\"instagram\" width=\"20\" height=\"20\">\n                        </a>\n                    </div>\n                </div>\n                <div class=\"cs-info\">\n                    <span class=\"cs-name\">David Garcia</span>\n                    <span class=\"cs-job\">Personal Trainer</span>\n                </div>\n            </li>\n        </ul>\n    </div>\n</section>\n                                "
+      },
+      "id": "eea810b5-072e-440b-b5d5-253aeea875a0",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1640,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dn": "CN=Jason Quinn,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "attributes": {
+          "attribute": [
+            {
+              "id": "cn",
+              "value": "Jason Quinn"
+            },
+            {
+              "id": "givenName",
+              "value": "Jason"
+            },
+            {
+              "id": "homeDirectory",
+              "value": "=\\\\nmnfp\\profile$\\jquinn"
+            },
+            {
+              "id": "homeDrive",
+              "value": "N:"
+            },
+            {
+              "id": "mail",
+              "value": "jquinn@epichs.org"
+            },
+            {
+              "id": "name",
+              "value": "Jason Quinn"
+            },
+            {
+              "id": "sAMAccountName",
+              "value": "jquinn"
+            },
+            {
+              "id": "title",
+              "value": "Information Technology"
+            },
+            {
+              "id": "userPrincipalName",
+              "value": "jquinn@epichs.org"
+            },
+            {
+              "id": "sn",
+              "value": "Quinn"
+            },
+            {
+              "id": "userPassword",
+              "value": "Jquser#123456"
+            },
+            {
+              "id": "objectCategory",
+              "value": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local"
+            },
+            {
+              "id": "objectClass",
+              "value": "top"
+            },
+            {
+              "id": "objectClass",
+              "value": "person"
+            },
+            {
+              "id": "objectClass",
+              "value": "organizationalPerson"
+            },
+            {
+              "id": "objectClass",
+              "value": "user"
+            }
+          ]
+        }
+      },
+      "id": "b1a0c26f-5813-4e7f-832a-39ec3a0c77f8",
+      "name": "LDAP2",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        820,
+        -80
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "# Import the Active Directory module\nImport-Module ActiveDirectory\n\n# Define the username and password\n$username = \"jquinn\"        # Target username\n$password = \"Jquser#123456\" # Define the new password\n\n# Set the password for the user\n$securePassword = ConvertTo-SecureString $password -AsPlainText -Force\nSet-ADAccountPassword -Identity $username -NewPassword $securePassword -Reset\n\n# Disable \"User must change password at next logon\"\nSet-ADUser -Identity $username -PasswordNeverExpires $true -ChangePasswordAtLogon $false\n\n# Ensure the account is enabled\nEnable-ADAccount -Identity $username\n"
+      },
+      "id": "5c9707c8-20b3-4265-8c04-215103ae002c",
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        980,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dn": "CN=Angelica Hollingsworth,OU=7.10 Marketing Managers,OU=7.0 Marketing_Sales,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "attributes": {
+          "attribute": [
+            {
+              "id": "cn",
+              "value": "Angelica Hollingsworth"
+            },
+            {
+              "id": "homeDirectory",
+              "value": "\\\\nmnfp\\profile$\\ahollingsworth"
+            },
+            {
+              "id": "homeDrive",
+              "value": "N:"
+            },
+            {
+              "id": "mail",
+              "value": "ahollingsworth@epichs.org"
+            },
+            {
+              "id": "name",
+              "value": "Angelica Hollingsworth"
+            },
+            {
+              "id": "sAMAccountName",
+              "value": "ahollingsworth"
+            },
+            {
+              "id": "title",
+              "value": "Marketing Campaign Specialist"
+            },
+            {
+              "id": "userPrincipalName",
+              "value": "ahollingsworth@epichs.org"
+            },
+            {
+              "id": "sn",
+              "value": "Hollingsworth"
+            },
+            {
+              "id": "userPassword",
+              "value": "Ahuser#123456"
+            },
+            {
+              "id": "objectClass",
+              "value": "user"
+            },
+            {
+              "id": "description",
+              "value": "Marketing Campaign Specialist"
+            },
+            {
+              "id": "givenName",
+              "value": "Angelica"
+            }
+          ]
+        }
+      },
+      "id": "de9dbe7d-b723-42c2-8fd4-7fb2b5941b9d",
+      "name": "LDAP-MARKETING-STAFF1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -280
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dn": "=CN={{ $('FullName').item.json.FullName.replaceAll(\"  \", ' ') +\",\"+$('DN Path').item.json['Marketing'] }}",
+        "attributes": {
+          "attribute": [
+            {
+              "id": "cn",
+              "value": "={{ $('FullName').item.json.FullName.replaceAll(\"  \", ' ') }}"
+            },
+            {
+              "id": "distinguishedName",
+              "value": "=CN={{ $('FullName').item.json.FullName.replaceAll(\"  \", ' ') +\",\"+$('DN Path').item.json['Marketing']}}"
+            },
+            {
+              "id": "homeDirectory",
+              "value": "={{ $json.Profile$ }}{{ $('Merge Webhook+Username').item.json.Username }}"
+            },
+            {
+              "id": "homeDrive",
+              "value": "N:"
+            },
+            {
+              "id": "mail",
+              "value": "={{ $('Merge Webhook+Username').item.json.Username }}@epichs.org"
+            },
+            {
+              "id": "name",
+              "value": "={{ $('FullName').item.json.FullName.replaceAll(\"  \", ' ')}}"
+            },
+            {
+              "id": "sAMAccountName",
+              "value": "={{ $('Merge Webhook+Username').item.json.Username }}"
+            },
+            {
+              "id": "title",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.RoleName }}"
+            },
+            {
+              "id": "userPrincipalName",
+              "value": "={{ $('Merge Webhook+Username').item.json.Username }}@epichs.org"
+            },
+            {
+              "id": "sn",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.LastName }}"
+            },
+            {
+              "id": "userPassword",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.FirstName.substring(0,1)+ $('Merge Webhook+Username').item.json.query.LastName.substring(0,1).toLowerCase()+\"user#123456\" }}"
+            },
+            {
+              "id": "objectCategory",
+              "value": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local"
+            },
+            {
+              "id": "objectClass",
+              "value": "top"
+            },
+            {
+              "id": "objectClass",
+              "value": "person"
+            },
+            {
+              "id": "objectClass",
+              "value": "organizationalPerson"
+            },
+            {
+              "id": "objectClass",
+              "value": "user"
+            },
+            {
+              "id": "description",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.RoleName }}"
+            },
+            {
+              "id": "givenName",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.FirstName }}"
+            },
+            {
+              "id": "middleName",
+              "value": "={{ $('Merge Webhook+Username').item.json.query.MiddleName }}"
+            }
+          ]
+        }
+      },
+      "id": "666604ea-b809-48b2-87b8-84be8b40d816",
+      "name": "LDAP-MARKETING-STAFF2",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        -260
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "dn": "CN=Angelica Hollingsworth,OU=7.10 Marketing Managers,OU=7.0 Marketing_Sales,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "attributes": {
+          "attribute": [
+            {
+              "id": "cn",
+              "value": "Angelica Hollingsworth"
+            },
+            {
+              "id": "homeDirectory",
+              "value": "\\\\nmnfp\\profile$\\ahollingsworth"
+            },
+            {
+              "id": "homeDrive",
+              "value": "N:"
+            },
+            {
+              "id": "mail",
+              "value": "ahollingsworth@epichs.org"
+            },
+            {
+              "id": "name",
+              "value": "Angelica Hollingsworth"
+            },
+            {
+              "id": "sAMAccountName",
+              "value": "ahollingsworth"
+            },
+            {
+              "id": "title",
+              "value": "Marketing Campaign Specialist"
+            },
+            {
+              "id": "userPrincipalName",
+              "value": "ahollingsworth@epichs.org"
+            },
+            {
+              "id": "sn",
+              "value": "Hollingsworth"
+            },
+            {
+              "id": "userPassword",
+              "value": "Ahuser#123456"
+            },
+            {
+              "id": "objectCategory",
+              "value": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local"
+            },
+            {
+              "id": "objectClass",
+              "value": "top"
+            },
+            {
+              "id": "objectClass",
+              "value": "person"
+            },
+            {
+              "id": "objectClass",
+              "value": "organizationalPerson"
+            },
+            {
+              "id": "objectClass",
+              "value": "user"
+            },
+            {
+              "id": "description",
+              "value": "Marketing Campaign Specialist"
+            },
+            {
+              "id": "givenName",
+              "value": "Angelica"
+            }
+          ]
+        }
+      },
+      "id": "5ddd88a0-477e-4126-b882-f055a8389d84",
+      "name": "LDAP-MARKETING-STAFF",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -120
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 20
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-12T21:49:30.239Z",
+  "versionId": "ff24daa8-861b-4b8c-9e06-392d4ae84c3d"
+}
