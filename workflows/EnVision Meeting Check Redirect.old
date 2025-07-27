@@ -1,0 +1,445 @@
+{
+  "active": false,
+  "connections": {
+    "Crypto Is Meeting Running": {
+      "main": [
+        [
+          {
+            "node": "HTTP Get Meeting Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Get Meeting Info": {
+      "main": [
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML1": {
+      "main": [
+        [
+          {
+            "node": "Switch Create or Join",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch Create or Join",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Meeting Running1": {
+      "main": [
+        [
+          {
+            "node": "Crypto Is Meeting Running",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Crypto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Create or Join": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Is Meeting Running1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-27T10:02:04.819Z",
+  "id": "vVttWxGd3w8YGRRP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EnVision Meeting Check Redirect.old",
+  "nodes": [
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=getMeetingInfo{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "205dddad-2020-4380-8e5b-21c79caa6ba6",
+      "name": "Crypto Is Meeting Running",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        860,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getMeetingInfo?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "728146c2-1eca-4d47-840e-3f2ebac20ff2",
+      "name": "HTTP Get Meeting Info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8ab9d345-6dc3-450a-9fee-84eaf9b46325",
+      "name": "XML1",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        580
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=meetingID={{ $json[\"query\"][\"MRN\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5685acbc-a8c8-4a57-899d-ed634d112129",
+      "name": "Is Meeting Running1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        700,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "d7bb961a-8152-4606-9f51-53dc5ff57f4a",
+      "name": "Crypto2",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        640,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName={{ $('Webhook').item.json[\"query\"][\"Name\"] }}&meetingID={{ $('Webhook').item.json[\"query\"][\"MRN\"] }}&password=mp&redirect=true&role=VIEWER"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7d6ab34-0029-44dd-95c7-90df174fa9b5",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        480,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "bcee45ec-6e31-44e3-b767-b97b2d061a71",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1260,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e9437f8d-1970-4ec4-8475-a15c1a7fee19",
+                    "leftValue": "={{ $json.response.returncode }}",
+                    "rightValue": "=SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.response.returncode }}",
+                    "rightValue": "=SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "997ee558-ba07-4425-aa88-330b4208f6a4",
+      "name": "Switch Create or Join",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "The meeting is not in progress.",
+        "options": {}
+      },
+      "id": "fa0b6730-02ac-48d4-8b4c-0274b998bc3a",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1260,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "path": "06bacab3-131a-4318-b874-c78d1a087c01",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ce6e314e-8257-4ecb-8e2b-1d825afe0a88",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        540,
+        580
+      ],
+      "webhookId": "06bacab3-131a-4318-b874-c78d1a087c01"
+    },
+    {
+      "parameters": {
+        "content": "# Is the meeting running?",
+        "height": 249.4842551619302,
+        "width": 1002.561478771232
+      },
+      "id": "6bbf0610-07a2-4fa1-b464-a8ee2c753ccf",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Yes, redirect to meeting",
+        "height": 243.6483254774566,
+        "width": 992.8349292971097,
+        "color": 4
+      },
+      "id": "d57766af-e669-4748-a7e2-3ca5ccb2a83a",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# No, intentionally display other information",
+        "height": 265.04673432052704,
+        "width": 998.670858981583,
+        "color": 3
+      },
+      "id": "edcbb998-0573-4396-8be7-0232f9535ded",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        440,
+        760
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "67616360-fb52-427e-a414-d02334dc17c4",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        480,
+        860
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Get Meeting Info": [
+      {
+        "json": {
+          "response": {
+            "returncode": "FAILED",
+            "messageKey": "notFound",
+            "message": "A meeting with that ID does not exist"
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1097417210.1679040667; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19RqpbfmtuHTJOSLRX7eWEBt2w3TiZelAk%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BgGa41a0202HZpOuA2%2F%2BykwUHqdpJTcG4%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiLzRxNThNRW5MbEk2cHczVlNOckFqcTlJVVkwU1p5TnJTOWtKYmI5Zk55bz0iLCJpYXQiOjE3MTY2NzMwNjYsImV4cCI6MTcxNzI3Nzg2Nn0.uVNkhyR1y7YVMYefu_SvrFRQ_wrhrZ8CyobpV8orGb4; app_id=f3ddcc34-d999-4036-af04-4d427e349d85; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19Yi8oYsIq36a9kaOxwiUgF8UDZdPqEKjdiXtkQzmSe83lFsz%2BfFFkwuFAB0%2BOBP99QKA5AKX71pA%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2B759D%2BxmwO3y1v2nqFtY78Cw4Is0irOKNr1gCMyl2TleB8EKxlKrbXKs1F16kmFuobMj9q2KDRr7N%2FiqrOyaUSv%2F%2F20nzcwdTjAWOAHzcRg4RCdTj%2Bg7ORBr9MLWXbeqkfNhel7cgYc4QYq1zIImiFcT7E74KFvJ8%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FAOWH8WoFVQxRY8SYang7GcjDhqANVpT1pU5JqbJ58AXT1omxIIy3Phr6UQydbPBdDS6Ppfzfpp9J2ng0S0GEMqvf0za82ldTASZNi0YvlQz2ys1l%2FrJEWSL9nt1BJYjCFc%2F1Buy3Ksw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1716804416474%2C%22018fb97f-8d8f-787e-87be-9f08a0ef949a%22%2C1716804095375%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2B5fgnqSWDKmr0uKyMljtsWE6He5e%2F5aECaNIcZdZylQ7%2BK42wwJvDVnvsQL8IGQoyL90EYJKu7Dw3Buwy5BU0agcc7BcnKELYsj8YxBtOP8WNQc3EO%2B9azWiz91nnFXgQivH%2F3GSnsow%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "MRN": "502880",
+            "Name": "Thomas"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/06bacab3-131a-4318-b874-c78d1a087c01",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-27T13:54:35.711Z",
+  "versionId": "10bde1e8-42a3-4807-929d-77dc00faa222"
+}
