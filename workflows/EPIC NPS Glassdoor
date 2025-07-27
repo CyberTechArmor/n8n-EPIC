@@ -1,0 +1,732 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Urgent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Urgent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Positive": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Positive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-15T15:41:31.144Z",
+  "id": "U9Mlos4YhiA3g7DT",
+  "isArchived": false,
+  "meta": null,
+  "name": "EPIC NPS Glassdoor",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "5b899ebc-d40d-4a1f-bb13-7ecc7aa63743",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "64db1ea8-f097-46a5-91de-26615633cf1e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        460
+      ],
+      "webhookId": "5b899ebc-d40d-4a1f-bb13-7ecc7aa63743"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "bc8e8a2d-4440-484a-ac97-08f1691207f6",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1460,
+        660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9f1edcf5-ade0-4b5d-83ec-86f5e3008d05",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1600,
+        660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## NPS completion response entry",
+        "height": 735.7083847373192,
+        "width": 684.2153716344079,
+        "color": 4
+      },
+      "id": "5d1ad88d-7481-48d1-a67e-6fc0b1a47ed0",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Positive NPS",
+        "height": 258,
+        "width": 686.1045606424025,
+        "color": 5
+      },
+      "id": "dd9105d4-7d7d-4014-a712-25a7448e28c0",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Negative NPS",
+        "height": 260,
+        "width": 678.4188779702915,
+        "color": 3
+      },
+      "id": "19c66be0-91cf-4e35-8dbe-1fa19459f0cc",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        584
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c9ad9ec3-dfcb-45f1-9b59-4cdfc2492452",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1360,
+        340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "09271a30-ce06-4a64-9e2a-0b09ec9c6297",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1580,
+        340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://www.glassdoor.com/mz-survey/employer/collectReview_input.htm?i=4263470&j=true&y=&c=PAGE_INFOSITE_TOP",
+        "options": {}
+      },
+      "id": "f9dd22bd-68b2-4c70-9606-fe1fcf183dbf",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5dc0dd18-6d28-4d25-b4ed-63d0da03f97a",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "id": "c255dee2-93c2-40e4-b96b-6221a4f9bc61",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "rules": [
+            {
+              "operation": "largerEqual"
+            }
+          ]
+        }
+      },
+      "id": "2f35880e-78d8-4004-8108-d54d0fe18ae7",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "support@myunitycare.com",
+        "fromName": "Urgent",
+        "toEmail": "amaya@epichs.org,gvirdi@epichs.org,jmartin@epichs.org,austin@myunitycare.com,tstilwell@epichs.org",
+        "subject": "Negative ENPS Response Needed",
+        "contentValue": "Ka Boom test - defuse",
+        "additionalFields": {}
+      },
+      "id": "77dad6b3-e3ba-4f1a-97a7-d15aaf8377df",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        660
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Update to message then auto redirect",
+        "height": 282,
+        "width": 257
+      },
+      "id": "7539a964-d039-408a-b44b-fed6991a186e",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        247
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unity.bitrix24.com/rest/1/hant3voj2j9f4r0e/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"NPS\",\n       \"GROUP_ID\":\"17\",\n       \"RESPONSIBLE_ID\": \"4\",\n       \"DESCRIPTION\": \"Worplace Satisfaction:  {{ $json[\"query\"][\"WorkplaceSatisfaction\"] }}{{'\\\\n'}}Ideal Job: {{ $json[\"query\"][\"IdealJob\"] }} {{'\\\\n'}}Opportunities for Growth: {{ $json[\"query\"][\"GrowthOpportunities\"] }}{{'\\\\n'}}Feel Rewarded: {{ $json[\"query\"][\"FeelRewarded\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "650f4434-0dd9-4ee0-9718-a7b5b1a640e8",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        780,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Thank You</title> <style>   body {     font-family: 'Arial', sans-serif;     background-color: #f4f4f9;     margin: 0;     padding: 0;     display: flex;     justify-content: center;     align-items: center;     height: 100vh;     text-align: center;   }   .container {     max-width: 600px;     background: #fff;     padding: 40px;     border-radius: 10px;     box-shadow: 0 5px 15px rgba(0,0,0,0.1);   }   .container h1 {     font-size: 24px;     color: #333;   }   .container p {     font-size: 18px;     color: #555;     line-height: 1.6;   }   .signature {     margin-top: 30px;     font-style: italic;     color: #333;   } \n\n    button {\n        padding: 10px 20px;\n        font-size: 16px;\n        cursor: pointer;\n        background-color: #d3d3d3;\n        border: 1px solid #ddd;\n        border-radius: 5px;\n        transition: all 0.3s ease;\n    }\n\n    button:hover {\n        background-color: #e7e7e7;\n    }\n\n</style> </head> <body>   <div class=\"container\">     <h1>Thank You for Submitting!</h1>       </div>\n\n <button id=\"closeButton\">Close Tab</button>\n\n    <script>\n        document.getElementById('closeButton').addEventListener('click', function() {\n            window.close();\n        });\n    </script>\n\n </body> </html>",
+        "options": {}
+      },
+      "id": "40fc8570-4f96-43ab-a999-7ae1e08a7cb3",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4ea42ebc-2fa7-48b0-abf1-0a5f917db8bd",
+              "leftValue": "={{ $('Webhook').item.json[\"query\"][\"Contact\"] }}",
+              "rightValue": "Yes",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ce75d8f4-5d85-4e15-b90b-66408750d635",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        660,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "support@myunitycare.com",
+        "fromName": "Urgent ENPS: response requested",
+        "toEmail": "amaya@epichs.org,gvirdi@epichs.org,jmartin@epichs.org,austin@myunitycare.com,tstilwell@epichs.org",
+        "subject": "Negative ENPS Response Needed",
+        "contentValue": "=There has been a new NPS submission:\n\nWorplace Satisfaction:  {{ $('Webhook').item.json[\"query\"][\"WorkplaceSatisfaction\"] }}\nIdeal Job: {{ $('Webhook').item.json[\"query\"][\"IdealJob\"] }}\nOpportunities for Growth: {{ $('Webhook').item.json[\"query\"][\"GrowthOpportunities\"] }}\nFeel Rewarded: {{ $('Webhook').item.json[\"query\"][\"FeelRewarded\"] }}\n\nMagic wand: {{ $('Webhook').item.json[\"query\"][\"MagicWand\"] }}\nDissatisfied with: {{ $('Webhook').item.json[\"query\"][\"Dissatisfied\"] }}\n\nName: {{ $('Webhook').item.json[\"query\"][\"ContactName\"] }}\nEmail: {{ $('Webhook').item.json[\"query\"][\"ContactEmail\"] }}\nNumber: {{ $('Webhook').item.json[\"query\"][\"ContactNumber\"] }}\n\nTask ID:\n{{ $json[\"result\"][\"task\"][\"id\"] }}\n\nhttps://unity.bitrix24.com/workgroups/group/17/tasks/task/view/{{ $('HTTP Request4').item.json[\"result\"][\"task\"][\"id\"] }}/?any=group%2F17%2Ftasks%2Ftask%2Fview%2F{{ $('HTTP Request4').item.json[\"result\"][\"task\"][\"id\"] }}%2F",
+        "additionalFields": {}
+      },
+      "id": "4b7c4f65-8434-40c7-99bb-78a52b4f42be",
+      "name": "Urgent",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        860,
+        660
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "support@myunitycare.com",
+        "fromName": "Good News Everybody: Positive NPS",
+        "toEmail": "amaya@epichs.org,gvirdi@epichs.org,jmartin@epichs.org,austin@myunitycare.com,tstilwell@epichs.org",
+        "subject": "Negative ENPS Response Needed",
+        "contentValue": "=There has been a new NPS submission:\n\nWorplace Satisfaction:  {{ $('Webhook').item.json[\"query\"][\"WorkplaceSatisfaction\"] }}\nIdeal Job: {{ $('Webhook').item.json[\"query\"][\"IdealJob\"] }}\nOpportunities for Growth: {{ $('Webhook').item.json[\"query\"][\"GrowthOpportunities\"] }}\nFeel Rewarded: {{ $('Webhook').item.json[\"query\"][\"FeelRewarded\"] }}\n\nTask ID:\n{{ $json[\"result\"][\"task\"][\"id\"] }}",
+        "additionalFields": {}
+      },
+      "id": "c721c534-f027-4f3f-8eff-450b9e188eca",
+      "name": "Positive",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        920
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dc641a8f-d5aa-437e-a069-446cc6a2c768",
+              "leftValue": "={{ $('Webhook').item.json.query.WorkplaceSatisfaction }}",
+              "rightValue": "10",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            },
+            {
+              "id": "b3aa9125-c750-4c83-9a74-9c7b144fa20d",
+              "leftValue": "={{ $('Webhook').item.json.query.WorkplaceSatisfaction }}",
+              "rightValue": "9",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "35cb9ca3-fe6f-47e1-96df-07bd85d424cb",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        860,
+        920
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "HTTP Request4": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "683",
+              "parentId": null,
+              "title": "NPS",
+              "description": "Worplace Satisfaction:  10\nIdeal Job: 10 \nOpportunities for Growth: 10\nFeel Rewarded: 10",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "0",
+              "createdBy": "1",
+              "createdDate": "2024-03-02T01:00:18+03:00",
+              "responsibleId": "4",
+              "changedBy": "1",
+              "changedDate": "2024-03-02T01:00:18+03:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-03-02T01:00:18+03:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{08affad9-a8c4-4975-99bc-eee0c8603d96}",
+              "xmlId": null,
+              "commentsCount": "1",
+              "serviceCommentsCount": "1",
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": "531",
+              "forumId": "11",
+              "siteId": "s1",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "2",
+              "viewedDate": "2024-03-02T01:00:19+03:00",
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-03-02T01:00:18+03:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "17",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "17",
+                "name": "ENPS",
+                "opened": false,
+                "membersCount": 3,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "1",
+                "name": "Thomas Stilwell",
+                "link": "/company/personal/user/1/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "4",
+                "name": "Austin Adams",
+                "link": "/company/personal/user/4/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 1,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1709330418.528328,
+            "finish": 1709330419.138577,
+            "duration": 0.6102490425109863,
+            "processing": 0.5823009014129639,
+            "date_start": "2024-03-02T01:00:18+03:00",
+            "date_finish": "2024-03-02T01:00:19+03:00",
+            "operating_reset_at": 1709331018,
+            "operating": 0.5822851657867432
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.236",
+            "x-forwarded-for": "10.0.14.236",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.myunitycare.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImVtYWlsIjoiaXRoZWxwZGVza0BlcGljcGMuY29tIiwicGFzc3dvcmQiOiJkMGJkMGI0ZDQ5ZjRiNzRiZDRhODQ4MTE0ZTk0OTQwMzdlZDQzZmE5ZDZjYWJkMmY5ODMxNDlmMTA2ZTAxOGZiIiwiaWF0IjoxNzA5Mjk1NjIwLCJleHAiOjE3MDk5MDA0MjB9.1j7auDyNWpCWW3639kRXf8I8x_oq5qeFT72GqF2Ivf0; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19jHokrMEi1LdLxbLWdS1BOKR8DfYdFe1fP1Ke8fC6hyjImaHAt3XyuS09n82W647h0arRC7AXTcw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19uyVmekU6aTKxxW22F5CQBPr%2Fp4Ox%2BpvuFN27wAQwER1lIvlrzJlAUSMQKe6D7RYEFcRIF7b3XyZL2BNHFcFiTKSf2DmU1ZopWq99tkw221WTspcOoVVArtF8GSliZ%2FSfgD5%2BpAJft9uSJixAhpzgafNh%2F2XU7ofg%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FPokjEsDhqm%2F%2FM66oJX%2BghwTWyLGpO488%2FkgaV%2BtgpR%2BlYCM1o2920kap9xHd8ixbb52PgLrrtlwtSCXT5IquLK0CbjIOB3dlq78GoQiDglK7WS1XSXH5yIQ1TCrwW2uxxbTwp6rpUmg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1709324996066%2C%22018dfbb5-8217-7dab-a5ed-e47afbfa13f7%22%2C1709324993047%5D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BnjKACllLCeJuHw9b1%2BL%2BJ4w1EWjTQGKYNOIpYgwATi4255UktAQY1c%2BHiSgA9YZbGz0q5wCz9Wby8ENXuC9H2Zq%2BOfGTyFF8ReHKIamU4jgP11YIqz9yEXr2YhQWEeYOAgYlvtbqFog%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "WorkplaceSatisfaction": "3",
+            "IdealJob": "3",
+            "GrowthOpportunities": "3",
+            "FeelRewarded": "3",
+            "MagicWand": "Test 6",
+            "Dissatisfied": "Test 6",
+            "Contact": "Yes",
+            "ContactName": "Name",
+            "ContactEmail": "Email",
+            "ContactNumber": "123456789"
+          },
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-07T20:13:12.900Z",
+  "versionId": "0d792ada-2029-499f-9f20-9724ec91abc0"
+}
