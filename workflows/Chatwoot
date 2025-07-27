@@ -1,0 +1,299 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Bitrix24 Unsure",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-21T17:43:36.101Z",
+  "id": "deIPw81FYV1hOfwy",
+  "isArchived": false,
+  "meta": null,
+  "name": "Chatwoot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5f9cebe4-34b3-4eb7-99f8-97557a59959e",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c4eb9871-804f-4437-b7ed-ec66a730da36",
+      "name": "Webhook",
+      "webhookId": "5f9cebe4-34b3-4eb7-99f8-97557a59959e"
+    },
+    {
+      "parameters": {
+        "path": "ea46a209-9af5-47c9-a760-4b967f50ed52",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -280
+      ],
+      "id": "2cd074f2-e31c-4766-ae2e-49467689513a",
+      "name": "Webhook1",
+      "webhookId": "ea46a209-9af5-47c9-a760-4b967f50ed52"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<script type=\"text/javascript\">\n  window.tiledeskSettings = {\n        projectid: \"6790f5b6401e85001375c89f\"\n  };\n  (function(d, s, id) {\n       var w=window; var d=document; var i=function(){i.c(arguments);};\n       i.q=[]; i.c=function(args){i.q.push(args);}; w.Tiledesk=i;\n       var js, fjs=d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) return;\n       js=d.createElement(s);\n       js.id=id; js.async=true; js.src=\"https://support.myunitycare.com/widget/launch.js\";\n       fjs.parentNode.insertBefore(js, fjs);\n  }(document,'script','tiledesk-jssdk'));\n</script>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -280
+      ],
+      "id": "3a43f030-509f-4a4f-8fb8-35b030850736",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        540,
+        180
+      ],
+      "id": "e5ca44b4-11c6-4b34-beed-021f3e4fc217",
+      "name": "Merge",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        180,
+        220
+      ],
+      "id": "775c0e02-49b2-4629-bf29-d866cc7f7937",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "f53q65ZFKo7SfpKk",
+          "name": "OpenAi Blue Sky"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Incoming Task - {{ $json.body.messages[0].sender.name }}\",\n       \"GROUP_ID\":\"126\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"Message: {{ $json.body.messages[0].processed_message_content }}\",\n       \"STAGE_ID\": \"\",\n    \"DEADLINE\": \"\",\n    \"TAGS\": [\"EPIC\",\"IT\"]\n   }\n}",
+        "options": {}
+      },
+      "id": "9c5d9ac6-208d-435b-ab95-ed8547384150",
+      "name": "HTTP Bitrix24 Unsure",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        440,
+        -80
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "134.209.126.85",
+            "x-forwarded-for": "134.209.126.85",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "2008",
+            "accept": "application/json",
+            "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.3.3p89",
+            "content-type": "application/json",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "additional_attributes": {
+              "browser": {
+                "device_name": "Unknown",
+                "browser_name": "Chrome",
+                "platform_name": "Windows",
+                "browser_version": "131.0.0.0",
+                "platform_version": "10.0"
+              },
+              "referer": "https://cdpn.io/cpe/boomboom/index.html?key=index.html-d000a567-d693-b58c-1ff9-f672133b3cae",
+              "initiated_at": {
+                "timestamp": "Tue Jan 21 2025 13:17:47 GMT-0500 (Eastern Standard Time)"
+              },
+              "browser_language": "en"
+            },
+            "can_reply": true,
+            "channel": "Channel::WebWidget",
+            "contact_inbox": {
+              "id": 2,
+              "contact_id": 2,
+              "inbox_id": 1,
+              "source_id": "21a4d4dc-571e-4f13-bf9c-77c90dda6558",
+              "created_at": "2025-01-21T18:17:41.667Z",
+              "updated_at": "2025-01-21T18:17:41.667Z",
+              "hmac_verified": false,
+              "pubsub_token": "KNAhAq191i5w6DwuDHd2aBky"
+            },
+            "id": 2,
+            "inbox_id": 1,
+            "messages": [
+              {
+                "id": 4,
+                "content": "Hello",
+                "account_id": 2,
+                "inbox_id": 1,
+                "conversation_id": 2,
+                "message_type": 0,
+                "created_at": 1737483468,
+                "updated_at": "2025-01-21T18:17:48.612Z",
+                "private": false,
+                "status": "sent",
+                "source_id": null,
+                "content_type": "text",
+                "content_attributes": {
+                  "in_reply_to": null
+                },
+                "sender_type": "Contact",
+                "sender_id": 2,
+                "external_source_ids": {},
+                "additional_attributes": {},
+                "processed_message_content": "Hello",
+                "sentiment": {},
+                "conversation": {
+                  "assignee_id": null,
+                  "unread_count": 1,
+                  "last_activity_at": 1737483468,
+                  "contact_inbox": {
+                    "source_id": "21a4d4dc-571e-4f13-bf9c-77c90dda6558"
+                  }
+                },
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 2,
+                  "identifier": null,
+                  "name": "green-breeze-235",
+                  "phone_number": null,
+                  "thumbnail": "",
+                  "type": "contact"
+                }
+              }
+            ],
+            "labels": [],
+            "meta": {
+              "sender": {
+                "additional_attributes": {},
+                "custom_attributes": {},
+                "email": null,
+                "id": 2,
+                "identifier": null,
+                "name": "green-breeze-235",
+                "phone_number": null,
+                "thumbnail": "",
+                "type": "contact"
+              },
+              "assignee": null,
+              "team": null,
+              "hmac_verified": false
+            },
+            "status": "open",
+            "custom_attributes": {},
+            "snoozed_until": null,
+            "unread_count": 1,
+            "first_reply_created_at": null,
+            "priority": null,
+            "waiting_since": 1737483468,
+            "agent_last_seen_at": 0,
+            "contact_last_seen_at": 0,
+            "last_activity_at": 1737483468,
+            "timestamp": 1737483468,
+            "created_at": 1737483468,
+            "event": "conversation_created"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/5f9cebe4-34b3-4eb7-99f8-97557a59959e",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-01-22T13:49:07.782Z",
+  "versionId": "bcfb7966-fb77-48f1-bff2-9367ab4bbb04"
+}
