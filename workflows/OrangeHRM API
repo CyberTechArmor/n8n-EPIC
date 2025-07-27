@@ -1,0 +1,108 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-06T15:57:26.618Z",
+  "id": "pJEHJPEX0lhjpIKF",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "OrangeHRM API",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "39e45ced-b831-4332-a64c-2f3f48e663aa",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unitycarehrm.com/oauth/issueToken",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "client_id",
+              "value": "n8n"
+            },
+            {
+              "name": "client_secret",
+              "value": "38213254337476aa7a4571bda439deff"
+            },
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "709cb634-4adb-4b6c-bfe0-2c4167b27ce5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://unitycarehrm.com/oauth/issueToken",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "json",
+        "body": "{   \"client_id\": \"n8n\",   \"client_secret\": \"38213254337476aa7a4571bda439deff\",   \"grant_type\": \"client_credentials\" }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          },
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "17998181-f6cd-4d5c-9a1a-6b09c25c2230",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        660
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-06T22:05:58.499Z",
+  "versionId": "eaa2b3c2-44ed-488f-811d-fed736cb3a3d"
+}
