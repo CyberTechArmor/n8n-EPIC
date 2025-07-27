@@ -1,0 +1,479 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JWT": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH4": {
+      "main": [
+        [
+          {
+            "node": "SSH6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH5": {
+      "main": [
+        [
+          {
+            "node": "SSH4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH6": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "JWT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-27T14:43:56.968Z",
+  "id": "U8nXskSSrnJq2zPf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 16",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://vid.epicpc.com/presentation/{{ $json[\"record_id\"] }}/video/webcams.webm\n",
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "eeace3af-eb3b-440d-b3c8-55b42c5efa72",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -180,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "decode",
+        "token": "={{ $json.body.signed_parameters }}"
+      },
+      "id": "044b9d16-886c-4280-8b3f-086d11704f0c",
+      "name": "JWT",
+      "type": "n8n-nodes-jwt.jwt",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        480
+      ],
+      "credentials": {
+        "jwtSecret": {
+          "id": "8Ps769Ewh4cyFW1C",
+          "name": "JWT Secret BigBlueButton"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=ffmpeg -i /home/nmnadmin/unityvideorecording/{{ $('JWT').item.json[\"record_id\"] }}.webm -vn -acodec libmp3lame -ab 32k -ar 16000 -y /home/nmnadmin/unityvideorecording/{{ $('JWT').item.json[\"record_id\"] }}.mp3",
+        "cwd": "/home/nmnadmin/unityvideorecording"
+      },
+      "id": "c2762988-372f-463d-803c-f04fff116007",
+      "name": "SSH4",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        200,
+        480
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "kAfF6FQN8tBlmAkm",
+          "name": "SSH Password account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "path": "/home/nmnadmin/unityvideorecording/",
+        "options": {
+          "fileName": "={{ $('JWT').item.json[\"record_id\"] }}.webm"
+        }
+      },
+      "id": "7ad6d160-1dbc-48f7-a1f1-78536f6df601",
+      "name": "SSH5",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        40,
+        480
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "kAfF6FQN8tBlmAkm",
+          "name": "SSH Password account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "download",
+        "path": "=/home/nmnadmin/unityvideorecording/{{ $('JWT').item.json[\"record_id\"] }}.mp3",
+        "options": {}
+      },
+      "id": "9ad09bc4-f939-4b8b-8ec4-99d1b96ea12b",
+      "name": "SSH6",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        340,
+        480
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "kAfF6FQN8tBlmAkm",
+          "name": "SSH Password account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "p04k19fkg6vbir2",
+        "table": "mx9s8j0h38mi0iw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Meeting",
+              "fieldValue": "=Automation"
+            },
+            {
+              "fieldName": "MeetingID",
+              "fieldValue": "={{ $('JWT').item.json[\"record_id\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "d3411f9c-ef6e-4348-868a-d2e2f9c4ab07",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        940,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('JWT').item.json[\"record_id\"] }}.txt",
+        "options": {}
+      },
+      "id": "61792932-cfa2-46cd-9e40-8408d97443e8",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "text",
+        "options": {
+          "fileName": "={{ $('JWT').item.json[\"record_id\"] }}.txt"
+        }
+      },
+      "id": "14f63ff3-c8ed-4822-8b68-592513e3d56e",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "7fdecbe8-da23-4da1-bc91-fbc665bce4bc",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1520,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "p04k19fkg6vbir2",
+        "table": "mx9s8j0h38mi0iw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $json.Id }}"
+            },
+            {
+              "fieldName": "Summary",
+              "fieldValue": "={{ $json.message.content }}"
+            }
+          ]
+        }
+      },
+      "id": "591a04d2-0fa8-4b48-a283-a0d7d75e6cd9",
+      "name": "NocoDB5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1740,
+        580
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://vid.epicpc.com/presentation/a0b3dc76bc988d60b0eac47e60bc6f6f9a84372a-1719445267078/video/webcams.webm\n",
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "id": "f03ea387-44db-42c7-8668-b7d421892567",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -180,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "id": "91d266db-1275-444c-b0fc-2f0613411a10",
+      "name": "OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        640,
+        640
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "WaBIAccn19Qs2qn0",
+          "name": "OpenAi account CyberTech"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Please summerize the following Meeting in two sentences, and list any key points or highlights: {{ $json.text }}"
+            },
+            {},
+            {
+              "content": "Be very clear and only use information in the text.",
+              "role": "assistant"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5f2de9a4-9ef9-4cfd-8c6d-769299d57581",
+      "name": "OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        840,
+        940
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "WaBIAccn19Qs2qn0",
+          "name": "OpenAi account CyberTech"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "e241ad4f-a62f-413a-aa83-de77b34774aa",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        480
+      ]
+    }
+  ],
+  "pinData": {
+    "JWT": [
+      {
+        "json": {
+          "meeting_id": "unitybigvoice",
+          "record_id": "a0b3dc76bc988d60b0eac47e60bc6f6f9a84372a-1719493352972"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-27T14:43:56.968Z",
+  "versionId": "37fc4e75-0638-43d7-bf2d-b6c0106274be"
+}
