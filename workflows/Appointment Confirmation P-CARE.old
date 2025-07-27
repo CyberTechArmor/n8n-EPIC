@@ -1,0 +1,2829 @@
+{
+  "active": false,
+  "connections": {
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Confirmed": {
+      "main": [
+        [
+          {
+            "node": "HTTP Appointment Status2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Cancelled": {
+      "main": [
+        [
+          {
+            "node": "HTTP Appointment Status3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Confirm": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook Thank You",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Bumped": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing Automated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Patient App Link": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Bumped",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing Automated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP PM Patient Demographics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge Cancelled",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Confirmed",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge No Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Patient by Phone Number": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook Redirect to Self-Scheduler": {
+      "main": [
+        [
+          {
+            "node": "HTTP Cancelled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP PM Patient Demographics": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing Automated": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Appointment Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Appointment Status1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Appointment Status2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Confirmed": {
+      "main": [
+        [
+          {
+            "node": "Merge Confirmed",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Appointment Status3": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Cancelled": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Cancelled",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Confirm",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook Not Confirmed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook Redirect to Self-Scheduler",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook Redirect to Self-Scheduler1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Confirm Link": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook No Response": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge No Response",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge No Response": {
+      "main": [
+        [
+          {
+            "node": "HTTP Appointment Status1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio": {
+      "main": [
+        [
+          {
+            "node": "HTTP Patient App Link",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-01T17:25:14.181Z",
+  "id": "Kl9tnBQc6P9FpRct",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Appointment Confirmation P-CARE.old",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <script>\n        window.addEventListener(\"pageshow\", function(event) {\n            var historyTraversal = event.persisted || \n                                   (typeof window.performance != \"undefined\" && \n                                    window.performance.navigation.type === 2);\n            if (historyTraversal) {\n                window.location.reload();\n            }\n        });\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Appointment Confirmation</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            text-align: center;\n        }\n        .button-container {\n            display: flex;\n            justify-content: center;\n            gap: 20px;\n        }\n        button {\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n            margin-top: 20px;\n            width: 45%;\n        }\n        #confirm {\n            background-color: #28a745;\n        }\n        #confirm:hover {\n            background-color: #218838;\n        }\n        #reschedule {\n            background-color: #ff6f61;\n        }\n        #reschedule:hover {\n            background-color: #ff3b2f;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Please confirm or reschedule your appointment</h1>\n        <div class=\"button-container\">\n            <button id=\"confirm\">Confirm</button>\n            <button id=\"reschedule\">Reschedule</button>\n        </div>\n    </div>\n\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            const urlParams = new URLSearchParams(window.location.search);\n            const param = urlParams.toString();\n\n            document.getElementById('confirm').addEventListener('click', function() {\n                window.location.href = 'https://xl.epicpc.com/webhook/b11806d9-3f5d-4c24-aa89-223f11f708c0?' + param;\n            });\n\n            document.getElementById('reschedule').addEventListener('click', function() {\n                window.location.href = 'https://xl.epicpc.com/webhook/706b281b-75f0-4f12-90ae-14f0b6da9e21?' + param;\n            });\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "507b480d-ae04-4223-b122-f4a4b3287db0",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        1820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "31078b7c-41ae-4d7b-83b2-9e7c5b01c6bb",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        440,
+        960
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "9c0ab1d9-c24b-4253-861d-4d354ea2be6d",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        580,
+        960
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"C0nn3ctme#1234\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "9fd63959-44db-4d78-bea8-f5bbdb2dfacc",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        760,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "d5ca0f16-6f41-4014-bea9-5c7d26a0bfe7",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "c2d6067e-9764-4040-a20c-6b12b4a6b728",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1240,
+        1060
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "e368c941-b484-4b65-a1d6-1af61cc53ae0",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication APPTCONF",
+        "height": 373.491094826977,
+        "width": 1403.1472052879556,
+        "color": 6
+      },
+      "id": "77654d1c-e255-441b-97af-1273f2718e01",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        400,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "bdc05fd5-561f-42c5-b859-ae63ac3a7b55",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        900
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "43368b9c-649f-4c5e-965c-0ec26f2d7448",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        900
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "4632118a-2dce-482b-99bf-31dcdd0721ae",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with appt_sched as (\nSELECT top 100 [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n       ,[Appt_Sched_Location_Descr]\n       ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date]\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, 3, CAST(GETDATE() AS DATE)) and DATEADD(DAY, 3, CAST(GETDATE() AS DATE))\n  and a.Appt_Status ='s'\n  and a.Appt_Resource_Descr not like 'ZZ%' \n  and a.Appt_Sched_Location_Descr not like 'Diag%'  \n  ),\n  appt_ack AS (\n    SELECT \n        Patient_Number,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE a.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' --and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc NOT LIKE 'Diag%' and a.Resource_Desc not like 'BH%' and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' and a.Resource_Desc not like 'Blue%'\n    GROUP BY Patient_Number\n),\nltsr as(\nSELECT \n   a.Patient_Number,\n    a.Total_Appointments,\n    a.Acknowledged_Appointments,\n    cast(round((a.Acknowledged_Appointments * 1.0 / a.Total_Appointments),2)as float) AS Acknowledged_Ratio\nFROM appt_ack a\n),\nltsrandnew as(\nselect a.Appt_Status,\na.Patient_ID,a.Patient_Number,a.Appt_ID,a.Appt_Encounter_Number,\na.Appt_DateTime,a.Appt_Booked_Date,\na.Appt_Sched_Location_Descr,a.Appt_Resource_Descr,\nl.Acknowledged_Ratio,\ncase when l.Acknowledged_Ratio <= .5 then 'Fail'\nelse 'Pass'\nend as LTSR,\ncase when l.Total_Appointments = 1 then 'OnlyOneAppt'\nelse 'MultiplePriorAppt'\nend NewVsEst\nfrom appt_sched a\nleft join ltsr l on a.Patient_Number=l.Patient_Number\n)\nselect l.Appt_Status,\nl.Patient_ID,l.Patient_Number,l.Appt_ID,l.Appt_Encounter_Number,\nl.Appt_DateTime,l.Appt_Booked_Date,l.Appt_Sched_Location_Descr,\nl.Appt_Resource_Descr,l.Acknowledged_Ratio,l.LTSR,\ncase when l.Acknowledged_Ratio = 0 and l.NewVsEst ='MultiplePriorAppt' then 'NewButLowLTSR'\nwhen l.Acknowledged_Ratio=0 and l.NewVsEst='OnlyOneAppt' then 'New'\nelse 'Est'\nend as NewVsEstVsNo\nfrom ltsrandnew l"
+      },
+      "id": "5065eb30-511f-4370-99c0-25f7c5e0be7b",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        640,
+        420
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "e5e74dac-655e-47b4-bd38-e27b54b2c8ae",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8af8f413-1cc9-4a11-9cc7-97bf698afbdc",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        860,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "ef008c5d-0b61-40ae-8e74-c63b97cb79f6",
+      "name": "Merge Confirmed",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "85a362f0-a648-46ac-be61-10f08405f7dc",
+      "name": "Merge Cancelled",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "a2c023ce-ec11-4cde-9916-2b40fef5dd91",
+      "name": "Merge No Response",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# PM Call\n## (S=Scheduled, C=Confirmed, B=Bumped)\n{\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"137836\",\n\"Token\":\"54FB415A-CACD-4689-BBC2-C0DD95B25F54\",\n\"Parameter1\":\"25201003\", ###AppointmentID\n\"Parameter2\":\"C\",     ###Status\n\"Parameter3\":\"\",\n\"Parameter4\":\"1342\",   ###time\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "height": 424.60255793537,
+        "width": 384.54932771519174,
+        "color": 4
+      },
+      "id": "b3b73c6b-f878-4ce6-ad1d-59be0916a587",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"{{ $('HTTP Appointment Status2').item.json[\"getappointmentbyidinfo\"][0][\"Patient_ID\"] }}\",\n\"Token\":\"{{ $('Merge Confirmed').item.json[\"Token\"] }}\",\n\"Parameter1\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_ID\"] }}\",\n\"Parameter2\":\"C\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_DateTime\"].slice(11).replaceAll(\":\",\"\").replaceAll(\"AM\",\"\").replaceAll(\"PM\",\"\").padStart(4, '0') }}\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "97eb5b6f-a724-4903-81fc-ade8256a8e7b",
+      "name": "HTTP Confirm",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $('Merge Cancelled').item.json[\"Token\"] }}\",\n\"Parameter1\":\"{{ $('Webhook Cancelled').item.json[\"query\"][\"appt\"] }}\",\n\"Parameter2\":\"X\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "63273efe-89d9-4f96-a7e9-17df982f38ee",
+      "name": "HTTP Cancelled",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2820,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Patient_ID\"] }}\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_ID\"] }}\",\n\"Parameter2\":\"B\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_DateTime\"].slice(11).replaceAll(\":\",\"\").replaceAll(\"AM\",\"\").replaceAll(\"PM\",\"\").padStart(4, '0') }} }}\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"14\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "88dcc83a-72ed-4723-958a-fd7ae904db34",
+      "name": "HTTP Bumped",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3200,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://visit.epicpc.com/?fullName={{ $json[\"getappointmentbyidinfo\"][0][\"Patient_First_Name\"].replace(/ /g, '%20') }}{{ +$json[\"getappointmentbyidinfo\"][0][\"Patient_Last_Name\"].replace(/ /g, '%20') }}&patientId={{ $json[\"getappointmentbyidinfo\"][0][\"Patient_Number\"] }}",
+        "options": {}
+      },
+      "id": "7eaa2bc9-f7d4-4204-a568-b8c9e6fe92ae",
+      "name": "Respond to Webhook Redirect to Self-Scheduler",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2540,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Thank You!</title>\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            text-align: center;\n        }\n        p {\n            font-size: 1.5em;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Thank You!</h1>\n        <p>Your appointment has been confirmed.</p>\n    </div>\n\n    <!-- Confetti Canvas -->\n    <canvas id=\"confettiCanvas\" style=\"position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;\"></canvas>\n\n    <!-- Confetti Script -->\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            var confettiCanvas = document.getElementById('confettiCanvas');\n            var myConfetti = confetti.create(confettiCanvas, { resize: true });\n\n            function launchConfetti() {\n                myConfetti({\n                    particleCount: 100,\n                    spread: 70,\n                    origin: { y: 0.6 }\n                });\n            }\n\n            // Launch confetti when the page loads\n            launchConfetti();\n            // Launch confetti every 5 seconds\n            setInterval(launchConfetti, 5000);\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "8f86c636-27d4-48b4-ae45-0f96eafd5fe0",
+      "name": "Respond to Webhook Thank You",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3020,
+        1320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c257af04-dc73-40d5-8e34-d32af0270ca6",
+      "name": "No Operation, do nothing Automated",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3480,
+        1860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Duplicate Patients in Bitrix24\",\n       \"GROUP_ID\":\"159\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"{{ $('Item Lists2').item.json[\"NameMRNBitrixid\"].join('\\\\n') }} {{'\\\\n'}} {{ $json[\"data\"]}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "80a5af20-d448-4bb1-a738-78c025939cb0",
+      "name": "HTTP Patient App Link",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1720,
+        480
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Appointment Confirmation Send Link",
+        "height": 412.4523469955463,
+        "width": 1767.9636393143517,
+        "color": 7
+      },
+      "id": "17d34c58-2dd2-49c9-acc3-0c01559cd6f7",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Confirm or Reschedule Website",
+        "height": 397.60866013317747,
+        "width": 397.5808204672494,
+        "color": 4
+      },
+      "id": "01f446d7-0231-4073-bb7f-d6f043286178",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        400,
+        1629.4265146378402
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Confirm\n# Reschedule\n# Bump",
+        "height": 905.1416048416932,
+        "width": 2574.493617846531,
+        "color": 5
+      },
+      "id": "f06dfffa-b96d-47fb-b77e-96318bf838e4",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1247.311817565408,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a57bfce5-61cc-47db-8c50-46b90a4fe9fc",
+              "leftValue": "={{ $json.query.LTSR }}",
+              "rightValue": "Pass",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6faad2a6-51f3-4dcb-a0a6-2b8549c997b8",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2900,
+        1880
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "b3d843b2-0d0c-4eaf-a7cd-5ae6b393e55b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1120,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f758f7b0-1d2b-4bba-8066-2ff4b46f8a98",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1600,
+        900
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6dc6c8ae-2369-4f93-8b36-4cc9c8cef760",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "from": "+13133514769",
+        "to": "=+12487097800",
+        "message": "=EPIC Health here and we're excited to see you! 🎉\n\nYour appointment is on 2024-08-04, please navigate to the link and Confirm or Cancel/Reschedule.\n\nTo keep your appointment with your provider please confirm within 24 hours of receiving this link:\n\nhttps://xl.epicpc.com/webhook/confirm?appt=25201003",
+        "options": {}
+      },
+      "id": "7868a6e0-1178-494d-b96c-3e79dbc18143",
+      "name": "Twilio Test",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        60
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--APM PatientInfoWithInsInfo\nwith genpatinfo as (\n    select g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_LFI,\n           g.Patient_First_Name, g.Patient_Last_Name, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n           g.Patient_SSN, g.Patient_Sex, g.Patient_DOB, g.Patient_Age, g.Patient_Marital_Status, g.Patient_Home_Phone, g.Patient_Cell_Phone,\n           g.Patient_Primary_Phone_Number, g.Patient_Email\n    from [PM].[vwGenPatInfo] g\n),\npatid as (\n    select p.Patient_ID, p.Patient_Number, p.Date_Registered,\n           p.Comments, p.Account_ID, p.Contact_ID\n    from [PM].[Patients] p\n),\npatpol as (\n    select pp.Patient_Policy_ID, pp.Policy_ID, pp.Patient_ID,\n           pp.Coverage, pp.Verified_Date\n    from [PM].[Patient_Policies] pp\n),\ngenpol as (\n    select po.Policy_ID, po.Group_No, po.Certificate_No,\n           po.Comments, po.Effective_Date, po.Expiration_Date,\n           po.Carrier_ID, po.Insurance_Plan_ID, po.Contact_ID, po.Account_ID\n    from [PM].[Policies] po\n)\nselect g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_First_Name, g.Patient_Last_Name,\n       g.Patient_LFI, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n       g.Patient_SSN, g.Patient_Sex, convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB, g.Patient_Age, g.Patient_Marital_Status,\n       g.Patient_Home_Phone, g.Patient_Cell_Phone, g.Patient_Email,\n       p.Account_ID, p.Contact_ID, p.Date_Registered, p.Comments,\n       pp.Patient_Policy_ID, pp.Policy_ID, pp.Coverage, pp.Verified_Date,\n       po.Account_ID, po.Carrier_ID, c.Name, c.Payor_Number, i.CoPayment_Amount,\n       po.Insurance_Plan_ID, po.Carrier_ID, po.Certificate_No, po.Group_No,\n       po.Comments, po.Effective_Date, po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = g.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere (g.Patient_Home_Phone = '{{ $json.query.number .startsWith('1') ? $json.query.number.slice(1) : $json.query.number }}' or g.Patient_Cell_Phone = '{{ $json.query.number .startsWith('1') ? $json.query.number.slice(1) : $json.query.number }}')   and YEAR(g.Patient_DOB) = '{{ $json.query.dob }}'"
+      },
+      "id": "c38e3135-f70f-4cf1-85d1-6fc6958f4ae6",
+      "name": "Find Patient by Phone Number",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        3220,
+        160
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Patient_Number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ace5955-cc32-4ee1-9d27-fb1281be1177",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1483550d-b567-4ae1-8a73-43f8f4c6a4cd",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetPatientDemographics"
+            },
+            {
+              "name": "AppUserID",
+              "value": "apptconf"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "="
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Active"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Microsoft SQL').item.json.Patient_ID }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "de794f88-cce2-450a-8e66-f50aed07bb9e",
+      "name": "HTTP PM Patient Demographics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1300,
+        480
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Confirm Check\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}LTSR={{ $('Merge').item.json[\"LTSR\"] }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "0d0affc8-ed18-4fd4-9941-a749ca379509",
+      "name": "HTTP 24 Bitrix24 Check1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1940,
+        60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {}
+      },
+      "id": "0ec9a5fc-8360-4ccd-9477-eb4ca415b14f",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3660,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Merge').item.json[\"Appt_ID\"] }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ac2986cf-473c-4207-8ffb-99b4b81cc69c",
+      "name": "HTTP Appointment Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1c7b9f63-0d2e-40ba-b0fc-e5038185716f",
+              "leftValue": "={{ $json.getappointmentbyidinfo[0].Status }}",
+              "rightValue": "=C",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "ad71e788-b18f-4c87-9d62-bd0f67359610",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "593d337c-981f-4a19-a27d-62201041dbe0",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3240,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook No Response').item.json[\"query\"][\"ApptID\"] }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ed209a13-83ff-472f-b78a-9e8bcb2416d2",
+      "name": "HTTP Appointment Status1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2020,
+        1880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook Confirmed').item.json[\"query\"][\"appt\"] }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c2887296-a071-40fb-9cdd-620a9587b9a6",
+      "name": "HTTP Appointment Status2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2100,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "path": "b11806d9-3f5d-4c24-aa89-223f11f708c0",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "181341cc-bf15-4cad-8b9b-5227f7580e64",
+      "name": "Webhook Confirmed",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        1460
+      ],
+      "webhookId": "b11806d9-3f5d-4c24-aa89-223f11f708c0",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook Cancelled').item.json[\"query\"][\"appt\"] }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b989793c-1511-4fd2-957c-a54705c2741b",
+      "name": "HTTP Appointment Status3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2100,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "path": "706b281b-75f0-4f12-90ae-14f0b6da9e21",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0578b24a-e64c-4e71-934e-653c076ce7b8",
+      "name": "Webhook Cancelled",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        1720
+      ],
+      "webhookId": "706b281b-75f0-4f12-90ae-14f0b6da9e21",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4e46ba79-715d-4387-8800-dac41cc8cd37",
+              "leftValue": "={{ $json.getappointmentbyidinfo[0].Status }}",
+              "rightValue": "S",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fe0ce1de-0805-4290-95ed-ce84032795e6",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Thank You!</title>\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            text-align: center;\n        }\n        p {\n            font-size: 1.5em;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Thank You!</h1>\n        <p>Your appointment has been confirmed.</p>\n    </div>\n\n    <!-- Confetti Canvas -->\n    <canvas id=\"confettiCanvas\" style=\"position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;\"></canvas>\n\n    <!-- Confetti Script -->\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            var confettiCanvas = document.getElementById('confettiCanvas');\n            var myConfetti = confetti.create(confettiCanvas, { resize: true });\n\n            function launchConfetti() {\n                myConfetti({\n                    particleCount: 100,\n                    spread: 70,\n                    origin: { y: 0.6 }\n                });\n            }\n\n            // Launch confetti when the page loads\n            launchConfetti();\n            // Launch confetti every 5 seconds\n            setInterval(launchConfetti, 5000);\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "f3355c4d-c587-498f-ad79-9f041c1aa277",
+      "name": "Respond to Webhook Not Confirmed",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2840,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4e46ba79-715d-4387-8800-dac41cc8cd37",
+              "leftValue": "={{ $json.getappointmentbyidinfo[0].Status }}",
+              "rightValue": "S",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c135074a-87b1-419b-8322-71733d21a5ab",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2300,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://visit.epicpc.com/?fullName={{ $json[\"getappointmentbyidinfo\"][0][\"Patient_First_Name\"].replace(/ /g, '%20') }}{{ +$json[\"getappointmentbyidinfo\"][0][\"Patient_Last_Name\"].replace(/ /g, '%20') }}&patientId={{ $json[\"getappointmentbyidinfo\"][0][\"Patient_Number\"] }}",
+        "options": {}
+      },
+      "id": "1cffbb29-c6c2-461f-b6f2-183c6f7fe865",
+      "name": "Respond to Webhook Redirect to Self-Scheduler1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2540,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "height": 336.8693441317094,
+        "width": 1766.9287842788021
+      },
+      "id": "b5ff506d-6b29-4a3e-9d79-08da43191fb4",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        379.2046228642223,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with appt_sched as (\nSELECT  [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Encounter_Number]\n       ,[Appt_Sched_Location_Descr]\n       ,[Appt_Resource_ID]\n      ,[Appt_Resource_Abbr]\n      ,[Appt_Resource_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI]\n      ,[Appt_Type_Abbr]\n      ,[Appt_Type_Descr]\n      ,[Appt_Duration]\n      ,[Appt_Comments]\n      ,[Appt_Status]\n      ,[Appt_Time_In]\n      ,[Appt_Booked_Date]\n      ,[Appt_Booked_By_Operator_Abbr]\n      ,[Appt_Confirmed_Date]\n      ,[Appt_Confirmed_By_Operator_Abbr]\n      ,[Appt_Cancelled_Date]\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n  where CAST(a.Appt_DateTime AS DATE) between DATEADD(DAY, 2, CAST(GETDATE() AS DATE)) and DATEADD(DAY, 3, CAST(GETDATE() AS DATE))\n  and a.Appt_Status ='S'\n  and a.Appt_Resource_Descr not like 'ZZ%' \n  and a.Appt_Sched_Location_Descr not like 'Diag%' \n  ),\n  appt_ack AS (\n    SELECT \n        Patient_Number,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE a.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc NOT LIKE 'Diag%' and a.Resource_Desc not like 'BH%' and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' and a.Resource_Desc not like 'Blue%'\n    GROUP BY Patient_Number\n),\nltsr as(\nSELECT \n   a.Patient_Number,\n    a.Total_Appointments,\n    a.Acknowledged_Appointments,\n    cast(round((a.Acknowledged_Appointments * 1.0 / a.Total_Appointments),2)as float) AS Acknowledged_Ratio\nFROM appt_ack a\n)\nselect a.*,l.Acknowledged_Ratio,\ncase when l.Acknowledged_Ratio <= .5 then 'Fail'\nelse 'Pass'\nend as LTSR\nfrom appt_sched a\nleft join ltsr l on a.Patient_Number=l.Patient_Number"
+      },
+      "id": "a5594cd2-0f82-430c-965a-7441052ec020",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        880,
+        60
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetPatientDemographics"
+            },
+            {
+              "name": "AppUserID",
+              "value": "apptconf"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "="
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Active"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Microsoft SQL').item.json.Patient_ID }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "3915e696-ad6b-405b-9d57-133c59b50538",
+      "name": "HTTP PM Patient Demographics1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1300,
+        60
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "7f7b034d-d153-486b-b006-39f8ae701f5f",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        680,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "path": "confirm",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b3ab5796-efa5-4e6c-9504-90193ef97645",
+      "name": "Webhook Confirm Link",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        440,
+        1820
+      ],
+      "webhookId": "2a09b039-bb66-4f19-ae89-3ce810980fba",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8cdf5a76-cae5-44cb-8488-75568a964caf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "11bafd3e-808e-4d9c-824a-746267a6a3c9",
+      "name": "Webhook No Response",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        2000
+      ],
+      "webhookId": "8cdf5a76-cae5-44cb-8488-75568a964caf",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Test\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID=137836&Parameter1=25202001&Parameter2=B&Parameter4=0800&LTSR=Fail&ApptID=25202001\"\n   }\n}",
+        "options": {}
+      },
+      "id": "681db577-a483-4a57-9841-adef3dbeaba3",
+      "name": "HTTP 24 Bitrix24 Check2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2340,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formatToMilitaryTime(dateString) {\n    // Parse the input date string using a regular expression\n    const dateMatch = dateString.match(/(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4}) (\\d{1,2}):(\\d{2})(AM|PM)/);\n    \n    if (!dateMatch) {\n        return null; // Return null if the input format doesn't match\n    }\n\n    let [, month, day, year, hours, minutes, period] = dateMatch;\n\n    // Convert hours to 24-hour format\n    if (period === \"PM\" && hours !== \"12\") {\n        hours = parseInt(hours) + 12;\n    } else if (period === \"AM\" && hours === \"12\") {\n        hours = \"00\";\n    }\n\n    // Ensure two digits for both hours and minutes\n    hours = hours < 10 ? '0' + hours : hours;\n    minutes = minutes < 10 ? '0' + minutes : minutes;\n\n    return hours + minutes;\n}\n\n// Get the input date string from the workflow (replace this with the actual field you are using)\nconst input = $json[\"getappointmentbyidinfo[0].Appointment_DateTime\"]; \n\n// Check if the input is valid\nif (input) {\n    const output = formatToMilitaryTime(input);\n    return [{ formattedTime: output }];\n} else {\n    return [{ formattedTime: null }]; // Return null if input is invalid\n}\n"
+      },
+      "id": "03ef11fb-095b-43ea-b913-8f25fcc098ef",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2680,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f86a203d-6ee1-49c2-8afe-cd2c55f6b4fc",
+              "name": "getappointmentbyidinfo[0].Appointment_DateTime",
+              "value": "={{ $json.getappointmentbyidinfo[0].Appointment_DateTime }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8a44eec8-5990-4be4-bcb9-a8c12104c1ac",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2040,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "path": "73d2373b-c07e-4c5a-94a8-f5d4c723e0dd",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "cf9a69d9-6781-4635-903b-4c88b7391bfb",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        1120
+      ],
+      "webhookId": "73d2373b-c07e-4c5a-94a8-f5d4c723e0dd",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "270bdb42-584e-4364-9439-2537cdbb08aa",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2300,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "GetPatientDemographics"
+            },
+            {
+              "name": "AppUserID",
+              "value": "apptconf"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "="
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Active"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Microsoft SQL').item.json.Patient_ID }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "6d4b832c-7409-4e0e-a3a5-231c9ec60e97",
+      "name": "HTTP PM Patient Demographics2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        240
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "from": "+13133514769",
+        "to": "=+1{{ $json.getpatientdemographicsinfo[0].Cell_Phone }}",
+        "message": "=EPIC Health here and we're excited to see you! 🎉\n\nYour appointment is on {{ $('Merge').item.json.Appt_DateTime.replaceAll(\"T\",\" \").replaceAll(\":00.000Z\",\"\") }}, please navigate to the link and Confirm or Cancel/Reschedule.\n\nTo keep your appointment with your provider please confirm within 24 hours of receiving this link:\n\nhttps://xl.epicpc.com/webhook/confirm?appt={{ $('Loop Over Items').item.json.Appt_ID }}?LTSR={{ $('Loop Over Items').item.json.LTSR.slice(0,1) }}",
+        "options": {}
+      },
+      "id": "1f1c0464-6ced-432d-b8e5-af3c2ae0404e",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        480
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Bad Number: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&LTSR={{ $('Merge').item.json[\"LTSR\"] }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "5ad3c16f-4c66-49a4-8672-d38a35313dd8",
+      "name": "HTTP 24 Bitrix24 Check3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Confirm Check: {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"First_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Last_Name\"] }} {{ $('HTTP PM Patient Demographics').item.json[\"getpatientdemographicsinfo\"][0][\"Patient_Number\"] }}\",\n       \"GROUP_ID\":\"38\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"PatientID={{ $('Merge').item.json[\"Patient_ID\"] }}&Parameter1={{ $('Merge').item.json[\"Appt_ID\"] }}&Parameter2=B&Parameter4={{ $('Merge').item.json[\"Appt_DateTime\"].slice(11,16).replace(\":\",\"\") }}&LTSR={{ $('Merge').item.json[\"LTSR\"] }}&ApptID={{ $('Merge').item.json[\"Appt_ID\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "e19d82e1-48d0-48ea-b34d-8f1ddcc45295",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1940,
+        480
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "HTTP Appointment Status": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP Appointment Status1": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP Appointment Status2": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "Webhook Confirmed": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "354",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "PatientID": "137836",
+            "Parameter1": "25201003",
+            "Parameter2": "B",
+            "Parameter4": "0800",
+            "LTSR": "Fail",
+            "appt": "123456789"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "1141",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/8cdf5a76-cae5-44cb-8488-75568a964caf",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP Appointment Status3": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "Webhook Cancelled": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "354",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "PatientID": "137836",
+            "Parameter1": "25201003",
+            "Parameter2": "B",
+            "Parameter4": "0800",
+            "LTSR": "Fail",
+            "appt": "123456789"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "1141",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/8cdf5a76-cae5-44cb-8488-75568a964caf",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Microsoft SQL2": [
+      {
+        "json": {
+          "Patient_ID": 137836,
+          "Patient_Number": "197520",
+          "Appt_ID": 25201003,
+          "Appt_DateTime": "2024-08-04T08:00:00.000Z",
+          "Appt_Encounter_Number": null,
+          "Appt_Sched_Location_Descr": "EPIC Billing Office",
+          "Appt_Resource_ID": 7,
+          "Appt_Resource_Abbr": "PALAB   ",
+          "Appt_Resource_Descr": "PA, Lab X-Ray",
+          "Appt_Resource_Assoc_Prov_LFI": "PA, Lab X-Ray",
+          "Appt_Type_Abbr": "Lab/Xray",
+          "Appt_Type_Descr": "PA/Lab - Other",
+          "Appt_Duration": 5,
+          "Appt_Comments": "test for THomas",
+          "Appt_Status": "B",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2024-08-01T13:40:08.450Z",
+          "Appt_Booked_By_Operator_Abbr": "epictnam",
+          "Appt_Confirmed_Date": "2024-08-01T13:48:16.243Z",
+          "Appt_Confirmed_By_Operator_Abbr": "apptconf",
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.04,
+          "LTSR": "Fail"
+        }
+      }
+    ],
+    "HTTP PM Patient Demographics1": [
+      {
+        "json": {
+          "getpatientdemographicsinfo": [
+            {
+              "Employment_Status": "",
+              "Account_Number": "197520",
+              "Guarantor_Zip_Code": "48235",
+              "ReferringDr_Abbr": "SHORESPC",
+              "Work_Phone_Ext": "1234",
+              "Patient_Employer_Name": "",
+              "Account_Type_Desc": "Standard",
+              "Guarantor_Suffix": "MR",
+              "City": "Detroit",
+              "Patient_Med_Rec_No": "11394",
+              "Is_Guarantor": "Y",
+              "Sex": "F",
+              "PCP_Name": "Shores PC,",
+              "Account_Type_Abbr": "STANDARD",
+              "HIPAAStmtExp": "",
+              "Patient_Employer_ID": "0",
+              "Preferred_Phone": "",
+              "Patient_Employer_Abbr": "",
+              "Street2": "",
+              "Work_Phone": "3137779311",
+              "Account_ID": "135841",
+              "Guarantor_Cell_Phone": "2486771838",
+              "Guarantor_State": "MI",
+              "ReferringDr_ID": "2164",
+              "Suffix": "MR",
+              "Guarantor_Street2": "",
+              "Guarantor_Street1": "1111 PROVIDENCE DR.,",
+              "Guarantor_MI": "",
+              "EmergencyContactRelation": "Guardian",
+              "PCP_Abbr": "SHORESPC",
+              "Patient_ID": "137836",
+              "Guarantor_SSN": "123456789",
+              "Usual_Provider_ID": "767",
+              "Ethnicity": "Refused to Report",
+              "Guarantor_City": "Detroit",
+              "Guarantor_Home_Phone": "2342329342",
+              "Is_Patient": "Y",
+              "Emergency_Contact": "N",
+              "Guarantor_Email": "test@gmail.com",
+              "Guarantor_DOB": "02-01-1971",
+              "ReferringDr_Name": "Shores PC,",
+              "Race": "Caucasian",
+              "Is_Subscriber": "Y",
+              "RelationToGuarantor": "Spouse",
+              "Patient_Enterprise_Number": "",
+              "Guarantor_Name": "TEDDY TEST MR",
+              "Date_Registered": "12/16/2011 12:00:00 AM",
+              "Guarantor_Work_Phone": "3137779311",
+              "Marital_Status": "Separated",
+              "PCP_ID": "2164",
+              "Patient_Number": "197520",
+              "HideSSN": "Y",
+              "State": "MI",
+              "Patient_Is_Inactive": "0",
+              "Guarantor_Country": "",
+              "Zip_Code": "48235",
+              "Usual_Provider_Name": "Naman, Greg S",
+              "Guarantor_Last_Name": "TEST",
+              "Guarantor_Work_Ext": "1234",
+              "Cell_Phone": "2486771838",
+              "Student_Status": "",
+              "SSN": "123456789",
+              "Email_Address": "test@gmail.com",
+              "Street1": "1111 PROVIDENCE DR.,",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Language": "American Sign Language",
+              "HomePhone": "2342329342",
+              "Middle_Initial": "",
+              "SuppressSSN": "Y",
+              "Guarantor_First_Name": "TEDDY",
+              "DOB": "02-01-1971",
+              "Contact_ID": "169457",
+              "Usual_Provider_Abbr": "GN EP 9",
+              "Last_Name": "TEST",
+              "First_Name": "TEDDY"
+            }
+          ]
+        }
+      }
+    ],
+    "Limit1": [
+      {
+        "json": {
+          "Patient_ID": 149130,
+          "Patient_Number": "289740",
+          "Appt_ID": 1841174,
+          "Appt_DateTime": "2024-08-12T08:00:00.000Z",
+          "Appt_Encounter_Number": 25151093,
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_ID": 133,
+          "Appt_Resource_Abbr": "SW PAC  ",
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Resource_Assoc_Prov_LFI": "Webster, Shannon",
+          "Appt_Type_Abbr": "2OVCWE  ",
+          "Appt_Type_Descr": "DUAL - CWE + OV",
+          "Appt_Duration": 10,
+          "Appt_Comments": "1m",
+          "Appt_Status": "S",
+          "Appt_Time_In": null,
+          "Appt_Booked_Date": "2023-08-10T18:06:35.177Z",
+          "Appt_Booked_By_Operator_Abbr": "PACaswam",
+          "Appt_Confirmed_Date": null,
+          "Appt_Confirmed_By_Operator_Abbr": null,
+          "Appt_Cancelled_Date": null,
+          "Acknowledged_Ratio": 0.25,
+          "LTSR": "Fail"
+        }
+      }
+    ],
+    "Webhook No Response": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "354",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "PatientID": "137836",
+            "Parameter1": "25201003",
+            "Parameter2": "B",
+            "Parameter4": "0800",
+            "LTSR": "Fail"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "1141",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/8cdf5a76-cae5-44cb-8488-75568a964caf",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Merge2": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ],
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "354",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "PatientID": "137836",
+            "Parameter1": "25201003",
+            "Parameter2": "B",
+            "Parameter4": "0800",
+            "LTSR": "Fail"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "1141",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/8cdf5a76-cae5-44cb-8488-75568a964caf",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP PM Patient Demographics2": [
+      {
+        "json": {
+          "getpatientdemographicsinfo": [
+            {
+              "Employment_Status": "",
+              "Account_Number": "188260",
+              "Guarantor_Zip_Code": "48072",
+              "ReferringDr_Abbr": "GN EP 9",
+              "Work_Phone_Ext": "",
+              "Patient_Employer_Name": "",
+              "Account_Type_Desc": "Standard",
+              "Guarantor_Suffix": "",
+              "City": "BERKLEY",
+              "Patient_Med_Rec_No": "4823",
+              "Is_Guarantor": "Y",
+              "Sex": "M",
+              "PCP_Name": "Tam, Susan B",
+              "Account_Type_Abbr": "STANDARD",
+              "HIPAAStmtExp": "",
+              "Patient_Employer_ID": "0",
+              "Preferred_Phone": "Cell",
+              "Patient_Employer_Abbr": "",
+              "Street2": "",
+              "Work_Phone": "5865965883",
+              "Account_ID": "134910",
+              "Guarantor_Cell_Phone": "5865965884",
+              "Guarantor_State": "MI",
+              "ReferringDr_ID": "767",
+              "Suffix": "",
+              "Guarantor_Street2": "",
+              "Guarantor_Street1": "3606 CUMBERLAND RD",
+              "Guarantor_MI": "",
+              "EmergencyContactRelation": "",
+              "PCP_Abbr": "ST EP 9",
+              "Patient_ID": "136906",
+              "Guarantor_SSN": "382646478",
+              "Usual_Provider_ID": "767",
+              "Ethnicity": "Not Hispanic or Latino",
+              "Guarantor_City": "BERKLEY",
+              "Guarantor_Home_Phone": "5865965883",
+              "Is_Patient": "Y",
+              "Emergency_Contact": "N",
+              "Guarantor_Email": "mark@isignsmich.com",
+              "Guarantor_DOB": "06-27-1955",
+              "ReferringDr_Name": "Naman, Greg S",
+              "Race": "White",
+              "Is_Subscriber": "Y",
+              "RelationToGuarantor": "",
+              "Patient_Enterprise_Number": "",
+              "Guarantor_Name": "MARK ZOLTOWSKI",
+              "Date_Registered": "7/1/2011 12:00:00 AM",
+              "Guarantor_Work_Phone": "5865965883",
+              "Marital_Status": "Married",
+              "PCP_ID": "781",
+              "Patient_Number": "188260",
+              "HideSSN": "Y",
+              "State": "MI",
+              "Patient_Is_Inactive": "0",
+              "Guarantor_Country": "",
+              "Zip_Code": "48072",
+              "Usual_Provider_Name": "Naman, Greg S",
+              "Guarantor_Last_Name": "ZOLTOWSKI",
+              "Guarantor_Work_Ext": "",
+              "Cell_Phone": "2488726322",
+              "Student_Status": "",
+              "SSN": "382646478",
+              "Email_Address": "mark@isignsmich.com",
+              "Street1": "3606 CUMBERLAND RD",
+              "Patient_Comments": "",
+              "Language": "English",
+              "HomePhone": "5865965883",
+              "Middle_Initial": "",
+              "SuppressSSN": "Y",
+              "Guarantor_First_Name": "MARK",
+              "DOB": "06-27-1955",
+              "Contact_ID": "168160",
+              "Usual_Provider_Abbr": "GN EP 9",
+              "Last_Name": "ZOLTOWSKI",
+              "First_Name": "MARK"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-08-14T15:29:11.123Z",
+  "versionId": "ed0698f7-50b1-4f87-9949-bfc517dea155"
+}
