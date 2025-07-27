@@ -1,0 +1,102 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-26T13:11:01.342Z",
+  "id": "5NdMXqrh6DTW9yle",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ENVISION CDN Pull RMM",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"trmm-cdn-inventory-workstation-amd64.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "da08076b-0a8a-4414-92c4-84dd5b1bafbf",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://10.0.1.161:5000/ENVISION/CDN_RMM/trmm-cdn-inventory-workstation-amd64.exe",
+        "options": {}
+      },
+      "id": "c8f78957-d0e6-483a-97e9-e6c917363738",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1220,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "path": "e1bbb7ae-bc88-4f9d-9b2c-1d9f8ee8b64c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ee338777-e605-4cbe-8d42-6be9fdf45929",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        420
+      ],
+      "webhookId": "e1bbb7ae-bc88-4f9d-9b2c-1d9f8ee8b64c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-26T13:17:55.946Z",
+  "versionId": "b2bba118-b737-4d30-8657-fabfe9c0390f"
+}
