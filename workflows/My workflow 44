@@ -1,0 +1,41 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-04-15T21:17:40.734Z",
+  "id": "zDehA0l7yT8Sm52b",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 44",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT [IMREDEM_CODE]\n      ,[DEM_EXTERNALID]\n      ,[DEM_LASTNAME]\n      ,[DEM_FIRSTNAME]\n      ,[DEM_FULLNAME_REVERSED]\n      ,[DEM_FULLNAME]\n      ,[DEM_SEX]\n      ,[DEM_DATEOFBIRTH]\n      ,[DEM_STATUS]\n      ,[DEM_HOMEADDR]\n      ,[HOME_ADDRESS]\n      ,[HOME_CITY]\n      ,[HOME_STATE]\n      ,[HOME_ZIP]\n      ,[HOME_PHONE]\n      ,[HOME_CARPHONE]\n      ,[HOME_EMAILADDRESS]\n\n  FROM [EMR].[HPSITE].[DEMOGRAPHICS_VIEW]\n\nWHERE HOME_PHONE = '2488726322'"
+      },
+      "id": "6727e49e-d18f-4bdb-98e0-5f8afbfdf3d9",
+      "name": "EHR Patient Info3",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        -100
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-15T21:17:40.734Z",
+  "versionId": "92974e38-35fb-470c-ab74-9b62124bea69"
+}
