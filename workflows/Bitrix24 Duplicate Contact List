@@ -1,0 +1,971 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-07T10:38:32.808Z",
+  "id": "44QQz0YLIOs0dpk4",
+  "isArchived": false,
+  "meta": null,
+  "name": "Bitrix24 Duplicate Contact List",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"filter\":{\"GROUP_ID\":\"159\"}, \n\"select\": [\"ID\",\"TITLE\",\"DESCRIPTION\"], \n\"order\":{\"ID\":\"des\"}\n}",
+        "options": {}
+      },
+      "id": "ae3e0ead-e9c4-4807-8285-2f1dfb81507c",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "result.tasks[0].description"
+            },
+            {
+              "fieldToAggregate": "result.tasks[0].id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "67291d01-1444-40af-a067-e52706ef3ac9",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.description[0]; // assuming the text is in the first item\nconst regexPattern = /Bitrix24 ID: \\d\\d\\d\\d\\d\\d/g; // Replace with your actual regex pattern\n\nconst matches = text.match(regexPattern);\n\nif (matches) {\n    // Return the matches as a new item\n    return [{json: {matches: matches}}];\n} else {\n    // Handle the case with no matches\n    return [{json: {message: \"No matches found\"}}];\n}\n"
+      },
+      "id": "32a6e239-02b3-4e98-869e-7a5ee9fe37b6",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Bitrix24ID",
+              "stringValue": "={{ $json.matches.match(\"\\\\d\\\\d\\\\d\\\\d\\\\d\\\\d\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e94985cd-0124-4474-af6c-21cd6fffa7d7",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1160,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "matches",
+        "options": {}
+      },
+      "id": "12a42a8c-16b5-4792-9ee7-32a9746b21c0",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        440
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "295bcee9-afb9-4dbb-b44f-94209924c85b",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Bitrix24ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "163cf1ba-fecd-4741-a783-04555adc0c3d",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "stringValue": "={{ $json.Bitrix24ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6fcf0ae6-27cc-4e92-808b-0f257aa0305e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "stringValue": "=https://nmnepic.bitrix24.com/crm/contact/merge/?id={{ $('Edit Fields').item.json[\"url\"] }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "706db51a-b95e-47c5-8b01-b50378db7c27",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1680,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.url; // Safely access the first item, if it exists\nif (!text) {\n    // Handle the case where text is undefined or empty\n    return [{json: {error: \"Description is empty or undefined\"}}];\n}\n\nconst charactersToRemove = /[\\\\[\"\\]]/g; // Pattern to match '[', '\"' and ']' characters\nconst cleanedText = text.replace(charactersToRemove, '');\n\n// Return the cleaned text as a new item\nreturn [{json: {cleanedText: cleanedText}}];\n"
+      },
+      "id": "f360d848-118c-4604-8647-22965d008ff8",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1880,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"taskId\": \"{{ $('Aggregate').item.json[\"id\"][0] }}\",\n\"fields\": {\"DESCRIPTION\": \"{{ $json[\"cleanedText\"] }}\"}\n}",
+        "options": {}
+      },
+      "id": "a0807600-d23d-4b1e-b0a9-c50a5e4c394e",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2180,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "basicAuth",
+        "path": "848bb85b-879f-43d9-92f1-cdf9b47c1869",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "42146175-2f03-4575-bb80-9fd1a33ee29d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        340
+      ],
+      "webhookId": "848bb85b-879f-43d9-92f1-cdf9b47c1869",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "gwizkEiShoJSzXv6",
+          "name": "Webhooktestpassword"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n\"id\":\"{{ $json[\"result\"][\"task\"][\"id\"] }}\",\n\"url\":\"{{ $json.result.task.description }}\"}",
+        "options": {}
+      },
+      "id": "7ecf9606-5c8b-4819-a633-404b0f70d171",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "eb19b3d5-e84a-4766-85d0-ba5902f2c502",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "No matches found",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "302d8b0a-bc25-4b5b-9670-edecde1596fe",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        820,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.delete.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"taskId\":\"{{ $('HTTP Request9').item.json[\"result\"][\"tasks\"][0][\"id\"] }}\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "d677bd75-908b-4f03-ba14-e30aad5a816c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.25,
+        "unit": "seconds"
+      },
+      "id": "87768f79-d6a2-438d-8d6a-9e27e0f94bcf",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        40
+      ],
+      "webhookId": "1524ab16-5a58-4161-a2d2-6a421f39a6be"
+    },
+    {
+      "parameters": {
+        "content": "## Start",
+        "height": 395.8330966817954,
+        "width": 335.60801216829543,
+        "color": 4
+      },
+      "id": "7cd2c6eb-c9c9-4c64-8cc9-19ea0e05676c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        278.61103222726507
+      ]
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n## Get Task",
+        "height": 251.3587671830374,
+        "width": 495.3610812508978
+      },
+      "id": "8b78cbb0-7501-4cba-a245-b6ed34e0f54d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Duplicate Task or does not exist [DELETE]",
+        "height": 257.73263466092396,
+        "width": 384.4743294987578,
+        "color": 3
+      },
+      "id": "a0780a83-9658-4d9d-ae58-c1185b9396da",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -56.629152581083474
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create URL for merge",
+        "height": 240.73565471989406,
+        "width": 1071.5129063874638
+      },
+      "id": "09d12c16-3037-4d68-9dfe-ea8260439420",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        998,
+        374.49244985257565
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Update task with URL",
+        "height": 236.48640973463637,
+        "width": 201.75679513268187,
+        "color": 5
+      },
+      "id": "7d84d7bb-d66c-43d0-803e-4813bd888d0f",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2136,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Response for URL retrieval",
+        "height": 232.23716474937873,
+        "width": 248.49848997051515,
+        "color": 2
+      },
+      "id": "4fc0f3d9-ccb8-472f-9b22-459ad680547e",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b39acb73-8ba3-4f13-bcbc-1a9b996f201a",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5df53b0c-3f8f-4e6a-8507-2b47585081ac",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "08327b61-fc51-42ab-9dc5-9eefd44bd8d9",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2180,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"id\":\"{{ $json[\"cleanedText\"] }}\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "a70ccdc3-b5d7-42e1-b946-194391e0ff61",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2060,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.url; // Safely access the first item, if it exists\nif (!text) {\n    // Handle the case where text is undefined or empty\n    return [{json: {error: \"Description is empty or undefined\"}}];\n}\n\nconst charactersToRemove = /[\\\\[\"\\]]/g; // Pattern to match '[', '\"' and ']' characters\nconst cleanedText = text.replace(charactersToRemove, '');\n\n// Return the cleaned text as a new item\nreturn [{json: {cleanedText: cleanedText}}];\n"
+      },
+      "id": "84286987-ebcd-494c-802d-832400891e6b",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "cleanedText",
+              "stringValue": "={{ $json.cleanedText.match(',\\\\d\\\\d\\\\d\\\\d\\\\d\\\\d') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd1902f7-7088-4ea9-9475-809a69c79a46",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1800,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.cleanedText; // Safely access the first item, if it exists\nif (!text) {\n    // Handle the case where text is undefined or empty\n    return [{json: {error: \"Description is empty or undefined\"}}];\n}\n\nconst charactersToRemove = /[,\\\\[\"\\]]/g; // Pattern to match '[', '\"' and ']' characters\nconst cleanedText = text.replace(charactersToRemove, '');\n\n// Return the cleaned text as a new item\nreturn [{json: {cleanedText: cleanedText}}];\n"
+      },
+      "id": "4fdbe4ec-477a-4379-9fc1-bf7e300c2658",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"id\":\"345015\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "5ae1681c-03c2-453e-9621-d18628092212",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2060,
+        -80
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "e8877fe8-8157-49d6-a745-9525e7c4eb99",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        120
+      ],
+      "webhookId": "e61af2a7-7377-4baf-93f6-9e5e6857416c"
+    },
+    {
+      "parameters": {
+        "content": "## Already merged or not",
+        "height": 392.9857497946301,
+        "width": 856.7269847504919,
+        "color": 6
+      },
+      "id": "930ad1e5-7694-4fc9-81d5-1ebd7d1903fe",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        -105.17982357773394
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Request2": [
+      {
+        "json": {
+          "result": {
+            "ID": "345015",
+            "POST": null,
+            "COMMENTS": null,
+            "HONORIFIC": null,
+            "NAME": "Sharon",
+            "SECOND_NAME": null,
+            "LAST_NAME": "Broom",
+            "PHOTO": null,
+            "LEAD_ID": null,
+            "TYPE_ID": "CLIENT",
+            "SOURCE_ID": "OTHER",
+            "SOURCE_DESCRIPTION": "504910",
+            "COMPANY_ID": null,
+            "BIRTHDATE": "1975-01-25T03:00:00+03:00",
+            "EXPORT": "Y",
+            "HAS_PHONE": "Y",
+            "HAS_EMAIL": "Y",
+            "HAS_IMOL": "N",
+            "DATE_CREATE": "2023-12-07T15:19:31+03:00",
+            "DATE_MODIFY": "2024-01-07T18:54:23+03:00",
+            "ASSIGNED_BY_ID": "229",
+            "CREATED_BY_ID": "229",
+            "MODIFY_BY_ID": "7",
+            "OPENED": "Y",
+            "ORIGINATOR_ID": null,
+            "ORIGIN_ID": null,
+            "ORIGIN_VERSION": null,
+            "FACE_ID": null,
+            "LAST_ACTIVITY_TIME": "2023-12-07T15:19:31+03:00",
+            "ADDRESS": null,
+            "ADDRESS_2": null,
+            "ADDRESS_CITY": null,
+            "ADDRESS_POSTAL_CODE": null,
+            "ADDRESS_REGION": null,
+            "ADDRESS_PROVINCE": null,
+            "ADDRESS_COUNTRY": null,
+            "ADDRESS_LOC_ADDR_ID": null,
+            "UTM_SOURCE": null,
+            "UTM_MEDIUM": null,
+            "UTM_CAMPAIGN": null,
+            "UTM_CONTENT": null,
+            "UTM_TERM": null,
+            "LAST_ACTIVITY_BY": "229",
+            "UF_CRM_65264864F0B8D": [],
+            "UF_CRM_1701895613": "1839",
+            "UF_CRM_1701895631": "13835 TOEPFER RD",
+            "UF_CRM_1701895642": "WARREN",
+            "UF_CRM_1701895652": "MI ",
+            "UF_CRM_1701895672": "48089",
+            "UF_CRM_1701895781": "504910",
+            "UF_CRM_1701945586": "1855",
+            "UF_CRM_1701945675": "2020-06-04T03:00:00+03:00",
+            "UF_CRM_1701945715": "Active",
+            "UF_CRM_1701945745": "BROOM, SHARON",
+            "UF_CRM_1701945783": "+15863409300",
+            "UF_CRM_1701945802": "+15863409300",
+            "UF_CRM_1701945925": "",
+            "UF_CRM_1701946007": "36.0",
+            "UF_CRM_1701946033": "2023-11-22T03:00:00+03:00",
+            "UF_CRM_1701946094": "0.41",
+            "UF_CRM_1701946120": "2023-11-22T03:00:00+03:00",
+            "UF_CRM_1701946151": "Yaldoo, Mary PA-C",
+            "UF_CRM_1701946169": "EPIC VIDEO VISITS",
+            "UF_CRM_1701946191": "MERIDIAN COMPLETE-MEDICARE",
+            "UF_CRM_1701946209": "Toubia, Allen FNP",
+            "UF_CRM_1701946229": "01/01/1900",
+            "UF_CRM_1701946345": "16",
+            "UF_CRM_1701946367": "15",
+            "UF_CRM_1701946388": "NoCCMContactOnFile",
+            "UF_CRM_1701946429": "1900-01-01T03:00:00+02:30",
+            "UF_CRM_1701946464": "2023-06-29T03:00:00+03:00",
+            "UF_CRM_1701946899166": "",
+            "UF_CRM_1701946956633": "",
+            "UF_CRM_652648651AA54": [],
+            "UF_CRM_6526486522D7A": "",
+            "UF_CRM_652648652C199": "",
+            "UF_CRM_6526486538EE1": "",
+            "UF_CRM_6526486540168": "",
+            "UF_CRM_6526486549778": "",
+            "UF_CRM_6526486552DF7": "",
+            "UF_CRM_652648655AF1A": "",
+            "PHONE": [
+              {
+                "ID": "4698619",
+                "VALUE_TYPE": "MOBILE",
+                "VALUE": "+15863409300",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "4698621",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "+15863409300",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "4698623",
+                "VALUE_TYPE": "OTHER",
+                "VALUE": "+15863409300",
+                "TYPE_ID": "PHONE"
+              }
+            ],
+            "EMAIL": [
+              {
+                "ID": "4698625",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "shysopicky@gmail.com",
+                "TYPE_ID": "EMAIL"
+              }
+            ]
+          },
+          "time": {
+            "start": 1704647269.640996,
+            "finish": 1704647269.682665,
+            "duration": 0.04166913032531738,
+            "processing": 0.016376018524169922,
+            "date_start": "2024-01-07T20:07:49+03:00",
+            "date_finish": "2024-01-07T20:07:49+03:00",
+            "operating_reset_at": 1704647869,
+            "operating": 0
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-08T10:29:04.907Z",
+  "versionId": "cdb737a9-4ea8-4cd6-b0a5-b37605bc1eb6"
+}
