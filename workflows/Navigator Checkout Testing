@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-30T14:10:43.644Z",
+  "id": "8DZaogVNkym0uGyt",
+  "isArchived": false,
+  "meta": null,
+  "name": "Navigator Checkout Testing",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "aa888bfa-2c88-44ed-af20-40eaa3146aa7",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f56f9045-08ab-4821-a69e-dab09ee45142",
+      "name": "Webhook",
+      "webhookId": "aa888bfa-2c88-44ed-af20-40eaa3146aa7"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n    <title>EPIC Scheduling With Virtual Clark!</title>\n\n    <!-- Scripts (3rd party)-->\n    <!-- ! The library is deprecated and needs to be updated. -->\n    <!-- TODO: Add checksum for integrity verification -->\n    <script\n      src=\"https://media.twiliocdn.com/sdk/js/client/v1.10/twilio.min.js\"\n      defer\n    ></script>\n\n    <!-- Styles -->\n    <style>\n      :root {\n        --primary-color: #f5b800;\n        --secondary-color: #333333;\n        --neutral-white: #ffffff;\n        --success-color: #28a745;\n\n        --primary-color-rgb: 245, 184, 0;\n        --neutral-black-rgb: 0, 0, 0;\n        --success-color-rbg: 40, 167, 69;\n      }\n\n      /* CSS reset */\n      * {\n        margin: 0;\n        padding: 0;\n      }\n\n      /* Core styles */\n\n      body {\n        min-height: 100vh;\n\n        display: flex;\n        align-items: center;\n        justify-content: center;\n\n        background-color: var(--primary-color);\n\n        font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n      }\n\n      h1 {\n        font-size: 2.5rem;\n        margin-bottom: 1.25rem;\n      }\n\n      /* Utility classes */\n      .hidden {\n        display: none !important;\n      }\n\n      .page-container {\n        width: 90%;\n        max-width: 600px;\n\n        padding: 2.5rem;\n        border-radius: 0.5rem;\n        box-shadow: 0 4px 10px rgba(var(--neutral-black-rgb), 0.3);\n\n        text-align: center;\n\n        color: var(--neutral-white);\n        background-color: var(--secondary-color);\n      }\n\n      /* Buttons */\n\n      .button-default {\n        display: inline-block;\n\n        margin: 0.625rem;\n        border: none;\n        border-radius: 0.25rem;\n        padding: 0.75rem 1.5rem;\n\n        background-color: var(--primary-color);\n        color: var(--neutral-white);\n\n        font-weight: 700;\n        text-transform: uppercase;\n        letter-spacing: 0.05rem;\n\n        cursor: pointer;\n        transition: background-color 0.3s ease;\n      }\n\n      .button-default:hover {\n        background-color: rgba(var(--primary-color-rgb), 0.85);\n      }\n\n      .button-success {\n        background-color: var(--success-color);\n      }\n\n      .button-success:hover {\n        background-color: rgba(var(--success-color-rbg), 0.85);\n      }\n\n      /* QR code container */\n\n      .qr-code-container {\n        margin: 1.25rem 0;\n        height: 150px;\n      }\n\n      .qr-code-container img {\n        width: 150px;\n        height: 150px;\n        border: 0.25rem solid var(--neutral-white);\n        border-radius: 0.5rem;\n      }\n\n      /* Popup */\n      .popup {\n        position: absolute;\n        top: 0;\n        left: 0;\n        z-index: 1000;\n\n        height: 100vh;\n        width: 100vw;\n\n        display: flex;\n        justify-content: center;\n        align-items: center;\n\n        background-color: rgba(var(--neutral-black-rgb), 0.4);\n      }\n\n      .popup-content {\n        width: 90%;\n        max-width: 350px;\n\n        padding: 2rem;\n        border-radius: 0.5rem;\n\n        text-align: center;\n\n        color: var(--neutral-white);\n        background-color: var(--secondary-color);\n      }\n\n      .popup-content p {\n        font-size: 1.2rem;\n        margin-bottom: 1.25rem;\n      }\n    </style>\n  </head>\n  <body>\n    <!-- Container for the page -->\n    <div class=\"page-container\">\n      <h1>EPIC Scheduling 🚀<br />With Virtual Clark!</h1>\n      <!-- Container for QR code -->\n      <div class=\"qr-code-container\">\n        <img id=\"qr-code-image\" class=\"hidden\" alt=\"QR Code\" />\n      </div>\n\n      <!-- Buttons for call -->\n      <button id=\"call-now-button\" class=\"button-default button-success\">\n        Talk to Clark\n      </button>\n    </div>\n\n    <!-- Dialog for call status information -->\n    <div id=\"call-popup-container\" class=\"hidden popup\">\n      <div class=\"popup-content\">\n        <p id=\"call-status-message\"></p>\n        <button id=\"end-call-button\" class=\"button-default button-success\">\n          End Call\n        </button>\n      </div>\n    </div>\n\n    <script>\n      \"use strict\";\n\n      const APP_DATA = {\n        twilioDevice: null,\n        user:\n          new URLSearchParams(window.location.search).get(\"user\") || \"1291170\",\n        tokenUrl: \"https://genai.epicpc.com/checkout_token_generation/\",\n      };\n\n      const INDEX_PAGE_HTML_ELEMENTS = {\n        qrCodeImage: document.getElementById(\"qr-code-image\"),\n        callNowButton: document.getElementById(\"call-now-button\"),\n        callPopup: document.getElementById(\"call-popup-container\"),\n        callStatusMessage: document.getElementById(\"call-status-message\"),\n        endCallButton: document.getElementById(\"end-call-button\"),\n      };\n\n      /**\n       * Utility functions\n       */\n      /**\n       * Function to hide a HTMLElement on the web page\n       * @param { HTMLElement } element - The HTMLElement on the page to hide\n       */\n      function showHtmlElement(element) {\n        element.classList.remove(\"hidden\");\n      }\n\n      /**\n       * Function to show a HTMLElement on the web page\n       * @param { HTMLElement } element - The HTMLElement on the page to show\n       */\n      function hideHtmlElement(element) {\n        element.classList.add(\"hidden\");\n      }\n\n      /**\n       * Function to update the TextContent of an HTMLElement\n       * @param { HTMLElement } element - The HTMLElement reference\n       * @param { string } message - The content to set in the TextContent\n       */\n      function updateHtmlElementTextContent(element, message) {\n        element.textContent = message;\n      }\n\n      /**\n       * Event listeners\n       */\n      document.addEventListener(\"DOMContentLoaded\", () => {\n        const currentUrl = window.location.href;\n\n        // Generate QR code dynamically based on the current URL\n        INDEX_PAGE_HTML_ELEMENTS.qrCodeImage.src =\n          \"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=\" +\n          encodeURIComponent(currentUrl);\n        INDEX_PAGE_HTML_ELEMENTS.qrCodeImage.classList.remove(\"hidden\");\n\n        // Adding event listeners\n        INDEX_PAGE_HTML_ELEMENTS.callNowButton.addEventListener(\"click\", () => {\n          startTwilioCall();\n        });\n        INDEX_PAGE_HTML_ELEMENTS.endCallButton.addEventListener(\"click\", () => {\n          endTwilioCall();\n        });\n\n        initializeTwilio();\n      });\n\n      /**\n       * Function to receive access token from N8N\n       * @returns { Promise<string> } - The token received from n8n\n       */\n      async function fetchAccessToken() {\n        const url = APP_DATA.tokenUrl + \"?user=\" + APP_DATA.user;\n\n        try {\n          const response = await fetch(url);\n          if (!response.ok) throw new Error(\"Failed to fetch token.\");\n          const data = await response.json();\n          if (!data?.data?.token) throw new Error(\"No token received.\");\n          return data.data.token;\n        } catch (error) {\n          console.error(\"fetchAccessToken() :: \", error);\n          throw error;\n        }\n      }\n\n      /**\n       * Function to initialize twilio client and attach required event listeners.\n       * The display of pop-up during calls is controlled solely through the events here.\n       * Logs heavily to the console as of now for debugging purpose.\n       */\n      async function initializeTwilio() {\n        try {\n          const accessToken = await fetchAccessToken();\n\n          console.log(\n            \"initializeTwilio() :: access token received : \",\n            accessToken\n          );\n\n          APP_DATA.twilioDevice = new Twilio.Device(accessToken, {\n            debug: true,\n          });\n\n          // Attaching event listeners\n          APP_DATA.twilioDevice.on(\"ready\", () => {\n            console.log(\n              \"initializeTwilio() :: events : Twilio device is ready.\",\n              APP_DATA.twilioDevice\n            );\n          });\n\n          APP_DATA.twilioDevice.on(\"connect\", (conn) => {\n            console.log(\"initializeTwilio() :: events : call started : \", conn);\n\n            // Show the call in progress pop-up\n            showHtmlElement(INDEX_PAGE_HTML_ELEMENTS.callPopup);\n            updateHtmlElementTextContent(\n              INDEX_PAGE_HTML_ELEMENTS.callStatusMessage,\n              \"Call in progress...\"\n            );\n          });\n\n          APP_DATA.twilioDevice.on(\"disconnect\", () => {\n            console.log(\"initializeTwilio() :: events : called disconnected\");\n            updateHtmlElementTextContent(\n              INDEX_PAGE_HTML_ELEMENTS.callStatusMessage,\n              \"\"\n            );\n            hideHtmlElement(INDEX_PAGE_HTML_ELEMENTS.callPopup);\n          });\n\n          APP_DATA.twilioDevice.on(\"error\", (error) => {\n            console.error(\n              \"initializeTwilio() :: events : call failed : \",\n              error\n            );\n            hideHtmlElement(INDEX_PAGE_HTML_ELEMENTS.callPopup);\n          });\n        } catch (error) {\n          console.error(\"initializeTwilio() :: \", error);\n          throw error;\n        }\n      }\n\n      /**\n       * Function to start the call\n       */\n      function startTwilioCall() {\n        if (!APP_DATA.twilioDevice) {\n          console.error(\"startTwilioCall() :: twilio device not initialized.\");\n          throw new Error(\"Twilio device error.\");\n        }\n\n        const params = {\n          To: APP_DATA.phoneNumber,\n          user: APP_DATA.user,\n          sessionId: \"SID-\" + Date.now(),\n        };\n\n        APP_DATA.twilioDevice.connect(params);\n      }\n\n      /**\n       * Function to end the call\n       */\n      function endTwilioCall() {\n        if (!APP_DATA.twilioDevice) {\n          console.error(\"startTwilioCall() : twilio device not initialized.\");\n          throw error;\n        }\n\n        APP_DATA.twilioDevice.disconnectAll();\n      }\n    </script>\n  </body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        220,
+        0
+      ],
+      "id": "e2ecd437-e734-4792-80ea-237a24e18f19",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-30T17:50:06.077Z",
+  "versionId": "52a3b060-5853-4769-8cc3-b72b3a4e4028"
+}
