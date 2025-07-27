@@ -1,0 +1,19 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-05-19T14:53:43.451Z",
+  "id": "eda6fs0ZpWQ5JT31",
+  "isArchived": false,
+  "meta": null,
+  "name": "Blue Sky Wearable Data",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-19T14:53:43.451Z",
+  "versionId": "b62deef0-bfd2-4d01-92aa-33652992f1b6"
+}
