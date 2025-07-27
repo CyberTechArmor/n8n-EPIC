@@ -1,0 +1,735 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-15T21:56:28.015Z",
+  "id": "7zIiD0RXcSP36lH0",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Personalized Communication",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=http://10.0.1.161:5000/BSP/{{ $json.urlEncodedFileName }}",
+        "options": {}
+      },
+      "id": "803eee5d-07dd-4d8b-b36a-b7c28618d0e3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2640,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "id": "1d08c3b2-9de7-4ea8-a401-a7ac29a28f38",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1900,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function splitMessages(text) {\n    // Split the text by double new lines or double line breaks\n    let messages = text.split('\\n\\n');\n\n    // Trim any leading/trailing whitespace and remove quotes from each message\n    messages = messages.map(message => message.trim().replace(/\"/g, ''));\n\n    // Remove the first and last elements (comments) if necessary\n    // messages = messages.slice(1, -1); // Uncomment if you still need to remove first and last elements\n\n    // Convert each message into an object with a key, e.g., \"message\"\n    return messages.map(message => ({ message: message }));\n}\n\n// Example usage:\nconst inputText = $json[\"output\"];  // Adjust this to match your variable structure\nconst messages = splitMessages(inputText);\nreturn messages;  // Ensure this returns the array of message objects\n"
+      },
+      "id": "8f1fa5c0-c61f-43a1-8475-23319165941e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4d9afd91-1d71-4ff8-9743-b0aaf2a93a03",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -1000,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pysbx6fvsyde3st",
+        "table": "mu38inx9oz5r2fw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "FirstName",
+              "fieldValue": "={{ $json.firstName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $json.lastName }}"
+            },
+            {
+              "fieldName": "Phone",
+              "fieldValue": "={{ $json.number }}"
+            },
+            {
+              "fieldName": "=Message",
+              "fieldValue": "={{ $('Merge').item.json.message }}"
+            },
+            {
+              "fieldName": "DateToSend",
+              "fieldValue": "={{ $json.formattedDate }}"
+            }
+          ]
+        }
+      },
+      "id": "2a17a6fd-d5b3-4f94-9108-4f19e7febe23",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        180,
+        740
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9debb10b-e3f9-4c55-932a-f07539554010",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6fb82350-4acd-41b7-beb9-ed03ed107d65",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -1900,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the input data\nconst item = items[0];\n\n// Access the 'content' field from the current item\nconst content = item.json.content;\n\n// Regular expressions to extract First Name, Last Name, and Phone Number\nconst firstNameMatch = content.match(/First Name:\\s*([^\\s]+)\\s*/);\nconst lastNameMatch = content.match(/Last Name:\\s*([^\\s]+)\\s*/);\nconst numberMatch = content.match(/Phone Number:\\s*([\\d-]+)/);\n\n// Extract first and last names and phone number\nlet firstName = firstNameMatch ? firstNameMatch[1].trim() : null;\nlet lastName = lastNameMatch ? lastNameMatch[1].trim() : null;\nlet number = numberMatch ? numberMatch[1].trim() : null;\n\n// Return an array of objects as required by n8n\nreturn [\n  {\n    json: {\n      firstName: firstName,\n      lastName: lastName,\n      number: number,\n    }\n  }\n];\n"
+      },
+      "id": "9c5b5d11-1255-4464-990f-a2f2085d8fb2",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "60de2909-a9cd-45d5-89ea-985e8b1709a6",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -1460,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the input data\nconst items = $input.all();\n\n// Loop through each item and add a numbering column\nreturn items.map((item, index) => {\n  return {\n    json: {\n      id: index + 1,  // Start numbering from 1\n      ...item.json,       // Spread the original content\n    }\n  };\n});\n"
+      },
+      "id": "9805adbd-f6d8-4807-94d8-a35c4ddda305",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1260,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": "={{ $json.id * 3 }}",
+        "options": {}
+      },
+      "id": "b6431cef-fdf6-4c1d-97eb-7767e6d1392b",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3f124d64-ec38-4e9d-bacb-d691a3e6c476",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "56e7a6b3-edf2-40e2-9869-25273fcd0797",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -580,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "f6683874-71d4-4441-ad47-a689a5fec213",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "f8519ed2-0564-4dac-9939-d590d983dc91",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -20,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Get the recommendations",
+        "height": 526.7095315221027,
+        "width": 1926.2893651682243,
+        "color": 5
+      },
+      "id": "94f3548d-3a0c-4eeb-a7dc-b545c97eb411",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3011.8182594164496,
+        505.8764594900558
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Add messages to database (with contact information and date to send)",
+        "height": 538.4755185894819,
+        "width": 1434.4711057517748,
+        "color": 4
+      },
+      "id": "523711c1-bea7-4123-bfc1-b166d913ba05",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        494.1104724226766
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the encoded data\nconst encodedData = $json.data;\n\n// Decode the URL-encoded data\nlet decodedText = decodeURIComponent(encodedData);\n\n// Replace \"+\" with spaces\ndecodedText = decodedText.replace(/\\+/g, ' ');\n\n// Replace \"%0d%0a\" and \"%0a\" with actual newlines\ndecodedText = decodedText.replace(/%0d%0a/g, '\\n').replace(/%0a/g, '\\n').replace(/%0d/g, '\\n');\n\n// Ensure there's a space between words and between sections where necessary\ndecodedText = decodedText.replace(/([a-z])([A-Z])/g, '$1 $2');\n\n// Return the decoded and cleaned text\nreturn {\n  cleanedText: decodedText\n};"
+      },
+      "id": "b195e0c1-3b8b-4076-891d-146e91d0fdd1",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2460,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://10.0.1.161:5000/BSP?simple",
+        "options": {}
+      },
+      "id": "5e3181c9-d0ff-4c55-a64b-e71bb2805a72",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2760,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e9a0331d-e65f-4a29-9e5f-bd2bab20b663",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ceb42095-6b5c-4847-8822-06828f45ab56",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -2580,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the dynamic data from the previous node\nconst data = $json.data;\n\n// Split the string by newline characters\nconst filesArray = data.split('\\n').filter(file => file.trim() !== '');\n\n// Return the result with original and URL-encoded file names\nreturn filesArray.map(file => ({\n  fileName: file,\n  urlEncodedFileName: encodeURIComponent(file)\n}));\n"
+      },
+      "id": "23b469ac-6de1-46da-acbc-4a0edb4e914e",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2940,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "id": "d126fe8c-80ab-4870-ad07-bbb6a7484500",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=http://10.0.1.161:5000/BSP/{{ $('Limit1').item.json[\"urlEncodedFileName\"] }}",
+        "options": {}
+      },
+      "id": "ba69d116-5234-4f19-9208-59c42a5ce87a",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        520,
+        560
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6bd6eae1-903e-4ce2-9a7a-6f98627bdf6e",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -2800,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Delete",
+        "height": 261.1874887794608,
+        "color": 3
+      },
+      "id": "e5849501-da2e-48b7-ac86-650e8187580e",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "99b44156-8d0d-48e3-86e3-bdf9904c7bc1",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2940,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_DMc9xloXoeor6KQdtOmzG1sI",
+          "mode": "list",
+          "cachedResultName": "Personalized Recommendations Follow Ups"
+        },
+        "prompt": "define",
+        "text": "=[Do not number messages]: {{ $json.cleanedText }}",
+        "options": {}
+      },
+      "id": "d1ac6abe-1c06-4dd7-b7ba-50997a34061b",
+      "name": "OpenAI3",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        -2280,
+        860
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "f53q65ZFKo7SfpKk",
+          "name": "OpenAi Blue Sky"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-22T15:00:04.861Z",
+  "versionId": "2e49de8d-b15e-4f84-8aab-23da8dcfa9ae"
+}
