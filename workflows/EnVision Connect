@@ -1,0 +1,1020 @@
+{
+  "active": false,
+  "connections": {
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnVision Connect": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Crypto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto2": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell CMD to RMM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Crypto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto3": {
+      "main": [
+        [
+          {
+            "node": "SendGrid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Crypto3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Crypto4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Crypto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Crypto5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto5": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Crypto6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-25T16:12:16.892Z",
+  "id": "GM9lvQ0IUnln4EGW",
+  "isArchived": false,
+  "meta": null,
+  "name": "EnVision Connect",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "bd84a072-fd49-4094-b29d-a7d387d6b05c",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        640,
+        460
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "45827bd7-56d2-442c-b929-9d147cfae249",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "dc77c8dc-a565-458d-a712-9bb0cb2daf93",
+      "name": "EnVision Connect",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "45827bd7-56d2-442c-b929-9d147cfae249",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "c7ae0b0a-33a2-47aa-a6cb-bf1e29f401cb",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "23b2472e-1f05-4438-8310-15c11427ec6d",
+      "name": "Crypto1",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "c8153d16-ea03-4d04-ac23-4bd2d84a03b5",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName={{ $('Microsoft SQL1').item.json[\"UserName\"] }}&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9194526-6cc7-4683-852b-46864a74daa9",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1420,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "47a9875f-1069-423f-8f89-98517a38e7f7",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&record=true&attendeePW=ap&autoStartRecording=true&meetingID={{ $json[\"EncounterID\"] }}&moderatorPW=mp&name={{ $json[\"DEM_FIRSTNAME\"] }}_{{ $json[\"DEM_LASTNAME\"] }}&record=false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8db732a8-988b-41fe-abb6-3c081c641656",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        860,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "397671a0-4614-49ab-bc4c-fbc258c8dcbc",
+      "name": "Crypto2",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR&userID=1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "641a44d6-bb17-460c-8b8c-05909979f5dd",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "envisionconnect@epicpc.com",
+        "fromName": "EnVision Connect",
+        "toEmail": "tstilwell@epichs.org",
+        "subject": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}",
+        "contentValue": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}\n\nhttps://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "additionalFields": {}
+      },
+      "id": "25f7a3e5-4031-48c9-997b-ed0ae82280ef",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        720
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"EnVision Connect\",\n       \"GROUP_ID\":\"107\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"EnVision Connect:  https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}\",\n       \"UF_CRM_TASK\":[\"C_344683\"]\n   }\n}",
+        "options": {}
+      },
+      "id": "59a126aa-14bc-4328-90d6-96a157c17d55",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        1000
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/task.commentitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"taskId\":\"{{ $json[\"result\"][\"task\"][\"id\"] }}\",\n   \"fields\": {\n       \"POST_MESSAGE\":\"{{ $json[\"result\"][\"task\"][\"description\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "ebc472b8-4fab-4a56-b9a6-e97fc7ca837a",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1940,
+        1000
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "7a5eccee-cc75-4be3-89eb-d9caa69ce4c9",
+      "name": "Crypto3",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Ted&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69179ac7-f00b-4ea5-bf4a-38822dde21f5",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "envisionconnect@epicpc.com",
+        "fromName": "EnVision Connect",
+        "toEmail": "tnaman@epichs.org",
+        "subject": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}",
+        "contentValue": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}\n\nhttps://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "additionalFields": {}
+      },
+      "id": "b1c0d863-d15f-4b54-8476-c5b556d95bac",
+      "name": "SendGrid1",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        640
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": " https://api.wiretapped.app/agents/BYEnOKRGGuBekvUlBIisnySHmIsSFeeHIXTSVAqj/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "d17a9153-0440-42f3-b4fb-a8f82c3d9034",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1920,
+        820
+      ],
+      "alwaysOutputData": true,
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "935ee296-4a8c-447c-9505-bc0eff576283",
+        "options": {}
+      },
+      "id": "3b931527-085c-4b90-bb56-2d51e5584163",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2760,
+        160
+      ],
+      "webhookId": "935ee296-4a8c-447c-9505-bc0eff576283",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "74b2c0a4-d92a-43ba-b7bc-cb0f926efac1",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        160
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "8952157f-2703-454e-be67-c4e7276c2123",
+      "name": "Crypto4",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=callbackURL=https://xl.epicpc.com/webhook/935ee296-4a8c-447c-9505-bc0eff576283"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a88fe672-d274-4e73-a10e-3bc6320181d7",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2120,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/hooks/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "bbd30be7-f98d-4879-9c10-f35cd0958832",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2440,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName={{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }}&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce0c158f-e359-4ec9-a4dc-3b318b0367f2",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1400,
+        820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "399b3a63-f9e8-4fef-9e57-bf2e91b28e1b",
+      "name": "Crypto5",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName={{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }}2&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0dc8e03a-d863-4ba8-addd-e7f5c30549dc",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1480,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": " https://api.wiretapped.app/agents/sGamOygNCqrSzfajKCuWHwKfeVbpxsgCLnXCXbtv/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "c4111cc0-fe8f-4d06-a905-51f5f27383bf",
+      "name": "Send Powershell CMD to RMM Agent1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1900,
+        1220
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "c6acafa0-4826-404a-b1de-223962fc8d01",
+      "name": "Crypto6",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f93c3348-11e8-4c74-8ff5-bbd9dabc2428",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getRecordings?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "9e5ac0dc-88dd-4eb0-8e97-4c4b7fe3cd23",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getRecordings?&checksum=fdd7030eb1eee41e39f282fc059b850f40f463647bedec33e1015e9525ed006e8b75bda008f7ff9091da2c8a9e0c4b58acd1e828b99618eae2f6a953f14e12b5",
+        "options": {}
+      },
+      "id": "93449925-4dd6-4e0f-ac6b-fc207b22c6b8",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2440,
+        -180
+      ]
+    }
+  ],
+  "pinData": {
+    "Microsoft SQL1": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Crypto": [
+      {
+        "json": {
+          "SingleSignOnToken": "98774AF7-4CF6-4154-8E58-D3EDB836B8B4",
+          "SessionToken": "4606BCE9-DF34-4A26-A4CF-F7414F329452",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-03-21T07:42:07.073Z",
+          "EncounterID": "21558095",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z",
+          "apicall": "allowStartStopRecording=true&attendeePW=ap&autoStartRecording=false&meetingID=21558095&moderatorPW=mp&name=THOMAS_STILWELL&record=false",
+          "data": "98738499a158ed461cf2c80ffde3a1719c5797e516ba390f96a7cc1936762ead90955be0b825bbbdee607ed425f97f21ca26a335e382eec292a01611832a9c8a"
+        }
+      }
+    ],
+    "HTTP Request4": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "74165",
+              "parentId": null,
+              "title": "Duplicate Patients in Bitrix24",
+              "description": "EnVision Connect:  https://vid.epicpc.com/bigbluebutton/api/join?fullName=Thomas&meetingID=21558095&password=mp&redirect=true&checksum=e727da23eef7c903f0ae92697cccce3c6b5370ab71bb35e0a779f62762c16d9b22533dee837e5a037ddf0937897ff1ba745dbb2867a6f12c9904aaadcf723055",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "719",
+              "createdBy": "7",
+              "createdDate": "2024-03-21T15:30:49+03:00",
+              "responsibleId": "229",
+              "changedBy": "7",
+              "changedDate": "2024-03-21T15:30:49+03:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-03-21T15:30:49+03:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{c45c36a4-491c-440c-abb2-22b4a36cde30}",
+              "xmlId": null,
+              "commentsCount": "1",
+              "serviceCommentsCount": "1",
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": "72101",
+              "forumId": "11",
+              "siteId": "s1",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "2",
+              "viewedDate": "2024-03-21T15:30:49+03:00",
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-03-21T15:30:49+03:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "107",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "107",
+                "name": "Consumer App Outbound ",
+                "opened": false,
+                "membersCount": 8,
+                "image": "https://cdn.bitrix24.com/b26816037/socialnetwork/0df/0df3f41e6409358519e5203450850799/HeroShield.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "7",
+                "name": "Thomas Stilwell",
+                "link": "/company/personal/user/7/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "229",
+                "name": "IT Helpdesk",
+                "link": "/company/personal/user/229/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 7,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1711024249.201917,
+            "finish": 1711024249.57128,
+            "duration": 0.36936306953430176,
+            "processing": 0.3484017848968506,
+            "date_start": "2024-03-21T15:30:49+03:00",
+            "date_finish": "2024-03-21T15:30:49+03:00",
+            "operating_reset_at": 1711024849,
+            "operating": 0.348391056060791
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-27T15:46:16.687Z",
+  "versionId": "53a0dce4-fbdd-4a4c-8a1b-4e0930d9f44d"
+}
