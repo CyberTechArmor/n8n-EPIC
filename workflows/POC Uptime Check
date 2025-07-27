@@ -1,0 +1,299 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "ECG",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "X-Ray",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "ECG": {
+      "main": [
+        [
+          {
+            "node": "ECG Ticket Bitrix24",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "X-Ray": {
+      "main": [
+        [
+          {
+            "node": "X-Ray Ticket Bitrix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-04T21:04:23.064Z",
+  "id": "RP8ITZGiqu8wPzoi",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "POC Uptime Check",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "POC Uptime Check",
+        "formDescription": "This is to check equipment.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Location of POC",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Location of POC | Confirmation",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "EPIC SFD 10 Mile"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "ECG/EKG Laptop",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Online/Charged"
+                  },
+                  {
+                    "option": "Offline/Dead Battery"
+                  },
+                  {
+                    "option": "Not Working/Not Connecting"
+                  },
+                  {}
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "X-Ray",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Zapping"
+                  },
+                  {
+                    "option": "Not Zapping"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f3378fd8-c51c-44b5-85b6-7dccd9b9c61e",
+      "name": "On form submission",
+      "webhookId": "2ebdf39e-a590-43b1-a952-827d5a5f2ee7"
+    },
+    {
+      "parameters": {
+        "path": "84dd3117-f7ef-4553-9a85-9bf63e4fb5ad",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -540,
+        0
+      ],
+      "id": "998356d8-4c60-4cb9-bf8a-f1b5c14fe67a",
+      "name": "Webhook",
+      "webhookId": "84dd3117-f7ef-4553-9a85-9bf63e4fb5ad"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "Test",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -320,
+        0
+      ],
+      "id": "80391cf8-b4e6-42b9-b62f-590ca4eb7429",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f980c0d5-013c-4533-9b04-a359754826c1",
+              "leftValue": "={{ $json['ECG/EKG Laptop'] }}",
+              "rightValue": "Online/Charged",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        -320
+      ],
+      "id": "cd6fc21d-72ec-465e-8501-c7d6c8a956f3",
+      "name": "ECG"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nit.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"POC Down, ECG\",\n       \"GROUP_ID\":\"74\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"ECG Down\"\n   }\n}",
+        "options": {}
+      },
+      "id": "7858ca5f-8e06-44b3-90d5-9e44921858d5",
+      "name": "ECG Ticket Bitrix24",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        580,
+        -320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f980c0d5-013c-4533-9b04-a359754826c1",
+              "leftValue": "={{ $json['X-Ray'] }}",
+              "rightValue": "Zapping",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        280,
+        -100
+      ],
+      "id": "965c5a2a-3d40-4bd0-b95f-5dfbb2ee0b16",
+      "name": "X-Ray"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nit.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"POC Down, X-Ray\",\n       \"GROUP_ID\":\"74\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"X-Ray\"\n   }\n}",
+        "options": {}
+      },
+      "id": "45a3ba57-3c07-4917-bfe3-13f04e7b99d7",
+      "name": "X-Ray Ticket Bitrix",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        580,
+        -100
+      ]
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "Location of POC": "sfd 10",
+          "Location of POC | Confirmation": "EPIC SFD 10 Mile",
+          "ECG/EKG Laptop": "Online/Charged",
+          "X-Ray": "Not Zapping",
+          "submittedAt": "2025-03-04T16:52:50.432-05:00",
+          "formMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-04T22:00:04.972Z",
+  "versionId": "3003ddd1-b047-42e5-8677-712b47f310a3"
+}
