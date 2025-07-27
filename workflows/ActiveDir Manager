@@ -1,0 +1,1194 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Locked Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF Locked Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP": {
+      "main": [
+        [
+          {
+            "node": "IF Locked Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP1": {
+      "main": [
+        [
+          {
+            "node": "Unlock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-02T20:35:02.527Z",
+  "id": "aXCyuuGsMiiO8FyI",
+  "isArchived": false,
+  "meta": null,
+  "name": "ActiveDir Manager",
+  "nodes": [
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "lockoutTime",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "ae9d4a3f-646d-4ce6-8a26-be570cb76705",
+      "name": "Search LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        460
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.lockoutTime }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "bc553968-fa4a-49b3-930d-84b100c19977",
+      "name": "IF Locked Out",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        460
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2f4879bc-c72b-4e6c-acb5-59cb28de4bbd",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        920,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Copy",
+              "stringValue": "=<button onclick=\"copyTextToClipboard{{ $json[\"sAMAccountName\"] }}()\" id=\"copyTextToClipboard{{ $json[\"sAMAccountName\"] }}()\">{{ $json[\"sAMAccountName\"] }}</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboard{{ $json[\"sAMAccountName\"] }}()').addEventListener('click', function() {\n    sendPostRequest{{ $json[\"sAMAccountName\"] }}();\n});\n\nfunction sendPostRequest{{ $json[\"sAMAccountName\"] }}() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/773027cd-a413-4b14-b71e-3adecacded8a';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: '{{ $json[\"sAMAccountName\"] }}'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "837e6b64-ae77-4a51-b1d5-aa0d191eff5f",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1580,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "68de076c-98c1-4f7c-923c-27b3368f74cb",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1300,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Survey Title"
+            },
+            {
+              "fieldToAggregate": "sid"
+            },
+            {
+              "fieldToAggregate": "Copy"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "edef6235-a973-42c3-a2c4-8885e683f26a",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1800,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Clinical",
+              "stringValue": "={{ $json.Copy[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3c77aa9-bc35-4103-a140-85c27bde348f",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2020,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html>\n\n<head>\n<style>\n\n.column {\n  float: left;\n  width: 33.33%;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n.my-div {\n    margin: 50px; /* Top, Right, Bottom, Left */\n}\n.column-title {\n    margin-bottom: 50px;\n}\n</style>\n</head>\n\n\n<body>\n\n<div class=\"my-div\"><center padding-top: 20px><p style=\"font-size:25px\" style=\"font-family:verdana\"><b>CLICK TO COPY QUESTION LINK AND PASTE INTO BODY OF SMS TO SEND TO PATIENT</b></p></center></div>\n<div class=\"row\">\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">ACM 3plus1<br></div><br>{{ $json[\"Copy\"].join('')}}</div>\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">ACM Intro</br></div><br>{{ $json[\"data\"][1][\"Copy\"].join('') }}</div>\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">Other<br></div><br>{{ $json[\"data\"][2][\"Copy\"].join('')}}</div>\n\n</div>\n\n\n</body>\n</html> ",
+        "options": {}
+      },
+      "id": "8d686b83-a023-435f-88c5-950f04c7f424",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "path": "a0ab0f00-1035-42fd-b594-5ae7f9bc70a4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0428859a-f058-43ac-ab4b-f59539ee6fc6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "a0ab0f00-1035-42fd-b594-5ae7f9bc70a4"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "773027cd-a413-4b14-b71e-3adecacded8a",
+        "options": {}
+      },
+      "id": "8aeb46a4-a7d9-4976-a951-4b51e250ffb3",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        680
+      ],
+      "webhookId": "773027cd-a413-4b14-b71e-3adecacded8a"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $json[\"dn\"] }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "lockoutTime",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "id": "15bee91f-7ac5-4767-b466-f78dea86aea4",
+      "name": "Unlock",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        700
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $json[\"body\"][\"User\"] }}",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "57804a94-b3d5-4354-be1c-df08a32c4ffe",
+      "name": "Search LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        720
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "dn": "CN=Back up,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Back up",
+          "sn": "up",
+          "givenName": "Back",
+          "distinguishedName": "CN=Back up,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20130803135854.0Z",
+          "whenChanged": "20240125040034.0Z",
+          "displayName": "Back up",
+          "uSNCreated": "22016",
+          "memberOf": [
+            "CN=Domain Admins,CN=Users,DC=ecoe,DC=local",
+            "CN=Backup Operators,CN=Builtin,DC=ecoe,DC=local"
+          ],
+          "uSNChanged": "62408651",
+          "name": "Back up",
+          "objectGUID": "9f74c200e745b04f9ca1407187f1c591",
+          "userAccountControl": "66048",
+          "badPwdCount": "1",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513635943668923",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "130827054346597512",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d924080000",
+          "adminCount": "1",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "backup",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "backup@ecoe.local",
+          "lockoutTime": "133506288348985824",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "�t�\u0000�E�O��@q��ő",
+          "lastLogonTimestamp": "131988035826860446"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Vendors Epic,OU=ServiceAccounts,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Vendors Epic",
+          "sn": "Epic",
+          "givenName": "Vendors",
+          "distinguishedName": "CN=Vendors Epic,OU=ServiceAccounts,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20180209144511.0Z",
+          "whenChanged": "20240130125304.0Z",
+          "displayName": "Vendors Epic",
+          "uSNCreated": "19289",
+          "uSNChanged": "62832426",
+          "name": "Vendors Epic",
+          "objectGUID": "709a955facdd5844935d2fdb94a959da",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513746008042217",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "131626611118930296",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9b40f0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "vendors",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "vendors@epicpc.com",
+          "lockoutTime": "133510927842726921",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "p��_��XD�]/۔�Y�"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Office Manager,OU=ServiceAccounts,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Office Manager",
+          "sn": "Manager",
+          "givenName": "Office",
+          "distinguishedName": "CN=Office Manager,OU=ServiceAccounts,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20200108060938.0Z",
+          "whenChanged": "20240201060825.0Z",
+          "displayName": "Office Manager",
+          "uSNCreated": "19371",
+          "uSNChanged": "62955880",
+          "name": "Office Manager",
+          "objectGUID": "493054ec8c9a21489ed59f4716e6e1a0",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513803121862753",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132229373780340221",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9fa1b0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "om",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "om@epicpc.com",
+          "lockoutTime": "133512413058707385",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "I0T쌚!H�՟G\u0016��"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=EPIC Website,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "EPIC Website",
+          "sn": "Website",
+          "givenName": "EPIC",
+          "distinguishedName": "CN=EPIC Website,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20200702164605.0Z",
+          "whenChanged": "20240125103834.0Z",
+          "displayName": "EPIC Website",
+          "uSNCreated": "19227",
+          "uSNChanged": "62423248",
+          "name": "EPIC Website",
+          "objectGUID": "935c73035f661446b85a74eb2827db51",
+          "userAccountControl": "512",
+          "badPwdCount": "4",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133506527145685380",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132381819660614333",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9691b0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "website",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "website@ecoe.local",
+          "lockoutTime": "133506527145685380",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "�\\s\u0003_f\u0014F�Zt�('�Q"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Physical Therapist,OU=Vendor Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Physical Therapist",
+          "sn": "Therapist",
+          "givenName": "Physical",
+          "distinguishedName": "CN=Physical Therapist,OU=Vendor Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20080428133908.0Z",
+          "whenChanged": "20240202033622.0Z",
+          "displayName": "Physical Therapist",
+          "uSNCreated": "19574",
+          "uSNChanged": "63019399",
+          "name": "Physical Therapist",
+          "objectGUID": "958ed4c57829fc49a2fb99af07572ee3",
+          "userAccountControl": "66048",
+          "badPwdCount": "1",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513738464133931",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "LoginScript.vbs",
+          "pwdLastSet": "130235781483886821",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d933060000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "pt",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "pt@ecoe.local",
+          "lockoutTime": "133513185827533109",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "����x)�I����\u0007W.�",
+          "lastLogonTimestamp": "130042119835837173"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=pl,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "pl",
+          "distinguishedName": "CN=pl,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20100922162156.0Z",
+          "whenChanged": "20240128235915.0Z",
+          "uSNCreated": "19514",
+          "uSNChanged": "62629124",
+          "name": "pl",
+          "objectGUID": "8397da9b9b40d844b5350d5ab95ef621",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513690721211226",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "logonHours": "���������������������",
+          "pwdLastSet": "130338488226148379",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9bc070000",
+          "accountExpires": "0",
+          "logonCount": "0",
+          "sAMAccountName": "pl",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "pl@ecoe.local",
+          "lockoutTime": "133509599502179687",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "��ڛ�@�D�5\rZ�^�!",
+          "lastLogonTimestamp": "130347240174948567"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=web,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "web",
+          "distinguishedName": "CN=web,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20100413185533.0Z",
+          "whenChanged": "20240118214823.0Z",
+          "uSNCreated": "19531",
+          "uSNChanged": "62090133",
+          "name": "web",
+          "objectGUID": "19290304ee39ea41aad2f6fc9c64ea50",
+          "userAccountControl": "66050",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133500991400136494",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "logonHours": "���������������������",
+          "pwdLastSet": "129315891058678060",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d975070000",
+          "accountExpires": "0",
+          "logonCount": "0",
+          "sAMAccountName": "web",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "web@ecoe.local",
+          "lockoutTime": "133500881035783195",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "\u0019)\u0003\u0004�9�A�����d�P",
+          "lastLogonTimestamp": "129723687784040083"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=mr,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "mr",
+          "distinguishedName": "CN=mr,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20100413185130.0Z",
+          "whenChanged": "20240202210604.0Z",
+          "uSNCreated": "19537",
+          "uSNChanged": "63078767",
+          "name": "mr",
+          "objectGUID": "dddcd85a09d9184a952456f2ea5469bc",
+          "userAccountControl": "66048",
+          "badPwdCount": "4",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513815649593178",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "logonHours": "���������������������",
+          "pwdLastSet": "129156582910905669",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d974070000",
+          "accountExpires": "0",
+          "logonCount": "0",
+          "sAMAccountName": "mr",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "mr@ecoe.local",
+          "lockoutTime": "133513815649593178",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "���Z\t�\u0018J�$V��Ti�",
+          "lastLogonTimestamp": "131070192152796892",
+          "mail": "mr@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=dr NMN,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "dr NMN",
+          "sn": "NMN",
+          "givenName": "dr",
+          "distinguishedName": "CN=dr NMN,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20160326014835.0Z",
+          "whenChanged": "20240129210926.0Z",
+          "displayName": "dr NMN",
+          "uSNCreated": "19538",
+          "uSNChanged": "62678473",
+          "name": "dr NMN",
+          "objectGUID": "d5b1bebb1673104c94537d05bf1072ab",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513757605129433",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "logonHours": "���������������������",
+          "pwdLastSet": "131034305159939107",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9d10e0000",
+          "accountExpires": "0",
+          "logonCount": "0",
+          "sAMAccountName": "dr",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "dr@ecoe.local",
+          "lockoutTime": "133510361668902214",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "ձ��\u0016s\u0010L�S}\u0005�\u0010r�",
+          "lastLogonTimestamp": "131070192156703524",
+          "mail": "dr@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Email Contacts,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Email Contacts",
+          "sn": "Contacts",
+          "givenName": "Email",
+          "distinguishedName": "CN=Email Contacts,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20100211200636.0Z",
+          "whenChanged": "20240119080323.0Z",
+          "displayName": "Email Contacts",
+          "uSNCreated": "22006",
+          "uSNChanged": "62109920",
+          "name": "Email Contacts",
+          "objectGUID": "61111dc70a0abd479cef42759aab487d",
+          "userAccountControl": "66048",
+          "badPwdCount": "1",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133509267867804263",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132256402456432947",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d929070000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "contact",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "contact@epichs.org",
+          "lockoutTime": "133501250033355341",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "a\u0011\u001d�\n\n�G��Bu��H}",
+          "lastLogonTimestamp": "129723668565560467"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=care epic,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "care epic",
+          "sn": "epic",
+          "givenName": "care",
+          "distinguishedName": "CN=care epic,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20210803190239.0Z",
+          "whenChanged": "20240119102738.0Z",
+          "displayName": "care epic",
+          "uSNCreated": "20958",
+          "uSNChanged": "62114390",
+          "name": "care epic",
+          "objectGUID": "a8cbada368a09448b1360e8203faf73e",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133501497046843474",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132724909598597219",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d98f1d0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "care",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "care@epicpc.com",
+          "lockoutTime": "133501336581377145",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "�˭�h��H�6\u000e�\u0003��>",
+          "mail": "care@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Watch Guard,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Watch Guard",
+          "sn": "Guard",
+          "givenName": "Watch",
+          "distinguishedName": "CN=Watch Guard,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20090324130313.0Z",
+          "whenChanged": "20240129201154.0Z",
+          "displayName": "Watch Guard",
+          "uSNCreated": "20595",
+          "memberOf": "CN=Administrators,CN=Builtin,DC=ecoe,DC=local",
+          "uSNChanged": "62675576",
+          "name": "Watch Guard",
+          "objectGUID": "ab44b734c01ad0438eb63f812e0e6358",
+          "userAccountControl": "66050",
+          "badPwdCount": "4",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133510327144886195",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "128823733939669115",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9bb060000",
+          "adminCount": "1",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "watchguard",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "watchguard@ecoe.local",
+          "lockoutTime": "133510327144886195",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "�D�4�\u001a�C��?�.\u000ecX"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=connect sugar,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "connect sugar",
+          "sn": "sugar",
+          "description": "New suitecrm admin",
+          "givenName": "connect",
+          "distinguishedName": "CN=connect sugar,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20210814184904.0Z",
+          "whenChanged": "20240119055609.0Z",
+          "displayName": "connect sugar",
+          "uSNCreated": "20974",
+          "uSNChanged": "62106245",
+          "name": "connect sugar",
+          "objectGUID": "0733d7249614e546abddfc0a3c1b712d",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133501371889581587",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132734405453044423",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9681e0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "connect",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "connect@epicpc.com",
+          "lockoutTime": "133501173698560214",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "\u00073�$�\u0014�F���\n<\u001bq-",
+          "mail": "connect@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Directors NMN,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Directors NMN",
+          "sn": "NMN",
+          "givenName": "Directors",
+          "distinguishedName": "CN=Directors NMN,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20160326011923.0Z",
+          "whenChanged": "20240201102535.0Z",
+          "displayName": "Directors NMN",
+          "uSNCreated": "19431",
+          "memberOf": "CN=PharmacyStaff,OU=4.3 Staff,OU=4.0 Diagnostic Divisions/Ancillaries,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "uSNChanged": "62970231",
+          "name": "Directors NMN",
+          "objectGUID": "b55b75491c6de64aa7ae3d03fde2b343",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513781977621373",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "131034287640360927",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9cf0e0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "directors",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "directors@ecoe.local",
+          "lockoutTime": "133512567353189275",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "�[uI\u001cm�J��=\u0003��C",
+          "lastLogonTimestamp": "131263725348488875",
+          "mail": "directors@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=Management Software Sharing,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "Management Software Sharing",
+          "sn": "Software Sharing",
+          "givenName": "Management",
+          "distinguishedName": "CN=Management Software Sharing,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20100127185935.0Z",
+          "whenChanged": "20240125103834.0Z",
+          "displayName": "Management Software Sharing",
+          "uSNCreated": "19533",
+          "memberOf": "CN=A4,OU=Service Groups,OU=Groups,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "uSNChanged": "62423245",
+          "name": "Management Software Sharing",
+          "objectGUID": "7042ef8f7a448747b5e08438447303b2",
+          "userAccountControl": "66050",
+          "badPwdCount": "4",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133506527143809609",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "129163495081605176",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d91b070000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "manager",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "manager@ecoe.local",
+          "lockoutTime": "133506527143809609",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "pB�zD�G���8Ds\u0003�",
+          "lastLogonTimestamp": "129163500647119817"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=b2b crm,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "b2b crm",
+          "sn": "crm",
+          "givenName": "b2b",
+          "distinguishedName": "CN=b2b crm,OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20210918131427.0Z",
+          "whenChanged": "20240202210132.0Z",
+          "displayName": "b2b crm",
+          "uSNCreated": "21027",
+          "uSNChanged": "63078502",
+          "name": "b2b crm",
+          "objectGUID": "327ae490f7d6104d90f289618fb6c0c3",
+          "userAccountControl": "66048",
+          "badPwdCount": "4",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513812920103340",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "ADSelfService_Enroll.hta",
+          "pwdLastSet": "132765420846650605",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9b01e0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "b2b",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "b2b@epicpc.com",
+          "lockoutTime": "133513812920103340",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "2z���\u0010M��a����",
+          "lastLogonTimestamp": "132765420254687334",
+          "mail": "b2b@epicpc.com"
+        }
+      },
+      {
+        "json": {
+          "dn": "CN=exercise physiology,OU=4.3 Staff,OU=4.0 Diagnostic Divisions/Ancillaries,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "objectClass": [
+            "top",
+            "person",
+            "organizationalPerson",
+            "user"
+          ],
+          "cn": "exercise physiology",
+          "sn": "physiology",
+          "givenName": "exercise",
+          "distinguishedName": "CN=exercise physiology,OU=4.3 Staff,OU=4.0 Diagnostic Divisions/Ancillaries,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+          "instanceType": "4",
+          "whenCreated": "20180817141334.0Z",
+          "whenChanged": "20240202132250.0Z",
+          "displayName": "exercise physiology",
+          "uSNCreated": "19188",
+          "memberOf": [
+            "CN=NMNACSALLSTAFF,CN=Users,DC=ecoe,DC=local",
+            "CN=LDAPUsers,OU=Groups,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+            "CN=A4,OU=Service Groups,OU=Groups,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+            "CN=Dept 4 Staff,OU=3.0 EPIC Staff Group,OU=EPIC Group User Accounts,OU=EPIC,DC=ecoe,DC=local"
+          ],
+          "uSNChanged": "63050275",
+          "name": "exercise physiology",
+          "objectGUID": "5a560d273dc9334dbcf2f526b6024972",
+          "userAccountControl": "66048",
+          "badPwdCount": "2",
+          "codePage": "0",
+          "countryCode": "0",
+          "badPasswordTime": "133513727698216559",
+          "lastLogoff": "0",
+          "lastLogon": "0",
+          "scriptPath": "LoginScript.vbs",
+          "pwdLastSet": "131789888151565858",
+          "primaryGroupID": "513",
+          "objectSid": "01050000000000051500000037ad6ad7b5aef772582de2d9761a0000",
+          "accountExpires": "9223372036854775807",
+          "logonCount": "0",
+          "sAMAccountName": "ep",
+          "sAMAccountType": "805306368",
+          "userPrincipalName": "ep@epicpc.com",
+          "lockoutTime": "133513537706585124",
+          "objectCategory": "CN=Person,CN=Schema,CN=Configuration,DC=ecoe,DC=local",
+          "dSCorePropagationData": "16010101000000.0Z",
+          "mS-DS-ConsistencyGuid": "ZV\r'=�3M���&�\u0002Ir"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Survey Title": [],
+          "sid": [],
+          "Copy": [
+            "<button onclick=\"copyTextToClipboardbackup()\" id=\"copyTextToClipboardbackup()\">backup</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardbackup()').addEventListener('click', function() {\n    sendPostRequestbackup();\n});\n\nfunction sendPostRequestbackup() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'backup'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardvendors()\" id=\"copyTextToClipboardvendors()\">vendors</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardvendors()').addEventListener('click', function() {\n    sendPostRequestvendors();\n});\n\nfunction sendPostRequestvendors() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'vendors'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardom()\" id=\"copyTextToClipboardom()\">om</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardom()').addEventListener('click', function() {\n    sendPostRequestom();\n});\n\nfunction sendPostRequestom() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'om'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardwebsite()\" id=\"copyTextToClipboardwebsite()\">website</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardwebsite()').addEventListener('click', function() {\n    sendPostRequestwebsite();\n});\n\nfunction sendPostRequestwebsite() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'website'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardpt()\" id=\"copyTextToClipboardpt()\">pt</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardpt()').addEventListener('click', function() {\n    sendPostRequestpt();\n});\n\nfunction sendPostRequestpt() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'pt'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardpl()\" id=\"copyTextToClipboardpl()\">pl</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardpl()').addEventListener('click', function() {\n    sendPostRequestpl();\n});\n\nfunction sendPostRequestpl() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'pl'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardweb()\" id=\"copyTextToClipboardweb()\">web</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardweb()').addEventListener('click', function() {\n    sendPostRequestweb();\n});\n\nfunction sendPostRequestweb() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'web'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardmr()\" id=\"copyTextToClipboardmr()\">mr</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardmr()').addEventListener('click', function() {\n    sendPostRequestmr();\n});\n\nfunction sendPostRequestmr() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'mr'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboarddr()\" id=\"copyTextToClipboarddr()\">dr</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboarddr()').addEventListener('click', function() {\n    sendPostRequestdr();\n});\n\nfunction sendPostRequestdr() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'dr'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardcontact()\" id=\"copyTextToClipboardcontact()\">contact</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardcontact()').addEventListener('click', function() {\n    sendPostRequestcontact();\n});\n\nfunction sendPostRequestcontact() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'contact'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardcare()\" id=\"copyTextToClipboardcare()\">care</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardcare()').addEventListener('click', function() {\n    sendPostRequestcare();\n});\n\nfunction sendPostRequestcare() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'care'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardwatchguard()\" id=\"copyTextToClipboardwatchguard()\">watchguard</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardwatchguard()').addEventListener('click', function() {\n    sendPostRequestwatchguard();\n});\n\nfunction sendPostRequestwatchguard() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'watchguard'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardconnect()\" id=\"copyTextToClipboardconnect()\">connect</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardconnect()').addEventListener('click', function() {\n    sendPostRequestconnect();\n});\n\nfunction sendPostRequestconnect() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'connect'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboarddirectors()\" id=\"copyTextToClipboarddirectors()\">directors</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboarddirectors()').addEventListener('click', function() {\n    sendPostRequestdirectors();\n});\n\nfunction sendPostRequestdirectors() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'directors'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardmanager()\" id=\"copyTextToClipboardmanager()\">manager</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardmanager()').addEventListener('click', function() {\n    sendPostRequestmanager();\n});\n\nfunction sendPostRequestmanager() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'manager'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardb2b()\" id=\"copyTextToClipboardb2b()\">b2b</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardb2b()').addEventListener('click', function() {\n    sendPostRequestb2b();\n});\n\nfunction sendPostRequestb2b() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'b2b'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+            "<button onclick=\"copyTextToClipboardep()\" id=\"copyTextToClipboardep()\">ep</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardep()').addEventListener('click', function() {\n    sendPostRequestep();\n});\n\nfunction sendPostRequestep() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'ep'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+          ],
+          "Clinical": "<button onclick=\"copyTextToClipboardbackup()\" id=\"copyTextToClipboardbackup()\">backup</button>\n\n\n<script>\ndocument.getElementById('copyTextToClipboardbackup()').addEventListener('click', function() {\n    sendPostRequestbackup();\n});\n\nfunction sendPostRequestbackup() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/484e70a9-912e-4926-95eb-8111ab84bb87';\n\n    // Data to be sent in the POST request\n    var data = {\n        User: 'backup'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.190",
+            "x-forwarded-for": "10.0.14.190",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "17",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "sec-ch-ua-mobile": "?0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/a0ab0f00-1035-42fd-b594-5ae7f9bc70a4",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImVtYWlsIjoiaXRoZWxwZGVza0BlcGljcGMuY29tIiwicGFzc3dvcmQiOiJkMGJkMGI0ZDQ5ZjRiNzRiZDRhODQ4MTE0ZTk0OTQwMzdlZDQzZmE5ZDZjYWJkMmY5ODMxNDlmMTA2ZTAxOGZiIiwiaWF0IjoxNzA2NzA3NjU5LCJleHAiOjE3MDczMTI0NTl9.8Sz2fPQ2CMH2g9uwHBqST4khyy-DiokIR8YoyOSw5ug; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX187KpZLsTZyqjBQ3nublXrXHhNTN2qKA%2F%2FrumbLIZy7CbrvmmGaDN0OXDDppT2kBYZFry06VbpnIw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2B%2BEMxS0RmQVgioB4CKejR0mR6IB%2F%2Fvv1GiQFMFLT8aubNpNDj7amCX40hw5BwbEeAELACQXvEalGwfAr4Jfqr7lEAkGRVlm3AlFHU4zU0z3AePxY53MVQJh2DsiDUzRxbcM%2FPRLOIdf2NpaAR9SAXqGaMnNdZ7zDw%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX181IVo2nbjxuYGuJ1dxZqqcEkxtT9wI9NoTSraxDLmaaFQQv%2FwCE4X2C51M6yHXPkwplVXAIxjIGfR%2B3Wv78UQ1n3zqhcEXzroJs2KMDggATEMECF6Rmd%2FuP4OD0cDCbP7vyRUIt0mSfw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1706911739713%2C%22018d6bde-2f41-7ee5-ac76-2ac5fcc71b10%22%2C1706911739713%5D%7D; XSRF-TOKEN=eyJpdiI6ImxXc0ZkaTQ2dE5wVlhGY0tWcFpMT0E9PSIsInZhbHVlIjoiRFVPb01WUzRQdUJuU1o3WlplUGF2UUVVcG8rSXJTeE5RS2U2V3gyRitxcEo5Y21JRUVBQ3cxUU9hUE9MeExiQSIsIm1hYyI6IjRlMjAyYzk1YzU2MDYzMzdiODI2MmY5MmRhMzRjYjU5Zjg5Nzg0YWRhOTNlNjM5YmMzMzRkODhhZTFiNjNhNjUifQ%3D%3D; epic_session=eyJpdiI6IkRZNFwvaUYyXC9UZVVFSkFQdVlsV3lRQT09IiwidmFsdWUiOiJVc2Zra1FcL0V1QkR6WkxuS0NZbDBlRDluRThtc1RTeHNjME5wdWk0Z1pDWURaOFo5UmYzc2FjYzM4Z3dsYXRyVCIsIm1hYyI6IjlhMWNmZWNiMTE2YWNiMGNmNjczMjQ5YWUwMWFlNmUyNDYyMDhkMzZjMmM2OWI0YzYyZTVmMTJhZDc3Y2UyOGYifQ%3D%3D; rl_session=RudderEncrypt%3AU2FsdGVkX18rvi7vV0ujaTXy1MtObkTtnSMHNo%2B%2B9P3PNHhC%2BYaeGNgyMgi372gfI7BzHtEVv6a8R9QpTMb7beiQwQSXImR3KUM058HhUGiBK6Og%2B%2BsLZs31MTydzwB%2Brb6Zt4yo0XwLtIF2AVGaMQ%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "User": "NMadar"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-02-07T14:53:07.002Z",
+  "versionId": "ec017536-03a3-4097-8a47-c49a4d9640d8"
+}
