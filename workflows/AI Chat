@@ -1,0 +1,160 @@
+{
+  "active": false,
+  "connections": {
+    "On new manual Chat Message": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-03T18:10:56.629Z",
+  "id": "gEZzJjCxTs5nfi6K",
+  "isArchived": false,
+  "meta": null,
+  "name": "AI Chat",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0a2dfc33-b6a0-431a-9c8d-2f383f28f4bd",
+      "name": "On new manual Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-3.5-turbo-1106",
+        "options": {}
+      },
+      "id": "cc977a43-fd5c-4763-9c5a-142377faaab1",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        940,
+        460
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "WaBIAccn19Qs2qn0",
+          "name": "OpenAi account CyberTech"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d057b723-9cbc-4bfc-8500-045e7ace8ec6",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "3e517190-ac52-41de-bd24-1f7084462b58",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        260
+      ],
+      "webhookId": "d057b723-9cbc-4bfc-8500-045e7ace8ec6"
+    },
+    {
+      "parameters": {
+        "path": "7111834b-7b30-490c-96ed-5c6b2c9400c2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "fd8b5464-ad73-497f-8fff-d6ffd7030fb8",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        100
+      ],
+      "webhookId": "7111834b-7b30-490c-96ed-5c6b2c9400c2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<html>\n<body>\n\n<link href=\"https://cdn.jsdelivr.net/npm/@n8n/chat/style.css\" rel=\"stylesheet\" />\n<script type=\"module\">\nimport { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/chat.bundle.es.js';\n\ncreateChat({\n\twebhookUrl: 'https://xl.epicpc.com/webhook/d057b723-9cbc-4bfc-8500-045e7ace8ec6'\n});\n</script>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "760260ec-41f1-44c1-a8b7-da6b2ba2c297",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        900,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.body.chatInput }}",
+        "options": {
+          "systemMessage": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n\nThe main objective and as a medical expert: AI Agent provides diagnostic and treatment protocols based on medical variables (conditions, age, previous orders in a period of time, results of previous orders)"
+        }
+      },
+      "id": "ace60249-8f85-4c58-81a6-a840a91383b7",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 3,
+  "updatedAt": "2024-01-09T22:14:30.977Z",
+  "versionId": "dd95fc54-fc67-4de6-821d-65f27252dfb1"
+}
