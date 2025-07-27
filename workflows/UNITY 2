@@ -1,0 +1,1168 @@
+{
+  "active": false,
+  "connections": {
+    "Retrieve All Site Agents1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Send Powershell Script to Agent1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell Script to Agent2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Powershell Script to Agent": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients1": {
+      "main": [
+        [
+          {
+            "node": "Split Out Sites",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Sites": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site1": {
+      "main": [
+        [
+          {
+            "node": "Map Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Powershell Script to Agent2": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell Script to Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-23T19:35:37.565Z",
+  "id": "yCt2Scq0T3ObQfo2",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "UNITY 2",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1d489b49-56be-467c-aa45-2ca01082fbaa",
+      "name": "Retrieve All Site Agents1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1400,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f2fc5532-c98b-4731-816b-b9ba2431d8c4",
+              "name": "id",
+              "value": "13",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "60227d03-1831-4da5-9e33-f739628f308b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ff286201-cbcc-4a86-9f18-26f54fbced92",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1620,
+        380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6ca29a7d-648c-497f-b169-c60fad8edab1",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.5,
+        "unit": "minutes"
+      },
+      "id": "ca62bd3a-6009-4251-8114-287a0605aeda",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        600
+      ],
+      "webhookId": "269da792-8a73-4765-b788-2a82cd4fd202"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.wiretapped.app/agents/{{ $json.agent_id }}/runscript/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\"output\":\"forget\",\"emails\":[],\"emailMode\":\"default\",\"custom_field\":null,\"save_all_output\":false,\"script\":163,\"args\":[],\"env_vars\":[],\"timeout\":600,\"run_as_user\":false}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "26553b19-aec6-4f9d-8140-2c0b53c62da0",
+      "name": "Send Powershell Script to Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2340,
+        400
+      ],
+      "executeOnce": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.wiretapped.app/agents/{{ $json.agent_id }}/runscript/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\"output\":\"forget\",\"emails\":[],\"emailMode\":\"default\",\"custom_field\":null,\"save_all_output\":false,\"script\":163,\"args\":[],\"env_vars\":[],\"timeout\":600,\"run_as_user\":false}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "594a9c8e-a546-4149-a570-938815c6a584",
+      "name": "Send Powershell Script to Agent1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1860,
+        560
+      ],
+      "executeOnce": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5996fa5e-873f-4245-bf97-154ecd3a9b60",
+      "name": "Get RMM Clients1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1260,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "f9fa97c5-f8e6-41e7-8bea-5b4c92ebf8ee",
+      "name": "Split Out Sites",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "={{ $('Identify Room').item.json.LOCATION_NAME }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce7b10b7-0c66-46aa-9784-2eb01e953952",
+      "name": "Map Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1720,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "194deafa-7b4f-468c-8ed7-b3717e58efbe",
+      "name": "Filter to CDN Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1560,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.wiretapped.app/agents/{{ $json.agent_id }}/runscript/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\"output\":\"forget\",\"emails\":[],\"emailMode\":\"default\",\"custom_field\":null,\"save_all_output\":false,\"script\":160,\"args\":[],\"env_vars\":[],\"timeout\":600,\"run_as_user\":false}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "952e9896-8d09-49f4-9b5e-339f6ad2e777",
+      "name": "Send Powershell Script to Agent2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1900,
+        200
+      ],
+      "executeOnce": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "useDataOfInput": 2
+      },
+      "id": "2978827a-1d83-4f80-9361-141237550a59",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2000,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.5,
+        "unit": "minutes"
+      },
+      "id": "3539d15d-de72-4397-aabc-bf431e12ba81",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2120,
+        180
+      ],
+      "webhookId": "269da792-8a73-4765-b788-2a82cd4fd202"
+    }
+  ],
+  "pinData": {
+    "Split Out Sites": [
+      {
+        "json": {
+          "id": 22,
+          "name": "Blue Sky",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "Blue Sky",
+          "client": 6,
+          "custom_fields": [],
+          "agent_count": 7,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 27,
+          "name": "Inventory",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "Blue Sky",
+          "client": 6,
+          "custom_fields": [],
+          "agent_count": 0,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 28,
+          "name": "Southfield",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "Blue Sky",
+          "client": 6,
+          "custom_fields": [],
+          "agent_count": 0,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 30,
+          "name": "EPIC Southfield 10 Mile",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "CDN",
+          "client": 5,
+          "custom_fields": [],
+          "agent_count": 2,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 31,
+          "name": "EPIC Southfield Telegraph",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "CDN",
+          "client": 5,
+          "custom_fields": [],
+          "agent_count": 7,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 26,
+          "name": "Inventory",
+          "server_policy": 4,
+          "workstation_policy": 4,
+          "alert_template": null,
+          "client_name": "CDN",
+          "client": 5,
+          "custom_fields": [],
+          "agent_count": 18,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 33,
+          "name": "SPEC EP Southfield Telegraph",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "CDN",
+          "client": 5,
+          "custom_fields": [],
+          "agent_count": 4,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 34,
+          "name": "Tindal",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "CDN",
+          "client": 5,
+          "custom_fields": [],
+          "agent_count": 1,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "name": "Lab",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "CyberTech",
+          "client": 1,
+          "custom_fields": [],
+          "agent_count": 2,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 9,
+          "name": "Lab",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC Lab",
+          "client": 3,
+          "custom_fields": [],
+          "agent_count": 19,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 3,
+          "name": "7Mile",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 12,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 24,
+          "name": "Clawson",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 13,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 20,
+          "name": "Eastpointe",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 3,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 10,
+          "name": "EPIC-ECG",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 23,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 11,
+          "name": "EPIC-X-Ray",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 7,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 23,
+          "name": "EXPERIMENTS---Check for Return",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 0,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 29,
+          "name": "Farmbrook",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 12,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 7,
+          "name": "Ferndale",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 23,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 32,
+          "name": "Flatworld",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 0,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 6,
+          "name": "Hamtramck",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 19,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 13,
+          "name": "HQ",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 52,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 16,
+          "name": "Hybrid - CM",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 12,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 15,
+          "name": "Inventory",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 58,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 4,
+          "name": "Livernois",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 15,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 21,
+          "name": "MAPPC",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 1,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 2,
+          "name": "Other",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 73,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 17,
+          "name": "RDP",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 3,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 8,
+          "name": "Royal Oak",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 15,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 14,
+          "name": "SCS",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 12,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 5,
+          "name": "Southfield",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 32,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 12,
+          "name": "Ultrasound",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 3,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 25,
+          "name": "Westland",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC-MI-DET",
+          "client": 2,
+          "custom_fields": [],
+          "agent_count": 3,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 19,
+          "name": "Pharmacy",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "EPIC Pharmacy",
+          "client": 4,
+          "custom_fields": [],
+          "agent_count": 11,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      },
+      {
+        "json": {
+          "id": 35,
+          "name": "ISP DIRECT  SFD 10MILE",
+          "server_policy": null,
+          "workstation_policy": null,
+          "alert_template": null,
+          "client_name": "ISP DIRECT  SFD 10MILE",
+          "client": 7,
+          "custom_fields": [],
+          "agent_count": 3,
+          "block_policy_inheritance": false,
+          "maintenance_mode": false,
+          "failing_checks": {
+            "error": false,
+            "warning": false
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-25T12:06:09.851Z",
+  "versionId": "718e0fc0-c073-4b64-b96f-57dcc1d56ca5"
+}
