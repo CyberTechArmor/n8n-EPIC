@@ -1,0 +1,198 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-27T13:40:40.789Z",
+  "id": "FOoAx7Yo7OJ1ouLD",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CasCom",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d7f0b6dd-8b0c-4340-b782-87221468165c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        -240
+      ],
+      "id": "c1cef189-d48f-4896-87cc-0ba67efc7d16",
+      "name": "Webhook",
+      "webhookId": "d7f0b6dd-8b0c-4340-b782-87221468165c"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pv8h9kzwjusoquk",
+        "table": "mryai3ll71v3w5r",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Acknowledgement",
+              "fieldValue": "={{ $json.body.reason }}"
+            },
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.body.user }}"
+            },
+            {
+              "fieldName": "Action",
+              "fieldValue": "={{ $json.body.action }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        100,
+        -240
+      ],
+      "id": "ad91b2bf-d664-4d0b-bf53-296e7a350557",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "9306a560-ae8a-4cbc-8621-3723f3783e4c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        -440
+      ],
+      "id": "e0b3672e-2c5e-4627-8e4d-5f83dc1f1455",
+      "name": "Webhook1",
+      "webhookId": "9306a560-ae8a-4cbc-8621-3723f3783e4c"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>ADP Reminder</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      min-height: 100vh;\n      background-color: #f7f7f7;\n      font-family: Arial, sans-serif;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n    /* Adjust vertical alignment on very short viewports */\n    @media (max-height: 500px) {\n      body {\n        align-items: flex-start;\n        padding-top: 20px;\n      }\n    }\n    .container {\n      border: 1px solid #000;\n      padding: 40px;\n      text-align: center;\n      background-color: #fff;\n      box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n      max-width: 600px;\n      max-height: 90vh;  /* Ensures the container never exceeds 90% of viewport height */\n      overflow-y: auto;  /* Scroll within the container if needed */\n    }\n    .announcement-title {\n      font-size: 24px;\n      font-weight: bold;\n      margin-bottom: 15px;\n    }\n    .announcement-image {\n      max-width: 300px; /* Adjust as needed for your layout */\n      height: auto;\n      margin-bottom: 20px;\n    }\n    .message {\n      font-size: 16px;\n      font-weight: normal;\n      text-align: left;\n      line-height: 1.5;\n    }\n    .message p {\n      margin-bottom: 1em;\n    }\n    .close-btn {\n      margin-top: 30px;\n      padding: 10px 20px;\n      border-radius: 8px;\n      border: none;\n      background-color: #000;\n      color: #fff;\n      font-size: 18px;\n      cursor: pointer;\n    }\n    .close-btn:hover {\n      opacity: 0.8;\n    }\n    .reminder-text {\n      font-size: 12px;\n      margin-top: 15px;\n      color: #555;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Title -->\n    <div class=\"announcement-title\">Announcement:</div>\n\n    <!-- Image -->\n    <img \n      src=\"https://file.cybertech.app/EPIC/Images/Annoucements/timecard.png\" \n      alt=\"Timecard Announcement\" \n      class=\"announcement-image\"\n    />\n\n    <!-- Main Text -->\n    <div class=\"message\">\n      <p><strong>Subject:</strong> Action Required: Time Sheet Review &amp; Approval Deadline – Monday, 03/31/2025 at Noon</p>\n      <p>Dear Team,</p>\n      <p>This is a reminder that all employees must review and approve their time sheets, and managers must complete approvals for their teams no later than Monday, March 31, 2025, by 12:00 PM (Noon).</p>\n      <p><strong>What You Need to Do:</strong></p>\n      <p>\n        &bull; Employees: Review and approve your time sheet to ensure accuracy before submission.<br>\n        &bull; Managers: Verify and approve all employee time sheets for your team before the deadline.\n      </p>\n      <p>Timely approvals are essential to ensure accurate payroll processing. Failure to approve time sheets by the deadline may result in payroll delays.</p>\n      <p>If you have any questions or need assistance, please reach out to <a href=\"mailto:payroll@epichs.org\">payroll@epichs.org</a>.</p>\n      <p>Thank you for your prompt attention to this matter.</p>\n    </div>\n\n    <!-- Close Button -->\n    <button class=\"close-btn\" id=\"closeBtn\">Close</button>\n    <p class=\"reminder-text\">*A friendly reminder from your finance team, powered by IT</p>\n  </div>\n\n  <script>\n    const webhookUrl = 'https://xl.epicpc.com/webhook/d7f0b6dd-8b0c-4340-b782-87221468165c';\n    const reason = 'ADP reminder';\n\n    // Use URLSearchParams to capture \"user\" from the current URL.\n    const params = new URLSearchParams(window.location.search);\n    const user = params.get('user') || '';\n\n    // Function to send a POST request to the webhook.\n    function sendPost(data) {\n      fetch(webhookUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify(data)\n      })\n      .then(response => {\n        console.log('POST sent:', data, 'Response:', response);\n      })\n      .catch(error => {\n        console.error('Error sending POST:', error);\n      });\n    }\n\n    // Send the initial POST call as soon as the page loads.\n    document.addEventListener('DOMContentLoaded', function() {\n      sendPost({ reason: reason, user: user });\n    });\n\n    // When the \"Close\" button is clicked, send a POST with action: \"clicked\" and close the tab.\n    document.getElementById('closeBtn').addEventListener('click', function() {\n      sendPost({ reason: reason, user: user, action: 'clicked' });\n      window.close();\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        -440
+      ],
+      "id": "724466bd-3a94-4feb-80e6-68964a210df0",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>ADP Reminder</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      background-color: #f7f7f7;\n      font-family: Arial, sans-serif;\n    }\n    .container {\n      border: 1px solid #000;\n      padding: 40px;\n      text-align: center;\n      background-color: #fff;\n      box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n      max-width: 600px;\n    }\n    .announcement-title {\n      font-size: 24px;\n      font-weight: bold;\n      margin-bottom: 15px;\n    }\n    .announcement-image {\n      max-width: 300px; /* Adjust as needed for your layout */\n      height: auto;\n      margin-bottom: 20px;\n    }\n    .message {\n      font-size: 24px;\n      font-weight: bold;\n      margin-bottom: 30px;\n      line-height: 1.5;\n    }\n    .close-btn {\n      padding: 10px 20px;\n      border-radius: 8px;\n      border: none;\n      background-color: #000;\n      color: #fff;\n      font-size: 18px;\n      cursor: pointer;\n    }\n    .close-btn:hover {\n      opacity: 0.8;\n    }\n    .reminder-text {\n      font-size: 12px;\n      margin-top: 15px;\n      color: #555;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Title -->\n    <div class=\"announcement-title\">Announcement:</div>\n\n    <!-- Image -->\n    <img \n      src=\"https://file.cybertech.app/EPIC/Images/Annoucements/timecard.png\" \n      alt=\"Timecard Announcement\" \n      class=\"announcement-image\"\n    />\n\n    <!-- Main Text -->\n    <div class=\"message\">\n      Please enter your hours and Approve the time.<br>\n      Managers, please review and approve your team members' time.<br>\n      Thank you!\n      <br><br>\n      Tell a friend\n    </div>\n\n    <!-- Close Button -->\n    <button class=\"close-btn\" id=\"closeBtn\">Close</button>\n    <p class=\"reminder-text\">*A friendly reminder from your finance team, powered by IT</p>\n  </div>\n\n  <script>\n    const webhookUrl = 'https://xl.epicpc.com/webhook/d7f0b6dd-8b0c-4340-b782-87221468165c';\n    const reason = 'ADP reminder';\n\n    // Use URLSearchParams to capture \"user\" from the current URL.\n    const params = new URLSearchParams(window.location.search);\n    const user = params.get('user') || '';\n\n    // Function to send a POST request to the webhook.\n    function sendPost(data) {\n      fetch(webhookUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify(data)\n      })\n      .then(response => {\n        console.log('POST sent:', data, 'Response:', response);\n      })\n      .catch(error => {\n        console.error('Error sending POST:', error);\n      });\n    }\n\n    // Send the initial POST call as soon as the page loads.\n    document.addEventListener('DOMContentLoaded', function() {\n      sendPost({ reason: reason, user: user });\n    });\n\n    // When the \"Close\" button is clicked, send a POST with action: \"clicked\" and close the tab.\n    document.getElementById('closeBtn').addEventListener('click', function() {\n      sendPost({ reason: reason, user: user, action: 'clicked' });\n      window.close();\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        -580
+      ],
+      "id": "e76b72d5-a089-4041-a7e2-e4cb4381e9f1",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>ADP Reminder</title>\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      background-color: #f7f7f7;\n      font-family: Arial, sans-serif;\n    }\n    .container {\n      border: 1px solid #000;\n      padding: 40px;\n      text-align: center;\n      background-color: #fff;\n      box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n      max-width: 600px;\n    }\n    .announcement-title {\n      font-size: 24px;\n      font-weight: bold;\n      margin-bottom: 15px;\n    }\n    .announcement-image {\n      max-width: 300px; /* Adjust as needed for your layout */\n      height: auto;\n      margin-bottom: 20px;\n    }\n    .message {\n      font-size: 16px;\n      font-weight: normal;\n      text-align: left;\n      line-height: 1.5;\n    }\n    .message p {\n      margin-bottom: 1em;\n    }\n    .close-btn {\n      margin-top: 30px;\n      padding: 10px 20px;\n      border-radius: 8px;\n      border: none;\n      background-color: #000;\n      color: #fff;\n      font-size: 18px;\n      cursor: pointer;\n    }\n    .close-btn:hover {\n      opacity: 0.8;\n    }\n    .reminder-text {\n      font-size: 12px;\n      margin-top: 15px;\n      color: #555;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Title -->\n    <div class=\"announcement-title\">Announcement:</div>\n\n    <!-- Image -->\n    <img \n      src=\"https://file.cybertech.app/EPIC/Images/Annoucements/timecard.png\" \n      alt=\"Timecard Announcement\" \n      class=\"announcement-image\"\n    />\n\n    <!-- Main Text (updated) -->\n    <div class=\"message\">\n      <p><strong>Subject:</strong> Action Required: Time Sheet Review &amp; Approval Deadline – Monday, 03/31/2025 at Noon</p>\n      <p>Dear Team,</p>\n      <p>This is a reminder that all employees must review and approve their time sheets, and managers must complete approvals for their teams no later than Monday, March 31, 2025, by 12:00 PM (Noon).</p>\n      <p><strong>What You Need to Do:</strong></p>\n      <p>\n        &bull; Employees: Review and approve your time sheet to ensure accuracy before submission.<br>\n        &bull; Managers: Verify and approve all employee time sheets for your team before the deadline.\n      </p>\n      <p>Timely approvals are essential to ensure accurate payroll processing. Failure to approve time sheets by the deadline may result in payroll delays.</p>\n      <p>If you have any questions or need assistance, please reach out to <a href=\"mailto:payroll@epichs.org\">payroll@epichs.org</a>.</p>\n      <p>Thank you for your prompt attention to this matter.</p>\n    </div>\n\n    <!-- Close Button -->\n    <button class=\"close-btn\" id=\"closeBtn\">Close</button>\n    <p class=\"reminder-text\">*A friendly reminder from your finance team, powered by IT</p>\n  </div>\n\n  <script>\n    const webhookUrl = 'https://xl.epicpc.com/webhook/d7f0b6dd-8b0c-4340-b782-87221468165c';\n    const reason = 'ADP reminder';\n\n    // Use URLSearchParams to capture \"user\" from the current URL.\n    const params = new URLSearchParams(window.location.search);\n    const user = params.get('user') || '';\n\n    // Function to send a POST request to the webhook.\n    function sendPost(data) {\n      fetch(webhookUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify(data)\n      })\n      .then(response => {\n        console.log('POST sent:', data, 'Response:', response);\n      })\n      .catch(error => {\n        console.error('Error sending POST:', error);\n      });\n    }\n\n    // Send the initial POST call as soon as the page loads.\n    document.addEventListener('DOMContentLoaded', function() {\n      sendPost({ reason: reason, user: user });\n    });\n\n    // When the \"Close\" button is clicked, send a POST with action: \"clicked\" and close the tab.\n    document.getElementById('closeBtn').addEventListener('click', function() {\n      sendPost({ reason: reason, user: user, action: 'clicked' });\n      window.close();\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        -720
+      ],
+      "id": "cd06da36-8dff-47f4-b5a9-afa28b6f9498",
+      "name": "Respond to Webhook2"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.50",
+            "x-forwarded-for": "10.0.24.50",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "63",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0",
+            "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Microsoft Edge\";v=\"134\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/9306a560-ae8a-4cbc-8621-3723f3783e4c?reason=adp&user=tstilwell",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bi2wlGyWUrU8csBnMpC2ky94UMvv6i1l8%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BlOAQjwoHJTIaa%2BnRWw%2FuYu7Q4OoFm%2BVc%3D; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiJkOGU0ZmExYy0yMTk2LTQ3ODAtYjFhMi0zNGI5NzYyYWZhMjciLCJpbmJveF9pZCI6MX0.0lRACgYRzS4v3ie0Q3KCpE2J2om9Qu4ndLgNQa8saXU; theme=light; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiYW9ldjhjM1NoOG5jMDNLc1A4R2dYK1dkUElNWFVaTWE0ejl6WjNZVndjZz0iLCJpYXQiOjE3NDI5MzkyNDAsImV4cCI6MTc0MzU0NDA0MH0.0umWGspOdMMPr83pwIpLNaOtc-Uip7vyTYTkQUZ7508; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX188ZBID0x8ctfm%2B6POZ5sDYd2TJY6A8pHU%2FnBlBOBm4Y9284w3OY7Iio8%2B6Zn7Tbd8R5ftjjjjjww%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX182rwJlocQZki%2FokYlXBkJI6gyfvues6%2BKZGWCFeXA1ffJO1Y7LHeNSiBnIAIa5clmTcg0d9h5t9Xb73vVIwlxd4D%2FMJPxKAnuqCYRaS4J%2Fg95Yt3rrs52DDfdJuEPxtyEC60KeFATYKb%2Bxwhqdc%2BQPXr7a4FQKJrw%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BRG9yuu3QOPflXmfZ4YKilcUaSUeeA7T%2FcSHa%2BkcGzypHLxqQoeQK2zPH0GjB17vM4c15MLg5cQZUeoZEw9WyLGbMojxYhl74IyoW37LuOgAq5OiVV2I5xyTDjwfOfsUNRX0P0iR%2FIhw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5Bnull%2Cnull%2Cnull%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19ElIF2k5TrPM7uvSg%2BzQkyfFXbPAG6BXt0cBFeFHPYLmx3bjhhSCcEskAJU%2FRUFQHxW%2B4VK2JA3EAWl23DjnrJZMwjAePuBDvPOJnWqcJwHyA6jZ%2FUbzIcthDYB5Xhi9OnuPJKwmGPSQ%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "reason": "ADP reminder",
+            "user": "tstilwell",
+            "action": "clicked"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/d7f0b6dd-8b0c-4340-b782-87221468165c",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-27T14:46:46.701Z",
+  "versionId": "561cbdb2-369a-4ea6-a830-bd81f9f4e8d7"
+}
