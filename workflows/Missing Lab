@@ -1,0 +1,192 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-02T20:17:10.505Z",
+  "id": "fBy0DfXvTYBMeDvd",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Missing Lab",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1b815ea0-e280-48d0-82d8-dff07421bef2",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        780,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with assignedlastcm as (\nSELECT c.id,c.user_id,c.patient_mrn,c.username,c.notes,r.name,\nr.description,c.created_at,\nROW_NUMBER() over(PARTITION BY c.patient_mrn order by c.created_at desc) rn\nFROM data_lake.care_plan_notes c\nleft join data_lake.role_user ru on ru.user_id=c.user_id\nleft join data_lake.roles r on r.id=ru.role_id\nwhere r.id in ('34','46','41','44','45','37')\n)\nselect *\nfrom assignedlastcm a\nwhere a.rn =1",
+        "options": {}
+      },
+      "id": "80e770fe-2e21-43a5-a08b-59eeea3328be",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "DGpQZgVCErJ7caNF",
+          "name": "MySQL HERO"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @startdate DATE = DATEADD(DAY, -1, CAST(GETDATE() AS DATE));\nDECLARE @enddate DATE = DATEADD(DAY, 0, CAST(GETDATE() AS DATE));\n \n;WITH APCONSENT AS (\n    SELECT\n        s.dem_externalid AS MRN,\n        s.PATIENT_FIRSTNAME AS PATIENTFN,\n        s.PATIENT_LASTNAME AS PATIENTLN,\n        CASE WHEN r.ref_title IS NOT NULL THEN 'CONSENTED' END AS VERBAL_CONSENT,\n        CAST(s.sched_date AS DATE) AS CONSENTDATE,\n        ROW_NUMBER() OVER(PARTITION BY s.DEM_EXTERNALID, r.REF_TITLE ORDER BY CAST(s.SCHED_DATE AS DATE)) AS CONSENTED,\n        dm.DEM_DATEOFBIRTH AS DOB,\n        '+1' + dm.HOME_CARPHONE AS MOBILE,\n        '+1' + dm.HOME_PHONE AS HOME_PHONE,\n        dm.HOME_EMAILADDRESS AS EMAIL,\n        c.PROV_FULLNAME\n    FROM [HPSITE].[SCHEDULE_VIEW] s\n        LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] dm ON s.IMREDEM_CODE = dm.IMREDEM_CODE\n        LEFT JOIN [HPSITE].[CAREGIVER_VIEW] c ON c.IMREPROV_CODE = s.IMREPROV_CODE\n        LEFT JOIN [HPSITE].[ALL_DX_VIEW] d ON s.IMREDEM_CODE = d.IMREDEMEC_CODE\n        LEFT JOIN [HPSITE].[TERMINOLOGY_ATTRIBUTES] t ON d.TERM_UID = t.TERM_UID\n        LEFT JOIN [HPSITE].[UAIREFERRALS] r ON r.IMREDEMEC_CODE = s.IMREDEM_CODE AND r.IMRECONTACT_CODE = d.IMRECONTACT_CODE\n    WHERE s.SCHED_DATE <= CAST(GETDATE() AS DATE)\n        AND CAST(r.REF_ORDERDATE AS DATE) = CAST(s.SCHED_DATE AS DATE)\n        AND t.ICD_10 IS NOT NULL\n        AND r.REF_TITLE = 'EPIC CARE MANAGEMENT (PATIENT CONSENTED)'\n        AND s.SCHED_STATUS NOT IN (4, 8)\n        AND R.REF_ORDERDATE IS NOT NULL\n),\nSCHEDULE_LAB AS (\n    SELECT  \n        s.SCHED_DATE AS ApptDate,\n        s.SCHED_TIMEIN AS ACKTime,\n        s.SCHED_TIMEOUT AS CheckOutTime,\n        s.SCHED_COMMENT,\n        s.PATIENT_NAME,\n        s.CAREGIVER_NAME,\n        '+1' + s.PATIENT_PHONE AS PATIENT_PHONE,\n        s.LOCATION_NAME,\n        st.TRACKINGSTATUS_TEXT AS CA,\n        s.DEM_EXTERNALID AS MRN,\n        l.LABORDER_EXTORDERID AS REQID,\n        l.LABORDER_NAME,\n        l.LABORDER_ORDERDATE,\n        lr.RESULT_VALUE,\n        lr.RESULT_COMPLETIONDATE,\n        lr.RESULT_COMMENTS\n    FROM [HPSITE].[SCHEDULE_VIEW] s\n        LEFT JOIN [HPSITE].[CONTACT] c ON s.IMRESCHED_CODE = c.IMRESCHED_CODE\n        LEFT JOIN [EMR].[HPSITE].[ENCOUNTER] e ON c.IMREENC_CODE = e.IMREENC_CODE AND e.IMREDEMEC_CODE = s.IMREDEM_CODE\n        LEFT JOIN [HPSITE].[LABORDERS] l ON l.IMRECONTACT_CODE = c.IMRECONTACT_CODE\n        LEFT JOIN [HPSITE].[LAB_RESULT] lr ON l.IMREDEMEC_CODE = l.IMREDEMEC_CODE AND lr.IMREENC_CODE = e.IMREENC_CODE\n        LEFT JOIN [HPSITE].[LOCATION_TRACKINGSTATUS] st ON st.LOCATION_ID = s.LOCATION_ID AND st.TRACKINGSTATUS_ID = s.TRACKINGSTATUS_ID\n    WHERE CAST(s.SCHED_DATE AS DATE) BETWEEN @startdate AND @enddate\n        AND l.LABORDER_ORDERDATE BETWEEN DATEADD(DAY, -7, GETDATE()) AND DATEADD(DAY, 0, GETDATE())\n        AND s.SCHED_STATUS IN (1, 5, 2)\n        AND l.LABORDER_NAME IS NOT NULL\n        AND l.LABORDER_EXTORDERID IS NULL\n        AND lr.RESULT_COMPLETIONDATE IS NULL\n        AND s.SCHED_TIMEIN IS NOT NULL\n)\n \nSELECT \n    a.*,\n    sl.ApptDate,\n    sl.ACKTime,\n    sl.CheckOutTime,\n    sl.SCHED_COMMENT,\n    sl.PATIENT_NAME,\n    sl.CAREGIVER_NAME,\n    sl.PATIENT_PHONE,\n    sl.LOCATION_NAME,\n    sl.CA,\n    sl.REQID,\n    sl.LABORDER_NAME,\n    sl.LABORDER_ORDERDATE,\n    sl.RESULT_VALUE,\n    sl.RESULT_COMPLETIONDATE,\n    sl.RESULT_COMMENTS\nFROM APCONSENT a\nJOIN SCHEDULE_LAB sl ON a.MRN = sl.MRN\nWHERE a.CONSENTED < 2 AND a.CONSENTDATE BETWEEN DATEADD(DAY, -365, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 1, CAST(GETDATE() AS DATE))\nORDER BY a.CONSENTDATE DESC, sl.ApptDate DESC;"
+      },
+      "id": "a490e296-76d7-4792-a9d9-e5915713faa0",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        280
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "b75228d9-b6c8-4d11-855d-7829bcb13fe8",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "MRN",
+              "field2": "patient_mrn"
+            }
+          ]
+        },
+        "resolve": "preferInput1",
+        "options": {}
+      },
+      "id": "cb1d334c-9fbf-4d1a-b1a6-68fda6f91972",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1400,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @startdate DATE = DATEADD(DAY, -1, CAST(GETDATE() AS DATE));\nDECLARE @enddate DATE = DATEADD(DAY, 0, CAST(GETDATE() AS DATE));\n \nSELECT  \n    s.SCHED_DATE AS ApptDate,\n    s.SCHED_TIMEIN AS ACKTime,\n    s.SCHED_TIMEOUT AS CheckOutTime,\n    s.SCHED_COMMENT,\n    s.PATIENT_NAME,\n    s.CAREGIVER_NAME,\n    '+1' + s.PATIENT_PHONE AS PATIENT_PHONE,\n    s.LOCATION_NAME,\n    st.TRACKINGSTATUS_TEXT AS CA,\n    s.DEM_EXTERNALID AS MRN,\n    l.LABORDER_EXTORDERID AS REQID,\n    l.LABORDER_NAME,\n    l.LABORDER_ORDERDATE,\n    lr.RESULT_VALUE,\n    lr.RESULT_COMPLETIONDATE,\n    lr.RESULT_COMMENTS,\n    CASE \n        WHEN r.ref_title LIKE '%Care Management%' THEN 'CONSENTED' \n        ELSE 'NOT CONSENTED'\n    END AS VERBAL_CONSENT\nFROM [HPSITE].[SCHEDULE_VIEW] s\nLEFT JOIN [HPSITE].[CONTACT] c ON s.IMRESCHED_CODE= c.IMRESCHED_CODE\nLEFT JOIN [EMR].[HPSITE].[ENCOUNTER] e ON c.IMREENC_CODE =e.IMREENC_CODE AND e.IMREDEMEC_CODE=s.IMREDEM_CODE\nLEFT JOIN [HPSITE].[LABORDERS] l ON l.IMRECONTACT_CODE=C.IMRECONTACT_CODE \nLEFT JOIN [HPSITE].[LAB_RESULT] lr ON l.IMREDEMEC_CODE=l.IMREDEMEC_CODE AND lr.IMREENC_CODE=e.IMREENC_CODE\nLEFT JOIN [HPSITE].[LOCATION_TRACKINGSTATUS] st ON st.LOCATION_ID=s.LOCATION_ID AND st.TRACKINGSTATUS_ID=s.TRACKINGSTATUS_ID\nLEFT JOIN [HPSITE].[UAIREFERRALS] r ON r.IMREDEMEC_CODE = s.IMREDEM_CODE AND r.IMRECONTACT_CODE = l.IMRECONTACT_CODE\nWHERE cast(s.SCHED_DATE as date) BETWEEN @startdate AND @enddate \n    AND l.LABORDER_ORDERDATE BETWEEN DATEADD(DAY, -2, GETDATE()) AND DATEADD(DAY, 0, GETDATE())\n    AND s.SCHED_STATUS IN (1,5,2) \n    AND l.LABORDER_NAME IS NOT NULL \n    AND l.LABORDER_EXTORDERID IS NULL \n    AND lr.RESULT_COMPLETIONDATE IS NULL \n    AND s.SCHED_TIMEIN IS NOT NULL"
+      },
+      "id": "c05fa5cf-89ac-471c-8fdc-905251ce93e5",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        140
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-08T17:00:38.417Z",
+  "versionId": "00a23b59-4d0e-4d33-9a42-9b0d01efdd95"
+}
