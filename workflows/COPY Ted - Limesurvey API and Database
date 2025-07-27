@@ -1,0 +1,1025 @@
+{
+  "active": false,
+  "connections": {
+    "Limesurvey Authenication": {
+      "main": [
+        [
+          {
+            "node": "Limesurve GET list_surveys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Limesurvey Authenication",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limesurve GET list_surveys": {
+      "main": [
+        [
+          {
+            "node": "Limesurve GET list_surveys1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limesurve GET list_surveys1": {
+      "main": [
+        [
+          {
+            "node": "Base64Decoded",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Base64Decoded": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-19T14:02:49.673Z",
+  "id": "elXOyJx83ltR4z2i",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "COPY Ted - Limesurvey API and Database",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "4f3af4e7-8132-4424-b84c-b30d586d04df",
+      "name": "Limesurvey Authenication",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        580,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('Limesurvey Authenication').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "609ba730-71d0-49e7-b1f3-8028e3de39cc",
+      "name": "Limesurve GET list_surveys",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        780,
+        260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d0372358-ea66-45c7-9c06-72346dd82916",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "options": {}
+      },
+      "id": "269fc52f-2531-4bf2-b3c7-ae970b012d8d",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.3,
+      "position": [
+        1060,
+        40
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "AvQeUSAoeD6IXc2q",
+          "name": "MySQL limedb"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "9875d7c9-c4fd-4829-a802-634632bec4aa",
+        "options": {}
+      },
+      "id": "b12db173-3aa8-4912-9de3-1fb106b3d009",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        480,
+        80
+      ],
+      "webhookId": "a135fdf8-749b-4b28-9889-ceb2671a00fd",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4030d70e-2ccf-46cf-a0a4-ae1275c1bffb",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={\n  \"method\": \"export_responses\",\n  \"params\": {\n    \"sSessionKey\": \"{{ $('Limesurvey Authenication').item.json.result }}\",\n    \"iSurveyID\":\"{{ $json.result[44].sid }}\", \n    \"sDocumentType\": \"csv\",\n    \"sLanguageCode\": \"en\",\n    \"sCompletionStatus\": \"all\",\n    \"sHeadingType\": \"full\",\n    \"sResponseType\": \"long\",\n\"aAdditionalOptions\":\"export\"\n  },\n  \"id\": 1\n}\n  ",
+        "options": {}
+      },
+      "id": "50e31004-a9be-4c07-a976-9885df713721",
+      "name": "Limesurve GET list_surveys1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the base64 encoded data\nconst base64Data = items[0].json.result; // Ensure the field path is correct\n\n// Decode the base64 data\nconst decodedData = Buffer.from(base64Data, 'base64').toString('utf-8');\n\n// Split the decoded data into lines\nconst lines = decodedData.split('\\r\\n');\n\n// Extract the headers from the first line\nconst headers = lines[0].split(';').map(header => header.replace(/\"/g, ''));\n\n// Initialize an array to hold the table rows\nconst tableRows = [];\n\n// Loop through each line after the headers to extract row data\nfor (let i = 1; i < lines.length; i++) {\n  // Split the line into individual values\n  const values = lines[i].split(';').map(value => value.replace(/\"/g, ''));\n\n  // Create an object to hold the row data\n  const row = {};\n\n  // Assign the values to the corresponding headers\n  headers.forEach((header, index) => {\n    row[header] = values[index];\n  });\n\n  // Add the row to the table rows array\n  tableRows.push(row);\n}\n\n// Log the table rows for debugging\nconsole.log(\"Table Rows:\", tableRows);\n\n// Return the table rows as JSON\nreturn [\n  {\n    json: {\n      tableRows\n    }\n  }\n];\n"
+      },
+      "id": "d43031c2-55ab-4eb5-9c6c-bca0a54c5d53",
+      "name": "Base64Decoded",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "{{ $json.createTableSQL }}",
+        "options": {}
+      },
+      "id": "d3906f96-0843-47b6-905d-765aeb5c1dee",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1520,
+        540
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zWApk9TuNHcgRU7F",
+          "name": "limesurveyresponses"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "tableRows",
+        "options": {}
+      },
+      "id": "da1984c0-a212-4982-b2fc-c4a73d8fd46f",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the base64 encoded data\nconst base64Data = items[0].json.result;\n\n// Decode the base64 data\nconst decodedData = Buffer.from(base64Data, 'base64').toString('utf-8');\n\n// Split the decoded data into lines\nconst lines = decodedData.split('\\r\\n');\n\n// Get the first line (column headers)\nconst columnHeaders = lines[0].split(';').map(header => header.replace(/\"/g, '').trim());\n\n// Generate the CREATE TABLE SQL statement\nlet createTableSQL = 'CREATE TABLE IF NOT EXISTS sdohshort (\\n';\ncolumnHeaders.forEach((header, index) => {\n  createTableSQL += `  \"${header}\" TEXT`;\n  if (index < columnHeaders.length - 1) {\n    createTableSQL += ',\\n';\n  }\n});\ncreateTableSQL += '\\n);';\n\n// Log the SQL statement for debugging\nconsole.log(\"Create Table SQL:\", createTableSQL);\n\n// Return the SQL statement for execution\nreturn [\n  {\n    json: {\n      createTableSQL\n    }\n  }\n];\n\n"
+      },
+      "id": "ea1e3db8-e5ed-475b-9333-4209e9fe3843",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d080f984-7c1b-4f78-9c7c-324d36e05b2a",
+              "name": "createTableSQL",
+              "value": "={{ $json.createTableSQL }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fda8bab8-bb63-436c-b866-c598c68e8717",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1380,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e7c8ddcf-1961-4ef8-ae78-c9c9dfe5d47b",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1760,
+        260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "eb92de9e-e64a-4324-b03b-b7dae36efc6b",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "sdohshort",
+          "mode": "list",
+          "cachedResultName": "sdohshort"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Response ID": "={{ $json['﻿Response ID'] }}",
+            "Date submitted": "={{ $json['Date submitted'] }}",
+            "Last page": "={{ $json['Last page'] }}",
+            "Start language": "={{ $json['Start language'] }}",
+            "Seed": "={{ $json.Seed }}",
+            "Access code": "={{ $json['Access code'] }}",
+            "Would you need assistance with Michigan Bridges program?": "={{ $json['Would you need assistance with Michigan Bridges program?'] }}",
+            "Did a Care Coordinator or Care Manager assist in the survey?": "={{ $json['Did a Care Coordinator or Care Manager assist in the survey?'] }}",
+            "Would you like help with any of these needs? [Personal Safety]": "={{ $json['Would you like help with any of these needs? [Personal Safety]'] }}",
+            "Would you like help with any of these needs? [Medical Cost Burd": "={{ $json['Would you like help with any of these needs? [Medical Cost Burden]'] }}",
+            "Would you like help with any of these needs? [Education]": "={{ $json['Would you like help with any of these needs? [Education]'] }}",
+            "Would you like help with any of these needs? [Employment]": "={{ $json['Would you like help with any of these needs? [Employment]'] }}",
+            "Would you like help with any of these needs? [Material Hardship": "={{ $json['Would you like help with any of these needs? [Material Hardship]'] }}",
+            "Would you like help with any of these needs? [Transportation In": "={{ $json['Would you like help with any of these needs? [Transportation Insecurity]'] }}",
+            "Would you like help with any of these needs? [Food Insecurity]": "={{ $json['Would you like help with any of these needs? [Food Insecurity]'] }}",
+            "Would you like help with any of these needs? [Housing Inadequac": "={{ $json['Would you like help with any of these needs? [Housing Inadequacy]'] }}",
+            "Are you going through a separation or divorce?": "={{ $json['Are you going through a separation or divorce?'] }}",
+            "Do you feel physically and emotionally safe where you currently": "={{ $json['Do you feel physically and emotionally safe where you currently live?'] }}",
+            "In the last 12 months, was there a time when you needed to see ": "={{ $json['In the last 12 months, was there a time when you needed to see a doctor but could not because of cost?'] }}",
+            "In the last 12 months did you skip medications to save money?": "={{ $json['In the last 12 months did you skip medications to save money?'] }}",
+            "Have you failed High School and have no diploma?": "={{ $json['Have you failed High School and have no diploma?'] }}",
+            "Do you have reading issues with literacy?": "={{ $json['Do you have reading issues with literacy?'] }}",
+            "Is your work schedule and job tasks stressful?": "={{ $json['Is your work schedule and job tasks stressful?'] }}",
+            "Do you have a job?": "={{ $json['Do you have a job?'] }}",
+            "Have you been sexually harassed at work?": "={{ $json['Have you been sexually harassed at work?'] }}",
+            "Do problems with child care make it difficult for you to work o": "={{ $json['Do problems with child care make it difficult for you to work or go to school?'] }}",
+            "In the past 12 months, has the electric, gas, oil, or water co": "={{ $json['In the past 12 months, has the electric, gas, oil, or water company threatened to shut off services in your home?'] }}",
+            "Do you reschedule or neglect going to the doctor because of tra": "={{ $json['Do you reschedule or neglect going to the doctor because of transportation issues?'] }}",
+            "Within the past 12 months, were you worried that your food wou": "={{ $json['Within the past 12 months, were you worried that your food would run out before you got money to buy more?'] }}",
+            "Do you have problems with any of the following? [Have been home": "={{ $json['Do you have problems with any of the following? [Have been homeless in the past 12 months?]'] }}",
+            "Do you have problems with any of the following? [Do you live in": "={{ $json['Do you have problems with any of the following? [Do you live in a foster home and/or having problems there?]'] }}",
+            "Do you have problems with any of the following? [Are you experi": "={{ $json['Do you have problems with any of the following? [Are you experiencing problems with neighbors?]'] }}",
+            "Do you have problems with any of the following? [Do you have le": "={{ $json['Do you have problems with any of the following? [Do you have lead, mold, poor air quality and overcrowding in your home?]'] }}",
+            "Are you worried or concerned that in the next 2 months, you may": "={{ $json['Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?'] }}",
+            "Please fill out the information below. [Patient's Date of Birth": "={{ $json['Are you worried or concerned that in the next 2 months, you may not have stable housing that you own, rent, or stay in as a part of a household?'] }}",
+            "Please fill out the information below. [Patient's Last Name]": "={{ $json['Please fill out the information below. [Patient\\'s Last Name]'] }}",
+            "Please fill out the information below. [Patient's First Name]": "={{ $json['Please fill out the information below. [Patient\\'s First Name]'] }}",
+            "Referrer URL": "={{ $json['Referrer URL'] }}",
+            "IP address": "={{ $json['IP address'] }}",
+            "Date last action": "={{ $json['Date last action'] }}",
+            "Date started": "={{ $json['Date started'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Response ID",
+              "displayName": "Response ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date submitted",
+              "displayName": "Date submitted",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last page",
+              "displayName": "Last page",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Start language",
+              "displayName": "Start language",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Seed",
+              "displayName": "Seed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Access code",
+              "displayName": "Access code",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date started",
+              "displayName": "Date started",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date last action",
+              "displayName": "Date last action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "IP address",
+              "displayName": "IP address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Referrer URL",
+              "displayName": "Referrer URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Please fill out the information below. [Patient's First Name]",
+              "displayName": "Please fill out the information below. [Patient's First Name]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Please fill out the information below. [Patient's Last Name]",
+              "displayName": "Please fill out the information below. [Patient's Last Name]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Please fill out the information below. [Patient's Date of Birth",
+              "displayName": "Please fill out the information below. [Patient's Date of Birth",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Are you worried or concerned that in the next 2 months, you may",
+              "displayName": "Are you worried or concerned that in the next 2 months, you may",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have problems with any of the following? [Do you have le",
+              "displayName": "Do you have problems with any of the following? [Do you have le",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have problems with any of the following? [Are you experi",
+              "displayName": "Do you have problems with any of the following? [Are you experi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have problems with any of the following? [Do you live in",
+              "displayName": "Do you have problems with any of the following? [Do you live in",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have problems with any of the following? [Have been home",
+              "displayName": "Do you have problems with any of the following? [Have been home",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Within the past 12 months, were you worried that your food wou",
+              "displayName": "Within the past 12 months, were you worried that your food wou",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you reschedule or neglect going to the doctor because of tra",
+              "displayName": "Do you reschedule or neglect going to the doctor because of tra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "In the past 12 months, has the electric, gas, oil, or water co",
+              "displayName": "In the past 12 months, has the electric, gas, oil, or water co",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do problems with child care make it difficult for you to work o",
+              "displayName": "Do problems with child care make it difficult for you to work o",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Have you been sexually harassed at work?",
+              "displayName": "Have you been sexually harassed at work?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have a job?",
+              "displayName": "Do you have a job?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Is your work schedule and job tasks stressful?",
+              "displayName": "Is your work schedule and job tasks stressful?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you have reading issues with literacy?",
+              "displayName": "Do you have reading issues with literacy?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Have you failed High School and have no diploma?",
+              "displayName": "Have you failed High School and have no diploma?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "In the last 12 months did you skip medications to save money?",
+              "displayName": "In the last 12 months did you skip medications to save money?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "In the last 12 months, was there a time when you needed to see ",
+              "displayName": "In the last 12 months, was there a time when you needed to see ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Do you feel physically and emotionally safe where you currently",
+              "displayName": "Do you feel physically and emotionally safe where you currently",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Are you going through a separation or divorce?",
+              "displayName": "Are you going through a separation or divorce?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Housing Inadequac",
+              "displayName": "Would you like help with any of these needs? [Housing Inadequac",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Food Insecurity]",
+              "displayName": "Would you like help with any of these needs? [Food Insecurity]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Transportation In",
+              "displayName": "Would you like help with any of these needs? [Transportation In",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Material Hardship",
+              "displayName": "Would you like help with any of these needs? [Material Hardship",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Employment]",
+              "displayName": "Would you like help with any of these needs? [Employment]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Education]",
+              "displayName": "Would you like help with any of these needs? [Education]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Medical Cost Burd",
+              "displayName": "Would you like help with any of these needs? [Medical Cost Burd",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you like help with any of these needs? [Personal Safety]",
+              "displayName": "Would you like help with any of these needs? [Personal Safety]",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Did a Care Coordinator or Care Manager assist in the survey?",
+              "displayName": "Did a Care Coordinator or Care Manager assist in the survey?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Would you need assistance with Michigan Bridges program?",
+              "displayName": "Would you need assistance with Michigan Bridges program?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b797123f-4af6-4ade-9f78-06bf54d8bb28",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2620,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "zWApk9TuNHcgRU7F",
+          "name": "limesurveyresponses"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "830f8314-7d90-4b46-962c-e2417fbdb792",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2400,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "sdohshort",
+          "mode": "list",
+          "cachedResultName": "sdohshort"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "Response ID",
+              "value": "={{ $json['﻿Response ID'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4f85b73-9a5b-4ebd-8c63-afeabc9b1de2",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2000,
+        400
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "zWApk9TuNHcgRU7F",
+          "name": "limesurveyresponses"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Response ID'] }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "aa3b80a8-47b3-4132-955a-d9dcf8a77f80",
+                    "leftValue": "={{ $json['Response ID'] }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b9c476fa-a2be-4953-916f-25d573e0b11d",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2180,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-19T19:39:33.616Z",
+  "versionId": "5d4d9782-30c6-46e1-868f-d408ea86845a"
+}
