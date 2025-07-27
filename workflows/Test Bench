@@ -1,0 +1,266 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-08-16T12:36:16.476Z",
+  "id": "bwfKoGzxv50MwnXW",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Test Bench",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "Postgres bumped_appts table in officeops database with sisenseuser\n \n-- Table: public.bumped_appts\n \n-- DROP TABLE IF EXISTS public.bumped_appts;\n \nCREATE TABLE IF NOT EXISTS public.bumped_appts\n(\n    \"Appt_Status\" text COLLATE pg_catalog.\"default\",\n    \"Patient_ID\" bigint,\n    \"Patient_Number\" text COLLATE pg_catalog.\"default\",\n    \"Appt_ID\" bigint,\n    \"Appt_Encounter_Number\" text COLLATE pg_catalog.\"default\",\n    \"Appt_DateTime\" timestamp without time zone,\n    \"Appt_Booked_Date\" timestamp without time zone,\n    \"Appt_Sched_Location_Descr\" text COLLATE pg_catalog.\"default\",\n    \"Appt_Resource_Descr\" text COLLATE pg_catalog.\"default\",\n    \"Acknowledged_Ratio\" double precision,\n    \"LTSR\" text COLLATE pg_catalog.\"default\",\n    \"NewVsEstVsNo\" text COLLATE pg_catalog.\"default\",\n    upload_date date,\n    appt_time text COLLATE pg_catalog.\"default\"\n)\n \nTABLESPACE pg_default;\n \nALTER TABLE IF EXISTS public.bumped_appts\n    OWNER to sisenseuser;",
+        "options": {}
+      },
+      "id": "b8c87acf-29b2-48f6-a6b2-d65471d0ae78",
+      "name": "Postgres Append Bumped List",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "YJJ1lHGSqfDYLwZL",
+          "name": "Postgres officeops"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "bumped_appts",
+          "mode": "list",
+          "cachedResultName": "bumped_appts"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "423bffff-a9c6-4305-869a-40c5cecccdd8",
+      "name": "Postgres Append Bumped List1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        780,
+        460
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "YJJ1lHGSqfDYLwZL",
+          "name": "Postgres officeops"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "bumped_appts",
+          "mode": "list",
+          "cachedResultName": "bumped_appts"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Appt_Status",
+              "displayName": "Appt_Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Patient_ID",
+              "displayName": "Patient_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Patient_Number",
+              "displayName": "Patient_Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_ID",
+              "displayName": "Appt_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_Encounter_Number",
+              "displayName": "Appt_Encounter_Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_DateTime",
+              "displayName": "Appt_DateTime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_Booked_Date",
+              "displayName": "Appt_Booked_Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_Sched_Location_Descr",
+              "displayName": "Appt_Sched_Location_Descr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Appt_Resource_Descr",
+              "displayName": "Appt_Resource_Descr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Acknowledged_Ratio",
+              "displayName": "Acknowledged_Ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LTSR",
+              "displayName": "LTSR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "NewVsEstVsNo",
+              "displayName": "NewVsEstVsNo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "upload_date",
+              "displayName": "upload_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "appt_time",
+              "displayName": "appt_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "638b522a-b6d2-4fa0-8463-9405ae039077",
+      "name": "Postgres Append Bumped List2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        780,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "YJJ1lHGSqfDYLwZL",
+          "name": "Postgres officeops"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "appt_confirmed and appt_cancelled \n \nCREATE TABLE appt_cancelled (\n    Patient_ID INT,\n    Patient_Number INT,\n    Appt_ID INT,\n    Appt_DateTime TIMESTAMP,\n    Appt_Encounter_Number INT,\n    Appt_Sched_Location_Descr VARCHAR(255),\n    Appt_Resource_ID INT,\n    Appt_Resource_Abbr VARCHAR(50),\n    Appt_Resource_Descr VARCHAR(255),\n    Appt_Resource_Assoc_Prov_LFI VARCHAR(255),\n    Appt_Type_Abbr VARCHAR(50),\n    Appt_Type_Descr VARCHAR(255),\n    Appt_Duration INT,\n    Appt_Comments TEXT,\n    Appt_Status CHAR(1),\n    Appt_Time_In TIMESTAMP,\n    Appt_Booked_Date TIMESTAMP,\n    Appt_Booked_By_Operator_Abbr VARCHAR(50),\n    Appt_Confirmed_Date TIMESTAMP,\n    Appt_Confirmed_By_Operator_Abbr VARCHAR(50),\n    Appt_Cancelled_Date TIMESTAMP,\n    Acknowledged_Ratio DECIMAL(3, 2),\n    LTSR VARCHAR(50),\n    NewVsEstVsNo VARCHAR(50)\n);",
+        "options": {}
+      },
+      "id": "7d6e7bfb-fd0d-4c38-9d29-b9dd2bb42690",
+      "name": "Postgres Append Confirmed CancelledList3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        180,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "YJJ1lHGSqfDYLwZL",
+          "name": "Postgres officeops"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-16T15:53:52.009Z",
+  "versionId": "ec927b14-9412-4b27-b8e8-24fe7fdd7b51"
+}
