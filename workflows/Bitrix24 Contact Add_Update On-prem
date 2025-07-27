@@ -1,0 +1,1751 @@
+{
+  "active": false,
+  "connections": {
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledge Rate": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Convert to File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk4": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-05T16:08:11.257Z",
+  "id": "JHSHfLw9EJglsJ2s",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Bitrix24 Contact Add_Update On-prem",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "total",
+        "options": {}
+      },
+      "id": "e55f14df-e637-45e6-938a-46fe9fa70e0f",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Bitrix24ID",
+              "stringValue": "={{ $json.result.ID }}"
+            },
+            {
+              "name": "Phone",
+              "type": "numberValue",
+              "numberValue": "={{ $json.result.PHONE[0].ID }}"
+            },
+            {
+              "name": "Phone1",
+              "stringValue": "={{ $json.result.PHONE[1].ID }}"
+            },
+            {
+              "name": "Phone2",
+              "stringValue": "={{ $json.result.PHONE[2].ID }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json.result.EMAIL[0].ID }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "24122cc4-cfd7-4cec-961d-3e2d59a1ea1f",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1780,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.result.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af6530f1-87fa-4c99-998d-d50617a88725",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1600,
+        -700
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create Contact in Bitrix24",
+        "height": 263.14620301943586,
+        "width": 218.51607481796185,
+        "color": 4
+      },
+      "id": "8d93fa5d-b472-4460-9691-5e23d8b80de5",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Find the contact in Bitrix24 by MRN",
+        "height": 945.6322183298983,
+        "width": 574.0264413087
+      },
+      "id": "62d510d9-8519-463e-b394-2b363e7b185b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        933.8783205960619,
+        -789.0147880093264
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## If single match, move forward",
+        "height": 249.40901659171172,
+        "width": 399.7194982074818,
+        "color": 4
+      },
+      "id": "cc6e90db-6b9a-4f26-8d34-c689bef2da85",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -787.5307304730711
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Update Bitrix24",
+        "height": 275.85825592076213,
+        "width": 219.42176870748298,
+        "color": 5
+      },
+      "id": "3a003a64-75dc-4fb2-9192-39ac722b4e33",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        -791
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delete Record if successful",
+        "height": 233.04337396375564,
+        "width": 204.43564266205425
+      },
+      "id": "35d95bee-8b03-450e-8040-1169b6dba8ed",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delta Table:\nFETCH FIRST ROW",
+        "height": 254.6598639455782,
+        "width": 168.6621315192744
+      },
+      "id": "d41435a1-ee5a-47f4-b17e-01a3706b7c9c",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "f30ae853-642c-4102-a7dd-c3498e64bcd4",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        -340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "87dde6ad-9e58-4868-add8-b2fe1a67ad99",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "true",
+              "operation": "regex",
+              "value2": "={{ $json.result }}"
+            }
+          ]
+        }
+      },
+      "id": "2dc555d4-0df6-45ab-b647-a69d9fee605f",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 1 minute trigger check",
+        "height": 308.2992207233829,
+        "width": 162.38576968785608
+      },
+      "id": "3c88c4b1-17ef-4a6b-b60d-01babe9d7fbc",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n        \"NAME\": \"{{ $('Loop Over Items1').item.json[\"Patient_First_Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Loop Over Items1').item.json[\"Patient_Last_Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Loop Over Items1').item.json[\"Patient_Number\"].padStart(6, '0') }}\",\n        \"BIRTHDATE\": \"{{ $('Loop Over Items1').item.json[\"Patient_DOB\"]}}\",\n        \"UF_CRM_10_ADDRESS\": \"{{ $('Loop Over Items1').item.json[\"Patient_Street1\"] }}\",\n        \"UF_CRM_10_CITY\": \"{{ $('Loop Over Items1').item.json[\"Patient_City\"] }}\",\n        \"UF_CRM_STATE\": \"{{ $('Loop Over Items1').item.json[\"Patient_State\"] }}\",\n        \"UF_CRM_ZIP\": \"{{ $('Loop Over Items1').item.json[\"Patient_Zip_Code\"] }}\",\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $('Loop Over Items1').item.json[\"Patient_Number\"].padStart(6, '0') }}\",\n        \"UF_CRM_DATE_REGISTERED\": \"{{ $('Loop Over Items1').item.json[\"Date_Registered\"] }}\",\n         \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Loop Over Items1').item.json[\"Patient_Cell_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Loop Over Items1').item.json[\"Patient_Home_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Loop Over Items1').item.json[\"Patient_Home_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $json[\"email\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "74a93101-70d5-4cc6-b698-25356d72a79a",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"SOURCE_DESCRIPTION\": \"197520\" } }",
+        "options": {}
+      },
+      "id": "ce3dfb04-bf68-4712-ace0-33f5934ed1f5",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1078,
+        -1160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"id\": \"{{ $json[\"result\"][0][\"ID\"] }}\" }",
+        "options": {}
+      },
+      "id": "dc17195f-6d69-42af-9081-53a051484014",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1278,
+        -1160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Manual Bitrix24 search by MRN return all values",
+        "height": 251.6320627802038,
+        "width": 584.5777548649412,
+        "color": 7
+      },
+      "id": "fd3fef9e-b92b-4320-aa2c-402417ecceb2",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -1240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "7455ca86-c1f9-4176-9346-14ac847fad7e",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "8fa40669-f143-42e3-987d-1d47d06a2169",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1593,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Duplicate Patients in Bitrix24\",\n       \"GROUP_ID\":\"159\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"{{ $('Item Lists2').item.json[\"NameMRNBitrixid\"].join('\\\\n') }} {{'\\\\n'}} {{ $json[\"data\"]}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "066b25fd-ef42-4124-88d6-2966fb872270",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2393,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "NameMRNBitrixid",
+              "stringValue": "={{ $json.result.NAME }} {{ $json.result.LAST_NAME }}, {{ $json.result.SOURCE_DESCRIPTION }}, Bitrix24 ID: {{ $json.result.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3bf663b9-f0cc-497f-a058-b5cf247aa513",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1733,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "NameMRNBitrixid"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7908d67f-de5e-4e9f-bb21-8ac7645e9792",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1893,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "d179b1ca-6e64-4031-80d3-60d904897d24",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2213,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Duplicate: Create task in Bitrix24",
+        "height": 294.94572239205206,
+        "width": 972.3719909955817,
+        "color": 3
+      },
+      "id": "a4e360a4-ad16-443c-91b6-b2127a52ba94",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delete sql entry",
+        "height": 219.95231594214619,
+        "width": 217.14056395959776,
+        "color": 3
+      },
+      "id": "134c892e-74da-4253-b870-249371b4b04a",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM public.finaldeltatable\nWHERE \"MRN\" IN (\n    SELECT \"MRN\"\n    FROM public.finaldeltatable\n    ORDER BY \"MRN\"\n    LIMIT 1\n);",
+        "options": {}
+      },
+      "id": "e77bd533-abf3-4512-8b18-9bc4827949f2",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2960,
+        -440
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 0.02,
+        "unit": "seconds"
+      },
+      "id": "fd618f37-f5f1-4eb7-97ae-7874c872a730",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -200
+      ],
+      "webhookId": "3f831330-934a-42a3-aca3-61f8b7ae21e5",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.02,
+        "unit": "seconds"
+      },
+      "id": "de8314a8-3534-4746-b85d-9f37afbe011a",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2700,
+        0
+      ],
+      "webhookId": "fe07475a-8a39-41c1-a3b7-07b078b2e380",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"BIRTHDATE\": \"{{ $json[\"Patient_DOB\"] }}\", \"NAME\":\"{{ $json[\"Patient_First_Name\"] }}\", \"LAST_NAME\":\"{{ $json[\"Patient_Last_Name\"] }}\" } }",
+        "options": {}
+      },
+      "id": "73b945dc-a79d-4458-9fd6-7b8c307ccfc5",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        0
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 0.05,
+        "unit": "seconds"
+      },
+      "id": "b7fa4e0a-a178-4e75-b87c-d94730384c37",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        -420
+      ],
+      "webhookId": "811b0954-8b53-482d-93f8-2d3e6c275de6",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"SOURCE_DESCRIPTION\": \"{{ $json.Patient_Number }}\" } }",
+        "options": {}
+      },
+      "id": "d78cf613-8ffc-466e-9531-d26253aeb740",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1580,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"ID\": {{ $json[\"Bitrix24ID\"] }},\n   \"fields\": {\n        \"NAME\": \"{{ $('Postgres5').item.json[\"First Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Postgres5').item.json[\"Last Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Postgres5').item.json[\"MRN\"].padStart(6, '0') }}\",\n        \"BIRTHDATE\": \"{{ $('Postgres5').item.json[\"Date Of Birth\"]}}\",\n        \"UF_CRM_65264864F0B8D\": [],\n        \"UF_CRM_1701895631\": \"{{ $('Postgres5').item.json[\"Street\"] }}\",\n        \"UF_CRM_1701895642\": \"{{ $('Postgres5').item.json[\"City\"] }}\",\n        \"UF_CRM_1701895652\": \"{{ $('Postgres5').item.json[\"State\"] }}\",\n        \"UF_CRM_1701895672\": \"{{ $('Postgres5').item.json[\"ZipCode\"] }}\",\n        \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"].padStart(6, '0') }}\",\n        \"UF_CRM_1701945675\": \"{{ $('Postgres5').item.json[\"Patient_FirstDateRegistered_InPMSystem\"] }}\",\n        \"UF_CRM_1701945715\": \"{{ $('Postgres5').item.json[\"Patient_ActiveOrInactive_InPMSystem\"] }}\",\n        \"UF_CRM_1701945745\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_1701945783\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_1701945802\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_1701946007\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_1701946033\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_1701946094\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_1701946120\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_1701946151\": \"{{$('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n        \"UF_CRM_1701946191\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_1701946209\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\",\n        \"UF_CRM_1701946388\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n        \"UF_CRM_1701946429\": \"{{ $('Postgres5').item.json[\"CCM_Last_Updated\"] }}\",\n        \"UF_CRM_1701946464\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \"ID\": \"{{ $json[\"Phone\"] }}\",\n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Mobile\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone1\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone2\"] }}\",\n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Other Phone Number\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \"ID\": \"{{ $json[\"Email\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home E-mail\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    }\n}",
+        "options": {}
+      },
+      "id": "2adc8a6f-00d4-4fda-be5c-18a23633a5a2",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "03751664-b1a2-4e24-aeba-f2acf79da369",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2060,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## MRN Validation Check",
+        "height": 233.15019532928727,
+        "width": 626.3244690827985,
+        "color": 2
+      },
+      "id": "fd573d2c-41bd-4766-856b-fcc39babc544",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -485.1453796444425
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"ID\": {{ $json[\"Bitrix24ID\"] }},\n   \"fields\": {\n        \"NAME\": \"{{ $('Postgres5').item.json[\"First Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Postgres5').item.json[\"Last Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Postgres5').item.json[\"Source information\"] }}\",\n        \"BIRTHDATE\": \"{{ $('Postgres5').item.json[\"Date Of Birth\"]}}\",\n        \"UF_CRM_65264864F0B8D\": [],\n        \"UF_CRM_1701895631\": \"{{ $('Postgres5').item.json[\"Street\"] }}\",\n        \"UF_CRM_1701895642\": \"{{ $('Postgres5').item.json[\"City\"] }}\",\n        \"UF_CRM_1701895652\": \"{{ $('Postgres5').item.json[\"State\"] }}\",\n        \"UF_CRM_1701895672\": \"{{ $('Postgres5').item.json[\"ZipCode\"] }}\",\n        \"UF_CRM_1701895781\": \"{{ $('Postgres5').item.json[\"MRN\"] }}\",\n        \"UF_CRM_1701945675\": \"{{ $('Postgres5').item.json[\"Patient_FirstDateRegistered_InPMSystem\"] }}\",\n        \"UF_CRM_1701945715\": \"{{ $('Postgres5').item.json[\"Patient_ActiveOrInactive_InPMSystem\"] }}\",\n        \"UF_CRM_1701945745\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_1701945783\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_1701945802\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_1701946007\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_1701946033\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_1701946094\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_1701946120\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_1701946151\": \"{{$('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n        \"UF_CRM_1701946191\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_1701946209\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\",\n        \"UF_CRM_1701946388\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n        \"UF_CRM_1701946429\": \"{{ $('Postgres5').item.json[\"CCM_Last_Updated\"] }}\",\n        \"UF_CRM_1701946464\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \"ID\": \"{{ $json[\"Phone\"] }}\",\n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Mobile\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone1\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Home\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \"ID\": \"{{ $json[\"Phone2\"] }}\",\n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Phone_Other\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \"ID\": \"{{ $json[\"Email\"] }}\",\n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Postgres5').item.json[\"Home E-mail\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    }\n}",
+        "options": {}
+      },
+      "id": "890136dc-67f3-41cf-a6fc-bff647e2f79b",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "var num = 1;\n\ntry {\n var last =$node[\"Code1\"].json[\"New\"]\n\nif (last) {\n  num = last\n  \n}\n} catch (e) {\n  // statements to handle any exceptions\n  //logMyErrors(e); // pass exception object to error handler\n}\n\nreturn [{\n  \"num\": num\n  }];"
+      },
+      "id": "f2d49744-ec1e-499b-be21-22319de77a9c",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2920,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "77711a1d-d782-4fdb-9b67-34cf77f5e66e",
+              "leftValue": "={{ $node[\"Code\"].json[\"num\"] }}",
+              "rightValue": 65,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b760905e-5814-41a7-9612-474825d06b3c",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3140,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nvar num_pre = $node[\"Code\"].json[\"num\"];\nnum_pre +=1;\n\nreturn [{\n  \"New\": num_pre\n  }];"
+      },
+      "id": "b76cb242-de3e-41f5-8ba6-742036a6af24",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3360,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "AckRatio\n \nwith appt_ack AS (\n    SELECT \n        Patient_Number,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n\tWHERE a.Resource_Desc NOT LIKE 'ZZ%' and a.Resource_Desc not like 'CM%' and a.Resource_Desc not like 'PA%'\n      AND a.Sched_Loc_Desc NOT LIKE 'Diag%' and a.Resource_Desc not like 'BH%' and a.Resource_Desc not like 'Contin%' \n\t  and a.Resource_Abbr not like 'CM%' and a.Resource_Desc not like 'CM%' and a.Resource_Abbr not like 'PTA%' \n\t  and a.Resource_Desc not like 'PTA%' and a.Resource_Desc not like 'Blue%'\n\t  --and cast(a.Appointment_DateTime as date)  > '2019-12-31'\n    GROUP BY Patient_Number\n)\nSELECT \n   a.Patient_Number,\n    a.Total_Appointments,\n    a.Acknowledged_Appointments,\n    cast(round((a.Acknowledged_Appointments * 1.0 / a.Total_Appointments),2)as float) AS Acknowledged_Ratio\nFROM appt_ack a"
+      },
+      "id": "572ed674-1393-4911-afe7-00450c4bf923",
+      "name": "Acknowledge Rate",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        -960
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "45eda0a9-8648-4a39-be68-002e13b7fbff",
+              "name": "pmrowcount",
+              "value": "={{ Number($('Extract from File1').item.json.offset) + 1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2ef2476-c0f0-4059-b7b1-1cdde1d31925",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1220,
+        629
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "destinationKey": "offset",
+        "options": {}
+      },
+      "id": "f9cfd255-b7e8-4dff-b225-b700ba7e087b",
+      "name": "Extract from File1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmrowcount.txt",
+        "options": {}
+      },
+      "id": "5dd42692-a529-4757-8961-7036d33eff13",
+      "name": "Read/Write Files from Disk4",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "pmrowcount.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "92c60f9a-e58b-46ea-a885-f66c856c97b5",
+      "name": "Read/Write Files from Disk3",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        640
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "pmrowcount",
+        "options": {
+          "fileName": ""
+        }
+      },
+      "id": "927a1b6d-4a28-46b7-a34d-71cf362bdc91",
+      "name": "Convert to File2",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        629
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "## offset [number for incrementing]",
+        "height": 449.3502021514689,
+        "width": 956.6886255984973,
+        "color": 5
+      },
+      "id": "12b79b44-582b-4c91-ac1a-2cc85bc28116",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        783,
+        358
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Patient_Number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ec660344-c219-4e40-bd63-c595e4ff62e3",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        820,
+        629
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "7f58c8c5-6a63-4e58-9783-579e0e511f2e",
+              "leftValue": 1,
+              "rightValue": "={{ $json.count_Patient_Number }}",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d1e42f5c-8e9b-4ada-88df-24a8a6b0f23e",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        629
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2fd82007-cfdb-4171-a222-62a3a891ddce",
+              "name": "offset",
+              "value": "={{ $json.offset }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a71658fa-ca3c-4689-9b72-1e207d1683cb",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        320,
+        500
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "45eda0a9-8648-4a39-be68-002e13b7fbff",
+              "name": "pmrowcount",
+              "value": "=0",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2b65871d-ba1a-442b-9f73-f85adf1dd44c",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1220,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "pmrowcount.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "5efc9ee8-16bb-40d1-86ea-0558f06f07e0",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        409
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "pmrowcount",
+        "options": {
+          "fileName": ""
+        }
+      },
+      "id": "8168b0dd-5aba-41f4-bd98-f62f4bde60d7",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        409
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "## Get offset",
+        "height": 237.78326168557692,
+        "width": 327.04317379100235,
+        "color": 5
+      },
+      "id": "e7bc8a18-fd00-40a4-a09d-235feb9f8ec3",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        561
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b0b46be7-e361-4e85-8238-b907857d21a3",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        760,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6bd50940-ad06-42f7-98a8-88fc8948551a",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH genpatinfo AS (\n    SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n),\npatid AS (\n    SELECT \n        p.Patient_ID,\n        p.Patient_Number,\n        p.Date_Registered,\n        p.Comments,\n        p.Account_ID,\n        p.Contact_ID \n    FROM [PM].[Patients] p\n),\npatpol AS (\n    SELECT \n        pp.Patient_Policy_ID,\n        pp.Policy_ID,\n        pp.Patient_ID,\n        pp.Coverage,\n        pp.Verified_Date \n    FROM [PM].[Patient_Policies] pp\n),\ngenpol AS (\n    SELECT \n        po.Policy_ID,\n        po.Group_No,\n        po.Certificate_No,\n        po.Comments,\n        po.Effective_Date,\n        po.Expiration_Date,\n        po.Carrier_ID,\n        po.Insurance_Plan_ID,\n        po.Contact_ID,\n        po.Account_ID\n    FROM [PM].[Policies] po\n),\nprimcov AS (\n    SELECT \n        g.Patient_ID, \n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_First_Name, \n        g.Patient_Last_Name,\n        g.Patient_LFI,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        CONVERT(VARCHAR(10), g.Patient_DOB, 101) AS Patient_DOB,\n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Email,g.BitrixPatientStatus,\n        p.Account_ID AS Patient_Account_ID,\n        p.Contact_ID AS Patient_Contact_ID,\n        p.Date_Registered,\n        p.Comments AS Patient_Comments,\n        pp.Patient_Policy_ID,\n        pp.Policy_ID AS Patient_Policy_Policy_ID,\n        pp.Coverage,\n        pp.Verified_Date,\n        po.Account_ID AS Policy_Account_ID,\n        po.Carrier_ID AS Policy_Carrier_ID,\n        c.Name AS Carrier_Name,\n        c.Payor_Number,\n        i.CoPayment_Amount,\n        po.Insurance_Plan_ID,\n        po.Carrier_ID AS Insurance_Carrier_ID,\n        po.Certificate_No,\n        po.Group_No,\n        po.Comments AS Policy_Comments,\n        po.Effective_Date,\n        po.Expiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('P','X')\n),\nsecondins AS (\n    SELECT \n        g.Patient_ID, \n        g.Patient_Number,\n        pp.Patient_Policy_ID AS secPatient_Policy_ID,\n        pp.Policy_ID AS secPatient_Policy_Policy_ID,\n        pp.Coverage AS secCoverage,\n        pp.Verified_Date AS secVerified_date,\n        po.Account_ID AS secPolicy_Account_ID,\n        po.Carrier_ID AS secPolicy_Carrier_ID,\n        c.Name AS secCarrier_Name,\n        c.Payor_Number AS secPayor_Number,\n        i.CoPayment_Amount AS secCopayment,\n        po.Insurance_Plan_ID AS secIns_plan,\n        po.Carrier_ID AS secInsurance_Carrier_ID,\n        po.Certificate_No AS secCertificate_No,\n        po.Group_No AS secGroup_No,\n        po.Comments AS secPolicy_Comments,\n        po.Effective_Date AS secEffective_date,\n        po.Expiration_Date AS secExpiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('S')\n),\nremovexcov AS (\n    SELECT p.*,\n    s.secPatient_Policy_ID, s.secPatient_Policy_Policy_ID, s.secCoverage, s.secVerified_date, s.secPolicy_Account_ID,\n    s.secCarrier_Name, s.secPayor_Number, s.secCopayment, s.secIns_plan, s.secInsurance_Carrier_ID, s.secCertificate_No,\n    s.secGroup_No, s.secPolicy_Comments, s.secEffective_date, s.secExpiration_Date,\n    ROW_NUMBER() OVER (PARTITION BY p.patient_number ORDER BY p.coverage ASC) pvsx\n    FROM primcov p\n    LEFT JOIN secondins s ON p.Patient_ID = s.Patient_ID\n)\nSELECT c.*\nFROM removexcov c\nWHERE c.pvsx = 1\nORDER BY c.Patient_Number\nOFFSET {{ $json.offset }} ROWS FETCH NEXT 1 ROWS ONLY;"
+      },
+      "id": "82fc9329-7566-4f62-a5c3-aed7df608334",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        480,
+        620
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Microsoft SQL').item.json[\"secVerified_date\"] }}{\n   \"fields\": {\n        \"NAME\": \"{{ $('Microsoft SQL').item.json[\"Patient_First_Name\"] }}\",\n        \"LAST_NAME\": \"{{ $('Microsoft SQL').item.json[\"Patient_Last_Name\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $('Microsoft SQL').item.json[\"Patient_Number\"].padStart(6, '0') }}\",\n        \"BIRTHDATE\": \"{{ $('Microsoft SQL').item.json[\"Patient_DOB\"]}}\",\n        \"UF_CRM_10_ADDRESS\": \"{{ $('Microsoft SQL').item.json[\"Patient_Street1\"] }}\",\n        \"UF_CRM_10_CITY\": \"{{ $('Microsoft SQL').item.json[\"Patient_City\"] }}\",\n        \"UF_CRM_STATE\": \"{{ $('Microsoft SQL').item.json[\"Patient_State\"] }}\",\n        \"UF_CRM_ZIP\": \"{{ $('Microsoft SQL').item.json[\"Patient_Zip_Code\"] }}\",\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $('Microsoft SQL').item.json[\"Patient_Number\"].padStart(6, '0') }}\",\n        \"UF_CRM_DATE_REGISTERED\": \"{{ $('Microsoft SQL').item.json[\"Date_Registered\"] }}\",\n        \"UF_CRM_EHS_ACTIVE\": \"{{  }}\",\n        \"UF_CRM_EHS_GUARANTOR_FULL_NAME\": \"{{ $('Postgres5').item.json[\"Guarantor_LastFirstName\"] }}\",\n        \"UF_CRM_EHS_GUARANTOR_MOBILE\": \"{{ $('Postgres5').item.json[\"Guarantor_Mobile\"]}}\",\n        \"UF_CRM_EHS_GUARANTOR_PHONE\": \"{{ $('Postgres5').item.json[\"Guarantor_HomePhone\"]}}\",\n        \"UF_CRM_EHS_TOTAL_PRIOR_APPS\": \"{{ $('Postgres5').item.json[\"Total_Prior_AcknowledgedAppts\"] }}\",\n        \"UF_CRM_LAST_ACKNOWLEGED_APP\": \"{{ $('Postgres5').item.json[\"Last_Appt_Date_Acknowledged\"] }}\",\n        \"UF_CRM_EHS_SHOW_RATE\": \"{{ $('Postgres5').item.json[\"Show_rate_percentage\"] }}\",\n        \"UF_CRM_LAST_ACKNOWLEGED_APP\": \"{{ $('Postgres5').item.json[\"LastApptDate\"] }}\",\n        \"UF_CRM_EHS_USUAL_PROV\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Provider_Seen\"] }}\",\n\n        \"UF_CRM_1701946169\": \"{{ $('Postgres5').item.json[\"Last_Appointment_Location_Visited\"]}}\",\n\n        \"UF_CRM_EHS_INSURANCE_PLANS\": \"{{ $('Postgres5').item.json[\"Carrier_InsurancePlan_Name\"] }}\",\n        \"UF_CRM_EHS_PREF_PROVIDER\": \"{{ $('Postgres5').item.json[\"preferred_provider\"]}}\",\n\n        \"UF_CRM_1701946229\": \"{{ $('Postgres5').item.json[\"PCareResourceAndLoc\"] }}\", \n\n        \"UF_CRM_CCM_USERNAME\": \"{{ $('Postgres5').item.json[\"CCM_Username\"]}}\",\n\n        \"UF_CRM_CCM_CONSENT_DATE_EMR\": \"{{ $('Postgres5').item.json[\"CCM_Consent_Date_EMR\"] }}\",\n        \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $('Microsoft SQL').item.json[\"Patient_Cell_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Microsoft SQL').item.json[\"Patient_Home_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"{{ $('Microsoft SQL').item.json[\"Patient_Home_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $('Microsoft SQL').item.json[\"Patient_Email\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "c9210f93-7055-4e5b-bdec-8366f9a29cf4",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3040,
+        -1180
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "value1": "={{ $json.total }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "equal",
+              "value2": 1,
+              "outputKey": "result"
+            },
+            {
+              "value2": 1,
+              "outputKey": "CreateNewContact"
+            },
+            {
+              "operation": "larger",
+              "value2": 1,
+              "outputKey": "Duplicate"
+            }
+          ]
+        }
+      },
+      "id": "a07a0b50-a6d9-431b-a504-be16a1fbb5c8",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eccdebe2-8eb0-4dde-8b1b-8449ed7dc269",
+              "name": "=email",
+              "value": "={{ /^[^\\s@]+@[^\\s@]+\\.[a-zA-Z]+$/.test(($('Loop Over Items1').item.json[\"Patient_Email\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, ''))) ? $('Loop Over Items1').item.json[\"Patient_Email\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, '') : 'nothing@email.com' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0db4947c-34c8-4ac4-b0b6-5ec474ea2f05",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2160,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "id": "19b1550e-2e00-4aac-91c2-bfbe8530c59a",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        320,
+        300
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "value1": "={{ $json.total }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "equal",
+              "value2": 1,
+              "outputKey": "result"
+            },
+            {
+              "value2": 1,
+              "outputKey": "CreateNewContact"
+            },
+            {
+              "operation": "larger",
+              "value2": 1,
+              "outputKey": "Duplicate"
+            }
+          ]
+        }
+      },
+      "id": "784b4adf-b7b5-4819-aa39-18bcc4382a79",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1940,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH genpatinfo AS (\n    SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n),\npatid AS (\n    SELECT \n        p.Patient_ID,\n        p.Patient_Number,\n        p.Date_Registered,\n        p.Comments,\n        p.Account_ID,\n        p.Contact_ID \n    FROM [PM].[Patients] p\n),\npatpol AS (\n    SELECT \n        pp.Patient_Policy_ID,\n        pp.Policy_ID,\n        pp.Patient_ID,\n        pp.Coverage,\n        pp.Verified_Date \n    FROM [PM].[Patient_Policies] pp\n),\ngenpol AS (\n    SELECT \n        po.Policy_ID,\n        po.Group_No,\n        po.Certificate_No,\n        po.Comments,\n        po.Effective_Date,\n        po.Expiration_Date,\n        po.Carrier_ID,\n        po.Insurance_Plan_ID,\n        po.Contact_ID,\n        po.Account_ID\n    FROM [PM].[Policies] po\n),\nprimcov AS (\n    SELECT \n        g.Patient_ID, \n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_First_Name, \n        g.Patient_Last_Name,\n        g.Patient_LFI,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        CONVERT(VARCHAR(10), g.Patient_DOB, 101) AS Patient_DOB,\n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Email,g.BitrixPatientStatus,\n        p.Account_ID AS Patient_Account_ID,\n        p.Contact_ID AS Patient_Contact_ID,\n        p.Date_Registered,\n        p.Comments AS Patient_Comments,\n        pp.Patient_Policy_ID,\n        pp.Policy_ID AS Patient_Policy_Policy_ID,\n        pp.Coverage,\n        pp.Verified_Date,\n        po.Account_ID AS Policy_Account_ID,\n        po.Carrier_ID AS Policy_Carrier_ID,\n        c.Name AS Carrier_Name,\n        c.Payor_Number,\n        i.CoPayment_Amount,\n        po.Insurance_Plan_ID,\n        po.Carrier_ID AS Insurance_Carrier_ID,\n        po.Certificate_No,\n        po.Group_No,\n        po.Comments AS Policy_Comments,\n        po.Effective_Date,\n        po.Expiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('P','X')\n),\nsecondins AS (\n    SELECT \n        g.Patient_ID, \n        g.Patient_Number,\n        pp.Patient_Policy_ID AS secPatient_Policy_ID,\n        pp.Policy_ID AS secPatient_Policy_Policy_ID,\n        pp.Coverage AS secCoverage,\n        pp.Verified_Date AS secVerified_date,\n        po.Account_ID AS secPolicy_Account_ID,\n        po.Carrier_ID AS secPolicy_Carrier_ID,\n        c.Name AS secCarrier_Name,\n        c.Payor_Number AS secPayor_Number,\n        i.CoPayment_Amount AS secCopayment,\n        po.Insurance_Plan_ID AS secIns_plan,\n        po.Carrier_ID AS secInsurance_Carrier_ID,\n        po.Certificate_No AS secCertificate_No,\n        po.Group_No AS secGroup_No,\n        po.Comments AS secPolicy_Comments,\n        po.Effective_Date AS secEffective_date,\n        po.Expiration_Date AS secExpiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('S')\n),\nremovexcov AS (\n    SELECT p.*,\n    s.secPatient_Policy_ID, s.secPatient_Policy_Policy_ID, s.secCoverage, s.secVerified_date, s.secPolicy_Account_ID,\n    s.secCarrier_Name, s.secPayor_Number, s.secCopayment, s.secIns_plan, s.secInsurance_Carrier_ID, s.secCertificate_No,\n    s.secGroup_No, s.secPolicy_Comments, s.secEffective_date, s.secExpiration_Date,\n    ROW_NUMBER() OVER (PARTITION BY p.patient_number ORDER BY p.coverage ASC) pvsx\n    FROM primcov p\n    LEFT JOIN secondins s ON p.Patient_ID = s.Patient_ID\n)\nSELECT c.*\nFROM removexcov c\nWHERE c.pvsx = 1\nORDER BY c.Patient_Number asc -- Order by descending to get the latest entries\nOFFSET 0 ROWS FETCH NEXT 20000 ROWS ONLY; -- Limit to the last 20,000 rows\n"
+      },
+      "id": "41be66a5-9269-4b00-a311-fb86b151be9a",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        480,
+        860
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH genpatinfo AS (\n    SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n),\npatid AS (\n    SELECT \n        p.Patient_ID,\n        p.Patient_Number,\n        p.Date_Registered,\n        p.Comments,\n        p.Account_ID,\n        p.Contact_ID \n    FROM [PM].[Patients] p\n),\npatpol AS (\n    SELECT \n        pp.Patient_Policy_ID,\n        pp.Policy_ID,\n        pp.Patient_ID,\n        pp.Coverage,\n        pp.Verified_Date \n    FROM [PM].[Patient_Policies] pp\n),\ngenpol AS (\n    SELECT \n        po.Policy_ID,\n        po.Group_No,\n        po.Certificate_No,\n        po.Comments,\n        po.Effective_Date,\n        po.Expiration_Date,\n        po.Carrier_ID,\n        po.Insurance_Plan_ID,\n        po.Contact_ID,\n        po.Account_ID\n    FROM [PM].[Policies] po\n),\nprimcov AS (\n    SELECT \n        g.Patient_ID, \n        CAST(g.Patient_Number AS INT) AS Patient_Number, -- Convert Patient_Number to INT\n        g.Patient_Name,\n        g.Patient_First_Name, \n        g.Patient_Last_Name,\n        g.Patient_LFI,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        CONVERT(VARCHAR(10), g.Patient_DOB, 101) AS Patient_DOB,\n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Email,\n        g.BitrixPatientStatus,\n        p.Account_ID AS Patient_Account_ID,\n        p.Contact_ID AS Patient_Contact_ID,\n        p.Date_Registered,\n        p.Comments AS Patient_Comments,\n        pp.Patient_Policy_ID,\n        pp.Policy_ID AS Patient_Policy_Policy_ID,\n        pp.Coverage,\n        pp.Verified_Date,\n        po.Account_ID AS Policy_Account_ID,\n        po.Carrier_ID AS Policy_Carrier_ID,\n        c.Name AS Carrier_Name,\n        c.Payor_Number,\n        i.CoPayment_Amount,\n        po.Insurance_Plan_ID,\n        po.Carrier_ID AS Insurance_Carrier_ID,\n        po.Certificate_No,\n        po.Group_No,\n        po.Comments AS Policy_Comments,\n        po.Effective_Date,\n        po.Expiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('P','X')\n),\nsecondins AS (\n    SELECT \n        g.Patient_ID, \n        CAST(g.Patient_Number AS INT) AS Patient_Number, -- Convert Patient_Number to INT\n        pp.Patient_Policy_ID AS secPatient_Policy_ID,\n        pp.Policy_ID AS secPatient_Policy_Policy_ID,\n        pp.Coverage AS secCoverage,\n        pp.Verified_Date AS secVerified_date,\n        po.Account_ID AS secPolicy_Account_ID,\n        po.Carrier_ID AS secPolicy_Carrier_ID,\n        c.Name AS secCarrier_Name,\n        c.Payor_Number AS secPayor_Number,\n        i.CoPayment_Amount AS secCopayment,\n        po.Insurance_Plan_ID AS secIns_plan,\n        po.Carrier_ID AS secInsurance_Carrier_ID,\n        po.Certificate_No AS secCertificate_No,\n        po.Group_No AS secGroup_No,\n        po.Comments AS secPolicy_Comments,\n        po.Effective_Date AS secEffective_date,\n        po.Expiration_Date AS secExpiration_Date\n    FROM genpatinfo g\n    LEFT JOIN patid p ON p.Patient_ID = g.Patient_ID\n    LEFT JOIN patpol pp ON pp.Patient_ID = p.Patient_ID\n    LEFT JOIN genpol po ON po.Policy_ID = pp.Policy_ID\n    LEFT JOIN [PM].[Carriers] c ON c.Carrier_ID = po.Carrier_ID\n    LEFT JOIN [PM].[Insurance_Plans] i ON i.Insurance_Plan_ID = po.Insurance_Plan_ID\n    WHERE pp.Coverage IN ('S')\n),\nremovexcov AS (\n    SELECT p.*,\n    s.secPatient_Policy_ID, s.secPatient_Policy_Policy_ID, s.secCoverage, s.secVerified_date, s.secPolicy_Account_ID,\n    s.secCarrier_Name, s.secPayor_Number, s.secCopayment, s.secIns_plan, s.secInsurance_Carrier_ID, s.secCertificate_No,\n    s.secGroup_No, s.secPolicy_Comments, s.secEffective_date, s.secExpiration_Date,\n    ROW_NUMBER() OVER (PARTITION BY p.Patient_Number ORDER BY p.coverage ASC) pvsx\n    FROM primcov p\n    LEFT JOIN secondins s ON p.Patient_ID = s.Patient_ID\n)\nSELECT c.*\nFROM removexcov c\nWHERE c.pvsx = 1\nORDER BY c.Patient_Number DESC -- Order by converted Patient_Number (INT) in descending order\nOFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY; -- Limit to the last 20,000 rows\n"
+      },
+      "id": "7553ebde-e07f-4365-96f4-9b311f672c82",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        140,
+        860
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Edit Fields7": [
+      {
+        "json": {
+          "Patient_ID": 94397,
+          "Patient_Number": "004185",
+          "Patient_Name": "CAITLYN HOBBS",
+          "Patient_First_Name": "CAITLYN",
+          "Patient_Last_Name": "HOBBS",
+          "Patient_LFI": "HOBBS, CAITLYN",
+          "Patient_Street1": "22821 CAROLINA AT",
+          "Patient_City": "SAINT CLAIR SHORES",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48080",
+          "Patient_SSN": null,
+          "Patient_Sex": "F",
+          "Patient_DOB": "07/03/2002",
+          "Patient_Age": 22,
+          "Patient_Marital_Status": null,
+          "Patient_Home_Phone": "5863500907",
+          "Patient_Cell_Phone": null,
+          "Patient_Email": "LHBS@SPRINT.BLACKBERRY,NET",
+          "BitrixPatientStatus": "EHS Patient",
+          "Patient_Account_ID": 93113,
+          "Patient_Contact_ID": 115783,
+          "Date_Registered": "2009-07-20T00:00:00.000Z",
+          "Patient_Comments": null,
+          "Patient_Policy_ID": 106883,
+          "Patient_Policy_Policy_ID": 106468,
+          "Coverage": "X",
+          "Verified_Date": null,
+          "Policy_Account_ID": 93113,
+          "Policy_Carrier_ID": 468,
+          "Carrier_Name": "BCBS of Michigan - Ep",
+          "Payor_Number": "000088",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Insurance_Carrier_ID": 468,
+          "Certificate_No": "XYP374861955",
+          "Group_No": "19758",
+          "Policy_Comments": null,
+          "Effective_Date": "2002-02-01T00:00:00.000Z",
+          "Expiration_Date": "2004-02-01T00:00:00.000Z",
+          "secPatient_Policy_ID": null,
+          "secPatient_Policy_Policy_ID": null,
+          "secCoverage": null,
+          "secVerified_date": null,
+          "secPolicy_Account_ID": null,
+          "secCarrier_Name": null,
+          "secPayor_Number": null,
+          "secCopayment": null,
+          "secIns_plan": null,
+          "secInsurance_Carrier_ID": null,
+          "secCertificate_No": null,
+          "secGroup_No": null,
+          "secPolicy_Comments": null,
+          "secEffective_date": null,
+          "secExpiration_Date": null,
+          "pvsx": "1"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-26T18:35:43.990Z",
+  "versionId": "b250da6f-7046-4d04-9678-9f6891cec200"
+}
