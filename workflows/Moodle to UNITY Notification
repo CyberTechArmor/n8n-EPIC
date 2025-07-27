@@ -1,0 +1,225 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Health Profile2": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-03-06T16:10:45.529Z",
+  "id": "OEzMzsoWauowJ0wR",
+  "isArchived": false,
+  "meta": null,
+  "name": "Moodle to UNITY Notification",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.username }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "60a5ebd9-2661-4b1a-aba2-81a7b2ff5fc4",
+      "name": "Patient Health Profile2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        0,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][0][type]",
+              "value": "risk"
+            },
+            {
+              "name": "users[0][customfields][0][value]",
+              "value": "={{ $json['risk'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "1787c67b-31b1-4b41-be7b-7d7e05ad7a57",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        260,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://learn.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "9707923fae4a947dcb78f21d3cec8feb"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "8ff45000-1825-421a-a5e6-a8874cb7c74e",
+      "name": "Patient Health Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        0,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://learn.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_fetch_notifications"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "9707923fae4a947dcb78f21d3cec8feb"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b03ca734-10fd-4456-98ab-64e6e40858c3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        260,
+        -720
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        -720
+      ],
+      "id": "52d2a876-0c31-4b29-9055-688b85333b1e",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
+  "pinData": {
+    "Patient Health Profile2": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-06T16:52:34.417Z",
+  "versionId": "5151d79a-d540-48a5-b0ce-d0a797b87e8d"
+}
