@@ -1,0 +1,192 @@
+{
+  "active": false,
+  "connections": {
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-27T20:29:11.627Z",
+  "id": "sl4oww7GLVUQ3FHM",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Maintenance Ticket",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "p19nfnkktxosrnz",
+        "table": "m11gt3bxlwt96zw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('Webhook').item.json.query.Location }}"
+            },
+            {
+              "fieldName": "ResolveBy",
+              "fieldValue": "={{ $json.Date }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Webhook').item.json.query.Description }}"
+            },
+            {
+              "fieldName": "PostedBy",
+              "fieldValue": "={{ $('Webhook').item.json.query.SignOff }}"
+            }
+          ]
+        }
+      },
+      "id": "20326524-47ce-43d0-ab96-3b99b45a1bf9",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        620,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.query.Deadline.toDateTime() }}",
+        "format": "MMMM dd yyyy",
+        "outputFieldName": "Date",
+        "options": {}
+      },
+      "id": "24c3e3b5-3277-4ab6-aa08-03cd35dedcb2",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "path": "MaintenanceTicket",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a3b35221-fc88-4210-8adb-67c797fc4182",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        420
+      ],
+      "webhookId": "bd5098d9-1f34-4764-b2cf-f76619a6e31d"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/IT-HelpDesk",
+        "options": {}
+      },
+      "id": "5408e738-c555-4631-ab88-b3f6d5397334",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        420
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.110",
+            "x-forwarded-for": "10.0.14.110",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19hj%2B5rb8rddZeMEepl3BnhGzIHBb9V%2Fmc%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19FiJvvM2qzNPcTXpZPQ%2Fg8YDUQM6GH4PI%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1MjllZGY2LTg2NDAtNDUzZC1hMzdjLWFjZDdlMjIxMzNlNSIsImhhc2giOiJhOWE0UWsxQzltIiwiYnJvd3NlcklkIjoiWnNQcFFEQ3UvSWsxUXlIWVZQRnViTTk1a08rRklBNExOQjRHK2padUVYMD0iLCJpYXQiOjE3MTkzMzY2ODcsImV4cCI6MTcxOTk0MTQ4N30.NggBX_G26z9toqXijzRBi8gegu4nKN-BXb8ZdWOFXTU; XSRF-TOKEN=eyJpdiI6IkxudWZYVFNhbDZDbVBkU3dWb2MxWXc9PSIsInZhbHVlIjoiR3l2elhmRTRWdmlUS2R2eTZpV3hIRVBVZFZIM0lvbEVScDRoTmNSM0Q0akkrY2dscDNSdVhMNmtLNUh1WFBVdyIsIm1hYyI6ImY5YTA5NzhiZTFlYjQ0NTMyYjQwMWFiMTA3MTE2ZDhlOWM2OTI3OWQ0NWJlNWQ5NTdiZjZiYTZhMjQ5MTNiNDEifQ%3D%3D; epic_session=eyJpdiI6IlhIbWJLa09Ea0JEU0RjSThQYW5pVVE9PSIsInZhbHVlIjoieTliNGtac2VGNCtoUWVjQTFVQ0dXR3JqZTBQRFB6VDBFXC9HcFVyRWpZbmJcL092eENNdDdLOFBLTFhNdUdRaWF5IiwibWFjIjoiZDIyNTFiMzI0MWYwYjdjNjQwZWUxY2E5NTEyMjMxMGM3ODk0MDBhMDgyNmQ0NmQ3NTY3ZjY1ZjUzMmU3ZjFhNCJ9; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2B%2FM6YnsompNuMuLhpbCaC2yHlSpbOHQZRvV1j5aRzLp0SMbYZ%2FtuPBIeD%2FEEWnc%2BgnhuO0GekEfw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX180yxfyS%2BaRb4LxxzIRaT4Xg9LHtgUhQF4ngI%2F8IAg5gwX%2BshZl0daz0%2FV9JztfmAq2tmN91Odff0Z3wqJMlrW8AV9EQEip64L8uK7Rsbxz5pi5x%2FYCaUZnTyOp%2BQ5mLCFwTGGNZJUptrpt9ml2KmflPAMJN5e5wUo%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BrGFr%2Flv8BMvsAzHpHxu599tLqtBepCv%2B3CrrvAaHKQ8vrrzzkW6pBU1S6j9E6Khs5S0ATyosHKGsNowBmof%2BZyi8rNNVplfasicvKLIQBwNi6nkKElsgeJZARUh7grFMyDpR%2BZpbVlg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%230529edf6-8640-453d-a37c-acd7e22133e5%22%2C%22%24sesid%22%3A%5B1719520308008%2C%2201905b5f-492b-72ae-9cbc-b513a9dd8bea%22%2C1719519889707%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BRoDPhvAu68pO%2FITTdhXmp%2FW5wX0sBzSgOM2VDgT7yk7j%2B2Xn1TD%2BzVJ1PSGVR2qyPAf2M4ZfU3JsukwE90mIUPjJJLs2%2FhZwdZYyHcylgI%2Bt7kHG32nYfDEJGRFu5YLWl3MkDFxVZPQ%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "Location": "Ferndale",
+            "Deadline": "2024-06-27 00:00",
+            "Description": "Test",
+            "SignOff": "Ricky Pak"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/MaintenanceTicket",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-31T19:20:05.654Z",
+  "versionId": "159b5b50-64c0-41f6-a921-82fc308757ed"
+}
