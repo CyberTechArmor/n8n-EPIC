@@ -1,0 +1,2913 @@
+{
+  "active": true,
+  "connections": {
+    "CurrentDate": {
+      "main": [
+        [
+          {
+            "node": "MonthOf",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MonthOf": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "6DaysAgo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "FormatDateArray",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "6DaysAgo": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormatDateArray": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate1": {
+      "main": [
+        [
+          {
+            "node": "MonthOf1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MonthOf1": {
+      "main": [
+        [
+          {
+            "node": "Current1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Current1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "6DaysAgo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6DaysAgo1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "FormatDateArray1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormatDateArray1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "SCS1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Royal Oak1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ferndale1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clawson1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "7Mile1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Livernois1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Davison1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HQ1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Southfield1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Eastpointe1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Farmbrook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "CurrentDate1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CurrentDate2": {
+      "main": [
+        [
+          {
+            "node": "Current",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Increment": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CurrentDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "SCS",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Royal Oak",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ferndale",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clawson",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "7Mile",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Livernois",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Davison",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HQ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Southfield",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Eastpointe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-17T16:21:39.797Z",
+  "id": "9edGUT1A1llvVZSd",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "PrintJobQues-Count",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "19aedfcc-7810-4b36-a200-f99b1fb05458",
+      "name": "CurrentDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        620,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "=MMMM - yyyy",
+        "options": {}
+      },
+      "id": "80c9aa64-776c-4b5a-9175-0f6139bd6d4c",
+      "name": "MonthOf",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        820,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate').item.json.currentDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "2c57a4ad-5c8d-48f1-98a2-0331312feab3",
+      "name": "Current",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "3b5ac4f6-aca3-4fcd-a3e8-19a93d103060",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "221d5a4a-83f0-44b7-a6d2-5d2b38a4c619",
+      "name": "6DaysAgo",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const printers = $json[\"body\"][\"Printers\"];\nconst output = [];\n\nprinters.forEach(printer => {\n  const printerName = printer.PrinterName;\n  const pagesPrinted = printer.Days[0].PagesPrinted;\n  const date = printer.Days[0].Date;\n\n  output.push({\n    json: {\n      PrinterName: printerName,\n      PagesPrinted: pagesPrinted,\n      Date: date\n    }\n  });\n});\n\nreturn output;\n"
+      },
+      "id": "00aeed71-20f5-447e-838e-dd4a2d9ad479",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0506547e-62fe-4778-a584-9307aab7c66c",
+              "name": "PrinterName",
+              "value": "={{ $('Code').item.json.PrinterName }}",
+              "type": "string"
+            },
+            {
+              "id": "7282b1a3-9c98-4f7c-a3ce-bd30261a3c5d",
+              "name": "PagesPrinted",
+              "value": "={{ $('Code').item.json.PagesPrinted }}",
+              "type": "number"
+            },
+            {
+              "id": "50d18ab6-ff51-4682-ba28-b2f1270f9a5f",
+              "name": "Date",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f9f5057c-4e97-42e8-afff-567aeb570ba4",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1720,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "SCS"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "143f5651-bfac-4ae0-b8f0-9d0dc5f2ff52",
+      "name": "SCS",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        -340
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3bd6f008-a067-44d7-82c7-4fa8ea69449b",
+              "name": "6DaysAgo",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "3acb24e2-8709-4891-997e-a011b529e71b",
+              "name": "CurrentDate",
+              "value": "={{ $('Current').item.json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "52e1cb08-28e5-40f1-977e-6e62034318c5",
+              "name": "MonthOf",
+              "value": "={{ $('MonthOf').item.json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0afafb58-a397-496d-86b4-c6d3f28634a0",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2280,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.Date }}",
+        "options": {}
+      },
+      "id": "c7f3bc63-479b-4678-8dfb-4742009750af",
+      "name": "FormatDateArray",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "5df9de37-1550-4b4a-ae52-13f2307a45eb",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3020,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Royal Oak"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "b298aff2-b474-4731-b350-c8f50a869034",
+      "name": "Royal Oak",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        -200
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Ferndale"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "8da0ec66-ca2a-4654-a37a-bd42ee9c65a7",
+      "name": "Ferndale",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        -80
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Clawson"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "56b753d0-c143-4422-adba-2fc03e9fa05f",
+      "name": "Clawson",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        60
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "7Mile"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "cb825b6f-0988-482f-8deb-b222ff30132d",
+      "name": "7Mile",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4120,
+        200
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Livernois"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "456cb568-00ae-4e86-85c4-59118272af32",
+      "name": "Livernois",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4240,
+        320
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Davison"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "9ed717bc-4c2c-4a01-880a-81791b718e87",
+      "name": "Davison",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        440
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "HQ"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "86aa15f8-ea2e-47eb-b76f-2715d8251cea",
+      "name": "HQ",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        600
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Southfield"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "eacf1374-c596-41de-8c9f-c177a8135f15",
+      "name": "Southfield",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3980,
+        760
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Eastpointe"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "8d8412a1-a605-467b-a615-549c6da16598",
+      "name": "Eastpointe",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        4000,
+        900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5eca6b92-fbbd-440a-8e0e-e0d42a91e400",
+      "name": "CurrentDate1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        720,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "=MMMM - yyyy",
+        "options": {}
+      },
+      "id": "2b256b62-e41f-45c8-8abd-a133399f5089",
+      "name": "MonthOf1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        940,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate1').item.json.currentDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "616f906a-f182-472f-b74b-72cdb424f081",
+      "name": "Current1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.formattedDate }}",
+        "duration": 6,
+        "options": {}
+      },
+      "id": "a930b6bd-f51c-4ed4-9237-ef170ff253d5",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "=MM/dd",
+        "options": {}
+      },
+      "id": "e7e1f91e-9ae0-482f-bc13-3b24fdb1a4c3",
+      "name": "6DaysAgo1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const printers = $json[\"body\"][\"Printers\"];\nconst output = [];\n\nprinters.forEach(printer => {\n  const printerName = printer.PrinterName;\n  const pagesPrinted = printer.Days[0].PagesPrinted;\n  const date = printer.Days[0].Date;\n\n  output.push({\n    json: {\n      PrinterName: printerName,\n      PagesPrinted: pagesPrinted,\n      Date: date\n    }\n  });\n});\n\nreturn output;\n"
+      },
+      "id": "779ddb6d-6182-48f7-a8b2-930a723b154b",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0506547e-62fe-4778-a584-9307aab7c66c",
+              "name": "PrinterName",
+              "value": "={{ $('Code1').item.json.PrinterName }}",
+              "type": "string"
+            },
+            {
+              "id": "7282b1a3-9c98-4f7c-a3ce-bd30261a3c5d",
+              "name": "PagesPrinted",
+              "value": "={{ $('Code1').item.json.PagesPrinted }}",
+              "type": "number"
+            },
+            {
+              "id": "50d18ab6-ff51-4682-ba28-b2f1270f9a5f",
+              "name": "Date",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0592b88-3e7c-4090-a2bb-6512c50dee1c",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1600,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3bd6f008-a067-44d7-82c7-4fa8ea69449b",
+              "name": "6DaysAgo",
+              "value": "={{ $json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "3acb24e2-8709-4891-997e-a011b529e71b",
+              "name": "CurrentDate",
+              "value": "={{ $('Current1').item.json.formattedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "52e1cb08-28e5-40f1-977e-6e62034318c5",
+              "name": "MonthOf",
+              "value": "={{ $('MonthOf1').item.json.formattedDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7b2b9340-fb9c-4643-9c90-42675670e837",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1620,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.Date }}",
+        "options": {}
+      },
+      "id": "aeb3d576-97d8-4598-a10a-0bdb4f6f8869",
+      "name": "FormatDateArray1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "914a444e-b1fa-409f-a5c9-80ff9fda40c8",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1940,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Royal Oak"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "abab8c8b-dfea-4431-971d-0d14c084fa94",
+      "name": "Royal Oak1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        980
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "m4bi9dfgnfpfi0c",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Ferndale"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "a70d2d0c-ab6e-4b5e-8e33-8e019e595352",
+      "name": "Ferndale1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        1100
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Clawson"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "18442bd2-f0a1-454f-8b1c-dd7890ab08fe",
+      "name": "Clawson1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        1240
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "7Mile"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "c8f453ec-8c8b-4719-8c6f-6b78e52529b0",
+      "name": "7Mile1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3200,
+        1380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Livernois"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "a4b1cf75-2bc2-428b-8f14-f3cdeebc6a81",
+      "name": "Livernois1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3320,
+        1500
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Davison"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "0d9eba26-d87d-4bb4-b145-24e013a3f3a7",
+      "name": "Davison1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        1620
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "HQ"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "cd4cc79c-e149-4232-8f8e-67575fb2ebd8",
+      "name": "HQ1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        1780
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Southfield"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "f6557be3-b0a4-42a8-9b5d-46ab7c7f5eef",
+      "name": "Southfield1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3060,
+        1940
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Eastpointe"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "12be618c-ff72-4fb9-b07f-e9140751615f",
+      "name": "Eastpointe1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        2080
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "SCS"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "86653e14-ba00-4e50-b6e3-cc5234cfd30c",
+      "name": "SCS1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        800
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SCS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SCS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "281c1b71-dbe8-4152-ac11-cb0c7b7b2bef",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "RO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Royal Oak"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7f5e69de-71f3-4449-870d-3e63c878da84",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ferndale"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b42d38b9-0db4-4eaf-b470-16f8ba2540d9",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "CLAW",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Clawson"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e6b4c4b9-4aac-442e-a8e1-23a35a175e59",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "7Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "7Mile"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7b89f6b2-51a9-4b72-a9a6-e76032eb6afb",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Liv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Livernois"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "846b0afb-4a50-4731-8d64-684960bc0374",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Dav",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Davison"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cfa55fc5-edff-4de6-af3c-b9770f1af692",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "HQ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HQ"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e900c102-76ec-4cee-8346-d4957e1ddcd2",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SFD",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SFD"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "f13b79a5-2809-4cb1-8e38-bb3701a8bc53",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "EP",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Eastpointe"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a3e87cc4-9d0e-4eaf-8f40-5f2b54cf35e3",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FARM",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2865b0c5-888c-47af-bfd1-e5485f113334",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        2500,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pndk3hp2sf04vsc",
+        "table": "mz4xyk9czqv3edi",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "Telegraph"
+            },
+            {
+              "fieldName": "TotalPages",
+              "fieldValue": "={{ $json.PagesPrinted }}"
+            },
+            {
+              "fieldName": "Month",
+              "fieldValue": "={{ $('Merge1').item.json.MonthOf }}"
+            },
+            {
+              "fieldName": "WeekOf",
+              "fieldValue": "={{ $json[\"6DaysAgo\"] }} To {{ $json.CurrentDate }}"
+            },
+            {
+              "fieldName": "PrinterName",
+              "fieldValue": "={{ $json.PrinterName }}"
+            },
+            {
+              "fieldName": "Date",
+              "fieldValue": "={{ $json.Date }}"
+            }
+          ]
+        }
+      },
+      "id": "408f1597-13b9-45f4-b2b1-e25d360eb078",
+      "name": "Farmbrook",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        2300
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "PrintJobs190",
+        "options": {}
+      },
+      "id": "3b104120-8a9a-4d7e-875b-ca21f0996b2c",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        320,
+        1420
+      ],
+      "webhookId": "3deb3c94-01f4-45bc-8950-b8caa2c835b9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cf1cc397-2e16-4f3b-aaf9-4c103f107540",
+              "leftValue": "={{ $json.Printers[1].Days[1].Date }}",
+              "rightValue": "=2024-11-09",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e47a7675-85c4-4ed7-801c-112587c5e537",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        1220,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('CurrentDate').item.json.currentDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "id": "252e3770-abb9-4bbb-8936-c1c3fc1f60fe",
+      "name": "CurrentDate2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6bb0b895-d442-4fdc-a599-4f8bf3a8fa34",
+              "name": "CurrentDate2",
+              "value": "={{ new Date().toISOString().split('T')[0] }}.",
+              "type": "string"
+            },
+            {
+              "id": "54d6bba1-01b3-4492-ad6d-8a52cce14596",
+              "name": "Printers",
+              "value": "={{ $('Webhook').item.json.body.Printers }}",
+              "type": "array"
+            },
+            {
+              "id": "1b4ef4e0-813e-4f57-9659-4ecc7022817a",
+              "name": "i",
+              "value": "={{ $json.i+1}}",
+              "type": "number"
+            },
+            {
+              "id": "e2085bc0-714b-4d21-aa94-c74c9fb648da",
+              "name": "j",
+              "value": "={{ $json.j+1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5af492e7-4aa4-4f6c-b6fe-b5a89375e7c8",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1000,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retrieve the Printers array and CurrentDate2 from input JSON\nconst printers = $json.Printers || [];\nconst currentDate = $json.CurrentDate2;\n\n// Filter printers that have at least one matching date in the Days array\nconst matchingPrinters = printers.filter(printer => {\n    // Check if Days array exists for each printer to avoid errors\n    return printer.Days && printer.Days.some(day => day.Date === currentDate);\n});\n\n// Return the filtered list of printers\nreturn [{ json: { matchingPrinters } }];\n"
+      },
+      "id": "822d9843-c606-4dcb-be3f-149cf1686819",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c97548df-7a59-4a1a-a2ae-5858fe47d046",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1980,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a044d43-36f9-434d-9118-dbbd1534dc70",
+              "name": "i",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "f67da7f9-463e-4488-933a-46fa003fe2de",
+              "name": "j",
+              "value": 0,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63ec7baf-2130-415e-9bcd-365d9e39e7f3",
+      "name": "Increment",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        780,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "21745621-7b24-4cc1-883e-0fdbf3469d4b",
+              "name": "i",
+              "value": "={{ $json.i +1}}",
+              "type": "number"
+            },
+            {
+              "id": "b33eeee6-93de-4958-babf-6db06d72feb6",
+              "name": "j",
+              "value": "={{ $json.j+1 }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3feff578-5841-4cf1-a99c-bbcb1cee00a9",
+      "name": "IncrementCounter",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2240,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "Printers",
+        "options": {}
+      },
+      "id": "9ff2c7fc-a184-4e3b-bc08-294e0737d2ed",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "PrintJobs",
+        "options": {}
+      },
+      "id": "7ec6fa45-09ea-420e-a4a0-1cf64cf06507",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        360,
+        380
+      ],
+      "webhookId": "3deb3c94-01f4-45bc-8950-b8caa2c835b9"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SCS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SCS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "281c1b71-dbe8-4152-ac11-cb0c7b7b2bef",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "RO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Royal Oak"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7f5e69de-71f3-4449-870d-3e63c878da84",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "FER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ferndale"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b42d38b9-0db4-4eaf-b470-16f8ba2540d9",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "CLAW",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Clawson"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e6b4c4b9-4aac-442e-a8e1-23a35a175e59",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "7Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "7Mile"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "7b89f6b2-51a9-4b72-a9a6-e76032eb6afb",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Liv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Livernois"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "846b0afb-4a50-4731-8d64-684960bc0374",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "Dav",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Davison"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cfa55fc5-edff-4de6-af3c-b9770f1af692",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "HQ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HQ"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e900c102-76ec-4cee-8346-d4957e1ddcd2",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "SFD",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SFD"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "f13b79a5-2809-4cb1-8e38-bb3701a8bc53",
+                    "leftValue": "={{ $json.PrinterName }}",
+                    "rightValue": "EP",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Eastpointe"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "18bdf5f3-d7c4-434b-8e59-a652e88139df",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        3340,
+        240
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.190",
+            "x-forwarded-for": "10.0.1.190",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "3894",
+            "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.17763.592",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Printers": [
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 1,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "DET_7MILE_ACT"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 18,
+                    "Date": "2024-11-08"
+                  },
+                  {
+                    "PagesPrinted": 26,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "SFD_10MILE_FRONT"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 18,
+                    "Date": "2024-11-08"
+                  },
+                  {
+                    "PagesPrinted": 20,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "HQ_9MILE_CC"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 45,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "SFD_FARM_LAB"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 134,
+                    "Date": "2024-11-08"
+                  },
+                  {
+                    "PagesPrinted": 27,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "SFD_10MILE_ACT"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 11,
+                    "Date": "2024-11-08"
+                  },
+                  {
+                    "PagesPrinted": 37,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "HAM_DAV_ACT"
+              },
+              {
+                "Days": [
+                  {
+                    "PagesPrinted": 71,
+                    "Date": "2024-11-08"
+                  },
+                  {
+                    "PagesPrinted": 90,
+                    "Date": "2024-11-07"
+                  }
+                ],
+                "PrinterName": "SCS_HARPER_FRONT"
+              }
+            ],
+            "TotalPagesPrintedWeekly": 498
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/PrintJobs190",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.200",
+            "x-forwarded-for": "10.0.1.200",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "6386",
+            "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 6.2; en-US) WindowsPowerShell/4.0",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Printers": [
+              {
+                "PrinterName": "DET 7Mile Mid Area",
+                "Days": [
+                  {
+                    "PagesPrinted": 7,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "SCS ACT",
+                "Days": [
+                  {
+                    "PagesPrinted": 23,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "FER WestHallway",
+                "Days": [
+                  {
+                    "PagesPrinted": 31,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "RO WW ACT",
+                "Days": [
+                  {
+                    "PagesPrinted": 9,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "CLAW FrontDesk",
+                "Days": [
+                  {
+                    "PagesPrinted": 13,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "FER FrontDesk",
+                "Days": [
+                  {
+                    "PagesPrinted": 7,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "FER SouthHallway",
+                "Days": [
+                  {
+                    "PagesPrinted": 14,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "DET 7Mile Front",
+                "Days": [
+                  {
+                    "PagesPrinted": 30,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "DET Dav Mid Area",
+                "Days": [
+                  {
+                    "PagesPrinted": 20,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "DET Liv ACTArea",
+                "Days": [
+                  {
+                    "PagesPrinted": 45,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "DET Liv FrontDesk",
+                "Days": [
+                  {
+                    "PagesPrinted": 77,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "HQ CC Printer",
+                "Days": [
+                  {
+                    "PagesPrinted": 197,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "SCSMidPrinter",
+                "Days": [
+                  {
+                    "PagesPrinted": 6,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "RO WW FrontDesk",
+                "Days": [
+                  {
+                    "PagesPrinted": 7,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "DET Dav FrontDesk",
+                "Days": [
+                  {
+                    "PagesPrinted": 119,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              },
+              {
+                "PrinterName": "SFD Mid Printer",
+                "Days": [
+                  {
+                    "PagesPrinted": 137,
+                    "Date": "2024-11-11"
+                  }
+                ]
+              }
+            ],
+            "TotalPagesPrintedToday": 742
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/PrintJobs",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 10
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2024-11-21T15:10:07.109Z",
+  "versionId": "5c83147c-e8ed-4cfb-9c85-3e4941f1c5ce"
+}
