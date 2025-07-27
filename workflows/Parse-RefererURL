@@ -1,0 +1,107 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-19T21:47:54.868Z",
+  "id": "A5at9JUY2hWqZiFY",
+  "isArchived": false,
+  "meta": null,
+  "name": "Parse-RefererURL",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "return items.map(item => {\n  const referer = item.json.referer;\n  if (!referer) {\n    return { json: item.json };\n  }\n\n  // Find the start of the query string\n  const queryStart = referer.indexOf('?');\n  if (queryStart === -1) {\n    // No query string present\n    return { json: item.json };\n  }\n\n  // Get the query string part after '?'\n  const queryString = referer.substring(queryStart + 1);\n\n  // Split into key=value pairs\n  const pairs = queryString.split('&');\n\n  // Parse pairs to object\n  const params = {};\n  for (const pair of pairs) {\n    if (!pair) continue;\n    const [key, value] = pair.split('=');\n    // Decode URI components and assign to params\n    params[decodeURIComponent(key)] = value ? decodeURIComponent(value) : '';\n  }\n\n  // Merge parsed params back into the original JSON\n  return {\n    json: {\n      ...item.json,\n      ...params,\n    }\n  };\n});",
+        "notice": ""
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        720
+      ],
+      "id": "b3a86b54-677c-4bfc-aae5-192dfe05f8e6",
+      "name": "Code11",
+      "disabled": false
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3d6d0d1d-7fe9-49a1-ad0e-2643eba1e40e",
+              "name": "referer",
+              "value": "={{ $json.headers_referer }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": false,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1880,
+        720
+      ],
+      "id": "d6f86234-33f8-40f8-a98c-381544323221",
+      "name": "Edit Fields2",
+      "disabled": false
+    },
+    {
+      "id": "5d2fcb53-998f-41f8-b85f-4112d8a9e9fb",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        1660,
+        720
+      ],
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "headers_referer",
+              "type": "any"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "pinData": null,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-19T21:47:54.868Z",
+  "versionId": "6bd35734-b7b0-42f2-a90f-fe0e67cef6f1"
+}
