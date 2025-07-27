@@ -1,0 +1,499 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Crypto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Crypto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-09T15:18:28.847Z",
+  "id": "y0fzPlWR5LZdmW06",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "BigBlueButton",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b5f9b1ee-6178-46f3-85d0-a6e4032f5d2a",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        280,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $('Edit Fields2').item.json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "82d2723c-a3ff-4038-86f7-595fe2e27a04",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        760,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "77846574-78c4-43f6-be9e-20dc70e4f2bc",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        620,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "allowStartStopRecording=false&attendeePW=Thankful&autoStartRecording=false&meetingID=Saturday&name=Saturday&record=false&attendeePW=apassword&moderatorPW=mpassword"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "27c3c55f-b4c7-4da6-b67d-8f3c494b181f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        760
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $('Edit Fields1').params[\"fields\"][\"values\"][0][\"stringValue\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "5ba4e4fb-e38a-4124-ac18-764a9ab9fcc6",
+      "name": "Crypto1",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "fullName=TestTeddy&meetingID=TestTeddy2&password=mp&redirect=true"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a37dd838-2032-4a6e-97ca-71532c38c690",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "add32b19-e16b-4be1-b005-d484703fe9a0",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1500,
+        120
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "allowStartStopRecording=true&attendeePW=ap&autoStartRecording=false&meetingID=TestTeddy2&moderatorPW=mp&name=TestTeddy2&meta_endCallbackUrl=https://epichealthmobile.page.link/89eQ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1069b213-be3d-4e15-8d05-690f24b0eee8",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "allowStartStopRecording=false&moderatorPW=Thankful&autoStartRecording=false&meetingID=nqm-saf-a5c-0lf&name=Saturday&record=false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f2ea4613-d861-400e-853e-e28cd83c6a59",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        680,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "stringValue": "={{ $json.data.match() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b27831d6-18d7-4218-b5ee-e536f684e1b6",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "path": "c077f4df-6a3c-4ccd-af0d-8166b5dc51ae",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c28cc418-bb3b-407d-bfcb-226c02b6141b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        480
+      ],
+      "webhookId": "c077f4df-6a3c-4ccd-af0d-8166b5dc51ae",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "934d10e8-bedd-49b4-bb30-3bdca6b87899",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=getMeetingstnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "096698d9-1a99-4726-a818-e91e724daca7",
+      "name": "Crypto2",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getMeetings?&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "f44b5319-4137-4b8a-b91a-d94520c400c5",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ceb4202f-d5bd-4387-aac6-db3a646278f1",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "path": "d192859f-40a6-4123-b35e-bcfa74daa77b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "62fb00d0-98aa-4467-9fae-c8e450a8ca72",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        960
+      ],
+      "webhookId": "d192859f-40a6-4123-b35e-bcfa74daa77b",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?allowStartStopRecording=true&attendeePW=ap&autoStartRecording=false&meetingID=TestTeddy&moderatorPW=mp&name=TestTeddy&record=false&voiceBridge=72426&welcome=%3Cbr%3EWelcome+to+%3Cb%3E%25%25CONFNAME%25%25%3C%2Fb%3E%21&checksum=d43967c47924015001c5802bac4f9b04de6eb919",
+        "options": {}
+      },
+      "id": "86e39f57-a17b-457f-ad46-4a118f01b5e9",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/join?fullName=TestTeddy&meetingID=TestTeddy&password=mp&redirect=true&checksum=69ffe777e0e5db9ee674bbbe97df52c1c1db42a3",
+        "options": {}
+      },
+      "id": "b34abe8a-37e8-4221-886e-c07c43f30df4",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "path": "8cdda039-5b9d-4f0e-9633-72d2a4754d91",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d99402b0-7c33-4d76-940a-e62271ccf980",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        960
+      ],
+      "webhookId": "8cdda039-5b9d-4f0e-9633-72d2a4754d91",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://vid.epicpc.com/bigbluebutton/api/join?fullName=Thomas&meetingID=Thomas&password=mp&redirect=true&checksum=69ffe777e0e5db9ee674bbbe97df52c1c1db42a3",
+        "options": {}
+      },
+      "id": "eb089779-8109-4d9a-9fbf-104c8181f462",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        500,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "stringValue": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "8ec501e4-cf37-4eff-9b40-9d0490ad7c08",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1280,
+        120
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-19T17:42:18.535Z",
+  "versionId": "ebf6b513-eecb-43d9-a6fe-1e3a40ed6db6"
+}
