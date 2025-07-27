@@ -1,0 +1,315 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-03T17:46:33.222Z",
+  "id": "7zrxZMJuD5XAAdtL",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Monthly Maintenance Log",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months"
+            }
+          ]
+        }
+      },
+      "id": "d489ddba-16a3-4ee1-b5e4-5c7a4203f0e5",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        60,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "p19nfnkktxosrnz",
+        "table": "m11gt3bxlwt96zw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "9695f938-740e-45a5-9324-55f57d97795d",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        240,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9a336feb-d357-4d65-900c-d418fab75142",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Complete",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f6106b76-7d42-4d95-8378-0ab4604432ee",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        420,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "p19nfnkktxosrnz",
+        "table": "mlpjmxk6lemizdg",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $('NocoDB').item.json.Location }}"
+            },
+            {
+              "fieldName": "PostedBy",
+              "fieldValue": "={{ $('NocoDB').item.json.PostedBy }}"
+            },
+            {
+              "fieldName": "MonthOf",
+              "fieldValue": "=Total Count: {{ $json.count_Status }} {{ $json['Month-Year'] }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $('Filter').item.json.Description }}"
+            },
+            {
+              "fieldName": "AssignedTo",
+              "fieldValue": "={{ $('NocoDB').item.json.AssignedTo }}"
+            }
+          ]
+        }
+      },
+      "id": "7795d56e-f219-41d7-b3eb-9595f127d88e",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('NocoDB').item.json.UpdatedAt }}",
+        "format": "custom",
+        "customFormat": "MMMM-yyyy",
+        "outputFieldName": "Month-Year",
+        "options": {}
+      },
+      "id": "c436bd5f-f87c-4aea-a261-d334645b7998",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        660,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Status"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d696d71-cf55-4682-9bc1-ed85242e393f",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        660,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "c45300d4-6acb-4c4f-8166-0ec21c61db70",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "p19nfnkktxosrnz",
+        "table": "m11gt3bxlwt96zw",
+        "id": "={{ $('Filter').item.json.Id }}"
+      },
+      "id": "893bc9d1-701c-41c6-b46d-c896ef772e4d",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1480,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-31T19:16:10.370Z",
+  "versionId": "9d1d9cd1-c9ac-4eb3-b6eb-6601066f2081"
+}
