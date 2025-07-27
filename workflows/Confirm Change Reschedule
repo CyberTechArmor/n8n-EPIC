@@ -1,0 +1,108 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-28T18:41:45.809Z",
+  "id": "vLL9zPydc5LxlyIU",
+  "isArchived": false,
+  "meta": null,
+  "name": "Confirm Change Reschedule",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "1c213c82-7107-487e-8fce-d16ab27872c2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5327868f-c9ab-4033-9a2d-6843a114da5a",
+      "name": "Webhook",
+      "webhookId": "1c213c82-7107-487e-8fce-d16ab27872c2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Exciting Updates!</title>\n  <style>\n    body {\n      font-family: Arial, sans-serif;\n      background-color: #f9f9f9;\n      margin: 0;\n      padding: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n    }\n    .container {\n      background-color: #fff;\n      padding: 30px;\n      border-radius: 8px;\n      box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n      text-align: center;\n    }\n    h1 {\n      color: #333;\n    }\n    p {\n      color: #555;\n      line-height: 1.5;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Hey everyone!</h1>\n    <p>We're very excited to bring you the Confirm, Change, and Reschedule options. As soon as they are set up, you'll find them here!</p>\n    <p>Thank you (:</p>\n  </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "5007846d-f657-46ca-906a-4f33b9398b07",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.53",
+            "x-forwarded-for": "10.0.1.53",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "referer": "https://xl.epicpc.com/webhook/b70b7ec1-3f60-4420-a7a6-e18868310d98?SSOToken=15108045-b331-4777-99d1-d1677ff61127&AccountID=HEROERP",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2B6kBAJQBMZ9UPR7mZcR1zJXmBEta7g2oY%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BYgcSBsZj1pDGqLzuD1b%2FIfsvqrUqYYU0%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FOZV49x4JBeHuzrKu%2F4UxfclX%2Fns%2BSzznrH12CQjf1yrpQ7Ed4DHYK%2BW%2F7lfkuQTcsnC%2FpaKb40Q%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19YJMtPkhlFghMUxuFmEdp96sgQM43ZJyi8V6%2BfsxNYsliPhnb7k3U6nof1Ube5Bm7gNpHpEQrKtj6RucYNbY6tuQaL8E94OEDBn0PPlgXz%2F4LmS5PU7mw7ea4qOPS7PkmdQNA%2FOnmKoa6hmxpY619U%2F8Lu07hQiZ8%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18zivTTQ1edY8OCvf%2BzFPxh47iAlCu72AxEsin0c5LajSocUVPXqcJAF9T%2B4JbpGyiJFnou7xt0G1CiWA3CbXq9PLkSB%2FCelxyKN7Ul5%2FgV1BWgSYmWOUYuk%2F28%2Brn6c%2BnY1EXOtmmgsQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1716820885594%2C%22018fba7e-6763-714b-9fdc-982210db26a3%22%2C1716820797283%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2FUhWUKQlruKtQbhFwpnHBIeNmBl%2BtMzC17HK1W9x4nfT6F4OIgPpukV69fRL7bq1UQiEXVHcCvOdTxzFttewqN%2Fb8DOf9Wn13E8Alnw6buhRwX9%2FXS89ugbYE%2BjntDGu%2FnsBrjCceOQw%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "action": "Confirm",
+            "Patient_ID": "174619",
+            "Patient_Number": "502880",
+            "Appt_ID": "25534749",
+            "Appt_Encounter_Number": "null",
+            "Appt_DateTime": "2025-04-14T17:20:00.000Z",
+            "Appt_Sched_Location_Descr": "EPIC Royal Oak Woodward",
+            "Appt_Resource_Descr": "Chabaan, Deena",
+            "Appt_Type_Descr": "ACT -  Office Visit",
+            "Appt_Status": "Cancelled",
+            "ApptInsight": "FutureAppt"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/1c213c82-7107-487e-8fce-d16ab27872c2",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-28T19:39:11.404Z",
+  "versionId": "72a64d8c-d63a-49db-9530-93ad1b853515"
+}
