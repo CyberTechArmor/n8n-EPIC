@@ -1,0 +1,78 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-07T20:26:08.412Z",
+  "id": "AvSwaTRLaBkoXPfN",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 21",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "cb3b9e9f-edb1-4170-b7bb-ed7dbddefb33",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        920,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"method\": \"export_responses\",\n  \"params\": {\n    \"sSessionKey\": \"your-session-key\",\n    \"iSurveyID\": \"your-survey-id\",\n    \"sDocumentType\": \"json\",\n    \"sLanguageCode\": null,\n    \"sCompletionStatus\": \"all\",\n    \"sHeadingType\": \"code\",\n    \"sResponseType\": \"long\",\n    \"aFields\": []\n  }\n}\n",
+        "options": {}
+      },
+      "id": "11d8059d-97d2-42f8-bd32-c7dfd230eb2c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        420
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "f03OuGzivC8R6LYu",
+          "name": "Lime Survey"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-07T20:26:59.353Z",
+  "versionId": "0cf97e30-5702-4f91-90d7-3d7839e42739"
+}
