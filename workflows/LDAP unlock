@@ -1,0 +1,960 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        []
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP": {
+      "main": [
+        [
+          {
+            "node": "IF Locked Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Locked Out": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Set Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Unlock",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB3": {
+      "main": [
+        [
+          {
+            "node": "NocoDB5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB8": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "NocoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-20T19:44:20.237Z",
+  "id": "CVej0r7sViAhiDRW",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LDAP unlock",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ea6b14a6-d11d-4cb4-97d3-c97252322523",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "736b1367-c131-421a-9a23-a21c14ae8dc3",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "lockoutTime",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "4d4a4120-400f-4559-92b8-1f8566098f09",
+      "name": "Search LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        480,
+        900
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.lockoutTime }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "ca494b83-2f27-4733-9218-f87a89359bf3",
+      "name": "IF Locked Out",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        680,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "lockoutTime",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "id": "dac03741-f47f-40dc-9316-61903b2e13c4",
+      "name": "Unlock",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        900
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mkc4th5jc42tq51",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.User }}"
+            },
+            {
+              "fieldName": "DateTime",
+              "fieldValue": "={{ $json.currentDate }}"
+            }
+          ]
+        }
+      },
+      "id": "3ab4896c-d863-4c90-a957-70c45d82606d",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        900
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a9964a1d-ebf1-4451-a79d-3fdae4b48a6f",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        900,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "8ab0692c-2e27-4cce-94b5-e1b7295a6cd7",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "User",
+              "stringValue": "={{ $json.sAMAccountName }}"
+            },
+            {
+              "name": "DateTime",
+              "stringValue": "={{ $json.currentDate }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8f01a3a-c065-4f10-bf43-64e6adae0fd8",
+      "name": "Set Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1260,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mrdg90pjzah63zj",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "578a1607-c26c-4d82-ade2-9ed6ee6986ef",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mrdg90pjzah63zj",
+        "id": "={{ $json.Id }}"
+      },
+      "id": "c2e8b119-a668-485c-a26b-789a4a5efa59",
+      "name": "NocoDB3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Currently Locked",
+        "height": 256,
+        "width": 638
+      },
+      "id": "97d39d8f-f034-4845-8415-40ba783316da",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        406
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mrdg90pjzah63zj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.User }}"
+            },
+            {
+              "fieldName": "DateTime",
+              "fieldValue": "={{ $json.currentDate }}"
+            }
+          ]
+        }
+      },
+      "id": "c5268253-af34-4942-bdd1-a82d4e78b593",
+      "name": "NocoDB4",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        1040
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mrdg90pjzah63zj",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.User }}"
+            },
+            {
+              "fieldName": "DateTime",
+              "fieldValue": "={{ $json.currentDate }}"
+            }
+          ]
+        }
+      },
+      "id": "f1f62453-2ade-4572-9172-8acf9d3b1a59",
+      "name": "NocoDB5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1820,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pfz6gc7igp09n7n",
+        "table": "mrdg90pjzah63zj",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "0f0154a6-3331-4474-a3f2-27d07648f0ce",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 2,
+      "position": [
+        1960,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "6b2dea38-958a-4cfd-a660-5cf7ed55d5fe",
+        "options": {}
+      },
+      "id": "72064b10-f10c-4fc1-9e4d-51609be7da18",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        220,
+        620
+      ],
+      "webhookId": "6b2dea38-958a-4cfd-a660-5cf7ed55d5fe"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "lockoutTime",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "1886b0d4-0a1d-4998-ae10-71d3286b6338",
+      "name": "Search LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        120,
+        1480
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "052ed5d9-7532-492a-8ef4-1d04b0d56f28",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        640,
+        1240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b3204dac-48cf-4179-8b16-3eb8ba174411",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.userAccountControl }}",
+                    "rightValue": "66048",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "8ef24496-dd53-4253-935f-73beb764d0cd",
+                    "leftValue": "={{ $json.userAccountControl }}",
+                    "rightValue": "512",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "6b226c2c-a94a-4f27-95f3-4483ca74aab1",
+                    "leftValue": "={{ $json.userAccountControl }}",
+                    "rightValue": "512",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "27772be6-ddee-4157-bf26-913a48c66854",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7230962f-6edc-40ab-a49e-6ac437c5c62a",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        840,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pv8h9kzwjusoquk",
+        "table": "mt8kqqirjmtb1nf",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "cn",
+              "fieldValue": "={{ $json.cn }}"
+            },
+            {
+              "fieldName": "userAccountControl",
+              "fieldValue": "={{ $json.userAccountControl }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $json.sAMAccountName }}"
+            }
+          ]
+        }
+      },
+      "id": "2ad3d980-055c-4d25-8dcc-099661c896bd",
+      "name": "NocoDB6",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        340,
+        1480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pv8h9kzwjusoquk",
+        "table": "mt8kqqirjmtb1nf",
+        "id": "={{ $json.Id }}"
+      },
+      "id": "647c11e6-c83b-463c-80ff-636a2b5c4cda",
+      "name": "NocoDB7",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        1760
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pv8h9kzwjusoquk",
+        "table": "mt8kqqirjmtb1nf",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "fb453fb5-2905-48c0-bb3e-0f79abe0d625",
+      "name": "NocoDB8",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        420,
+        1740
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "21d99138-8163-44b6-b6a9-602ed48aa0c4",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        640,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "userAccountControl",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "95f10047-8bfa-44fd-9ccd-71c662d5eaea",
+      "name": "Search LDAP2",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        240,
+        2040
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8cd686da-a8b1-44db-8660-86616b0c1da8",
+              "leftValue": "={{ $json.userAccountControl }}",
+              "rightValue": "514",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        2040
+      ],
+      "id": "1cf00a8f-a069-486a-acbb-fa48e65ca0aa",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        680,
+        1940
+      ],
+      "id": "f66589bf-9ea7-494f-845e-f16bb7eed044",
+      "name": "Convert to File",
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-02-26T19:50:59.964Z",
+  "versionId": "145df87b-f4df-485d-8e1b-65db79de5441"
+}
