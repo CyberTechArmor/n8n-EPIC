@@ -1,0 +1,228 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-14T18:05:52.045Z",
+  "id": "GjoumGbtPbIG76u8",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 24",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8220bbad-867d-4bfc-927b-b2bc95ea459b",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH appt_sched AS (\n    SELECT  \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Sched_Location_Descr],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Confirmed_Date],\n        [Appt_Confirmed_By_Operator_Abbr],\n        [Appt_Cancelled_Date]\n    FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE CAST(a.Appt_DateTime AS DATE) BETWEEN DATEADD(DAY, 3, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 3, CAST(GETDATE() AS DATE))\n    AND a.Appt_Status = 's'\n    AND a.Appt_Resource_Descr NOT LIKE 'ZZ%' \n    AND a.Appt_Sched_Location_Descr NOT LIKE 'Diag%'  \n),\nappt_ack AS (\n    SELECT \n        Patient_Number,\n        COUNT(*) AS Total_Appointments,\n        SUM(CASE WHEN Status_Desc = 'Acknowledged' THEN 1 ELSE 0 END) AS Acknowledged_Appointments\n    FROM [Ntier_EPIC].[PM].[vwApptDetail] a\n    WHERE a.Resource_Desc NOT LIKE 'ZZ%' \n      AND a.Resource_Desc NOT LIKE 'CM%' \n      AND a.Sched_Loc_Desc NOT LIKE 'Diag%' \n      AND a.Resource_Desc NOT LIKE 'BH%' \n      AND a.Resource_Desc NOT LIKE 'Contin%' \n      AND a.Resource_Abbr NOT LIKE 'CM%' \n      AND a.Resource_Abbr NOT LIKE 'PTA%' \n      AND a.Resource_Desc NOT LIKE 'Blue%'\n    GROUP BY Patient_Number\n),\nltsr AS (\n    SELECT \n        a.Patient_Number,\n        a.Total_Appointments,\n        a.Acknowledged_Appointments,\n        CAST(ROUND((a.Acknowledged_Appointments * 1.0 / a.Total_Appointments), 2) AS FLOAT) AS Acknowledged_Ratio\n    FROM appt_ack a\n),\nltsrandnew AS (\n    SELECT \n        a.Appt_Status,\n        a.Patient_ID,\n        a.Patient_Number,\n        a.Appt_ID,\n        a.Appt_Encounter_Number,\n        a.Appt_DateTime,\n        a.Appt_Booked_Date,\n        a.Appt_Sched_Location_Descr,\n        a.Appt_Resource_Descr,\n        l.Acknowledged_Ratio,\n        CASE \n            WHEN l.Acknowledged_Ratio <= 0.5 THEN 'Fail'\n            ELSE 'Pass'\n        END AS LTSR,\n        CASE \n            WHEN l.Total_Appointments = 1 THEN 'OnlyOneAppt'\n            ELSE 'MultiplePriorAppt'\n        END AS NewVsEst,\n        ROW_NUMBER() OVER (ORDER BY a.Appt_DateTime) AS RowNum\n    FROM appt_sched a\n    LEFT JOIN ltsr l ON a.Patient_Number = l.Patient_Number\n)\nSELECT \n    l.RowNum,\n    l.Appt_Status,\n    l.Patient_ID,\n    l.Patient_Number,\n    l.Appt_ID,\n    l.Appt_Encounter_Number,\n    l.Appt_DateTime,\n    l.Appt_Booked_Date,\n    l.Appt_Sched_Location_Descr,\n    l.Appt_Resource_Descr,\n    l.Acknowledged_Ratio,\n    l.LTSR,\n    CASE \n        WHEN l.Acknowledged_Ratio = 0 AND l.NewVsEst = 'MultiplePriorAppt' THEN 'NewButLowLTSR'\n        WHEN l.Acknowledged_Ratio = 0 AND l.NewVsEst = 'OnlyOneAppt' THEN 'New'\n        ELSE 'Est'\n    END AS NewVsEstVsNo\nFROM ltsrandnew l\nORDER BY l.Appt_DateTime\nOFFSET {{ $json.offset }} ROWS\nFETCH NEXT 100 ROWS ONLY;\n"
+      },
+      "id": "3d01d56e-c51c-4178-9249-9dcc9ecddd74",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1060
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "50b40429-fc60-4de9-a2a7-2f7c0d32aaac",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        820,
+        1060
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "84060d35-50b7-4b3a-b38b-4f5fb36e0050",
+      "name": "Replace Me1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "19a899ef-1c7e-4933-b2ed-c7a464ffb618",
+              "name": "offset",
+              "value": "={{ $json.RowNum }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "63f3719c-90ba-4283-a8f1-c668c2376372",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        580,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "id": "fdd79904-99e9-40ab-b498-ed2e9eebddbf",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        540,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "db82edbb-9b07-4b2a-b5b7-733dbf9891c8",
+              "name": "offset",
+              "value": 0,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "26c82860-269c-4d6c-bac0-bfe4467d2cae",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        340,
+        1060
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-14T18:30:52.137Z",
+  "versionId": "b4f6d54d-4835-4cc8-b10a-590bfa0637c8"
+}
