@@ -1,0 +1,292 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "PM P-CARE1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code31",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code31": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code31",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PM P-CARE1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "PM P-CARE1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-10T15:05:47.935Z",
+  "id": "0PLRe3qIaqILFCBM",
+  "isArchived": false,
+  "meta": null,
+  "name": "ME Quick Scheduler",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @PROVIDER VARCHAR(250)='%Kar%';\nDECLARE @STARTDATE DATE='2025-03-08';\nDECLARE @ENDDATE DATE='2025-03-08';\nDECLARE @LOCATION VARCHAR(250)='%%';\n \nSELECT  [Patient_Number]\n      ,[Patient_Last_Name]\n      ,[Patient_First_Name]\n      ,[Patient_Home_Phone]\n      ,[Patient_DOB]\n      ,cast([Appointment_DateTime] as smalldatetime) as Appointment_DateTime\n      ,[Sched_Loc_Abbr]\n      ,[Resource_Desc]\n      ,[Resource_Abbr]\n      ,[Appt_Type_Abbr]\n      ,[Duration]\n      ,[Comments]\n      ,[Scheduling_Location_ID]\n      ,[Resource_ID]\n      ,[Account_ID]\n  FROM  [PM].[vwApptSchedAppts] a\n  where cast(a.Appointment_DateTime  as date) between @STARTDATE and @ENDDATE\n  and a.Resource_Desc like @PROVIDER\n  and a.Sched_Loc_Abbr like '%liv%'"
+      },
+      "id": "027b5c5e-24fd-4a7d-8c7f-42e766d204d8",
+      "name": "PM P-CARE1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        220
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -400
+      ],
+      "id": "283feeb4-6350-4b12-a48d-5f30f6bb5fe4",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retrieve external modal contents (if any) and the appointments array from the incoming JSON.\nconst providerContentVar = $json[\"providerContent\"] || '';\nconst dateRangeContentVar = $json[\"dateRangeContent\"] || '';\nconst appointmentsArr = $json[\"data\"] || [];\n\n// Derive unique locations from the appointments data (using the location_description field)\n// Ensure it works whether location_description is a string or an array\nconst uniqueLocations = [...new Set(appointmentsArr.flatMap(item => {\n  // Check if location_description is an array or string and handle accordingly\n  return Array.isArray(item.location_description) ? item.location_description : [item.location_description];\n}))].filter(x => x && x.trim() !== '');  // Apply trim on the resulting string\n\n// Derive unique providers from the appointments data (using the provider_name field)\n// and sort them alphabetically\nconst uniqueProviders = [...new Set(appointmentsArr.map(item => item.provider_name))]\n  .filter(x => x && x.trim() !== '')\n  .sort((a, b) => a.localeCompare(b));\n\n// Build dynamic location modal content with a modern, friendly UI.\nconst locationContentNew = `\n  <h3 style=\"margin-bottom: 10px; font-family: Arial, sans-serif;\">Choose Your Locations</h3>\n  <p style=\"margin-bottom: 10px; font-family: Arial, sans-serif;\">Please search and select your preferred locations:</p>\n  <input type=\"text\" id=\"locationSearch\" placeholder=\"Search locations...\" oninput=\"filterLocations()\"\n    style=\"width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;\">\n  <div id=\"locationList\" style=\"max-height: 200px; overflow-y: auto; margin-bottom: 10px;\">\n    ${uniqueLocations\n      .map(option => `\n        <div class=\"location-item\" style=\"padding: 6px 0; border-bottom: 1px solid #eee;\">\n          <label style=\"cursor: pointer; display: block; font-family: Arial, sans-serif;\">\n            <input type=\"checkbox\" class=\"location-checkbox\" value=\"${option}\" style=\"margin-right: 8px;\"> ${option}\n          </label>\n        </div>\n      `)\n      .join('')}\n  </div>\n  <button class=\"button-modern\" onclick=\"handleLocationChange()\">Apply Filters</button>\n  <button class=\"button-modern\" style=\"background: #f44336; margin-top: 8px;\" onclick=\"resetLocations()\">Reset Locations</button>\n`;\nconst locationContent = locationContentNew;\n\n// Build dynamic provider modal content with a modern, friendly UI.\nconst providerContentNew = `\n  <h3 style=\"margin-bottom: 10px; font-family: Arial, sans-serif;\">Choose Your Provider</h3>\n  <p style=\"margin-bottom: 10px; font-family: Arial, sans-serif;\">Please select your preferred provider:</p>\n  <select id=\"providerDropdown\" style=\"width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;\">\n    <option value=\"\">-- Select a Provider --</option>\n    ${uniqueProviders.map(provider => `<option value=\"${provider}\">${provider}</option>`).join('')}\n  </select>\n  <button class=\"button-modern\" onclick=\"handleProviderChange()\">Apply Provider</button>\n  <button class=\"button-modern\" style=\"background: #f44336; margin-top: 8px;\" onclick=\"resetProvider()\">Reset Provider</button>\n`;\nconst providerContent = providerContentNew;\n\n// Convert appointments data to a JSON string for use in the HTML.\nconst appointmentsData = JSON.stringify(appointmentsArr);\n\n// Build the full HTML content.\nconst html = `\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n  <title>Schedule</title>\n  <style>\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      overflow: hidden;\n      font-family: Arial, sans-serif;\n    }\n    .modal-overlay {\n      position: fixed;\n      top: 0; left: 0;\n      width: 100%; height: 100%;\n      background-color: rgba(0,0,0,0.5);\n      display: none;\n      justify-content: center;\n      align-items: center;\n      z-index: 9999;\n    }\n    .modal {\n      background-color: white;\n      padding: 20px;\n      border-radius: 8px;\n      width: 300px;\n      position: relative;\n      max-height: 90vh;\n      overflow-y: auto;\n      box-shadow: 0 4px 10px rgba(0,0,0,0.1);\n    }\n    .close-button {\n      position: absolute;\n      top: 10px; right: 10px;\n      cursor: pointer;\n      font-size: 16px;\n      color: #333;\n    }\n    .modal button {\n      padding: 10px;\n      margin-bottom: 10px;\n      width: 100%;\n      background-color: #3b82f6;\n      color: #fff;\n      border: none;\n      border-radius: 5px;\n      cursor: pointer;\n      font-size: 16px;\n    }\n    .modal button:hover {\n      background-color: #2563eb;\n    }\n    .loader-overlay {\n      position: fixed;\n      top: 0; left: 0;\n      width: 100%; height: 100%;\n      background-color: rgba(255,255,255,0.8);\n      display: none;\n      justify-content: center;\n      align-items: center;\n      z-index: 99999;\n    }\n    .loader {\n      border: 8px solid #f3f3f3;\n      border-top: 8px solid #3b82f6;\n      border-radius: 50%;\n      width: 60px;\n      height: 60px;\n      animation: spin 1s linear infinite;\n    }\n    @keyframes spin {\n      0% { transform: rotate(0deg); }\n      100% { transform: rotate(360deg); }\n    }\n    .header-controls {\n      display: flex;\n      justify-content: space-around;\n      border: 1px solid #ccc;\n      padding: 8px;\n      border-radius: 4px;\n      margin-bottom: 8px;\n    }\n    .header-controls button {\n      padding: 8px 12px;\n      background-color: #fff;\n      color: #000;\n      border: 1px solid #000;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 14px;\n    }\n    .header-controls button:hover {\n      background-color: #f0f0f0;\n    }\n    #searchInput {\n      width: 100%;\n      padding: 8px;\n      margin-bottom: 8px;\n      border: 1px solid #ccc;\n      border-radius: 4px;\n      font-size: 14px;\n    }\n    .table-responsive {\n      max-height: 50vh;\n      overflow-y: auto;\n      border-radius: 8px;\n      border: 1px solid #e5e7eb;\n      overflow-x: auto;\n      padding: 8px;\n      box-sizing: border-box;\n    }\n    table {\n      width: 100%;\n      border-collapse: collapse;\n      background-color: #ffffff;\n      font-size: 14px;\n      line-height: 1.4em;\n    }\n    thead tr {\n      position: sticky;\n      top: 0;\n      background-color: #000;\n      z-index: 1;\n    }\n    thead th {\n      padding: 12px;\n      text-align: left;\n      font-weight: bold;\n      color: #fff;\n      font-size: 14px;\n      cursor: pointer;\n      border-bottom: 1px solid #d1d5db;\n    }\n    tbody tr:hover {\n      background-color: #f9fafb;\n    }\n    tbody td {\n      padding: 12px;\n      color: #4b5563;\n      font-size: 14px;\n      border-top: 1px solid #e5e7eb;\n      vertical-align: middle;\n    }\n    tbody td button {\n      padding: 8px 16px;\n      background-color: #f59e0b;\n      color: #000;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 14px;\n    }\n    tbody td button:hover {\n      background-color: #d97706;\n    }\n    #paginationControls {\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      padding: 8px;\n    }\n    #paginationControls button {\n      padding: 8px 12px;\n      background-color: #fff;\n      color: #000;\n      border: 1px solid #000;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 14px;\n    }\n    #paginationControls button:hover {\n      background-color: #f0f0f0;\n    }\n    #showAllButton {\n      margin-top: 10px;\n      padding: 8px 12px;\n      background-color: #fff;\n      color: #000;\n      border: 1px solid #000;\n      border-radius: 4px;\n      cursor: pointer;\n      width: 100%;\n      font-size: 14px;\n    }\n    #showAllButton:hover {\n      background-color: #f0f0f0;\n    }\n    @media (max-width: 600px) {\n      .modal {\n        width: 95%;\n        padding: 10px;\n        max-height: 90vh;\n        overflow-y: auto;\n      }\n    }\n    /* Modern button styling for the modals' apply buttons */\n    .button-modern {\n      width: 100%;\n      padding: 12px;\n      background: linear-gradient(90deg, #4f46e5, #3b82f6);\n      color: #fff;\n      border: none;\n      border-radius: 8px;\n      font-size: 16px;\n      cursor: pointer;\n      font-family: Arial, sans-serif;\n      transition: background 0.3s ease;\n      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);\n    }\n    .button-modern:hover {\n      background: linear-gradient(90deg, #3b82f6, #2563eb);\n    }\n  </style>\n</head>\n<body>\n  <div style=\"background-image: url('https://file.taskfire.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png');\n              background-size: cover;\n              background-position: center;\n              height: 100vh;\n              display: flex;\n              justify-content: center;\n              align-items: center;\n              overflow: hidden;\">\n    <div style=\"max-width: 900px;\n                width: 100%;\n                background-color: rgba(255,255,255,0.9);\n                padding: 16px;\n                border-radius: 8px;\n                box-shadow: 0 4px 10px rgba(0,0,0,0.1);\n                overflow: hidden;\">\n      <h2 style=\"text-align: center; margin: 8px 0; font-size: 20px; color: #111827;\">Change Search Options</h2>\n      <div class=\"header-controls\">\n        <button onclick=\"openModal(locationContent)\">Location</button>\n        <button onclick=\"openModal(providerContent)\">Provider</button>\n        <button onclick=\"openModal(dateRangeContent)\">Date Range</button>\n      </div>\n      <input type=\"text\" id=\"searchInput\" placeholder=\"Search...\">\n      <div class=\"table-responsive\">\n        <table>\n          <thead>\n            <tr>\n              <th onclick=\"sortTable('location_description')\">Location</th>\n              <th onclick=\"sortTable('provider_name')\">Provider</th>\n              <th onclick=\"sortTable('day')\">Day</th>\n              <th onclick=\"sortTable('date')\">Date</th>\n              <th onclick=\"sortTable('start')\">Time</th>\n              <th style=\"text-align: center;\">Schedule</th>\n            </tr>\n          </thead>\n          <tbody id=\"appointmentTableBody\">\n            <!-- Rows inserted by JavaScript -->\n          </tbody>\n        </table>\n      </div>\n      <div id=\"paginationControls\">\n        <button onclick=\"prevPage()\">Previous</button>\n        <span id=\"pageIndicator\" style=\"font-size: 14px; color: #374151;\">Page 1</span>\n        <button onclick=\"nextPage()\">Next</button>\n      </div>\n      <button onclick=\"toggleShowAll()\" id=\"showAllButton\">Show All</button>\n    </div>\n  </div>\n  <div id=\"modalOverlay\" class=\"modal-overlay\" onclick=\"closeModal()\">\n    <div class=\"modal\" onclick=\"event.stopPropagation()\">\n      <span class=\"close-button\" onclick=\"closeModal()\">x</span>\n      <div id=\"modalContent\">Modal Content</div>\n    </div>\n  </div>\n  <div id=\"loaderOverlay\" class=\"loader-overlay\">\n    <div class=\"loader\"></div>\n  </div>\n  <script>\n    // Embed modal content using JSON.stringify to safely escape characters.\n    const providerContent = ${JSON.stringify(providerContentNew)};\n    const dateRangeContent = ${JSON.stringify(dateRangeContentVar)};\n    const locationContent = ${JSON.stringify(locationContent)};\n    const appointments = ${appointmentsData};\n    \n    // Sort appointments by date and start time.\n    appointments.sort((a, b) => new Date(a.date + ' ' + a.start) - new Date(b.date + ' ' + b.start));\n    \n    const appointmentMap = {};\n    let currentPage = 1;\n    const rowsPerPage = 8;\n    let filteredAppointments = appointments.slice();\n    let showingAll = false;\n    let sortOrder = {};\n    let selectedLocation = '';\n    let selectedProvider = '';\n    \n    // Read URL parameters.\n    const urlParams = new URLSearchParams(window.location.search);\n    selectedLocation = urlParams.get('location') || '';\n    selectedProvider = urlParams.get('provider') || '';\n    \n    function applyFilters() {\n      filteredAppointments = appointments.slice();\n      if (selectedLocation) {\n        const selectedArray = selectedLocation.split(',').map(item => item.trim());\n        filteredAppointments = filteredAppointments.filter(app => selectedArray.some(location => app.location_description.includes(location)));\n      }\n      if (selectedProvider) {\n        filteredAppointments = filteredAppointments.filter(app => app.provider_name === selectedProvider);\n      }\n      renderTable(1);\n    }\n    applyFilters();\n    \n    function openModal(content) {\n      document.getElementById('modalOverlay').style.display = 'flex';\n      document.getElementById('modalContent').innerHTML = content;\n      if(content === locationContent) {\n        setTimeout(setCheckedLocations, 0);\n      }\n      if(content === providerContent) {\n        setTimeout(setProviderDropdown, 0);\n      }\n    }\n    function closeModal() {\n      document.getElementById('modalOverlay').style.display = 'none';\n    }\n    \n    // Location functions\n    function handleLocationChange() {\n      const checkboxes = document.querySelectorAll('.location-checkbox');\n      const selected = [];\n      checkboxes.forEach(cb => {\n        if (cb.checked) { selected.push(cb.value); }\n      });\n      selectedLocation = selected.join(',');\n      const urlParams = new URLSearchParams(window.location.search);\n      if (selectedLocation) { \n        urlParams.set('location', selectedLocation); \n      } else { \n        urlParams.delete('location'); \n      }\n      history.pushState(null, '', '?' + urlParams.toString());\n      applyFilters();\n      closeModal();\n    }\n    \n    function setCheckedLocations() {\n      const urlParams = new URLSearchParams(window.location.search);\n      const locParam = urlParams.get('location') || '';\n      if (locParam) {\n        const selectedArr = locParam.split(',').map(item => item.trim());\n        const checkboxes = document.querySelectorAll('.location-checkbox');\n        checkboxes.forEach(cb => {\n          if (selectedArr.includes(cb.value)) {\n            cb.checked = true;\n          }\n        });\n      }\n    }\n    \n    function resetLocations() {\n      const checkboxes = document.querySelectorAll('.location-checkbox');\n      checkboxes.forEach(cb => cb.checked = false);\n      selectedLocation = '';\n      const urlParams = new URLSearchParams(window.location.search);\n      urlParams.delete('location');\n      history.pushState(null, '', '?' + urlParams.toString());\n      applyFilters();\n      closeModal();\n    }\n    \n    function filterLocations() {\n      const filter = document.getElementById('locationSearch').value.toLowerCase();\n      const items = document.querySelectorAll('.location-item');\n      items.forEach(item => {\n        item.style.display = (item.textContent.toLowerCase().indexOf(filter) > -1) ? '' : 'none';\n      });\n    }\n    \n    // Provider functions\n    function handleProviderChange() {\n      selectedProvider = document.getElementById('providerDropdown').value;\n      const urlParams = new URLSearchParams(window.location.search);\n      if (selectedProvider) { \n        urlParams.set('provider', selectedProvider); \n      } else { \n        urlParams.delete('provider'); \n      }\n      history.pushState(null, '', '?' + urlParams.toString());\n      applyFilters();\n      closeModal();\n    }\n    \n    function setProviderDropdown() {\n      const urlParams = new URLSearchParams(window.location.search);\n      const providerParam = urlParams.get('provider') || '';\n      if (providerParam) {\n        const dropdown = document.getElementById('providerDropdown');\n        if (dropdown) {\n          dropdown.value = providerParam;\n        }\n      }\n    }\n    \n    function resetProvider() {\n      const dropdown = document.getElementById('providerDropdown');\n      if (dropdown) {\n        dropdown.value = \"\";\n      }\n      selectedProvider = '';\n      const urlParams = new URLSearchParams(window.location.search);\n      urlParams.delete('provider');\n      history.pushState(null, '', '?' + urlParams.toString());\n      applyFilters();\n      closeModal();\n    }\n    \n    // Date Range functions\n    function confirmDateRange() {\n      const startDate = document.getElementById('startDate').value;\n      const endDate = document.getElementById('endDate').value;\n      if (startDate && endDate) {\n        closeModal();\n        showLoader();\n        const url = new URL(window.location.href);\n        url.searchParams.set(\"startDate\", startDate);\n        url.searchParams.set(\"endDate\", endDate);\n        setTimeout(() => { window.location.href = url.toString(); }, 100);\n      } else {\n        alert(\"Please select both start and end dates.\");\n      }\n    }\n    \n    // New function: when a date range button (e.g., 1-3 days) is clicked.\n    function handleDateRangeSelection(rangeOption) {\n      closeModal();\n      showLoader();\n      const urlParams = new URLSearchParams(window.location.search);\n      urlParams.set('dateRange', rangeOption);\n      setTimeout(() => { window.location.search = urlParams.toString(); }, 100);\n    }\n    \n    // ----------------------------\n    // Other functions\n    // ----------------------------\n    \n    function generateTableRows(data) {\n      return data.map((appointment, index) => {\n        const appointmentId = 'appointment' + index;\n        appointmentMap[appointmentId] = appointment;\n        let locationDisplay = Array.isArray(appointment.location_description) \n          ? appointment.location_description.join(', ') \n          : appointment.location_description || ''; // Handle array join for location description\n        if (locationDisplay.toLowerCase().includes('video')) {\n          locationDisplay = '📹 ' + locationDisplay;\n        }\n        return \\`\n          <tr>\n            <td data-label=\"Location\">\\${locationDisplay}</td>\n            <td data-label=\"Provider\">\\${appointment.provider_name || ''}</td>\n            <td data-label=\"Day\">\\${appointment.day || ''}</td>\n            <td data-label=\"Date\">\\${appointment.date || ''}</td>\n            <td data-label=\"Time\">\\${appointment.start || ''}</td>\n            <td data-label=\"Schedule\" style=\"text-align:center;\">\n              <button onclick=\"scheduleAppointment('\\${appointmentId}')\">Schedule</button>\n            </td>\n          </tr>\\`;\n      }).join('');\n    }\n    \n    function scheduleAppointment(appointmentId) {\n      const appointment = appointmentMap[appointmentId];\n      if (appointment) {\n        showLoader();\n        const appointmentData = encodeURIComponent(JSON.stringify(appointment));\n        const url = new URL(window.location.href);\n        url.searchParams.set('schedule', appointmentData);\n        setTimeout(() => { window.location.href = url.toString(); }, 100);\n      } else {\n        alert('Appointment data not found.');\n      }\n    }\n    \n    function renderTable(page) {\n      if (filteredAppointments.length === 0) {\n        document.getElementById('appointmentTableBody').innerHTML = '<tr><td colspan=\"6\" style=\"text-align:center; padding:16px; color:#6b7280;\">No appointments available.</td></tr>';\n        document.getElementById('paginationControls').style.display = 'none';\n        return;\n      }\n      const start = (page - 1) * rowsPerPage;\n      const end = page * rowsPerPage;\n      const dataToRender = showingAll ? filteredAppointments : filteredAppointments.slice(start, end);\n      document.getElementById('appointmentTableBody').innerHTML = generateTableRows(dataToRender);\n      document.getElementById('pageIndicator').textContent = showingAll ? 'Showing All Results' : \\`Page \\${page}\\`;\n      document.getElementById('paginationControls').style.display = (filteredAppointments.length > rowsPerPage && !showingAll) ? 'flex' : 'none';\n    }\n    \n    function sortTable(field) {\n      sortOrder[field] = sortOrder[field] === 'asc' ? 'desc' : 'asc';\n      filteredAppointments.sort((a, b) => {\n        if (field === 'date' || field === 'start') {\n          const dateA = new Date(a.date + ' ' + a.start);\n          const dateB = new Date(b.date + ' ' + b.start);\n          return sortOrder[field] === 'asc' ? dateA - dateB : dateB - dateA;\n        }\n        return sortOrder[field] === 'asc'\n          ? (a[field] || '').localeCompare(b[field] || '')\n          : (b[field] || '').localeCompare(a[field] || '');\n      });\n      renderTable(1);\n      currentPage = 1;\n    }\n    \n    function searchAppointments() {\n      const query = document.getElementById('searchInput').value.toLowerCase();\n      filteredAppointments = appointments.filter(app =>\n        (Array.isArray(app.location_description) ? app.location_description.join(', ') : app.location_description || '').toLowerCase().includes(query) ||\n        (app.provider_name || '').toLowerCase().includes(query) ||\n        (app.date || '').includes(query) ||\n        (app.start || '').includes(query)\n      );\n      renderTable(1);\n      currentPage = 1;\n    }\n    \n    function nextPage() {\n      if (currentPage < Math.ceil(filteredAppointments.length / rowsPerPage)) {\n        currentPage++;\n        renderTable(currentPage);\n      }\n    }\n    \n    function prevPage() {\n      if (currentPage > 1) {\n        currentPage--;\n        renderTable(currentPage);\n      }\n    }\n    \n    function toggleShowAll() {\n      showingAll = !showingAll;\n      document.getElementById('showAllButton').textContent = showingAll ? 'Collapse All' : 'Show All';\n      renderTable(currentPage);\n    }\n    \n    function showLoader() {\n      document.getElementById('loaderOverlay').style.display = 'flex';\n    }\n    \n    function hideLoader() {\n      document.getElementById('loaderOverlay').style.display = 'none';\n    }\n    \n    document.addEventListener('DOMContentLoaded', () => { hideLoader(); });\n    window.addEventListener('popstate', () => { hideLoader(); });\n    window.addEventListener('pageshow', (event) => { if (event.persisted) { hideLoader(); } });\n    document.getElementById('searchInput').addEventListener('input', searchAppointments);\n    \n    // Expose functions to the global scope.\n    window.openModal = openModal;\n    window.closeModal = closeModal;\n    window.handleLocationChange = handleLocationChange;\n    window.filterLocations = filterLocations;\n    window.resetLocations = resetLocations;\n    window.handleProviderChange = handleProviderChange;\n    window.setProviderDropdown = setProviderDropdown;\n    window.resetProvider = resetProvider;\n    window.handleDateRangeSelection = handleDateRangeSelection;\n    window.sortTable = sortTable;\n    window.nextPage = nextPage;\n    window.prevPage = prevPage;\n    window.toggleShowAll = toggleShowAll;\n    window.scheduleAppointment = scheduleAppointment;\n    window.confirmDateRange = confirmDateRange;\n    \n    // Initial table render.\n    renderTable(currentPage);\n  </script>\n</body>\n</html>\n`;\n\n// Return the HTML content from the Code node.\nreturn [{ htmlContent: html }];\n"
+      },
+      "id": "4960e655-0137-4fe2-bdfb-bd399d829657",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1900,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "5c70340b-07b0-42d0-9ca2-a1782838efc4",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -100
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bc58bd39-226a-4c44-b0ef-0a7f2ba4de26",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert the current data to the new format\nfunction transformData(currentData) {\n  // If there's no data, return an empty array\n  if (!currentData || !currentData.data || !Array.isArray(currentData.data)) {\n    return []; // No data to process\n  }\n\n  return currentData.data.map((item, index) => {\n    // Parse date as UTC and format it\n    const dateObj = new Date(item.Available_Date || ''); // Ensure we handle undefined dates\n    const year = dateObj.getUTCFullYear();\n    const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-indexed\n    const day = String(dateObj.getUTCDate()).padStart(2, '0');\n    const dateStr = `${month}-${day}-${year}`;\n\n    // Get day of the week\n    const dayOfWeekNum = dateObj.getUTCDay();\n    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];\n    const dayOfWeekStr = daysOfWeek[dayOfWeekNum];\n\n    // Format time\n    const startTime = String(item.Start_Time || '').padStart(4, '0');\n    const endTime = String(item.End_Time || '').padStart(4, '0');\n\n    const startHours = startTime.slice(0, 2);\n    const startMinutes = startTime.slice(2, 4);\n    const endHours = endTime.slice(0, 2);\n    const endMinutes = endTime.slice(2, 4);\n\n    const startFixer = `${startHours}:${startMinutes}`;\n    const start = `${((startHours % 12) || 12)}:${startMinutes} ${startHours >= 12 ? 'PM' : 'AM'}`;\n    const end = `${endHours}:${endMinutes}`;\n    const orderkeytime = `${year}-${month}-${day} ${startHours}:${startMinutes}:00`;\n\n    return {\n      index: index + 1,\n      slots_available: 0, // Assuming 0 as no mapping is provided\n      start_fixer: startFixer,\n      start: start,\n      end: end,\n      location: item.Sched_Loc_Abbr || '',\n      date: dateStr,\n      day: dayOfWeekStr, // Added day of the week\n      location_description: item.Description || '', // Updated to use Description\n      provider_name: `${item.Last_Name || ''}, ${item.First_Name || ''}`.trim(),\n      duration: String((item.End_Time || 0) - (item.Start_Time || 0)),\n      provider: item.Resource_Abbr || '',\n      res_appointment_group_id: item.res_appointment_group_id || '--', // Use res_appointment_group_id\n      resource_abbr: item.Resource_Abbr || '',\n      orderkeytime: orderkeytime,\n    };\n  });\n}\n\n// Check if items exist\nif (!items || !items[0] || !items[0].json) {\n  // If no input, return an empty array\n  return [{ json: { data: [] } }];\n}\n\n// Get the input data\nconst inputData = items[0].json;\n\n// Transform the data\nconst transformedData = transformData(inputData);\n\n// Return the transformed data\nreturn [{ json: { data: transformedData } }];\n"
+      },
+      "id": "d36552df-3eb3-4ebd-989b-905c8e0c84db",
+      "name": "Code31",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        20
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": true,
+      "notes": "Updated to always convert location to array to prevent breaking"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "575543b3-8c31-47bf-8dd5-58fcef206b0a",
+              "leftValue": "={{ $json.Available_Date }}",
+              "rightValue": "",
+              "operator": {
+                "type": "dateTime",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "441ee63d-2266-4dda-bf6f-2d9ccc811267",
+      "name": "If5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        -180
+      ],
+      "id": "847de6da-a8b5-4045-89a3-b31c300160bb",
+      "name": "Limit",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.htmlContent }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2120,
+        40
+      ],
+      "id": "d5c631a1-8e50-4df8-bf02-7de4d05a36b3",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "95e7b6fe-0022-4cee-93cf-cf9f2de71d97",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        -240
+      ],
+      "id": "5ec556bf-2f13-4864-9746-9d77af1351f8",
+      "name": "Webhook",
+      "webhookId": "95e7b6fe-0022-4cee-93cf-cf9f2de71d97"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-03-10T15:10:11.927Z",
+  "versionId": "c8a02d22-57d5-415b-b226-72b5e27d376b"
+}
