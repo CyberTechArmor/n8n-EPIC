@@ -1,0 +1,101 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "PostAlert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-30T15:24:18.932Z",
+  "id": "vBxq8VrdnAJkhBTS",
+  "isArchived": false,
+  "meta": null,
+  "name": "Rearm Summary",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rearm-summary",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6a484c01-4096-410a-b8fd-4b57c538f980",
+      "name": "Webhook",
+      "webhookId": "9434bca0-b6ff-4df0-8136-219fb00636e9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"fields\": {\n        \"TITLE\": \"Windows License - {{ $json.body.hostname }}\",\n        \"GROUP_ID\": \"74\",\n        \"RESPONSIBLE_ID\": \"19\",\n        \"DESCRIPTION\": \"Description: {{ $json.body.alert }}{{ '\\\\n' }}Expiration Date: {{ $json.body.expiry_date }}\"\n    }\n}\n",
+        "options": {}
+      },
+      "id": "db3574c6-8b32-4706-b172-308d1d38f152",
+      "name": "PostAlert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        260,
+        0
+      ],
+      "notes": "\"GROUP_ID\":\"74\", Group ID\n\"RESPONSIBLE_ID\": \"19\", Responsible person"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.14",
+            "x-forwarded-for": "10.0.1.14",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "151",
+            "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.17763.2746",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "alert": "Windows activation expires in 3 days!",
+            "days_remaining": 54,
+            "hostname": "NMNHV15",
+            "expiry_date": "2025-03-26"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/rearm-summary",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-30T17:53:54.850Z",
+  "versionId": "4b6a1ba8-9827-437a-90cf-cfb59b811f9f"
+}
