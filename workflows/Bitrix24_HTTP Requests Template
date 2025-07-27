@@ -1,0 +1,56 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-01-07T12:21:00.944Z",
+  "id": "8GNRjrytShkqpiB2",
+  "isArchived": false,
+  "meta": null,
+  "name": "Bitrix24_HTTP Requests Template",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"filter\":{\"GROUP_ID\":\"159\"}, \n\"select\": [\"ID\",\"TITLE\",\"DESCRIPTION\"], \n\"order\":{\"ID\":\"des\"}\n}",
+        "options": {}
+      },
+      "id": "5e74bb24-5f16-4ad4-a2aa-39bbfd68563a",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        140,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"taskId\":\"\"\n}",
+        "options": {}
+      },
+      "id": "1abd820b-3ff0-4db9-abea-49abf951c09c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        120,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-08T20:19:58.051Z",
+  "versionId": "c37c2177-52b1-4063-aab2-36098a90a5f2"
+}
