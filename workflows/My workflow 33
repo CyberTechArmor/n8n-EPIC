@@ -1,0 +1,208 @@
+{
+  "active": false,
+  "connections": {
+    "NocoDB8": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB9": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-07T19:07:35.483Z",
+  "id": "rAlvTZirUhrZHGpR",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 33",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "projectId": "pxegwq0dw2f1rby",
+        "table": "mh94t4pdq481z8q",
+        "id": "={{ $('Webhook').item.json.query.CampaignID }}"
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "856cf7ed-5f1f-49e8-a75b-1d6c987fa864",
+      "name": "NocoDB8",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "ph3yguz25vxf0y1",
+        "table": "mbv1dqiocy648gj",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        0,
+        180
+      ],
+      "id": "01ef99ec-bb6d-4a47-9df6-02f15ccf124a",
+      "name": "NocoDB9",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        440,
+        0
+      ],
+      "id": "b9539cf5-3b16-4e88-bb00-34c85b237687",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all input items (each item is expected to contain a \"data\" array)\nconst items = $input.all();\n\n// Initialize an array to hold the agent email addresses\nlet agents = [];\n\n// Loop through all input items\nfor (const item of items) {\n  // Check if the current item has a \"data\" property that is an array\n  if (Array.isArray(item.json.data)) {\n    // Loop over each record in the \"data\" array\n    for (const record of item.json.data) {\n      // If the record has an \"Agents\" property, add it to the list\n      if (record.Agents) {\n        agents.push(record.Agents);\n      }\n    }\n  }\n}\n\n// Retrieve the dynamic <Say> message from the current item's JSON\nconst answeredMessage = $json.AnsweredMessage || 'Your default message here';\n\n// Retrieve the callerId from the \"If2\" node (if available)\n// Wrap this in a try-catch in case \"If2\" has not executed\nlet callerId = 'defaultCallerId';\ntry {\n  callerId = $node[\"If2\"].json.forwarded_from || callerId;\n} catch (error) {\n  // \"If2\" is not executed. Using default callerId.\n  console.warn(\"Node 'If2' is not executed. Using default callerId.\");\n}\n\n// Build the <Client> XML elements for each agent (with indentation for readability)\nconst clientElements = agents\n  .map(agent => `    <Client>${agent}</Client>`)\n  .join('\\n');\n\n// Assemble the final TwiML XML string\nconst twiml = `<Response>\n  <Say>${answeredMessage}</Say>\n  <Dial callerId=\"${callerId}\" timeout=\"20\">\n${clientElements}\n  </Dial>\n</Response>`;\n\n// Return the result so that later nodes can use the TwiML output\nreturn [\n  {\n    json: {\n      twiml\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        140
+      ],
+      "id": "30200b56-81c2-49e6-bc03-a0ada65d3576",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        180,
+        180
+      ],
+      "id": "00ed46d4-e4bb-4087-8305-0793e42d6d78",
+      "name": "Aggregate"
+    }
+  ],
+  "pinData": {
+    "NocoDB8": [
+      {
+        "json": {
+          "Id": 1,
+          "Title": "Fall Risk",
+          "CreatedAt": "2025-01-30 23:47:42",
+          "UpdatedAt": "2025-02-03 23:20:18",
+          "Content": "Hi there! Did you know that **falls** are one of the leading causes of injury, especially as we age?\n\nFilling out a **fall risk assessment** is a simple and important step to stay safe. It helps us identify any factors that might increase your chances of falling, like balance issues, medications, or hazards in your home. With this information, we can help you take proactive steps to reduce your risk and stay independent.\n\nBy completing this quick assessment, you’re taking control of your health and safety. Together, we can create a personalized plan to keep you steady, confident, and safe.",
+          "VideoUrl": "https://youtu.be/hpwoGjpYygI?si=Ppn-sJ2jcD4zEAyY",
+          "AudioUrl": "https://file.taskfire.app/EPIC/Audio/Surveys/ElevenLabs_2025-01-28T22_53_20_Bill%20Oxley%20_pvc_s42_sb75_se10_b_m2.mp3",
+          "SurveyId": "833751",
+          "SMSmessage": "",
+          "Medium": "SMS",
+          "PhoneQueueDID": null,
+          "AnsweredMessage": null,
+          "VoicemailMessage": null
+        }
+      }
+    ],
+    "NocoDB9": [
+      {
+        "json": {
+          "Id": 1,
+          "Agents": "tstilwell@epichs.org",
+          "CreatedAt": "2025-02-07 16:51:32",
+          "UpdatedAt": "2025-02-07 16:51:40",
+          "CampaignID": null,
+          "Description": null
+        }
+      },
+      {
+        "json": {
+          "Id": 2,
+          "Agents": "aadams@epichs.org",
+          "CreatedAt": "2025-02-07 16:51:40",
+          "UpdatedAt": "2025-02-07 16:51:46",
+          "CampaignID": null,
+          "Description": null
+        }
+      }
+    ],
+    "Aggregate": [
+      {
+        "json": {
+          "data": [
+            {
+              "Id": 1,
+              "Agents": "tstilwell@epichs.org",
+              "CreatedAt": "2025-02-07 16:51:32",
+              "UpdatedAt": "2025-02-07 16:51:40",
+              "CampaignID": null,
+              "Description": null
+            },
+            {
+              "Id": 2,
+              "Agents": "aadams@epichs.org",
+              "CreatedAt": "2025-02-07 16:51:40",
+              "UpdatedAt": "2025-02-07 16:51:46",
+              "CampaignID": null,
+              "Description": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-07T19:07:35.483Z",
+  "versionId": "95936906-9160-4999-b72d-c45540507105"
+}
