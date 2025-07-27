@@ -1,0 +1,309 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "OpenAI3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI3": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T17:18:15.977Z",
+  "id": "SF5G7LUg63Wrbmou",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 22",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ad03ef29-830f-4b72-baf0-c35f2fd4fdeb",
+        "options": {}
+      },
+      "id": "2758d140-9c98-4ab3-8e2d-df788b9b7ef8",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        980,
+        320
+      ],
+      "webhookId": "ad03ef29-830f-4b72-baf0-c35f2fd4fdeb"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "067adb65-8422-4fbe-875d-a4093c2a7f9e",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n JavaScript code\nreturn {\n  decodedText: decodeURIComponent($json.data)\n};\n"
+      },
+      "id": "bccd6a43-5888-4205-b653-11ccf83924b2",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f6f4bc49-18db-4807-9c93-3b55a18a99b1",
+              "name": "decodedText",
+              "value": "={{ $json.decodedText.replaceAll('+',\" \") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "716fe642-844b-4d3e-a0dc-59f8ce3b5644",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1600,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "id": "962ca09d-b42f-4336-95a0-79f4090ffc28",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function splitMessages(text) {\n    // Split the text by either \\n\\n or \\n followed by one or more spaces and another \\n\n    let messages = text.split(/\\n\\s*\\n/);\n\n    // Trim any leading/trailing whitespace from each message\n    messages = messages.map(message => message.trim());\n\n    // Remove the first and last elements (comments)\n    messages = messages.slice(1, -1);\n\n    // Convert each message into an object with a key, e.g., \"message\"\n    return messages.map(message => ({ message: message }));\n}\n\n// Example usage:\nconst inputText = $json[\"output\"];  // Adjust this to match your variable structure\nconst messages = splitMessages(inputText);\nreturn messages;  // Ensure this returns the array of message objects\n"
+      },
+      "id": "c57eab7d-64f8-479d-9021-0fa5c3c9a85d",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "9ea3fa55-717f-45e6-93c5-e6186b9f3e64",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "asst_DMc9xloXoeor6KQdtOmzG1sI",
+          "mode": "list",
+          "cachedResultName": "Personalized Recommendations Follow Ups"
+        },
+        "prompt": "define",
+        "text": "={{ $json.decodedText }}",
+        "options": {}
+      },
+      "id": "188d62d9-1558-41c6-a904-8fa311752e7d",
+      "name": "OpenAI3",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        1840,
+        320
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "f53q65ZFKo7SfpKk",
+          "name": "OpenAi Blue Sky"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "25d113a5-2854-4632-93a0-afbffe3f8eb5",
+              "name": "message",
+              "value": "={{ $json.message.replace(/^\\d+\\.\\s*\"|\"$|\"/g, '').replace(/[\\r\\n]+/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bea4286e-51e0-4d9e-ba9f-015e5d10b791",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2580,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function splitMessages(text) {\n    // Split the text by double new lines or double line breaks\n    let messages = text.split('\\n\\n');\n\n    // Trim any leading/trailing whitespace from each message\n    messages = messages.map(message => message.trim());\n\n    // Remove the first and last elements (comments)\n    messages = messages.slice(1, -1);\n\n    // Convert each message into an object with a key, e.g., \"message\"\n    return messages.map(message => ({ message: message }));\n}\n\n// Example usage:\nconst inputText = $json[\"output\"];  // Adjust this to match your variable structure\nconst messages = splitMessages(inputText);\nreturn messages;  // Ensure this returns the array of message objects\n"
+      },
+      "id": "002646b4-a622-4f22-b085-d9376e425c11",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        140
+      ]
+    }
+  ],
+  "pinData": {
+    "Extract from File": [
+      {
+        "json": {
+          "data": "Personalized+Health+Optimization+Report+for+Jonathan+Kalabat%0dPatient+Information%0dName%3a+Jonathan+Kalabat%0dDate%3a+July+29%2c+2024%0dAge%3a+27%0dGender%3a+Male%0dGoals%3a%0dWeight+loss%0dImprove+cardiovascular+health%0dIncrease+muscle+mass%0dPast+Blue+Sky+History%3a%0dPrevious+recommendations+included+a+balanced+diet+and+a+regular+exercise+regimen.%0dPrevious+Recommendations%3a%0dBalanced+diet%0d30+minutes+of+moderate+exercise+5+days+a+week%0dNew+Signs%2fSymptoms%2fConditions%3a%0dOccasional+shortness+of+breath+during+intense+workouts%0dSlight+increase+in+resting+heart+rate%0dVital+Signs%0dHeight%3a+70+inches%0dWeight%3a+182+lbs%0dBMI%3a+26.11%0dBlood+Pressure%3a+122%2f76+mmHg%0dPulse%3a+68+bpm%0dOxygen+Saturation%3a+98%25%0dKey+Trended+Factors%2fValues%0dBMI%3a+27.58+to+26.11+(decreasing+trend)%0dBlood+Pressure%3a+Generally+stable+with+slight+variations%0dBody+Fat+%25%3a+Estimated+decrease+based+on+body+measurements%0dResting+Energy+Expenditure%3a+Not+provided%0dWeight+Loss+Zone%3a+Not+provided%0dWeight+Maintenance+Zone%3a+Not+provided%0dVO2%3a+Improved+from+3.52+to+3.74+ml%2fkg%2fmin%0dHealth+Domain+Analysis+and+Recommendations%0d1.+Body+Composition%0dTests+Used%3a+Styku%0dResult+Interpretations%2fFocus+Areas%3a%0dNeck+Circumference%3a+Decreased+from+15+inches+to+14.6+inches%0dWaist-to-Hip+Ratio%3a+Stable+at+0.8%0dTotal+Body+Fat+Percentage%3a+Estimated+decrease+based+on+circumferential+measurements%0dRecommendations%3a%0dExercise%3a+Incorporate+high-intensity+interval+training+(HIIT)+to+target+fat+reduction+and+muscle+definition.%0dDiet%3a+Adopt+a+Mediterranean+diet+focusing+on+whole+grains%2c+lean+proteins%2c+and+healthy+fats.%0dFollow-Up+Tests%3a+Repeat+Styku+measurement+in+1+month.%0d2.+Cardiovascular+Health%0dTests+Used%3a+ECG%2c+Stress+Test%2c+ABI%0dResult+Interpretations%2fFocus+Areas%3a%0dECG%3a+Normal+sinus+rhythm%2c+no+abnormalities+detected%0dStress+Test%3a+Improved+cardiovascular+fitness%2c+mild+shortness+of+breath+at+peak+exertion%0dABI%3a+1.0+(normal)%0dRecommendations%3a%0dExercise%3a+Increase+cardiovascular+workouts+to+45+minutes%2c+5+times+a+week%2c+focusing+on+moderate+to+high+intensity.%0dDiet%3a+Emphasize+heart-healthy+foods+such+as+nuts%2c+fish%2c+fruits%2c+and+vegetables.%0dSupplements%3a+Omega-3+fatty+acids+(1000+mg+daily).%0dFollow-Up+Tests%3a+Repeat+stress+test+in+6+months.%0d3.+Metabolic+Health%0dTests+Used%3a+VO2+Max%2c+HbA1c%2c+Lipid+Panel%2c+CMP%0dResult+Interpretations%2fFocus+Areas%3a%0dVO2+Max%3a+Improved+from+3.52+to+3.74+ml%2fkg%2fmin%0dHbA1c%3a+Stable+at+5.0%25%0dLipid+Panel%3a+HDL+consistently+high%2c+total+cholesterol%2c+LDL%2c+and+triglycerides+within+normal+ranges%0dCMP%3a+Generally+stable+values+with+minor+fluctuations%0dRecommendations%3a%0dExercise%3a+Continue+resistance+training+to+improve+metabolic+rate+and+glucose+metabolism.%0dDiet%3a+Focus+on+low-glycemic+index+foods+to+manage+blood+sugar+levels.%0dSupplements%3a+Vitamin+D3+(2000+IU+daily).%0dFollow-Up+Tests%3a+Monitor+HbA1c+and+lipid+panel+per+protocol.%0d4.+Neurological+Health%0dTests+Used%3a+Cognivue%2c+Grip+Strength%2c+Get+Up+and+Go+Test%2c+Hearing+and+Vision+Screening%0dResult+Interpretations%2fFocus+Areas%3a%0dCognivue%3a+Normal+cognitive+function%0dGrip+Strength%3a+Decreased+slightly%2c+suggesting+need+for+strength+training%0dGet+Up+and+Go+Test%3a+Normal%0dHearing+and+Vision%3a+Normal%0dRecommendations%3a%0dExercise%3a+Include+balance+and+coordination+exercises+to+improve+functional+mobility.++Add+Farmer%e2%80%99s+Carry+exercise+twice+per+week.+Consider+racquet+exercises+to+improve+hand-eye+coordination%2c+grip+strength%2c+and+endurance%0dDiet%3a+Increase+intake+of+omega-3+fatty+acids+and+antioxidants.%0dSupplements%3a+Omega-3+fatty+acids+(1000+mg+daily)%2c+magnesium+threonate+(200+mg+daily.%0dFollow-Up+Tests%3a+Repeat+cognitive+and+mobility+tests+in+3+months.%0d5.+Skin+Health%0dTests+Used%3a+VISIA+Complexion+Analysis%0dResult+Interpretations%2fFocus+Areas%3a%0dSkin+Age%3a+Mild+to+moderate+concerns%0dRecommendations%3a%0dDaily+Routine%3a%0dMorning%3a+Cleanser%2c+moisturizer+with+SPF+30.%0dEvening%3a+Cleanser%2c+retinoid%2c+moisturizer.%0dFollow-Up+Tests%3a+Reassess+skin+condition+in+3+months.%0dExercise+Recommendations%0dFrequency%3a+5-6+days%2fweek%0dDuration%3a+60-90+minutes%2fsession%0dIntensity%3a+Moderate+to+high+(RPE+5-8)%0dTypes%3a%0dCardio%3a+HIIT%2c+running%2c+cycling%2c+racquet+exercises+(pickle+ball%2c+tennis%2c+etc.)%0dStrength%3a+Compound+exercises+(deadlifts%2c+bench+press%2c+squats)%2c+Farmer%e2%80%99s+carry%0dFlexibility%3a+Yoga%2c+Pilates%0dBalance%2fMobility%3a+Functional+training%2c+balance+board%2c+Farmer%e2%80%99s+carry%0dWeekly+Example+Regimen%0dMonday%3a+45+minutes+HIIT%2c+15+minutes+compound+exercises%0dTuesday%3a+60+minutes+moderate-intensity+running%0dWednesday%3a+30+minutes+resistance+training%2c+15+minutes+yoga%0dThursday%3a+45+minutes+moderate+to+vigorous+cycling%2c+15+minutes+compound+exercises%0dFriday%3a+60+minutes+HIIT%0dSaturday%3a+45+minutes+outdoor+activities%2c+15+minutes+flexibility+exercises%0dSunday%3a+Rest+and+recovery+with+light+activities%0dFuel%2fNutrition+Recommendations%0dCaloric+Intake%3a%0dWeight+Loss+Zone%3a+1500-1700+kcal%2fday%0dWeight+Maintenance+Zone%3a+1800-2000+kcal%2fday%0dMacronutrients%3a%0dProtein%3a+200+grams%2fday%0dCarbohydrates%3a+150+grams%2fday%0dFats%3a+70+grams%2fday%0dDiet+Type+Recommendation%3a+Mediterranean+diet%0dSample+Foods%3a%0dFish%2c+nuts%2c+olive+oil%2c+leafy+greens%2c+whole+grains%0dAvoid%3a%0dProcessed+foods%2c+high-sugar+snacks%2c+trans+fats%0dMicronutrients+%26+Supplements%0dCardiovascular+System%3a%0dOmega-3+fatty+acids+(1000+mg+daily)%0dNeurological+System%3a%0dOmega-3+fatty+acids+(1000+mg+daily)%0dMagnesium+threonate+(200+mg+daily)%0dDigestive+System%3a%0dProbiotics+(from+yogurt%2c+kefir)%0dFiber+supplements%0dMusculoskeletal+System%3a%0dVitamin+D+(2000+IU+daily)%0dCollagen+(10+g+daily)%0dImmune+System%3a%0dNothing+at+this+time%0dLiver+Health%3a%0dNothing+at+this+time%0dGeneral+Wellness%3a%0dMultivitamin%0dHydration+(aim+for+96+ounces+(about+2.84+L)+of+water+daily)%0dSleep+and+Relaxation%3a%0dMagnesium+threonate+(200+mg+daily)%0dSleep+and+Mindfulness+Recommendations%0dSleep%3a%0dAim+for+7-8+hours+of+quality+sleep+per+night.%0dMaintain+a+regular+sleep+schedule+by+going+to+bed+and+waking+up+at+the+same+time+every+day.%0dCreate+a+calming+bedtime+routine+to+improve+sleep+quality.%0dMindfulness%3a%0dIncorporate+daily+meditation+or+deep+breathing+exercises.%0dPractice+mindfulness+for+at+least+10+minutes+each+day+to+reduce+stress.%0dStress+Management%3a%0dEngage+in+stress-reducing+activities+such+as+yoga+or+tai+chi.%0dRegularly+schedule+time+for+hobbies+and+relaxation+to+maintain+a+balanced+lifestyle.%0dRegular+Check-ups%0dNext+Bio-Functional+Health+Markers%3a+Schedule+for+next+assessment%3a+August+29%2c+2024%0dAdjustments%3a+Monitor+trends+and+adapt+the+plan+based+on+monthly+assessments.%0dSocial+Engagement+and+Motivation%0dTips+and+Tricks%3a%0dSet+daily+and+weekly+goals+for+exercise+and+nutrition.%0dUse+a+health+tracking+app+to+monitor+progress+and+stay+motivated.%0dReward+yourself+for+meeting+milestones+to+maintain+enthusiasm.%0dStay+socially+connected+to+maintain+motivation+and+accountability.%0dSummary+of+Recommendations%0dBody+Composition%3a%0dExercise%3a+Incorporate+HIIT+workouts+to+reduce+VAT+and+increase+lean+muscle+mass.%0dDiet%3a+Mediterranean+diet+focusing+on+whole+grains%2c+lean+proteins%2c+and+healthy+fats.%0dFollow-Up+Tests%3a+Repeat+Styku+measurement+in+1+month.%0dCardiovascular+Health%3a%0dExercise%3a+Cardio+workouts+45+minutes%2c+5+times+a+week.%0dDiet%3a+Heart-healthy+foods+(nuts%2c+fish%2c+fruits%2c+vegetables).%0dSupplements%3a+Omega-3+fatty+acids+(1000+mg+daily).%0dFollow-Up+Tests%3a+Repeat+stress+test+in+6+months.%0dMetabolic+Health%3a%0dExercise%3a+Resistance+training+to+improve+metabolic+rate.%0dDiet%3a+Low-glycemic+index+foods.%0dSupplements%3a+Berberine+(500+mg+twice+daily)%2c+Vitamin+D3+(2000+IU+daily).%0dFollow-Up+Tests%3a+Monitor+HbA1c+and+lipid+panel+every+3+months.%0dNeurological+Health%3a%0dExercise%3a+Balance+and+coordination+exercises.%0dDiet%3a+Omega-3+fatty+acids+and+antioxidants.%0dSupplements%3a+Omega-3+fatty+acids+(1000+mg+daily)%2c+magnesium+threonate+(200+mg+daily).%0dFollow-Up+Tests%3a+Repeat+cognitive+and+mobility+tests+per+protocol.%0dSkin+Health%3a%0dDaily+Routine%3a%0dMorning%3a+Cleanser%2c+moisturizer+with+SPF+30.%0dEvening%3a+Cleanser%2c+retinoid%2c+moisturizer.%0dFollow-Up+Tests%3a+Reassess+skin+condition+in+3+months.%0dExercise+Recommendations%3a%0dFrequency%3a+5-6+days%2fweek%0dDuration%3a+60-90+minutes%2fsession%0dIntensity%3a+Moderate+to+high+(RPE+5-8)%0dType+of+Exercise%3a+Cardio%2c+strength%2c+flexibility%2c+balance%2fmobility%0dFuel%2fNutrition+Recommendations%3a%0dCaloric+Intake%3a+2000+kcal%2fday+(maintenance)%0dMacronutrients%3a%0dProtein%3a+200+grams%2fday%0dCarbohydrates%3a+150+grams%2fday%0dFats%3a+70+grams%2fday%0dDiet+Type%3a+Mediterranean+diet%0dSample+Foods%3a+Fish%2c+nuts%2c+olive+oil%2c+leafy+greens%2c+whole+grains%0dAvoid%3a+Processed+foods%2c+high-sugar+snacks%2c+trans+fats%0dMicronutrients+%26+Supplements%3a%0dCardiovascular%3a+Omega-3+fatty+acids+(1000+mg+daily)%0dNeurological%3a+Omega-3+fatty+acids+(1000+mg+daily)%2c+magnesium+threonate+(200+mg+daily)%0dDigestive%3a+Probiotics%2c+fiber+supplements%0dMusculoskeletal%3a+Vitamin+D+(2000+IU+daily)%2c+collagen+(10+g+daily)%0dGeneral+Wellness%3a+Multivitamin%2c+hydration+(96+ounces+of+water+daily)%0dSleep+and+Mindfulness%3a%0dSleep%3a+7-8+hours+of+quality+sleep+per+night%2c+regular+sleep+schedule%2c+calming+bedtime+routine%0dMindfulness%3a+Daily+meditation+or+deep+breathing+exercises%2c+mindfulness+for+10+minutes+daily%0dStress+Management%3a+Stress-reducing+activities+like+yoga+or+tai+chi%2c+schedule+time+for+hobbies+and+relaxation%0dRegular+Check-ups%3a%0dNext+Bio-Functional+Health+Markers%3a+August+29%2c+2024%0dAdjustments%3a+Monitor+trends+and+adapt+the+plan+based+on+monthly+assessments%0dBreathing%3a+Nothing+found+on+testing+around+shortness+of+breath+with+exertion.+Continue+to+increase+exercise+by+duration.+Track+progression+and+symptoms.+Report+new+symptoms+and+progress+every+1-2+weeks+to+Eryss%0dSocial+Engagement+and+Motivation%3a%0dTips+and+Tricks%3a+Set+goals%2c+use+a+health+tracking+app%2c+reward+milestones%2c+stay+socially+connected%0d%0d"
+        }
+      }
+    ],
+    "OpenAI3": [
+      {
+        "json": {
+          "content": "Personalized Health Optimization Report for Jonathan Kalabat\rPatient Information\rName: Jonathan Kalabat\rDate: July 29, 2024\rAge: 27\rGender: Male\rGoals:\rWeight loss\rImprove cardiovascular health\rIncrease muscle mass\rPast Blue Sky History:\rPrevious recommendations included a balanced diet and a regular exercise regimen.\rPrevious Recommendations:\rBalanced diet\r30 minutes of moderate exercise 5 days a week\rNew Signs/Symptoms/Conditions:\rOccasional shortness of breath during intense workouts\rSlight increase in resting heart rate\rVital Signs\rHeight: 70 inches\rWeight: 182 lbs\rBMI: 26.11\rBlood Pressure: 122/76 mmHg\rPulse: 68 bpm\rOxygen Saturation: 98%\rKey Trended Factors/Values\rBMI: 27.58 to 26.11 (decreasing trend)\rBlood Pressure: Generally stable with slight variations\rBody Fat %: Estimated decrease based on body measurements\rResting Energy Expenditure: Not provided\rWeight Loss Zone: Not provided\rWeight Maintenance Zone: Not provided\rVO2: Improved from 3.52 to 3.74 ml/kg/min\rHealth Domain Analysis and Recommendations\r1. Body Composition\rTests Used: Styku\rResult Interpretations/Focus Areas:\rNeck Circumference: Decreased from 15 inches to 14.6 inches\rWaist-to-Hip Ratio: Stable at 0.8\rTotal Body Fat Percentage: Estimated decrease based on circumferential measurements\rRecommendations:\rExercise: Incorporate high-intensity interval training (HIIT) to target fat reduction and muscle definition.\rDiet: Adopt a Mediterranean diet focusing on whole grains, lean proteins, and healthy fats.\rFollow-Up Tests: Repeat Styku measurement in 1 month.\r2. Cardiovascular Health\rTests Used: ECG, Stress Test, ABI\rResult Interpretations/Focus Areas:\rECG: Normal sinus rhythm, no abnormalities detected\rStress Test: Improved cardiovascular fitness, mild shortness of breath at peak exertion\rABI: 1.0 (normal)\rRecommendations:\rExercise: Increase cardiovascular workouts to 45 minutes, 5 times a week, focusing on moderate to high intensity.\rDiet: Emphasize heart-healthy foods such as nuts, fish, fruits, and vegetables.\rSupplements: Omega-3 fatty acids (1000 mg daily).\rFollow-Up Tests: Repeat stress test in 6 months.\r3. Metabolic Health\rTests Used: VO2 Max, HbA1c, Lipid Panel, CMP\rResult Interpretations/Focus Areas:\rVO2 Max: Improved from 3.52 to 3.74 ml/kg/min\rHbA1c: Stable at 5.0%\rLipid Panel: HDL consistently high, total cholesterol, LDL, and triglycerides within normal ranges\rCMP: Generally stable values with minor fluctuations\rRecommendations:\rExercise: Continue resistance training to improve metabolic rate and glucose metabolism.\rDiet: Focus on low-glycemic index foods to manage blood sugar levels.\rSupplements: Vitamin D3 (2000 IU daily).\rFollow-Up Tests: Monitor HbA1c and lipid panel per protocol.\r4. Neurological Health\rTests Used: Cognivue, Grip Strength, Get Up and Go Test, Hearing and Vision Screening\rResult Interpretations/Focus Areas:\rCognivue: Normal cognitive function\rGrip Strength: Decreased slightly, suggesting need for strength training\rGet Up and Go Test: Normal\rHearing and Vision: Normal\rRecommendations:\rExercise: Include balance and coordination exercises to improve functional mobility.  Add Farmer’s Carry exercise twice per week. Consider racquet exercises to improve hand-eye coordination, grip strength, and endurance\rDiet: Increase intake of omega-3 fatty acids and antioxidants.\rSupplements: Omega-3 fatty acids (1000 mg daily), magnesium threonate (200 mg daily.\rFollow-Up Tests: Repeat cognitive and mobility tests in 3 months.\r5. Skin Health\rTests Used: VISIA Complexion Analysis\rResult Interpretations/Focus Areas:\rSkin Age: Mild to moderate concerns\rRecommendations:\rDaily Routine:\rMorning: Cleanser, moisturizer with SPF 30.\rEvening: Cleanser, retinoid, moisturizer.\rFollow-Up Tests: Reassess skin condition in 3 months.\rExercise Recommendations\rFrequency: 5-6 days/week\rDuration: 60-90 minutes/session\rIntensity: Moderate to high (RPE 5-8)\rTypes:\rCardio: HIIT, running, cycling, racquet exercises (pickle ball, tennis, etc.)\rStrength: Compound exercises (deadlifts, bench press, squats), Farmer’s carry\rFlexibility: Yoga, Pilates\rBalance/Mobility: Functional training, balance board, Farmer’s carry\rWeekly Example Regimen\rMonday: 45 minutes HIIT, 15 minutes compound exercises\rTuesday: 60 minutes moderate-intensity running\rWednesday: 30 minutes resistance training, 15 minutes yoga\rThursday: 45 minutes moderate to vigorous cycling, 15 minutes compound exercises\rFriday: 60 minutes HIIT\rSaturday: 45 minutes outdoor activities, 15 minutes flexibility exercises\rSunday: Rest and recovery with light activities\rFuel/Nutrition Recommendations\rCaloric Intake:\rWeight Loss Zone: 1500-1700 kcal/day\rWeight Maintenance Zone: 1800-2000 kcal/day\rMacronutrients:\rProtein: 200 grams/day\rCarbohydrates: 150 grams/day\rFats: 70 grams/day\rDiet Type Recommendation: Mediterranean diet\rSample Foods:\rFish, nuts, olive oil, leafy greens, whole grains\rAvoid:\rProcessed foods, high-sugar snacks, trans fats\rMicronutrients & Supplements\rCardiovascular System:\rOmega-3 fatty acids (1000 mg daily)\rNeurological System:\rOmega-3 fatty acids (1000 mg daily)\rMagnesium threonate (200 mg daily)\rDigestive System:\rProbiotics (from yogurt, kefir)\rFiber supplements\rMusculoskeletal System:\rVitamin D (2000 IU daily)\rCollagen (10 g daily)\rImmune System:\rNothing at this time\rLiver Health:\rNothing at this time\rGeneral Wellness:\rMultivitamin\rHydration (aim for 96 ounces (about 2.84 L) of water daily)\rSleep and Relaxation:\rMagnesium threonate (200 mg daily)\rSleep and Mindfulness Recommendations\rSleep:\rAim for 7-8 hours of quality sleep per night.\rMaintain a regular sleep schedule by going to bed and waking up at the same time every day.\rCreate a calming bedtime routine to improve sleep quality.\rMindfulness:\rIncorporate daily meditation or deep breathing exercises.\rPractice mindfulness for at least 10 minutes each day to reduce stress.\rStress Management:\rEngage in stress-reducing activities such as yoga or tai chi.\rRegularly schedule time for hobbies and relaxation to maintain a balanced lifestyle.\rRegular Check-ups\rNext Bio-Functional Health Markers: Schedule for next assessment: August 29, 2024\rAdjustments: Monitor trends and adapt the plan based on monthly assessments.\rSocial Engagement and Motivation\rTips and Tricks:\rSet daily and weekly goals for exercise and nutrition.\rUse a health tracking app to monitor progress and stay motivated.\rReward yourself for meeting milestones to maintain enthusiasm.\rStay socially connected to maintain motivation and accountability.\rSummary of Recommendations\rBody Composition:\rExercise: Incorporate HIIT workouts to reduce VAT and increase lean muscle mass.\rDiet: Mediterranean diet focusing on whole grains, lean proteins, and healthy fats.\rFollow-Up Tests: Repeat Styku measurement in 1 month.\rCardiovascular Health:\rExercise: Cardio workouts 45 minutes, 5 times a week.\rDiet: Heart-healthy foods (nuts, fish, fruits, vegetables).\rSupplements: Omega-3 fatty acids (1000 mg daily).\rFollow-Up Tests: Repeat stress test in 6 months.\rMetabolic Health:\rExercise: Resistance training to improve metabolic rate.\rDiet: Low-glycemic index foods.\rSupplements: Berberine (500 mg twice daily), Vitamin D3 (2000 IU daily).\rFollow-Up Tests: Monitor HbA1c and lipid panel every 3 months.\rNeurological Health:\rExercise: Balance and coordination exercises.\rDiet: Omega-3 fatty acids and antioxidants.\rSupplements: Omega-3 fatty acids (1000 mg daily), magnesium threonate (200 mg daily).\rFollow-Up Tests: Repeat cognitive and mobility tests per protocol.\rSkin Health:\rDaily Routine:\rMorning: Cleanser, moisturizer with SPF 30.\rEvening: Cleanser, retinoid, moisturizer.\rFollow-Up Tests: Reassess skin condition in 3 months.\rExercise Recommendations:\rFrequency: 5-6 days/week\rDuration: 60-90 minutes/session\rIntensity: Moderate to high (RPE 5-8)\rType of Exercise: Cardio, strength, flexibility, balance/mobility\rFuel/Nutrition Recommendations:\rCaloric Intake: 2000 kcal/day (maintenance)\rMacronutrients:\rProtein: 200 grams/day\rCarbohydrates: 150 grams/day\rFats: 70 grams/day\rDiet Type: Mediterranean diet\rSample Foods: Fish, nuts, olive oil, leafy greens, whole grains\rAvoid: Processed foods, high-sugar snacks, trans fats\rMicronutrients & Supplements:\rCardiovascular: Omega-3 fatty acids (1000 mg daily)\rNeurological: Omega-3 fatty acids (1000 mg daily), magnesium threonate (200 mg daily)\rDigestive: Probiotics, fiber supplements\rMusculoskeletal: Vitamin D (2000 IU daily), collagen (10 g daily)\rGeneral Wellness: Multivitamin, hydration (96 ounces of water daily)\rSleep and Mindfulness:\rSleep: 7-8 hours of quality sleep per night, regular sleep schedule, calming bedtime routine\rMindfulness: Daily meditation or deep breathing exercises, mindfulness for 10 minutes daily\rStress Management: Stress-reducing activities like yoga or tai chi, schedule time for hobbies and relaxation\rRegular Check-ups:\rNext Bio-Functional Health Markers: August 29, 2024\rAdjustments: Monitor trends and adapt the plan based on monthly assessments\rBreathing: Nothing found on testing around shortness of breath with exertion. Continue to increase exercise by duration. Track progression and symptoms. Report new symptoms and progress every 1-2 weeks to Eryss\rSocial Engagement and Motivation:\rTips and Tricks: Set goals, use a health tracking app, reward milestones, stay socially connected\r\r",
+          "signal": {
+            "aborted": false,
+            "onabort": null
+          },
+          "timeout": 10000,
+          "output": "Here are some personalized SMS messages based on Jonathan's health optimization report:\n\n1. \"🔥 Ramp up the intensity, Jonathan! Incorporate 45-min cardio sessions, 5 days a week for top-notch heart health. Dive into nuts and fish for that extra boost! 🐟💪 See you next month!\"\n   \n2. \"🍽️ Embrace the Mediterranean vibes, Jonathan! Whole grains, lean proteins, and healthy fats are your friends. Keep up the great work! 🌾🐠🥑\"\n\n3. \"💪 Feeling pumped, Jonathan? Add HIIT to your routine to sharpen those muscles and shred fat! You're doing awesome! 👊🏃‍♂️\"\n\n4. \"🧘‍♂️ Take a moment for mindfulness, Jonathan. Daily meditation can really enhance your focus and reduce stress. Breathe deep and enjoy! 🌬️🍃\"\n\n5. \"🌙 Dream big and sleep well, Jonathan! Aim for 7-8 hours of quality sleep to stay in peak form. 🌟🛏️ Remember, consistency is key!\"\n\n6. \"🏋️‍♂️ Power through with resistance training, Jonathan! It's great for metabolism and building strength. Keep lifting and thriving! 💪🏋️‍♂️\"\n\n7. \"🥬 Let’s keep blood sugar in check with low-GI foods, Jonathan. Think leafy greens and whole grains! 🌾🥦 See you next month!\"\n\n8. \"🌟 Stay hydrated, Jonathan! Aim for about 96 ounces of water daily to keep your energy up and body refreshed. 💧 Keep it up!\"\n\nRotate these messages to cover all aspects of Jonathan's health recommendations and keep him motivated and informed.",
+          "runId": "run_wbfHbZRpGo0fy9yLx7vQdMIu",
+          "threadId": "thread_vrunPWMtDFQfEBGNfFXZYcMp"
+        }
+      }
+    ],
+    "Split Out": [
+      {
+        "json": {
+          "output": "Here are some personalized SMS messages based on Jonathan's health optimization report:\n\n1. \"🔥 Ramp up the intensity, Jonathan! Incorporate 45-min cardio sessions, 5 days a week for top-notch heart health. Dive into nuts and fish for that extra boost! 🐟💪 See you next month!\"\n   \n2. \"🍽️ Embrace the Mediterranean vibes, Jonathan! Whole grains, lean proteins, and healthy fats are your friends. Keep up the great work! 🌾🐠🥑\"\n\n3. \"💪 Feeling pumped, Jonathan? Add HIIT to your routine to sharpen those muscles and shred fat! You're doing awesome! 👊🏃‍♂️\"\n\n4. \"🧘‍♂️ Take a moment for mindfulness, Jonathan. Daily meditation can really enhance your focus and reduce stress. Breathe deep and enjoy! 🌬️🍃\"\n\n5. \"🌙 Dream big and sleep well, Jonathan! Aim for 7-8 hours of quality sleep to stay in peak form. 🌟🛏️ Remember, consistency is key!\"\n\n6. \"🏋️‍♂️ Power through with resistance training, Jonathan! It's great for metabolism and building strength. Keep lifting and thriving! 💪🏋️‍♂️\"\n\n7. \"🥬 Let’s keep blood sugar in check with low-GI foods, Jonathan. Think leafy greens and whole grains! 🌾🥦 See you next month!\"\n\n8. \"🌟 Stay hydrated, Jonathan! Aim for about 96 ounces of water daily to keep your energy up and body refreshed. 💧 Keep it up!\"\n\nRotate these messages to cover all aspects of Jonathan's health recommendations and keep him motivated and informed."
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-08-09T19:42:22.476Z",
+  "versionId": "5da1a5d5-4433-457a-90c5-65935a3f1a4b"
+}
