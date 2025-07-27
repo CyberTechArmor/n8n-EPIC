@@ -1,0 +1,41 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-04-11T19:58:11.919Z",
+  "id": "gU4oTAqnxssx2lTF",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 42",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(20)='1119870';\nDECLARE @STARTDATE DATE = DATEADD(DAY, -3, CAST(GETDATE() AS DATE));\nDECLARE @ENDDATE DATE = DATEADD(DAY, 0, CAST(GETDATE() AS DATE));\n \nWITH actual_dos_typeappt AS (\n    SELECT \n        t.IMRESCHED_CODE,t.PATIENT_FIRSTNAME,t.PATIENT_LASTNAME,t.PATIENT_NAME,t.PATIENT_PHONE,\n        t.IMREDEM_CODE,\n        t.DEM_EXTERNALID,\n        t.SCHED_DATE AS ACTUAL_SCHED_DATE,\n        t.SCHED_TIMEIN,\n        t.SCHED_TYPE,\n        t.SCHED_STATUS,\n        t.SCHED_COMMENT,\n        t.IMREPROV_CODE,\n        t.CAREGIVER_NAME,\n        t.LOCATION_NAME,\n        t.SCHED_PMSID,\n        case \n        when (t.SCHED_COMMENT like 'ACT - %' AND t.LOCATION_NAME LIKE '%EPIC Southfield Specialty Telegraph%') THEN 'Scare'\n        when t.SCHED_COMMENT like 'ACT - %' then 'Pcare'\n        when t.SCHED_COMMENT like 'DUAL - %' then 'Pcare'\n\t    when t.SCHED_COMMENT like '%Shared%' then 'Pcare'\n        when t.SCHED_COMMENT like '%Exercis%' then 'Dcare'\n        when t.SCHED_COMMENT like '%Psycho%' then 'Icare'\n        when t.SCHED_COMMENT like '%Physical%' then 'Icare'\n        when t.SCHED_COMMENT like '%Cardio%' then 'Scare'\n        when t.SCHED_COMMENT like '%Mammo%' then 'Dcare'\n        when t.SCHED_COMMENT like '%VOV%' then 'VOV'\n        when t.SCHED_COMMENT like '%NC%' then 'Acare'\n        when t.SCHED_COMMENT like 'BS%' then 'BSP'\n        when t.SCHED_COMMENT like 'GYN%' then 'Scare'\n        when t.SCHED_COMMENT like 'PAIN%' then 'Scare'\n\t\twhen t.SCHED_COMMENT like '%MTM%' then 'MTM'\n\t\twhen t.SCHED_COMMENT like '%STOP%' then 'Pcare'\n    end as 'ACTUAL_TYPEOFAPPT'\n    FROM [HPSITE].[SCHEDULE_VIEW] t\n \n    WHERE \n        t.SCHED_COMMENT NOT LIKE 'PA/Lab%' \n        AND CAST(t.sched_date AS DATE) BETWEEN @STARTDATE AND @ENDDATE\n       AND (t.SCHED_STATUS NOT IN ('4','8') OR t.SCHED_TIMEIN IS NOT NULL)\n\t   and t.DEM_EXTERNALID like @MRN\n)\n,\nfuture_appt_typeappt AS (\n    SELECT \n\tf.DEM_EXTERNALID,f.SCHED_DATE AS FUTURE_SCHED_DATE ,\n\tf.PATIENT_FIRSTNAME,f.PATIENT_LASTNAME,f.PATIENT_NAME,f.PATIENT_PHONE,\n        case \n        when (f.SCHED_COMMENT like 'ACT - %' AND f.LOCATION_NAME LIKE '%EPIC Southfield Specialty Telegraph%') THEN 'Scare'\n        when f.SCHED_COMMENT like 'ACT - %' then 'Pcare'\n        when f.SCHED_COMMENT like 'DUAL - %' then 'Pcare'\n\t    when f.SCHED_COMMENT like '%Shared%' then 'Pcare'\n        when f.SCHED_COMMENT like '%Exercis%' then 'Dcare'\n        when f.SCHED_COMMENT like '%Psycho%' then 'Icare'\n        when f.SCHED_COMMENT like '%Physical%' then 'Icare'\n        when f.SCHED_COMMENT like '%Cardio%' then 'Scare'\n        when f.SCHED_COMMENT like '%Mammo%' then 'Dcare'\n        when f.SCHED_COMMENT like '%VOV%' then 'VOV'\n        when f.SCHED_COMMENT like '%NC%' then 'Acare'\n        when f.SCHED_COMMENT like 'BS%' then 'BSP'\n        when f.SCHED_COMMENT like 'GYN%' then 'Scare'\n        when f.SCHED_COMMENT like 'PAIN%' then 'Scare'\n\t\twhen f.SCHED_COMMENT like '%MTM%' then 'MTM'\n\t\twhen f.SCHED_COMMENT like '%STOP%' then 'Pcare'\n    end as 'FUTURE_TYPEOFAPPT'\n    FROM \n        [HPSITE].[SCHEDULE_VIEW] f\n    WHERE \n        cast(f.SCHED_DATE as date) >= DATEADD(DAY, 0, CAST(GETDATE() AS DATE))and f.LOCATION_NAME not like 'diag%'\n\t\tand f.DEM_EXTERNALID like @MRN\n),\njoin_current_and_future_appt as(\nSELECT a.*,f.FUTURE_TYPEOFAPPT,f.FUTURE_SCHED_DATE\nfrom actual_dos_typeappt a\nleft join future_appt_typeappt f on a.DEM_EXTERNALID=f.DEM_EXTERNALID\n)\n,addproc as (\nselect a.*,\np.PROC_CODE,p.PROC_TITLE,p.PROC_ORDERDATE\nfrom join_current_and_future_appt a\nleft join [HPSITE].[CONTACT] c on a.IMRESCHED_CODE=c.IMRESCHED_CODE \nleft join [HPSITE].[UAIProceduresView] p on p.IMRECONTACT_CODE=c.IMRECONTACT_CODE\nwhere p.PROC_TITLE like 'Follow%' or p.PROC_TITLE like 'FU%'\n)\n \nselect *,\ncase \nwhen a.PROC_TITLE like 'Follow%' then a.PROC_TITLE\nwhen a.PROC_TITLE like 'FU%' then a.PROC_TITLE\nelse 'FollowUpTwoMonthifChronicConditionElseFollowupasNeeded'\nend as 'FOLLOWUPTIMENEEDED',\nCASE \nWHEN a.PROC_TITLE LIKE '%YEAR%' THEN 211\nWHEN A.PROC_TITLE LIKE '%WELLNE%' THEN 211\nWHEN A.PROC_TITLE LIKE 'FOLLOW%' THEN 234\nWHEN A.PROC_TITLE LIKE 'FU%' THEN 234\nEND AS 'APPT_TYPE_TO_USE'\nfrom addproc a\nwhere a.DEM_EXTERNALID like @MRN\norder by a.PATIENT_LASTNAME "
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        -140
+      ],
+      "id": "ac8d29e5-ca69-4c1f-adfc-b3e636c78621",
+      "name": "EMR_DCARE_ORDERS_WITH_ORDERABLE_CPTS7",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-11T19:58:11.919Z",
+  "versionId": "6164ee1c-7b92-41a0-ab97-04fd306c50e0"
+}
