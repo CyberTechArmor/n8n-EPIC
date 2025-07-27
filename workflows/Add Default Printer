@@ -1,0 +1,171 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Binary File": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Convert to/from binary data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to/from binary data": {
+      "main": [
+        [
+          {
+            "node": "Write Binary File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-06T12:14:26.284Z",
+  "id": "SavBkYtzvEukNJam",
+  "isArchived": false,
+  "meta": null,
+  "name": "Add Default Printer",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "17f2a5a1-18ae-4e74-9e48-6c519cd2b235",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "fa159c17-97d9-4622-b695-154d85c463ea",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        600
+      ],
+      "webhookId": "17f2a5a1-18ae-4e74-9e48-6c519cd2b235",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "a34ea64b-314a-4636-af3e-86e1144219c2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "abbb71d7-2b86-41ad-a81b-72a71c64b6b9",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        160
+      ],
+      "webhookId": "a34ea64b-314a-4636-af3e-86e1144219c2"
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "responseDataSource": "set",
+        "options": {}
+      },
+      "id": "d605084d-4ea8-4c41-a11c-4ea109ae3bab",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fileName": "file.json",
+        "dataPropertyName": "=data",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "baf7cebc-23d4-4e83-bef4-e3e0ea5ebcbd",
+      "name": "Write Binary File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "printer",
+              "stringValue": "=$printer =\"\\\\10.0.1.200\\CLAW FrontDesk\"\n(New-Object -ComObject WScript.Network).RemovePrinterConnection($printer)\n\n\n$printer = \"\\\\10.0.1.200\\CLAW FrontDesk\"\nAdd-Printer -ConnectionName \"\\\\10.0.1.200\\CLAW FrontDesk\"\n(New-Object -ComObject WScript.Network).SetDefaultPrinter('\\\\10.0.1.200\\CLAW FrontDesk')"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1d0ea303-a51f-4628-9db4-eb7a5d37ae60",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        620,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "jsonToBinary",
+        "options": {}
+      },
+      "id": "2e06cbe3-6207-43ae-8d85-4cf404d343dc",
+      "name": "Convert to/from binary data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        160
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-01-07T23:29:33.478Z",
+  "versionId": "98e86e7b-08bc-4efc-b2c0-b5c2569e61f9"
+}
