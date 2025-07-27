@@ -1,0 +1,1013 @@
+{
+  "active": true,
+  "connections": {
+    "ReadyToDeploy": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MoveToInventory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MoveToInventory": {
+      "main": [
+        [
+          {
+            "node": "DeleteRow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "LaptopInventory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Archived": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "CreateArchived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pending": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LaptopInventory": {
+      "main": [
+        [
+          {
+            "node": "DeleteRow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateArchived": {
+      "main": [
+        [
+          {
+            "node": "DeleteRow2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "CheckedOutDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LaptopInventoryDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MoveToCheckOut",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LaptopInventoryDB": {
+      "main": [
+        [
+          {
+            "node": "Active",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ArchievedInventory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Active": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MoveToCheckOut": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ArchievedInventory": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MoveToArchive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MoveToArchive": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckedOutDB": {
+      "main": [
+        [
+          {
+            "node": "ReadyToDeploy",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Pending",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Archived",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-06T16:10:12.139Z",
+  "id": "IvT13bH4QQwB7VBM",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "UpdateLaptopInventory",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "91f260bb-620e-44cc-9187-a68b9ddc8507",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Ready to Deploy",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "708dbbb4-4fe8-4aa0-893b-0cbf2a877ca6",
+      "name": "ReadyToDeploy",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        680,
+        260
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b820a8c1-8e6e-40a2-b6b6-a0e5f1005f9c",
+              "leftValue": "={{ $json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c5e99be4-05a0-42a9-bc85-2acd7cf01022",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mxzz17ha3ermk9y",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $('ReadyToDeploy').item.json.Model }}"
+            },
+            {
+              "fieldName": "Serial #",
+              "fieldValue": "={{ $('ReadyToDeploy').item.json.Serial }}"
+            },
+            {
+              "fieldName": "Hostname",
+              "fieldValue": "={{ $('ReadyToDeploy').item.json.hostname }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "={{ $('ReadyToDeploy').item.json.Status }}"
+            }
+          ]
+        }
+      },
+      "id": "b36a0358-88de-4ac0-a8af-c5fb6de9114d",
+      "name": "MoveToInventory",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a52aee70-41ac-43c5-a726-98b88ffbe252",
+              "leftValue": "={{ $('CheckedOutDB').item.json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6c77d3a2-e58f-4a1b-b30f-ced339abb37d",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5df2d06c-be2f-4c1e-ac63-ab8b4947b835",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Archived",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a59c7131-f4b2-4123-9cf0-57068c19f72f",
+      "name": "Archived",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        680,
+        640
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a52aee70-41ac-43c5-a726-98b88ffbe252",
+              "leftValue": "={{ $('Archived').item.json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "318ce1ca-b750-4d3d-9eb5-af96833c7003",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "ac00f6df-7445-44a8-8e14-c49854dee4a1",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Pending",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f38e50f2-3bd4-40c5-9b8f-596c71a3d3cc",
+      "name": "Pending",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        680,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "id": "={{ $('Pending').item.json.Id }}"
+      },
+      "id": "e3a5b87b-f43a-4fb0-a722-5c9f5e97e19b",
+      "name": "DeleteRow1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "id": "={{ $('ReadyToDeploy').item.json.Id }}"
+      },
+      "id": "b24802aa-cf56-4604-ad92-c40f9524fa1a",
+      "name": "DeleteRow",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1300,
+        280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "id": "={{ $('Archived').item.json.Id }}"
+      },
+      "id": "cfa905ca-fefe-4847-86a8-ee0ab4f7f2fd",
+      "name": "DeleteRow2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        660
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mxzz17ha3ermk9y",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Serial #",
+              "fieldValue": "={{ $json.Serial }}"
+            },
+            {
+              "fieldName": "Hostname",
+              "fieldValue": "={{ $json.hostname }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "={{ $json.Status }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $json.Notes }}"
+            },
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.Username }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Location }}"
+            },
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $json.Model }}"
+            }
+          ]
+        }
+      },
+      "id": "6a5eea6e-1d9f-45e0-8eda-a8326caa9530",
+      "name": "LaptopInventory",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        460
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": false,
+      "executeOnce": false,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mttuzo3cl64r9u5",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $json.Model }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $json.Notes }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $json.Serial }}"
+            },
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.Username }}"
+            }
+          ]
+        }
+      },
+      "id": "500d060e-5af5-4c1b-bcbe-35e0367aba45",
+      "name": "CreateArchived",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        660
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "5681935c-ad23-4088-ac2d-53c96a185bbe",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        200,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "157bc87e-9d4d-48fa-aeb7-cf5557f9969b",
+              "leftValue": "={{ $json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5e5e830d-e1b7-4422-96c7-984ecad96a4e",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mxzz17ha3ermk9y",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "da069a22-67d4-428f-b36e-48f2ad992031",
+      "name": "LaptopInventoryDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        420,
+        100
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "361e516f-de14-4be9-ba70-cef4ed5172f2",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Active",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "38eb9fe6-e9c7-4aaa-a269-fd56580967a1",
+      "name": "Active",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        680,
+        100
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mxzz17ha3ermk9y",
+        "id": "={{ $('Active').item.json.Id }}"
+      },
+      "id": "ba2ee441-701b-4d43-abd3-6b40885a2a01",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1360,
+        120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $json.Model }}"
+            },
+            {
+              "fieldName": "Category",
+              "fieldValue": "={{ $json.Category }}"
+            },
+            {
+              "fieldName": "hostname",
+              "fieldValue": "={{ $json.Hostname }}"
+            },
+            {
+              "fieldName": "Serial",
+              "fieldValue": "={{ $json['Serial #'] }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $json.User }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Location }}"
+            },
+            {
+              "fieldName": "Static",
+              "fieldValue": "={{ $json.Static }}"
+            },
+            {
+              "fieldName": "Notes",
+              "fieldValue": "={{ $json.Description }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $json.Role }}"
+            }
+          ]
+        }
+      },
+      "id": "5d2945c9-9ca8-4052-94e9-42ca53ed49c9",
+      "name": "MoveToCheckOut",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1140,
+        120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "18793132-be93-4c68-bae3-ae7a8aa99438",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Archived",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cefbcd4c-1a62-4264-a42a-c27f250ed834",
+      "name": "ArchievedInventory",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        680,
+        -40
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "157bc87e-9d4d-48fa-aeb7-cf5557f9969b",
+              "leftValue": "={{ $json.Id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c915dc98-9ed6-42eb-bf23-31013cd67729",
+      "name": "If4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        900,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mttuzo3cl64r9u5",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $json.Model }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $json['Serial #'] }}"
+            },
+            {
+              "fieldName": "Description",
+              "fieldValue": "={{ $json.Description }}"
+            },
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.User }}"
+            }
+          ]
+        }
+      },
+      "id": "aa4e1eb8-0bab-4165-abfb-cc5b10f5abb0",
+      "name": "MoveToArchive",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        -40
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "mxzz17ha3ermk9y",
+        "id": "={{ $('ArchievedInventory').item.json.Id }}"
+      },
+      "id": "ea23095a-5bad-4a00-a3b4-745ced581728",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        -40
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "py0tpke06o2mp0j",
+        "table": "m5t0w17h4o6wxxs",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6247da02-b986-4d11-b16c-582e5933f26b",
+      "name": "CheckedOutDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        420,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-09T13:16:17.927Z",
+  "versionId": "a05483e9-9515-454b-97c0-e01755552b05"
+}
