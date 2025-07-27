@@ -1,0 +1,105 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-16T20:06:41.452Z",
+  "id": "C1UzagPE0Z2ygSpZ",
+  "isArchived": false,
+  "meta": null,
+  "name": "vCard QR Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "53cbf7a3-cb2b-44e1-857f-bee1d34fe2cc",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0f6f7a24-f942-4e30-92d4-371d3dece698",
+      "name": "Webhook",
+      "webhookId": "53cbf7a3-cb2b-44e1-857f-bee1d34fe2cc"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>vCard QR‑Code Generator</title>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n<style>\n  *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}\n  body{margin:0;padding:2rem;background:#eef1f5;color:#222;display:flex;justify-content:center}\n  .wrap{width:100%;max-width:920px;background:#fff;border-radius:12px;\n        box-shadow:0 6px 18px rgba(0,0,0,.08);padding:2rem;display:grid;gap:2rem;\n        grid-template-columns:1fr 300px}\n  h1{grid-column:1/3;margin:.2rem 0 1.2rem;font-size:1.7rem;text-align:center}\n  label{display:block;font-size:.78rem;margin-bottom:.25rem;color:#555}\n  input{width:100%;padding:.48rem .6rem;margin-bottom:1rem;border:1px solid #c8ccd0;\n        border-radius:6px;font-size:.9rem}\n  input[type=file]{padding:0;border:none}\n  .btn{background:#0078d7;color:#fff;border:none;border-radius:6px;padding:.65rem 1.3rem;\n       font-size:.9rem;cursor:pointer}\n  .btn[disabled]{background:#9db7d4;cursor:not-allowed}\n  #qrBox{width:100%;aspect-ratio:1;border:1px solid #dde0e4;border-radius:6px;\n         display:flex;align-items:center;justify-content:center;overflow:hidden}\n  #qrBox img{width:100%;height:100%;object-fit:contain}\n  #dl{margin-top:.7rem;display:none;text-align:center;text-decoration:none}\n  @media(max-width:760px){.wrap{grid-template-columns:1fr}}\n</style>\n</head>\n<body>\n\n<div class=\"wrap\">\n  <h1>vCard QR‑Code Generator</h1>\n\n  <!-- ─────────────  FORM  ───────────── -->\n  <form id=\"f\">\n    <label>First Name<input name=\"firstName\" required></label>\n    <label>Last Name<input name=\"lastName\" required></label>\n    <label>Phone<input name=\"phone\"></label>\n    <label>Email<input name=\"email\" type=\"email\"></label>\n    <label>Company<input name=\"company\"></label>\n    <label>Job Title<input name=\"job\"></label>\n    <label>Street<input name=\"street\"></label>\n    <label>City<input name=\"city\"></label>\n    <label>State<input name=\"state\"></label>\n    <label>ZIP<input name=\"zip\"></label>\n    <label>Country<input name=\"country\"></label>\n    <label>Website<input name=\"website\" placeholder=\"https://\"></label>\n    <label>Logo (optional)<input name=\"logo\" type=\"file\" accept=\"image/*\"></label>\n    <button type=\"submit\" class=\"btn\">Generate QR</button>\n  </form>\n\n  <!-- ───────────── PREVIEW / DOWNLOAD ───────────── -->\n  <div>\n    <div id=\"qrBox\">QR Preview</div>\n    <a id=\"dl\" class=\"btn\" download>Download PNG</a>\n  </div>\n</div>\n\n<script>\n/* -------- helpers ------------------------------------------------------- */\nfunction makeVCard(d){\n  const lines=[\n    'BEGIN:VCARD','VERSION:3.0',\n    `N:${d.lastName};${d.firstName}`,\n    `FN:${[d.firstName,d.lastName].filter(Boolean).join(' ')}`,\n  ];\n  if(d.company) lines.push(`ORG:${d.company}`);\n  if(d.job)     lines.push(`TITLE:${d.job}`);\n  if(d.phone)   lines.push(`TEL;TYPE=CELL:${d.phone}`);\n  if(d.email)   lines.push(`EMAIL;TYPE=INTERNET:${d.email}`);\n  if(d.street||d.city||d.state||d.zip||d.country)\n    lines.push(`ADR;TYPE=WORK:;;${d.street};${d.city};${d.state};${d.zip};${d.country}`);\n  if(d.website) lines.push(`URL:${d.website}`);\n  lines.push('END:VCARD');\n  return lines.join('\\n');\n}\n\nconst form  = document.getElementById('f');\nconst qrBox = document.getElementById('qrBox');\nconst dl    = document.getElementById('dl');\nconst logoInput = form.querySelector('input[name=logo]');\n\n/* tiny util to load <img> from url/dataURL/blobURL */\nfunction loadImage(src){\n  return new Promise((res,rej)=>{\n    const img=new Image();\n    img.onload=()=>res(img);\n    img.onerror=rej;\n    img.src=src;\n  });\n}\n/* read chosen logo file as data URL */\nfunction fileToDataURL(file){\n  return new Promise((res,rej)=>{\n    const fr=new FileReader();\n    fr.onload=()=>res(fr.result);\n    fr.onerror=rej;\n    fr.readAsDataURL(file);\n  });\n}\n\n/* ----------------------------- main action ------------------------------ */\nform.addEventListener('submit',async ev=>{\n  ev.preventDefault();\n  dl.style.display='none';           // hide download until ready\n  qrBox.textContent='⏳ Generating…';\n\n  const data  = Object.fromEntries(new FormData(form).entries());\n  const vcard = makeVCard(data);\n  const payload = encodeURIComponent(vcard);\n\n  /* get raw QR PNG from qrserver ---------------------------- */\n  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?data=${payload}&size=300x300&format=png`;\n  const qrBlob = await (await fetch(qrURL)).blob();              // blob keeps same‑origin\n  const qrObjURL = URL.createObjectURL(qrBlob);\n  const qrImg = await loadImage(qrObjURL);\n\n  /* prepare canvas + draw QR -------------------------------- */\n  const SIZE = 300;\n  const canvas = document.createElement('canvas');\n  canvas.width = canvas.height = SIZE;\n  const ctx = canvas.getContext('2d');\n  ctx.drawImage(qrImg,0,0,SIZE,SIZE);\n\n  /* if a logo was chosen, overlay it at 25% of QR size ------- */\n  const logoFile = logoInput.files[0];\n  if(logoFile){\n    const logoDataURL = await fileToDataURL(logoFile);\n    const logoImg = await loadImage(logoDataURL);\n    const LOGO_SIZE = SIZE*0.25;\n    const xy = (SIZE-LOGO_SIZE)/2;\n    ctx.drawImage(logoImg,xy,xy,LOGO_SIZE,LOGO_SIZE);\n  }\n\n  /* convert canvas to dataURL (preview) + blob (download) ---- */\n  const finalDataURL = canvas.toDataURL('image/png');\n  const finalBlob    = await new Promise(r=>canvas.toBlob(r,'image/png'));\n  const finalObjURL  = URL.createObjectURL(finalBlob);\n\n  qrBox.innerHTML = `<img src=\"${finalDataURL}\" alt=\"QR Code\">`;\n  dl.href        = finalObjURL;\n  dl.download    = `${data.firstName||'contact'}_${data.lastName||''}_vcard_qr.png`;\n  dl.textContent = 'Download PNG';\n  dl.style.display='inline-block';\n});\n</script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        20
+      ],
+      "id": "2f9ca32a-17c6-4af5-be82-05794a35114f",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "vCard-to-QR-code",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -160
+      ],
+      "id": "b92b40a4-4390-41f8-8d80-6cdc071eb76a",
+      "name": "Webhook1",
+      "webhookId": "53cbf7a3-cb2b-44e1-857f-bee1d34fe2cc"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>vCard QR‑Code Generator</title>\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n<style>\n  *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}\n  body{margin:0;padding:2rem;background:#eef1f5;color:#222;display:flex;justify-content:center}\n  .wrap{width:100%;max-width:920px;background:#fff;border-radius:12px;\n        box-shadow:0 6px 18px rgba(0,0,0,.08);padding:2rem;display:grid;gap:2rem;\n        grid-template-columns:1fr 300px}\n  h1{grid-column:1/3;margin:.2rem 0 1.2rem;font-size:1.7rem;text-align:center}\n  label{display:block;font-size:.78rem;margin-bottom:.25rem;color:#555}\n  input{width:100%;padding:.48rem .6rem;margin-bottom:1rem;border:1px solid #c8ccd0;\n        border-radius:6px;font-size:.9rem}\n  input[type=file]{padding:0;border:none}\n  .btn{background:#0078d7;color:#fff;border:none;border-radius:6px;padding:.65rem 1.3rem;\n       font-size:.9rem;cursor:pointer}\n  .btn[disabled]{background:#9db7d4;cursor:not-allowed}\n  #qrBox{width:100%;aspect-ratio:1;border:1px solid #dde0e4;border-radius:6px;\n         display:flex;align-items:center;justify-content:center;overflow:hidden}\n  #qrBox img{width:100%;height:100%;object-fit:contain}\n  #dl{margin-top:.7rem;display:none;text-align:center;text-decoration:none}\n  @media(max-width:760px){.wrap{grid-template-columns:1fr}}\n</style>\n</head>\n<body>\n\n<div class=\"wrap\">\n  <h1>vCard QR‑Code Generator</h1>\n\n  <!-- ─────────────  FORM  ───────────── -->\n  <form id=\"f\">\n    <label>First Name<input name=\"firstName\" required></label>\n    <label>Last Name<input name=\"lastName\" required></label>\n    <label>Phone<input name=\"phone\"></label>\n    <label>Email<input name=\"email\" type=\"email\"></label>\n    <label>Company<input name=\"company\"></label>\n    <label>Job Title<input name=\"job\"></label>\n    <label>Street<input name=\"street\"></label>\n    <label>City<input name=\"city\"></label>\n    <label>State<input name=\"state\"></label>\n    <label>ZIP<input name=\"zip\"></label>\n    <label>Country<input name=\"country\"></label>\n    <label>Website<input name=\"website\" placeholder=\"https://\"></label>\n    <label>Logo (optional)<input name=\"logo\" type=\"file\" accept=\"image/*\"></label>\n    <button type=\"submit\" class=\"btn\">Generate QR</button>\n  </form>\n\n  <!-- ───────────── PREVIEW / DOWNLOAD ───────────── -->\n  <div>\n    <div id=\"qrBox\">QR Preview</div>\n    <a id=\"dl\" class=\"btn\" download>Download PNG</a>\n  </div>\n</div>\n\n<script>\n/* -------- helpers ------------------------------------------------------- */\nfunction makeVCard(d){\n  const lines=[\n    'BEGIN:VCARD','VERSION:3.0',\n    `N:${d.lastName};${d.firstName}`,\n    `FN:${[d.firstName,d.lastName].filter(Boolean).join(' ')}`,\n  ];\n  if(d.company) lines.push(`ORG:${d.company}`);\n  if(d.job)     lines.push(`TITLE:${d.job}`);\n  if(d.phone)   lines.push(`TEL;TYPE=CELL:${d.phone}`);\n  if(d.email)   lines.push(`EMAIL;TYPE=INTERNET:${d.email}`);\n  if(d.street||d.city||d.state||d.zip||d.country)\n    lines.push(`ADR;TYPE=WORK:;;${d.street};${d.city};${d.state};${d.zip};${d.country}`);\n  if(d.website) lines.push(`URL:${d.website}`);\n  lines.push('END:VCARD');\n  return lines.join('\\n');\n}\n\nconst form  = document.getElementById('f');\nconst qrBox = document.getElementById('qrBox');\nconst dl    = document.getElementById('dl');\nconst logoInput = form.querySelector('input[name=logo]');\n\n/* tiny util to load <img> from url/dataURL/blobURL */\nfunction loadImage(src){\n  return new Promise((res,rej)=>{\n    const img=new Image();\n    img.onload=()=>res(img);\n    img.onerror=rej;\n    img.src=src;\n  });\n}\n/* read chosen logo file as data URL */\nfunction fileToDataURL(file){\n  return new Promise((res,rej)=>{\n    const fr=new FileReader();\n    fr.onload=()=>res(fr.result);\n    fr.onerror=rej;\n    fr.readAsDataURL(file);\n  });\n}\n\n/* ----------------------------- main action ------------------------------ */\nform.addEventListener('submit',async ev=>{\n  ev.preventDefault();\n  dl.style.display='none';           // hide download until ready\n  qrBox.textContent='⏳ Generating…';\n\n  const data  = Object.fromEntries(new FormData(form).entries());\n  const vcard = makeVCard(data);\n  const payload = encodeURIComponent(vcard);\n\n  /* get raw QR PNG from qrserver ---------------------------- */\n  const qrURL = `https://api.qrserver.com/v1/create-qr-code/?data=${payload}&size=300x300&format=png`;\n  const qrBlob = await (await fetch(qrURL)).blob();              // blob keeps same‑origin\n  const qrObjURL = URL.createObjectURL(qrBlob);\n  const qrImg = await loadImage(qrObjURL);\n\n  /* prepare canvas + draw QR -------------------------------- */\n  const SIZE = 300;\n  const canvas = document.createElement('canvas');\n  canvas.width = canvas.height = SIZE;\n  const ctx = canvas.getContext('2d');\n  ctx.drawImage(qrImg,0,0,SIZE,SIZE);\n\n  /* if a logo was chosen, overlay it at 25% of QR size ------- */\n  const logoFile = logoInput.files[0];\n  if(logoFile){\n    const logoDataURL = await fileToDataURL(logoFile);\n    const logoImg = await loadImage(logoDataURL);\n    const LOGO_SIZE = SIZE*0.25;\n    const xy = (SIZE-LOGO_SIZE)/2;\n    ctx.drawImage(logoImg,xy,xy,LOGO_SIZE,LOGO_SIZE);\n  }\n\n  /* convert canvas to dataURL (preview) + blob (download) ---- */\n  const finalDataURL = canvas.toDataURL('image/png');\n  const finalBlob    = await new Promise(r=>canvas.toBlob(r,'image/png'));\n  const finalObjURL  = URL.createObjectURL(finalBlob);\n\n  qrBox.innerHTML = `<img src=\"${finalDataURL}\" alt=\"QR Code\">`;\n  dl.href        = finalObjURL;\n  dl.download    = `${data.firstName||'contact'}_${data.lastName||''}_vcard_qr.png`;\n  dl.textContent = 'Download PNG';\n  dl.style.display='inline-block';\n});\n</script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -160
+      ],
+      "id": "b4c8731f-c82e-4d93-a035-ab893205a7d4",
+      "name": "Respond to Webhook1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-04-17T11:39:27.167Z",
+  "versionId": "ae053be8-372f-4c3d-bb33-bcafe2308822"
+}
