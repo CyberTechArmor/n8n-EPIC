@@ -1,0 +1,484 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Ferndale",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SFD 10 Mile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SFD P Care",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SFD S Care",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "DET Livernois",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "DET 7 Mile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RO Woodward",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SCS Harper",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Flint Linden",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HAM E Davison",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Det W Dav",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ferndale": {
+      "main": [
+        []
+      ]
+    },
+    "SFD 10 Mile": {
+      "main": [
+        []
+      ]
+    },
+    "SFD P Care": {
+      "main": [
+        []
+      ]
+    },
+    "SFD S Care": {
+      "main": [
+        []
+      ]
+    },
+    "DET Livernois": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-03-05T04:51:00.785Z",
+  "id": "c4wMcqxrL5wzbTCs",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Auto CLIA Waived Weekly QA Form to BAs",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                4
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "b96b38d6-4757-4341-83ef-ef188ea686f5",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 191,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"krankin@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "df8601da-5f48-4cfa-aef7-b2e94c8e7462",
+      "name": "Ferndale",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 201,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"leubanks@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "f01cd74e-fe36-4977-b03f-f4fdc1451685",
+      "name": "SFD 10 Mile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 202,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"krawlings@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "2d025615-f0c5-41f8-aed2-6dac78541a07",
+      "name": "SFD P Care",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 203,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"krawlings@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c7cc2042-ea95-49b8-b281-cfa553b641f4",
+      "name": "SFD S Care",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 204,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"amoore2@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "1ee36232-84f9-48fe-8c73-b28723a96f0a",
+      "name": "DET Livernois",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 205,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"awaters@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "adcbd727-331d-4ee7-82dd-2df6ebddb943",
+      "name": "DET 7 Mile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 206,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"nfeimster@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "a784b40c-9c49-4559-9ce3-59ef75205f5c",
+      "name": "Flint Linden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        -320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 207,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"jchaney@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b0cea264-e1a7-4a18-8cc1-9d4990389376",
+      "name": "HAM E Davison",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 208,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"kwagner@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "db9c9f8e-fb74-48b0-a4ff-7436e4e7f8bf",
+      "name": "RO Woodward",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 209,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"aclarke@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "7b8d3692-f9b6-44a9-a780-bd285d55d117",
+      "name": "SCS Harper",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://docu.epicpc.com/api/submissions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Auth-Token",
+              "value": "8UTMzsoRxAjGTnbbwANPFBSTn3jGp6dftzrEuTEZtc9"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"template_id\": 288,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"cfitzpatrick@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "f1d9c184-bbc8-4f3f-95e1-0814f41e721c",
+      "name": "Det W Dav",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        -620
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-11-16T03:03:49.897Z",
+      "updatedAt": "2024-11-16T03:03:49.897Z",
+      "id": "quzhQBMKVBr9D9nv",
+      "name": "Whitney"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-23T20:26:43.504Z",
+  "versionId": "d84e24d0-cb53-43f3-8111-1dd356214e20"
+}
