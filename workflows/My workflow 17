@@ -1,0 +1,66 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SSH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-03T23:43:32.112Z",
+  "id": "t8ZqttNbUkri6oYy",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 17",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "091988ae-97d9-4d28-8505-0bb1b608ae42",
+        "options": {}
+      },
+      "id": "1df978c1-990c-4da9-8b1e-931537451220",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        220,
+        180
+      ],
+      "webhookId": "091988ae-97d9-4d28-8505-0bb1b608ae42"
+    },
+    {
+      "parameters": {},
+      "id": "16cdfb86-0909-44c9-934c-5d1d97d92354",
+      "name": "SSH",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        440,
+        180
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "C09duQEWauyVNEF3",
+          "name": "SSH Password account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-03T23:43:32.112Z",
+  "versionId": "348c8662-bd41-473e-b40b-bf7cae9b776f"
+}
