@@ -1,0 +1,296 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitDescription": {
+      "main": [
+        [
+          {
+            "node": "ConvertDateToBitrix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConvertDateToBitrix": {
+      "main": [
+        [
+          {
+            "node": "Post Task To Bitrix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SplitDescription",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-24T14:10:41.648Z",
+  "id": "fYGrSykRHjg7cLJb",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Onboarding - Post Task",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"taskId\":\"32510\"\n}",
+        "options": {}
+      },
+      "id": "bac7490b-9fcb-44cd-a9c3-6bf60fd5bf50",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"32510\",\n  \"fields\": {\n    \"DESCRIPTION\": \" {{ $json.result.task.description }}<br> Here is a helpful link: <a href=\\\"https://www.google.com\\\">Google</a>\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "7b96951a-355c-4c75-9d92-959abb377ed0",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1440,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fedfef04-456a-4c34-9b71-71aed231242f",
+              "name": "result.task.description",
+              "value": "={{ $json.result.task.description.replace(/\\n/g, '') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d078574f-e6df-4ea0-81c7-df1771ac790b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1240,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/HfGSaESbSvdMMTBqPzjwhHKrZpanYaUczouOcRfD/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"shell\": \"powershell\",\n  \"cmd\": \"$username = \\\"  \\\"; $password = \\\"  \\\"; $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; Set-ADAccountPassword -Identity $username -NewPassword $securePassword -Reset; Set-ADUser -Identity $username -PasswordNeverExpires $true -ChangePasswordAtLogon $false; Enable-ADAccount -Identity $username;\",\n  \"timeout\": 30,\n  \"custom_shell\": null,\n  \"run_as_user\": true\n}\n",
+        "options": {}
+      },
+      "id": "0d1915e0-73eb-433e-8063-3b5d3459460b",
+      "name": "Send Powershell CMD to RMM Agent6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        780
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Assuming the query is stored in json object from the webhook\nconst json = $json.query;\n\n// Log the available keys in the JSON to help debug the issue\nconsole.log(\"Available keys:\", Object.keys(json));\n\n// Check if 'Start Date' exists in the json object by exact key\nif (json && json['Start Date']) {\n  const inputDate = json['Start Date']; // Access the Start Date field\n\n  // Create a new Date object\n  const dateObj = new Date(inputDate);\n\n  // Convert it to ISO 8601 format\n  const isoDate = dateObj.toISOString();\n\n  // Return an object with the ISO 8601 formatted date\n  return {\n    startDateISO: isoDate\n  };\n} else {\n  // Handle the case where 'Start Date' is not found\n  return {\n    error: \"Start Date field is missing or undefined\"\n  };\n}\n"
+      },
+      "id": "e8628c9a-925d-4a88-8b62-d5d3041b0119",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Input: Get the incoming string from the webhook node\nconst inputString = $json[\"body\"];\n\n// Replace escaped \"\\n\" with actual new lines\nconst cleanedInputString = inputString.replace(/\\\\n/g, '\\n');\n\n// Split the input string by new lines\nconst lines = cleanedInputString.split('\\n');\n\n// Initialize an empty object to store parsed key-value pairs\nconst parsedData = {};\n\n// Iterate over each line\nlines.forEach(line => {\n  // Split each line by the first colon to separate key and value\n  const [key, ...valueParts] = line.split(':');\n  const value = valueParts.join(':').trim();  // Rejoin in case value contains ':'\n  \n  // Clean up the key and value and add to the parsedData object\n  if (key && value) {\n    const cleanedKey = key.trim();\n    parsedData[cleanedKey] = value;\n  }\n});\n\n// Return the parsed data as output\nreturn parsedData;\n"
+      },
+      "id": "55b696fa-e0c1-4b60-bdf4-75735e703dc2",
+      "name": "SplitDescription",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        580,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Log the entire input JSON to check its structure\nconsole.log(\"Full input JSON:\", $json);\n\n// Assuming the query is stored in json object directly from the input\nconst json = $json;\n\n// Log the available keys in the JSON to help debug the issue\nif (json) {\n  console.log(\"Available keys:\", Object.keys(json));\n} else {\n  console.log(\"json object is undefined or null\");\n}\n\n// Check if 'Start Date' exists in the json object by exact key\nif (json && json['Start Date']) {\n  const inputDate = json['Start Date']; // Access the Start Date field\n\n  // Create a new Date object\n  const dateObj = new Date(inputDate);\n\n  // Check if the date is valid\n  if (isNaN(dateObj.getTime())) {\n    return {\n      error: \"Invalid Start Date format\"\n    };\n  }\n\n  // Convert it to ISO 8601 format\n  const isoDate = dateObj.toISOString();\n\n  // Return an object with the ISO 8601 formatted date\n  return {\n    startDateISO: isoDate\n  };\n} else {\n  // Handle the case where 'Start Date' is not found\n  return {\n    error: \"Start Date field is missing or undefined\"\n  };\n}\n"
+      },
+      "id": "f6eb061e-a322-4b83-942b-2643a9b8fd67",
+      "name": "ConvertDateToBitrix",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \" {{ $('SplitDescription').item.json.Onboarding }} {{ $('SplitDescription').item.json.NewhireName }} - {{ $('SplitDescription').item.json.Role }}\",\n       \"GROUP_ID\":\"76\",\n       \"RESPONSIBLE_ID\": \"12\",\n       \"DESCRIPTION\": \"Start Date: {{ $('SplitDescription').item.json['Start Date'] }}{{'\\\\n'}}Location: {{ $('SplitDescription').item.json.Location }}{{'\\\\n'}}Department:{{ $('SplitDescription').item.json.Department }} {{'\\\\n'}}EmployeeType: {{ $('SplitDescription').item.json['Employee Type'] }}{{'\\\\n'}}New Hire Login Document: <a href=\\\"{{ $('SplitDescription').item.json['NewHire Document'] }}\\\">Welcome {{ $('SplitDescription').item.json.NewhireName }}</a>\",\n       \"START_DATE_PLAN\":\"{{ $json.startDateISO }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "6aa2f12a-dfab-4897-9699-733b0723185f",
+      "name": "Post Task To Bitrix",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1020,
+        520
+      ],
+      "notes": "\"GROUP_ID\":\"74\", Group ID\n\"RESPONSIBLE_ID\": \"19\", Responsible person"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2d5dea26-a824-45da-9565-b2354206a59a",
+        "options": {}
+      },
+      "id": "7fcad426-38ea-4519-beed-14c6a3c686bc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        280,
+        520
+      ],
+      "webhookId": "2d5dea26-a824-45da-9565-b2354206a59a"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "52.160.70.221",
+            "x-forwarded-for": "52.160.70.221",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "275",
+            "accept-language": "en-US",
+            "user-agent": "azure-logic-apps/1.0 (workflow 884fa70a3ad04902beff8843b2b74ca0; version 08584744009016876024) microsoft-flow/1.0",
+            "x-ms-workflow-id": "884fa70a3ad04902beff8843b2b74ca0",
+            "x-ms-workflow-version": "08584744009016876024",
+            "x-ms-workflow-name": "e4d5219b-32a9-44e9-bdaf-0ab6ee8ac648",
+            "x-ms-workflow-system-id": "/locations/westus/scaleunits/prod-32/workflows/884fa70a3ad04902beff8843b2b74ca0",
+            "x-ms-workflow-run-id": "08584744008549310226406300240CU132",
+            "x-ms-workflow-run-tracking-id": "fa3a3daa-2164-4721-a385-60b1379e840c",
+            "x-ms-workflow-operation-name": "HTTP",
+            "x-ms-execution-location": "westus",
+            "x-ms-workflow-subscription-id": "2c8cfba1-d125-4f31-a479-50156c7ed09f",
+            "x-ms-workflow-resourcegroup-name": "5AD4FE4CCDAC42089583F4ACA9B1A2EF-B43AC155317E425EB41D54F801DA9A1D",
+            "x-ms-tracking-id": "46a7ae05-b667-44c8-833b-2bf113161c58",
+            "x-ms-correlation-id": "46a7ae05-b667-44c8-833b-2bf113161c58",
+            "x-ms-client-request-id": "46a7ae05-b667-44c8-833b-2bf113161c58",
+            "x-ms-client-tracking-id": "08584744012516385815649210923CU12",
+            "x-ms-action-tracking-id": "4597d981-4256-48e3-9b77-1c09bb807597",
+            "x-ms-client-keywords": "testFlow",
+            "x-ms-activity-vector": "00.01.IN.0H.IN.07.IN.0C",
+            "accept-encoding": "gzip, deflate",
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "params": {},
+          "query": {},
+          "body": "Onboarding: New Hire\nNewhireName: Jason Tip Lee\nStart Date: 09-25-2024\nLocation: Royal Oak\nDepartment: Medical\nRole: APP/NPI/Provider\nEmployee Type:Staff\nNewHire Document: https://epichsorg587.sharepoint.com/:w:/s/EPICOnboarding/ETC2DLfzt5hMtwMgkUbZ33YBTNnR093vll6ZFfsDykd3ZQ",
+          "webhookUrl": "https://xl.epicpc.com/webhook-test/2d5dea26-a824-45da-9565-b2354206a59a",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-24T19:38:23.475Z",
+  "versionId": "5e7d725e-69e9-4786-b13d-a72e10c27738"
+}
