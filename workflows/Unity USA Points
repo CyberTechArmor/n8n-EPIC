@@ -1,0 +1,2822 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Delete User by ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete User by ID": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create User1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Email": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB3": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB4": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "NocoDB5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Date & Time4": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time5": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "NocoDB6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Date & Time8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time6": {
+      "main": [
+        [
+          {
+            "node": "Date & Time7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time7": {
+      "main": [
+        [
+          {
+            "node": "Date & Time10",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time8": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time9": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time10": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time11": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "NocoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get User by ID": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Switch6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch6": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NocoDB8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch7": {
+      "main": [
+        [
+          {
+            "node": "Summarize1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB8": {
+      "main": [
+        [
+          {
+            "node": "Switch7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create User1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch5": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-14T11:26:38.593Z",
+  "id": "IVpNt6HBjl20ZN16",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Unity USA Points",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "696b766d-7e96-478c-a676-ae43f977263f",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        320,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "path": "9f484744-2123-4e09-b71c-3a48081d3a8f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d0c5e499-d4ba-4b47-99c3-a169701e1419",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1220,
+        480
+      ],
+      "webhookId": "9f484744-2123-4e09-b71c-3a48081d3a8f",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<html><head></head><body>\n<div class=\"full-width-iframe\">\n<iframe src=\"https://forms.myunitycare.com/index.php/617942?newtest=Y&lang=en\" frameborder=\"0\"></iframe>\n</div>\n<style>\n    .full-width-iframe {\n        width: 100%; /* Adjust the width as needed */\n        height: 500px; /* Adjust the height as needed */\n        overflow: hidden;\n    }\n    .full-width-iframe iframe {\n        width: 100%;\n        height: 100%;\n    }\n</style>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "bded2e30-bc41-44b4-9abe-8752d51412fb",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://usa.epicpc.com/wp-json/wp/v2/users",
+        "options": {}
+      },
+      "id": "00b92b9b-0cf2-428c-a8f8-87a0ae628404",
+      "name": "Get Users",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://usa.epicpc.com/wp-json/wp/v2/users/9",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic bm1udXNhOk9WMHAgOEdNRiByMEt6IFIxYWsgR0dLQyBVMGVB"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "53417521-8257-465f-a867-8a780e8b4842",
+      "name": "Get User by ID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "9f4e9646-bb32-42f9-96f7-e27c00182343",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        300,
+        800
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "unityID",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $json.Id }}"
+            },
+            {
+              "fieldName": "username",
+              "fieldValue": "={{ $json.PERSONAL_E_MAIL }}"
+            }
+          ]
+        }
+      },
+      "id": "b25f3fbe-ea5d-4d44-a137-457860b4799f",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1660,
+        1260
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "f025d19b-6630-44ab-a998-aea5c7c91a95",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1620,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/wp/v2/users/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic bm1udXNhOk9WMHAgOEdNRiByMEt6IFIxYWsgR0dLQyBVMGVB"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{ $json.PERSONAL_E_MAIL }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.PERSONAL_E_MAIL }}"
+            },
+            {
+              "name": "password",
+              "value": "!23QweAsdZxc"
+            },
+            {
+              "name": "roles",
+              "value": "subscriber"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $json.PAYROLL_FIRST_NAME }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $json.PAYROLL_LAST_NAME }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "339b1399-4ce3-4416-b536-7f2ca14480bc",
+      "name": "Create User1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=https://usa.epicpc.com/wp-json/wp/v2/users/{{ $json.id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "force",
+              "value": "true"
+            },
+            {
+              "name": "reassign",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic bm1udXNhOk9WMHAgOEdNRiByMEt6IFIxYWsgR0dLQyBVMGVB"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6875d5d1-e448-41a9-86e6-820c818ad35e",
+      "name": "Delete User by ID",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2280,
+        820
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": 15,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8a59deae-94b9-4de2-a117-77a64d1ae7d5",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        820
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3bd8dbc5-0f82-41b7-ae7b-aac268546642",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2420,
+        820
+      ],
+      "webhookId": "8412206e-4e68-410c-9f84-6818277152ee",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "# Delete in bulk",
+        "height": 303.95293221701854,
+        "width": 695.0126597775411,
+        "color": 3
+      },
+      "id": "b6b14317-b53f-4a3d-84ac-85c469eba8df",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "76bff8cb-2430-4734-9dc9-94f8e7e67512",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        560,
+        800
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3a36cf28-c684-4c7f-afbb-29ef68c74f3f",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1040
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4639bce8-b543-4af8-8dc7-d75e19e04cf6",
+      "name": "No Email",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {},
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "28126eba-dc97-4344-93be-3d0e6736b1fd",
+      "name": "Wordpress Created User",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2420,
+        1140
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Wordpress Call Templates",
+        "height": 933.1747049777995,
+        "width": 440.2662704219988
+      },
+      "id": "cfe00c88-108b-4469-b5b7-81f8dc197a72",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Pins",
+        "height": 932.1678316385239,
+        "width": 221.85588110384
+      },
+      "id": "3a6079b7-aab3-4e03-aa1b-05f7a8307729",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2379.775940718607,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.unityID }}",
+                    "rightValue": {},
+                    "operator": {
+                      "type": "number",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "c5dcf198-c71b-4be2-b855-5ee23d6dfd26",
+                    "leftValue": "={{ $json.PERSONAL_E_MAIL }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "ddc9608a-f8ca-413d-bdb2-6d92d46b2b07",
+                    "leftValue": "={{ $json.unityID }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "number",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "02f5ff59-f027-46c3-90f2-94c2880e94ff",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        820,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "m4zo6qdyoabxvh1",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "edabe821-ed42-455a-9e29-8313cbf74ca1",
+      "name": "NocoDB3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        791,
+        1636
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "96d35e3e-16a9-49b4-be7a-ff88f2e1f912",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1431,
+        1716
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6bef7c3d-dfc4-46f1-8c3d-bb5a6ce096ae",
+      "name": "NocoDB4",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        791,
+        1816
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "PAYROLL_FIRST_NAME",
+              "field2": "PAYROLL_FIRST_NAME"
+            },
+            {
+              "field1": "PAYROLL_LAST_NAME",
+              "field2": "PAYROLL_LAST_NAME"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3cf5f22e-bbf7-4904-8f6f-5ff51b99d33a",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1051,
+        1716
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "={{ $json.different.Id.inputB }}"
+            },
+            {
+              "fieldName": "HIRE DATE",
+              "fieldValue": "={{ $json.different['HIRE DATE'].inputA }}"
+            },
+            {
+              "fieldName": "=BIRTH DATE",
+              "fieldValue": "={{ $json.different['BIRTH DATE'].inputA }}"
+            }
+          ]
+        }
+      },
+      "id": "e6aedc3d-72ba-4240-85a2-803bcec8f85d",
+      "name": "NocoDB5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1711,
+        1716
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Compare Data, Update One Database From Another",
+        "height": 454.52082841981274,
+        "width": 1322.259062956477,
+        "color": 6
+      },
+      "id": "1d16e857-f847-4c35-a5c3-f3b51145b588",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        552.118759738916,
+        1540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bb1beb90-e937-4d70-838c-923a6aa80518",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Create Wordpress User from NoCoDB",
+        "height": 810.357833345774,
+        "width": 1638.5712383408277,
+        "color": 4
+      },
+      "id": "bed16e61-ce8a-48e6-8085-a32d0f1eb5b1",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        233.29862869424414,
+        694.8471031775657
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "b4bab951-d1f4-4ef3-8ec8-91e2548027c8",
+      "name": "NocoDB6",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        2200
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "5c462c60-b77a-4287-b22d-047e7a8fbfcb",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1300,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "user_id",
+              "value": "={{ $json.unityID }}"
+            },
+            {
+              "name": "type",
+              "value": "add"
+            },
+            {
+              "name": "amount",
+              "value": "10"
+            },
+            {
+              "name": "reference",
+              "value": "Birthday Automation"
+            },
+            {
+              "name": "entry",
+              "value": "add"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "331fa520-3a07-4472-96fe-fc62e081927b",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        2520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "532a0bd8-6276-4358-a843-2fc399ff51f8",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        460,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "9038fb47-80ea-48d7-bad0-a0e13f8dea34",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        600,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "outputFieldName": "month",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "3936c740-4ae8-422a-95e4-f512ae8c118f",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        2320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "part": "day",
+        "outputFieldName": "day",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "7569b149-2357-4385-8ed8-e1a0a51940ce",
+      "name": "Date & Time3",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "eeb48f9f-c91f-47e9-917c-e03ff368836a",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1720,
+        2400
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "fbc198e7-ea08-4c39-8978-1be9cd424826",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1920,
+        2240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "outputFieldName": "month",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "fdfb14d5-27bd-4b3c-a671-8e4384f9b640",
+      "name": "Date & Time4",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        760,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "part": "day",
+        "outputFieldName": "day",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "f5b8dd73-3975-4eef-9cea-f2d93746af51",
+      "name": "Date & Time5",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        760,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "fa2b0443-4938-4005-bdab-7a9b0c338c85",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.month }}{{ $json.day }}",
+                    "rightValue": "={{ $('Date & Time4').item.json.month }}{{ $('Date & Time5').item.json.day }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "={{ false }}"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5be198de-9c12-453d-983a-7c6385776d05",
+                    "leftValue": "={{ $json.month }}{{ $json.day }}",
+                    "rightValue": "={{ $('Date & Time4').item.json.month }}{{ $('Date & Time5').item.json.day }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd7cfbf4-5929-4636-a4fe-540bbf0ac8e5",
+      "name": "Switch3",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Birthday Automation: 10 Points",
+        "height": 699.897358947213,
+        "width": 2359.19321205868,
+        "color": 5
+      },
+      "id": "507d9038-c54f-4699-be1a-bddaf7d2d41c",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        2040
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Kickstart",
+        "height": 451.997394563409,
+        "width": 278.1288318522174,
+        "color": 4
+      },
+      "id": "ae270929-a886-476e-8103-8e85c2c077ed",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "bbff2b3e-2404-4307-b2bc-2b6b36fc40f9",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        2200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "user_id",
+              "value": "=738"
+            },
+            {
+              "name": "type",
+              "value": "get"
+            },
+            {
+              "name": "amount",
+              "value": "10"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "f735886d-ebb7-4bda-b972-e55b09cf7e9f",
+      "name": "Get Points of User",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "331117e1-491b-472b-ae17-024cfcd31061",
+      "name": "NocoDB7",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        2940
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "8cc8e3fd-c694-4309-93a2-6e947955f1dc",
+      "name": "Loop Over Items3",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1300,
+        2940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "user_id",
+              "value": "={{ $json.unityID }}"
+            },
+            {
+              "name": "type",
+              "value": "add"
+            },
+            {
+              "name": "amount",
+              "value": "10"
+            },
+            {
+              "name": "reference",
+              "value": "Birthday Automation"
+            },
+            {
+              "name": "entry",
+              "value": "add"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "3ba40278-db1d-4bdc-b3fe-ccadc5096052",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        3260
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7214640d-de1b-4bf4-a9de-542277f57453",
+      "name": "Date & Time6",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        460,
+        2940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "f9b6aa01-9cf4-43d1-8ba2-9ac810fa3c74",
+      "name": "Date & Time7",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        600,
+        2940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['HIRE DATE'] }}",
+        "outputFieldName": "month",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "3352a506-af20-4b1f-8710-e9ddbdd27a84",
+      "name": "Date & Time8",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        3060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['HIRE DATE'] }}",
+        "part": "day",
+        "outputFieldName": "day",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "ec1b967b-4d15-4a10-b8f6-9051e5afb899",
+      "name": "Date & Time9",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        3240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "8618b9be-bff0-4f23-a678-074b70e48402",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1720,
+        3140
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "79720497-3d1d-4f4c-9621-c93b707b39f5",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1920,
+        2980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "outputFieldName": "month",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "ebf565ef-4869-4890-ad73-9a02800beaf6",
+      "name": "Date & Time10",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        760,
+        2860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json['BIRTH DATE'] }}",
+        "part": "day",
+        "outputFieldName": "day",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "17173d47-2f0c-4f32-8a87-a1d08e4bccb8",
+      "name": "Date & Time11",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        760,
+        3040
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "b5fe3124-b1ad-4f07-83d3-ba0012d73ebd",
+      "name": "Merge6",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        2940
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Start Date Automation: 10 Points",
+        "height": 697.6891655624286,
+        "width": 2359.19321205868,
+        "color": 5
+      },
+      "id": "d0b04e3b-5d79-47ee-9179-5b3aa47abcc6",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        240,
+        2780
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "974c792d-2c53-4f5e-ae5d-e5a8b0bee089",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        280,
+        2940
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.month }}{{ $json.day }}",
+                    "rightValue": "={{ $('Date & Time10').item.json.month }}{{ $('Date & Time11').item.json.day }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "={{ false }}"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5be198de-9c12-453d-983a-7c6385776d05",
+                    "leftValue": "={{ $json.month }}{{ $json.day }}",
+                    "rightValue": "={{ $('Date & Time10').item.json.month }}{{ $('Date & Time11').item.json.day }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f4d3f7bd-a5da-493a-a44b-78c5fab9a66c",
+      "name": "Switch4",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2160,
+        3200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "##Not suer, come back to",
+        "height": 235.9995889243101,
+        "width": 495.9587307982713
+      },
+      "id": "a483d096-a1fe-4de9-8469-f46640ce68a8",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "user_id",
+              "value": "={{ $json.unityID }}"
+            },
+            {
+              "name": "type",
+              "value": "add"
+            },
+            {
+              "name": "reference",
+              "value": "Manual Adjust"
+            },
+            {
+              "name": "amount",
+              "value": "100"
+            },
+            {
+              "name": "entry",
+              "value": "add"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c33eabdb-1f91-4e95-ad61-dea6f11625ad",
+      "name": "Add Points",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2160,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/wp/v2/users/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic bm1udXNhOk9WMHAgOEdNRiByMEt6IFIxYWsgR0dLQyBVMGVB"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "={{ $json.PERSONAL_E_MAIL }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.PERSONAL_E_MAIL }}"
+            },
+            {
+              "name": "password",
+              "value": "!23QweAsdZxc"
+            },
+            {
+              "name": "roles",
+              "value": "subscriber"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $json.PAYROLL_FIRST_NAME }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $json.PAYROLL_LAST_NAME }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0878f205-9398-4f3c-b901-d390bf3aa744",
+      "name": "Create User3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2160,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "path": "d4123014-a1b1-482a-b6c9-2e64519f184a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "987ddd87-e274-4578-aa47-43fddae86a34",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        3680
+      ],
+      "webhookId": "d4123014-a1b1-482a-b6c9-2e64519f184a"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "ee45879b-57fe-4f7a-9a03-97197b8ea869",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        540,
+        3680
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Id"
+            }
+          ]
+        },
+        "options": {
+          "outputFormat": "separateItems"
+        }
+      },
+      "id": "522648d9-4c0a-43e4-9671-36cb43adf541",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        960,
+        3680
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.count_Id }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "95ef9b06-5c07-4029-83e8-1fd8fdab99ab",
+                    "leftValue": "={{ $json.count_Id }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "72db93d7-474c-400e-a329-295089720748",
+                    "leftValue": "={{ $json.count_Id }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "looseTypeValidation": true
+        }
+      },
+      "id": "cd8ded2b-2651-4d39-80c7-502e5431c637",
+      "name": "Switch6",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1180,
+        3680
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "user_id",
+              "value": "={{ $('Switch5').item.json.unityID }}"
+            },
+            {
+              "name": "type",
+              "value": "add"
+            },
+            {
+              "name": "amount",
+              "value": "15"
+            },
+            {
+              "name": "reference",
+              "value": "Birthday Automation"
+            },
+            {
+              "name": "entry",
+              "value": "add"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "cadccdc5-9738-43fb-96ed-461a98d7eb4b",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1440,
+        3680
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Id"
+            }
+          ]
+        },
+        "options": {
+          "outputFormat": "separateItems"
+        }
+      },
+      "id": "2a5c9b62-5712-466c-8892-d475d1aaeaf7",
+      "name": "Summarize1",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook1').item.json.query.EmployeeName }}",
+                    "rightValue": "={{ $json.PAYROLL_FIRST_NAME }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "66688c9b-4e50-4d9e-ad49-fd6d24428eeb",
+      "name": "Switch7",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1560,
+        4060
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "7e0d297d-903a-48aa-86b4-2d1efa4c62b8",
+      "name": "NocoDB8",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        4060
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://myunitycare.com/",
+        "options": {}
+      },
+      "id": "7998266d-83e8-4185-bb8c-4ceae224a486",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        3680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "Empower",
+        "toEmail": "={{ $('Switch5').item.json[\"PERSONAL_E_MAIL\"] }}",
+        "subject": "Congratulations: Unity Points Awarded!",
+        "contentValue": "=Dear {{ $('Switch5').item.json[\"PAYROLL_FIRST_NAME\"] }}, \n\nBig congratulations are in order! Your exceptional contribution through team work has earned you 15 Unity Points. This award celebrates your {{ $('Webhook1').item.json[\"query\"][\"PeformanceDescription\"] }}, which has made a significant impact, including {{ $('Webhook1').item.json[\"query\"][\"ContrabutionImpact\"] }}. \n\nCurrent Points Balance: 15 \nAwarded By: {{ $('Webhook1').item.json[\"query\"][\"ManagerName\"] }}, who noted, \"{{ $('Webhook1').item.json[\"query\"][\"Comments\"] }}\" \n\nHow to Make Your Points Work for You:\nYour Unity Points open up a world of possibilities! From the latest tech gadgets to stylish company swag and exclusive services at Epic Primary Care and Blue Sky Prevention Center, the choice is yours. Ready to dive in? Visit https://usa.epicpc.com/my-account/ to start exploring your rewards. \n\nTo Redeem Your Points: \n\nVisit our Unity Points redemption portal [insert portal link here], and log in with your employee credentials. Browse the catalog of rewards and select the items or services you're interested in. Follow the on-screen instructions to complete your redemption. If you have any questions or need assistance, please don't hesitate to contact HR. \n\nWe're Listening: Got ideas on how we can make the Unity Points program even better? Hit 'Reply' and let us know. Your feedback is invaluable to us. \n\nThank you for your outstanding contributions. Let's keep the momentum going!\n\nWarmest regards,  \nThe EPIC Team",
+        "additionalFields": {}
+      },
+      "id": "0ea51296-42ad-4cb2-85b0-3b8101190c42",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        3520
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://usa.epicpc.com/wp-json/wp/v2/users",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "authorization",
+              "value": "Basic bm1udXNhOk9WMHAgOEdNRiByMEt6IFIxYWsgR0dLQyBVMGVB"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "c5fe02e5-8f34-42ba-8bbb-7b8686884b85",
+      "name": "Get Users  Response Header Pagination",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2840,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "c5dcf198-c71b-4be2-b855-5ee23d6dfd26",
+                    "leftValue": "={{ $json.PERSONAL_E_MAIL }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "ddc9608a-f8ca-413d-bdb2-6d92d46b2b07",
+                    "leftValue": "={{ $json.PERSONAL_E_MAIL }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ac32488-922f-4cec-8d64-94ec427f3210",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook1').item.json.query.EmployeeName }}",
+                    "rightValue": "={{ $json.PAYROLL_FIRST_NAME }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "37e91eaa-da55-4933-a466-19659bd9ec79",
+                    "leftValue": "={{ $('Webhook1').item.json.query.EmployeeName }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "80b2a041-02e7-4a0d-84d5-1fd1d5e16b33",
+      "name": "Switch5",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        740,
+        3680
+      ]
+    }
+  ],
+  "pinData": {
+    "Wordpress Created User": [
+      {
+        "json": {
+          "id": 6,
+          "username": "jmartin",
+          "name": "jmartin",
+          "first_name": "",
+          "last_name": "",
+          "email": "jmartin@epichs.org",
+          "url": "",
+          "description": "",
+          "link": "https://usa.epicpc.com/author/jmartin/",
+          "locale": "en_US",
+          "nickname": "jmartin",
+          "slug": "jmartin",
+          "roles": [
+            "subscriber"
+          ],
+          "registered_date": "2024-03-14T18:27:14+00:00",
+          "capabilities": {
+            "read": true,
+            "level_0": true,
+            "subscriber": true
+          },
+          "extra_capabilities": {
+            "subscriber": true
+          },
+          "avatar_urls": {
+            "24": "https://secure.gravatar.com/avatar/f2366f4dac0ea363fb79f70c3b073308?s=24&d=mm&r=g",
+            "48": "https://secure.gravatar.com/avatar/f2366f4dac0ea363fb79f70c3b073308?s=48&d=mm&r=g",
+            "96": "https://secure.gravatar.com/avatar/f2366f4dac0ea363fb79f70c3b073308?s=96&d=mm&r=g"
+          },
+          "meta": {
+            "persisted_preferences": []
+          },
+          "is_super_admin": true,
+          "woocommerce_meta": {
+            "variable_product_tour_shown": "",
+            "wc_payments_overview_inbox_last_read": "",
+            "activity_panel_inbox_last_read": "",
+            "activity_panel_reviews_last_read": "",
+            "categories_report_columns": "",
+            "coupons_report_columns": "",
+            "customers_report_columns": "",
+            "orders_report_columns": "",
+            "products_report_columns": "",
+            "revenue_report_columns": "",
+            "taxes_report_columns": "",
+            "variations_report_columns": "",
+            "dashboard_sections": "",
+            "dashboard_chart_type": "",
+            "dashboard_chart_interval": "",
+            "dashboard_leaderboard_rows": "",
+            "homepage_layout": "",
+            "homepage_stats": "",
+            "task_list_tracked_started_tasks": "",
+            "help_panel_highlight_shown": "",
+            "android_app_banner_dismissed": ""
+          },
+          "_links": {
+            "self": [
+              {
+                "href": "https://usa.epicpc.com/wp-json/wp/v2/users/6"
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://usa.epicpc.com/wp-json/wp/v2/users"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.22",
+            "x-forwarded-for": "10.0.14.22",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.myunitycare.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; __ssid=b094e84f053e7d414fe35d5a20a76ff; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiaWF0IjoxNzEyMTY2MjYyLCJleHAiOjE3MTI3NzEwNjJ9.slDSAotmK5XFlWRQEQJr19-dQZMfkaFQMlhhYWq0Jp0; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19vcEIZzX6%2BB03DclzpOhlPAamFVrNJOLXJCO2Rlmd1lKodTQBaawLmEKRtlDY%2B1zquuvbxyXcySw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19oiP8Dv0ughVpHMM7C0bFWAlYEcnjBikcGvpp99AiuWY2dOzNZPkwowaV17a4URJ2%2BLemCYk2m%2BVCiS1hO6nHkSwMUJMANyl0n%2FAYYgDT%2BvS%2B1CBV2rfK%2Fs64QKQmlg4tkqiezUgk%2FR1QcfsQ3%2BwQX8pVdGusGW%2FE%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FSHYn5zFr%2Bf4q3WiULgmbmc15MtGk4%2F%2FOkZ32U62rcFBRuDhh0HfG7QQkOxJKks0M6poGb8QL%2F%2FQyOnOsaorXLZMTgdFw%2F%2B4VetTzZnxiz3PPHDot2DZNeXFBWcLPIaQ1gevUvbDr0lQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1712265409194%2C%22018eaae4-a202-7b8c-b92c-cb3f0d53a7c1%22%2C1712264094210%5D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX18%2FXLbQxV8nF%2BXUzUhm1PbBmRtc1cVtqak7%2Bym4f4tM2UZD%2FECfZPhuBDZ3w2aUAtNeMOH8UHyRV%2FyY9oOUJtJF2%2Ft%2Fnvhylgq9L9BzrtH%2FmmbTPUkP4L7w%2BhpeUDrfRY9usBZsqKbziw%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "ManagerName": "Thomas Stilwell",
+            "Department": "IT",
+            "Date": [
+              "4-4-24",
+              "4-4-24"
+            ],
+            "EmployeeName": "Paul Li",
+            "Role": "IT Support Specialist",
+            "Category": "<span class='em-expression em-haveerror'  ><span class='em-error' title=' ' ><span title='Undefined variable' class='em-var em-var-error' >G03Q06.shown</span></span></span>",
+            "PeformanceDescription": "Overcame obstacles in learning how to setup an inventory management system, and started putting structure to it.",
+            "ContrabutionImpact": "Team is engaging in and thinking about the best way to facilitated inventory.",
+            "Comments": "Awesome!",
+            "ManagerSignature": "Thomas Stilwell"
+          },
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-09T23:29:14.809Z",
+  "versionId": "cd9897a3-0b24-4d2f-89f2-e6d488f41631"
+}
