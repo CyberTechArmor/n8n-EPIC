@@ -1,0 +1,94 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-06T16:43:26.998Z",
+  "id": "27fzmeNmZvw39e9v",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Twilio",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "eea77abe-e649-43e8-9887-3c711f19df02",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "from": "+12486658122",
+        "to": "+12488726322",
+        "message": "Hello!",
+        "options": {}
+      },
+      "id": "bd93a4e3-c949-4f59-b7ec-e065126844e4",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        460
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "com.twilio.messaging.inbound-message.received"
+        ]
+      },
+      "id": "1cb8617e-247e-4021-aaeb-332631aeefc4",
+      "name": "Twilio Trigger",
+      "type": "n8n-nodes-base.twilioTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        700
+      ],
+      "webhookId": "a92e7ca6-9f5d-4585-ae62-926d1a37b818",
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Twilio Trigger": {
+      "sinkId": "DGc7cd69d93a1d8f0c0effaed454b2df3f",
+      "subscriptionId": "DF305dc185c13a6a575d376973f5210062"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-06T16:46:22.714Z",
+  "versionId": "f6aa0ef8-d0a6-47f7-b000-781a5ba8ab9a"
+}
