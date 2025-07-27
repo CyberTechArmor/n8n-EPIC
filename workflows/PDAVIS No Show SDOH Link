@@ -1,0 +1,33 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-11-06T18:37:57.825Z",
+  "id": "iwH1CutDbeN5ZRLL",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "PDAVIS No Show SDOH Link",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4a754689-61d3-4968-80ee-3a6d8ddcc28b",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        820,
+        440
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-06T18:37:57.825Z",
+  "versionId": "d40593e6-ead3-4fb9-930a-9f88fc35db8d"
+}
