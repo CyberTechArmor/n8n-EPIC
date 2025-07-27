@@ -1,0 +1,59 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-14T12:27:03.885Z",
+  "id": "iAJsCpl3tbfiXMwc",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 29",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "af39aaad-66ab-4700-9da6-b8678fd2acb1",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "url": "file://10.0.1.200/nmnit/DataScience/Provider%20Scorecard/07November2024/EMR%20Provider%20Impact_Cavanaugh,%20Kara%20PA-C.pdf",
+        "options": {}
+      },
+      "id": "9e59ac0e-78fe-4402-88ac-da3fe66aa330",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-14T12:27:03.885Z",
+  "versionId": "164b99cb-e0bc-4391-88c0-f6ed8ad9788c"
+}
