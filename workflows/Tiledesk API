@@ -1,0 +1,429 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "ai_tool": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-23T16:44:03.908Z",
+  "id": "T1Os3GFbzuwy7VgB",
+  "isArchived": false,
+  "meta": null,
+  "name": "Tiledesk API",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ef8c497c-3ec9-44d4-ad5b-1544639ecd2c",
+        "responseMode": "responseNode",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "178c284e-a3fa-417f-8e94-146939b4666e",
+      "name": "Webhook",
+      "webhookId": "ef8c497c-3ec9-44d4-ad5b-1544639ecd2c"
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "value": "={{ $json.body.GPT }}",
+          "mode": "id"
+        },
+        "prompt": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        220,
+        0
+      ],
+      "id": "0b3d7b45-8fc0-4e0d-b169-bbc126abce10",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "f53q65ZFKo7SfpKk",
+          "name": "OpenAi Blue Sky"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        0
+      ],
+      "id": "9fc88914-6d49-482c-941b-83febdb64919",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8546514f-4a54-4419-9616-c197d9a59a6d",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        740,
+        -260
+      ],
+      "id": "d64f8aa1-7161-4b28-9993-c863806cf859",
+      "name": "Webhook1",
+      "webhookId": "8546514f-4a54-4419-9616-c197d9a59a6d"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"success\",\n  \"action\": \"nextStep\",\n  \"data\": {\n    \"key1\": \"samebot\",\n    \"key2\": {{ $json.output ? JSON.stringify($json.output)\n    .replace(/[*_~`]/g, '') // Remove *, _, ~, ` (bold, italic, strikethrough, code)\n    .replace(/\\[.*?\\]\\(.*?\\)/g, '') // Remove markdown links [text](url)\n    .replace(/#{1,6}\\s*/g, '') // Remove headers (e.g., # Header)\n    .replace(/>\\s*/g, '') // Remove blockquotes (>)\n    .replace(/!\\[.*?\\]\\(.*?\\)/g, '') // Remove images ![alt](url)\n    .replace(/`{3}[\\s\\S]*?`{3}/g, '') // Remove code blocks ```code```\n    .replace(/-{3,}/g, '') // Remove horizontal rules (---)\n    .replace(/\\n+/g, ' ') // Replace new lines with spaces\n    .trim()\n    : '\"\"'\n}}\n,\n    \"decision\": \"routeA\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        -160
+      ],
+      "id": "0b66006a-845b-4a94-a79d-5f3cf02db990",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "path": "6d67cf8f-7d17-47b1-b7a5-a21e17d60b2f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        360
+      ],
+      "id": "6ac9a573-d1fb-419a-844e-cde316b8af05",
+      "name": "Webhook2",
+      "webhookId": "6d67cf8f-7d17-47b1-b7a5-a21e17d60b2f"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<script type=\"text/javascript\">\n  window.tiledeskSettings = {\n        projectid: \"679212418511a900124d9c84\"\n  };\n  (function(d, s, id) {\n       var w=window; var d=document; var i=function(){i.c(arguments);};\n       i.q=[]; i.c=function(args){i.q.push(args);}; w.Tiledesk=i;\n       var js, fjs=d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) return;\n       js=d.createElement(s);\n       js.id=id; js.async=true; js.src=\"https://chat.myunitycare.com/widget/launch.js\";\n       fjs.parentNode.insertBefore(js, fjs);\n  }(document,'script','tiledesk-jssdk'));\n</script>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        360
+      ],
+      "id": "f6917640-fd94-43ed-aca5-f74bf2806885",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "info_capture",
+          "mode": "list",
+          "cachedResultName": "info_capture"
+        },
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.5,
+      "position": [
+        140,
+        180
+      ],
+      "id": "9d6ed612-b76f-455f-b625-c55bf4128b0e",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "O87fgQxDX6pKLl0y",
+          "name": "Tiledesk Repo"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "info_capture",
+          "mode": "list",
+          "cachedResultName": "info_capture"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "headers": "={{ $('Webhook').item.json.headers }}",
+            "user_agent": "={{ $('Webhook').item.json.headers['user-agent'] }}",
+            "body": "={{ $('Webhook').item.json.body }}",
+            "ip_address": "={{ $('Webhook').item.json.headers['x-real-ip'] }}",
+            "conversation_id": "={{ $('Webhook').item.json.body.conversation_id }}",
+            "date_time_updated": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": [
+            "conversation_id"
+          ],
+          "schema": [
+            {
+              "id": "conversation_id",
+              "displayName": "conversation_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "headers",
+              "displayName": "headers",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "user_agent",
+              "displayName": "user_agent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "date_time_created",
+              "displayName": "date_time_created",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": true
+            },
+            {
+              "id": "date_time_updated",
+              "displayName": "date_time_updated",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "user_requesting",
+              "displayName": "user_requesting",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "dept",
+              "displayName": "dept",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "ip_address",
+              "displayName": "ip_address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        620,
+        280
+      ],
+      "id": "9791644b-0ad1-4a0f-8d50-e302ea263a08",
+      "name": "Postgres1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "O87fgQxDX6pKLl0y",
+          "name": "Tiledesk Repo"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "assistant",
+        "assistantId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "asst_1AMS9abHLxHYlMCjE1j78tA3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        160,
+        -300
+      ],
+      "id": "5fb38027-7589-4ae9-82e4-46f4b84e5010",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "f53q65ZFKo7SfpKk",
+          "name": "OpenAi Blue Sky"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "104.248.52.94",
+            "x-forwarded-for": "104.248.52.94",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "512",
+            "accept": "*/*",
+            "content-type": "multipart/form-data; boundary=--------------------------336018361981548757267885",
+            "cache-control": "no-cache",
+            "user-agent": "TiledeskBotRuntime",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "message": "How do I get my computer to print?",
+            "GPT": "asst_LxzAZvtFjXxm1lqiPekMXD5z",
+            "conversation_id": "support-group-679212418511a900124d9c84-01c4005bfb6e43e9a61de29459603595"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/ef8c497c-3ec9-44d4-ad5b-1544639ecd2c",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "OpenAI": [
+      {
+        "json": {
+          "output": "It seems like your request may be related to employee training and development. To assist you better, could you please provide more details? Are you looking for information on specific training programs, certifications, or something else related to learning and development?",
+          "threadId": "thread_f7sTw70rJZxTiRJgG1EyBRee"
+        }
+      }
+    ],
+    "OpenAI1": [
+      {
+        "json": {
+          "output": "It seems like your request may be related to employee training and development. To assist you better, could you please provide more details? Are you looking for information on specific training programs, certifications, or something else related to learning and development?",
+          "threadId": "thread_f7sTw70rJZxTiRJgG1EyBRee"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 3,
+  "updatedAt": "2025-01-31T13:51:47.924Z",
+  "versionId": "f1db2c49-8fdd-4499-899d-fff59b06e139"
+}
