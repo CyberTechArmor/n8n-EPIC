@@ -1,0 +1,851 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "SecInsCode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "PverifyToVDIns",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PverifyToVDIns": {
+      "main": [
+        [
+          {
+            "node": "SecInsCode",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "PverifyToVDIns1": {
+      "main": [
+        [
+          {
+            "node": "PrimaryInsCode",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "PrimaryInsCode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-20T14:30:19.605Z",
+  "id": "NqoLMPQ4km2e0snm",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "P-Verify copy",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2132017d-f5bd-4202-a16c-029a9bfa23cc",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        3420,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with genpatinfo as(\nselect g.Patient_ID,g.Patient_Number, g.Patient_Name,g.Patient_LFI,\ng.Patient_First_Name,g.Patient_Last_Name,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\ng.Patient_SSN,g.Patient_Sex,g.Patient_DOB, g.Patient_Age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\ng.Patient_Primary_Phone_Number,g.Patient_Email\nfrom [PM].[vwGenPatInfo] g\n),\npatid as(\nselect p.Patient_ID,p.Patient_Number,p.Date_Registered,\np.Comments,p.Account_ID,p.Contact_ID \nfrom [PM].[Patients] p\n),\npatpol as(\nselect pp.Patient_Policy_ID,pp.Policy_ID,pp.Patient_ID,\npp.Coverage,pp.Verified_Date \nfrom [PM].[Patient_Policies] pp\n),\ngenpol as( select po.Policy_ID,po.Group_No,po.Certificate_No,\npo.Comments,po.Effective_Date,po.Expiration_Date,\npo.Carrier_ID,po.Insurance_Plan_ID,po.Contact_ID,po.Account_ID\nfrom  [PM].[Policies] po\n),\nprimcov as(\nselect \n    g.Patient_ID, g.Patient_Number,g.Patient_Name,g.Patient_First_Name, g.Patient_Last_Name,\n    g.Patient_LFI,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\n    g.Patient_SSN,g.Patient_Sex,convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB,\n    g.patient_age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\n    g.Patient_Email,p.Account_ID as Patient_Account_ID,p.Contact_ID as Patient_Contact_ID,\n    p.Date_Registered,p.Comments as Patient_Comments,pp.Patient_Policy_ID,\n    pp.Policy_ID as Patient_Policy_Policy_ID,pp.Coverage,pp.Verified_Date,\n    po.Account_ID as Policy_Account_ID,po.Carrier_ID as Policy_Carrier_ID,\n    c.Name as Carrier_Name,c.Payor_Number,i.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Carrier_ID as Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Comments as Policy_Comments,po.Effective_Date,po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('P')\n),\nsecondins as(\nselect \n    g.Patient_ID, g.Patient_Number,pp.Patient_Policy_ID as secPatient_Policy_ID ,\n    pp.Policy_ID as secPatient_Policy_Policy_ID,pp.Coverage as secCoverage,pp.Verified_Date as secVerified_date,\n    po.Account_ID as secPolicy_Account_ID,po.Carrier_ID as secPolicy_Carrier_ID,\n    c.Name as secCarrier_Name,c.Payor_Number as secPayor_Number,i.CoPayment_Amount as secCopayment,po.Insurance_Plan_ID as secIns_plan,\n    po.Carrier_ID as secInsurance_Carrier_ID,po.Certificate_No as secCertificate_No,po.Group_No as secGroup_No,\n    po.Comments as secPolicy_Comments,po.Effective_Date as secEffective_date,po.Expiration_Date as secExpiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('S')\n),\nappt3dayblock as(\nSELECT\n    [Patient_ID],\n    [Patient_Number],\n    [Appt_DateTime],\n    CAST([Appt_DateTime] AS DATE) AS Appt_Date,\n    [Appt_Sched_Location_Abbr],\n    [Appt_Sched_Location_Descr],\n    [Appt_Resource_Abbr],\n    [Appt_Resource_Descr],\n    [Appt_Resource_Assoc_Prov_LFI],\n    [Appt_Type_Abbr],\n    [Appt_Type_Descr],\n    [Appt_Comments],\n    [Appt_Status],\n    [Appt_Booked_Date],\n    [Appt_Booked_By_Operator_Abbr],'1730156050' as NPI\nFROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\nWHERE CAST([Appt_DateTime] AS DATE) BETWEEN DATEADD(DAY, 3, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 5, CAST(GETDATE() AS DATE))\nand a.Appt_Status ='S'\n)\nselect a.*,po.Patient_First_Name,po.Patient_Last_Name,po.Patient_DOB,po.Patient_Policy_ID,\n    po.Patient_Policy_Policy_ID,\n\tcase when po.Coverage is null then 'nocov'\n\telse po.Coverage\n\tend as Coverage,\n\tpo.Verified_Date,\n    po.Policy_Account_ID,po.Policy_Carrier_ID,\n    po.Carrier_Name,po.Payor_Number,po.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Policy_Comments,po.Effective_Date,po.Expiration_Date,\ns.secPatient_Policy_ID,s.secPatient_Policy_Policy_ID,s.secCoverage,s.secVerified_date,s.secPolicy_Account_ID,\ns.secCarrier_Name,s.secPayor_Number,s.secCopayment,s.secIns_plan,s.secInsurance_Carrier_ID,s.secCertificate_No,\ns.secGroup_No,s.secPolicy_Comments,s.secEffective_date,s.secExpiration_Date\nfrom appt3dayblock a\nleft join primcov po on a.Patient_ID=po.Patient_ID\nleft join secondins s on a.Patient_ID=s.Patient_ID\nwhere a.Appt_Sched_Location_Descr in (\n    'EPIC Southfield 10 Mile',\n    'DIAG EP Southfield',\n    'Surgeon''s Choice Hospital',\n    'EPIC Detroit Livernois',\n    'EPIC Ferndale 9 Mile',\n    'DIAG EP Ferndale',\n    'EPIC Royal Oak Woodward',\n    'EPIC Hamtramck Davison',\n    'EPIC Eastpointe Kelly',\n    'SPEC EP Southfield Telegraph',\n    'EPIC SCS Harper',\n    'EPIC Southfield Telegraph',\n    'EPIC Clawson Maple',\n    'EPIC Detroit 7 Mile',\n    'DIAG EP 7 Mile',\n    'EPIC Westland Palmer',\n    'DIAG EP SCS Harper',\n    'DIAG EP Livernois',\n    'DIAG EP DAVISON',\n    'DIAG Eastpointe Kelly',\n    'DIAG EP Royal Oak Woodward',\n    'EPIC Video Visits'\n)"
+      },
+      "id": "53713abf-a917-4d1f-a550-e729d5a2ad1e",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        720,
+        500
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.pverify.com/Test/API/GetEligibilitySummary",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer eTZ9WgYp2LRXejF8Mj_Kt-{{ $json[\"access_token\"] }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "payerCode"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "7cfc1828-9417-40fa-8cb8-6c119e923276",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1420,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d0764fe3-eb75-486e-b470-ff82ce397cc1",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1320,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pverify.com/Test/Token",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Client_Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Client_Secret",
+              "value": "VdcVMGMWqFYSEzpgVIWDOXAdqtxA"
+            },
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "43dc10a4-e506-46a5-a8b5-1db8e227e635",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pverify.com/Test/API/EligibilitySummary",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('HTTP Request1').item.json.access_token }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"payerCode\": \"01016\",\n  \"provider\": {\n    \"firstName\": \"Ted\",\n    \"middleName\": \"\",\n    \"lastName\": \"Naman\",\n    \"npi\": \"{{ $json[\"NPI\"] }}\",\n    \"pin\":\"\"\n  },\n  \"subscriber\": {\n    \"firstName\": \"{{ $json[\"Patient_First_Name\"] }}\",\n    \"middleName\": \"\",\n    \"lastName\": \"{{ $json[\"Patient_Last_Name\"] }}\",\n    \"dob\": \"{{ $json[\"Patient_DOB\"] }}\",\n    \"memberID\": \"{{ $json[\"Certificate_No\"] }}\"\n  },\n  \"dependent\":  {\n    \"patient\": {\n      \"firstName\": \"\",\n      \"middleName\": \"\",\n      \"lastName\": \"\",\n      \"dob\": \"\",\n      \"gender\": \"\"\n    },\n    \"relationWithSubscriber\": \"\"\n  },\n  \"isSubscriberPatient\": \"true\",\n  \"doS_StartDate\": \"06/14/2024\",\n  \"doS_EndDate\": \"06/14/2024\",\n  \"serviceCodes\": [\n    \"\"\n  ],\n     \"isHMOplan\": true,\n     \"IncludeTextResponse\": true,\n     \"referenceId\": \"\",\n     \"Location\": \"\",\n     \"InternalId\":\"\",\n    \"CustomerID\":\"\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "b1b54e4d-f812-4ff5-80e4-58fc5a4ffb9a",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pverify.com/API/EligibilityInquiry",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer  {{ $json.access_token }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"payerCode\": \"\",\n  \"provider\": {\n    \"firstName\": \"\",\n    \"middleName\": \"\",\n    \"lastName\": \"\",\n    \"npi\": \"\",\n    \"pin\":\"\"\n  },\n  \"subscriber\": {\n    \"firstName\": \"\",\n    \"middleName\": \"\",\n    \"lastName\": \"\",\n    \"dob\": \"12/21/2018\",\n    \"memberID\": \"\"\n  },\n  \"dependent\": {\n    \"patient\": {\n      \"firstName\": \"\",\n      \"middleName\": \"\",\n      \"lastName\": \"\",\n      \"dob\": \"\",\n      \"gender\": \"\"\n    },\n    \"relationWithSubscriber\": \"\"\n  },\n  \"isSubscriberPatient\": \"\",\n  \"doS_StartDate\": \"\",\n  \"doS_EndDate\": \"\",\n  \"serviceCodes\": [\n    \"\"\n  ],\n     \"isHMOplan\": true,\n     \"IncludeTextResponse\": true,\n     \"referenceId\": \"\",\n     \"Location\": \"\",\n     \"InternalId\":\"\",\n    \"CustomerID\":\"\"\n\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "d5ecbd50-fb40-43d7-bb7a-6a1f5aedd367",
+      "name": "Original_TEST_GetEligabilitySummary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        40,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pverify.com/Token",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Client_Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Client_Secret",
+              "value": "VdcVMGMWqFYSEzpgVIWDOXAdqtxA"
+            },
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "75f2a2bd-69cb-4cfd-ae1a-d307d21f4915",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4200,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select p.\"Ins Code\" as VDInsCode,p.\"Ins Name\" as VDInsName\n,p.\"pVerify Payer Code\",p.\"pVerify Payer Name\"\nfrom public.pverifgytoapminsurancemapping p\n",
+        "options": {}
+      },
+      "id": "d43d4bf5-26db-4599-abd5-0c5b0c04bdd9",
+      "name": "PverifyToVDIns",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        720,
+        660
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "8QH3k8SLQmfJ5btw",
+          "name": "BillingLogicforPverifytoVDInsuranceID"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select p.\"Ins Code\" as VDInsCode,p.\"Ins Name\" as VDInsName\n,p.\"pVerify Payer Code\",p.\"pVerify Payer Name\"\nfrom public.pverifgytoapminsurancemapping p\n",
+        "options": {}
+      },
+      "id": "60b00fd1-1836-4b9e-9a35-c358cc566960",
+      "name": "PverifyToVDIns1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        -40
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "8QH3k8SLQmfJ5btw",
+          "name": "BillingLogicforPverifytoVDInsuranceID"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with genpatinfo as(\nselect g.Patient_ID,g.Patient_Number, g.Patient_Name,g.Patient_LFI,\ng.Patient_First_Name,g.Patient_Last_Name,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\ng.Patient_SSN,g.Patient_Sex,g.Patient_DOB, g.Patient_Age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\ng.Patient_Primary_Phone_Number,g.Patient_Email\nfrom [PM].[vwGenPatInfo] g\n),\npatid as(\nselect p.Patient_ID,p.Patient_Number,p.Date_Registered,\np.Comments,p.Account_ID,p.Contact_ID \nfrom [PM].[Patients] p\n),\npatpol as(\nselect pp.Patient_Policy_ID,pp.Policy_ID,pp.Patient_ID,\npp.Coverage,pp.Verified_Date \nfrom [PM].[Patient_Policies] pp\n),\ngenpol as( select po.Policy_ID,po.Group_No,po.Certificate_No,\npo.Comments,po.Effective_Date,po.Expiration_Date,\npo.Carrier_ID,po.Insurance_Plan_ID,po.Contact_ID,po.Account_ID\nfrom  [PM].[Policies] po\n),\nprimcov as(\nselect \n    g.Patient_ID, g.Patient_Number,g.Patient_Name,g.Patient_First_Name, g.Patient_Last_Name,\n    g.Patient_LFI,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\n    g.Patient_SSN,g.Patient_Sex,convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB,\n    g.patient_age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\n    g.Patient_Email,p.Account_ID as Patient_Account_ID,p.Contact_ID as Patient_Contact_ID,\n    p.Date_Registered,p.Comments as Patient_Comments,pp.Patient_Policy_ID,\n    pp.Policy_ID as Patient_Policy_Policy_ID,pp.Coverage,pp.Verified_Date,\n    po.Account_ID as Policy_Account_ID,po.Carrier_ID as Policy_Carrier_ID,\n    c.Name as Carrier_Name,c.Payor_Number,i.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Carrier_ID as Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Comments as Policy_Comments,po.Effective_Date,po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('P')\n),\nsecondins as(\nselect \n    g.Patient_ID, g.Patient_Number,pp.Patient_Policy_ID as secPatient_Policy_ID ,\n    pp.Policy_ID as secPatient_Policy_Policy_ID,pp.Coverage as secCoverage,pp.Verified_Date as secVerified_date,\n    po.Account_ID as secPolicy_Account_ID,po.Carrier_ID as secPolicy_Carrier_ID,\n    c.Name as secCarrier_Name,c.Payor_Number as secPayor_Number,i.CoPayment_Amount as secCopayment,po.Insurance_Plan_ID as secIns_plan,\n    po.Carrier_ID as secInsurance_Carrier_ID,po.Certificate_No as secCertificate_No,po.Group_No as secGroup_No,\n    po.Comments as secPolicy_Comments,po.Effective_Date as secEffective_date,po.Expiration_Date as secExpiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('S')\n),\nappt3dayblock as(\nSELECT\n    [Patient_ID],\n    [Patient_Number],\n    [Appt_DateTime],\n    CAST([Appt_DateTime] AS DATE) AS Appt_Date,\n    [Appt_Sched_Location_Abbr],\n    [Appt_Sched_Location_Descr],\n    [Appt_Resource_Abbr],\n    [Appt_Resource_Descr],\n    [Appt_Resource_Assoc_Prov_LFI],\n    [Appt_Type_Abbr],\n    [Appt_Type_Descr],\n    [Appt_Comments],\n    [Appt_Status],\n    [Appt_Booked_Date],\n    [Appt_Booked_By_Operator_Abbr],'1730156050' as NPI\nFROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\nWHERE CAST([Appt_DateTime] AS DATE) BETWEEN DATEADD(DAY, 3, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 5, CAST(GETDATE() AS DATE))\nand a.Appt_Status ='S'\n)\nselect a.*,po.Patient_First_Name,po.Patient_Last_Name,po.Patient_DOB,po.Patient_Policy_ID,\n    po.Patient_Policy_Policy_ID,\n\tcase when po.Coverage is null then 'nocov'\n\telse po.Coverage\n\tend as Coverage,\n\tpo.Verified_Date,\n    po.Policy_Account_ID,po.Policy_Carrier_ID,\n    po.Carrier_Name,po.Payor_Number,po.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Policy_Comments,po.Effective_Date,po.Expiration_Date,\ns.secPatient_Policy_ID,s.secPatient_Policy_Policy_ID,s.secCoverage,s.secVerified_date,s.secPolicy_Account_ID,\ns.secCarrier_Name,s.secPayor_Number,s.secCopayment,s.secIns_plan,s.secInsurance_Carrier_ID,s.secCertificate_No,\ns.secGroup_No,s.secPolicy_Comments,s.secEffective_date,s.secExpiration_Date\nfrom appt3dayblock a\nleft join primcov po on a.Patient_ID=po.Patient_ID\nleft join secondins s on a.Patient_ID=s.Patient_ID\nwhere a.Appt_Sched_Location_Descr in (\n    'EPIC Southfield 10 Mile',\n    'DIAG EP Southfield',\n    'Surgeon''s Choice Hospital',\n    'EPIC Detroit Livernois',\n    'EPIC Ferndale 9 Mile',\n    'DIAG EP Ferndale',\n    'EPIC Royal Oak Woodward',\n    'EPIC Hamtramck Davison',\n    'EPIC Eastpointe Kelly',\n    'SPEC EP Southfield Telegraph',\n    'EPIC SCS Harper',\n    'EPIC Southfield Telegraph',\n    'EPIC Clawson Maple',\n    'EPIC Detroit 7 Mile',\n    'DIAG EP 7 Mile',\n    'EPIC Westland Palmer',\n    'DIAG EP SCS Harper',\n    'DIAG EP Livernois',\n    'DIAG EP DAVISON',\n    'DIAG Eastpointe Kelly',\n    'DIAG EP Royal Oak Woodward',\n    'EPIC Video Visits'\n)"
+      },
+      "id": "9e380ce6-a66b-4f93-8fdc-834333ac1e96",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        220,
+        -240
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Policy_Carrier_ID",
+              "field2": "vdinscode"
+            }
+          ]
+        },
+        "joinMode": "enrichInput2",
+        "options": {}
+      },
+      "id": "20db0e9a-e9a5-4fc6-879d-ce3777aadb2d",
+      "name": "PrimaryInsCode",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        -140
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "secPatient_Policy_Policy_ID",
+              "field2": "vdinscode"
+            }
+          ]
+        },
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "id": "da9f86db-4ae5-46f9-a5ba-cd93a2656dfc",
+      "name": "SecInsCode",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        960,
+        540
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "url": "https://api.pverify.com/API/EligibilityInquiry",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer  {{ $json.access_token }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "cf46223c-0b17-41e6-ba1e-8478875156fa",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        900
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pverify.com/API/GetEligibilitySummary/{{  }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer  {{ $json.access_token }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "d1aff319-432e-4bdd-aa06-d1546c55c92e",
+      "name": "Eligibility Response",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        700
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--scheduled\n \nwith genpatinfo as(\nselect g.Patient_ID,g.Patient_Number, g.Patient_Name,g.Patient_LFI,\ng.Patient_First_Name,g.Patient_Last_Name,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\ng.Patient_SSN,g.Patient_Sex,g.Patient_DOB, g.Patient_Age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\ng.Patient_Primary_Phone_Number,g.Patient_Email\nfrom [PM].[vwGenPatInfo] g\n),\npatid as(\nselect p.Patient_ID,p.Patient_Number,p.Date_Registered,\np.Comments,p.Account_ID,p.Contact_ID \nfrom [PM].[Patients]p\n),\npatpol as(\nselect pp.Patient_Policy_ID,pp.Policy_ID,pp.Patient_ID,\npp.Coverage,pp.Verified_Date \nfrom [PM].[Patient_Policies] pp\n),\ngenpol as( select po.Policy_ID,po.Group_No,po.Certificate_No,\npo.Comments,po.Effective_Date,po.Expiration_Date,\npo.Carrier_ID,po.Insurance_Plan_ID,po.Contact_ID,po.Account_ID\nfrom  [PM].[Policies] po\n)\n, primcov as(\nselect \n    g.Patient_ID, g.Patient_Number,g.Patient_Name,g.Patient_First_Name, g.Patient_Last_Name,\n    g.Patient_LFI,g.Patient_Street1,g.Patient_City,g.Patient_State,g.Patient_Zip_Code,\n    g.Patient_SSN,g.Patient_Sex,convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB,\n    g.patient_age,g.Patient_Marital_Status,g.Patient_Home_Phone,g.Patient_Cell_Phone,\n    g.Patient_Email,p.Account_ID as Patient_Account_ID,p.Contact_ID as Patient_Contact_ID,\n    p.Date_Registered,p.Comments as Patient_Comments,pp.Patient_Policy_ID,\n    pp.Policy_ID as Patient_Policy_Policy_ID,pp.Coverage,pp.Verified_Date,\n    po.Account_ID as Policy_Account_ID,po.Carrier_ID as Policy_Carrier_ID,\n    c.Name as Carrier_Name,c.Payor_Number,i.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Carrier_ID as Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Comments as Policy_Comments,po.Effective_Date,po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('P','X')\n),\nsecondins as(\nselect \n    g.Patient_ID, g.Patient_Number,pp.Patient_Policy_ID as secPatient_Policy_ID ,\n    pp.Policy_ID as secPatient_Policy_Policy_ID,pp.Coverage as secCoverage,pp.Verified_Date as secVerified_date,\n    po.Account_ID as secPolicy_Account_ID,po.Carrier_ID as secPolicy_Carrier_ID,\n    c.Name as secCarrier_Name,c.Payor_Number as secPayor_Number,i.CoPayment_Amount as secCopayment,po.Insurance_Plan_ID as secIns_plan,\n    po.Carrier_ID as secInsurance_Carrier_ID,po.Certificate_No as secCertificate_No,po.Group_No as secGroup_No,\n    po.Comments as secPolicy_Comments,po.Effective_Date as secEffective_date,po.Expiration_Date as secExpiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = p.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere pp.Coverage in ('S')\n)\n,\nremovexcov as(\nSELECT p.*,\n--,s.secPatient_Policy_ID, s.secPatient_Policy_Policy_ID, s.secCoverage, s.secVerified_date, s.secPolicy_Account_ID,\n--s.secCarrier_Name, s.secPayor_Number, s.secCopayment, s.secIns_plan, s.secInsurance_Carrier_ID, s.secCertificate_No,\n--s.secGroup_No, s.secPolicy_Comments, s.secEffective_date, s.secExpiration_Date,\nROW_NUMBER() over(partition by p.patient_number order by p.coverage asc) pvsx\nFROM primcov p\n--LEFT JOIN secondins s ON p.Patient_ID = s.Patient_ID\n),\nprimandsec as(\nselect c.*\nfrom removexcov c\nwhere c.pvsx =1 \n),\nappt3dayblock as(\nSELECT\n    [Patient_ID],\n    [Patient_Number],\n    [Appt_DateTime],\n    CAST([Appt_DateTime] AS DATE) AS Appt_Date,\n    [Appt_Sched_Location_Abbr],\n    [Appt_Sched_Location_Descr],\n    [Appt_Resource_Abbr],\n    [Appt_Resource_Descr],\n    [Appt_Resource_Assoc_Prov_LFI],\n    [Appt_Type_Abbr],\n    [Appt_Type_Descr],\n    [Appt_Comments],\n    [Appt_Status],\n    [Appt_Booked_Date],\n    [Appt_Booked_By_Operator_Abbr],'1730156050' as NPI\nFROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\nWHERE CAST([Appt_DateTime] AS DATE) BETWEEN DATEADD(DAY, 0, CAST(GETDATE() AS DATE)) AND DATEADD(DAY, 5, CAST(GETDATE() AS DATE))\nand a.Appt_Status ='S'\n)\nselect top 5  -- only doing top 5 for testing purposes\na.Appt_DateTime,a.Appt_Date,a.Appt_Booked_Date,\npo.Patient_First_Name,po.Patient_Last_Name,po.Patient_DOB,po.Patient_Policy_ID,\n    po.Patient_Policy_Policy_ID,a.npi,\n\tcase when po.Coverage is null then 'nocov'\n\telse po.Coverage\n\tend as Coverage,\n\tpo.Verified_Date,\n    po.Policy_Account_ID,po.Policy_Carrier_ID,\n    po.Carrier_Name,po.Payor_Number,po.CoPayment_Amount,po.Insurance_Plan_ID,\n    po.Insurance_Carrier_ID,po.Certificate_No,po.Group_No,\n    po.Policy_Comments,po.Effective_Date,po.Expiration_Date\nfrom appt3dayblock a\nleft join primandsec po on po.Patient_ID=a.Patient_ID\nwhere a.Appt_Resource_Abbr not like 'BH%' and a.Appt_Resource_Abbr not like 'GENER%'\nAND a.Appt_Resource_Abbr not like 'Blue%' and a.Appt_Resource_Abbr not like 'CM%'\nand a.Appt_Sched_Location_Descr not like 'Diag%' and a.Appt_Resource_Abbr not like 'PALab%'"
+      },
+      "id": "f5f1df4c-c49c-4d30-907f-f25acb03cf4f",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        3640,
+        400
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "b80ab494-c4b6-42e2-bc91-1a075f3974ca",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pverify.com/api/EligibilitySummary",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "Client-API-Id",
+              "value": "2e795ff9-16c1-4981-b269-cbc1605d1a59"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"payerCode\": \"{{ $('Loop Over Items1').item.json.Payor_Number }}\",\n  \"payerName\": \"\",\n  \"provider\": {\n    \"firstName\": \"\",\n    \"middleName\": \"\",\n    \"lastName\": \"Naman\",\n    \"npi\": \"{{ $('Loop Over Items1').item.json.npi }}\",\n    \"pin\": \"\"\n  },\n  \"subscriber\": {\n    \"firstName\": \"{{ $('Loop Over Items1').item.json.Patient_First_Name }}\",\n    \"dob\": \"{{ $('Loop Over Items1').item.json.Patient_DOB }}\",\n    \"lastName\": \"{{ $('Loop Over Items1').item.json.Patient_Last_Name }}\",\n    \"memberID\": \"{{ $('Loop Over Items1').item.json.Patient_Policy_ID }}\"\n  },\n  \"dependent\": null,\n  \"isSubscriberPatient\": \"True\",\n  \"doS_StartDate\": \"08/03/2024\",\n  \"doS_EndDate\": \"\",\n  \"PracticeTypeCode\": \"\",\n  \"referenceId\": \"\",\n  \"Location\": \"\",\n  \"IncludeTextResponse\": \"false\",\n  \"InternalId\": \"\",\n  \"CustomerID\": \"\"\n}\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "58f0fa8e-f8d1-4459-bd85-c625487ac01b",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4480,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "01eea369-723f-4700-9a80-84f7587da083",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3880,
+        400
+      ]
+    }
+  ],
+  "pinData": {
+    "Limit": [
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T11:40:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-03T03:45:51.080Z",
+          "Patient_First_Name": "ROSALYN",
+          "Patient_Last_Name": "WILSON",
+          "Patient_DOB": "07/13/1955",
+          "Patient_Policy_ID": 159705,
+          "Patient_Policy_Policy_ID": 158784,
+          "npi": "1730156050",
+          "Coverage": "P",
+          "Verified_Date": "2022-11-05T00:00:00.000Z",
+          "Policy_Account_ID": 82507,
+          "Policy_Carrier_ID": 530,
+          "Carrier_Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": 15,
+          "Insurance_Plan_ID": 6641,
+          "Insurance_Carrier_ID": 530,
+          "Certificate_No": "XYH916690323",
+          "Group_No": "00100312",
+          "Policy_Comments": "AQB  * CPE/IMM Y* NO DED * PCP GN* CARDS EXPIRE 7-13-19-mcr part a only",
+          "Effective_Date": "2011-01-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      }
+    ],
+    "Microsoft SQL2": [
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T11:40:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-03T03:45:51.080Z",
+          "Patient_First_Name": "ROSALYN",
+          "Patient_Last_Name": "WILSON",
+          "Patient_DOB": "07/13/1955",
+          "Patient_Policy_ID": 159705,
+          "Patient_Policy_Policy_ID": 158784,
+          "npi": "1730156050",
+          "Coverage": "P",
+          "Verified_Date": "2022-11-05T00:00:00.000Z",
+          "Policy_Account_ID": 82507,
+          "Policy_Carrier_ID": 530,
+          "Carrier_Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": 15,
+          "Insurance_Plan_ID": 6641,
+          "Insurance_Carrier_ID": 530,
+          "Certificate_No": "XYH916690323",
+          "Group_No": "00100312",
+          "Policy_Comments": "AQB  * CPE/IMM Y* NO DED * PCP GN* CARDS EXPIRE 7-13-19-mcr part a only",
+          "Effective_Date": "2011-01-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T11:40:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-03T10:03:18.900Z",
+          "Patient_First_Name": null,
+          "Patient_Last_Name": null,
+          "Patient_DOB": null,
+          "Patient_Policy_ID": null,
+          "Patient_Policy_Policy_ID": null,
+          "npi": "1730156050",
+          "Coverage": "nocov",
+          "Verified_Date": null,
+          "Policy_Account_ID": null,
+          "Policy_Carrier_ID": null,
+          "Carrier_Name": null,
+          "Payor_Number": null,
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Insurance_Carrier_ID": null,
+          "Certificate_No": null,
+          "Group_No": null,
+          "Policy_Comments": null,
+          "Effective_Date": null,
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T12:20:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-02T15:51:35.103Z",
+          "Patient_First_Name": "BRIANA",
+          "Patient_Last_Name": "THOMPSON",
+          "Patient_DOB": "08/28/1993",
+          "Patient_Policy_ID": 292181,
+          "Patient_Policy_Policy_ID": 291032,
+          "npi": "1730156050",
+          "Coverage": "P",
+          "Verified_Date": "2024-07-16T00:00:00.000Z",
+          "Policy_Account_ID": 239513,
+          "Policy_Carrier_ID": 5294,
+          "Carrier_Name": "HAP CareSource Medicaid",
+          "Payor_Number": "MIMCDCS1",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Insurance_Carrier_ID": 5294,
+          "Certificate_No": "0087638208",
+          "Group_No": "CSMI",
+          "Policy_Comments": "MUST CHANGE PCP* ALSO BCBS XYYM60894218-TERMED ON 3/31/2024-COB ISSUE",
+          "Effective_Date": "2024-04-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T12:40:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-02T14:45:29.043Z",
+          "Patient_First_Name": "ALEXUS",
+          "Patient_Last_Name": "ROUSELL",
+          "Patient_DOB": "08/17/1995",
+          "Patient_Policy_ID": 197254,
+          "Patient_Policy_Policy_ID": 196233,
+          "npi": "1730156050",
+          "Coverage": "X",
+          "Verified_Date": null,
+          "Policy_Account_ID": 157658,
+          "Policy_Carrier_ID": 3243,
+          "Carrier_Name": "Blue Cross Complete (Medicaid)",
+          "Payor_Number": "000088",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Insurance_Carrier_ID": 3243,
+          "Certificate_No": "XYU992834014",
+          "Group_No": null,
+          "Policy_Comments": "060117 SAB CPE/IMM Y/N PCP GN",
+          "Effective_Date": "2017-06-01T00:00:00.000Z",
+          "Expiration_Date": "2018-12-31T00:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "Appt_DateTime": "2024-08-03T13:00:00.000Z",
+          "Appt_Date": "2024-08-03T00:00:00.000Z",
+          "Appt_Booked_Date": "2024-08-02T14:09:07.993Z",
+          "Patient_First_Name": "MONTEREA",
+          "Patient_Last_Name": "PERRY",
+          "Patient_DOB": "03/16/1986",
+          "Patient_Policy_ID": 287660,
+          "Patient_Policy_Policy_ID": 286508,
+          "npi": "1730156050",
+          "Coverage": "P",
+          "Verified_Date": "2024-05-10T00:00:00.000Z",
+          "Policy_Account_ID": 176950,
+          "Policy_Carrier_ID": 973,
+          "Carrier_Name": "Hap",
+          "Payor_Number": "000345",
+          "CoPayment_Amount": 20,
+          "Insurance_Plan_ID": 56194,
+          "Insurance_Carrier_ID": 973,
+          "Certificate_No": "10184816200",
+          "Group_No": "10000014A700",
+          "Policy_Comments": "CHANGE PCP",
+          "Effective_Date": "2024-02-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-03T15:33:18.668Z",
+  "versionId": "8eabb719-c22c-4708-9aa4-4804c7644dce"
+}
