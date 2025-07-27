@@ -1,0 +1,605 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-16T17:26:05.308Z",
+  "id": "tNRitznlsSCfQR4T",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Blue Sky Personalized Communication Twilio",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "27cb9a0b-7f73-4c7f-bfab-208fccda1382",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pysbx6fvsyde3st",
+        "table": "mu38inx9oz5r2fw",
+        "returnAll": true,
+        "options": {
+          "where": "=(DateToSend,eq,{{ $json[\"formattedDate\"] }})"
+        }
+      },
+      "id": "9612342f-aee3-4aaf-b4c8-996d9762b869",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        480
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f6ad896e-63ec-4f7e-811c-0ec982a8c7f7",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "9f9aa98a-2517-48df-800a-0d89d5015229",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "18336e7d-8654-4203-a638-e4d0a29cc50d",
+              "name": "currentDate",
+              "value": "08-30-2024",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "294e9da9-cc7d-4b38-8841-2a7741a8192c",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1080,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6415797c-47aa-4e90-b49f-8945b9599dba",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1740,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "from": "+1844 844 4412",
+        "to": "=+1{{ $json.Phone.replaceAll(\"-\",\"\") }}",
+        "toWhatsapp": "=",
+        "message": "={{ $json.Message }}",
+        "options": {}
+      },
+      "id": "77920558-ecf5-46d6-8d66-305c8b83c622",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        500
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "UC7eFoliSFqVPETZ",
+          "name": "Twilio Account EPIC"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pysbx6fvsyde3st",
+        "table": "mu38inx9oz5r2fw",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "=Id",
+              "fieldValue": "={{ $('Loop Over Items').item.json.Id }}"
+            },
+            {
+              "fieldName": "MessageSent",
+              "fieldValue": "=Sent"
+            }
+          ]
+        }
+      },
+      "id": "13932df1-073f-49d2-98c0-b7b70294bc41",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2440,
+        500
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f1cc118f-6d53-4274-9bc1-740e81e67444",
+              "leftValue": "={{ $json.MessageSent }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "329621ef-24b9-48f2-afb1-3dc527e49242",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pysbx6fvsyde3st",
+        "table": "mu38inx9oz5r2fw",
+        "returnAll": true,
+        "options": {
+          "where": "=(DateToSend,eq,{{ $json[\"formattedDate\"] }})"
+        }
+      },
+      "id": "8885af8f-7ecf-46aa-b32c-0c23b063d1d4",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1520,
+        280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "currentDate": "08-30-2024"
+        }
+      }
+    ],
+    "NocoDB2": [
+      {
+        "json": {
+          "Id": 47,
+          "FirstName": "Alexandra",
+          "CreatedAt": "2024-08-15 21:09:48",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-915-0555",
+          "Message": "\"🛏️ Aim for 7-8 hours of sleep and establish a soothing bedtime routine. Turning off screens earlier could enhance sleep quality! 🌙📚\"",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 55,
+          "FirstName": "Brienne",
+          "CreatedAt": "2024-08-15 21:10:28",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "5866909845",
+          "Message": "\"🌿 Manage inflammation with a diet rich in omega-3s and antioxidants. Cut down on processed foods for better health! 🥑🍇\"",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 63,
+          "FirstName": "Gina",
+          "CreatedAt": "2024-08-15 21:38:40",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-798-4629",
+          "Message": "🏃‍♀️ Mix up your week with varied workouts: Cardio, strength, and yoga days. Keep your body guessing and improving! 🌟",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 73,
+          "FirstName": "Jonathan",
+          "CreatedAt": "2024-08-15 21:57:41",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-320-9078",
+          "Message": "🤹‍♂️ Improve your coordination with balance exercises and racquet sports, Jonathan. Strengthen your grip and endurance. 🎾✨",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 83,
+          "FirstName": "Josh",
+          "CreatedAt": "2024-08-15 21:58:10",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-789-5700",
+          "Message": "🧘‍♂️ Josh, time to improve your metabolic health! Add resistance training into your week and focus on low-glycemic foods for better sugar management.",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 93,
+          "FirstName": "Kathryn",
+          "CreatedAt": "2024-08-15 21:58:48",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "2487621701",
+          "Message": "😴 Prioritize sleep, Kathryn. Aim for 7-8 hours nightly and establish a relaxing bedtime routine to enhance rest quality 🌙.",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 103,
+          "FirstName": "Kavita",
+          "CreatedAt": "2024-08-15 21:59:19",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-924-5292",
+          "Message": "🍲 Focus on low-carb, high-fat meals to fuel your fitness goals. Add foods rich in omega-3 and antioxidants for anti-inflammation. 🥑🍓",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 113,
+          "FirstName": "Kristie",
+          "CreatedAt": "2024-08-15 22:00:01",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "2483209928",
+          "Message": "🤸‍♀️ Keep active with daily brisk walking, cycling, or swimming, aiming for 30 minutes 5 days a week. Heart health first! 🚴‍♀️",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 123,
+          "FirstName": "Layth",
+          "CreatedAt": "2024-08-15 22:00:31",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "2482242651",
+          "Message": "🧘‍♂️ Don't forget about your mindfulness practices. Daily breathing exercises or meditation can really boost your mental health!",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 133,
+          "FirstName": "Mitch",
+          "CreatedAt": "2024-08-15 22:01:08",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-877-3477",
+          "Message": "🧘‍♂️ For mental health, engage in daily meditation and mindfulness exercises. Helps reduce stress and improve focus! 🌱",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 143,
+          "FirstName": "Nora",
+          "CreatedAt": "2024-08-15 22:01:45",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-545-7210",
+          "Message": "🧘‍♀️ Nora, add some balance and coordination exercises to your day. It's great for your mobility! 🚶‍♀️💪 Remember to come in next month!",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 154,
+          "FirstName": "Ray",
+          "CreatedAt": "2024-08-15 22:02:55",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-376-2237",
+          "Message": "📉 Focus on eating low-glycemic foods to help manage your blood sugar levels. Think whole grains and leafy greens! 🥬",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 164,
+          "FirstName": "Sebastian",
+          "CreatedAt": "2024-08-15 22:03:31",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-550-1010",
+          "Message": "🧠 Include balance & coordination exercises like tai chi or yoga to support your neurological health. Keep those Omega-3s coming! 🧘‍♂️",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 174,
+          "FirstName": "Shawn\u000bLast",
+          "CreatedAt": "2024-08-15 22:04:04",
+          "UpdatedAt": null,
+          "LastName": "Name: Shouneyia\u000bPhone Number: 248-789-0997",
+          "Phone": "248-789-0997",
+          "Message": "🛌 Prioritize sleep for 7-8 hours nightly to keep your mind and body refreshed. 🌙 Consistency matters!",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 184,
+          "FirstName": "Steven",
+          "CreatedAt": "2024-08-15 22:04:43",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "2482174622",
+          "Message": "🏋️‍♂️ Add strength training to your routine, Steven. Compound exercises like deadlifts and squats 2-3 times a week are great! 💪🏋️‍♂️",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 195,
+          "FirstName": "Steven",
+          "CreatedAt": "2024-08-15 22:05:09",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "248-762-1700",
+          "Message": "🌰 Remember to take your daily Omega 3s (2000 mg), Magnesium Taurate (1500 mg), and other supplements for overall wellness. 🐟💊",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      },
+      {
+        "json": {
+          "Id": 205,
+          "FirstName": "Timothy",
+          "CreatedAt": "2024-08-15 22:05:50",
+          "UpdatedAt": null,
+          "LastName": null,
+          "Phone": "3135701539",
+          "Message": "🍽️ Adjust your diet: more antioxidants and lean protein sources. Protect your liver and keep those muscles strong! 🥗💪",
+          "DateToSend": "08-30-2024",
+          "MessageSent": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    },
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-08-16T19:24:31.237Z",
+  "versionId": "debd5ee6-cad5-4cfd-8725-985868998231"
+}
