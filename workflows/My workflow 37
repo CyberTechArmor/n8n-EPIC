@@ -1,0 +1,116 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "Yourls3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-26T23:43:21.335Z",
+  "id": "nXmykz0vwKvNpcfH",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 37",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $json.result }}\",\n         \"iSurveyID\": 833751,                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $json.DEM_FIRSTNAME }}\",\n                \"lastname\": \"{{ $json.DEM_LASTNAME }}\",\n                \"email\": \"{{ /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/.test($json.patient_email || '') ? $json.patient_email : 'noemail@email.com' }}\",\n                \"language\": \"en\",\n                \"attribute_1\": \"{{ $json.DEM_EXTERNALID }}\"\n            }\n        ],\n        \"bCreateToken\": true\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "b9c42d4d-28e3-4288-abbe-ebba9b581a1d",
+      "name": "HTTP Request12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -40,
+        -160
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://xl.epicpc.com/webhook/9258efe2-2463-4680-b9d8-1b4bf15bed5b?MRN=197520&survey={{ encodeURIComponent(\"https://forms.epicpc.com/limesurvey/index.php/222825?token=\" + $json.result[0].token + \"&newtest=Y\") }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.yourls",
+      "typeVersion": 1,
+      "position": [
+        220,
+        -160
+      ],
+      "id": "6ed40a0f-6a64-4dfc-aa96-215e178a8057",
+      "name": "Yourls3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "yourlsApi": {
+          "id": "6NO7EGDBw1CupKtb",
+          "name": "Yourls account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "HTTP Request12": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "DESMAND",
+              "lastname": "COLLIER",
+              "email": "noemail@email.com",
+              "language": "en",
+              "attribute_1": "000322",
+              "token": "1fvuO",
+              "tid": "1687",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null,
+              "attribute_3": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-26T23:43:21.335Z",
+  "versionId": "ab6ba655-e070-490b-8ded-1a9679f72c45"
+}
