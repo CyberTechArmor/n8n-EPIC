@@ -1,0 +1,40 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-04-11T20:50:52.844Z",
+  "id": "NhavaEIJAqQszOGJ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Voiceflow Phone Issue",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6a907756-95bd-4e1e-b6ca-2ee09a81397c",
+        "options": {
+          "responseData": ""
+        }
+      },
+      "id": "7b747d1c-60f4-49f4-8906-691cbd969cad",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        480
+      ],
+      "webhookId": "6a907756-95bd-4e1e-b6ca-2ee09a81397c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-11T20:51:14.117Z",
+  "versionId": "157ae3aa-b1e1-4b8c-9b58-50c4af1a4dc9"
+}
