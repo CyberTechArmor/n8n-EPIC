@@ -1,0 +1,94 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-08-07T18:51:14.378Z",
+  "id": "LZYYdlXBl1OIhN8J",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 20",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "43402afa-3cd8-4feb-a0db-935459376550",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        340,
+        480
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tapfiliate.com/1.6/clicks",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "3cb3adfc4687217c81c86cd6ba9c2635670e06ed"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"referral_code\":\"friends-family-referrals\"}",
+        "options": {}
+      },
+      "id": "f2321d21-a4c6-4e29-b721-87d950b543c5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.tapfiliate.com/1.6/clicks",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "3cb3adfc4687217c81c86cd6ba9c2635670e06ed"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"referral_code\":\"friends-family-referrals\",\"source_id\":\"<ADD STRING VALUE>\",\"meta_data\":{\"key\":\"<ADD STRING VALUE>\"},\"referrer\":\"<ADD STRING VALUE>\",\"landing_page\":\"<ADD STRING VALUE>\",\"user_agent\":\"<ADD STRING VALUE>\",\"ip\":\"<ADD STRING VALUE>\"}",
+        "options": {}
+      },
+      "id": "1152dc78-ae37-4a5a-98bd-c7784194590e",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-07T18:51:14.378Z",
+  "versionId": "a7e30063-a399-426a-a7f4-6dd0f938b563"
+}
