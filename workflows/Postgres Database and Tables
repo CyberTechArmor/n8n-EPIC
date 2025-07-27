@@ -1,0 +1,1609 @@
+{
+  "active": false,
+  "connections": {
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mapping_COMPLETED": {
+      "main": [
+        [
+          {
+            "node": "Summarize1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Signups L2W": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Event Tables": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Signups L2W2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Signups L2W2": {
+      "main": [
+        [
+          {
+            "node": "Summarize3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Event Tables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointments": {
+      "main": [
+        [
+          {
+            "node": "Summarize2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointments3": {
+      "main": [
+        [
+          {
+            "node": "Summarize6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize7": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointments4": {
+      "main": [
+        [
+          {
+            "node": "Summarize7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Notifications",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Inbound Communication",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Appointments3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Appointments4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mapping_COMPLETED",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Signups L2W",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Appointments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge7": {
+      "main": [
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge9": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge8": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields9": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Notifications": {
+      "main": [
+        [
+          {
+            "node": "Summarize4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inbound Communication": {
+      "main": [
+        [
+          {
+            "node": "Summarize5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge10": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Event Tables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields10": {
+      "main": [
+        [
+          {
+            "node": "APITemplate.io1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-04T13:00:10.290Z",
+  "id": "pvu98BOge0fwMQTn",
+  "isArchived": false,
+  "meta": null,
+  "name": "Postgres Database and Tables",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "24ef04a7-b498-4625-abae-415edd9f0aef",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        440,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Signups",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4a53f98-bece-4e00-acef-17d78cfa372a",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1181,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e265e66-ae2e-4b9e-a84b-4cdb2207cccd",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1021,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "40f61542-a0f9-43ef-8925-450ca4238427",
+      "name": "Summarize1",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1021,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Completed Mapping",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3f873fc-a359-4842-ab3e-f47919ab63ce",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1181,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAccountCreations\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 DAY'\n    AND mapping_status = 'COMPLETED';",
+        "options": {}
+      },
+      "id": "8bb62ed5-9541-4f88-aec1-62844f687b7d",
+      "name": "Mapping_COMPLETED",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        841,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAccountCreations\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 DAY';",
+        "options": {}
+      },
+      "id": "33b35ee4-7ffd-496a-987d-54cb9cc0fe6f",
+      "name": "Signups L2W",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        841,
+        900
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    table_schema || '.' || table_name\nFROM\n    information_schema.tables\nWHERE\n    table_type = 'BASE TABLE'\nAND\n    table_schema NOT IN ('pg_catalog', 'information_schema');",
+        "options": {}
+      },
+      "id": "b329007f-aa0a-4605-abec-7972d21ffff9",
+      "name": "Event Tables",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        640,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Event Tables",
+        "height": 215,
+        "width": 1130.9676613447728
+      },
+      "id": "b8b81029-dfc9-4622-969e-ab8a2680e500",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        366
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Mapping Completed",
+        "height": 210,
+        "width": 521.0870015729388
+      },
+      "id": "e40c547b-15f1-4023-b562-a0eeed3a07e3",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        800,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Total Signups (Last Two Weeks)",
+        "height": 215,
+        "width": 511.22287676955636
+      },
+      "id": "e36df338-e7c8-42d9-a3bf-935e4d3dbc28",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        806,
+        841
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Appointments",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id.padStart(1, '0') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9517db1c-b8a6-4c97-9475-178aa81394f3",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1181,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e075455f-a814-4240-b019-211c3e98b8ff",
+      "name": "Summarize2",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1021,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Appointments (Last Two Weeks)",
+        "height": 215,
+        "width": 509.48192519260937,
+        "color": 4
+      },
+      "id": "328372ae-4088-4426-8514-a0457ce953fc",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        808,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"{{ $json[\"?column?\"] }}\"\nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 DAY';",
+        "options": {}
+      },
+      "id": "a1a20e97-4ba6-4f28-8f13-95be6dc14e79",
+      "name": "Signups L2W2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1200,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "['?column?']",
+              "stringValue": "={{ $json['?column?'].replace(\"public.\",'') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fe4a8898-a586-443e-9f8e-937688b6d295",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f0a7fa92-fccf-4e97-9a2b-7bb8e0460557",
+      "name": "Summarize3",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Total Events",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4870e1c-81dd-4595-b003-5e984634fb54",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1440,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "0d46e1ba-92e1-4ab6-ac94-6a92be3753e9",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1620,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "31e80c4f-4175-40f8-82b3-75e751870c05",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1620,
+        980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4b4c3155-4c78-45fd-8d96-ca80ba72355f",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1780,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "['Total Events']"
+            },
+            {
+              "fieldToAggregate": "['Signups']"
+            },
+            {
+              "fieldToAggregate": "['Completed Mapping']"
+            },
+            {
+              "fieldToAggregate": "['Appointments']"
+            },
+            {
+              "fieldToAggregate": "['Notifications']"
+            },
+            {
+              "fieldToAggregate": "['Inbound Communication']"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "29ce1a0e-d09d-4b0d-8ab7-3f4ae01a1195",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "accda7ac-b4a3-48c6-b93b-d0098df33cd2",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2380,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAppointments\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 day';",
+        "options": {}
+      },
+      "id": "6e3b034b-6efb-4d6c-b838-54f12d5414af",
+      "name": "Appointments",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        841,
+        1140
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Notifications",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_idpadStart(1, '0') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d49327f2-6cbc-427c-9b04-36a4349e5e8d",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1193,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6b27aec9-0cd4-4a51-af58-2897fe713a1f",
+      "name": "Summarize4",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1033,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Notifications (Last Two Weeks)",
+        "height": 215,
+        "width": 504.61780038922666
+      },
+      "id": "ed25b9f3-286c-4fe7-a8d9-cf88cd61175b",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        817.5679375983088,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Inbound Communication",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dff34670-b353-47be-ac33-6d6e1f4cfe3a",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1193,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1497720f-2b03-49b4-a545-30266839b677",
+      "name": "Summarize5",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1033,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Inbound Communication (Last Two Weeks)",
+        "height": 215,
+        "width": 521.6422372010659
+      },
+      "id": "e7c84a46-fb30-4327-8a45-b74fdd60f61f",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        815.1358751966175,
+        1560
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Appointments",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c295a34-89ba-43b2-9b35-d12795d91fef",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1133,
+        2520
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a16169b0-4145-4bb6-bf7f-dfe60afee4e3",
+      "name": "Summarize6",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        973,
+        2520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Appointments (Last Two Weeks)",
+        "height": 215,
+        "width": 521.6422372010661,
+        "color": 3
+      },
+      "id": "ddef8cd1-79eb-4adf-b286-9a5df28ae7e7",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        760,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPVitals\";",
+        "options": {}
+      },
+      "id": "76a43e9d-c24a-4394-af6b-945282fb6171",
+      "name": "Appointments3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        793,
+        2520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Appointments",
+              "type": "numberValue",
+              "numberValue": "={{ $json.count_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7961549b-63eb-46b7-bcad-5b73fc9f5be5",
+      "name": "Edit Fields9",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1133,
+        2760
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ba2ca98a-2962-4328-89da-f1b1d19854d3",
+      "name": "Summarize7",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        973,
+        2760
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Appointments (Last Two Weeks)",
+        "height": 215,
+        "width": 528.9384244061399,
+        "color": 3
+      },
+      "id": "9df5f8c0-44dc-48f1-b86a-1f2947c001aa",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        760,
+        2700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAppointments\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '2 weeks';",
+        "options": {}
+      },
+      "id": "0cc2f21e-3da6-4687-8a3a-24af076df794",
+      "name": "Appointments4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        793,
+        2760
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "['?column?']"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2c601c38-98b7-45a7-97ee-4dbd771dc23d",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1360
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f965e7ee-2136-4996-b410-1e7db93fcb35",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1640,
+        1400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "98769b38-045a-4184-a102-d8fa0dcf452d",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1599,
+        2600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e861975e-f2f4-4c77-ad27-5082f28774e3",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1799,
+        2540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5bfadbc8-6391-4ea2-8201-b7a1ff05e0f4",
+      "name": "Merge6",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1639,
+        3120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3eb6d7a2-a1eb-4c8b-bc2a-6898bb04341d",
+      "name": "Merge7",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1659,
+        3520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "7d518eaa-6582-4106-ab82-c8cbaae8bcd6",
+      "name": "Merge8",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1799,
+        3320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3e22e039-f1bc-47b4-a1db-943fd5d072c8",
+      "name": "Merge9",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1919,
+        2860
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "20fd120a-657e-4241-94f7-e32aa634e83a",
+      "name": "Merge10",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2040,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"{{ $json[\"?column?\"][8] }}\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 DAY';",
+        "options": {
+          "replaceEmptyStrings": true
+        }
+      },
+      "id": "20dc7f28-061e-490e-91e0-ead67db65d4b",
+      "name": "Notifications",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        853,
+        1380
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"{{ $json[\"?column?\"][4] }}\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 DAY';",
+        "options": {}
+      },
+      "id": "68073774-34b6-416e-9b19-5bce931334f8",
+      "name": "Inbound Communication",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        853,
+        1620
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pmi3cllv3oalfi7",
+        "table": "m0ryz91tpsdvonr",
+        "dataToSend": "autoMapInputData"
+      },
+      "id": "4e7b73c9-7d26-47f9-89f1-85ccb6e0ee47",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2600,
+        1380
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "30 6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "03b07ec8-115d-4c5c-8a3d-5b0ff33b281e",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        420
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "account"
+      },
+      "id": "60251e98-a5b0-4dc5-83f4-167658c4faa8",
+      "name": "APITemplate.io",
+      "type": "n8n-nodes-base.apiTemplateIo",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        320
+      ],
+      "credentials": {
+        "apiTemplateIoApi": {
+          "id": "lEeJj4fcMWgYQFtw",
+          "name": "APITemplate.io account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "pdf",
+        "pdfTemplateId": "c4977b230deb8458",
+        "jsonParameters": true,
+        "propertiesJson": "={\n  \"batchNumber\": \"736628\",\n  \"revision\": \"0\",\n  \"header_title\": \"This is a dynamic header\",\n  \"website\": \"https://apitemplate.io\",\n  \"document_id\": \"889856789012\",\n  \"items\": [\n    {\n      \"item_name\": \"Total Events\",\n      \"qty\": {{ $json[\"Total Events\"][0] }},\n      \"unit_price\": 3\n    },\n    {\n      \"item_name\": \"Appointments\",\n      \"qty\": {{ $json[\"Appointments\"][0] }},\n      \"unit_price\": 4\n    },\n    {\n      \"item_name\": \"Inbound Communication\",\n      \"qty\": {{ $json[\"Inbound Communication\"][0] }},\n      \"unit_price\": 3\n    },\n    {\n      \"item_name\": \"Completed Mapping\",\n      \"qty\": {{ $json[\"Completed Mapping\"][0] }},\n      \"unit_price\": 5\n    }\n  ]\n}"
+      },
+      "id": "28d42865-c567-4eb1-bae6-0cb06fc84d27",
+      "name": "APITemplate.io1",
+      "type": "n8n-nodes-base.apiTemplateIo",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        1540
+      ],
+      "credentials": {
+        "apiTemplateIoApi": {
+          "id": "lEeJj4fcMWgYQFtw",
+          "name": "APITemplate.io account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "stringValue": "<h1 class=\"text-3xl md:text-4xl font-medium mb-2 mt-2 text-center text-label\">Templating basics</h1> <div class=\"text-center m-5 text-lg text-label2\"> \tYou can configure the header or footer in the \"Settings\" tab \t<br> \tLearn more at https://docs.apitemplate.io/reference/learn-jinja2.html </div> <div class=\"section\"> \t<h1 class=\"text-2xl md:text-1xl font-medium mb-2 mt-2 text-label\">Introduction</h1>  \t{% raw %} \tA template is a text document that contains dynamic data replaced by the values passed in as JSON when the template is rendered. \t<br><br> \tTemplate variables are enclosed in <b>{{ ... }}</b> \t{% endraw %} \t<br><br> \t<b>Website:</b> {{website}} </div>    <div class=\"section\"> \t<h1 class=\"text-3xl md:text-2xl font-medium mb-2 mt-2 text-label\">HTML Table and Looping</h1> \t<a href=\"https://docs.apitemplate.io/reference/learn-jinja2.html#loops\">https://docs.apitemplate.io/reference/learn-jinja2.html#loops</a> \t<table class=\"table\"> \t\t<thead> \t\t\t<tr> \t\t\t\t<th>Item Name</th> \t\t\t\t<th>Quantity</th> \t\t\t\t<th>Unit Price</th> \t\t\t\t<th>Price</th> \t\t\t\t<th>Comment</th> \t\t\t</tr> \t\t</thead> \t\t<tbody> \t\t\t{% for item in items%} \t\t\t<tr> \t\t\t\t<td>{{item.item_name}}</td> \t\t\t\t<td>{{item.qty}}</td> \t\t\t\t<td>{{item.unit_price}}</td> \t\t\t\t<td>{{item.unit_price*item.qty}}</td> \t\t\t\t<td> \t\t\t\t\t{%if item.unit_price*item.qty >90 %} \t\t\t\t\tPrice >90 \t\t\t\t\t{%endif%} \t\t\t\t</td> \t\t\t</tr> \t\t\t{% endfor %} \t\t</tbody> \t</table>  </div>  <div class=\"section\"> \t<h1 class=\"text-3xl md:text-2xl font-medium mb-2 mt-2 text-label\">Use Filter to Render a Table</h1> \t{{items | render_table(table_class='table')}} </div>  <div class=\"section\"> \t<h1 class=\"text-3xl md:text-2xl font-medium mb-2 mt-2 text-label\">Render a QR Code</h1> \t<a href=\"https://docs.apitemplate.io/reference/learn-jinja2.html#render-qr-code\">https://docs.apitemplate.io/reference/learn-jinja2.html#render-qr-code</a> \t{{website | render_qrcode(style='width: 100px;height:100px;background: white;')}} </div>  <div class=\"section\">  \t<h1 class=\"text-3xl md:text-2xl font-medium mb-2 mt-2 text-label\">Render a Bar Code</h1> \t<a href=\"https://docs.apitemplate.io/reference/learn-jinja2.html#render-bar-code \">https://docs.apitemplate.io/reference/learn-jinja2.html#render-bar-code </a> \t{{document_id | render_barcode(type='ean13',style='height: 100px;')}} </div>   <p style=\"page-break-after: always;\">&nbsp;</p> <div class=\"section\"> \t<h1 class=\"text-3xl md:text-2xl font-medium mb-2 mt-2 text-label\">Page break</h1> \t<span>This is another page</span> </div>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1164adcc-2fa1-4649-be47-ac9551fa559c",
+      "name": "Edit Fields10",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2720,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAccountCreations\";",
+        "options": {}
+      },
+      "id": "05aaf1e1-6f45-4e28-9f59-49cfc9af4280",
+      "name": "Signups L2W1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        300,
+        920
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAccountCreations\" \nWHERE\n mapping_status = 'COMPLETED';",
+        "options": {}
+      },
+      "id": "1c188095-4b7f-431a-90d5-dfa05504f224",
+      "name": "Mapping_COMPLETED1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        300,
+        760
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAppointments\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 day';",
+        "options": {}
+      },
+      "id": "c6a6c774-3c7b-4a5c-b839-d9d2a24cdba4",
+      "name": "Appointments1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        500,
+        500
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAppointments\" \nWHERE\n    created_at > CURRENT_DATE - INTERVAL '1 day';",
+        "options": {}
+      },
+      "id": "e96276d7-95fd-47f1-940c-d85a91a0f89e",
+      "name": "Appointments2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        580,
+        580
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    *\nFROM\n    public.\"CAPAppointments\";",
+        "options": {}
+      },
+      "id": "98de5da9-7489-47f3-ab19-b417c0d3ac4d",
+      "name": "Appointments5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        300,
+        1200
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-17T16:09:27.259Z",
+  "versionId": "869d8816-dbcd-4d30-897a-1e704ec0323e"
+}
