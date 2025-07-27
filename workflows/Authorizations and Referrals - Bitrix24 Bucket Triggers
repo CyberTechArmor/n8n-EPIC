@@ -1,0 +1,186 @@
+{
+  "active": true,
+  "connections": {
+    "Request In Process": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-01-21T17:24:59.093Z",
+  "id": "ij7eR2MK6LBDUtH0",
+  "isArchived": false,
+  "meta": null,
+  "name": "Authorizations and Referrals - Bitrix24 Bucket Triggers",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "996ad34a-5ae1-4803-8c92-5a0fa20531ee",
+        "options": {}
+      },
+      "id": "db9e6204-4de2-4603-9a12-fd82a6698885",
+      "name": "Request In Process",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        580
+      ],
+      "webhookId": "996ad34a-5ae1-4803-8c92-5a0fa20531ee"
+    },
+    {
+      "parameters": {
+        "content": "## SMS to Patient",
+        "height": 264,
+        "width": 282,
+        "color": 4
+      },
+      "id": "8217aa50-3dbd-43a8-aa52-e5e75b76b560",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        480
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c2e81d61-2a65-4083-82c2-d717997ce0db",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        660,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "acaf8299-a553-4579-b4ef-24698e03cbc2",
+      "name": "Twilio",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        860,
+        580
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ddbe9ea1-13e1-43e7-bdc8-1bccf8c4d499",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"BIRTHDATE\": \"{{ $json[\"Date Of Birth\"] }}\", \"NAME\":\"{{ $json[\"First Name\"] }}\", \"LAST_NAME\":\"{{ $json[\"Last Name\"] }}\" } }",
+        "options": {}
+      },
+      "id": "8eab0d8b-7870-4a05-8da9-7dfcd90f0390",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        440,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"id\":\"{{ $json[\"body\"][\"document_id[2]\"] }}\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "25aa1a0c-b512-4f46-82f3-ef2268760b1d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        380,
+        580
+      ]
+    }
+  ],
+  "pinData": {
+    "Request In Process": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "52.29.163.104",
+            "x-forwarded-for": "52.29.163.104",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "355",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "49253",
+            "auth[domain]": "nmnepic.bitrix24.com",
+            "auth[client_endpoint]": "https://nmnepic.bitrix24.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "30229212caf78f00e7fcf64083d66781"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-01T17:10:19.415Z",
+  "versionId": "221254d3-9369-4f60-af26-de55a68cf658"
+}
