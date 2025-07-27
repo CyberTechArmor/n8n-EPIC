@@ -1,0 +1,3634 @@
+{
+  "active": true,
+  "connections": {
+    "Find Patient by Phone Number": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Match found",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Most Available Provider",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Most Available Provider",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On the Schedule": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Most Available Provider": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Check Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Paitient",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Paitient": {
+      "main": [
+        [
+          {
+            "node": "On the Schedule",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients3": {
+      "main": [
+        [
+          {
+            "node": "Split Out Site Names2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names2": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents2": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Room to Agent2": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell CMD to RMM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site2": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Match found": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Testing Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No available appointments1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Identify Patient Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "No available appointments1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Find Patient by Phone Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointment Time": {
+      "main": [
+        [
+          {
+            "node": "If Block in Current Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop - Provider List": {
+      "main": [
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GetAvailableTimeBlocks",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "GetAvailableTimeBlocks": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over TimeBlocks": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Block in Current Time": {
+      "main": [
+        [
+          {
+            "node": "If Not on Lunch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Not on Lunch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Create Walk-in",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Appointment Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Create Walk-in": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Check Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token4": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid2": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Execute Workflow3": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If Not on Lunch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-14T18:28:02.452Z",
+  "id": "Xb3usM1jlkJHiUxV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Walk-in Kiosk",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--APM PatientInfoWithInsInfo\nwith genpatinfo as (\n    select g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_LFI,\n           g.Patient_First_Name, g.Patient_Last_Name, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n           g.Patient_SSN, g.Patient_Sex, g.Patient_DOB, g.Patient_Age, g.Patient_Marital_Status, g.Patient_Home_Phone, g.Patient_Cell_Phone,\n           g.Patient_Primary_Phone_Number, g.Patient_Email\n    from [PM].[vwGenPatInfo] g\n),\npatid as (\n    select p.Patient_ID, p.Patient_Number, p.Date_Registered,\n           p.Comments, p.Account_ID, p.Contact_ID\n    from [PM].[Patients] p\n),\npatpol as (\n    select pp.Patient_Policy_ID, pp.Policy_ID, pp.Patient_ID,\n           pp.Coverage, pp.Verified_Date\n    from [PM].[Patient_Policies] pp\n),\ngenpol as (\n    select po.Policy_ID, po.Group_No, po.Certificate_No,\n           po.Comments, po.Effective_Date, po.Expiration_Date,\n           po.Carrier_ID, po.Insurance_Plan_ID, po.Contact_ID, po.Account_ID\n    from [PM].[Policies] po\n)\nselect g.Patient_ID, g.Patient_Number, g.Patient_Name, g.Patient_First_Name, g.Patient_Last_Name,\n       g.Patient_LFI, g.Patient_Street1, g.Patient_City, g.Patient_State, g.Patient_Zip_Code,\n       g.Patient_SSN, g.Patient_Sex, convert(varchar(10), g.Patient_DOB, 101) as Patient_DOB, g.Patient_Age, g.Patient_Marital_Status,\n       g.Patient_Home_Phone, g.Patient_Cell_Phone, g.Patient_Email,\n       p.Account_ID, p.Contact_ID, p.Date_Registered, p.Comments,\n       pp.Patient_Policy_ID, pp.Policy_ID, pp.Coverage, pp.Verified_Date,\n       po.Account_ID, po.Carrier_ID, c.Name, c.Payor_Number, i.CoPayment_Amount,\n       po.Insurance_Plan_ID, po.Carrier_ID, po.Certificate_No, po.Group_No,\n       po.Comments, po.Effective_Date, po.Expiration_Date\nfrom genpatinfo g\nleft join patid p on p.Patient_ID = g.Patient_ID\nleft join patpol pp on pp.Patient_ID = g.Patient_ID\nleft join genpol po on po.Policy_ID = pp.Policy_ID\nleft join [PM].[Carriers] c on c.Carrier_ID = po.Carrier_ID\nleft join [PM].[Insurance_Plans] i on i.Insurance_Plan_ID = po.Insurance_Plan_ID\nwhere (g.Patient_Home_Phone = '{{ $json.body.number.startsWith('1') ? $json.body.number.slice(1) : $json.body.number }}' or g.Patient_Cell_Phone = '{{ $json.body.number.startsWith('1') ? $json.body.number.slice(1) : $json.body.number }}')   --and YEAR(g.Patient_DOB) = '{{ $json.body.dobYear }}'"
+      },
+      "id": "bea070fc-ca91-444d-8b21-11c90cb18582",
+      "name": "Find Patient by Phone Number",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Kiosk Start",
+        "height": 243,
+        "width": 743.9681454746636,
+        "color": 4
+      },
+      "id": "829a99b9-d8b9-48f0-b511-af17084f040b",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Identify Patient",
+        "height": 336.62479116762086,
+        "width": 1616.957068622987,
+        "color": 4
+      },
+      "id": "13083021-c9fe-4bb2-bb70-027236b691d6",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        740,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Webhook3').item.json.body.dobYear }}",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "id": "68c36bed-7611-4e13-bd0f-be53039c3f66",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "047bd2ad-a2d0-423f-a101-eb2f64d79fbc",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1620,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n    <script>\n        setTimeout(function() {\n            window.location.href = 'https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname={{ $('Webhook3').item.json[\"query\"][\"hostname\"] }}'; // Replace with your target URL\n        }, 12000); // 10000 milliseconds = 10 seconds\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Oh no!</h1>\n        <p>We did not seem to find you in the system, please see the medical receptionist.</p>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "ede7910c-70fa-4b83-8dbb-2b16b8c97772",
+      "name": "No Match found",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1960,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## No match found Workflow",
+        "height": 243,
+        "width": 3735.5336719498464,
+        "color": 3
+      },
+      "id": "43738f7a-3daa-4c02-9a92-49de55468f2f",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## If on the schedule:",
+        "height": 224.5193782400725,
+        "width": 246.97506791784394
+      },
+      "id": "1cb07eda-1ef5-4f2c-8ef9-7e7cb845354b",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2560.4265621104496,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6349303e-ec6f-4dcc-a19b-1804cb347b46",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0dd70070-7bfa-4690-9ebf-534fc38d5006",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "be8e41e2-3a91-4704-89d1-b38a139d1bc2",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2600,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- appt for patient and resources for day and sfd now\nSELECT\n\t   s.[Patient_Number],p.Patient_ID\n       ,s.[Patient_Last_Name]\n      ,s.[Patient_First_Name]\n      ,s.[Patient_MI]\n      ,s.[Patient_Suffix],p.Patient_Cell_Phone\n      ,s.[Patient_Home_Phone]\n      ,s.[Patient_DOB]\n      ,[Appointment_DateTime]\n      ,[Sched_Loc_Abbr]\n      ,[Sched_Dept_Abbr]\n      ,[Resource_Desc]\n      ,[Resource_Abbr]\n      ,[Appt_Type_Abbr]\n      ,[Duration]\n      ,[Comments]\n  FROM [Ntier_EPIC].[PM].[vwApptSchedAppts] s\n  left join [dbo].[vwGenPatInfo] p on s.Patient_Number=p.Patient_Number\n  where cast(s.Appointment_DateTime as date) = cast(getdate() as date) and \n  s.Sched_Loc_Abbr in ('EPS10Mil') and s.Resource_Desc !='PA, Lab X-Ray'"
+      },
+      "id": "7ec769f4-fb0a-49d0-80a8-c8b0bb5efe89",
+      "name": "On the Schedule",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @LOC VARCHAR(200) = '{{ $('NocoDB').item.json.Location }}';\n \nWITH ApptData AS (\n \n    SELECT\n \n        [Patient_ID],\n \n        [Patient_Number],\n \n        [Appt_ID],\n \n        [Appt_DateTime],\n \n        [Appt_Encounter_Number],\n \n        [Appt_Resource_ID],\n \n        [Appt_Resource_Abbr],\n \n        [Appt_Resource_Descr],\n \n        [Appt_Resource_Assoc_Prov_LFI],\n \n        [Appt_Type_Abbr],\n \n        [Appt_Type_Descr],\n \n        [Appt_Duration],\n \n        [Appt_Comments],\n \n        [Appt_Status],\n \n        [Appt_Time_In],\n \n        [Appt_Booked_Date],\n \n        [Appt_Booked_By_Operator_Abbr],\n \n        [Appt_Is_Forced],\n \n        [Appt_Started_Time],\n \n        [Appt_Check_Out_Time],\n \n        [Appt_Acknowledged_Date],\n \n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n \n    FROM\n \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n \n    WHERE\n \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND\n \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time))\n \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND\n \n        a.Appt_Sched_Location_Descr = @LOC AND\n \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and a.Appt_Resource_Descr not like 'Priority%' and\n \n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and a.Appt_Resource_Descr not like '%aller%' and\n \n        a.Appt_Status IN ('A', 'S','C') AND\n \n        a.Appt_Check_Out_Time IS NULL\n \n),\n \nResourceSummary AS (\n \n    SELECT\n \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr,\n \n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n \n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count,\n \n\t\tSUM(CASE WHEN Appt_Status = 'C' THEN 1 ELSE 0 END) AS C_Count\n \n    FROM\n \n        ApptData\n \n    GROUP BY\n \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr\n \n),\n \nRankedResources AS (\n \n    SELECT\n \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n \n        A_Count,C_Count,\n \n        S_Count,Appt_Sched_Location_Descr,\n \n        RANK() OVER (ORDER BY A_Count, S_Count,C_Count asc) AS AvailRank\n \n    FROM\n \n        ResourceSummary\n \n)\n \nSELECT\n \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n \n    r.A_Count,\n \n    r.S_Count,\n \n\tr.C_Count,\n \n    r.AvailRank AS MostAvail,\n \n\tr.Appt_Sched_Location_Descr\n \nFROM\n \n    RankedResources r\n \nORDER BY\n \n    r.AvailRank"
+      },
+      "id": "fd3c6bfc-f6cd-4627-b451-6df9da387410",
+      "name": "Most Available Provider",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Already on the schedule",
+        "height": 336.62479116762086,
+        "width": 405.0390178972991,
+        "color": 5
+      },
+      "id": "3dc4a2e0-679b-43ca-ad5e-ae432b3051c9",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Schedule the walk-in",
+        "height": 336.62479116762086,
+        "width": 4371.810853030538,
+        "color": 4
+      },
+      "id": "2232ab51-7274-48f7-ac1b-9ad373544c4d",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "1562080b-6e40-45c0-84c6-f2a3566a8eb8",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4320,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n    <script>\n        setTimeout(function() {\n            window.location.href = 'https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname={{ $('Webhook3').item.json[\"query\"][\"hostname\"] }}'; // Replace with your target URL\n        }, 10000); // 10000 milliseconds = 10 seconds\n    </script>\n\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .confetti {\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            pointer-events: none;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Scheduling Successful!</h1>\n        <p>Your appointment has been scheduled with {{ $('Merge').item.json[\"Appt_Resource_Descr\"] }}.</p>\n<b>Please see the medical receptionist to check in.</b>\n    </div>\n\n    <canvas class=\"confetti\"></canvas>\n\n    <script>\n        function randomInRange(min, max) {\n            return Math.floor(Math.random() * (max - min + 1)) + min;\n        }\n\n        function createConfetti() {\n            const confetti = document.querySelector('.confetti');\n            const ctx = confetti.getContext('2d');\n            const pieces = [];\n            let animationFrame;\n            let animationStart;\n\n            confetti.width = window.innerWidth;\n            confetti.height = window.innerHeight;\n\n            function ConfettiPiece() {\n                this.x = Math.random() * confetti.width;\n                this.y = Math.random() * confetti.height - confetti.height;\n                this.size = randomInRange(10, 20);\n                this.weight = randomInRange(2, 6);\n                this.color = `hsl(${randomInRange(0, 360)}, 100%, 50%)`;\n                this.angle = Math.random() * 2 * Math.PI;\n                this.speed = randomInRange(1, 5);\n                this.opacity = 1;\n\n                this.update = function(elapsedTime) {\n                    this.y += this.weight;\n                    this.x += Math.sin(this.angle) * this.speed;\n\n                    if (elapsedTime > 3000) {\n                        this.opacity -= 0.02;\n                        if (this.opacity < 0) this.opacity = 0;\n                    }\n\n                    if (this.y > confetti.height) {\n                        this.y = 0 - this.size;\n                        this.x = Math.random() * confetti.width;\n                    }\n                };\n\n                this.draw = function() {\n                    ctx.fillStyle = this.color;\n                    ctx.globalAlpha = this.opacity;\n                    ctx.beginPath();\n                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);\n                    ctx.fill();\n                };\n            }\n\n            function updateConfetti(timestamp) {\n                if (!animationStart) animationStart = timestamp;\n                const elapsedTime = timestamp - animationStart;\n\n                ctx.clearRect(0, 0, confetti.width, confetti.height);\n\n                for (let i = 0; i < pieces.length; i++) {\n                    pieces[i].update(elapsedTime);\n                    pieces[i].draw();\n                }\n\n                if (elapsedTime < 5000) { // Run the animation for 5 seconds total (3 seconds full + 2 seconds fade)\n                    animationFrame = requestAnimationFrame(updateConfetti);\n                } else {\n                    cancelAnimationFrame(animationFrame);\n                }\n            }\n\n            function initializeConfetti() {\n                for (let i = 0; i < 150; i++) {\n                    pieces.push(new ConfettiPiece());\n                }\n                animationFrame = requestAnimationFrame(updateConfetti);\n            }\n\n            initializeConfetti();\n        }\n\n        document.addEventListener('DOMContentLoaded', createConfetti);\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "f58d2d3a-958b-49f8-bd42-d3fcc12df9ed",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        7060,
+        520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "37cd901a-3bbe-4820-9c4b-14de4f303628",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        2700
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {
+          "dataPropertyName": "pm"
+        }
+      },
+      "id": "71a1a19e-f9a3-4433-b873-389fb7ae652d",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3099,
+        2321
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "pmtoken.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "f242f433-9536-42de-9c9d-f9d8b280fd10",
+      "name": "Read/Write Files from Disk1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        2720
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "data",
+        "options": {}
+      },
+      "id": "66ed90b6-4cdd-4d1c-98c0-67344b9dbdea",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        3900,
+        2720
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "ff2219ee-4bcd-4a44-823d-7899990cb011",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        3279,
+        2321
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "44cb82c0-d51c-466d-9520-f1368a3d45aa",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3559,
+        2561
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "33c08df1-9e07-4990-978f-59f1f8f1d2f1",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3419,
+        2561
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "25f0e411-2228-4c37-9089-2c4e31229151",
+      "name": "Check Token1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3279,
+        2561
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASPM Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 666.2861090173772,
+        "width": 1290.8012866477518,
+        "color": 2
+      },
+      "id": "e5abf7b1-8754-460d-b3d0-8d7218ef56f6",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3059,
+        2233
+      ]
+    },
+    {
+      "parameters": {
+        "height": 362.7737573665016,
+        "width": 646.6471275914764,
+        "color": 4
+      },
+      "id": "41072db3-ff8f-4664-ba61-9673684f4f6a",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3700,
+        2240
+      ]
+    },
+    {
+      "parameters": {
+        "height": 294.96556026709675,
+        "width": 656.1571203767965,
+        "color": 3
+      },
+      "id": "63aed599-dde9-4874-b110-8a951d7607c2",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3695,
+        2606
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-d6d4-NMNWokflow-prod\",      \"Password\":\"%p3CpcN3nW!eFlfWt%St7Pp0435@\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "44bf7a2a-8bc9-4b63-87a8-6f57a33ac2e8",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3739,
+        2721
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "279b400e-bbed-4dc5-964f-90c74154cf4e",
+      "name": "Read/Write Files from Disk2",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3859,
+        2361
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "57be6d5e-8d63-4c9b-be92-a0b0ec7cb78e",
+      "name": "Extract from File1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        4119,
+        2361
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## No Scheduled appointments for the day",
+        "height": 242.24514478932173,
+        "width": 1296.323875958478,
+        "color": 3
+      },
+      "id": "b77e44f6-431b-42a6-b044-6b479e1badc3",
+      "name": "Sticky Note14",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5560,
+        780
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "87dee192-ace5-41b1-9a34-9333d7409146",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3080,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Loop Over Items').item.json.Patient_DOB }}",
+                    "rightValue": "={{ $json.formattedDate }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "faf479bb-9e44-4467-881a-db202dd6c5d6",
+                    "leftValue": "={{ $('Loop Over Items').item.json.Patient_DOB }}",
+                    "rightValue": "={{ $json.formattedDate }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6012068-c07a-45c7-9b77-3a8b0517e98d",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2020,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "6b7dbb61-7c76-4641-a526-ad2552622941",
+      "name": "Paitient",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2240,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .confetti {\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            pointer-events: none;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Scheduling Successful!</h1>\n        <p>Your appointment has been scheduled successfully.</p>\n    </div>\n\n    <canvas class=\"confetti\"></canvas>\n\n    <script>\n        function randomInRange(min, max) {\n            return Math.floor(Math.random() * (max - min + 1)) + min;\n        }\n\n        function createConfetti() {\n            const confetti = document.querySelector('.confetti');\n            const ctx = confetti.getContext('2d');\n            const pieces = [];\n            let animationFrame;\n            let animationStart;\n\n            confetti.width = window.innerWidth;\n            confetti.height = window.innerHeight;\n\n            function ConfettiPiece() {\n                this.x = Math.random() * confetti.width;\n                this.y = Math.random() * confetti.height - confetti.height;\n                this.size = randomInRange(10, 20);\n                this.weight = randomInRange(2, 6);\n                this.color = `hsl(${randomInRange(0, 360)}, 100%, 50%)`;\n                this.angle = Math.random() * 2 * Math.PI;\n                this.speed = randomInRange(1, 5);\n                this.opacity = 1;\n\n                this.update = function(elapsedTime) {\n                    this.y += this.weight;\n                    this.x += Math.sin(this.angle) * this.speed;\n\n                    if (elapsedTime > 3000) {\n                        this.opacity -= 0.02;\n                        if (this.opacity < 0) this.opacity = 0;\n                    }\n\n                    if (this.y > confetti.height) {\n                        this.y = 0 - this.size;\n                        this.x = Math.random() * confetti.width;\n                    }\n                };\n\n                this.draw = function() {\n                    ctx.fillStyle = this.color;\n                    ctx.globalAlpha = this.opacity;\n                    ctx.beginPath();\n                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);\n                    ctx.fill();\n                };\n            }\n\n            function updateConfetti(timestamp) {\n                if (!animationStart) animationStart = timestamp;\n                const elapsedTime = timestamp - animationStart;\n\n                ctx.clearRect(0, 0, confetti.width, confetti.height);\n\n                for (let i = 0; i < pieces.length; i++) {\n                    pieces[i].update(elapsedTime);\n                    pieces[i].draw();\n                }\n\n                if (elapsedTime < 5000) { // Run the animation for 5 seconds total (3 seconds full + 2 seconds fade)\n                    animationFrame = requestAnimationFrame(updateConfetti);\n                } else {\n                    cancelAnimationFrame(animationFrame);\n                }\n            }\n\n            function initializeConfetti() {\n                for (let i = 0; i < 150; i++) {\n                    pieces.push(new ConfettiPiece());\n                }\n                animationFrame = requestAnimationFrame(updateConfetti);\n            }\n\n            initializeConfetti();\n        }\n\n        document.addEventListener('DOMContentLoaded', createConfetti);\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "8748cd81-7541-4823-b8d6-8c839aad8a28",
+      "name": "Successfully Scheduled",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "id": "633161fc-013f-4e49-9279-eb375f575fa7",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        7360,
+        520
+      ],
+      "webhookId": "3e26e6ce-e492-4d1d-a301-241b355da93e"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .step {\n            background: rgba(255, 255, 255, 0.1);\n            padding: 20px;\n            margin-bottom: 20px;\n            border-radius: 10px;\n        }\n        .step-label {\n            font-size: 1.3em;\n            margin-bottom: 10px;\n        }\n        select, input[type=\"text\"], input[type=\"date\"] {\n            width: 100%; /* Ensure full width */\n            padding: 15px;\n            margin: 10px 0;\n            border: none;\n            border-radius: 5px;\n            font-size: 1.2em;\n            display: block;\n            color: #333;\n            height: 60px;\n        }\n        input[type=\"text\"] {\n            background-color: #fff;\n            color: #333;\n            border: 1px solid #ccc;\n            padding: 15px;\n        }\n        input#phone {\n            font-size: 2em; /* Increased font size */\n            font-weight: normal; /* Removed bold */\n            background-color: #fff; /* Set background color to white */\n            color: #000; /* Ensure text color is readable */\n            border: 1px solid #ccc; /* Add border for better visibility */\n            padding: 10px; /* Add padding */\n            width: calc(100% - 22px); /* Ensure it fits within the parent div */\n        }\n        input[type=\"submit\"] {\n            background-color: #ff6f61;\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n            margin-top: 20px;\n            display: block;\n            width: 100%;\n        }\n        input[type=\"submit\"]:hover {\n            background-color: #ff3b2f;\n        }\n        .dropdown-container {\n            display: flex;\n            justify-content: space-between;\n            gap: 10px;\n            width: calc(100% - 20px);\n            margin: 0 auto;\n        }\n        .dropdown-container select {\n            flex: 1;\n        }\n        .dropdown-label {\n            font-size: 1.2em;\n            margin-bottom: 5px;\n            text-align: left;\n        }\n        .dropdown-group {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            width: 33%;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Welcome EPIC Walk-in Patient!</h1>\n        <p>No patient left behind</p>\n        <form id=\"patientForm\" action=\"https://xl.epicpc.com/webhook/d6799b31-26b0-47dc-9951-b3d8a89eb63b?hostname={{ $json['query']['hostname'] }}\" method=\"post\">\n            <div class=\"step\">\n                <div class=\"step-label\">Step 1: Select Date of Birth</div>\n                <div class=\"dropdown-container\">\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"year\">Year</label>\n                        <select id=\"year\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"month\">Month</label>\n                        <select id=\"month\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"day\">Day</label>\n                        <select id=\"day\" required></select>\n                    </div>\n                </div>\n            </div>\n            <div class=\"step\">\n                <div class=\"step-label\">Step 2: Enter Phone Number</div>\n                <input type=\"text\" id=\"phone\" name=\"number\" placeholder=\"Phone Number\" pattern=\"\\d*\" required>\n            </div>\n            <input type=\"hidden\" id=\"dob\" name=\"dobYear\">\n            <input type=\"hidden\" id=\"param\" name=\"hostname\">\n            <input type=\"submit\" value=\"Submit\">\n        </form>\n    </div>\n\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            const urlParams = new URLSearchParams(window.location.search);\n            const param = urlParams.get('param') || '{{ $json['query']['hostname'] }}';\n            document.getElementById('param').value = param;\n\n            const yearSelect = document.getElementById('year');\n            const monthSelect = document.getElementById('month');\n            const daySelect = document.getElementById('day');\n\n            const currentYear = new Date().getFullYear();\n            const earliestYear = 1900;\n\n            for (let year = currentYear; year >= earliestYear; year--) {\n                const option = document.createElement('option');\n                option.value = year;\n                option.textContent = year;\n                yearSelect.appendChild(option);\n            }\n\n            const monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\n            for (let month = 1; month <= 12; month++) {\n                const option = document.createElement('option');\n                option.value = month;\n                option.textContent = monthNames[month - 1];\n                monthSelect.appendChild(option);\n            }\n\n            function updateDays() {\n                const year = parseInt(yearSelect.value);\n                const month = parseInt(monthSelect.value);\n                daySelect.innerHTML = '';\n\n                const daysInMonth = new Date(year, month, 0).getDate();\n                for (let day = 1; day <= daysInMonth; day++) {\n                    const option = document.createElement('option');\n                    option.value = day;\n                    option.textContent = day;\n                    daySelect.appendChild(option);\n                }\n            }\n\n            yearSelect.addEventListener('change', updateDays);\n            monthSelect.addEventListener('change', updateDays);\n\n            updateDays();\n\n            const form = document.getElementById('patientForm');\n            const submitButton = form.querySelector('input[type=\"submit\"]');\n\n            form.addEventListener('submit', function(event) {\n                const year = yearSelect.value;\n                const month = monthSelect.value.padStart(2, '0');\n                const day = daySelect.value.padStart(2, '0');\n                document.getElementById('dob').value = `${year}-${month}-${day}`;\n                \n                submitButton.disabled = true;\n                submitButton.value = 'Submitting...';\n            });\n\ndocument.getElementById('myForm').addEventListener('submit', function (e) {\n    var phoneInput = document.getElementById('phone');\n    // Remove all non-numeric characters\n    phoneInput.value = phoneInput.value.replace(/[^0-9]/g, '');\n    // Remove leading 1 if present\n    if (phoneInput.value.startsWith('1')) {\n        phoneInput.value = phoneInput.value.substring(1);\n    }\n});\n\n\n\n        });\n    </script>\n</body>\n\n</html>\n",
+        "options": {}
+      },
+      "id": "34cb117e-546e-418d-b604-c1b61c3f4d44",
+      "name": "Respond to Webhook6",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        -360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .step {\n            background: rgba(255, 255, 255, 0.1);\n            padding: 20px;\n            margin-bottom: 20px;\n            border-radius: 10px;\n        }\n        .step-label {\n            font-size: 1.3em;\n            margin-bottom: 10px;\n        }\n        select, input[type=\"text\"], input[type=\"date\"] {\n            width: 100%; /* Ensure full width */\n            padding: 15px;\n            margin: 10px 0;\n            border: none;\n            border-radius: 5px;\n            font-size: 1.2em;\n            display: block;\n            color: #333;\n            height: 60px;\n        }\n        input[type=\"text\"] {\n            background-color: #fff;\n            color: #333;\n            border: 1px solid #ccc;\n            padding: 15px;\n        }\n        input#phone {\n            font-size: 2em; /* Increased font size */\n            font-weight: normal; /* Removed bold */\n            background-color: #fff; /* Set background color to white */\n            color: #000; /* Ensure text color is readable */\n            border: 1px solid #ccc; /* Add border for better visibility */\n            padding: 10px; /* Add padding */\n            width: calc(100% - 22px); /* Ensure it fits within the parent div */\n        }\n        input[type=\"submit\"] {\n            background-color: #ff6f61;\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n            margin-top: 20px;\n            display: block;\n            width: 100%;\n        }\n        input[type=\"submit\"]:hover {\n            background-color: #ff3b2f;\n        }\n        .dropdown-container {\n            display: flex;\n            justify-content: space-between;\n            gap: 10px;\n            width: calc(100% - 20px);\n            margin: 0 auto;\n        }\n        .dropdown-container select {\n            flex: 1;\n        }\n        .dropdown-label {\n            font-size: 1.2em;\n            margin-bottom: 5px;\n            text-align: left;\n        }\n        .dropdown-group {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            width: 33%;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Welcome EPIC Walk-in Patient!</h1>\n        <p>No patient left behind</p>\n        <form id=\"patientForm\" action=\"https://xl.epicpc.com/webhook/d6799b31-26b0-47dc-9951-b3d8a89eb63b?hostname={{ $json[\"query\"][\"hostname\"] }}\" method=\"post\">\n            <div class=\"step\">\n                <div class=\"step-label\">Step 1: Select Date of Birth</div>\n                <div class=\"dropdown-container\">\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"year\">Year</label>\n                        <select id=\"year\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"month\">Month</label>\n                        <select id=\"month\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"day\">Day</label>\n                        <select id=\"day\" required></select>\n                    </div>\n                </div>\n            </div>\n            <div class=\"step\">\n                <div class=\"step-label\">Step 2: Enter Phone Number</div>\n                <input type=\"text\" id=\"phone\" name=\"number\" placeholder=\"Phone Number\" pattern=\"\\d*\" required>\n            </div>\n            <input type=\"hidden\" id=\"dob\" name=\"dobYear\">\n            <input type=\"hidden\" id=\"param\" name=\"hostname\">\n            <input type=\"submit\" value=\"Submit\">\n        </form>\n    </div>\n\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            const urlParams = new URLSearchParams(window.location.search);\n            const param = urlParams.get('param') || '{{ $json[\"query\"][\"hostname\"] }}';\n            document.getElementById('param').value = param;\n\n            const yearSelect = document.getElementById('year');\n            const monthSelect = document.getElementById('month');\n            const daySelect = document.getElementById('day');\n\n            const currentYear = new Date().getFullYear();\n            const earliestYear = 1900;\n\n            for (let year = currentYear; year >= earliestYear; year--) {\n                const option = document.createElement('option');\n                option.value = year;\n                option.textContent = year;\n                yearSelect.appendChild(option);\n            }\n\n            const monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\n            for (let month = 1; month <= 12; month++) {\n                const option = document.createElement('option');\n                option.value = month;\n                option.textContent = monthNames[month - 1];\n                monthSelect.appendChild(option);\n            }\n\n            function updateDays() {\n                const year = parseInt(yearSelect.value);\n                const month = parseInt(monthSelect.value);\n                daySelect.innerHTML = '';\n\n                const daysInMonth = new Date(year, month, 0).getDate();\n                for (let day = 1; day <= daysInMonth; day++) {\n                    const option = document.createElement('option');\n                    option.value = day;\n                    option.textContent = day;\n                    daySelect.appendChild(option);\n                }\n            }\n\n            yearSelect.addEventListener('change', updateDays);\n            monthSelect.addEventListener('change', updateDays);\n\n            updateDays();\n\n            document.getElementById('patientForm').addEventListener('submit', function() {\n                const year = yearSelect.value;\n                const month = monthSelect.value.padStart(2, '0');\n                const day = daySelect.value.padStart(2, '0');\n                document.getElementById('dob').value = `${year}-${month}-${day}`;\n            });\n\n            document.getElementById('phone').addEventListener('input', function (e) {\n                this.value = this.value.replace(/[^0-9]/g, '');\n            });\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "b504fd50-fd60-4d4c-bd19-2a1086242f58",
+      "name": "Original Working Form",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1300,
+        200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n    <script>\n        window.addEventListener(\"pageshow\", function(event) {\n            var historyTraversal = event.persisted || \n                                   (typeof window.performance != \"undefined\" && \n                                    window.performance.navigation.type === 2);\n            if (historyTraversal) {\n                // Handle page restore.\n                window.location.reload();\n            }\n        });\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .step {\n            background: rgba(255, 255, 255, 0.1);\n            padding: 20px;\n            margin-bottom: 20px;\n            border-radius: 10px;\n        }\n        .step-label {\n            font-size: 1.3em;\n            margin-bottom: 10px;\n        }\n        select, input[type=\"text\"], input[type=\"date\"] {\n            width: 100%; /* Ensure full width */\n            padding: 15px;\n            margin: 10px 0;\n            border: none;\n            border-radius: 5px;\n            font-size: 1.2em;\n            display: block;\n            color: #333;\n            height: 60px;\n        }\n        input[type=\"text\"] {\n            background-color: #fff;\n            color: #333;\n            border: 1px solid #ccc;\n            padding: 15px;\n        }\n        input#phone {\n            font-size: 2em; /* Increased font size */\n            font-weight: normal; /* Removed bold */\n            background-color: #fff; /* Set background color to white */\n            color: #000; /* Ensure text color is readable */\n            border: 1px solid #ccc; /* Add border for better visibility */\n            padding: 10px; /* Add padding */\n            width: calc(100% - 22px); /* Ensure it fits within the parent div */\n        }\n        input[type=\"submit\"] {\n            background-color: #ff6f61;\n            border: none;\n            border-radius: 5px;\n            color: #fff;\n            padding: 15px 30px;\n            font-size: 1.5em;\n            cursor: pointer;\n            transition: background-color 0.3s ease;\n            margin-top: 20px;\n            display: block;\n            width: 100%;\n        }\n        input[type=\"submit\"]:hover {\n            background-color: #ff3b2f;\n        }\n        .dropdown-container {\n            display: flex;\n            justify-content: space-between;\n            gap: 10px;\n            width: calc(100% - 20px);\n            margin: 0 auto;\n        }\n        .dropdown-container select {\n            flex: 1;\n        }\n        .dropdown-label {\n            font-size: 1.2em;\n            margin-bottom: 5px;\n            text-align: left;\n        }\n        .dropdown-group {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            width: 33%;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Welcome EPIC Walk-in Patient!</h1>\n        <p>No patient left behind</p>\n        <form id=\"patientForm\" action=\"https://xl.epicpc.com/webhook/d6799b31-26b0-47dc-9951-b3d8a89eb63b?hostname={{ $json['query']['hostname'] }}\" method=\"post\">\n            <div class=\"step\">\n                <div class=\"step-label\">Step 1: Select Date of Birth</div>\n                <div class=\"dropdown-container\">\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"year\">Year</label>\n                        <select id=\"year\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"month\">Month</label>\n                        <select id=\"month\" required></select>\n                    </div>\n                    <div class=\"dropdown-group\">\n                        <label class=\"dropdown-label\" for=\"day\">Day</label>\n                        <select id=\"day\" required></select>\n                    </div>\n                </div>\n            </div>\n            <div class=\"step\">\n                <div class=\"step-label\">Step 2: Enter Phone Number</div>\n                <input type=\"text\" id=\"phone\" name=\"number\" placeholder=\"Phone Number: 2485551234\" pattern=\"\\d*\" required>\n            </div>\n            <input type=\"hidden\" id=\"dob\" name=\"dobYear\">\n            <input type=\"hidden\" id=\"param\" name=\"hostname\">\n            <input type=\"submit\" value=\"Submit\">\n        </form>\n    </div>\n\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            const urlParams = new URLSearchParams(window.location.search);\n            const param = urlParams.get('param') || '{{ $json['query']['hostname'] }}';\n            document.getElementById('param').value = param;\n\n            const yearSelect = document.getElementById('year');\n            const monthSelect = document.getElementById('month');\n            const daySelect = document.getElementById('day');\n\n            const currentYear = new Date().getFullYear();\n            const earliestYear = 1900;\n\n            for (let year = currentYear; year >= earliestYear; year--) {\n                const option = document.createElement('option');\n                option.value = year;\n                option.textContent = year;\n                yearSelect.appendChild(option);\n            }\n\n            const monthNames = [\"January\", \"February\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];\n            for (let month = 1; month <= 12; month++) {\n                const option = document.createElement('option');\n                option.value = month;\n                option.textContent = monthNames[month - 1];\n                monthSelect.appendChild(option);\n            }\n\n            function updateDays() {\n                const year = parseInt(yearSelect.value);\n                const month = parseInt(monthSelect.value);\n                daySelect.innerHTML = '';\n\n                const daysInMonth = new Date(year, month, 0).getDate();\n                for (let day = 1; day <= daysInMonth; day++) {\n                    const option = document.createElement('option');\n                    option.value = day;\n                    option.textContent = day;\n                    daySelect.appendChild(option);\n                }\n            }\n\n            yearSelect.addEventListener('change', updateDays);\n            monthSelect.addEventListener('change', updateDays);\n\n            updateDays();\n\n            const form = document.getElementById('patientForm');\n            const submitButton = form.querySelector('input[type=\"submit\"]');\n\n            form.addEventListener('submit', function(event) {\n                const year = yearSelect.value;\n                const month = monthSelect.value.padStart(2, '0');\n                const day = daySelect.value.padStart(2, '0');\n                document.getElementById('dob').value = `${year}-${month}-${day}`;\n                \n                submitButton.disabled = true;\n                submitButton.value = 'Submitting...';\n            });\n\n            document.getElementById('phone').addEventListener('input', function (e) {\n                this.value = this.value.replace(/[^0-9]/g, '');\n            });\n        });\n    </script>\n</body>\n\n</html>\n",
+        "options": {}
+      },
+      "id": "1724731c-19b5-4311-b7dc-2f43d518da93",
+      "name": "Identify Patient Form",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        200
+      ],
+      "notesInFlow": true,
+      "notes": "This one includes disabling the submit button"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b16687c4-2206-4622-87bf-e17bf61e71b3",
+      "name": "Get RMM Clients3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        7640,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "16423646-79de-49c8-8a1a-6b9f061e97ed",
+      "name": "Split Out Site Names2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        7820,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc9dd4be-9853-4f84-bfc3-4d265e72f2c8",
+      "name": "Retrieve All Site Agents2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        8140,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $('Map Room to Agent2').item.json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname={{ $('Webhook3').item.json[\"query\"][\"hostname\"] }}' --edge-kiosk-type=fullscreen --overscroll-history-navigation=0 --new-window\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "b895b276-3b04-4d34-8cb2-4011f5155e8e",
+      "name": "Send Powershell CMD to RMM Agent6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        8540,
+        520
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b82c02fb-fd74-4489-80a1-788540f6ec46",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook3').item.json.query.hostname }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4caead3-8df9-438b-83dd-d0368cea86d4",
+      "name": "Map Room to Agent2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        8320,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c3c0b2c-10be-4373-887f-5cf1f33fff61",
+      "name": "Filter to CDN Site2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        7980,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Pause for View",
+        "height": 595.8320890559127,
+        "width": 217.54765895332596
+      },
+      "id": "f59f04b7-8d77-4827-97be-109aae08a441",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        7300,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Clear data, Reload",
+        "height": 336.073621892339,
+        "width": 1142.8204505083677,
+        "color": 5
+      },
+      "id": "94475d68-fb70-411e-9772-d31f60a0a4f0",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        7560,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Testing",
+        "height": 633.4895169324374,
+        "width": 644.6183144695376
+      },
+      "id": "21ddb60a-9e32-4e7d-8453-1790882c2f06",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        -600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bdafa543-1e4f-4c4f-8a09-0cc2e01f0b0e",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        5440,
+        160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5a740ad3-ac7b-4658-9c82-7b7dbbf4246d",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        6696,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Oh no!</h1>\n        <p>We did not seem to find you in the system, please see the medical receptionist.</p>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "729791dd-28c3-46bf-96da-d73f438f1317",
+      "name": "Oh no_No Match",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1780,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\" rel=\"stylesheet\"> <!-- Font Awesome link -->\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .icon-container {\n            text-align: center;\n            margin-top: 20px;\n        }\n        .icon-container i {\n            font-size: 3em;\n            color: #f5b800;\n            cursor: pointer;\n            transition: color 0.3s;\n        }\n        .icon-container i:hover {\n            color: #e4a600;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>No Appointments Available</h1>\n        <p>There are no appointments available today. Click the calendar to schedule a furture appointment.</p>\n        <div class=\"icon-container\">\n            <i class=\"fas fa-calendar-alt\" onclick=\"window.location.href='https://your-scheduling-url.com';\"></i>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "d47b16d4-ad86-4563-94cc-55e80e3011c0",
+      "name": "No available appointments",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "path": "eb2ffac2-1872-4e6d-ae6d-862b05ba50fd",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ec5ea76e-6450-483e-b726-2bacfe1010e6",
+      "name": "Testing Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        -400
+      ],
+      "webhookId": "eb2ffac2-1872-4e6d-ae6d-862b05ba50fd"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n    <script>\n        setTimeout(function() {\n            window.location.href = 'https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname={{ $('Webhook3').item.json[\"query\"][\"hostname\"] }}'; // Replace with your target URL\n        }, 45000); // 10000 milliseconds = 10 seconds\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\" rel=\"stylesheet\"> <!-- Font Awesome link -->\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .icon-container {\n            text-align: center;\n            margin-top: 20px;\n        }\n        .icon-container i {\n            font-size: 3em;\n            color: #f5b800;\n            cursor: pointer;\n            transition: color 0.3s;\n        }\n        .icon-container i:hover {\n            color: #e4a600;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>No Appointments Available</h1>\n        <p>There are no appointments available today. Click the calendar to schedule a future appointment.</p>\n        <div class=\"icon-container\">\n            <i class=\"fas fa-calendar-alt\" onclick=\"window.location.href='https://visit.epicpc.com/?fullName={{ $('Paitient').item.json[\"Patient_First_Name\"].replace(/ /g, '%20') }}+{{ $('Paitient').item.json[\"Patient_Last_Name\"].replace(/ /g, '%20') }}&patientId={{ $('Paitient').item.json[\"Patient_Number\"] }}';\"></i>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "7da5fb0b-93d4-4c82-94ef-0ecfb330fb54",
+      "name": "No available appointments1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        5876,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $('Map Room to Agent2').item.json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"Start-Process -FilePath 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\envisioncdn.bat'\n\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "c91654a2-2686-4953-9f48-928a43daed95",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        8760,
+        260
+      ],
+      "alwaysOutputData": true,
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Patient_Number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d2b8d807-44b4-4d28-99dd-ade17774dcc4",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        800
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 40
+      },
+      "id": "0276fbd3-ab3b-48e6-9655-27f1608ac4ab",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        7360,
+        860
+      ],
+      "webhookId": "3e26e6ce-e492-4d1d-a301-241b355da93e"
+    },
+    {
+      "parameters": {
+        "content": "## Original",
+        "height": 522.9570617780461,
+        "width": 955.8330415942952,
+        "color": 7
+      },
+      "id": "344097ff-aaee-4451-b43c-21c7c0f38672",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        -600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH ApptData AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr]\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time)) \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND \n        a.Appt_Sched_Location_Descr LIKE '%Southfield 10%' AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND \n        a.Appt_Status IN ('A', 'S') AND \n        a.Appt_Check_Out_Time IS NULL\n),\nResourceSummary AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],\n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count\n    FROM \n        ApptData\n    GROUP BY \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr]\n),\nRankedResources AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n        A_Count,\n        S_Count,\n        RANK() OVER (ORDER BY A_Count, S_Count asc) AS AvailRank\n    FROM \n        ResourceSummary\n)\nSELECT \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n    r.A_Count,\n    r.S_Count,\n    r.AvailRank AS MostAvail\nFROM \n    RankedResources r\nORDER BY \n    r.AvailRank"
+      },
+      "id": "94b54dd2-1fbd-4c7a-b4c7-69bb535cf2bb",
+      "name": "Most Available Provider1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2600,
+        -500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# On lunch?",
+        "height": 332.2300236817687,
+        "width": 2040.317738262128,
+        "color": 5
+      },
+      "id": "f36c8088-c7a9-4b3d-95a7-5e97bc21c9a5",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4651.82881958566,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "81a6a0f7-5582-4640-b0cf-2c600ed3a69c",
+              "leftValue": "={{ $json.Appt_Resource_Descr }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d993e456-9704-4d28-b61a-c0fe133090d0",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3640,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "path": "a7739828-9187-45a4-9e7f-e43d0f61f6ac",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "2a2f0a3d-8a4d-433c-b022-480ee6e50d07",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        200
+      ],
+      "webhookId": "a7739828-9187-45a4-9e7f-e43d0f61f6ac"
+    },
+    {
+      "parameters": {},
+      "id": "ed43daec-5062-4981-ad71-1c93d0cbc0e7",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        5596,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pkcn1xguo9xrl3w",
+        "table": "m0bqopdg55z2czl",
+        "returnAll": true,
+        "options": {
+          "where": "=(Hostname,eq,{{ $json[\"query\"][\"hostname\"] }})"
+        }
+      },
+      "id": "02c8698d-c256-4b64-a48b-35dc96fa0037",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        800,
+        680
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "f12aa10a-ba36-4848-8ca2-bc3d33b56fd0",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1100,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7b237bfd-c5cc-4062-af9b-97659e66bcaa",
+              "name": "Location",
+              "value": "={{ $('NocoDB').item.json.Location }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0d79a86a-3c4e-42e5-8750-36410aad3370",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        3160,
+        400
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d6799b31-26b0-47dc-9951-b3d8a89eb63b",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "872e4df5-f8ae-4104-a01e-fbef0605ca9e",
+      "name": "Webhook3",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        500
+      ],
+      "webhookId": "d6799b31-26b0-47dc-9951-b3d8a89eb63b"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pkcn1xguo9xrl3w",
+        "table": "mk3z01nqsorzjca",
+        "returnAll": true,
+        "options": {
+          "where": "=(LocationName,eq,{{ $json[\"Location\"] }})"
+        }
+      },
+      "id": "abe23f39-c19f-4b8d-8738-c75ec42f0e07",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        900,
+        860
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "b7615072-d2a9-4d80-83b7-2e4a01872bea",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1080,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "2207c3f7-e276-44d3-a77c-28cc1c4a7123",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        1840
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "d59f5861-f40d-4820-9013-e09a88facaa3",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        1840
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "38191b7c-7760-44ce-8f62-49137cb7b8c2",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3440,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "ac72afdd-b425-42fd-9169-57303b083aa3",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3580,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "062b878d-14a3-41fd-acd0-8caa5e4f4471",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "3c35ddfb-2cfe-4836-9835-de267ca2844a",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3940,
+        1780
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "0aa84d1b-84ef-4dfd-98ab-39e7afbec42d",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        1780
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "14f94c14-1cee-414d-824d-81aef7f285c2",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4060,
+        1940
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "6598234d-f69c-4974-8b32-2d95803fd069",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3880,
+        1940
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "716fc847-e158-4928-912e-f5fcaa71524e",
+      "name": "Sticky Note15",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3080,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getavailabletimeblocksinfo",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "c98d1922-385a-459f-9932-9e2d619a0707",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        5360,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date from the provided data\nlet currentDate = new Date($json.currentDate);\n\n// Check if the date is valid\nif (isNaN(currentDate.getTime())) {\n    // Handle invalid date parsing\n    const parts = $json.currentDate.split(/[T\\-:.]/);\n    if (parts.length >= 6) {\n        const year = parseInt(parts[0]);\n        const month = parseInt(parts[1]) - 1; // Month is 0-based\n        const day = parseInt(parts[2]);\n        const hour = parseInt(parts[3]);\n        const minute = parseInt(parts[4]);\n        const second = parseInt(parts[5]);\n\n        currentDate = new Date(year, month, day, hour, minute, second);\n    }\n}\n\n// Format the date with the correct timezone (e.g., 'America/New_York' for EST/EDT)\nconst options = {\n    year: 'numeric',\n    month: '2-digit',\n    day: '2-digit',\n    hour: '2-digit',\n    minute: '2-digit',\n    hour12: true,\n    timeZone: 'America/New_York' // Adjust this to your desired timezone\n};\nlet formattedDate = currentDate.toLocaleString('en-US', options);\n\n// Remove the comma from the formatted date\nformattedDate = formattedDate.replace(',', '');\n\n// Use the values from the provided data\nconst startTime = parseInt($json.getavailabletimeblocksinfo.Start_Time);\nconst endTime = parseInt($json.getavailabletimeblocksinfo.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Determine the classification\nlet classification;\nif (durationMinutes >= 60) {\n    classification = 'Lunch';\n} else if (durationMinutes >= 10 && durationMinutes <= 40) {\n    classification = 'Available';\n} else {\n    classification = 'Unavailable';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\n// Set values in the output object\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\nitems[0].json.FormattedDate = formattedDate;\n\nreturn items;\n"
+      },
+      "id": "c86fe033-b57c-468e-95aa-fb5c88992f49",
+      "name": "Appointment Time",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6120,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {}
+      },
+      "id": "d12dc295-8a12-42a0-8538-0deb8ddb5a58",
+      "name": "Loop - Provider List",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4900,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "wkiosk"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "="
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAvailableTimeBlocks"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "025d7417-77e6-4b97-aacf-45a9331447ed",
+      "name": "GetAvailableTimeBlocks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5060,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "641db544-b027-4701-9c3b-681acca12ae4",
+      "name": "Loop Over TimeBlocks",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5600,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9a72af13-9cea-4d50-88f3-ebdedbf850f9",
+              "leftValue": "={{ $json.IsCurrentTimeBetween }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "97b71e07-c320-47bd-ab1b-fc5c278dc9f0",
+      "name": "If Block in Current Time",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        6300,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "80e8493c-038e-480e-9dc8-951dbbef4c63",
+              "leftValue": "={{ $json.Classification }}",
+              "rightValue": "Available",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8b0d556d-d5f9-4ad9-a629-9f6fa77f135e",
+      "name": "If Not on Lunch",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        6540,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SaveForcedAppointment"
+            },
+            {
+              "name": "AppUserID",
+              "value": "wkiosk"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json[\"Patient_ID\"] }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "=<appt><appointmentDateTime>{{ $('Appointment Time').item.json[\"FormattedDate\"] }}</appointmentDateTime><appointmentDuration>5</appointmentDuration><appointmentType>WIOV</appointmentType><schedulingLocation>{{ $('NocoDB1').item.json[\"LocationAbbreviation\"] }}</schedulingLocation><schedulingDepartment>EPIC PC</schedulingDepartment><resource>{{ $('Merge').item.json[\"Appt_Resource_Abbr\"] }}</resource><comments>Walkin-Kiosk {In five words why are you here?} </comments></appt>"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "31bc3e79-22c7-42bd-bb87-18da8d271987",
+      "name": "HTTP Create Walk-in",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6760,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "9bdbb35b-f3ae-41b3-a50c-2cb62da6eb6f",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        5980,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "6122fa0b-a8f0-4505-b135-fe5cca0ba20a",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        5800,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "7452913c-45f0-43df-94c1-505b5faaa651",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        5220,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "bf7f6d4b-99d0-4178-ac44-acc0fafa79d1",
+      "name": "Read PM Token4",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        1000
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "c482f8df-edca-40d6-a929-81b02dcc43e3",
+      "name": "Extract PM Token4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        1000
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"wkiosk\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"L3tsgetC0nn3cted!!\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "e996c493-6481-4071-bfc2-8ea21edc66cf",
+      "name": "Check Token4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3440,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "609ad741-5f0e-47a3-a627-22ed267da0de",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3580,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "9a0200e7-caee-4058-9b6e-7ff3dec97cef",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3880,
+        1100
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "675b172c-f501-4877-8608-8a34650d01e3",
+      "name": "IF PM Token Valid2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "311ea758-bcfc-4e12-953f-1acc75a2a812",
+      "name": "Read PM Token5",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3940,
+        940
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "94ec66cf-c3e2-4ea4-ae0a-a5dfbde8f330",
+      "name": "Extract PM Token5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        4080,
+        940
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "627403fc-d567-4ec9-8851-bbb816296bd7",
+      "name": "Execute Workflow3",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4060,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.Token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96b411cb-9440-4820-8ca1-e4486c70046a",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4240,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication wkiosk",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "7cfd34de-b90b-4795-9af5-c9136e45957d",
+      "name": "Sticky Note16",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3080,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1bd0f18d-1789-4603-861c-582f6e016ff4",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        6540,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @LOC VARCHAR(200) = '{{ $('NocoDB').item.json.Location }}';\n \nWITH ApptData AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time)) \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND \n        a.Appt_Sched_Location_Descr = @LOC AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and\n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and a.Appt_Resource_Descr not like 'Priority%' and\n        a.Appt_Status IN ('A', 'S','C') AND \n        a.Appt_Check_Out_Time IS NULL\n),\nResourceSummary AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr,\n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count,\n\t\tSUM(CASE WHEN Appt_Status = 'C' THEN 1 ELSE 0 END) AS C_Count\n    FROM \n        ApptData\n    GROUP BY \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr\n),\nRankedResources AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n        A_Count,C_Count,\n        S_Count,Appt_Sched_Location_Descr,\n        RANK() OVER (ORDER BY A_Count, S_Count,C_Count asc) AS AvailRank\n    FROM \n        ResourceSummary\n)\nSELECT \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n    r.A_Count,\n    r.S_Count,\n\tr.C_Count,\n    r.AvailRank AS MostAvail,\n\tr.Appt_Sched_Location_Descr\nFROM \n    RankedResources r\nORDER BY \n    r.AvailRank"
+      },
+      "id": "7458f43f-bbea-4044-b437-0c06ad1e9e25",
+      "name": "Most Available Provider2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2800,
+        -500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date from the provided data\nconst currentDate = new Date($json.currentDate);\n\n// Check if the date is valid\nif (isNaN(currentDate.getTime())) {\n    // Handle invalid date parsing\n    const parts = $json.currentDate.split(/[T\\-:.]/);\n    if (parts.length >= 6) {\n        const year = parseInt(parts[0]);\n        const month = parseInt(parts[1]) - 1; // Month is 0-based\n        const day = parseInt(parts[2]);\n        const hour = parseInt(parts[3]);\n        const minute = parseInt(parts[4]);\n        const second = parseInt(parts[5]);\n\n        currentDate = new Date(year, month, day, hour, minute, second);\n    }\n}\n\n// Function to adjust time by offset in hours\nfunction adjustTimezone(date, offset) {\n  const utc = date.getTime() + (date.getTimezoneOffset() * 60000);\n  return new Date(utc + (3600000 * offset));\n}\n\n// Adjust to the desired timezone (-4 hours for example)\nconst adjustedDate = adjustTimezone(currentDate, -4);\n\n// Format the adjusted date\nconst options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: true };\nlet formattedDate = adjustedDate.toLocaleString('en-US', options);\n\n// Remove the comma from the formatted date\nformattedDate = formattedDate.replace(',', '');\n\n// Use the values from the provided data\nconst startTime = parseInt($json.getavailabletimeblocksinfo.Start_Time);\nconst endTime = parseInt($json.getavailabletimeblocksinfo.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Determine the classification\nlet classification;\nif (durationMinutes >= 60) {\n    classification = 'Lunch';\n} else if (durationMinutes >= 10 && durationMinutes <= 40) {\n    classification = 'Available';\n} else {\n    classification = 'Unavailable';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\nitems[0].json.FormattedDate = formattedDate;\n\nreturn items;\n"
+      },
+      "id": "262d35fe-2375-4ab8-bec9-663af9dce54e",
+      "name": "Appointment Time1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6120,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ed84daed-4f9e-4963-bd74-7a42cd025f22",
+              "name": "Patient_Number",
+              "value": "={{ $json.Patient_Number }}",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        800
+      ],
+      "id": "81d14316-cb0f-4461-bbd0-37b07f4164b7",
+      "name": "Edit Fields2"
+    }
+  ],
+  "pinData": {
+    "Merge": [
+      {
+        "json": {
+          "Appt_Resource_ID": 1201,
+          "Appt_Resource_Descr": "Whitmore PA, Nicole",
+          "Appt_Resource_Abbr": "NW-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1201,
+          "Appt_Resource_Descr": "Whitmore PA, Nicole",
+          "Appt_Resource_Abbr": "NW-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1201,
+          "Appt_Resource_Descr": "Whitmore PA, Nicole",
+          "Appt_Resource_Abbr": "NW-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1223,
+          "Appt_Resource_Descr": "Sufi PA, Amber",
+          "Appt_Resource_Abbr": "AS-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1223,
+          "Appt_Resource_Descr": "Sufi PA, Amber",
+          "Appt_Resource_Abbr": "AS-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1223,
+          "Appt_Resource_Descr": "Sufi PA, Amber",
+          "Appt_Resource_Abbr": "AS-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1231,
+          "Appt_Resource_Descr": "Zawisa PA, Hannah",
+          "Appt_Resource_Abbr": "HZ-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1231,
+          "Appt_Resource_Descr": "Zawisa PA, Hannah",
+          "Appt_Resource_Abbr": "HZ-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      },
+      {
+        "json": {
+          "Appt_Resource_ID": 1231,
+          "Appt_Resource_Descr": "Zawisa PA, Hannah",
+          "Appt_Resource_Abbr": "HZ-PA   ",
+          "A_Count": 0,
+          "S_Count": 1,
+          "MostAvail": "1",
+          "data": "EBA3465D-DAAD-4C69-AF66-E8CCBBB2FD3F"
+        }
+      }
+    ],
+    "Paitient": [
+      {
+        "json": {
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "02/01/1988",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Email": "thomas@tagarmor.com",
+          "Account_ID": [
+            172602,
+            172602
+          ],
+          "Contact_ID": 225895,
+          "Date_Registered": "2020-06-01T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": 228767,
+          "Policy_ID": 227486,
+          "Coverage": "X",
+          "Verified_Date": "2024-05-06T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "XYH913345119",
+          "Group_No": "00255346",
+          "Effective_Date": "2020-08-01T00:00:00.000Z",
+          "Expiration_Date": "2023-11-30T00:00:00.000Z"
+        }
+      }
+    ],
+    "Find Patient by Phone Number": [
+      {
+        "json": {
+          "Patient_ID": 183442,
+          "Patient_Number": "590460",
+          "Patient_Name": "COURTNEY CIACIUCH",
+          "Patient_First_Name": "COURTNEY",
+          "Patient_Last_Name": "CIACIUCH",
+          "Patient_LFI": "CIACIUCH, COURTNEY",
+          "Patient_Street1": "18000 W 9 MILE RD",
+          "Patient_City": "SOUTHFIELD",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48075",
+          "Patient_SSN": "373082942",
+          "Patient_Sex": "F",
+          "Patient_DOB": "03/30/1989",
+          "Patient_Age": 35,
+          "Patient_Marital_Status": "Single",
+          "Patient_Home_Phone": "2483364000",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "courtneymay14@yahoo.com",
+          "Account_ID": [
+            181361,
+            181361
+          ],
+          "Contact_ID": 236277,
+          "Date_Registered": "2021-02-09T00:00:00.000Z",
+          "Comments": [
+            "VJ VERIFIED 04/28/21",
+            null
+          ],
+          "Patient_Policy_ID": 239785,
+          "Policy_ID": 238466,
+          "Coverage": "X",
+          "Verified_Date": null,
+          "Carrier_ID": [
+            5249,
+            5249
+          ],
+          "Name": "COVID 19 HRSA Uninsured Testing",
+          "Payor_Number": "95964",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "453148956",
+          "Group_No": null,
+          "Effective_Date": "2021-02-09T00:00:00.000Z",
+          "Expiration_Date": "2021-08-28T00:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 183442,
+          "Patient_Number": "590460",
+          "Patient_Name": "COURTNEY CIACIUCH",
+          "Patient_First_Name": "COURTNEY",
+          "Patient_Last_Name": "CIACIUCH",
+          "Patient_LFI": "CIACIUCH, COURTNEY",
+          "Patient_Street1": "18000 W 9 MILE RD",
+          "Patient_City": "SOUTHFIELD",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48075",
+          "Patient_SSN": "373082942",
+          "Patient_Sex": "F",
+          "Patient_DOB": "03/30/1989",
+          "Patient_Age": 35,
+          "Patient_Marital_Status": "Single",
+          "Patient_Home_Phone": "2483364000",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "courtneymay14@yahoo.com",
+          "Account_ID": [
+            181361,
+            181361
+          ],
+          "Contact_ID": 236277,
+          "Date_Registered": "2021-02-09T00:00:00.000Z",
+          "Comments": [
+            "VJ VERIFIED 04/28/21",
+            null
+          ],
+          "Patient_Policy_ID": 243930,
+          "Policy_ID": 242585,
+          "Coverage": "X",
+          "Verified_Date": null,
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "9101000021",
+          "Group_No": null,
+          "Effective_Date": "2021-06-01T00:00:00.000Z",
+          "Expiration_Date": "2022-07-31T00:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 183442,
+          "Patient_Number": "590460",
+          "Patient_Name": "COURTNEY CIACIUCH",
+          "Patient_First_Name": "COURTNEY",
+          "Patient_Last_Name": "CIACIUCH",
+          "Patient_LFI": "CIACIUCH, COURTNEY",
+          "Patient_Street1": "18000 W 9 MILE RD",
+          "Patient_City": "SOUTHFIELD",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48075",
+          "Patient_SSN": "373082942",
+          "Patient_Sex": "F",
+          "Patient_DOB": "03/30/1989",
+          "Patient_Age": 35,
+          "Patient_Marital_Status": "Single",
+          "Patient_Home_Phone": "2483364000",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "courtneymay14@yahoo.com",
+          "Account_ID": [
+            181361,
+            181361
+          ],
+          "Contact_ID": 236277,
+          "Date_Registered": "2021-02-09T00:00:00.000Z",
+          "Comments": [
+            "VJ VERIFIED 04/28/21",
+            null
+          ],
+          "Patient_Policy_ID": 260537,
+          "Policy_ID": 259281,
+          "Coverage": "P",
+          "Verified_Date": "2023-01-10T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": 30,
+          "Insurance_Plan_ID": 6644,
+          "Certificate_No": "XYH910126306",
+          "Group_No": "00255346",
+          "Effective_Date": "2022-08-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 188306,
+          "Patient_Number": "639010",
+          "Patient_Name": "LANA STEVENS",
+          "Patient_First_Name": "LANA",
+          "Patient_Last_Name": "STEVENS",
+          "Patient_LFI": "STEVENS, LANA",
+          "Patient_Street1": "28704 BARKMAN",
+          "Patient_City": "Roseville",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48066",
+          "Patient_SSN": null,
+          "Patient_Sex": "F",
+          "Patient_DOB": "06/16/2016",
+          "Patient_Age": 8,
+          "Patient_Marital_Status": null,
+          "Patient_Home_Phone": "5869809966",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "courtneymay14@yahoo.com",
+          "Account_ID": [
+            186216,
+            186216
+          ],
+          "Contact_ID": 241449,
+          "Date_Registered": "2021-02-26T00:00:00.000Z",
+          "Comments": [
+            "VJ VERIFIED 07/23/21",
+            "ACC 03172023** CWE/ IM Y/N DED COPAY PCP EPIC**"
+          ],
+          "Patient_Policy_ID": 234186,
+          "Policy_ID": 232881,
+          "Coverage": "P",
+          "Verified_Date": "2023-03-17T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "XYH910126306",
+          "Group_No": "00255346",
+          "Effective_Date": "2021-05-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 194929,
+          "Patient_Number": "704730",
+          "Patient_Name": "TREVOR RANKIN",
+          "Patient_First_Name": "TREVOR",
+          "Patient_Last_Name": "RANKIN",
+          "Patient_LFI": "RANKIN, TREVOR",
+          "Patient_Street1": "54440 ISLE ROYALE AVE",
+          "Patient_City": "Macomb",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48042",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "05/01/2002",
+          "Patient_Age": 22,
+          "Patient_Marital_Status": null,
+          "Patient_Home_Phone": "5869809966",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": null,
+          "Account_ID": [
+            192792,
+            192792
+          ],
+          "Contact_ID": 249875,
+          "Date_Registered": "2022-01-04T00:00:00.000Z",
+          "Comments": [
+            null,
+            "SCAN ID/INS CARDS"
+          ],
+          "Patient_Policy_ID": 242065,
+          "Policy_ID": 240730,
+          "Coverage": "P",
+          "Verified_Date": "2024-05-01T00:00:00.000Z",
+          "Carrier_ID": [
+            5058,
+            5058
+          ],
+          "Name": "BCBS of Michigan",
+          "Payor_Number": "000088",
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": "A7K572029217",
+          "Group_No": "478965",
+          "Effective_Date": "2020-01-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 197646,
+          "Patient_Number": "731680",
+          "Patient_Name": "LUKE STEVENS",
+          "Patient_First_Name": "LUKE",
+          "Patient_Last_Name": "STEVENS",
+          "Patient_LFI": "STEVENS, LUKE",
+          "Patient_Street1": "28704 BARKMAN ST",
+          "Patient_City": "ROSEVILLE",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48066",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "02/27/2015",
+          "Patient_Age": 9,
+          "Patient_Marital_Status": "Single",
+          "Patient_Home_Phone": "5869809966",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "courtneymay14@yahoo.com",
+          "Account_ID": [
+            195487,
+            195487
+          ],
+          "Contact_ID": 253286,
+          "Date_Registered": "2022-05-23T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": 248779,
+          "Policy_ID": 247428,
+          "Coverage": "P",
+          "Verified_Date": "2024-03-04T00:00:00.000Z",
+          "Carrier_ID": [
+            530,
+            530
+          ],
+          "Name": "Bcn",
+          "Payor_Number": "000149",
+          "CoPayment_Amount": 20,
+          "Insurance_Plan_ID": 56151,
+          "Certificate_No": "XYHM07670156",
+          "Group_No": "00624692",
+          "Effective_Date": "2023-09-01T00:00:00.000Z",
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 198298,
+          "Patient_Number": "738160",
+          "Patient_Name": "COURTNEY TEST",
+          "Patient_First_Name": "COURTNEY",
+          "Patient_Last_Name": "TEST",
+          "Patient_LFI": "TEST, COURTNEY",
+          "Patient_Street1": "911 E. NINE MILE RD.",
+          "Patient_City": "FENDALE",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48220",
+          "Patient_SSN": null,
+          "Patient_Sex": "F",
+          "Patient_DOB": "03/30/1989",
+          "Patient_Age": 35,
+          "Patient_Marital_Status": "Single",
+          "Patient_Home_Phone": "5869809966",
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "Courtneymay14@yahoo.com",
+          "Account_ID": [
+            196135,
+            null
+          ],
+          "Contact_ID": 254003,
+          "Date_Registered": "2022-06-08T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": null,
+          "Policy_ID": null,
+          "Coverage": null,
+          "Verified_Date": null,
+          "Carrier_ID": [
+            null,
+            null
+          ],
+          "Name": null,
+          "Payor_Number": null,
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": null,
+          "Group_No": null,
+          "Effective_Date": null,
+          "Expiration_Date": null
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 210915,
+          "Patient_Number": "864210",
+          "Patient_Name": "Courtney test",
+          "Patient_First_Name": "Courtney",
+          "Patient_Last_Name": "test",
+          "Patient_LFI": "test, Courtney",
+          "Patient_Street1": "NY",
+          "Patient_City": "FENDALE",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48220",
+          "Patient_SSN": null,
+          "Patient_Sex": "F",
+          "Patient_DOB": "12/05/1994",
+          "Patient_Age": 29,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": null,
+          "Patient_Cell_Phone": "5869809966",
+          "Patient_Email": "aiswarya.ashi@flatworldsolutions.in",
+          "Account_ID": [
+            208766,
+            null
+          ],
+          "Contact_ID": 267724,
+          "Date_Registered": "2022-12-04T00:00:00.000Z",
+          "Comments": [
+            null,
+            null
+          ],
+          "Patient_Policy_ID": null,
+          "Policy_ID": null,
+          "Coverage": null,
+          "Verified_Date": null,
+          "Carrier_ID": [
+            null,
+            null
+          ],
+          "Name": null,
+          "Payor_Number": null,
+          "CoPayment_Amount": null,
+          "Insurance_Plan_ID": null,
+          "Certificate_No": null,
+          "Group_No": null,
+          "Effective_Date": null,
+          "Expiration_Date": null
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.15",
+            "x-forwarded-for": "10.0.24.15",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "hostname": "SFD-KIOSK01"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook3": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.15",
+            "x-forwarded-for": "10.0.24.15",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "57",
+            "cache-control": "max-age=0",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "origin": "https://xl.epicpc.com",
+            "content-type": "application/x-www-form-urlencoded",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "referer": "https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname=SFD-KIOSK01",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "hostname": "LIV-KIOSK01"
+          },
+          "body": {
+            "number": "2488726322",
+            "dobYear": "1988-02-01",
+            "hostname": "SFD-KIOSK01"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/d6799b31-26b0-47dc-9951-b3d8a89eb63b",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Appt_Resource_ID": 133,
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Resource_Abbr": "SW PAC ",
+          "A_Count": 3,
+          "S_Count": 1,
+          "C_Count": 1,
+          "MostAvail": "5",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "data": "FF44D87B-F453-4DA7-8D53-145DFD19B879",
+          "getavailabletimeblocksinfo": {
+            "Available_Day_ID": "281133",
+            "EligApptTypes": "",
+            "SchedDept": "EPIC PC ",
+            "SchedLoc": "EPS10Mil",
+            "Start_Time": "1750",
+            "Available_Date": "08/15/2024",
+            "End_Time": "1800"
+          },
+          "currentDate": "2024-08-15T14:32:52.829-04:00",
+          "Duration": "0 hours 10 minutes",
+          "Classification": "Available",
+          "IsCurrentTimeBetween": false,
+          "FormattedDate": "08/15/2024 02:32 PM"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 3,
+  "updatedAt": "2025-05-30T20:20:01.955Z",
+  "versionId": "2b4f7a04-fb0a-40fb-8703-0379d807fb4e"
+}
