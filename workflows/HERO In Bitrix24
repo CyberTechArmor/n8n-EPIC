@@ -1,0 +1,676 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-04T09:43:09.578Z",
+  "id": "N2irdTdECz6hnmLm",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "HERO In Bitrix24",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html>\n<body>\n\n<iframe src=\"https://sbapi.epicpc.com/api/bitrix-care-chart/{{ $json[\"MRN\"] }}\" style=\"border:none;height: 95.7vh;width: 100%; overflow: none !important;\" title=\"Iframe Example\"></iframe>\n\n</body>\n</html> ",
+        "options": {}
+      },
+      "id": "469925fa-9631-4968-bb6b-492501e62cbf",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://ehs.unitycarecrm.com/rest/18/y89p4zjb64osqev3/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.ID.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3c80864-d717-4abb-8b1a-65bd8450afc9",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        540,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "ID",
+              "type": "objectValue",
+              "objectValue": "={{ $json.body.PLACEMENT_OPTIONS }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f18c1de2-4c57-4dd1-938c-bbf4f3ca2e0f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        400,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9189b54c-6ea5-4db1-abb8-3a0f68433684",
+              "leftValue": "={{ $json.result.SOURCE_DESCRIPTION }}",
+              "rightValue": "=\\d\\d\\d\\d\\d\\d",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7e578137-1640-4788-908c-47c3f7945328",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        760,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9189b54c-6ea5-4db1-abb8-3a0f68433684",
+              "leftValue": "={{ $json.result.UF_CRM_1701895781 }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "de3996d5-a4f2-400f-abd5-3f80504aaf1e",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        840,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9189b54c-6ea5-4db1-abb8-3a0f68433684",
+              "leftValue": "={{ $json.MRN }}",
+              "rightValue": "\\d\\d\\d\\d\\d\\d",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ccf530b7-fad1-4690-9ade-c928999beffa",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "MRN",
+              "stringValue": "={{ $json.result.SOURCE_DESCRIPTION }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "dfec20d2-5466-4a28-a854-0e19be73376e",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1100,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "MRN",
+              "stringValue": "={{ $json.result.UF_CRM_1701895781 }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "de5baead-190a-4009-8ca0-911c18cdd543",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1100,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/user.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $('HTTP Request6').item.json[\"result\"][\"MODIFY_BY_ID\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b80b2068-76c0-498e-a6ab-b260ef7fcea7",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        700,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/user.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.result.LAST_ACTIVITY_BY }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a347a3cf-1aaa-4f96-a8d7-44ab30833b83",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        780,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8f6a7c63-4355-40c5-95f4-569e583663bf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1e4caa48-dab3-467e-923e-25c1221c7a5b",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        -240
+      ],
+      "webhookId": "8f6a7c63-4355-40c5-95f4-569e583663bf"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6de51474-3efb-4eff-8080-676086b7c895",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e350c0c4-e04b-4e44-927a-342ab2370040",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        -60
+      ],
+      "webhookId": "6de51474-3efb-4eff-8080-676086b7c895"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html> <html> <body> \n\n<iframe src=\"https://agesandstages.com/free-resources/asq-calculator/\" height=\"900px\" width=\"100%\"></frame>\n \n</body> </html>\t",
+        "options": {}
+      },
+      "id": "0db543bb-9740-4962-aa36-eeea058cd309",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html> <html> <body> \n<iframe src=\"https://sbapi.epicpc.com/api/bitrix-care-chart/394530\" style=\"border:none;height: 95.7vh;width: 100%; overflow: none !important;\" title=\"Iframe Example\"></iframe>\n</body> </html>\t",
+        "options": {}
+      },
+      "id": "77b89ff3-1373-45f2-8387-69fc9b577f58",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        680,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "MRN",
+              "stringValue": "={{ $json[\"MRN\"].padStart(6, '0') }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "0ca7f967-e54a-4e1a-8782-5fd6ede925dc",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1700,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "28ef81be-8a78-47d7-bffe-35dc350c542a",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "58c0bfe3-0cf8-4145-ad5a-7bf46f2a1151",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        540
+      ],
+      "webhookId": "28ef81be-8a78-47d7-bffe-35dc350c542a"
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.ID.ID }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "91a8f6a9-0b57-4af8-8cac-d325d23aabee",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        480,
+        280
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields1": [
+      {
+        "json": {
+          "result": {
+            "ID": "325063",
+            "POST": null,
+            "COMMENTS": null,
+            "HONORIFIC": null,
+            "NAME": "MARY",
+            "SECOND_NAME": null,
+            "LAST_NAME": "KALABAT",
+            "PHOTO": null,
+            "LEAD_ID": null,
+            "TYPE_ID": "CLIENT",
+            "SOURCE_ID": "OTHER",
+            "SOURCE_DESCRIPTION": "",
+            "COMPANY_ID": null,
+            "BIRTHDATE": "2005-04-08T03:00:00+04:00",
+            "EXPORT": "Y",
+            "HAS_PHONE": "Y",
+            "HAS_EMAIL": "Y",
+            "HAS_IMOL": "N",
+            "DATE_CREATE": "2023-12-07T14:52:46+03:00",
+            "DATE_MODIFY": "2024-01-10T23:16:32+03:00",
+            "ASSIGNED_BY_ID": "229",
+            "CREATED_BY_ID": "229",
+            "MODIFY_BY_ID": "7",
+            "OPENED": "Y",
+            "ORIGINATOR_ID": null,
+            "ORIGIN_ID": null,
+            "ORIGIN_VERSION": null,
+            "FACE_ID": null,
+            "LAST_ACTIVITY_TIME": "2023-12-07T14:52:46+03:00",
+            "ADDRESS": null,
+            "ADDRESS_2": null,
+            "ADDRESS_CITY": null,
+            "ADDRESS_POSTAL_CODE": null,
+            "ADDRESS_REGION": null,
+            "ADDRESS_PROVINCE": null,
+            "ADDRESS_COUNTRY": null,
+            "ADDRESS_LOC_ADDR_ID": null,
+            "UTM_SOURCE": null,
+            "UTM_MEDIUM": null,
+            "UTM_CAMPAIGN": null,
+            "UTM_CONTENT": null,
+            "UTM_TERM": null,
+            "LAST_ACTIVITY_BY": "229",
+            "UF_CRM_65264864F0B8D": [],
+            "UF_CRM_1701895613": "1841",
+            "UF_CRM_1701895631": "161 DOURDAN",
+            "UF_CRM_1701895642": "BLOOMFIELD HILLS",
+            "UF_CRM_1701895652": "MI",
+            "UF_CRM_1701895672": "48304",
+            "UF_CRM_1701895781": "025665",
+            "UF_CRM_1701945586": "1847",
+            "UF_CRM_1701945675": "2009-07-20T03:00:00+04:00",
+            "UF_CRM_1701945715": "Active",
+            "UF_CRM_1701945745": "KALABAT, JOHN",
+            "UF_CRM_1701945783": "000-000-0000",
+            "UF_CRM_1701945802": "+12487624016",
+            "UF_CRM_1701945925": "",
+            "UF_CRM_1701946007": "1.0",
+            "UF_CRM_1701946033": "2022-09-02T03:00:00+03:00",
+            "UF_CRM_1701946094": "0.7",
+            "UF_CRM_1701946120": "2022-09-02T03:00:00+03:00",
+            "UF_CRM_1701946151": "Couch, Stacey FNP",
+            "UF_CRM_1701946169": "EPIC Southfield 10 Mile",
+            "UF_CRM_1701946191": "BCBS OF MICHIGAN - EP",
+            "UF_CRM_1701946209": "Couch, Stacey FNP",
+            "UF_CRM_1701946229": "01/01/1900",
+            "UF_CRM_1701946345": "0",
+            "UF_CRM_1701946367": "0",
+            "UF_CRM_1701946388": "NoCCMContactOnFile",
+            "UF_CRM_1701946429": "1900-01-01T03:00:00+02:30",
+            "UF_CRM_1701946464": "1900-01-01T03:00:00+02:30",
+            "UF_CRM_1701946899166": "",
+            "UF_CRM_1701946956633": "",
+            "UF_CRM_652648651AA54": [],
+            "UF_CRM_6526486522D7A": "",
+            "UF_CRM_652648652C199": "",
+            "UF_CRM_6526486538EE1": "",
+            "UF_CRM_6526486540168": "",
+            "UF_CRM_6526486549778": "",
+            "UF_CRM_6526486552DF7": "",
+            "UF_CRM_652648655AF1A": "",
+            "PHONE": [
+              {
+                "ID": "4618811",
+                "VALUE_TYPE": "MOBILE",
+                "VALUE": "+12487624016",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "4618813",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "+12487624016",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "4618815",
+                "VALUE_TYPE": "OTHER",
+                "VALUE": "+12487624016",
+                "TYPE_ID": "PHONE"
+              }
+            ],
+            "EMAIL": [
+              {
+                "ID": "4618817",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "akalabat@gmail.com",
+                "TYPE_ID": "EMAIL"
+              }
+            ]
+          },
+          "time": {
+            "start": 1704917797.574648,
+            "finish": 1704917797.618037,
+            "duration": 0.043389081954956055,
+            "processing": 0.01844477653503418,
+            "date_start": "2024-01-10T23:16:37+03:00",
+            "date_finish": "2024-01-10T23:16:37+03:00",
+            "operating_reset_at": 1704918397,
+            "operating": 0
+          }
+        }
+      }
+    ],
+    "Edit Fields2": [
+      {
+        "json": {
+          "MRN": "24215"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 3,
+  "updatedAt": "2024-10-30T15:27:38.191Z",
+  "versionId": "124ece7a-6880-49b6-901d-0952dad64b80"
+}
