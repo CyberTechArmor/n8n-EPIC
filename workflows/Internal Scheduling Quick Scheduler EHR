@@ -1,0 +1,158 @@
+{
+  "active": true,
+  "connections": {
+    "Identify Patient": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quick Connect": {
+      "main": [
+        [
+          {
+            "node": "Identify Patient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-24T13:30:06.534Z",
+  "id": "gmwYgHBHmmfy5gAS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Internal Scheduling Quick Scheduler EHR",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "a32ad34f-673a-418a-9fb1-39f69d14db0f",
+      "name": "Identify Patient",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        460
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://xl.epicpc.com/webhook/b4264e0e-085f-49c0-9471-1009eafa4ce01?fullName={{ $json[\"DEM_FIRSTNAME\"] }}+{{ $json[\"DEM_LASTNAME\"] }}&patientId={{ $json[\"MRN\"] }}&reference={{ $json.SingleSignOnToken }}",
+        "options": {}
+      },
+      "id": "94cf0079-b48d-4eb8-8710-926eff84389a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1340,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "path": "c0991292-e756-482c-be74-eb506c6bf6a0",
+        "options": {}
+      },
+      "id": "f5aeaea1-3a2e-421d-a5a8-5a05133946ba",
+      "name": "Forced Appointment",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        880,
+        680
+      ],
+      "webhookId": "c0991292-e756-482c-be74-eb506c6bf6a0"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=http://schedule.epicpc.com/?fullName={{ $json[\"DEM_FIRSTNAME\"] }}+{{ $json[\"DEM_LASTNAME\"] }}&patientId={{ $json[\"MRN\"] }}",
+        "options": {}
+      },
+      "id": "e92fb6f4-83db-4dba-be2f-0d47a4426686",
+      "name": "Schedule.epicpc.com",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "18937dd8-5a66-4135-9981-8afb6e343e6e",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6f0d6ccc-676d-40b4-9a3c-e10065665c55",
+      "name": "Quick Connect",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "18937dd8-5a66-4135-9981-8afb6e343e6e"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://xl.epicpc.com/webhook/7f899846-c668-4305-8d26-993f8cf5139b?fullName={{ $json[\"DEM_FIRSTNAME\"] }}+{{ $json[\"DEM_LASTNAME\"] }}&patientId={{ $json[\"MRN\"] }}&reference={{ $json.SingleSignOnToken }}",
+        "options": {}
+      },
+      "id": "52f3349c-60ef-4fdc-9898-98d5b1bb3a12",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        460
+      ]
+    }
+  ],
+  "pinData": {
+    "Identify Patient": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-11-21T22:43:22.912Z",
+  "versionId": "641a9aaa-23b7-43b8-ae67-53c950ae6c26"
+}
