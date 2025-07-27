@@ -1,0 +1,853 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        []
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-24T15:36:18.181Z",
+  "id": "lq5QT8HnFrmHgJus",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Migration of Scheduling Activities NoCoDB to Postgres",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6f5a7082-e5b5-4529-aa0b-b2a57044cb3c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "appts",
+          "mode": "list",
+          "cachedResultName": "appts"
+        },
+        "table": {
+          "__rl": true,
+          "value": "self_scheduler_patients",
+          "mode": "list",
+          "cachedResultName": "self_scheduler_patients"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Id",
+              "displayName": "Id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Encounter_Number",
+              "displayName": "Encounter_Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment_ID",
+              "displayName": "Appointment_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Patient_ID",
+              "displayName": "Patient_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Patient_Number",
+              "displayName": "Patient_Number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Patient_Name",
+              "displayName": "Patient_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Called",
+              "displayName": "Called",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Caller",
+              "displayName": "Caller",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CallStatus",
+              "displayName": "CallStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "From",
+              "displayName": "From",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "To",
+              "displayName": "To",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CallSid",
+              "displayName": "CallSid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Direction",
+              "displayName": "Direction",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AccountSid",
+              "displayName": "AccountSid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "section",
+              "displayName": "section",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "caretype",
+              "displayName": "caretype",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "index",
+              "displayName": "index",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "slots_available",
+              "displayName": "slots_available",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "start_fixer",
+              "displayName": "start_fixer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "start",
+              "displayName": "start",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "end",
+              "displayName": "end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "time",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date",
+              "displayName": "date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "day",
+              "displayName": "day",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "location_description",
+              "displayName": "location_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "provider_name",
+              "displayName": "provider_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "duration",
+              "displayName": "duration",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "provider",
+              "displayName": "provider",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "res_appointment_group_id",
+              "displayName": "res_appointment_group_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resource_abbr",
+              "displayName": "resource_abbr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "orderkeytime",
+              "displayName": "orderkeytime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "date_start_combined",
+              "displayName": "date_start_combined",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment_Type_ID",
+              "displayName": "Appointment_Type_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AT_Abbreviation",
+              "displayName": "AT_Abbreviation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AppoinmentTypeToDisplay",
+              "displayName": "AppoinmentTypeToDisplay",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Virtual_Visit",
+              "displayName": "Virtual_Visit",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Appointment_Group_ID",
+              "displayName": "Appointment_Group_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AG_Abbreviation",
+              "displayName": "AG_Abbreviation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AG_Description",
+              "displayName": "AG_Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CreatedAt",
+              "displayName": "CreatedAt",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "UpdatedAt",
+              "displayName": "UpdatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SingleSignOnToken",
+              "displayName": "SingleSignOnToken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SessionToken",
+              "displayName": "SessionToken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "UserName",
+              "displayName": "UserName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SchedulingLink",
+              "displayName": "SchedulingLink",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Scheduler",
+              "displayName": "Scheduler",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PatientPhone",
+              "displayName": "PatientPhone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "PatientSex",
+              "displayName": "PatientSex",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Insurance",
+              "displayName": "Insurance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AppointmentStatus",
+              "displayName": "AppointmentStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1300,
+        0
+      ],
+      "id": "0cea093b-6e98-4f1c-9811-9625d1c9a434",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "tIX6AkbUQLzQWOIq",
+          "name": "Scheduling Activities"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "9d76578a-9fd5-4a87-b72c-2289202abb41",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- 1) Ensure the schema exists\nCREATE SCHEMA IF NOT EXISTS appts;\n\n-- 2) Drop the old table if it exists\nDROP TABLE IF EXISTS appts.self_scheduler_patients;\n\n-- 3) Recreate with columns matching your incoming JSON field names\nCREATE TABLE appts.self_scheduler_patients (\n  \"Id\"                        SERIAL            PRIMARY KEY,\n\n  \"Encounter_Number\"          BIGINT,\n  \"Appointment_ID\"            BIGINT,\n  \"Patient_ID\"                INT,\n  \"Patient_Number\"            INT,\n  \"Patient_Name\"              TEXT,\n\n  \"Called\"                    TIMESTAMPTZ,\n  \"Caller\"                    TEXT,\n  \"CallStatus\"                TEXT,\n  \"From\"                      TEXT,\n  \"To\"                        TEXT,\n  \"CallSid\"                   TEXT,\n  \"Direction\"                 TEXT,\n  \"AccountSid\"                TEXT,\n\n  \"section\"                   TEXT,\n  \"caretype\"                  TEXT,\n  \"index\"                     INT,\n  \"slots_available\"           INT,\n\n  \"start_fixer\"               TIME,\n  \"start\"                     TIME,\n  \"end\"                       TIME,\n\n  \"location\"                  TEXT,\n\n  \"date\"                      DATE,\n  \"day\"                       TEXT,\n  \"location_description\"      TEXT,\n  \"provider_name\"             TEXT,\n  \"duration\"                  INT,\n  \"provider\"                  TEXT,\n\n  \"res_appointment_group_id\"  INT,\n  \"resource_abbr\"             TEXT,\n\n  \"orderkeytime\"              TIMESTAMPTZ,\n  \"date_start_combined\"       TIMESTAMPTZ,\n\n  \"Appointment_Type_ID\"       INT,\n  \"AT_Abbreviation\"           TEXT,\n  \"AppoinmentTypeToDisplay\"   TEXT,\n  \"Description\"               TEXT,\n\n  \"Virtual_Visit\"             SMALLINT,\n\n  \"Appointment_Group_ID\"      INT,\n  \"AG_Abbreviation\"           TEXT,\n  \"AG_Description\"            TEXT,\n\n  \"CreatedAt\"                 TIMESTAMPTZ NOT NULL,\n  \"UpdatedAt\"                 TIMESTAMPTZ,\n\n  \"SingleSignOnToken\"         TEXT,\n  \"SessionToken\"              TEXT,\n  \"UserName\"                  TEXT,\n  \"SchedulingLink\"            TEXT,\n  \"Scheduler\"                 TEXT,\n  \"PatientPhone\"              TEXT,\n  \"PatientSex\"                TEXT,\n  \"Insurance\"                 TEXT,\n  \"AppointmentStatus\"         TEXT\n);\n\n-- The former BOOLEAN flag (Virtual_Visit) is now a SMALLINT.\n-- Removed SingleSignOnToken and SessionToken.\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        900,
+        -320
+      ],
+      "id": "f20351aa-e998-451b-af21-c12d8055a5e1",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "tIX6AkbUQLzQWOIq",
+          "name": "Scheduling Activities"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mnx1ann5acss8m7",
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        40,
+        -320
+      ],
+      "id": "1f0ba2f3-5f5e-4ce9-a121-a53f52ab6281",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n “Code” node (JavaScript)\n// Mode: Run Once for All Items\n\nitems.forEach(item => {\n  const j = item.json;\n\n  //\n  // 0) Remove incoming Id so Postgres uses its SERIAL PK\n  //\n  delete j.Id;\n\n  //\n  // 1) Normalize numeric fields → null or Number (catch empty & NaN)\n  //\n  [\n    \"Encounter_Number\",\n    \"Appointment_ID\",\n    \"Patient_ID\",\n    \"Patient_Number\",\n    \"index\",\n    \"slots_available\",\n    \"duration\",\n    \"res_appointment_group_id\",\n    \"Appointment_Type_ID\",\n    \"Appointment_Group_ID\"\n  ].forEach(key => {\n    if (!j[key] || j[key] === \"\") {\n      j[key] = null;\n    } else {\n      const num = parseInt(String(j[key]).replace(/,/g, \"\"), 10);\n      j[key] = isNaN(num) ? null : num;\n    }\n  });\n\n  //\n  // 2) Date‐only → YYYY-MM-DD (or null)\n  //\n  if (!j.date || j.date === \"\") {\n    j.date = null;\n  } else if (typeof j.date === \"string\" && j.date.includes(\"/\")) {\n    const [m, d, y] = j.date.split(\"/\");\n    j.date = `${y.padStart(4,\"0\")}-${m.padStart(2,\"0\")}-${d.padStart(2,\"0\")}`;\n  }\n  // else: assume already YYYY-MM-DD or ISO\n\n  //\n  // 3) Full-timestamp fields → ISO string (or null)\n  //\n  [\n    \"Called\",\n    \"orderkeytime\",\n    \"date_start_combined\",\n    \"CreatedAt\",\n    \"UpdatedAt\"\n  ].forEach(key => {\n    if (!j[key] || j[key] === \"\") {\n      j[key] = null;\n    } else {\n      const dt = new Date(j[key]);\n      j[key] = isNaN(dt.getTime()) ? null : dt.toISOString();\n    }\n  });\n\n  //\n  // 4) Time-of-day fields → HH:MM:SS (or null)\n  //\n  [\"start_fixer\", \"start\", \"end\"].forEach(key => {\n    let s = j[key];\n    if (!s || s === \"\") {\n      j[key] = null;\n      return;\n    }\n    s = String(s).trim();\n    let hh, mm;\n\n    // a) AM/PM format, e.g. \"8:40 AM\"\n    const ampm = s.match(/^(\\d{1,2}):(\\d{2})\\s*([APap][Mm])$/);\n    if (ampm) {\n      hh = parseInt(ampm[1], 10);\n      mm = parseInt(ampm[2], 10);\n      const period = ampm[3].toUpperCase();\n      if (period === \"PM\" && hh < 12) hh += 12;\n      if (period === \"AM\" && hh === 12) hh = 0;\n    }\n    // b) Already \"HH:MM\" or \"H:MM\"\n    else if (s.includes(\":\")) {\n      const parts = s.split(\":\");\n      hh = parseInt(parts[0], 10);\n      mm = parseInt(parts[1], 10);\n    }\n    // c) Raw digits, e.g. \"0840\" or \"840\"\n    else if (/^\\d{3,4}$/.test(s)) {\n      const clean = s.padStart(4, \"0\");\n      hh = parseInt(clean.slice(0, 2), 10);\n      mm = parseInt(clean.slice(2), 10);\n    }\n    // d) Unrecognized → null\n    else {\n      j[key] = null;\n      return;\n    }\n\n    const pHH = String(hh).padStart(2, \"0\");\n    const pMM = String(mm).padStart(2, \"0\");\n    j[key] = `${pHH}:${pMM}:00`;\n  });\n\n  //\n  // 5) Final sweep: turn any remaining \"\" or NaN into null\n  //\n  Object.keys(j).forEach(k => {\n    if (j[k] === \"\" || (typeof j[k] === \"number\" && isNaN(j[k]))) {\n      j[k] = null;\n    }\n  });\n});\n\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "b56f47cb-7783-4813-a235-65e76e78b67a",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n\nitems.forEach(item => {\n  const j = item.json;\n\n  //\n  // 1) Normalize numeric fields → null or Number\n  //\n  [\n    \"Encounter_Number\",\n    \"Appointment_ID\",\n    \"Patient_ID\",\n    \"Patient_Number\",\n    \"index\",\n    \"slots_available\",\n    \"duration\",\n    \"res_appointment_group_id\",\n    \"Appointment_Type_ID\",\n    \"Appointment_Group_ID\"\n  ].forEach(key => {\n    if (j[key] === \"\" || j[key] == null) {\n      j[key] = null;\n    } else {\n      j[key] = parseInt(String(j[key]).replace(/,/g, \"\"), 10);\n    }\n  });\n\n  //\n  // 2) Date‐only → YYYY-MM-DD (or null)\n  //\n  if (!j.date || j.date === \"\") {\n    j.date = null;\n  } else {\n    const [m, d, y] = j.date.split(\"/\");\n    j.date = `${y.padStart(4,\"0\")}-${m.padStart(2,\"0\")}-${d.padStart(2,\"0\")}`;\n  }\n\n  //\n  // 3) All TIMESTAMPTZ fields → ISO string (or null)\n  //\n  [\n    \"Called\",\n    \"orderkeytime\",\n    \"date_start_combined\",\n    \"CreatedAt\",\n    \"UpdatedAt\"\n  ].forEach(key => {\n    if (!j[key] || j[key] === \"\") {\n      j[key] = null;\n    } else {\n      const dt = new Date(j[key]);\n      j[key] = isNaN(dt.getTime()) ? null : dt.toISOString();\n    }\n  });\n\n  //\n  // 4) OPTIONAL: ensure any other stray empty‐strings become null\n  //\n  Object.keys(j).forEach(k => {\n    if (j[k] === \"\") j[k] = null;\n  });\n});\n\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        560,
+        120
+      ],
+      "id": "0d41947b-44bd-44a2-b8c7-5d32902bc605",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "value": "appts",
+          "mode": "list",
+          "cachedResultName": "appts"
+        },
+        "table": {
+          "__rl": true,
+          "value": "self_scheduler_patients",
+          "mode": "list",
+          "cachedResultName": "self_scheduler_patients"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1360,
+        380
+      ],
+      "id": "2c4cb7aa-f9d2-4d73-8349-3f11d4994489",
+      "name": "Postgres3",
+      "credentials": {
+        "postgres": {
+          "id": "tIX6AkbUQLzQWOIq",
+          "name": "Scheduling Activities"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\n\nitems.forEach(item => {\n  const j = item.json;\n\n  //\n  // 0) Remove the incoming Id so Postgres will auto-generate it\n  //\n  delete j.Id;\n\n  //\n  // 1) Normalize numeric fields → null or Number\n  //\n  [\n    \"Encounter_Number\",\n    \"Appointment_ID\",\n    \"Patient_ID\",\n    \"Patient_Number\",\n    \"index\",\n    \"slots_available\",\n    \"duration\",\n    \"res_appointment_group_id\",\n    \"Appointment_Type_ID\",\n    \"Appointment_Group_ID\"\n  ].forEach(key => {\n    if (j[key] === \"\" || j[key] == null) {\n      j[key] = null;\n    } else {\n      j[key] = parseInt(String(j[key]).replace(/,/g, \"\"), 10);\n    }\n  });\n\n  //\n  // 2) Date‐only → YYYY-MM-DD (or null)\n  //\n  if (!j.date || j.date === \"\") {\n    j.date = null;\n  } else {\n    const [m, d, y] = j.date.split(\"/\");\n    j.date = `${y.padStart(4,\"0\")}-${m.padStart(2,\"0\")}-${d.padStart(2,\"0\")}`;\n  }\n\n  //\n  // 3) All TIMESTAMPTZ fields → ISO string (or null)\n  //\n  [\n    \"Called\",\n    \"orderkeytime\",\n    \"date_start_combined\",\n    \"CreatedAt\",\n    \"UpdatedAt\"\n  ].forEach(key => {\n    if (!j[key] || j[key] === \"\") {\n      j[key] = null;\n    } else {\n      const dt = new Date(j[key]);\n      j[key] = isNaN(dt.getTime()) ? null : dt.toISOString();\n    }\n  });\n\n  //\n  // 4) OPTIONAL: catch any other empty‐strings\n  //\n  Object.keys(j).forEach(k => {\n    if (j[k] === \"\") j[k] = null;\n  });\n});\n\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        240
+      ],
+      "id": "da68747d-5304-4747-bd5a-4f2f9c3a5825",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ccebf0e7-3035-4301-9bb2-6fe757b85c81",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        100,
+        -160
+      ],
+      "id": "6b7bee9d-6e3a-482e-8ca9-68652066cc7d",
+      "name": "Webhook",
+      "webhookId": "ccebf0e7-3035-4301-9bb2-6fe757b85c81"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "appts",
+          "mode": "list",
+          "cachedResultName": "appts"
+        },
+        "table": {
+          "__rl": true,
+          "value": "self_scheduler_patients",
+          "mode": "list",
+          "cachedResultName": "self_scheduler_patients"
+        },
+        "limit": 10,
+        "sort": {
+          "values": [
+            {
+              "column": "Id",
+              "direction": "DESC"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1340,
+        200
+      ],
+      "id": "6da44e51-a4a0-42ae-ae74-7ce5f850ea2a",
+      "name": "Scheduling Activities",
+      "credentials": {
+        "postgres": {
+          "id": "tIX6AkbUQLzQWOIq",
+          "name": "Scheduling Activities"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://n8n-main:5678/webhook/7052329f-1327-466f-b0b4-0245b678093a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1400,
+        -520
+      ],
+      "id": "3fa126d9-51a2-4649-bc6b-1793afd78687",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "path": "7052329f-1327-466f-b0b4-0245b678093a",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        -520
+      ],
+      "id": "5bf36c57-8204-4ab9-9cce-5fcc11599b13",
+      "name": "Webhook1",
+      "webhookId": "7052329f-1327-466f-b0b4-0245b678093a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-06-25T00:30:48.581Z",
+  "versionId": "81bd2523-c5a7-479d-9e6e-337d2d4b017c"
+}
