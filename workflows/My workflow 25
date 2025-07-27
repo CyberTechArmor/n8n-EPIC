@@ -1,0 +1,377 @@
+{
+  "active": false,
+  "connections": {
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Edit AM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit PM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit AM": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit PM": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Bumped",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-17T12:29:35.776Z",
+  "id": "CKIAjKv6cvPeLW6x",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 25",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "d0835950-fecf-447b-8ca6-577451331c81",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        420,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "be1812ac-a83e-4021-9c67-39713600de18",
+              "leftValue": "={{ $json.getappointmentbyidinfo[0].Appointment_DateTime }}",
+              "rightValue": "AM",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "dd0c2dd7-16cf-4edb-9c46-6906678a20ca",
+      "name": "If5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "23c7deae-d560-4ec7-8bfe-f309c21b3c53",
+              "name": "getappointmentbyidinfo[0].Appointment_DateTime",
+              "value": "={{ $json.getappointmentbyidinfo[0].Appointment_DateTime.slice(11).replaceAll(\":\",\"\").replaceAll(\"AM\",\"\").replaceAll(\"PM\",\"\").padStart(4, '0') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a069f005-2eaf-43ef-8bf7-2b8c71b397c5",
+      "name": "Edit AM",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1180,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "23c7deae-d560-4ec7-8bfe-f309c21b3c53",
+              "name": "getappointmentbyidinfo[0].Appointment_DateTime",
+              "value": "={{ Number($json.getappointmentbyidinfo[0].Appointment_DateTime.slice(11).replaceAll(\":\", \"\").replaceAll(\"AM\", \"\").replaceAll(\"PM\", \"\").padStart(4, '0')) + 1200 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f020a5af-f6bc-4304-b48d-eb125d3eb0a6",
+      "name": "Edit PM",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1180,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "758cf390-db93-414b-a79f-2f4e584c8ce0",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1420,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"SetAppointmentStatus\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Patient_ID\"] }}\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_ID\"] }}\",\n\"Parameter2\":\"B\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"{{ $json[\"getappointmentbyidinfo\"][0][\"Appointment_DateTime\"].slice(11).replaceAll(\":\",\"\").replaceAll(\"AM\",\"\").replaceAll(\"PM\",\"\").padStart(4, '0') }} }}\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"14\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b51350f6-0ba0-4caa-8ee5-7d670f6cddaa",
+      "name": "HTTP Bumped",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1620,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "96c72758-c7f2-453a-8bb5-420e97be9f4d",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        580
+      ]
+    }
+  ],
+  "pinData": {
+    "Merge2": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ],
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "354",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "PatientID": "137836",
+            "Parameter1": "25201003",
+            "Parameter2": "B",
+            "Parameter4": "0800",
+            "LTSR": "Fail"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "1141",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/8cdf5a76-cae5-44cb-8488-75568a964caf",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-17T12:29:35.776Z",
+  "versionId": "0a1b85b1-c5c4-4b95-83c5-a65dab5aa1f6"
+}
