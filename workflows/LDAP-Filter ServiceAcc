@@ -1,0 +1,1615 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "FormatDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "30OrMoreDaysAgo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "Filter-Non-ServiceAccounts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter-Non-ServiceAccounts1": {
+      "main": [
+        [
+          {
+            "node": "Filter-Non-ServiceAccounts2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "30OrMoreDaysAgo": {
+      "main": [
+        [
+          {
+            "node": "ConvertsLastLoginTime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter-Non-ServiceAccounts2": {
+      "main": [
+        [
+          {
+            "node": "LeftOvers",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Diagnostic Divisions",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Contact Center",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NMNGlobalCC",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Medical Divisions",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Flatworld",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RCX",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Accounting",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HR",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IT",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Company Owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LeftOvers": {
+      "main": [
+        [
+          {
+            "node": "LeftOvers1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConvertsLastLoginTime": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-09T14:15:22.264Z",
+  "id": "tio9h1fHFVLhTZBj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LDAP-Filter ServiceAcc",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "45205373-870a-4b17-add5-8f73272109cc",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2386589d-9cd9-4aed-95ac-8b19db191a94",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        320,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "6755e643-c493-46a7-b6b9-2f4e63db9d17",
+      "name": "FormatDate",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        500,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.pwdLastSete }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "37d17c5b-fcc0-4cf3-a3b3-c353fe1ca823",
+      "name": "FormatDate-LDAP",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "da04474d-3c62-41bb-9bf7-4dedfc74b7ae",
+              "leftValue": "={{ $json.lastLogonDate }}",
+              "rightValue": "1601-01-01",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "70b718a3-9625-46c8-a27c-3eaeebcdc7b7",
+      "name": "Filter-1601-01-01",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8f2580df-f94b-4287-a57c-8c52c760224b",
+              "leftValue": "={{ $json.userAccountControl }}",
+              "rightValue": "514",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0c8287c5-5b5c-456b-aef5-2447a5a945ed",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6afaa8a4-c1fe-4a16-b825-3c08b0ef3251",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input data contains an array of user objects fetched from LDAP search\nconst ldapUsers = items.map(item => item.json);\n\n// Function to generate new DN for each user based on the target OU\nfunction generateNewDN(user) {\n    const currentDN = user.distinguishedName; // Assuming the DN is fetched from LDAP\n    const newOU = 'OU=8.0 Deactivated Users,OU=Exclus1ve Physicians,DC=ecoe,DC=local'; // Target OU Distinguished Name\n    const newDN = `CN=${user.commonName},${newOU}`;\n    return { currentDN, newDN };\n}\n\n// Process each user to generate new DNs\nconst updatedUsers = ldapUsers.map(user => generateNewDN(user));\n\n// Output updated users with new DNs\nreturn updatedUsers.map(user => ({ json: user }));\n\nfunction generateNewDN(user) {\n    const currentDN = user.distinguishedName; // Assuming the DN is fetched from LDAP\n    const newOU = 'OU=8.0 Deactivated Users,OU=Exclus1ve Physicians,DC=ecoe,DC=local'; // Target OU Distinguished Name\n    \n    // Access the Common Name (CN) attribute based on your user object structure\n    const commonName = user.commonName || ''; // Adjust this based on your actual attribute name\n\n    // Construct the new DN using the Common Name\n    const newDN = `CN=${commonName},${newOU}`;\n    return { currentDN, newDN };\n}\n\n"
+      },
+      "id": "a8279ed2-063a-43a7-831b-f747db15450a",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Donna Hutson",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "91688bd3-39c4-4dc6-832a-b941fb094cd1",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Elizabeth Czarnota",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "9e7be735-015c-4ef8-a6e7-e9d37bd2eaea",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Gabrielle Nix",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ff7e6458-4d6e-439b-824b-f10f9a70014c",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Keairra Cunningham",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "5a746e26-8d7e-435f-9349-403e509a1412",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Shaniya Owens",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "d3d1721e-31fa-4bb8-a93b-b9b6394735f0",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Zayana White",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "31811bcf-b054-40e0-8074-56fca817d38b",
+      "name": "NewHireNextWeek",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input data contains an array of user objects with lastLogonDate\nconst users = items.map(item => item.json);\n\n// Function to convert LDAP timestamp to JavaScript Date object\nfunction ldapLastLogonToDate(lastLogonTimestamp) {\n    let unixTimestamp = (lastLogonTimestamp / 10000000) - 11644473600;\n    return new Date(unixTimestamp * 1000);\n}\n\n// Calculate the date 30 days ago\nconst currentDate = new Date();\nconst thirtyDaysAgo = new Date(currentDate.setDate(currentDate.getDate() - 30));\n\n// Filter users whose lastLogonDate is greater than or equal to 30 days ago\nconst filteredUsers = users.filter(user => {\n    const lastLogonDate = ldapLastLogonToDate(user.lastLogon); // Assuming lastLogon is the key\n    return lastLogonDate <= thirtyDaysAgo;\n});\n\n// Output filtered users\nreturn filteredUsers.map(user => ({ json: user }));\n"
+      },
+      "id": "bf6e5f57-f52c-4d44-b930-feab6917b344",
+      "name": "30OrMoreDaysAgo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input data contains an array of user objects with lastLogon timestamps\nconst users = items.map(item => item.json);\n\n// Function to convert LDAP timestamp to human-readable date format\nfunction ldapLastLogonToDate(lastLogonTimestamp) {\n    let unixTimestamp = (lastLogonTimestamp / 10000000) - 11644473600;\n    let date = new Date(unixTimestamp * 1000);\n    let formattedDate = date.toISOString();\n    return formattedDate;\n}\n\n// Iterate through each user and convert lastLogon timestamp\nconst convertedUsers = users.map(user => {\n    const lastLogonTimestamp = user.lastLogon; // Assuming lastLogon is the key\n    const formattedDate = ldapLastLogonToDate(lastLogonTimestamp);\n    user.lastLogonDate = formattedDate; // Add formatted date to user object\n    return user;\n});\n\n// Output converted user data\nreturn convertedUsers.map(user => ({ json: user }));\n"
+      },
+      "id": "68c2f08c-6458-4c49-8a29-488af4847dcb",
+      "name": "ConvertsLastLoginTime",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        -320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lastLogonDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "397d23df-05dd-4bc3-8812-39e40e7dab53",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "userAccountControl",
+              "value": "514"
+            }
+          ]
+        }
+      },
+      "id": "13895645-fe2b-46db-ba48-b25f1bbbd5d2",
+      "name": "Deactivate\\",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        420
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "cn",
+        "searchText": "bria knox",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "c8d6ce92-0bf3-406b-be8f-60ab05f5b15a",
+      "name": "LDAP5",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -60
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "rename",
+        "nodeDebug": true,
+        "dn": "={{ $json.distinguishedName }}",
+        "targetDn": "=CN={{ $json.cn}},OU=8.0 Deactivated Users,OU=Exclus1ve Physicians,DC=ecoe,DC=local"
+      },
+      "id": "95b7ed65-c25f-4c8b-a517-629b33c0eadf",
+      "name": "LDAP2",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -80
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "nodeDebug": true,
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "userAccountControl",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "5da16323-9089-48a2-8bee-c8c72d1a7073",
+      "name": "LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        20,
+        -80
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8f2580df-f94b-4287-a57c-8c52c760224b",
+              "leftValue": "={{ $json.userAccountControl }}",
+              "rightValue": "514",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0c8287c5-5b5c-456b-aef5-2447a5a945ed",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "de40ff28-0063-4a1f-a530-1389f8740bb8",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        280,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Service Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "91688bd3-39c4-4dc6-832a-b941fb094cd1",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Vendor Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "9e7be735-015c-4ef8-a6e7-e9d37bd2eaea",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Servers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ff7e6458-4d6e-439b-824b-f10f9a70014c",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Computers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "5a746e26-8d7e-435f-9349-403e509a1412",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Test Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "d3d1721e-31fa-4bb8-a93b-b9b6394735f0",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=ServiceAccounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "e372087f-25a2-41a9-914d-d17393ca97ac",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ed445e7b-289b-451e-a441-efc8bf0315a5",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=7.32 Market Materials",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "6b267e26-701f-42b2-a8ea-44bb43a882e0",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=RCX ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "c0eed980-a69d-47c6-80f3-24bdd1be0943",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=FINANCE",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "472133b1-1227-4a2b-9da5-6b5db52d0e0b",
+      "name": "Filter-Non-ServiceAccounts",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "rename",
+        "dn": "={{ $json.dn }}",
+        "targetDn": "=CN={{ $json.cn }},OU=ServiceAccounts,OU=6.3 Staff,OU=6.0 Information Technology,OU=Exclus1ve Physicians,DC=ecoe,DC=local"
+      },
+      "id": "d77e466c-1f06-41b8-b386-1f8a603b6dd4",
+      "name": "LDAP6",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        60
+      ],
+      "alwaysOutputData": false,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "nodeDebug": true,
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "userAccountControl",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "2750896d-400f-4eef-a03d-ed1c0aab5706",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        400
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Service Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "91688bd3-39c4-4dc6-832a-b941fb094cd1",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Vendor Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "9e7be735-015c-4ef8-a6e7-e9d37bd2eaea",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=CHMB",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ff7e6458-4d6e-439b-824b-f10f9a70014c",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Computers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "5a746e26-8d7e-435f-9349-403e509a1412",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Test Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "d3d1721e-31fa-4bb8-a93b-b9b6394735f0",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "=OU=ServiceAccounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "dc1c7156-fda9-47cc-84b7-e1cc61dc47a9",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=STUDENTS",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ed4a39cd-8087-472b-a97a-d17c5df22a16",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Certify_Group",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "f8c59f09-fd2d-40ca-8651-d233adb81ece",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=External Partners",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "93d1e05f-bfbf-4422-8ea3-575f1e11437b",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Retired Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4d1ac771-a6e5-45d9-8800-dd3ca269c9d6",
+      "name": "Filter-Non-ServiceAccounts1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=solutionprimary patient",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "b34e973f-b5ef-4832-8026-e7bc76866407",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=punch time",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "4dda8d77-a7e5-4fea-b934-4f565c196060",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=career epic",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "994c0a70-f2d1-4b22-ae5e-96144b006922",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=recruiting hr",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "d5f642ce-3ec3-442f-b3fd-db1b93e1ebd6",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=active dir",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "9ce9db4c-a964-4470-8255-995c6d0fef6f",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=emt calendar",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "3e9b3fd8-f8cf-490a-aeff-d0c7d70d2743",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=card access",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "125772c5-3fbe-48b0-92c5-66edb8a15ae6",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=ss callcenter",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "6e8f0e2a-5a4a-4558-8cfc-fe3646c17837",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "CN=ss provider",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "da07e60d-9c9c-4a78-840e-014c0b755f41",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "SS Billing",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "9660a973-63a5-4fd3-85dc-bb7b25d1a3c4",
+      "name": "Filter-Non-ServiceAccounts-Cont5",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=NMNGlobalCC",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2c22f84b-3b5b-464e-8845-34395426fb00",
+      "name": "NMNGlobalCC",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        340,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Medical Divisions",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7ea88451-0ad7-4baa-ae4a-4139021abafd",
+      "name": "Medical Divisions",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        340,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Contact Center",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "998ac086-fadd-4a85-9bc4-11e6e09d8e5d",
+      "name": "Contact Center",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        340,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Diagnostic Divisions",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "398ba32f-9b23-448e-90b9-43c251608b21",
+      "name": "Diagnostic Divisions",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        340,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Diagnostic Divisions",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "b24252dd-5021-4d44-b677-31857e0e4060",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Contact Center",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "4af37666-4738-484f-828f-5534cf0536e5",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=NMNGlobalCC",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "4160b46e-679e-43eb-9802-518df2ed8921",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Medical Divisions",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "73eed4c3-1ad3-4597-b1a9-b955805df24a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Accounting",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "229c9d78-db28-433a-8279-bf19ca7a0511",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "fe6d2f0b-7221-4b85-8712-f9f1254c16d2",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Flatworld",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "7ddf3255-e057-428a-ad59-ae065f748656",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=7.10 Marketing Managers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "2920e037-a30d-49cc-838f-5f8973dbda51",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=5.0 Human Resources",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "f871ba1a-88b4-4265-9d37-33b92d12178b",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=6.0 Information Technology",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "355521eb-d592-412e-bb1b-cbba06e35290",
+      "name": "LeftOvers",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Accounting",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "dde84cbb-9d37-4a7d-bf3f-41f687246a71",
+      "name": "Accounting",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        600,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "ae6a7754-53f1-4d96-89f9-0d6ae59abe4c",
+      "name": "RCX",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        600,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Flatworld",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "aa00756f-0cf7-4b31-8e36-f60a6a7b13b1",
+      "name": "Flatworld",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        600,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=UNISBILLER",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "91688bd3-39c4-4dc6-832a-b941fb094cd1",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=OUTSIDE",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "9e7be735-015c-4ef8-a6e7-e9d37bd2eaea",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "05fa225d-8a3f-41dc-b524-87f5a252b4c7",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Servers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "563b6764-029d-4145-8210-24fd4e6a46bc",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8f7a4443-a139-4324-aa9d-6d67f537ce88",
+      "name": "Filter-Non-ServiceAccounts2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=5.0 Human Resources",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "babe0d52-06b7-4c13-a03a-5001bb6b6449",
+      "name": "HR",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        600,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=6.0 Information Technology",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "bd6d3a5c-07da-41b1-8839-8d36d2a3cc52",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "413d09f6-ac6e-48db-ae1a-0f4aa34b1256",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=FlatworldDev",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cf552710-33ab-411a-9e0b-c876dd183bc4",
+      "name": "IT",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        840,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=0.0 Company",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cbeff642-0cf0-4927-b8dd-2023b86f3445",
+      "name": "Company Owner",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        840,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5f95188d-6806-45c1-8a76-935ecc66df0a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=0.0 Company ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "b24252dd-5021-4d44-b677-31857e0e4060",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=7.32 Market Materials",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "4af37666-4738-484f-828f-5534cf0536e5",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=NMNGlobalCC",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "4160b46e-679e-43eb-9802-518df2ed8921",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Medical Divisions",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "73eed4c3-1ad3-4597-b1a9-b955805df24a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "Accounting",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "229c9d78-db28-433a-8279-bf19ca7a0511",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=RCXRULES",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "fe6d2f0b-7221-4b85-8712-f9f1254c16d2",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Flatworld",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "7ddf3255-e057-428a-ad59-ae065f748656",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=7.10 Marketing Managers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "2920e037-a30d-49cc-838f-5f8973dbda51",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=5.0 Human Resources",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "f871ba1a-88b4-4265-9d37-33b92d12178b",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=6.0 Information Technology",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b2b82bdd-d71b-4408-ade6-0fa1bf454baf",
+      "name": "LeftOvers1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -120,
+        660
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-09T13:16:23.558Z",
+  "versionId": "cd22fbce-b76c-4fe0-9a54-29924d19e56a"
+}
