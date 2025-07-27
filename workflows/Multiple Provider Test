@@ -1,0 +1,1023 @@
+{
+  "active": false,
+  "connections": {
+    "Most Available Provider": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No available appointments1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop - Provider List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Appointment Time": {
+      "main": [
+        [
+          {
+            "node": "If Block in Current Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop - Provider List": {
+      "main": [
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GetAvailableTimeBlocks",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "GetAvailableTimeBlocks": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over TimeBlocks": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Block in Current Time": {
+      "main": [
+        [
+          {
+            "node": "If Not on Lunch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Not on Lunch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Create Walk-in",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over TimeBlocks",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No available appointments1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Appointment Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit2": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Most Available Provider",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-09T14:13:41.738Z",
+  "id": "OOc3pnEuGv2RrIER",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Multiple Provider Test",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @LOC VARCHAR(200) = 'EPIC Detroit Livernois';\n \nWITH ApptData AS (\n    SELECT \n        [Patient_ID],\n        [Patient_Number],\n        [Appt_ID],\n        [Appt_DateTime],\n        [Appt_Encounter_Number],\n        [Appt_Resource_ID],\n        [Appt_Resource_Abbr],\n        [Appt_Resource_Descr],\n        [Appt_Resource_Assoc_Prov_LFI],\n        [Appt_Type_Abbr],\n        [Appt_Type_Descr],\n        [Appt_Duration],\n        [Appt_Comments],\n        [Appt_Status],\n        [Appt_Time_In],\n        [Appt_Booked_Date],\n        [Appt_Booked_By_Operator_Abbr],\n        [Appt_Is_Forced],\n        [Appt_Started_Time],\n        [Appt_Check_Out_Time],\n        [Appt_Acknowledged_Date],\n        [Appt_Ack_By_Operator_Abbr],a.Appt_Sched_Location_Descr\n    FROM \n        [Ntier_EPIC].[dbo].[vwGenPatApptInfo] a\n    WHERE \n        CAST(a.Appt_DateTime AS date) = CAST(GETDATE() AS date) AND \n        CAST(a.Appt_DateTime AS time) BETWEEN DATEADD(MINUTE, -60, CAST(GETDATE() AS time)) \n        AND DATEADD(MINUTE, 60, CAST(GETDATE() AS time)) AND \n        a.Appt_Sched_Location_Descr = @LOC AND \n        a.Appt_Resource_Descr NOT LIKE 'PA%' AND a.Appt_Resource_Descr NOT LIKE 'Ther%' and a.Appt_Resource_Descr NOT LIKE 'Exer%' and a.Appt_Resource_Descr NOT LIKE 'Blue%' and\n\t\ta.Appt_Resource_Descr NOT LIKE 'BH%' and a.Appt_Resource_Descr NOT LIKE 'Cardi%' and a.Appt_Resource_Descr not like 'Priority%' and\n        a.Appt_Status IN ('A', 'S','C') AND \n        a.Appt_Check_Out_Time IS NULL\n),\nResourceSummary AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr,\n        SUM(CASE WHEN Appt_Status = 'A' THEN 1 ELSE 0 END) AS A_Count,\n        SUM(CASE WHEN Appt_Status = 'S' THEN 1 ELSE 0 END) AS S_Count,\n\t\tSUM(CASE WHEN Appt_Status = 'C' THEN 1 ELSE 0 END) AS C_Count\n    FROM \n        ApptData\n    GROUP BY \n        Appt_Resource_ID,Appt_Resource_Descr,[Appt_Resource_Abbr],Appt_Sched_Location_Descr\n),\nRankedResources AS (\n    SELECT \n        Appt_Resource_ID,Appt_Resource_Descr,Appt_Resource_Abbr,\n        A_Count,C_Count,\n        S_Count,Appt_Sched_Location_Descr,\n        RANK() OVER (ORDER BY A_Count, S_Count,C_Count asc) AS AvailRank\n    FROM \n        ResourceSummary\n)\nSELECT \n    r.Appt_Resource_ID,r.Appt_Resource_Descr,r.Appt_Resource_Abbr,\n    r.A_Count,\n    r.S_Count,\n\tr.C_Count,\n    r.AvailRank AS MostAvail,\n\tr.Appt_Sched_Location_Descr\nFROM \n    RankedResources r\nORDER BY \n    r.AvailRank"
+      },
+      "id": "4eff3d2a-839c-4981-ad3b-65222694d272",
+      "name": "Most Available Provider",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        180,
+        560
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Schedule the walk-in",
+        "height": 336.62479116762086,
+        "width": 3968.394227660083,
+        "color": 4
+      },
+      "id": "ac414ba8-9559-44d4-98b1-ea41344f412a",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        140,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "b78d71b3-0e0f-4483-8237-c61518f24946",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1620,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## No Scheduled appointments for the day",
+        "height": 242.24514478932173,
+        "width": 1296.323875958478,
+        "color": 3
+      },
+      "id": "0dc55b63-af0f-4a20-95a8-300b9eb3b209",
+      "name": "Sticky Note14",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2104.2467915243587,
+        840
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "39dd516b-2f56-4b6c-b964-7bde68bc4454",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        380,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "fcb31c34-65f9-43b1-9209-f1a1affb09d7",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3240,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n    <script>\n        setTimeout(function() {\n            window.location.href = 'https://xl.epicpc.com/webhook/a7739828-9187-45a4-9e7f-e43d0f61f6ac?hostname={{ $('Webhook3').item.json[\"query\"][\"hostname\"] }}'; // Replace with your target URL\n        }, 45000); // 10000 milliseconds = 10 seconds\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Walk-in Patient</title>\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\" rel=\"stylesheet\">\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css\" rel=\"stylesheet\"> <!-- Font Awesome link -->\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            white-space: nowrap;\n            text-align: center;\n            width: 100%;\n        }\n        p {\n            font-size: 1.5em;\n            margin-bottom: 30px;\n        }\n        .icon-container {\n            text-align: center;\n            margin-top: 20px;\n        }\n        .icon-container i {\n            font-size: 3em;\n            color: #f5b800;\n            cursor: pointer;\n            transition: color 0.3s;\n        }\n        .icon-container i:hover {\n            color: #e4a600;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>No Appointments Available</h1>\n        <p>There are no appointments available today. Click the calendar to schedule a future appointment.</p>\n        <div class=\"icon-container\">\n            <i class=\"fas fa-calendar-alt\" onclick=\"window.location.href='https://visit.epicpc.com/?fullName={{ $('Paitient').item.json[\"Patient_First_Name\"].replace(/ /g, '%20') }}+{{ $('Paitient').item.json[\"Patient_Last_Name\"].replace(/ /g, '%20') }}&patientId={{ $('Paitient').item.json[\"Patient_Number\"] }}';\"></i>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "605cb115-b048-4eec-b1a8-60050b3f6a2e",
+      "name": "No available appointments1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2420,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getavailabletimeblocksinfo",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "81013e5b-b343-476e-9eb3-0139d2bc795f",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current date from the provided data\nconst currentDate = new Date(\"$json.currentDate\");\n\n// Function to adjust time by offset in hours\nfunction adjustTimezone(date, offset) {\n  const utc = date.getTime() + (date.getTimezoneOffset() * 60000);\n  return new Date(utc + (3600000 * offset));\n}\n\n// Adjust to the desired timezone (-4 hours for example)\nconst adjustedDate = adjustTimezone(currentDate, -4);\n\n// Format the adjusted date\nconst options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: true };\nlet formattedDate = adjustedDate.toLocaleString('en-US', options);\n\n// Remove the comma from the formatted date\nformattedDate = formattedDate.replace(',', '');\n\n// Use the values from the provided data\nconst startTime = parseInt($json.getavailabletimeblocksinfo.Start_Time);\nconst endTime = parseInt($json.getavailabletimeblocksinfo.End_Time);\n\n// Get the current time in the same format\nconst now = new Date();\nconst currentTime = now.getHours() * 100 + now.getMinutes();\n\n// Check if the current time falls between start and end times\nlet isCurrentTimeBetween = false;\nif (startTime <= currentTime && currentTime <= endTime) {\n    isCurrentTimeBetween = true;\n}\n\n// Convert time to minutes for duration calculation\nconst startMinutes = Math.floor(startTime / 100) * 60 + (startTime % 100);\nconst endMinutes = Math.floor(endTime / 100) * 60 + (endTime % 100);\n\n// Calculate the duration in minutes\nconst durationMinutes = endMinutes - startMinutes;\n\n// Determine the classification\nlet classification;\nif (durationMinutes >= 60) {\n    classification = 'Lunch';\n} else if (durationMinutes >= 10 && durationMinutes <= 40) {\n    classification = 'Available';\n} else {\n    classification = 'Unavailable';\n}\n\n// Convert duration back to hours and minutes\nconst durationHours = Math.floor(durationMinutes / 60);\nconst durationRemainingMinutes = durationMinutes % 60;\n\nitems[0].json.Duration = `${durationHours} hours ${durationRemainingMinutes} minutes`;\nitems[0].json.Classification = classification;\nitems[0].json.IsCurrentTimeBetween = isCurrentTimeBetween;\nitems[0].json.FormattedDate = formattedDate;\n\nreturn items;\n"
+      },
+      "id": "9538dc71-eda4-448a-96fb-de99ef1d9b97",
+      "name": "Appointment Time",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3320,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# On lunch?",
+        "height": 332.2300236817687,
+        "width": 1754.0220686443854,
+        "color": 5
+      },
+      "id": "aba48387-fefe-4940-ab55-f51274c43632",
+      "name": "Sticky Note13",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {}
+      },
+      "id": "35d0a077-92eb-46cc-9456-9ab541e1768f",
+      "name": "Loop - Provider List",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2240,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "="
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.Appt_Resource_Abbr }}"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            },
+            {
+              "name": "Action",
+              "value": "GetAvailableTimeBlocks"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "bbbf09dd-be9b-486a-a302-36a01d5f82d2",
+      "name": "GetAvailableTimeBlocks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2460,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e7020fd4-9a25-4ce4-a6f0-44747bbbce8c",
+      "name": "Loop Over TimeBlocks",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2820,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9a72af13-9cea-4d50-88f3-ebdedbf850f9",
+              "leftValue": "={{ $json.IsCurrentTimeBetween }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "14a031a4-b413-4ffd-9e39-8cbc39b8e55b",
+      "name": "If Block in Current Time",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3500,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "80e8493c-038e-480e-9dc8-951dbbef4c63",
+              "leftValue": "={{ $json.getavailabletimeblocksinfo.EligApptTypes }}",
+              "rightValue": "Unavailable",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2ff3f211-3712-4ba6-b305-febf8f45b8ab",
+      "name": "If Not on Lunch",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3740,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SaveForcedAppointment"
+            },
+            {
+              "name": "AppUserID",
+              "value": "HEROERP"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Paitient').item.json[\"Patient_ID\"] }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $('Merge').item.json.data }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "=<appt><appointmentDateTime>{{ $('Appointment Time').item.json[\"FormattedDate\"] }}</appointmentDateTime><appointmentDuration>5</appointmentDuration><appointmentType>WIOV</appointmentType><schedulingLocation>{{ $('NocoDB1').item.json[\"LocationAbbreviation\"] }}</schedulingLocation><schedulingDepartment>EPIC PC</schedulingDepartment><resource>{{ $('Merge').item.json[\"Appt_Resource_Abbr\"] }}</resource><comments>Walkin-Kiosk {In five words why are you here?} </comments></appt>"
+            },
+            {
+              "name": "Parameter2"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c016422b-ec69-4b98-aa9c-ce6d6a0d419b",
+      "name": "HTTP Create Walk-in",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3960,
+        580
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "81a6a0f7-5582-4640-b0cf-2c600ed3a69c",
+              "leftValue": "={{ $json.Appt_Resource_Descr }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3b2b4c60-9cd7-48a2-917f-340dcfb19969",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        940,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "4b2e7bb2-781c-4aa6-a7c3-222540658aae",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3180,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5672c0d5-0b64-48cb-b536-eed9ced04c53",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        3000,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7b237bfd-c5cc-4062-af9b-97659e66bcaa",
+              "name": "Location",
+              "value": "={{ $('NocoDB').item.json.Location }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "910e8d76-14c9-4e65-91e3-93354835091c",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        460,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "e574654e-411e-454d-a097-4eee45d791a9",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        420,
+        1040
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "a568ef99-89f9-4fde-b3e7-654fae560d47",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1040
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "08edd0ee-33bf-4732-96ff-617f9c2496ce",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        740,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "cb6f3d21-da20-40d5-8a9d-cba46c75cd9e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "3be06feb-03a8-4ad3-8776-7a9400a24c41",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "81db9386-dd22-426f-89e0-f0f8524383d8",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        980
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "8efc803c-6cb7-4db1-a50c-f6cebc1fb49b",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        980
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "5e0d4bf7-82a2-48ed-9dc9-97705a2a5eea",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "62f0a787-c765-4490-9b2b-197e4e77f14a",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1180,
+        1140
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "df037505-e6e8-49c9-9483-49607ab00503",
+      "name": "Sticky Note15",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        940
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5a386930-9702-4c0a-8958-c22c6862627a",
+      "name": "Limit2",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5f16df19-5268-4d0a-9572-4144fd3d0551",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "0be9b2eb-466b-488a-87d2-ea6870a53be0",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2580,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-09T14:40:38.773Z",
+  "versionId": "c7954ed9-a900-44f3-b92a-c2dbfa6b465d"
+}
