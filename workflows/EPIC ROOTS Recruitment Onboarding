@@ -1,0 +1,179 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP 24 Bitrix24 Check4": {
+      "main": [
+        [
+          {
+            "node": "Dynamic by tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dynamic by tags": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-21T19:54:37.152Z",
+  "id": "Q7lBuq40KO5BOvBM",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EPIC ROOTS Recruitment Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"filter\": {\n    \"GROUP_ID\": \"156\",\n    \"TAG\": \"{{ $json.query.username.split(\"@\")[0] }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "69ac8262-cf06-4b03-8cbd-c9dabcf91fe0",
+      "name": "HTTP 24 Bitrix24 Check4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        480
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "2e8a35be-498a-401f-8ab4-baedc063d6dc",
+      "name": "Respond to Webhook8",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "path": "c3e8c7b1-1403-4ec5-9b4f-4b1fdfcb38b9",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "62adce31-7980-4d6c-a5fb-7adfd564c08f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        420
+      ],
+      "webhookId": "c3e8c7b1-1403-4ec5-9b4f-4b1fdfcb38b9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"filter\": {\n    \"GROUP_ID\": \"156\",\n    \"TAG\": \"\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "14596479-dc4e-47d5-8444-1c15ece593f3",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        280
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC ROOTS Dashboard</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 20px;\n            background-color: #f8f9fa;\n            color: #333;\n        }\n        h1 {\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 2em;\n            color: #0056b3;\n        }\n        .dashboard {\n            display: grid;\n            grid-template-columns: repeat(8, 1fr);\n            gap: 10px;\n            margin: 0 auto;\n            max-width: 1200px;\n        }\n        .role {\n            grid-column: span 1;\n            background-color: #e9ecef;\n            padding: 10px;\n            text-align: center;\n            font-weight: bold;\n            border: 1px solid #dee2e6;\n            border-radius: 5px;\n        }\n        .stage {\n            grid-column: span 1;\n            background-color: #fff;\n            border: 1px solid #dee2e6;\n            padding: 10px;\n            text-align: center;\n            border-radius: 5px;\n            transition: background-color 0.3s;\n        }\n        .stage:hover {\n            background-color: #e9f7fd;\n            cursor: pointer;\n        }\n        .header {\n            font-weight: bold;\n            text-align: center;\n            background-color: #0056b3;\n            color: white;\n            padding: 10px;\n            border-radius: 5px;\n        }\n    </style>\n</head>\n<body>\n    <h1>EPIC ROOTS Dashboard</h1>\n    <div class=\"dashboard\">\n        <!-- Header Row -->\n        <div class=\"header\">Role</div>\n        <div class=\"header\">Recruit</div>\n        <div class=\"header\">Onboard</div>\n        <div class=\"header\">Orientation</div>\n        <div class=\"header\">Train</div>\n        <div class=\"header\">Skills Acquisition</div>\n        <div class=\"header\">Review</div>\n        <div class=\"header\">Declined</div>\n\n        <!-- Rows for each Role -->\n        <div class=\"role\">Midwife</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Recruit\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Onboard\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Orientation\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Train\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Skills Acquisition\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Review\">0</div>\n        <div class=\"stage\" data-role=\"Midwife\" data-stage=\"Declined\">0</div>\n\n        <div class=\"role\">BH</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Recruit\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Onboard\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Orientation\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Train\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Skills Acquisition\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Review\">0</div>\n        <div class=\"stage\" data-role=\"BH\" data-stage=\"Declined\">0</div>\n\n        <div class=\"role\">CM</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Recruit\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Onboard\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Orientation\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Train\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Skills Acquisition\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Review\">0</div>\n        <div class=\"stage\" data-role=\"CM\" data-stage=\"Declined\">0</div>\n\n        <div class=\"role\">APP</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Recruit\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Onboard\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Orientation\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Train\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Skills Acquisition\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Review\">0</div>\n        <div class=\"stage\" data-role=\"APP\" data-stage=\"Declined\">0</div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "5ff12ffc-f106-44ef-9f5f-0bf51d01811d",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the incoming Bitrix24 data\nconst bitrixData = $json.result?.tasks || []; // Safely accessing tasks array\n\n// Mapping of stage IDs to dashboard stages\nconst stageMapping = {\n    \"1250\": \"recruit\",\n    \"1251\": \"onboard\",\n    \"1252\": \"orientation\",\n    \"1253\": \"train\",\n    \"1254\": \"skills\",\n    \"1255\": \"review\",\n    \"1256\": \"declined\"\n};\n\n// Initialize roles array\nlet roles = [\n    { name: \"Midwife\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"BH\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"CM\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"APP\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 }\n];\n\n// Parse tasks and update the roles array\nbitrixData.forEach(task => {\n    const roleName = roles.find(role => task.title.toLowerCase().includes(role.name.toLowerCase()));\n    if (roleName) {\n        const stageKey = stageMapping[task.stageId] || \"recruit\"; // Default to \"recruit\" for unmapped stageIds\n        if (roleName[stageKey] !== undefined) {\n            roleName[stageKey]++;\n        }\n    }\n});\n\n// Function to generate HTML dynamically\nfunction generateHTML(roles) {\n    // Create HTML structure\n    let htmlContent = `\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>EPIC ROOTS Dashboard</title>\n        <style>\n            body {\n                font-family: Arial, sans-serif;\n                margin: 0;\n                padding: 20px;\n                background-color: #f8f9fa;\n                color: #333;\n            }\n            h1 {\n                text-align: center;\n                margin-bottom: 20px;\n                font-size: 2em;\n                color: #0056b3;\n            }\n            .dashboard {\n                display: grid;\n                grid-template-columns: repeat(8, 1fr);\n                gap: 10px;\n                margin: 0 auto;\n                max-width: 1200px;\n            }\n            .role {\n                grid-column: span 1;\n                background-color: #e9ecef;\n                padding: 10px;\n                text-align: center;\n                font-weight: bold;\n                border: 1px solid #dee2e6;\n                border-radius: 5px;\n            }\n            .stage {\n                grid-column: span 1;\n                background-color: #fff;\n                border: 1px solid #dee2e6;\n                padding: 10px;\n                text-align: center;\n                border-radius: 5px;\n                transition: background-color 0.3s;\n            }\n            .stage:hover {\n                background-color: #e9f7fd;\n                cursor: pointer;\n            }\n            .header {\n                font-weight: bold;\n                text-align: center;\n                background-color: #0056b3;\n                color: white;\n                padding: 10px;\n                border-radius: 5px;\n            }\n        </style>\n    </head>\n    <body>\n        <h1>EPIC ROOTS Dashboard</h1>\n        <div class=\"dashboard\">\n            <!-- Header Row -->\n            <div class=\"header\">Role</div>\n            <div class=\"header\">Recruit</div>\n            <div class=\"header\">Onboard</div>\n            <div class=\"header\">Orientation</div>\n            <div class=\"header\">Train</div>\n            <div class=\"header\">Skills Acquisition</div>\n            <div class=\"header\">Review</div>\n            <div class=\"header\">Declined</div>\n\n            <!-- Rows for each Role -->\n            ${roles.map(role => `\n                <div class=\"role\">${role.name}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Recruit\">${role.recruit || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Onboard\">${role.onboard || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Orientation\">${role.orientation || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Train\">${role.train || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Skills\">${role.skills || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Review\">${role.review || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Declined\">${role.declined || \"\"}</div>\n            `).join(\"\")}\n        </div>\n    </body>\n    </html>\n    `;\n    return htmlContent;\n}\n\n// Generate HTML and return it as an output\nreturn [{ html: generateHTML(roles) }];\n"
+      },
+      "id": "dfc5d22c-9e6c-4627-b998-3d4c0d59f7a9",
+      "name": "Static and by title",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the incoming Bitrix24 data\nconst bitrixData = $json.result?.tasks || []; // Safely accessing tasks array\n\n// Mapping of stage IDs to dashboard stages\nconst stageMapping = {\n    \"1250\": \"recruit\",\n    \"1251\": \"onboard\",\n    \"1252\": \"orientation\",\n    \"1253\": \"train\",\n    \"1254\": \"skills\",\n    \"1255\": \"review\",\n    \"1256\": \"declined\"\n};\n\n// Initialize roles array\nlet roles = [\n    { name: \"Midwife\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"BH\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"CM\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 },\n    { name: \"APP\", recruit: 0, onboard: 0, orientation: 0, train: 0, skills: 0, review: 0, declined: 0 }\n];\n\n// Parse tasks and update the roles array\nbitrixData.forEach(task => {\n    const roleName = roles.find(role => task.title.toLowerCase().includes(role.name.toLowerCase()));\n    if (roleName) {\n        const stageKey = stageMapping[task.stageId] || \"recruit\"; // Default to \"recruit\" for unmapped stageIds\n        if (roleName[stageKey] !== undefined) {\n            roleName[stageKey]++;\n        }\n    }\n});\n\n// Function to generate HTML dynamically\nfunction generateHTML(roles) {\n    // Create HTML structure\n    let htmlContent = `\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>EPIC ROOTS Dashboard</title>\n        <style>\n            body {\n                font-family: Arial, sans-serif;\n                margin: 0;\n                padding: 20px;\n                background-color: #f8f9fa;\n                color: #333;\n            }\n            h1 {\n                text-align: center;\n                margin-bottom: 20px;\n                font-size: 2em;\n                color: #0056b3;\n            }\n            .dashboard {\n                display: grid;\n                grid-template-columns: repeat(8, 1fr);\n                gap: 10px;\n                margin: 0 auto;\n                max-width: 1200px;\n            }\n            .role {\n                grid-column: span 1;\n                background-color: #e9ecef;\n                padding: 10px;\n                text-align: center;\n                font-weight: bold;\n                border: 1px solid #dee2e6;\n                border-radius: 5px;\n            }\n            .stage {\n                grid-column: span 1;\n                background-color: #fff;\n                border: 1px solid #dee2e6;\n                padding: 10px;\n                text-align: center;\n                border-radius: 5px;\n                transition: background-color 0.3s;\n            }\n            .stage:hover {\n                background-color: #e9f7fd;\n                cursor: pointer;\n            }\n            .header {\n                font-weight: bold;\n                text-align: center;\n                background-color: #0056b3;\n                color: white;\n                padding: 10px;\n                border-radius: 5px;\n            }\n        </style>\n    </head>\n    <body>\n        <h1>EPIC ROOTS Dashboard</h1>\n        <div class=\"dashboard\">\n            <!-- Header Row -->\n            <div class=\"header\">Role</div>\n            <div class=\"header\">Recruit</div>\n            <div class=\"header\">Onboard</div>\n            <div class=\"header\">Orientation</div>\n            <div class=\"header\">Train</div>\n            <div class=\"header\">Skills Acquisition</div>\n            <div class=\"header\">Review</div>\n            <div class=\"header\">Declined</div>\n\n            <!-- Rows for each Role -->\n            ${roles.map(role => `\n                <div class=\"role\">${role.name}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Recruit\">${role.recruit || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Onboard\">${role.onboard || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Orientation\">${role.orientation || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Train\">${role.train || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Skills\">${role.skills || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Review\">${role.review || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Declined\">${role.declined || \"\"}</div>\n            `).join(\"\")}\n        </div>\n    </body>\n    </html>\n    `;\n    return htmlContent;\n}\n\n// Generate HTML and return it as an output\nreturn [{ html: generateHTML(roles) }];\n"
+      },
+      "id": "44be76ce-2036-4d08-ad3c-0b07daebd870",
+      "name": "Dynamic by tags",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the incoming Bitrix24 data\nconst bitrixData = $json.result?.tasks || []; // Safely accessing tasks array\n\n// Mapping of stage IDs to dashboard stages\nconst stageMapping = {\n    \"1250\": \"recruit\",\n    \"1251\": \"onboard\",\n    \"1252\": \"orientation\",\n    \"1253\": \"train\",\n    \"1254\": \"skills\",\n    \"1255\": \"review\",\n    \"1256\": \"declined\"\n};\n\n// Dynamically extract unique roles based on tags in task titles\nlet roles = [];\nbitrixData.forEach(task => {\n    // Extract role tag from the task title (assumes the format \"Task Title - ROLE\")\n    const tagMatch = task.title.match(/- (\\w+)/);\n    if (tagMatch) {\n        const roleName = tagMatch[1].trim(); // Extract role name after \"-\"\n        // Check if the role is already added; if not, add it\n        if (!roles.some(role => role.name === roleName)) {\n            roles.push({\n                name: roleName,\n                recruit: 0,\n                onboard: 0,\n                orientation: 0,\n                train: 0,\n                skills: 0,\n                review: 0,\n                declined: 0\n            });\n        }\n    }\n});\n\n// Parse tasks and update the roles array\nbitrixData.forEach(task => {\n    // Extract role tag from the task title\n    const tagMatch = task.title.match(/- (\\w+)/);\n    if (tagMatch) {\n        const roleName = tagMatch[1].trim();\n        const role = roles.find(role => role.name === roleName);\n        if (role) {\n            const stageKey = stageMapping[task.stageId] || \"recruit\"; // Default to \"recruit\" for unmapped stageIds\n            if (role[stageKey] !== undefined) {\n                role[stageKey]++;\n            }\n        }\n    }\n});\n\n// Function to generate HTML dynamically\nfunction generateHTML(roles) {\n    // Create HTML structure\n    let htmlContent = `\n    <!DOCTYPE html>\n    <html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>EPIC ROOTS Dashboard</title>\n        <style>\n            body {\n                font-family: Arial, sans-serif;\n                margin: 0;\n                padding: 20px;\n                background-color: #f8f9fa;\n                color: #333;\n            }\n            h1 {\n                text-align: center;\n                margin-bottom: 20px;\n                font-size: 2em;\n                color: #0056b3;\n            }\n            .dashboard {\n                display: grid;\n                grid-template-columns: repeat(8, 1fr);\n                gap: 10px;\n                margin: 0 auto;\n                max-width: 1200px;\n            }\n            .role {\n                grid-column: span 1;\n                background-color: #e9ecef;\n                padding: 10px;\n                text-align: center;\n                font-weight: bold;\n                border: 1px solid #dee2e6;\n                border-radius: 5px;\n            }\n            .stage {\n                grid-column: span 1;\n                background-color: #fff;\n                border: 1px solid #dee2e6;\n                padding: 10px;\n                text-align: center;\n                border-radius: 5px;\n                transition: background-color 0.3s;\n            }\n            .stage:hover {\n                background-color: #e9f7fd;\n                cursor: pointer;\n            }\n            .header {\n                font-weight: bold;\n                text-align: center;\n                background-color: #0056b3;\n                color: white;\n                padding: 10px;\n                border-radius: 5px;\n            }\n        </style>\n    </head>\n    <body>\n        <h1>EPIC ROOTS Dashboard</h1>\n        <div class=\"dashboard\">\n            <!-- Header Row -->\n            <div class=\"header\">Role</div>\n            <div class=\"header\">Recruit</div>\n            <div class=\"header\">Onboard</div>\n            <div class=\"header\">Orientation</div>\n            <div class=\"header\">Train</div>\n            <div class=\"header\">Skills Acquisition</div>\n            <div class=\"header\">Review</div>\n            <div class=\"header\">Declined</div>\n\n            <!-- Rows for each Role -->\n            ${roles.map(role => `\n                <div class=\"role\">${role.name}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Recruit\">${role.recruit || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Onboard\">${role.onboard || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Orientation\">${role.orientation || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Train\">${role.train || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Skills\">${role.skills || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Review\">${role.review || \"\"}</div>\n                <div class=\"stage\" data-role=\"${role.name}\" data-stage=\"Declined\">${role.declined || \"\"}</div>\n            `).join(\"\")}\n        </div>\n    </body>\n    </html>\n    `;\n    return htmlContent;\n}\n\n// Generate HTML and return it as an output\nreturn [{ html: generateHTML(roles) }];\n"
+      },
+      "id": "391e4c5b-89c2-4e97-8df7-405037ced5c9",
+      "name": "Dynamic by tags1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        500
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-11-21T21:20:15.458Z",
+  "versionId": "6df23fc5-635e-407c-93d2-16120d8bc8b4"
+}
