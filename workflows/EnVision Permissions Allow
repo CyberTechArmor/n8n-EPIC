@@ -1,0 +1,2075 @@
+{
+  "active": true,
+  "connections": {
+    "Crypto5": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnVision Room Display": {
+      "main": [
+        [
+          {
+            "node": "Crypto5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Record": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "EnVision Room Display",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Manual Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients": {
+      "main": [
+        [
+          {
+            "node": "Split Out Site Names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Map Room to Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Manual Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnVision Room Display1": {
+      "main": [
+        [
+          {
+            "node": "Crypto6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Record1": {
+      "main": [
+        [
+          {
+            "node": "Crypto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "EnVision Room Display1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto6": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names1": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents1": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site1": {
+      "main": [
+        [
+          {
+            "node": "Map Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site1": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retrieve All Site Agents1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Merge Meeting Info",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "SuperVision EnVision": {
+      "main": [
+        [
+          {
+            "node": "Is Meeting Running",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Meeting Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Meeting Running": {
+      "main": [
+        [
+          {
+            "node": "Crypto Is Meeting Running",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto Is Meeting Running": {
+      "main": [
+        [
+          {
+            "node": "HTTP Get Meeting Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Get Meeting Info": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Meeting Info": {
+      "main": [
+        [
+          {
+            "node": "Switch Create or Join",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Room to Agent1": {
+      "main": [
+        [
+          {
+            "node": "Manual Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients1": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Room to Agent": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell CMD to RMM Agent5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients3": {
+      "main": [
+        [
+          {
+            "node": "Split Out Site Names2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names2": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents2": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Room to Agent2": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site2": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-11T17:09:08.863Z",
+  "id": "eWAXnhHkobqkJvoG",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EnVision Permissions Allow",
+  "nodes": [
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "5e698637-2c0b-49b1-b6ae-a462990faafb",
+      "name": "Crypto5",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        660,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/UqKKohtZvljCrpeKXHEJIJNAjnVhbqSOTJCZkZER/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "a03a7881-a28e-48dd-b56d-726123e0cf56",
+      "name": "Send Powershell CMD to RMM Agent1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        560,
+        300
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID={{ $('Webhook').item.json[\"query\"][\"hostname\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce5c997f-e5fc-4435-9ff9-a06a6ba33bc2",
+      "name": "EnVision Room Display",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&autoStartRecording=false&attendeePW=ap&meetingID={{ $('Webhook').item.json[\"query\"][\"hostname\"] }}&moderatorPW=mp&name=Thomas&record=true&meta_endCallbackUrl=https://xl.epicpc.com/webhook/ed82f0df-86b5-481d-aee0-5974f11565d2?hostname={{ $('Webhook').item.json[\"query\"][\"hostname\"] }}&disabledFeatures=sharedNotes,chat&preUploadedPresentation=https://toms.app/tools/blank.pdf&meta_bbb-recording-ready-url=https%3A%2F%2Fxl.epicpc.com%2Fwebhook%2F4ca2f260-d673-4671-a207-99868dab5c75"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "75813ccc-b694-42f4-a4da-3af4a22b6ed8",
+      "name": "Manual Record",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -60,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "5e9041ac-4856-4056-bbfa-f8bbbebd7a51",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        120,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "ba91f197-b6ec-4162-b1f3-f5200da9c87e",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        320,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d877819d-f7e3-4acf-b226-2bd64dafc845",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "6420114f-e58b-49fa-a436-f1de3081d056",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/BYEnOKRGGuBekvUlBIisnySHmIsSFeeHIXTSVAqj/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting0.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "f09a9c59-0ec4-4bad-97fe-bd5275825aef",
+      "name": "Send Powershell CMD to RMM Agent2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        560,
+        100
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/QsFwxyrspuCHEAKiHjTMNiNEZSbXMABifFKoDSho/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://nmnvoice.nmnmed.com:5000/webclient' --edge-kiosk-type=fullscreen\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "fb640921-615d-4edc-b404-01d56a16b1f0",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        860
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "340f9bf9-3041-4e1f-8c13-91dfcb69a5c1",
+      "name": "Get RMM Clients",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1480,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "f2b497da-be9e-4ddf-91b0-b7b99c1e88f8",
+      "name": "Split Out Site Names",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1300,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "760f27e7-e876-4316-a0c7-f6b6d2f53393",
+      "name": "Retrieve All Site Agents",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -840,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c51cc68c-1002-4e4b-8af9-364ee0eab0dc",
+              "name": "currentname",
+              "value": "={{ $('Webhook7').item.json.headers.referer.params.get('hostname') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae220a46-1dd0-4a4e-899b-3019b1de8902",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -860,
+        860
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "773c3da9-d786-4870-b595-f2958ddf888f",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e003849b-7a06-422d-85d0-80e1bb43b28d",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -420,
+        840
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $('Map Room to Agent1').item.json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen;& 'C:\\\\\\\\PC-SETUP\\\\\\\\New-PC-Setup\\\\\\\\joinmeeting0.ahk'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "32be8df2-7fe7-44c0-8b6c-4c7f4fb21ecb",
+      "name": "Send Powershell CMD to RMM Agent3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        660
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "3699b8eb-0d62-479e-9971-cde877b491d9",
+      "name": "Crypto6",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        360,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID=123456789&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d9a2035e-a217-47ef-a061-e154fae23b7d",
+      "name": "EnVision Room Display1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        200,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&autoStartRecording=false&attendeePW=ap&meetingID=123456789&moderatorPW=mp&name=Thomas&record=true&meta_endCallbackUrl=https://xl.epicpc.com/webhook/cbfc9f1f-9f13-4243-830a-bcf54f2a218f"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d87efc13-4ae0-4aea-946d-b8a0625d793f",
+      "name": "Manual Record1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -360,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "00f14a09-f03c-47d6-877f-5b9d3a4fdfb6",
+      "name": "Crypto1",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "9c440eaa-8863-414e-80b8-a59248719084",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        20,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://xl.epicpc.com/form/c420086c-8019-4b3c-9e88-3d72d9d058d9' --edge-kiosk-type=fullscreen\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "67cec745-2833-4113-a05f-84f60d87deb9",
+      "name": "Send Powershell CMD to RMM Agent4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -400,
+        1240
+      ],
+      "alwaysOutputData": true,
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://api.wiretapped.app/agents/?client=5",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b499879c-f346-4711-b0c8-3d3e01ded7bb",
+      "name": "Get RMM Clients1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1480,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "c4233a54-4bd1-4c15-9df6-f859ae8a8187",
+      "name": "Split Out Site Names1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1300,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c90de0af-a7a6-41e6-b00d-16a238443961",
+      "name": "Retrieve All Site Agents1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -840,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ba32d92a-5ab6-48b1-9b32-5ba4a40df2f9",
+      "name": "Filter to CDN Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1140,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "EPIC Southfield 10 Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a3e89252-61fe-4923-96c6-456c8d0c1dc1",
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "=Inventory",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "674c491f-a272-4923-ab1e-baeaea6b3972",
+      "name": "Map Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1000,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f16d4719-820c-4e87-a88a-5ba46f353d7e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -640,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getMeetingInfo?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "64eb2b55-ad0b-4b9a-83f5-460630f5121a",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1060,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4dc0d3f5-ebe4-45f9-b387-7d0f46c9579e",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        -1000,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "path": "5d41a48c-e148-4281-a174-592a6d350b5e",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "247ae1f8-8b28-4b96-94d2-557781f3df45",
+      "name": "SuperVision EnVision",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -1760,
+        -80
+      ],
+      "webhookId": "5d41a48c-e148-4281-a174-592a6d350b5e",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=meetingID={{ $json.query.PatientMrn }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b3286d1f-b3b2-49bf-9331-cdd8e40fe5c9",
+      "name": "Is Meeting Running",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -1520,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=getMeetingInfo{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "befb1cd4-d5ae-4783-a716-72f7bf9b7eca",
+      "name": "Crypto Is Meeting Running",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        -1340,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/getMeetingInfo?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "578d4671-c45d-4e08-8d67-f7fefbfb75d4",
+      "name": "HTTP Get Meeting Info",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1180,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "505ba06a-b6dc-4a19-bee8-50d8c3d4f77b",
+      "name": "Merge Meeting Info",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -800,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.response.message }}",
+                    "rightValue": "=A meeting with that ID does not exist",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "1b72a600-9486-4fa9-9847-3262ce488c21",
+                    "leftValue": "={{ $json.response.meetingID }}",
+                    "rightValue": "={{ $json.query.PatientMrn }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1dcbbae4-4665-496b-a29b-f12ad97575d2",
+      "name": "Switch Create or Join",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -620,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b82c02fb-fd74-4489-80a1-788540f6ec46",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook').item.json[\"query\"][\"hostname\"] }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4a24bf8-27aa-4e88-9fce-46075340b23b",
+      "name": "Map Room to Agent1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -420,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "75ee67b1-c33c-4ca8-99bd-dadf37cd5a64",
+      "name": "Filter to CDN Site",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1140,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://epichs.org' --edge-kiosk-type=fullscreen\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "a8cfbc84-99a8-40c4-91be-c0f58fd1f6b2",
+      "name": "Send Powershell CMD to RMM Agent5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -400,
+        1040
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5d6dc26f-bde0-4ac9-af7f-0da88644e057",
+      "name": "Get RMM Clients2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1480,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "path": "ed82f0df-86b5-481d-aee0-5974f11565d2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e10ea2b2-31a6-4921-8d5f-503152c00b35",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -1680,
+        1040
+      ],
+      "webhookId": "ed82f0df-86b5-481d-aee0-5974f11565d2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b82c02fb-fd74-4489-80a1-788540f6ec46",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook1').item.json[\"query\"][\"meetingID\"] }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d848523c-ac7a-4ddc-b865-2985457e8c62",
+      "name": "Map Room to Agent",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -620,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "path": "f2b6aaaa-2e6c-4e32-a5fa-0d72a1da6007",
+        "options": {}
+      },
+      "id": "33d3bfac-84d2-431e-b725-082d8a0c80b8",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -1680,
+        660
+      ],
+      "webhookId": "f2b6aaaa-2e6c-4e32-a5fa-0d72a1da6007"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "EPIC Southfield 10 Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a3e89252-61fe-4923-96c6-456c8d0c1dc1",
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "=Inventory",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b236543d-7f40-4b7a-9bef-ede83736d794",
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "=EPIC Southfield Telegraph",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5733ff7b-3970-45d8-81bd-61aefc0a2967",
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "SPEC EP Southfield Telegraph",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "689358f5-843b-4127-9ea9-7af194d9d7b4",
+      "name": "Map Site",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1000,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5bbeffc1-fc99-4ad5-851c-0007e6236c45",
+      "name": "Get RMM Clients3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1440,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "31a7e8ec-e64e-4a41-af7c-c06175c4e946",
+      "name": "Split Out Site Names2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1260,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f57945e5-ad53-4f34-9f20-caaab760972f",
+      "name": "Retrieve All Site Agents2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -800,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b82c02fb-fd74-4489-80a1-788540f6ec46",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook2').item.json[\"query\"][\"hostname\"] }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e40e166b-b12b-454d-b988-eff05155a250",
+      "name": "Map Room to Agent2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -380,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "path": "DisableUpdates-2e6c-4e32-a5fa-0d72a1da60071",
+        "options": {}
+      },
+      "id": "ebfa4ba5-c995-480c-8daf-ac02b30e490c",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -1660,
+        1600
+      ],
+      "webhookId": "f2b6aaaa-2e6c-4e32-a5fa-0d72a1da6007"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $('Map Room to Agent2').item.json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"Stop-And-Disable-Service -ServiceName 'wuauserv'\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":false}",
+        "options": {}
+      },
+      "id": "0b8d9182-2fde-4ff7-b4e7-aa513815dc4b",
+      "name": "Send Powershell CMD to RMM Agent6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -120,
+        1600
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9ca4967d-20b1-490f-855b-8874023e55b9",
+      "name": "Filter to CDN Site2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -1100,
+        1600
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields8": [
+      {
+        "json": {
+          "agent_id": "UqKKohtZvljCrpeKXHEJIJNAjnVhbqSOTJCZkZER",
+          "alert_template": null,
+          "hostname": "AUTOSTA-SQ8S16V",
+          "site_name": "Inventory",
+          "client_name": "CDN",
+          "monitoring_type": "workstation",
+          "description": "",
+          "needs_reboot": false,
+          "pending_actions_count": 0,
+          "status": "online",
+          "overdue_text_alert": false,
+          "overdue_email_alert": false,
+          "overdue_dashboard_alert": false,
+          "last_seen": "2024-04-11T15:26:37.643074Z",
+          "boot_time": 1712847651,
+          "checks": {
+            "total": 0,
+            "passing": 0,
+            "failing": 0,
+            "warning": 0,
+            "info": 0,
+            "has_failing_checks": false
+          },
+          "maintenance_mode": false,
+          "logged_username": "autostart",
+          "italic": false,
+          "block_policy_inheritance": false,
+          "plat": "windows",
+          "goarch": "amd64",
+          "has_patches_pending": false,
+          "version": "2.6.2",
+          "operating_system": "Windows 10 Pro, 64 bit v22H2 (build 19045.3803)",
+          "public_ip": "76.252.196.177",
+          "cpu_model": [
+            "Intel(R) Celeron(R) N4500 @ 1.10GHz, 2C/2T"
+          ],
+          "graphics": "Intel(R) UHD Graphics",
+          "local_ips": "10.0.14.230",
+          "make_model": "ASUSTeK COMPUTER INC. Vivobook_ASUSLaptop TP1400KA TP1400KA_J1400KA",
+          "physical_disks": [
+            "Generic G1J38E 58GB SCSI"
+          ],
+          "custom_fields": [],
+          "serial_number": "N5N0CV03K71419B"
+        }
+      }
+    ],
+    "Edit Fields": [
+      {
+        "json": {
+          "agent_id": "poSzkNQjoOYZwJYFekFcpNiqGXoRgHPPiJmFrXZE",
+          "alert_template": null,
+          "hostname": "CT-ECDN-TS",
+          "site_name": "Inventory",
+          "client_name": "CDN",
+          "monitoring_type": "workstation",
+          "description": "Thinkcentre",
+          "needs_reboot": false,
+          "pending_actions_count": 0,
+          "status": "online",
+          "overdue_text_alert": false,
+          "overdue_email_alert": false,
+          "overdue_dashboard_alert": false,
+          "last_seen": "2024-04-12T13:03:39.583480Z",
+          "boot_time": 1712875277,
+          "checks": {
+            "total": 0,
+            "passing": 0,
+            "failing": 0,
+            "warning": 0,
+            "info": 0,
+            "has_failing_checks": false
+          },
+          "maintenance_mode": false,
+          "logged_username": "autostart",
+          "italic": false,
+          "block_policy_inheritance": false,
+          "plat": "windows",
+          "goarch": "amd64",
+          "has_patches_pending": false,
+          "version": "2.6.2",
+          "operating_system": "Windows 10 Pro, 64 bit v22H2 (build 19045.3803)",
+          "public_ip": "24.127.131.242",
+          "cpu_model": [
+            "Intel(R) Celeron(R) N4500 @ 1.10GHz, 2C/2T"
+          ],
+          "graphics": "Intel(R) UHD Graphics",
+          "local_ips": "192.168.88.82",
+          "make_model": "ASUSTeK COMPUTER INC. Vivobook_ASUSLaptop TP1400KA TP1400KA_J1400KA",
+          "physical_disks": [
+            "Kingston TX2964 58GB SCSI"
+          ],
+          "custom_fields": [],
+          "serial_number": "N7N0CV08T93128E"
+        }
+      }
+    ],
+    "HTTP Request5": [
+      {
+        "json": {
+          "response": {
+            "returncode": "FAILED",
+            "messageKey": "notFound",
+            "message": "A meeting with that ID does not exist"
+          }
+        }
+      }
+    ],
+    "SuperVision EnVision": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX18965cLs6pSAIA3ilbc5YpNVktu8TpBTrk%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19eGE%2F4R2EgL9hfUOic0f5JokP6DzqhUDY%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19imCurw0H%2BCmIsPtI7s5SEupLrRxSiqvUl0HQIzk0Rt06bl7WPs%2FoMy1hOFEHAtGigreGiCahkRw%3D%3D; rl_session=RudderEncrypt%3AU2FsdGVkX18%2FhzYHsZKN75X3KaMZRIje9WNx5GnbN07a4CrFcV6KdC3wkJeCltxiC%2Fi3lbrnYYz87ZIvIPP5fFxIviWXfX1cR82xMQ1P%2FaMvV%2BmlpyxsSxvWdpUTFOlXE1wLyA35vb1hwCqXkcydvg%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "UserName": "12147",
+            "ProviderFirstName": "Baiju Pathayathodi",
+            "EncoutnerId": "21646405",
+            "EncoutnerDate": "2024-03-26 10:52:11.523 -04:00",
+            "PatientNumber": "7144",
+            "PatientMrn": "8474",
+            "PatientFirstName": "PETER",
+            "PatientLastName": "KALABAT",
+            "PatientDOB": "06/20/1934"
+          },
+          "body": {}
+        }
+      }
+    ],
+    "HTTP Get Meeting Info": [
+      {
+        "json": {
+          "data": "<response>\n<returncode>SUCCESS</returncode>\n<meetingName>THOMAS_STILWELL</meetingName>\n<meetingID>502880</meetingID>\n<internalMeetingID>20aaa5dcfa526c37736fbbb08ec1b7522d632317-1712954135771</internalMeetingID>\n<createTime>1712954135771</createTime>\n<createDate>Fri Apr 12 20:35:35 UTC 2024</createDate>\n<voiceBridge>41822</voiceBridge>\n<dialNumber>613-555-1234</dialNumber>\n<attendeePW>ap</attendeePW>\n<moderatorPW>mp</moderatorPW>\n<running>true</running>\n<duration>0</duration>\n<hasUserJoined>true</hasUserJoined>\n<recording>true</recording>\n<hasBeenForciblyEnded>false</hasBeenForciblyEnded>\n<startTime>1712954135807</startTime>\n<endTime>0</endTime>\n<participantCount>1</participantCount>\n<listenerCount>0</listenerCount>\n<voiceParticipantCount>0</voiceParticipantCount>\n<videoCount>0</videoCount>\n<maxUsers>0</maxUsers>\n<moderatorCount>1</moderatorCount>\n<attendees>\n<attendee>\n<userID>w_2socqgmkwyrt</userID>\n<fullName>Thomas_Stilwell,_IT</fullName>\n<role>MODERATOR</role>\n<isPresenter>true</isPresenter>\n<isListeningOnly>false</isListeningOnly>\n<hasJoinedVoice>false</hasJoinedVoice>\n<hasVideo>false</hasVideo>\n<clientType>HTML5</clientType>\n<customdata>\n</customdata>\n</attendee>\n</attendees>\n<metadata>\n<endcallbackurl>https://xl.epicpc.com/webhook/cbfc9f1f-9f13-4243-830a-bcf54f2a218f</endcallbackurl>\n</metadata>\n<isBreakout>false</isBreakout>\n</response>"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.160",
+            "x-forwarded-for": "10.0.1.160",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "user-agent": "Apache-HttpAsyncClient/4.1.5 (Java/17.0.10)"
+          },
+          "params": {},
+          "query": {
+            "hostname": "SFD-TEL-PC-A3",
+            "recordingmarks": "false",
+            "meetingID": "SFD-TEL-PC-A3"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/ed82f0df-86b5-481d-aee0-5974f11565d2",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.12",
+            "x-forwarded-for": "10.0.14.12",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "hostname": "SFD-TEL-PC-A1"
+          },
+          "body": {}
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.12",
+            "x-forwarded-for": "10.0.14.12",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "hostname": "SFD-TEL-PC-A1"
+          },
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 3,
+  "updatedAt": "2024-06-23T23:05:39.183Z",
+  "versionId": "994ebd46-2a27-4354-bc97-a84bae82165b"
+}
