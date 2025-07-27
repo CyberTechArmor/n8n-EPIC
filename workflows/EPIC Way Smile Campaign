@@ -1,0 +1,474 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-28T17:19:53.763Z",
+  "id": "TxIEL45mqO6MZb3x",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EPIC Way Smile Campaign",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0b3f99a5-453f-42c5-b3fd-b3830bc15f6b",
+      "name": "Webhook",
+      "webhookId": "bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>How was my smile?</title>\n  <style>\n    /* Overall page and background */\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      background-color: #FFD100; /* Single bright yellow for entire page */\n      font-family: Arial, sans-serif;\n      overflow-x: hidden; /* Prevent horizontal scroll from falling faces */\n    }\n\n    /* Center everything in a container */\n    .container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\n      text-align: center;\n    }\n\n    /* Title styling */\n    .title {\n      font-size: 8vw;\n      font-weight: bold;\n      color: #000;\n      margin-bottom: 2rem;\n    }\n\n    /* Holds the two halves side by side */\n    .split-container {\n      display: flex;\n      width: 100%;\n      height: 50%; /* Adjust as desired */\n    }\n\n    /* Shared styling for each half */\n    .split {\n      flex: 1;\n      display: flex;\n      flex-direction: column; /* Stack face + label vertically */\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      user-select: none; /* Prevent text selection */\n      position: relative;\n      border: none; /* We'll rely on a subtle divider below */\n    }\n\n    /* Subtle divider between the halves */\n    .split + .split {\n      border-left: 2px solid rgba(0, 0, 0, 0.2);\n    }\n\n    /* Bigger emoji styling */\n    .emoji {\n      font-size: 12vw; /* Larger faces */\n    }\n\n    /* Label under each emoji */\n    .label {\n      font-size: 4vw;\n      margin-top: 1rem;\n      color: #000;\n    }\n\n    /* Falling sad face animation */\n    .sad-face {\n      position: fixed;\n      top: -50px;\n      font-size: 2rem;\n      pointer-events: none;\n      user-select: none;\n      animation: fall 3s linear forwards;\n    }\n\n    @keyframes fall {\n      0% {\n        transform: translateY(0);\n        opacity: 1;\n      }\n      100% {\n        transform: translateY(110vh);\n        opacity: 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Page Title -->\n    <div class=\"title\">Greeted with a smile?</div>\n\n    <!-- Split Container: Left (Happy), Right (Sad) -->\n    <div class=\"split-container\">\n      <!-- Happy Half -->\n      <div class=\"split\" id=\"happySplit\">\n        <div class=\"emoji\">😊</div>\n        <div class=\"label\">Happy</div>\n      </div>\n\n      <!-- Sad Half -->\n      <div class=\"split\" id=\"sadSplit\">\n        <div class=\"emoji\">😢</div>\n        <div class=\"label\">Sad</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    /* WEBHOOK + COOLDOWN LOGIC */\n    const webhookURL = \"https://xl.epicpc.com/webhook/bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb\";\n    const POST_COOLDOWN = 5000; // 5 seconds\n    let lastPostTime = 0; // Track last POST time\n\n    // Helper function to extract all current URL parameters into an object\n    function getUrlParams() {\n      const params = {};\n      const urlParams = new URLSearchParams(window.location.search);\n      for (const [key, value] of urlParams.entries()) {\n        params[key] = value;\n      }\n      return params;\n    }\n\n    // Send a POST request to the webhook, limited to once every 5 seconds,\n    // including the smile type and any URL parameters.\n    function sendWebhook(smileType) {\n      const now = Date.now();\n      if (now - lastPostTime < POST_COOLDOWN) {\n        // Too soon; skip the POST\n        return;\n      }\n      lastPostTime = now; // Update last POST time\n      \n      // Merge the smile type with the current URL parameters\n      const payload = {\n        smile: smileType,\n        ...getUrlParams()\n      };\n\n      fetch(webhookURL, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(payload)\n      }).catch(err => console.error(\"Webhook error:\", err));\n    }\n\n    /* AUDIO LOGIC: Only one audio can play at a time */\n    let isPlayingAudio = false;\n\n    // Preload audio for happy / sad\n    const happyAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/Voicy_Confetti%20Pop%20With%20Yay%20Sound%20.mp3\");\n    const sadAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/wompwomp.mp3\");\n\n    // When each audio ends, allow new audio to be played again\n    happyAudio.onended = () => { isPlayingAudio = false; };\n    sadAudio.onended = () => { isPlayingAudio = false; };\n\n    // Repeated bursts of confetti (for 2 seconds)\n    function launchConfetti() {\n      const duration = 2000; // 2 seconds\n      const end = Date.now() + duration;\n\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Create multiple sad faces that fall from the top\n    function rainSadFaces() {\n      const count = 30;\n      for (let i = 0; i < count; i++) {\n        const sadFace = document.createElement(\"div\");\n        sadFace.classList.add(\"sad-face\");\n        sadFace.textContent = \"😢\";\n        // Random horizontal position\n        sadFace.style.left = Math.random() * 100 + \"vw\";\n        // Staggered start\n        sadFace.style.animationDelay = Math.random() * 0.5 + \"s\";\n        document.body.appendChild(sadFace);\n\n        // Remove after it finishes falling\n        setTimeout(() => {\n          sadFace.remove();\n        }, 3500);\n      }\n    }\n\n    // Happy side: confetti + single-audio + 5s webhook cooldown\n    document.getElementById(\"happySplit\").addEventListener(\"click\", () => {\n      // Always show confetti\n      launchConfetti();\n\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"happy\");\n\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        happyAudio.currentTime = 0; // restart from beginning\n        happyAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n\n    // Sad side: sad faces + single-audio + 5s webhook cooldown\n    document.getElementById(\"sadSplit\").addEventListener(\"click\", () => {\n      // Always rain sad faces\n      rainSadFaces();\n\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"sad\");\n\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        sadAudio.currentTime = 0; // restart from beginning\n        sadAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        -140
+      ],
+      "id": "0e9ea7b3-2050-430f-8a30-b8f2e5b7cc06",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "19b9d720-6d1b-4002-8717-97837708e150",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        20,
+        -140
+      ],
+      "id": "7ef58da6-7cb3-4d9f-8072-3646b8ada871",
+      "name": "Webhook1",
+      "webhookId": "19b9d720-6d1b-4002-8717-97837708e150"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>How was my smile?</title>\n  <style>\n    /* Overall page and background */\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      background-color: #FFD100; /* Single bright yellow for entire page */\n      font-family: Arial, sans-serif;\n      overflow-x: hidden; /* Prevent horizontal scroll from falling faces */\n    }\n\n    /* Center everything in a container */\n    .container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\n      text-align: center;\n    }\n\n    /* Title styling */\n    .title {\n      font-size: 8vw;\n      font-weight: bold;\n      color: #000;\n      margin-bottom: 2rem;\n    }\n\n    /* Holds the two halves side by side */\n    .split-container {\n      display: flex;\n      width: 100%;\n      height: 50%; /* Adjust as desired */\n    }\n\n    /* Shared styling for each half */\n    .split {\n      flex: 1;\n      display: flex;\n      flex-direction: column; /* Stack face + label vertically */\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      user-select: none; /* Prevent text selection */\n      position: relative;\n      border: none; /* We'll rely on a subtle divider below */\n    }\n\n    /* Subtle divider between the halves */\n    .split + .split {\n      border-left: 2px solid rgba(0, 0, 0, 0.2);\n    }\n\n    /* Bigger emoji styling */\n    .emoji {\n      font-size: 12vw; /* Larger faces */\n    }\n\n    /* Label under each emoji */\n    .label {\n      font-size: 4vw;\n      margin-top: 1rem;\n      color: #000;\n    }\n\n    /* Falling sad face animation */\n    .sad-face {\n      position: fixed;\n      top: -50px;\n      font-size: 2rem;\n      pointer-events: none;\n      user-select: none;\n      animation: fall 3s linear forwards;\n    }\n\n    @keyframes fall {\n      0% {\n        transform: translateY(0);\n        opacity: 1;\n      }\n      100% {\n        transform: translateY(110vh);\n        opacity: 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Page Title -->\n    <div class=\"title\">How was my smile?</div>\n\n    <!-- Split Container: Left (Happy), Right (Sad) -->\n    <div class=\"split-container\">\n      <!-- Happy Half -->\n      <div class=\"split\" id=\"happySplit\">\n        <div class=\"emoji\">😊</div>\n        <div class=\"label\">Happy</div>\n      </div>\n\n      <!-- Sad Half -->\n      <div class=\"split\" id=\"sadSplit\">\n        <div class=\"emoji\">😢</div>\n        <div class=\"label\">Sad</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    const webhookURL = \"https://xl.epicpc.com/webhook/bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb\";\n\n    // Time (ms) that must pass before sending another POST call\n    const POST_COOLDOWN = 5000; // 5 seconds\n    let lastPostTime = 0; // Track last time we sent a POST\n\n    // Send a POST request to the webhook, limited to once every 5 seconds\n    function sendWebhook(smileType) {\n      const now = Date.now();\n      if (now - lastPostTime < POST_COOLDOWN) {\n        // Too soon; skip the POST\n        return;\n      }\n      lastPostTime = now; // Update last POST time\n\n      fetch(webhookURL, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ smile: smileType })\n      }).catch(err => console.error(\"Webhook error:\", err));\n    }\n\n    // Repeated bursts of confetti for 2 seconds\n    function launchConfetti() {\n      const duration = 2000; // 2 seconds\n      const end = Date.now() + duration;\n\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Create multiple sad faces that fall from the top\n    function rainSadFaces() {\n      const count = 30;\n      for (let i = 0; i < count; i++) {\n        const sadFace = document.createElement(\"div\");\n        sadFace.classList.add(\"sad-face\");\n        sadFace.textContent = \"😢\";\n        // Random horizontal position\n        sadFace.style.left = Math.random() * 100 + \"vw\";\n        // Staggered start\n        sadFace.style.animationDelay = Math.random() * 0.5 + \"s\";\n        document.body.appendChild(sadFace);\n\n        // Remove after it finishes falling\n        setTimeout(() => {\n          sadFace.remove();\n        }, 3500);\n      }\n    }\n\n    // Event Listeners for each half\n    document.getElementById(\"happySplit\").addEventListener(\"click\", () => {\n      // Confetti always fires\n      launchConfetti();\n      // Webhook call (with 5s cooldown)\n      sendWebhook(\"happy\");\n    });\n\n    document.getElementById(\"sadSplit\").addEventListener(\"click\", () => {\n      // Sad faces always fall\n      rainSadFaces();\n      // Webhook call (with 5s cooldown)\n      sendWebhook(\"sad\");\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        -280
+      ],
+      "id": "bad6cdae-b14b-4896-97db-6a25cab68aea",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pltr87351hgxdjk",
+        "table": "mjlqqpxzipan3kx",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Score",
+              "fieldValue": "={{ $json.body.smile }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.body.location }}"
+            },
+            {
+              "fieldName": "DateTimeInteracted",
+              "fieldValue": "={{ $json.currentDateTime }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        680,
+        80
+      ],
+      "id": "3ec1f7de-2ec7-4b92-9d93-77101dd713ab",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Were you greeted with a smile?</title>\n  <style>\n    /* Overall page and background */\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      background-color: #FFD100; /* Single bright yellow for entire page */\n      font-family: Arial, sans-serif;\n      overflow-x: hidden; /* Prevent horizontal scroll from falling faces */\n    }\n\n    /* Center everything in a container */\n    .container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\n      text-align: center;\n    }\n\n    /* Title styling */\n    .title {\n      font-size: 8vw;\n      font-weight: bold;\n      color: #000;\n      margin-bottom: 2rem;\n    }\n\n    /* Holds the two halves side by side */\n    .split-container {\n      display: flex;\n      width: 100%;\n      height: 50%; /* Adjust as desired */\n    }\n\n    /* Shared styling for each half */\n    .split {\n      flex: 1;\n      display: flex;\n      flex-direction: column; /* Stack face + label vertically */\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      user-select: none; /* Prevent text selection */\n      position: relative;\n    }\n\n    /* Subtle divider between the halves */\n    .split + .split {\n      border-left: 2px solid rgba(0, 0, 0, 0.2);\n    }\n\n    /* Bigger emoji styling */\n    .emoji {\n      font-size: 12vw; /* Larger faces */\n    }\n\n    /* Label under each emoji */\n    .label {\n      font-size: 4vw;\n      margin-top: 1rem;\n      color: #000;\n    }\n\n    /* Falling sad face animation */\n    .sad-face {\n      position: fixed;\n      top: -50px;\n      font-size: 2rem;\n      pointer-events: none;\n      user-select: none;\n      animation: fall 3s linear forwards;\n    }\n\n    @keyframes fall {\n      0% {\n        transform: translateY(0);\n        opacity: 1;\n      }\n      100% {\n        transform: translateY(110vh);\n        opacity: 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Page Title -->\n    <div class=\"title\"Greeted with a smile?</div>\n\n    <!-- Split Container: Left (Happy), Right (Sad) -->\n    <div class=\"split-container\">\n      <!-- Happy Half -->\n      <div class=\"split\" id=\"happySplit\">\n        <div class=\"emoji\">😊</div>\n        <div class=\"label\">Happy</div>\n      </div>\n\n      <!-- Sad Half -->\n      <div class=\"split\" id=\"sadSplit\">\n        <div class=\"emoji\">😢</div>\n        <div class=\"label\">Sad</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    /* WEBHOOK + COOLDOWN LOGIC */\n    const webhookURL = \"https://xl.epicpc.com/webhook/bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb\";\n    const POST_COOLDOWN = 5000; // 5 seconds\n    let lastPostTime = 0; // Tracks last time we sent a POST\n\n    function sendWebhook(smileType) {\n      const now = Date.now();\n      if (now - lastPostTime < POST_COOLDOWN) {\n        // Too soon; skip the POST\n        return;\n      }\n      lastPostTime = now; // Update last POST time\n\n      fetch(webhookURL, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ smile: smileType })\n      }).catch(err => console.error(\"Webhook error:\", err));\n    }\n\n    /* AUDIO LOGIC: Only one audio can play at a time */\n    let isPlayingAudio = false;\n\n    // Preload audio for happy / sad\n    const happyAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/Voicy_Confetti%20Pop%20With%20Yay%20Sound%20.mp3\");\n    const sadAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/Voicy_Glass%20Shatter.mp3\");\n\n    // When each audio ends, allow new audio to be played\n    happyAudio.onended = () => { isPlayingAudio = false; };\n    sadAudio.onended = () => { isPlayingAudio = false; };\n\n    /* CONFETTI LOGIC (for Happy) */\n    function launchConfetti() {\n      const duration = 2000; // 2 seconds\n      const end = Date.now() + duration;\n\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    /* SAD FACES LOGIC (for Sad) */\n    function rainSadFaces() {\n      const count = 30;\n      for (let i = 0; i < count; i++) {\n        const sadFace = document.createElement(\"div\");\n        sadFace.classList.add(\"sad-face\");\n        sadFace.textContent = \"😢\";\n        sadFace.style.left = Math.random() * 100 + \"vw\";\n        sadFace.style.animationDelay = Math.random() * 0.5 + \"s\";\n        document.body.appendChild(sadFace);\n\n        setTimeout(() => {\n          sadFace.remove();\n        }, 3500);\n      }\n    }\n\n    /* EVENT LISTENERS */\n    document.getElementById(\"happySplit\").addEventListener(\"click\", () => {\n      // Always show confetti\n      launchConfetti();\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"happy\");\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        happyAudio.currentTime = 0; // restart from beginning\n        happyAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n\n    document.getElementById(\"sadSplit\").addEventListener(\"click\", () => {\n      // Always rain sad faces\n      rainSadFaces();\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"sad\");\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        sadAudio.currentTime = 0; // restart from beginning\n        sadAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        -400
+      ],
+      "id": "1bb3b1db-fb22-4c7a-8e35-786637f4c8c8",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>How was my smile?</title>\n  <style>\n    /* Overall page and background */\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      background-color: #FFD100; /* Single bright yellow for entire page */\n      font-family: Arial, sans-serif;\n      overflow-x: hidden; /* Prevent horizontal scroll from falling faces */\n    }\n\n    /* Center everything in a container */\n    .container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\n      text-align: center;\n    }\n\n    /* Title styling */\n    .title {\n      font-size: 8vw;\n      font-weight: bold;\n      color: #000;\n      margin-bottom: 2rem;\n    }\n\n    /* Holds the two halves side by side */\n    .split-container {\n      display: flex;\n      width: 100%;\n      height: 50%; /* Adjust as desired */\n    }\n\n    /* Shared styling for each half */\n    .split {\n      flex: 1;\n      display: flex;\n      flex-direction: column; /* Stack face + label vertically */\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      user-select: none; /* Prevent text selection */\n      position: relative;\n      border: none; /* We'll rely on a subtle divider below */\n    }\n\n    /* Subtle divider between the halves */\n    .split + .split {\n      border-left: 2px solid rgba(0, 0, 0, 0.2);\n    }\n\n    /* Bigger emoji styling */\n    .emoji {\n      font-size: 12vw; /* Larger faces */\n    }\n\n    /* Label under each emoji */\n    .label {\n      font-size: 4vw;\n      margin-top: 1rem;\n      color: #000;\n    }\n\n    /* Falling sad face animation */\n    .sad-face {\n      position: fixed;\n      top: -50px;\n      font-size: 2rem;\n      pointer-events: none;\n      user-select: none;\n      animation: fall 3s linear forwards;\n    }\n\n    @keyframes fall {\n      0% {\n        transform: translateY(0);\n        opacity: 1;\n      }\n      100% {\n        transform: translateY(110vh);\n        opacity: 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Page Title -->\n    <div class=\"title\">Greeted with a smile?</div>\n\n    <!-- Split Container: Left (Happy), Right (Sad) -->\n    <div class=\"split-container\">\n      <!-- Happy Half -->\n      <div class=\"split\" id=\"happySplit\">\n        <div class=\"emoji\">😊</div>\n        <div class=\"label\">Happy</div>\n      </div>\n\n      <!-- Sad Half -->\n      <div class=\"split\" id=\"sadSplit\">\n        <div class=\"emoji\">😢</div>\n        <div class=\"label\">Sad</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    /* WEBHOOK + COOLDOWN LOGIC */\n    const webhookURL = \"https://xl.epicpc.com/webhook/bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb\";\n    const POST_COOLDOWN = 5000; // 5 seconds\n    let lastPostTime = 0; // Track last POST time\n\n    // Send a POST request to the webhook, limited to once every 5 seconds\n    function sendWebhook(smileType) {\n      const now = Date.now();\n      if (now - lastPostTime < POST_COOLDOWN) {\n        // Too soon; skip the POST\n        return;\n      }\n      lastPostTime = now; // Update last POST time\n\n      fetch(webhookURL, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({ smile: smileType })\n      }).catch(err => console.error(\"Webhook error:\", err));\n    }\n\n    /* AUDIO LOGIC: Only one audio can play at a time */\n    let isPlayingAudio = false;\n\n    // Preload audio for happy / sad\n    const happyAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/Voicy_Confetti%20Pop%20With%20Yay%20Sound%20.mp3\");\n    const sadAudio = new Audio(\"https://file.cybertech.app/Kiosk/EPIC/Smile/wompwomp.mp3\");\n\n    // When each audio ends, allow new audio to be played again\n    happyAudio.onended = () => { isPlayingAudio = false; };\n    sadAudio.onended = () => { isPlayingAudio = false; };\n\n    // Repeated bursts of confetti (for 2 seconds)\n    function launchConfetti() {\n      const duration = 2000; // 2 seconds\n      const end = Date.now() + duration;\n\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Create multiple sad faces that fall from the top\n    function rainSadFaces() {\n      const count = 30;\n      for (let i = 0; i < count; i++) {\n        const sadFace = document.createElement(\"div\");\n        sadFace.classList.add(\"sad-face\");\n        sadFace.textContent = \"😢\";\n        // Random horizontal position\n        sadFace.style.left = Math.random() * 100 + \"vw\";\n        // Staggered start\n        sadFace.style.animationDelay = Math.random() * 0.5 + \"s\";\n        document.body.appendChild(sadFace);\n\n        // Remove after it finishes falling\n        setTimeout(() => {\n          sadFace.remove();\n        }, 3500);\n      }\n    }\n\n    // Happy side: confetti + single-audio + 5s webhook cooldown\n    document.getElementById(\"happySplit\").addEventListener(\"click\", () => {\n      // Always show confetti\n      launchConfetti();\n\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"happy\");\n\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        happyAudio.currentTime = 0; // restart from beginning\n        happyAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n\n    // Sad side: sad faces + single-audio + 5s webhook cooldown\n    document.getElementById(\"sadSplit\").addEventListener(\"click\", () => {\n      // Always rain sad faces\n      rainSadFaces();\n\n      // Attempt webhook (5s cooldown)\n      sendWebhook(\"sad\");\n\n      // Play audio only if none is playing\n      if (!isPlayingAudio) {\n        isPlayingAudio = true;\n        sadAudio.currentTime = 0; // restart from beginning\n        sadAudio.play().catch(() => { isPlayingAudio = false; });\n      }\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        -520
+      ],
+      "id": "35ff4748-1c06-4cff-8d20-adaae264bf06",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// In your n8n Code node, paste the following:\n\n// We assume there's a single item in 'items' (or none). \n// You can adapt this to handle multiple items if needed.\nreturn [{\n  json: (() => {\n    const now = new Date();\n\n    // Extract each part of the date/time and pad with leading zeros if needed\n    const year    = now.getFullYear();\n    const month   = String(now.getMonth() + 1).padStart(2, '0');\n    const day     = String(now.getDate()).padStart(2, '0');\n    const hours   = String(now.getHours()).padStart(2, '0');\n    const minutes = String(now.getMinutes()).padStart(2, '0');\n\n    // Construct a date-time string in 24-hour format\n    const currentDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;\n\n    return { currentDateTime };\n  })()\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        100
+      ],
+      "id": "66e6f67a-f6b7-495a-9c9e-c18b989b3f88",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        460,
+        -20
+      ],
+      "id": "b7620abc-1588-4986-8ab2-a486ae7de61a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "nps_score",
+          "mode": "list",
+          "cachedResultName": "nps_score"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        800,
+        -340
+      ],
+      "id": "865845f1-4698-4a06-b872-520361403071",
+      "name": "Postgres",
+      "credentials": {
+        "postgres": {
+          "id": "n0Iu2Lnz1XZ5gBke",
+          "name": "Offices OPS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "nps_score",
+          "mode": "list",
+          "cachedResultName": "nps_score"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "entity": "EHS",
+            "location": "={{ $json.body.location }}",
+            "area": "Lobby",
+            "comments": "={{ $('Webhook').item.json.body.smile }}",
+            "survey_source": "Kiosk",
+            "date_sent": "={{ $json.currentDateTime }}",
+            "score": "={{ $json.body.smile }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "entity",
+              "displayName": "entity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "area",
+              "displayName": "area",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "score",
+              "displayName": "score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "comments",
+              "displayName": "comments",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "patient_id",
+              "displayName": "patient_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "contact_mobile",
+              "displayName": "contact_mobile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "contact_email",
+              "displayName": "contact_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "response_required",
+              "displayName": "response_required",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "survey_source",
+              "displayName": "survey_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "date_sent",
+              "displayName": "date_sent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        920,
+        -120
+      ],
+      "id": "4669ae45-812b-4d75-956c-4343a82880fd",
+      "name": "Postgres1",
+      "credentials": {
+        "postgres": {
+          "id": "n0Iu2Lnz1XZ5gBke",
+          "name": "Offices OPS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all incoming items\nconst items = $input.all();\n\nreturn items.map(item => {\n  // Clone the existing JSON to preserve all other fields\n  const newJson = { ...item.json };\n\n  // Check if the body and smile properties exist\n  if (newJson.body && typeof newJson.body.smile === 'string') {\n    if (newJson.body.smile === 'happy') {\n      newJson.body.smile = 5;\n    } else if (newJson.body.smile === 'sad') {\n      newJson.body.smile = 1;\n    }\n  }\n\n  return { json: newJson };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        -20
+      ],
+      "id": "43fe3f36-1a78-4af9-8282-29c7cbe3e55a",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.67",
+            "x-forwarded-for": "10.0.24.67",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "40",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 Edg/137.0.0.0",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"137\", \"Chromium\";v=\"137\", \"Not/A)Brand\";v=\"24\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/19b9d720-6d1b-4002-8717-97837708e150?location=SFD10mile",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bi2wlGyWUrU8csBnMpC2ky94UMvv6i1l8%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BlOAQjwoHJTIaa%2BnRWw%2FuYu7Q4OoFm%2BVc%3D; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiJkOGU0ZmExYy0yMTk2LTQ3ODAtYjFhMi0zNGI5NzYyYWZhMjciLCJpbmJveF9pZCI6MX0.0lRACgYRzS4v3ie0Q3KCpE2J2om9Qu4ndLgNQa8saXU; theme=light; kanbanData=%5B%7B%22id%22%3A%22_sgnzm0wde%22%2C%22title%22%3A%22To%20Do%22%2C%22tasks%22%3A%5B%7B%22id%22%3A%22_9zmi9x1s7%22%2C%22title%22%3A%22tawfs%22%7D%5D%7D%2C%7B%22id%22%3A%22_jotn4r9ur%22%2C%22title%22%3A%22tste%22%2C%22tasks%22%3A%5B%5D%7D%5D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiYW9ldjhjM1NoOG5jMDNLc1A4R2dYK1dkUElNWFVaTWE0ejl6WjNZVndjZz0iLCJpYXQiOjE3NDg4NjYyODQsImV4cCI6MTc0OTQ3MTA4NH0.PcEC_8pDRdYK655WnRjyVf_O3RT4lBAuh1Qqu9qRpIw; patient_phone=2488726322; patient_dob_year=1988; patient_dob_month=02; patient_dob_day=01; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX19G7JxNPKcuVR7knY4ydtM5BQ25CxQmFdoydV96nWJMZHcQGNn%2FWb%2BLQfBczbxsXMAyksX3lWODBQ%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2FLYf6xVq4uTMPF75i2r%2BwiPzYWyCLxL6d89qlyJK%2B8F3h923gxhL4zC98mOT0grf%2B9YvTyY8rYI1EheuajQAAvKVV4jH0pzz%2ByMw1AQVxGHufBqFv9C44P0hS7kUylmILQTGuHpIS954%2BJW7VilpSzZCL9Fct8jxU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BeaFXmMinUoMSAkM4%2Bcqnd0y6pDvOk5FrIYlwq6Qx2ZeGJGl12go6DioCtFEmY%2FxLEegOljHD2%2BkuxnigLUFMumP7O50Vcv%2F7FYnaCZTgV1IKsgOCZZWl2%2BlPQ31erkHjonB1iq%2Be9iA%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1749130007911%2C%2201974040-a3cb-7e5e-bd5d-bfb5a29c2f84%22%2C1749129667531%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19xAxDaxvbgWavy2o34EHRmZLeK5jw18C3q47h88TOjvoCUxoO4tsQlAaKk51WqNtXGK%2FahtQIgB1UCaOvEnGCsBZ%2FvJ2F8RVScb0iwR49FE0xq8xh2cIMlnwoy6Lb%2BE3orCGGEpS%2BndQ%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "smile": "happy",
+            "location": "SFD10mile"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/bc8a5dd4-7ebb-4ad6-bdc1-62ad9a164ecb",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-06-05T13:35:43.285Z",
+  "versionId": "11453795-5c26-41df-aff8-f7156fbcd248"
+}
