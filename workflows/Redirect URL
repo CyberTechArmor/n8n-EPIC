@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-09T16:37:08.637Z",
+  "id": "n6RL3j1V94uDoDit",
+  "isArchived": false,
+  "meta": null,
+  "name": "Redirect URL",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "a73e5922-3fa4-49a5-be98-71e3bea43f0c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6b697a02-c914-4165-b0fe-a48940cc21ce",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        460
+      ],
+      "webhookId": "a73e5922-3fa4-49a5-be98-71e3bea43f0c"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://epichs.org",
+        "options": {}
+      },
+      "id": "b126f86a-435b-4586-af62-c95f3154a4c5",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-11T23:33:56.674Z",
+  "versionId": "06d80cb2-003f-4c22-8675-fddd5f176ec7"
+}
