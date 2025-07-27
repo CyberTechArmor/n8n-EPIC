@@ -1,0 +1,559 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "LeftOverDeactivated",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter-Non-ServiceAccounts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter-Non-ServiceAccounts1": {
+      "main": [
+        [
+          {
+            "node": "30OrMoreDaysAgo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter-1601-01-01": {
+      "main": [
+        [
+          {
+            "node": "FormatDate-LDAP",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Deactivate\\",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "30OrMoreDaysAgo": {
+      "main": [
+        [
+          {
+            "node": "ConvertsLastLoginTime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ConvertsLastLoginTime": {
+      "main": [
+        [
+          {
+            "node": "Filter-1601-01-01",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "TransferDeactivatedAccountsToDeactivatedOU",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Filter-1601-01-01",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LeftOverDeactivated": {
+      "main": [
+        [
+          {
+            "node": "TransferDeactivatedAccountsToDeactivatedOU",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-13T16:18:55.632Z",
+  "id": "iPwIYcEMlO9GyUYj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MonthlyCheckUp-LDAP",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months"
+            }
+          ]
+        }
+      },
+      "id": "e11e0a86-4b55-4d71-bc5f-fd5851edc23b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "nodeDebug": true,
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "userAccountControl",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "61884c66-24d8-4951-b187-41117ec5e3cd",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        540,
+        380
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "06a5b639-e251-4195-8851-1dd1ee1e252a",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Service Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "91688bd3-39c4-4dc6-832a-b941fb094cd1",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Vendor Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "9e7be735-015c-4ef8-a6e7-e9d37bd2eaea",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Servers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "ff7e6458-4d6e-439b-824b-f10f9a70014c",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Computers",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "5a746e26-8d7e-435f-9349-403e509a1412",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=Test Accounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "d3d1721e-31fa-4bb8-a93b-b9b6394735f0",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "=OU=ServiceAccounts",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "01ef6597-5761-42d8-ae69-188131248810",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "dc1c7156-fda9-47cc-84b7-e1cc61dc47a9",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=STUDENTS",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "142885f3-a244-4fc8-81d4-7a990919f1f4",
+      "name": "Filter-Non-ServiceAccounts1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        720,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "da04474d-3c62-41bb-9bf7-4dedfc74b7ae",
+              "leftValue": "={{ $json.lastLogonDate }}",
+              "rightValue": "1601-01-01",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1da2cf97-508a-4111-a3c6-3247dee2138d",
+      "name": "Filter-1601-01-01",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input data contains an array of user objects with lastLogonDate\nconst users = items.map(item => item.json);\n\n// Function to convert LDAP timestamp to JavaScript Date object\nfunction ldapLastLogonToDate(lastLogonTimestamp) {\n    let unixTimestamp = (lastLogonTimestamp / 10000000) - 11644473600;\n    return new Date(unixTimestamp * 1000);\n}\n\n// Calculate the date 30 days ago\nconst currentDate = new Date();\nconst thirtyDaysAgo = new Date(currentDate.setDate(currentDate.getDate() - 30));\n\n// Filter users whose lastLogonDate is greater than or equal to 30 days ago\nconst filteredUsers = users.filter(user => {\n    const lastLogonDate = ldapLastLogonToDate(user.lastLogon); // Assuming lastLogon is the key\n    return lastLogonDate <= thirtyDaysAgo;\n});\n\n// Output filtered users\nreturn filteredUsers.map(user => ({ json: user }));\n"
+      },
+      "id": "44e7a5fd-be26-43b1-96de-e769951a2064",
+      "name": "30OrMoreDaysAgo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        380
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input data contains an array of user objects with lastLogon timestamps\nconst users = items.map(item => item.json);\n\n// Function to convert LDAP timestamp to human-readable date format\nfunction ldapLastLogonToDate(lastLogonTimestamp) {\n    let unixTimestamp = (lastLogonTimestamp / 10000000) - 11644473600;\n    let date = new Date(unixTimestamp * 1000);\n    let formattedDate = date.toISOString();\n    return formattedDate;\n}\n\n// Iterate through each user and convert lastLogon timestamp\nconst convertedUsers = users.map(user => {\n    const lastLogonTimestamp = user.lastLogon; // Assuming lastLogon is the key\n    const formattedDate = ldapLastLogonToDate(lastLogonTimestamp);\n    user.lastLogonDate = formattedDate; // Add formatted date to user object\n    return user;\n});\n\n// Output converted user data\nreturn convertedUsers.map(user => ({ json: user }));\n"
+      },
+      "id": "71912515-a2dd-49fd-9637-111a0872c5a4",
+      "name": "ConvertsLastLoginTime",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        380
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "userAccountControl",
+              "value": "514"
+            }
+          ]
+        }
+      },
+      "id": "ed63f00b-39ff-404c-afe4-e5b553366f55",
+      "name": "Deactivate\\",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        380
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lastLogonDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "0acc5606-b078-4595-8ad4-d349207988bb",
+      "name": "FormatDate-LDAP",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        220
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "rename",
+        "nodeDebug": true,
+        "dn": "={{ $json.distinguishedName }}",
+        "targetDn": "=CN={{ $json.cn}},OU=8.0 Deactivated Users,OU=Exclus1ve Physicians,DC=ecoe,DC=local"
+      },
+      "id": "1f956c24-d737-4d4b-9e47-5deffb34dc8c",
+      "name": "TransferDeactivatedAccountsToDeactivatedOU",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        580
+      ],
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a74e565f-b242-4b02-bf83-69d5ebfaa435",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1320,
+        680
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8f2580df-f94b-4287-a57c-8c52c760224b",
+              "leftValue": "={{ $json.userAccountControl }}",
+              "rightValue": "514",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0c8287c5-5b5c-456b-aef5-2447a5a945ed",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "10b422ee-d5f5-4b58-a65d-a51685f04a31",
+      "name": "LeftOverDeactivated",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        540,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "83e2e5f2-d778-423e-b15d-d638a109dea9",
+              "name": "cn",
+              "value": "={{ $json.cn }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "66389a6f-e682-4d12-9410-63e3538bcd0b",
+      "name": "cn.a",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        0,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "83e2e5f2-d778-423e-b15d-d638a109dea9",
+              "name": "cn",
+              "value": "={{ $json.cn }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7214690d-e3c5-4bab-a485-ce19e97521a6",
+      "name": "cn.b",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        0,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8f2580df-f94b-4287-a57c-8c52c760224b",
+              "leftValue": "={{ $json.userAccountControl }}",
+              "rightValue": "514",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "0c8287c5-5b5c-456b-aef5-2447a5a945ed",
+              "leftValue": "={{ $json.dn }}",
+              "rightValue": "OU=8.0 Deactivated ",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "45814c2c-9b29-4143-b2ce-59e45982c7c0",
+      "name": "DeactivatedOU",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        0,
+        660
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-09T13:16:37.845Z",
+  "versionId": "56c6c6be-241a-43bf-9659-6c5c84dde81c"
+}
