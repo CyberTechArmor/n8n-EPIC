@@ -1,0 +1,137 @@
+{
+  "active": true,
+  "connections": {
+    "n8n Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-26T16:28:29.646Z",
+  "id": "OlOoieaQ18Lj2hVx",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Statement Call Feedback",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "StatementCallFeedback",
+        "formTitle": "Statement Call Feedback",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Patient MRN",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Balance Due",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Patient Concern Addressed",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes"
+                  },
+                  {
+                    "option": "No"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Patient Satisfied with Outcome?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Yes"
+                  },
+                  {
+                    "option": "No"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Additional Comments/Follow-up Items",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "Agent Name",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99b6787c-4af9-4a03-9755-f3f46d0a59be",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        740,
+        360
+      ],
+      "webhookId": "91bbae74-0f95-40aa-8f18-fde5393b482f"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pmpt3rgjipbcwej",
+        "table": "m48y4fuh1hmwobq",
+        "dataToSend": "autoMapInputData"
+      },
+      "id": "af6d3ae6-59f7-4083-9d7b-c932c98ff843",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        960,
+        360
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "n8n Form Trigger": [
+      {
+        "json": {
+          "Patient MRN": "004575",
+          "Balance Due": "100",
+          "Patient Concern Addressed": "Yes",
+          "Patient Satisfied with Outcome?": "Yes",
+          "Additional Comments/Follow-up Items": "test",
+          "submittedAt": "2024-08-26T16:34:35.715Z",
+          "formMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-08-27T19:29:14.309Z",
+  "versionId": "a7d9d81e-a649-4375-acb2-161e64896847"
+}
