@@ -1,0 +1,466 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "PM Patient Info",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Patient Info": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        []
+      ]
+    },
+    "PM Patient Info": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-08T17:15:30.969Z",
+  "id": "5wxcPFdkBgK1dhcO",
+  "isArchived": false,
+  "meta": null,
+  "name": "Chatbot: PACBot",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e8fa170e-b101-465a-9598-b638c381f0b8",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5536058e-2d91-4b50-8791-98dca4f4e351",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -160
+      ],
+      "id": "1c13be9d-3aa9-42e6-b790-df2324277fb0",
+      "name": "Webhook",
+      "webhookId": "5536058e-2d91-4b50-8791-98dca4f4e351"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT [IMREDEM_CODE]\n      ,[DEM_EXTERNALID]\n      ,[DEM_LASTNAME]\n      ,[DEM_FIRSTNAME]\n      ,[DEM_FULLNAME_REVERSED]\n      ,[DEM_FULLNAME]\n      ,[DEM_SEX]\n      ,[DEM_DATEOFBIRTH]\n      ,[DEM_STATUS]\n      ,[DEM_HOMEADDR]\n      ,[HOME_ADDRESS]\n      ,[HOME_CITY]\n      ,[HOME_STATE]\n      ,[HOME_ZIP]\n      ,[HOME_PHONE]\n      ,[HOME_CARPHONE]\n      ,[HOME_EMAILADDRESS]\n\n  FROM [EMR].[HPSITE].[DEMOGRAPHICS_VIEW]\n\nWHERE DEM_EXTERNALID = '502880'"
+      },
+      "id": "d9d687a6-a365-4ee3-9a45-e8ebba3ed543",
+      "name": "EHR Patient Info",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        500,
+        -500
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c7135d7e-9bfd-460d-898c-a4344a71af11",
+              "leftValue": "={{ $json.Patient_Number }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        -140
+      ],
+      "id": "1cd1fc88-b674-441f-8ea7-513cab7eccd2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "26a8e476-df3a-4ad9-b222-0cb0ef2e4fe5",
+              "name": "match",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1080,
+        -160
+      ],
+      "id": "d2db4878-e0d2-412f-b31b-27727c164028",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "92ff2a77-d6fc-4d5b-ada4-99deadaa7d4d",
+              "name": "body.phoneNumber",
+              "value": "={{ $json.body.phoneNumber.slice(2) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        -440
+      ],
+      "id": "2b6313ea-5887-4a0d-9a87-c825dd74ec27",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n\nWHERE Patient_Primary_Phone_Number = '{{ $json.body.phoneNumber.slice(2) }}'"
+      },
+      "id": "2d81ef54-cd98-4729-a390-73d4a3ca4d2e",
+      "name": "PM Patient Info",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        80
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        420,
+        -260
+      ],
+      "id": "ae949bbb-6f19-454f-8b17-e934c93938b2",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "34b87ef5-4b76-4cfa-9249-2ca39c2cccc3",
+              "leftValue": "={{ $json.Patient_DOB }}",
+              "rightValue": "",
+              "operator": {
+                "type": "dateTime",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        -260
+      ],
+      "id": "7d980392-7e1c-43c1-bebe-997b0379c946",
+      "name": "If1",
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.161",
+            "x-forwarded-for": "10.0.1.161",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "147",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {
+            "number": "+12488726322"
+          },
+          "body": {
+            "submittedAt": "2025-01-08T17:23:52.179Z",
+            "Menu": "Scheduling",
+            "Scheduling Patient New Established": "Existing Patient",
+            "phoneNumber": "+12488726322"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/5536058e-2d91-4b50-8791-98dca4f4e351",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "PM Patient Info": [
+      {
+        "json": {
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "thomas@tagarmor.com",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 199592,
+          "Patient_Number": "751040",
+          "Patient_Name": "TOMMY TEST",
+          "Patient_LFI": "TEST, TOMMY",
+          "Patient_First_Name": "TOMMY",
+          "Patient_Last_Name": "TEST",
+          "Patient_Street1": "115",
+          "Patient_City": "Clawson",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": null,
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "tstilwell@epichs.org",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      }
+    ],
+    "Merge": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.161",
+            "x-forwarded-for": "10.0.1.161",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "147",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {
+            "number": "+12488726322"
+          },
+          "body": {
+            "submittedAt": "2025-01-08T17:23:52.179Z",
+            "Menu": "Scheduling",
+            "Scheduling Patient New Established": "Existing Patient",
+            "phoneNumber": "+12488726322",
+            "DOB": ""
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/5536058e-2d91-4b50-8791-98dca4f4e351",
+          "executionMode": "production",
+          "Patient_ID": 174619,
+          "Patient_Number": "502880",
+          "Patient_Name": "THOMAS STILWELL",
+          "Patient_LFI": "STILWELL, THOMAS",
+          "Patient_First_Name": "THOMAS",
+          "Patient_Last_Name": "STILWELL",
+          "Patient_Street1": "511 SOUTH CROOKS RD,",
+          "Patient_City": "CLAWSON",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "thomas@tagarmor.com",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      },
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.161",
+            "x-forwarded-for": "10.0.1.161",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "147",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {
+            "number": "+12488726322"
+          },
+          "body": {
+            "submittedAt": "2025-01-08T17:23:52.179Z",
+            "Menu": "Scheduling",
+            "Scheduling Patient New Established": "Existing Patient",
+            "phoneNumber": "+12488726322"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/5536058e-2d91-4b50-8791-98dca4f4e351",
+          "executionMode": "production",
+          "Patient_ID": 199592,
+          "Patient_Number": "751040",
+          "Patient_Name": "TOMMY TEST",
+          "Patient_LFI": "TEST, TOMMY",
+          "Patient_First_Name": "TOMMY",
+          "Patient_Last_Name": "TEST",
+          "Patient_Street1": "115",
+          "Patient_City": "Clawson",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48017",
+          "Patient_SSN": null,
+          "Patient_Sex": "M",
+          "Patient_DOB": "1988-02-01T00:00:00.000Z",
+          "Patient_Age": 36,
+          "Patient_Marital_Status": null,
+          "Patient_Home_Phone": "2488726322",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Primary_Phone_Number": "2488726322",
+          "patient_email": "tstilwell@epichs.org",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-08T19:24:11.247Z",
+  "versionId": "8dd3f6e3-d467-448d-8221-84b4b16fae88"
+}
