@@ -1,0 +1,214 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-18T20:34:41.357Z",
+  "id": "3MY94BAEAbY2kBPO",
+  "isArchived": false,
+  "meta": null,
+  "name": "Moodle Teams Message",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "47bd38b2-7f9b-4e34-9878-ef0c4d70efcb",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ddde4d81-1f89-4823-8084-d31a77b18524",
+      "name": "Webhook",
+      "webhookId": "47bd38b2-7f9b-4e34-9878-ef0c4d70efcb"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "={{ $json.User }}@epichs.org"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    margin:0 auto;\n    border:1px solid #dcdcdc;\n    border-radius:6px;\n    overflow:hidden;\n    font-family:'Segoe UI',Arial,sans-serif;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#e81123;\n        padding:14px 12px;\n        border-bottom:2px solid #c50f1f;\n      \"\n    >\n      <span\n        style=\"\n          font-size:20px;\n          font-weight:600;\n          color:#ffffff;\n          letter-spacing:1px;\n        \"\n      >\n        EMERGENCY BROADCAST ANNOUNCEMENT\n      </span>\n    </td>\n  </tr>\n\n  <!-- Core Message -->\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.Message }}\n<br>\n    </td>\n  </tr>\n\n  <!-- Details Label + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#f9f9f9;\n        padding:12px 16px;\n        border-top:1px solid #dcdcdc;\n      \"\n    >\n      <strong\n        style=\"\n          font-size:14px;\n          color:#323130;\n          margin-right:6px;\n        \"\n      >\n        Details:\n      {{ $json.Link }}\n    </td>\n  </tr>\n\n  <!-- Image -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"background-color:#ffffff;padding:12px 16px 16px;\"\n    >\n      <img\n        src=\"{{ $json.ImageURL }}\"\n        alt=\"Emergency Alert Illustration\"\n        style=\"\n          display:block;\n          max-width:100%;\n          height:auto;\n          border-radius:4px;\n          border:1px solid #dcdcdc;\n        \"\n      />\n    </td>\n  </tr>\n</table>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        20
+      ],
+      "id": "0ddcfc5c-94e1-4ae3-bdf4-6bb7ca528913",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "=tstilwell@epichs.org"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    margin:0 auto;\n    border:1px solid #dcdcdc;\n    border-radius:6px;\n    overflow:hidden;\n    font-family:'Segoe UI',Arial,sans-serif;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#2563eb;\n        padding:14px 12px;\n        border-bottom:2px solid #1d4ed8;\n      \"\n    >\n      <span\n        style=\"\n          font-size:20px;\n          font-weight:600;\n          color:#ffffff;\n          letter-spacing:1px;\n        \"\n      >\n        New Course Assignment Notification\n      </span>\n    </td>\n  </tr>\n\n  <!-- Core Message -->\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.Message }}\n    </td>\n  </tr>\n\n  <!-- Assignment Details + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#f9f9f9;\n        padding:12px 16px;\n        border-top:1px solid #dcdcdc;\n      \"\n    >\n      <strong\n        style=\"\n          font-size:14px;\n          color:#2563eb;\n          margin-right:6px;\n        \"\n      >\n        View Assignment:\n      </strong>\n      <a href=\"{{ $json.Link }}\" style=\"color:#2563eb;text-decoration:underline;\">\n        {{ $json.LinkText }}\n      </a>\n    </td>\n  </tr>\n\n  <!-- Image (Optional, remove this block if not used) -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"background-color:#ffffff;padding:12px 16px 16px;\"\n    >\n      <img\n        src=\"{{ $json.ImageURL }}\"\n        alt=\"Course Assignment\"\n        style=\"\n          display:block;\n          max-width:100%;\n          height:auto;\n          border-radius:4px;\n          border:1px solid #dcdcdc;\n        \"\n      />\n    </td>\n  </tr>\n</table>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        600,
+        280
+      ],
+      "id": "1b3e135c-4981-472b-921f-0132b301e8ef",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "<br> Course Assigned <br><br>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        280
+      ],
+      "id": "b95fd86d-a3be-4725-a895-6c61b439e432",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36602703-df31-4559-942c-41eebefb6a28",
+              "name": "User",
+              "value": "={{ $json.sAMAccountName }}",
+              "type": "string"
+            },
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "={{ $json.Message }}",
+              "type": "string"
+            },
+            {
+              "id": "ab68f638-f7f8-4f12-8af3-c88bc2da2bf3",
+              "name": "Link",
+              "value": "=      <a\n        href=\"https://xl.epicpc.com/webhook/c0553a95-c895-4920-8065-4c73334ddaa4?user={{ $json.sAMAccountName }}&message={{ encodeURIComponent($json.Message) }}\"\n        style=\"\n          font-size:14px;\n          color:#005A9E;\n          text-decoration:underline;\n        \"\n      >\n        <!-- Message -->Please acknowlege\n      </a>",
+              "type": "string"
+            },
+            {
+              "id": "baf3b448-4351-481d-bf68-87f9d9314156",
+              "name": "ImageURL",
+              "value": "https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        280
+      ],
+      "id": "790a2cef-b528-4469-816d-d768f981b5fd",
+      "name": "Edit Fields2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-18T20:56:14.531Z",
+  "versionId": "56d13313-315b-4c4a-9cae-8d7dda3f372a"
+}
