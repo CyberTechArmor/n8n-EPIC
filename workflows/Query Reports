@@ -1,0 +1,2080 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "NocoDB3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB5": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB6": {
+      "main": [
+        [
+          {
+            "node": "NocoDB5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Acknowledged": {
+      "main": [
+        [
+          {
+            "node": "NocoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total Scheduled": {
+      "main": [
+        [
+          {
+            "node": "NocoDB4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Total Links Sent": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB9": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "NocoDB8": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing2": {
+      "main": [
+        [
+          {
+            "node": "NocoDB8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Links Sent Since Monday": {
+      "main": [
+        [
+          {
+            "node": "NocoDB12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets2": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "NocoDB11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Links Sent Since Monday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Total Links Sent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB13": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB14": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Acknowledged",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Total Scheduled",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Confirmed",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Total Scheduled",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Scheduled",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Total Scheduled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "NocoDB16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB16": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "NocoDB15",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB15": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch5": {
+      "main": [
+        [
+          {
+            "node": "Switch6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch6": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-20T17:22:30.367Z",
+  "id": "eTVtePPtovSSJ9jS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Query Reports",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2dac98bd-9df5-4fa6-a24f-d602e45b19d2",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mih5kbiavj0mmh0",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "bbe4c4a4-d669-433a-9292-e4766e54d845",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        640,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4536627a-9c34-4eb9-9042-29a07983c023",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        880,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "451629eb-718f-4a09-a0b0-41c77fce2fc8",
+      "name": "Replace Me",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "12b32780-db3e-4362-b970-ed4d200b2e86",
+              "name": "MRN",
+              "value": "={{ $json.MRN }}",
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "b9f19f28-81ec-49c2-8e2f-ef5319485ecd",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1300,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "with apptbook as(\nselect a.Patient_Number,a.Appt_DateTime,a.Appt_Sched_Location_Descr, a.Appt_Resource_Descr,a.Appt_Type_Descr,\na.Appt_Status, a.Appt_Booked_Date,a.Appt_Booked_By_Operator_Abbr,\ncase\nwhen a.Appt_DateTime = a.Appt_Booked_Date then 'SameDate' \nwhen a.Appt_DateTime between dateadd(day,0,a.Appt_Booked_Date) and  DATEADD(day,3,a.Appt_Booked_Date) then '3dayFutureApptDate'\nwhen a.Appt_DateTime > dateadd(day,4,a.Appt_Booked_Date) then 'FutureApptDate'\nend as 'ApptDateCorrelation'\nFROM [Ntier_EPIC].[PM].[vwGenPatApptInfo] a\nwhere a.Patient_Number = '{{ $json[\"MRN\"] }}' and\ncast(a.Appt_Booked_Date as date) > '2024-05-26'\n \n)\nselect a.* \nfrom apptbook a"
+      },
+      "id": "074e5068-2e09-46a2-9e45-0cc1e1ff6663",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        700
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "phonetreeselfschedule",
+          "mode": "list",
+          "cachedResultName": "phonetreeselfschedule"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "f0b753dc-90c2-4944-93a0-67a9d0f6f43d",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1200,
+        160
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "bGb8h7UdmRyDVSzf",
+          "name": "pac"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $json.Patient_Number }}"
+            },
+            {
+              "fieldName": "Patient",
+              "fieldValue": "={{ $('Edit Fields').item.json.Patient }}"
+            },
+            {
+              "fieldName": "AppointmentDate",
+              "fieldValue": "={{ $json.Appt_DateTime }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Appt_Sched_Location_Descr }}"
+            },
+            {
+              "fieldName": "Provider",
+              "fieldValue": "={{ $json.Appt_Resource_Descr }}"
+            },
+            {
+              "fieldName": "AppointmentType",
+              "fieldValue": "={{ $json.Appt_Type_Descr }}"
+            },
+            {
+              "fieldName": "ApptDateCorrelation",
+              "fieldValue": "={{ $json.ApptDateCorrelation }}"
+            }
+          ]
+        }
+      },
+      "id": "fda4279a-b4e1-4e39-9018-2dda63ba895f",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1820,
+        960
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "7712c77d-d144-4b07-a043-a036b5d3667b",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "9129aced-0464-4292-8fe5-e5c07f6427e2",
+      "name": "Acknowledged",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        -20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c5b920ab-8be6-4de6-8157-220fde7918a3",
+      "name": "Confirmed",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        140
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "12c34e41-4ae7-40d8-a610-cfb0724b36fe",
+      "name": "Scheduled",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "622793c3-32c7-4418-af15-abf8b4248996",
+      "name": "Total Scheduled",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Patient_Number",
+              "field2": "MRN"
+            }
+          ]
+        },
+        "resolve": "preferInput2",
+        "options": {}
+      },
+      "id": "cbab1eda-b873-4be9-9dbe-15edff9f3c87",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        4360,
+        1040
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "ee481831-1396-4e9e-810e-1c85b4f40055",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4100,
+        920
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "3a3fd6c4-41d0-4c31-9251-5e4752e56ed2",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4100,
+        1280
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6d3ef1b9-507e-4ded-ae78-33f1912730b0",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        1280
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "id": "={{ $json.Id }}"
+      },
+      "id": "29cc561b-63e3-41bc-a655-2a64fa3fcf42",
+      "name": "NocoDB3",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1540,
+        1300
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a60016ec-7f08-4281-9d7b-8b75598d05c6",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1240,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "a35f2deb-b98a-4a8d-90b7-b0aca5354ebe",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f4071eda-94b0-407f-8d22-2887b1b035e2",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3040,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "md6r4o27q02hjxr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $json.Patient_Number }}"
+            },
+            {
+              "fieldName": "Patient",
+              "fieldValue": "={{ $('Edit Fields').item.json.Patient }}"
+            },
+            {
+              "fieldName": "AppointmentDate",
+              "fieldValue": "={{ $json.Appt_DateTime }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Appt_Sched_Location_Descr }}"
+            },
+            {
+              "fieldName": "Provider",
+              "fieldValue": "={{ $json.Appt_Resource_Descr }}"
+            },
+            {
+              "fieldName": "AppointmentType",
+              "fieldValue": "={{ $json.Appt_Type_Descr }}"
+            },
+            {
+              "fieldName": "ApptDateCorrelation",
+              "fieldValue": "={{ $json.ApptDateCorrelation }}"
+            }
+          ]
+        }
+      },
+      "id": "318705dd-1ebd-4d2c-8c50-9b0f8be759fe",
+      "name": "NocoDB4",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3660,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f8957606-8c0c-4958-93f0-eec1da2866c1",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2540,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "f20ba691-a4d0-46e2-929c-f74e076a0889",
+      "name": "NocoDB5",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        940
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mih5kbiavj0mmh0",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "5a1d5eae-415c-4e20-b9c7-2a2f5464abcf",
+      "name": "NocoDB6",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2700,
+        940
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "md6r4o27q02hjxr",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $json.Patient_Number }}"
+            },
+            {
+              "fieldName": "Patient",
+              "fieldValue": "={{ $('Edit Fields').item.json.Patient }}"
+            },
+            {
+              "fieldName": "AppointmentDate",
+              "fieldValue": "={{ $json.Appt_DateTime }}"
+            },
+            {
+              "fieldName": "Location",
+              "fieldValue": "={{ $json.Appt_Sched_Location_Descr }}"
+            },
+            {
+              "fieldName": "Provider",
+              "fieldValue": "={{ $json.Appt_Resource_Descr }}"
+            },
+            {
+              "fieldName": "AppointmentType",
+              "fieldValue": "={{ $json.Appt_Type_Descr }}"
+            },
+            {
+              "fieldName": "ApptDateCorrelation",
+              "fieldValue": "={{ $json.ApptDateCorrelation }}"
+            }
+          ]
+        }
+      },
+      "id": "ff35cfc1-ef53-4a2d-bc7c-e857273e9d96",
+      "name": "NocoDB7",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3620,
+        -20
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "e4d2a319-432e-4b71-90dc-3b3d4b37ae3a",
+      "name": "Links Sent Since Monday",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        620
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4f7210b4-3e45-4fc7-8635-5d3eb2f0d47e",
+      "name": "Total Links Sent",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mih5kbiavj0mmh0",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "db53c3e4-0068-484b-ac0f-c4c0bf217b91",
+      "name": "NocoDB8",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        5840,
+        -1120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "6c49ec40-cb2c-4667-accc-eb8dab6eb7e9",
+      "name": "NocoDB9",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        5840,
+        -840
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "MRN",
+              "field2": "MRN"
+            }
+          ]
+        },
+        "fuzzyCompare": true,
+        "options": {}
+      },
+      "id": "cb3523ce-2ee4-4474-a9f0-662ba715c6f0",
+      "name": "Compare Datasets1",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        6220,
+        -980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e397422e-99c0-4ad7-872b-6e6379eca843",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        6860,
+        -2280
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ebaf6e0d-5fd8-4bdf-ae3c-f04aaf17a4bd",
+      "name": "No Operation, do nothing2",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        5540,
+        -980
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0bc8d056-3ff2-45f3-a871-8232c7de1bc1",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        6540,
+        -1000
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mih5kbiavj0mmh0",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "cf6f3a31-cc60-449a-b9f2-ef157248f4cf",
+      "name": "NocoDB10",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        700,
+        -880
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Patient_Number",
+              "field2": "MRN"
+            }
+          ]
+        },
+        "resolve": "preferInput2",
+        "options": {}
+      },
+      "id": "42e87695-b1a8-4796-b8ec-fc5b763c3ea7",
+      "name": "Compare Datasets2",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        3600,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "msmdxwdruldp1po",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $json.MRN[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "c73547bd-0e27-4a24-bd76-56c0ed8b4ace",
+      "name": "NocoDB11",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3900,
+        440
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.CreatedAt }}",
+                    "rightValue": "2024-07-11T00:00:00",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "afterOrEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c4d4122a-c430-4a25-b09d-0db18c1ff0c8",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3260,
+        860
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c1ac6f4a-82c7-4520-85e2-551e48643a05",
+              "leftValue": "={{ $json.CreatedAt }}",
+              "rightValue": "2024-07-14T00:00:00",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "573a4c7f-2759-4f57-a33e-966118c33f0b",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "52837d2e-5be5-40c2-8af9-a46bcd24f442",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "13362aaa-18ad-4023-832e-1d51e61cfe23",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        880,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "mwtspsuaiti8rn8",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $json.MRN }}"
+            }
+          ]
+        }
+      },
+      "id": "65543b3a-93f5-4ec3-8439-f5435873b3c7",
+      "name": "NocoDB12",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3660,
+        640
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "md6r4o27q02hjxr",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "1634875a-aeb8-4ca5-b21a-445a83ca8af9",
+      "name": "NocoDB13",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3300,
+        300
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "msmdxwdruldp1po",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "d5140509-703b-4fed-a5cb-399e829653a9",
+      "name": "NocoDB14",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3300,
+        520
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Booked_By_Operator_Abbr }}",
+                    "rightValue": "HEROERP ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "00831ce2-3306-4cff-97ef-00e10a5184a8",
+                    "leftValue": "={{ $json.Appt_Booked_By_Operator_Abbr }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9be98c2a-b3fe-44db-a384-86dd3130cf63",
+                    "leftValue": "={{ $json.Appt_Booked_By_Operator_Abbr }}",
+                    "rightValue": "HEROERP ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d6610a3-5311-4b5a-a34e-822157fdb084",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2580,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Status }}",
+                    "rightValue": "A",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "acdd09e2-9350-4592-a0c2-45a3f88f73e0",
+                    "leftValue": "={{ $json.Appt_Status }}",
+                    "rightValue": "C",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "bd2b43c2-baa3-4501-b397-2fc4a4a2c1da",
+                    "leftValue": "={{ $json.Appt_Status }}",
+                    "rightValue": "S",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c25ebdfa-3397-4bb6-8e03-050fb176e44b",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2580,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Booked_Date }}",
+                    "rightValue": "2024-07-11T00:00:00",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "afterOrEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cbbe889b-4610-492a-b7ba-737a394a2bfc",
+      "name": "Switch3",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1460,
+        200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Booked_Date }}",
+                    "rightValue": "2024-07-11T00:00:00",
+                    "operator": {
+                      "type": "dateTime",
+                      "operation": "afterOrEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "27635797-a84d-47f6-9624-2618801f9b86",
+      "name": "Switch4",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1620,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "110c35f2-fa2c-4e88-ad70-7fd19d60b999",
+              "leftValue": "={{ $json.Appt_Booked_Date }}",
+              "rightValue": "={{ new Date().toISOString().split('T')[0] }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5879e2dc-129d-4be5-9d36-71a40c2d3397",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "msmdxwdruldp1po",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "MRN",
+              "fieldValue": "={{ $('Limit').item.json.Patient_Number }}"
+            },
+            {
+              "fieldName": "DateChecked",
+              "fieldValue": "={{ new Date().toISOString().split('T')[0] }}"
+            }
+          ]
+        }
+      },
+      "id": "a40be5b6-ec43-415e-af28-55f7ff912479",
+      "name": "NocoDB15",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3080,
+        540
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "ec72ea05-f269-400d-a134-be56adceb80e",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2440,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pdrfzomezdyaecj",
+        "table": "msmdxwdruldp1po",
+        "returnAll": true,
+        "options": {
+          "where": "=(DateChecked,eq,{{ new Date().toISOString().split('T')[0] }})"
+        }
+      },
+      "id": "e9782274-6bf7-4c12-9c56-af977deb58dc",
+      "name": "NocoDB16",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2660,
+        520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1b4f9dc1-5aaa-44c6-85fe-635ba9f858b7",
+              "leftValue": "={{ $json.MRN }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d07efe58-a51c-42a8-9b44-0093e8d3130a",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "77f8dd3a-7d4b-486f-9475-5d9d6caac8a8",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Sched_Location_Descr }}",
+                    "rightValue": "EPIC Video Visits",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "b76da371-0ecb-48cb-bc28-e1aebc4692ea",
+                    "leftValue": "={{ $json.Appt_Sched_Location_Descr }}",
+                    "rightValue": "EPIC Video Visits",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e013627c-51a1-4644-8ec9-1d72c9cbf6c8",
+      "name": "Switch5",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1700,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Appt_Booked_By_Operator_Abbr }}",
+                    "rightValue": "HEROERP ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "22660468-ac6f-4f26-a5da-bc8fb3bc0314",
+                    "leftValue": "={{ $json.Appt_Booked_By_Operator_Abbr }}",
+                    "rightValue": "HEROERP ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0e05b2a-6853-4754-b452-0098cd850f42",
+      "name": "Switch6",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        600
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields1": [
+      {
+        "json": {
+          "Id": 2,
+          "Patient": "LEAH JEROME",
+          "CreatedAt": "2024-05-20 12:47:08",
+          "UpdatedAt": "2024-05-20 12:47:08",
+          "Link": "https://visit.epicpc.com/?fullName=LEAH+JEROME&patientId=347790",
+          "MRN": 347790
+        }
+      }
+    ],
+    "Edit Fields2": [
+      {
+        "json": {
+          "Patient_Number": "696730",
+          "Appt_DateTime": "2024-05-29T15:40:00.000Z",
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_Descr": "Brodsky MD, Burton",
+          "Appt_Type_Descr": "GYN - New Office Visit",
+          "Appt_Status": "A",
+          "Appt_Booked_Date": "2024-05-29T07:46:11.477Z",
+          "Appt_Booked_By_Operator_Abbr": "epicykum",
+          "ApptDateCorrelation": "3dayFutureApptDate"
+        }
+      },
+      {
+        "json": {
+          "Patient_Number": "696730",
+          "Appt_DateTime": "2024-06-05T16:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Video Visits",
+          "Appt_Resource_Descr": "Findlan FNP-BC, Jennifer",
+          "Appt_Type_Descr": "ACT - VOV",
+          "Appt_Status": "S",
+          "Appt_Booked_Date": "2024-06-05T16:35:32.013Z",
+          "Appt_Booked_By_Operator_Abbr": "HEROERP ",
+          "ApptDateCorrelation": null
+        }
+      },
+      {
+        "json": {
+          "Patient_Number": "696730",
+          "Appt_DateTime": "2024-06-26T15:40:00.000Z",
+          "Appt_Sched_Location_Descr": "SPEC EP Southfield Telegraph",
+          "Appt_Resource_Descr": "Woolfolk FNP, Morgan K",
+          "Appt_Type_Descr": "GYN - Womens Health",
+          "Appt_Status": "N",
+          "Appt_Booked_Date": "2024-05-29T16:38:49.247Z",
+          "Appt_Booked_By_Operator_Abbr": "MRacowan",
+          "ApptDateCorrelation": "FutureApptDate"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-18T19:32:45.867Z",
+  "versionId": "6f1fca73-8e0c-49c5-b67e-2b20d73d465e"
+}
