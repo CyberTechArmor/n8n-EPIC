@@ -1,0 +1,572 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML1": {
+      "main": [
+        [
+          {
+            "node": "Separating",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "Separating": {
+      "main": [
+        []
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-21T14:03:58.353Z",
+  "id": "e8fVsaPlYiN7jr4l",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "VD PHARMACY EXTRACTION",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a65eaac5-61ba-4205-af8e-8155fd868d95",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        560,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \nd.DEM_FIRSTNAME,d.DEM_LASTNAME,d.DEM_DATEOFBIRTH,d.DEM_EXTERNALID,d.IMREDEM_CODE,\nd.DEM_HOMEADDR,d.DEM_SEX,d.DEM_PHARMACYCODE,d.DEM_MAILPHARMACYCODE,d.HOME_CARPHONE,d.HOME_ADDRESS,\nd.HOME_CITY,d.HOME_COUNTY,d.HOME_EMAILADDRESS,d.HOME_PHONE,d.HOME_ZIP,d.HOME_STATE,d.MAILPHARMACY_NAME,d.PHARMACY_NAME,\nc.PROV_FIRSTNAME,c.PROV_LASTNAME,c.IMREPROV_CODE,[ERXMESSAGE_ID]\n,[ERXMESSAGE_PROVIDER_ID],[ERXMESSAGE_SCRIPT_ID],[ERXMESSAGE_TYPE],\ncase \nwhen m.ERXMESSAGE_TYPE =15 then 'rxchangerequest'\nwhen m.ERXMESSAGE_TYPE =2 then 'rxrenewelrequest'\nwhen m.ERXMESSAGE_TYPE =1 then 'rxneworder'\nend as 'rxmessage',\n[ERXMESSAGE_STATUS],\n--m.[ERXMESSAGE_XML]\n[ERXMESSAGE_ERROR],\n[ERXMESSAGE_DATE]\n,[ERXMESSAGE_PATIENT_ID],[NCPDP],[MED_ID],[REV_ID],[LOCALMAIL_FLAG],[CANCELED_FLAG]\n,[NOTIFY_FLAG],[ERXMESSAGE_XML_TYPE],[RETRY_COUNT],[RETRY_START_TIME],[REASON]\n,[ERXMESSAGE_JSON],\n[ERXMESSAGE_PROCESSDATE]\n  FROM [EMR].[HPSITE].[ERXMESSAGE] M\n  left join [HPSITE].[DEMOGRAPHICS_VIEW] D on d.IMREDEM_CODE=m.ERXMESSAGE_PATIENT_ID\n  left join [HPSITE].[ALLCAREGIVERS_VIEW] C on c.IMREPROV_CODE=m.ERXMESSAGE_PROVIDER_ID\n  WHERE M.ERXMESSAGE_XML LIKE '%RITE%' AND CAST(M.ERXMESSAGE_DATE AS DATE) > DATEADD(DAY,-3,CAST(GETDATE() AS date))\n  ORDER BY M.ERXMESSAGE_DATE DESC\n\n\n"
+      },
+      "id": "f9bca76b-bb19-4d35-acab-ad2a8df450d0",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        780,
+        180
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "=ERXMESSAGE_XML",
+        "options": {}
+      },
+      "id": "d1a0f574-2f09-4c7b-9eaf-99f98880d5da",
+      "name": "XML1",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "7a2e1330-6700-40ea-8054-89ecdc786345",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "{\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"values\": {\n          \"string\": [\n            {\n              \"name\": \"ERXMESSAGE_XML_1\",\n              \"value\": \"<AllscriptsMessageEnvelope><MessageDispatchHeader><ID xmlns=\\\"\\\">0430501342672024-06-22130224127788</ID><RequestID xmlns=\\\"\\\"></RequestID><ClientID xmlns=\\\"\\\">0000000000HM00056233</ClientID><SiteID xmlns=\\\"\\\">015</SiteID><Noun xmlns=\\\"\\\">RxRenewal</Noun><Verb xmlns=\\\"\\\">Request</Verb><TimeStamp xmlns=\\\"\\\">2024-06-22T17:02:24.0Z</TimeStamp><Description xmlns=\\\"\\\"></Description></MessageDispatchHeader><EntityContext><KeyedValues><KeyedValue><Key>SiteID</Key><Value>015</Value></KeyedValue><KeyedValue><Key>AccountID</Key><Value>0000000000HM00056233</Value></KeyedValue><KeyedValue><Key>ClientID</Key><Value>0000000000HM00056233</Value></KeyedValue><KeyedValue><Key>destinationID</Key><Value></Value></KeyedValue></KeyedValues></EntityContext><MessageContent><PrescriptionMessage><Switch><RecipientID>4673870251003</RecipientID><RecipientIDQualfier>D</RecipientIDQualfier><RecipientIdLevelTwo></RecipientIdLevelTwo><RecipientIdLevelThree></RecipientIdLevelThree><SenderID>2303953</SenderID><SenderIDQualifier>P</SenderIDQualifier><SenderPassword></SenderPassword><SenderIdLevelThree></SenderIdLevelThree><AppID>HM</AppID><AppVersion></AppVersion><PartnerPortal>Surescripts60</PartnerPortal><MessageType>REFREQ</MessageType><TransactionControlNumber>0430501342672024-06-22130224127788</TransactionControlNumber><MessageReferenceNumber></MessageReferenceNumber><InitiatedTransactionControlReferecenID>68e636b00a754b798df33dd763c1a24d</InitiatedTransactionControlReferecenID><ProviderID>HM00056233_0000013967</ProviderID><SentDateTime>2024-06-22T17:02:24Z</SentDateTime><MessageVersion>6.0</MessageVersion><IsSpecialtyDrugService></IsSpecialtyDrugService></Switch><Prescription><PrescriberOrderNo>0000562330000052480006316200015L###</PrescriberOrderNo><RxNumber>0430501342672024-06-22130224127788</RxNumber><NDCNumber>68382012205</NDCNumber><DrugDescription>amLODIPine 5 mg tablet</DrugDescription><Quantity>90</Quantity><QuantityQualifier>TABS</QuantityQualifier><Created>2024-03-12T00:00:00</Created><LastFillDate>2024-04-11T00:00:00</LastFillDate><DosageFormCode></DosageFormCode><StrengthUOM></StrengthUOM><SIGText>1 (one) Tablet by mouth daily as directed</SIGText><RefillQuantity>0</RefillQuantity><RefillQuantityQual></RefillQuantityQual><DaysSupply>90</DaysSupply><DAW>0</DAW><DAWDetail>0</DAWDetail><PharmacyNotes>dose decreased</PharmacyNotes><RxNotes>dose decreased</RxNotes><RxNormCUI>197361</RxNormCUI><RxNormQual>FG</RxNormQual><NCPDPQuantityUOM>C48542</NCPDPQuantityUOM></Prescription><DispensedPrescription><NDCNumber>29300039705</NDCNumber><DrugDescription>AMLODIPINE BESYLATE 5 MG TAB</DrugDescription><Quantity>90</Quantity><QuantityQualifier>TABS</QuantityQualifier><Created>2024-03-12T00:00:00</Created><LastFillDate>2024-04-11T00:00:00</LastFillDate><DosageFormCode></DosageFormCode><StrengthUOM></StrengthUOM><SIGText>take 1 tablet by mouth once daily as directed</SIGText><RefillQuantity></RefillQuantity><RefillQuantityQual></RefillQuantityQual><DaysSupply>90</DaysSupply><DAW>0</DAW><DAWDetail>0</DAWDetail><PharmacyNotes>dose decreased</PharmacyNotes><RxNotes>dose decreased</RxNotes><RxNormCUI>016926</RxNormCUI><RxNormQual>FG</RxNormQual><NCPDPQuantityUOM>C48542</NCPDPQuantityUOM></DispensedPrescription><Patient><PatientID>HM00056233_P0000005248</PatientID><Ssn></Ssn><MedicareNumber></MedicareNumber><PbmID></PbmID><FirstName>LINDA</FirstName><MiddleName>C</MiddleName><LastName>MILLER</LastName><Dob>1941-11-24</Dob><GenderCode>M</GenderCode><Address1>3180 MERRILL AVE APT 106</Address1><City>ROYAL OAK</City><State>MI</State><ZipCode>480736909</ZipCode><CountryCode>US</CountryCode><RelationshipCD></RelationshipCD><Contact><Phone>2485914328</Phone></Contact></Patient><Provider><ProviderID>HM00056233_0000013967</ProviderID><ProviderQual></ProviderQual><DeaNumber>MF7959046</DeaNumber><NpiNumber>1497456206</NpiNumber><StateLicenseNumb></StateLicenseNumb><AccountID>0000000000HM00056233</AccountID><PracticeName></PracticeName><FirstName>NICOLAS</FirstName><MiddleName>A</MiddleName><LastName>FEDIRKO</LastName><Suffix></Suffix><Prefix></Prefix><Address1>26300 WOODWARD AVE</Address1><Address2></Address2><City>ROYAL OAK</City><State>MI</State><ZipCode>480670917</ZipCode><Contact><Phone>8552349873</Phone></Contact></Provider><Pharmacy><Ncpdp>2303953</Ncpdp><NpiNumber>1093725541</NpiNumber><PharmacistLastName></PharmacistLastName><PharmacistFirstName></PharmacistFirstName><PharmacistMiddleName></PharmacistMiddleName><Name>RITE AID #04305</Name><Address1>2971 WEST MAPLE ROAD</Address1><Address2></Address2><City>TROY</City><State>MI</State><ZipCode>480847032</ZipCode><CountryCode>US</CountryCode><Contact><Phone>2482884385</Phone></Contact></Pharmacy><Status><Type></Type><Code>0</Code><Message></Message></Status></PrescriptionMessage></MessageContent></AllscriptsMessageEnvelope>\"\n            },\n            {\n              \"name\": \"ERXMESSAGE_XML_2\",\n              \"value\": \"<AllscriptsMessageEnvelope><MessageDispatchHeader><ID xmlns=\\\"\\\">0435233301562024-06-22114352321052</ID><RequestID xmlns=\\\"\\\"></RequestID><ClientID xmlns=\\\"\\\">0000000000HM00056233</ClientID><SiteID xmlns=\\\"\\\">008</SiteID><Noun xmlns=\\\"\\\">RxRenewal</Noun><Verb xmlns=\\\"\\\">Request</Verb><TimeStamp xmlns=\\\"\\\">2024-06-22T15:43:52.0Z</TimeStamp><Description xmlns=\\\"\\\"></Description></MessageDispatchHeader><EntityContext><KeyedValues><KeyedValue><Key>SiteID</Key><Value>008</Value></KeyedValue><KeyedValue><Key>AccountID</Key><Value>0000000000HM00056233</Value></KeyedValue><KeyedValue><Key>ClientID</Key><Value>0000000000HM00056233</Value></KeyedValue><KeyedValue><Key>destinationID</Key><Value></Value></KeyedValue></KeyedValues></EntityContext><MessageContent><PrescriptionMessage><Switch><RecipientID>6505522477005</RecipientID><RecipientIDQualfier>D</RecipientIDQualfier><RecipientIdLevelTwo></RecipientIdLevelTwo><RecipientIdLevelThree></RecipientIdLevelThree><SenderID>2327193</SenderID><SenderIDQualifier>P</SenderIDQualifier><SenderPassword></SenderPassword><SenderIdLevelThree></SenderIdLevelThree><AppID>HM</AppID><AppVersion></AppVersion><PartnerPortal>Surescripts60</PartnerPortal><MessageType>REFREQ</MessageType><TransactionControlNumber>0435233301562024-06-22114352321052</TransactionControlNumber><MessageReferenceNumber></MessageReferenceNumber><InitiatedTransactionControlReferecenID>3fb725c6c6024ff6907165f59c6eff40</InitiatedTransactionControlReferecenID><ProviderID>HM00056233_0000011786</ProviderID><SentDateTime>2024-06-22T15:43:52Z</SentDateTime><MessageVersion>6.0</MessageVersion><IsSpecialtyDrugService></IsSpecialtyDrugService></Switch><Prescription><PrescriberOrderNo>0000562330001250560005435590016L###</PrescriberOrderNo><RxNumber>0435233301562024-06-22114352321052</RxNumber><NDCNumber>00228299611</NDCNumber><DrugDescription>tamsulosin 0.4 mg capsule</DrugDescription><Quantity>90</Quantity><QuantityQualifier>CAPS</QuantityQualifier><Created>2024-01-12T00:00:00</Created><LastFillDate>2024-04-16T00:00:00</LastFillDate><DosageFormCode></DosageFormCode><StrengthUOM></StrengthUOM><SIGText>1 (one) Capsule by mouth daily as directed</SIGText><RefillQuantity>0</RefillQuantity><RefillQuantityQual></RefillQuantityQual><DaysSupply>90</DaysSupply><DAW>0</DAW><DAWDetail>0</DAWDetail><PharmacyNotes></PharmacyNotes><RxNotes></RxNotes><RxNormCUI>863669</RxNormCUI><RxNormQual>FG</RxNormQual><NCPDPQuantityUOM>C48480</NCPDPQuantityUOM></Prescription><DispensedPrescription><NDCNumber>65862059805</NDCNumber><DrugDescription>TAMSULOSIN HCL 0.4 MG CAPSULE</DrugDescription><Quantity>90</Quantity><QuantityQualifier>CAPS</QuantityQualifier><Created>2024-01-12T00:00:00</Created><LastFillDate>2024-04-16T00:00:00</LastFillDate><DosageFormCode></DosageFormCode><StrengthUOM></StrengthUOM><SIGText>take 1 capsule by mouth once daily as directed</SIGText><RefillQuantity></RefillQuantity><RefillQuantityQual></RefillQuantityQual><DaysSupply>90</DaysSupply><DAW>0</DAW><DAWDetail>0</DAWDetail><RxNotes></RxNotes><RxNormCUI>027546</RxNormCUI><RxNormQual>FG</RxNormQual><NCPDPQuantityUOM>C48480</NCPDPQuantityUOM></DispensedPrescription><Patient><PatientID>HM00056233_P0000125056</PatientID><Ssn></Ssn><MedicareNumber></MedicareNumber><PbmID></PbmID><FirstName>CHRISTIAN</FirstName><LastName>AVERY</LastName><Dob>1980-12-13</Dob><GenderCode>M</GenderCode><Address1>15718 GEORGE WASHINGTON DR</Address1><City>SOUTHFIELD</City><State>MI</State><ZipCode>480753040</ZipCode><CountryCode>US</CountryCode><RelationshipCD></RelationshipCD><Contact><Phone>3135236777</Phone></Contact></Patient><Provider><ProviderID>HM00056233_0000011786</ProviderID><ProviderQual></ProviderQual><DeaNumber>FD5598074</DeaNumber><NpiNumber>1144583832</NpiNumber><StateLicenseNumb></StateLicenseNumb><AccountID>0000000000HM00056233</AccountID><PracticeName></PracticeName><FirstName>NORAH</FirstName><LastName>DUNCAN</LastName><Suffix></Suffix><Prefix></Prefix><Address1>911 E 9 MILE RD</Address1><Address2></Address2><City>FERNDALE</City><State>MI</State><ZipCode>482200000</ZipCode><Contact><Phone>2483364000</Phone></Contact></Provider><Pharmacy><Ncpdp>2327193</Ncpdp><NpiNumber>1962511485</NpiNumber><PharmacistLastName></PharmacistLastName><PharmacistFirstName></PharmacistFirstName><PharmacistMiddleName></PharmacistMiddleName><Name>RITE AID #04352</Name><Address1>24850 GREENFIELD ROAD</Address1><Address2></Address2><City>OAK PARK</City><State>MI</State><ZipCode>482371599</ZipCode><CountryCode>US</CountryCode><Contact><Phone>2489682383</Phone></Contact></Pharmacy><Status><Type></Type><Code>0</Code><Message></Message></Status></PrescriptionMessage></MessageContent></AllscriptsMessageEnvelope>\"\n            }\n          ]\n        },\n        \"options\": {}\n      },\n      \"name\": \"Set XML Data\",\n      \"type\": \"n8n-nodes-base.set\",\n      \"typeVersion\": 1,\n      \"position\": [250, 300]\n    }\n  ]\n}\n",
+        "includeOtherFields": true,
+        "include": "selected",
+        "includeFields": "<AllscriptsMessageEnvelope>",
+        "options": {}
+      },
+      "id": "e0a369c1-8b8e-4b9f-989c-50ea8ea47613",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1580,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98827c72-9aa4-43ff-9252-db9db1ef111b",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Switch.SentDateTime",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Switch.SentDateTime }}",
+              "type": "string"
+            },
+            {
+              "id": "25d9e2c0-6b65-4a6b-9776-bd565aa41332",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.FirstName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.FirstName }}",
+              "type": "string"
+            },
+            {
+              "id": "b2cc0eca-8d5a-49b5-8635-bc93e3e5b0c0",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.LastName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.LastName }}",
+              "type": "string"
+            },
+            {
+              "id": "3fb93520-d2b5-4aab-9f9d-cc5b30450dcf",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Dob",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Dob }}",
+              "type": "string"
+            },
+            {
+              "id": "7ac83247-b651-4b10-a378-79e1242648aa",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Phone",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Phone }}",
+              "type": "string"
+            },
+            {
+              "id": "157229d1-cd23-4753-ab23-10a8d269f1fa",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Email",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "059f5312-f85b-4a48-9e2b-808dffa091c3",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Cell",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.Cell }}",
+              "type": "string"
+            },
+            {
+              "id": "b1585340-303e-4473-a503-1551c96ddb65",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.HomePhone",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Patient.Contact.HomePhone }}",
+              "type": "string"
+            },
+            {
+              "id": "37fc9551-83d2-40b9-96a8-9b7fef41d505",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.NpiNumber",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.NpiNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "0650cd91-9414-4254-a7f5-459e26d82ee6",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.LastName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.LastName }}",
+              "type": "string"
+            },
+            {
+              "id": "89314473-a8b3-47b1-bf97-cda543b1b098",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.FirstName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.FirstName }}",
+              "type": "string"
+            },
+            {
+              "id": "8c151fa0-6f46-4983-9973-9c25ed604627",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.PracticeName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Provider.PracticeName }}",
+              "type": "string"
+            },
+            {
+              "id": "8e39a6b6-1675-4631-8007-34e60b69e644",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Ncpdp",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Ncpdp }}",
+              "type": "string"
+            },
+            {
+              "id": "9ce54e49-9222-4a09-afcc-d18317c6b061",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.NpiNumber",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.NpiNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "97e80eeb-e9b7-450b-933b-186fb41b2cdb",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Name",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Name }}",
+              "type": "string"
+            },
+            {
+              "id": "e6d63735-b2df-49ee-9ca6-95be70758138",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Address1",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Address1 }}",
+              "type": "string"
+            },
+            {
+              "id": "4e994356-a89b-41c5-a467-7451c462a273",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Contact.Phone",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Pharmacy.Contact.Phone }}",
+              "type": "string"
+            },
+            {
+              "id": "033b365d-1666-48dc-8015-3260c0b6ecea",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.FormularyID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.FormularyID }}",
+              "type": "string"
+            },
+            {
+              "id": "ad5fa661-3fdf-4967-b86a-c0c83b60964f",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.GroupNumber",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.GroupNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "7125a026-f24c-4f6e-8107-049db7ad1ff8",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.GroupName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.GroupName }}",
+              "type": "string"
+            },
+            {
+              "id": "595e3a9a-84c9-4972-a7ea-395b5e5b9cc1",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.CovID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.CovID }}",
+              "type": "string"
+            },
+            {
+              "id": "3fe0b12f-9aba-4193-8ef1-5633b7f1ff04",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PlanID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PlanID }}",
+              "type": "string"
+            },
+            {
+              "id": "cee04086-9702-47c4-8a33-cc6b1189c8fe",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PlanName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PlanName }}",
+              "type": "string"
+            },
+            {
+              "id": "bd82a1f4-c2e8-4bbd-97c9-ccafaae9d954",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.AltID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.AltID }}",
+              "type": "string"
+            },
+            {
+              "id": "1ee7577d-f9dc-4c2c-9ae4-c59a24f298d4",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PersonCode",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PersonCode }}",
+              "type": "string"
+            },
+            {
+              "id": "004f4844-f058-4b93-82c1-79c4a39b23a0",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PatientRelationshipCode",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Encounter.PatientRelationshipCode }}",
+              "type": "string"
+            },
+            {
+              "id": "f341a8a8-61a7-412f-ab03-df8663ade748",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.RowId",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.RowId }}",
+              "type": "string"
+            },
+            {
+              "id": "b8f96df4-c7ad-429a-b99f-1358740c905a",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.PbmID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.PbmID }}",
+              "type": "string"
+            },
+            {
+              "id": "523c310e-11b3-485e-8118-da74ab003517",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.PbmName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.PbmName }}",
+              "type": "string"
+            },
+            {
+              "id": "fddb6898-e7e3-4cd4-aecf-c9e0e7af0e2b",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.LastName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.LastName }}",
+              "type": "string"
+            },
+            {
+              "id": "5aa56c6f-7100-4b3e-9c4b-5cc344496e0c",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.FirstName",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.FirstName }}",
+              "type": "string"
+            },
+            {
+              "id": "03c76d2f-dac4-4ed0-a516-7c0f8d274ffb",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.Address1",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.Address1 }}",
+              "type": "string"
+            },
+            {
+              "id": "faaee825-9bb4-4b52-ad2e-42758c05f44e",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.City",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.City }}",
+              "type": "string"
+            },
+            {
+              "id": "fa916f06-caed-4409-8197-c74de5de4ce8",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.ZipCode",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.ZipCode }}",
+              "type": "string"
+            },
+            {
+              "id": "700e60ae-8c77-4dfb-a6ad-051fc5bdd716",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.Dob",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.Dob }}",
+              "type": "string"
+            },
+            {
+              "id": "bb6c7f7b-1803-4da8-ae3e-d746ad4dc906",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.CrdHldrBinNo",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.CrdHldrBinNo }}",
+              "type": "string"
+            },
+            {
+              "id": "1734bc23-2c48-4a08-bd3c-34ebe64750de",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.GroupID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.GroupID }}",
+              "type": "string"
+            },
+            {
+              "id": "7368ca5c-3da5-4a8a-85b0-5faa7ff24f62",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.MutuallyDefined",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.MutuallyDefined }}",
+              "type": "string"
+            },
+            {
+              "id": "fb994797-bc30-4e4d-8a7a-264073eddea3",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.InfoSourcePayerID",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.CardHolder.InfoSourcePayerID }}",
+              "type": "string"
+            },
+            {
+              "id": "054e5e54-150c-41d7-a59d-d4f32d668fae",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.PrescriberOrderNo",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.PrescriberOrderNo }}",
+              "type": "string"
+            },
+            {
+              "id": "ff0acc7e-8507-49f8-8170-be7e26491ce8",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.NDCNumber",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.NDCNumber }}",
+              "type": "string"
+            },
+            {
+              "id": "79d35159-3f94-4bdc-b885-8de6819d97d6",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.DrugDescription",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.DrugDescription }}",
+              "type": "string"
+            },
+            {
+              "id": "26b6c7c7-c6ed-47db-a577-eb890a13d40c",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.Quantity",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.Quantity }}",
+              "type": "string"
+            },
+            {
+              "id": "34ba4fae-747f-48bb-86a4-5ce196fcfc06",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD9Code",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD9Code }}",
+              "type": "string"
+            },
+            {
+              "id": "e798fe81-2ea4-4e2c-8c11-8e86e875c81a",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD9CodeDescription",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD9CodeDescription }}",
+              "type": "string"
+            },
+            {
+              "id": "14d24976-3013-4aca-a3c3-cde757d1afde",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.SIGText",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.SIGText }}",
+              "type": "string"
+            },
+            {
+              "id": "e3427cad-29d0-45d8-8226-90379b8891ab",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RefillQuantity",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RefillQuantity }}",
+              "type": "string"
+            },
+            {
+              "id": "a196ece0-cc2a-4271-8abe-b8d4911d2d19",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RefillQuantityQual",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RefillQuantityQual }}",
+              "type": "string"
+            },
+            {
+              "id": "40422c4e-cc98-414d-8e33-949c961f40d1",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.DAWDetail",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.DAWDetail }}",
+              "type": "string"
+            },
+            {
+              "id": "db24e38a-919c-49a5-b1ae-02cfeeede8b1",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD10Code",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD10Code }}",
+              "type": "string"
+            },
+            {
+              "id": "36ce7937-8c5b-419a-be09-7c09b99ec109",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD10CodeDescription",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.ICD10CodeDescription }}",
+              "type": "string"
+            },
+            {
+              "id": "d488b135-3adf-43c4-ac3b-e7c280347524",
+              "name": "AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RxDate",
+              "value": "={{ $json.AllscriptsMessageEnvelope.MessageContent.PrescriptionMessage.Prescription.RxDate }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f9e9e6fc-e96f-4944-968a-d28ccdb8e50f",
+      "name": "Separating",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1680,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n[ERXMESSAGE_ID],m.[ERXMESSAGE_XML],m.ERXMESSAGE_TYPE\n\n  FROM [EMR].[HPSITE].[ERXMESSAGE] M\n  left join [HPSITE].[DEMOGRAPHICS_VIEW] D on d.IMREDEM_CODE=m.ERXMESSAGE_PATIENT_ID\n  left join [HPSITE].[ALLCAREGIVERS_VIEW] C on c.IMREPROV_CODE=m.ERXMESSAGE_PROVIDER_ID\n  WHERE M.ERXMESSAGE_XML LIKE '%RITE%' AND CAST(M.ERXMESSAGE_DATE AS DATE) > DATEADD(DAY,-3,CAST(GETDATE() AS date))\n  ORDER BY M.ERXMESSAGE_DATE DESC"
+      },
+      "id": "d3659f4d-b3a7-4ffc-82fd-36157530028c",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        780,
+        440
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "6a03ff30-8310-4651-b4c9-9a1fcd898512",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1180,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "ERXMESSAGE_ID",
+              "field2": "ERXMESSAGE_ID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95dbdeb1-617a-4031-8e05-3a55b3cc1ae8",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1020,
+        280
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-24T10:15:01.716Z",
+  "versionId": "97a04e4c-0447-44e0-a077-ca02c05f2e30"
+}
