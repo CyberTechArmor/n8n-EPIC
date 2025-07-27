@@ -1,0 +1,19 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-12-15T12:01:03.957Z",
+  "id": "yyoeORFRUljg2FnL",
+  "isArchived": false,
+  "meta": null,
+  "name": "ElevenLabs",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-15T12:01:03.957Z",
+  "versionId": "e4f8b820-9670-4720-9a8a-8af26c298e74"
+}
