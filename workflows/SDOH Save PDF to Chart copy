@@ -1,0 +1,1104 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MRN find IMREDEM": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        []
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request10": {
+      "main": [
+        [
+          {
+            "node": "MRN find IMREDEM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request11": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request14": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-06T19:14:03.723Z",
+  "id": "E5RMwGrLnKt8ZeHb",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "SDOH Save PDF to Chart copy",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-d6d4-NMNWokflow-prod\",      \"Password\":\"%p3CpcN3nW!eFlfWt%St7Pp0435@\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "fe8fe995-ade8-40a8-abe9-a6381dde94c8",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json.Token }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "87c8c1a1-6618-4428-a213-b5d375af19e2",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -120,
+        1077.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "601713f7-65cb-4e81-bf39-d6ad78664afe",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1413,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "44c68c4c-35f3-44ec-97b7-9e69b7bb35e9",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        1077.3563914267736
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASEHR Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 563.4038572291529,
+        "width": 1229.4582414664594,
+        "color": 2
+      },
+      "id": "6fbd2740-4ec1-4dcb-bf37-09576788be31",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -336.0673286032261,
+        771.7980141903225
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## SDOH Limesurvey webhooks\n** Webhook incoming to specify ID\n** HTTP request to PDF",
+        "height": 484.1433066383917,
+        "width": 465.9616916459639,
+        "color": 4
+      },
+      "id": "da2097ff-3d94-4e50-b582-ddcd27faca23",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -345,
+        -167
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Process and send \n**Combine the data, remove any \" and \\n, then send to EHR",
+        "height": 291.63680788482196,
+        "width": 521.1764796477369
+      },
+      "id": "e515154f-f10e-4540-b797-9dd9b473fc96",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://forms.epicpc.com/limesurvey/index.php/plugins/direct?plugin=ResponseOutput&function=print&survey_id={{ $json[\"query\"][\"survey_id\"] }}=INLINE&token={{ $json[\"query\"][\"stoken\"] }}&pdf=true",
+        "options": {}
+      },
+      "id": "b0396015-fdc5-4a39-a7fa-13e557eabc84",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        491,
+        172
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN NVARCHAR(10) = '{{ $json.result[\"attribute_1\"] }}';\n--DECLARE @MRN VARCHAR(10) = '502880';\n \nselect top 1 s.DEM_EXTERNALID as MRN,s.IMREDEM_CODE,s.PATIENT_FIRSTNAME,s.PATIENT_LASTNAME\nfrom [HPSITE].[SCHEDULE_VIEW] s \nleft join [EMR].[HPSITE].[DEMOGRAPHICS] d on d.IMREDEM_CODE=s.IMREDEM_CODE\nWHERE S.DEM_EXTERNALID = @MRN\nORDER BY S.SCHED_DATE DESC"
+      },
+      "id": "9a205a7d-91fb-40b0-a1d5-391ae38ed975",
+      "name": "MRN find IMREDEM",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        391,
+        -8
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=SaveScanDocument"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $json.IMREDEM_CODE }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $json.description }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=SDOH_{{ $('MRN find IMREDEM').item.json[\"MRN\"] }}.pdf"
+            },
+            {
+              "name": "Parameter3",
+              "value": "<docattributes><doctitle>CCM Note: Referral Management – SDOH</doctitle></docattributes>"
+            },
+            {
+              "name": "Data",
+              "value": "={{ $json[\"data\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "7fd64e1c-ab1a-4659-87b2-4d26fafdd7f6",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1653,
+        460
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "123489d6-c708-4638-b68c-d6ef9f0aef81",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        731,
+        -128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"Token\":\"{{ $('HTTP Request').item.json[\"data\"] }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "77ac056a-5301-49f8-81bf-a18d51357437",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Token",
+              "value": "F745B96A-F1C8-4D1E-A83B-297A4968DE29"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"LastLogs\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\", \"Token\":\"F745B96A-F1C8-4D1E-A83B-297A4968DE29\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "9494f55f-2759-4d4f-b04c-f8859bfd2f66",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -120,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "id": "08716410-8782-4458-9be3-eea4cc7fba04",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        651,
+        112
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "projectId": "p1b58wpxu7pkobf",
+        "table": "m3yu7kqac7bccbe",
+        "id": "1"
+      },
+      "id": "5e9980cf-55a6-4a0a-a8ff-256eb23ca485",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        -300,
+        1080
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "p1b58wpxu7pkobf",
+        "table": "m3yu7kqac7bccbe",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Id",
+              "fieldValue": "1"
+            },
+            {
+              "fieldName": "Account",
+              "fieldValue": "EHR"
+            },
+            {
+              "fieldName": "Token",
+              "fieldValue": "={{ $json.data }}"
+            }
+          ]
+        }
+      },
+      "id": "7b86ed47-7357-4b9a-bcde-64d7f2207b33",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        560,
+        1120
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "projectId": "p1b58wpxu7pkobf",
+        "table": "m3yu7kqac7bccbe",
+        "id": "1"
+      },
+      "id": "57b91645-218b-4a0c-9278-8e0aaf37c461",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        360,
+        880
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "height": 256.4039716193548,
+        "width": 195.01147991096775,
+        "color": 4
+      },
+      "id": "aa22233e-07da-4d86-9ca3-a8379a71996a",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        305,
+        777
+      ]
+    },
+    {
+      "parameters": {
+        "height": 294.96556026709675,
+        "width": 590.2677635503218,
+        "color": 3
+      },
+      "id": "c80b2459-0b4a-46fc-8fd3-7a8dd9e61155",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        300,
+        1037
+      ]
+    },
+    {
+      "parameters": {
+        "height": 476.28983488215505,
+        "width": 740.9076517926998,
+        "color": 5
+      },
+      "id": "b13f14f6-a94f-43f6-9e37-b08bb81a3266",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        140,
+        -160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "876ee562-fe92-4204-8fdd-15eb12dedfef",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Thank You!</title>\n<style>\n  body {\n    font-family: 'Arial', sans-serif;\n    background-color: #f7f7f7;\n    margin: 0;\n    padding: 0;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n    text-align: center;\n  }\n  .thank-you-container {\n    background-color: #fff;\n    padding: 40px;\n    border-radius: 15px;\n    box-shadow: 0 10px 25px rgba(0,0,0,0.1);\n    max-width: 400px;\n  }\n  h1 {\n    color: #4A90E2;\n    font-size: 2.5em;\n  }\n  p {\n    font-size: 1.2em;\n    color: #666;\n  }\n  .thank-you-note {\n    margin-top: 20px;\n  }\n</style>\n</head>\n<body>\n<div class=\"thank-you-container\">\n    <h1>Thank You.</h1>\n        <div class=\"thank-you-note\">\n        <p>Please let us know if we can do anything else for you!</p>\n    </div>\n</div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "1f889c5a-0077-46b2-9fde-6e5a23ae7f04",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -269,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "6334e9bf-9477-4de1-a96c-e63f38071982",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -129,
+        52
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"method\":\"get_participant_properties\",\"params\":{\"sSessionKey\":\"{{ $('HTTP Request6').item.json[\"result\"] }}\", \"iSurveyID\":\"{{ $('Webhook').item.json[\"query\"][\"survey_id\"] }}\",\"aTokenQueryProperties\":{\"token\":\"{{ $('Webhook').item.json[\"query\"][\"stoken\"] }}\"}, \"aTokenProperties\":[\"email\",\"attribute_1\",\"firstname\"]},\"id\":1}",
+        "options": {}
+      },
+      "id": "a50dedfd-c5d2-44a9-bb2d-a0fa01043ae0",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -49,
+        -108
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.Token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf02b841-acf1-4a6c-92ab-99e940957890",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        760,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "fc1c01e8-ffc8-48da-92e4-aa92dac7140d",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -260,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"get_survey_properties\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\", \"iSurveyID\":{{ $('Webhook').item.json[\"query\"][\"survey_id\"] }}},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "b8080f79-8ed9-443a-8b0a-8df6c6ad76b3",
+      "name": "HTTP Request11",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -60,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"get_group_properties\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\", \"iGroupID\":{{ $json.result.gsid }}},    \"id\": 1}",
+        "options": {}
+      },
+      "id": "bad3dbcb-d650-4bb4-a46d-63c8707e14ef",
+      "name": "HTTP Request12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"list_groups\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\", \"iSurveyID\":{{ $json.result.sid }}},    \"id\": 1}",
+        "options": {}
+      },
+      "id": "32eb9e74-0705-4825-8e06-424f3008ac0c",
+      "name": "HTTP Request13",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        640,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"method\": \"list_survey_groups\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request8').item.json[\"result\"] }}\"},    \"id\": 1}",
+        "options": {}
+      },
+      "id": "7db75026-6544-4238-b57f-25d0f7d66ecd",
+      "name": "HTTP Request14",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        140,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "b1d1a591-e27c-484f-85f5-b00e51d08c3a",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        320,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.gsid }}",
+                    "rightValue": "={{ $('HTTP Request11').item.json.result.gsid }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5aa4a07f-70a8-49f7-80df-68e67f9196c3",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        500,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "9ea98f36-646d-4243-8078-d8dc16f707ff",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1040,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9f9f791-7ffe-48e6-b0dd-2b0c0890ef03",
+              "name": "description",
+              "value": "={{ $json.description }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f6b5f480-dacd-4d30-8c0d-b903c3e121c1",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        720,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "path": "ebeaedc6-ceff-4084-8363-030cb4edace7",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5f743663-a3e3-4902-9c81-0b7b865f7669",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -1100,
+        320
+      ],
+      "webhookId": "f24663e7-f259-4333-9d08-f93f22a55f24"
+    }
+  ],
+  "pinData": {
+    "HTTP Request": [
+      {
+        "json": {
+          "data": "5D816E3F-F0D6-4A69-8257-D573D41195CE",
+          "headers": {
+            "cache-control": "private",
+            "content-type": "application/octet-stream",
+            "server": "Microsoft-IIS/10.0",
+            "x-aspnet-version": "4.0.30319",
+            "x-powered-by": "ASP.NET",
+            "date": "Mon, 22 Apr 2024 16:08:35 GMT",
+            "connection": "close",
+            "content-length": "36"
+          },
+          "statusCode": 200,
+          "statusMessage": "OK"
+        }
+      }
+    ],
+    "NocoDB1": [
+      {
+        "json": {
+          "Id": "1",
+          "Account": "EHR",
+          "Token": "89B7D054-5CBC-4CE0-967E-20346ED28BD2"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "172.58.124.216",
+            "x-forwarded-for": "172.58.124.216",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "mrn": "",
+            "survey_id": "847976",
+            "stoken": "Mp6fW"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/ebeaedc6-ceff-4084-8363-030cb4edace7",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-04-20T12:39:52.246Z",
+      "updatedAt": "2024-04-20T12:39:52.246Z",
+      "id": "DMUnqPRoVtM6NOgJ",
+      "name": "Save Scan Document"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-06T20:46:12.946Z",
+  "versionId": "71a01e74-04e1-48c9-88ee-3323c5085b1b"
+}
