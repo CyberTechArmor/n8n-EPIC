@@ -1,0 +1,636 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-26T14:08:29.517Z",
+  "id": "yyGxMx0HZ6iZli1k",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "DynamicTicketSystem Tracker",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "09e88441-a4fb-40ba-9bfa-196bd2c689c8",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pwvejbwcowen0as",
+        "table": "mn2c37f3xnlbre3",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        0
+      ],
+      "id": "0353baef-dd95-4be1-a323-f5d42b763d00",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Compute the maximum TicketSystemId from the incoming records (assumes numeric IDs)\n// and then compute the next TicketSystemId (start at 1 if no valid ids found)\nlet maxTicketSystemId = 0;\nrecords.forEach(rec => {\n  if (rec.TicketSystemId && Number(rec.TicketSystemId) > maxTicketSystemId) {\n    maxTicketSystemId = Number(rec.TicketSystemId);\n  }\n});\nconst newTicketSystemId = maxTicketSystemId + 1;\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the ticket systems alphabetically by TicketSystem name\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Group systems by Category into three sections: Issue, Checklist, Request.\nconst sections = {\n  Issue: [],\n  Checklist: [],\n  Request: []\n};\n\nsystems.forEach(system => {\n  // If the record has a valid Category (Issue, Checklist, Request), add it to that section.\n  // Otherwise, default to the Issue section.\n  if (system.Category && sections[system.Category]) {\n    sections[system.Category].push(system);\n  } else {\n    sections.Issue.push(system);\n  }\n});\n\n// Optionally, sort each section alphabetically by TicketSystem name.\nfor (const key in sections) {\n  sections[key].sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n}\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-ticketsystemid=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h3>${system.TicketSystem}</h3>\n      <p>Owner: ${system.Owner}</p>\n      <p>Ticket System ID: ${system.TicketSystemId}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for each section based on Category.\nconst sectionsHtml = Object.entries(sections)\n  .map(([sectionName, systemsArray]) => {\n    const cardsHtml = systemsArray.map(generateCard).join('\\n');\n    return `\n      <section id=\"${sectionName.toLowerCase()}-section\">\n        <h2>${sectionName}</h2>\n        <div class=\"cards-container\">\n          ${cardsHtml}\n        </div>\n      </section>\n    `;\n  })\n  .join('\\n');\n\n// Build the complete HTML page with the updated styling for headers\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    /* Section styling: thin black border, subtle background, and spacing */\n    section {\n      border: 1px solid #000;\n      border-radius: 8px;\n      margin-bottom: 40px;\n      padding: 20px;\n      background-color: #f9f9f9;\n    }\n    /* Section header styling for each category */\n    #issue-section h2 {\n      background-color: red;\n      color: #fff;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n    #checklist-section h2 {\n      background-color: yellow;\n      color: #000;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n    #request-section h2 {\n      background-color: green;\n      color: #fff;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h3 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n    /* Removed .add-system CSS as the Add button is no longer used */\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  ${sectionsHtml}\n\n  <script>\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' \n                  + encodeURIComponent(ticketSystem) \n                  + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const ticketSystemId = card.getAttribute('data-ticketsystemid');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' \n                        + encodeURIComponent(ts) \n                        + '&user=' + encodeURIComponent(userParam)\n                        + '&TicketSystemId=' + encodeURIComponent(ticketSystemId);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "d00360e2-1874-4a10-be88-20c4de9a809f",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "path": "514a4954-d74e-4183-9694-94d76671c483",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        -320
+      ],
+      "id": "bac488ef-31bc-4e70-a0f9-d27f6c7cd304",
+      "name": "Webhook",
+      "webhookId": "514a4954-d74e-4183-9694-94d76671c483"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        0
+      ],
+      "id": "5de6c42a-7539-47fb-b423-c28ab31c997b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e979c162-8802-478b-8072-bab2ba11b4cc",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        560
+      ],
+      "id": "311c80d4-34c9-4a95-bba1-0ad5397cc30e",
+      "name": "Webhook1",
+      "webhookId": "e979c162-8802-478b-8072-bab2ba11b4cc"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pwvejbwcowen0as",
+        "table": "m20mdlv9rgbjski",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        180,
+        560
+      ],
+      "id": "ed70c264-f85e-4af5-b3a0-1fedbd766160",
+      "name": "NocoDB1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        560
+      ],
+      "id": "75b0148f-1cdd-4d31-b967-2d7ddfee9366",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    // Only add the ticket system if not already included.\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Helper function to generate the HTML for a single ticket system card.\n// When the card is clicked, it opens the URL with ?system={TicketSystem}\nfunction generateCard(system) {\n  const url = `https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=${encodeURIComponent(system.TicketSystem)}`;\n  return `\n    <div class=\"card\" onclick=\"window.location.href='${url}'\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page using a style similar to the provided sample\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      cursor: pointer;\n      transition: transform 0.2s, box-shadow 0.2s;\n      background-color: #ffffff;\n    }\n    .card:hover {\n      transform: translateY(-5px);\n      box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 0;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        -80
+      ],
+      "id": "7904fff1-22e1-42e0-8ce1-6f43da3f7fec",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\n// When the card is clicked, it opens the URL in a new tab with ?system={TicketSystem}\nfunction generateCard(system) {\n  const url = `https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=${encodeURIComponent(system.TicketSystem)}`;\n  return `\n    <div class=\"card\" onclick=\"window.open('${url}', '_blank')\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      cursor: pointer;\n      transition: transform 0.2s, box-shadow 0.2s;\n      background-color: #ffffff;\n    }\n    .card:hover {\n      transform: translateY(-5px);\n      box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // On page load, post to the webhook to retrieve ticket data\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \\`Active: \\${counts[ts].Active}, Completed: \\${counts[ts].Completed}\\`;\n        }\n      }\n      \n      // For any cards with no counts, display zeros\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Trigger the fetch when the page loads\n    window.addEventListener('DOMContentLoaded', fetchTicketData);\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        -200
+      ],
+      "id": "4f58fb49-8818-4a2a-b285-96f49d722288",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system appended as a query parameter in a new tab.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      const urlParams = new URLSearchParams(window.location.search);\n      const userParam = urlParams.get('user');\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' + encodeURIComponent(ts);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        -340
+      ],
+      "id": "ee5962f5-46db-4fff-b991-37d268d1cf31",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system and user appended as query parameters in a new tab.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' + encodeURIComponent(ts) + '&user=' + encodeURIComponent(userParam);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        -460
+      ],
+      "id": "5da23eb6-5488-41fe-ae0f-0a24cb7434be",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d52c231c-e952-4ab3-9e59-177e78c58524",
+              "leftValue": "={{ $json.query.role }}",
+              "rightValue": "Nuwell",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "9ecdb347-2d9f-42ed-94c0-03a2226f6818",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "jgreen@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "7bcf085e-97b3-4355-8625-df95315a6ef5",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "jzreik@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "bdadd1a7-0f4b-40d0-902f-6a88a55deb39",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "tnaman@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "8e5bc63d-4d98-445b-b0c2-02413986e862",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "vhabbo@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "e17e95ce-03c2-4561-b90a-1647bfb3bb93",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "sfietsam@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "62a79b8a-c141-4a27-8886-2dc3436e6c5b",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "phartwig@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        -320
+      ],
+      "id": "dc518906-03f8-4944-b88e-5aaf0c6d724d",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pwvejbwcowen0as",
+        "table": "mn2c37f3xnlbre3",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        180,
+        -340
+      ],
+      "id": "4b4473b4-140b-486a-a528-62db1e6b4c9e",
+      "name": "NocoDB2",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Compute the maximum TicketSystemId from the incoming records (assumes numeric IDs)\n// and then compute the next TicketSystemId (start at 1 if no valid ids found)\nlet maxTicketSystemId = 0;\nrecords.forEach(rec => {\n  if (rec.TicketSystemId && Number(rec.TicketSystemId) > maxTicketSystemId) {\n    maxTicketSystemId = Number(rec.TicketSystemId);\n  }\n});\nconst newTicketSystemId = maxTicketSystemId + 1;\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the ticket systems alphabetically by TicketSystem name\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Group systems by Category into three sections: Issue, Checklist, Request.\nconst sections = {\n  Issue: [],\n  Checklist: [],\n  Request: []\n};\n\nsystems.forEach(system => {\n  // If the record has a valid Category (Issue, Checklist, Request), add it to that section.\n  // Otherwise, default to the Issue section.\n  if (system.Category && sections[system.Category]) {\n    sections[system.Category].push(system);\n  } else {\n    sections.Issue.push(system);\n  }\n});\n\n// Optionally, sort each section alphabetically by TicketSystem name.\nfor (const key in sections) {\n  sections[key].sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n}\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-ticketsystemid=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h3>${system.TicketSystem}</h3>\n      <p>Owner: ${system.Owner}</p>\n      <p>Ticket System ID: ${system.TicketSystemId}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for each section based on Category.\nconst sectionsHtml = Object.entries(sections)\n  .map(([sectionName, systemsArray]) => {\n    const cardsHtml = systemsArray.map(generateCard).join('\\n');\n    return `\n      <section id=\"${sectionName.toLowerCase()}-section\">\n        <h2>${sectionName}</h2>\n        <div class=\"cards-container\">\n          ${cardsHtml}\n        </div>\n      </section>\n    `;\n  })\n  .join('\\n');\n\n// Build the complete HTML page with the updated styling for headers\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .action-bar {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n\n    /* Section styling: thin black border, subtle background, and spacing */\n    section {\n      border: 1px solid #000;\n      border-radius: 8px;\n      margin-bottom: 40px;\n      padding: 20px;\n      background-color: #f9f9f9;\n    }\n\n    /* Section header styling for each category */\n    #issue-section h2 {\n      background-color: red;\n      color: #fff;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n    #checklist-section h2 {\n      background-color: yellow;\n      color: #000;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n    #request-section h2 {\n      background-color: green;\n      color: #fff;\n      font-size: 28px;\n      text-align: center;\n      padding: 10px;\n      border-radius: 4px;\n      margin-top: 0;\n      margin-bottom: 20px;\n    }\n\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h3 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n    .add-system {\n      background-color: green;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"action-bar\">\n    <button id=\"add-ticket-system\" class=\"add-system\">Add Ticket System</button>\n  </div>\n  ${sectionsHtml}\n\n  <script>\n    // Set the next available TicketSystemId computed from the backend.\n    const newTicketSystemId = ${newTicketSystemId};\n\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' \n                  + encodeURIComponent(ticketSystem) \n                  + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // Event listener for the \"Add Ticket System\" button.\n    document.getElementById('add-ticket-system').addEventListener('click', function() {\n      const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?user=' \n                  + encodeURIComponent(userParam) \n                  + '&TicketSystemId=' + encodeURIComponent(newTicketSystemId);\n      window.open(url, '_blank');\n    });\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const ticketSystemId = card.getAttribute('data-ticketsystemid');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' \n                        + encodeURIComponent(ts) \n                        + '&user=' + encodeURIComponent(userParam)\n                        + '&TicketSystemId=' + encodeURIComponent(ticketSystemId);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -340
+      ],
+      "id": "67fe128d-b59a-4fb8-b5f9-538bc35bc617",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f2c76b72-a913-4e03-87d0-295c79c06460",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -340,
+        -320
+      ],
+      "id": "3003418a-06d8-4041-b016-bae5f5e6edca",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      html: `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket System</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 40px;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n    }\n    .title {\n      font-size: 42px;\n      font-weight: bold;\n      margin-bottom: 40px;\n      padding: 10px 20px;\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .form-container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      width: 100%;\n      max-width: 600px;\n    }\n    .label-container {\n      width: 100%;\n      margin-bottom: 8px;\n      text-align: left;\n    }\n    .input-container {\n      width: 100%;\n      margin-bottom: 20px;\n      text-align: left;\n    }\n    label {\n      font-size: 18px;\n    }\n    input[type=\"email\"] {\n      width: 100%;\n      max-width: 400px;\n      padding: 10px;\n      font-size: 16px;\n      border: 1px solid #ccc;\n      border-radius: 4px;\n      margin-top: 8px;\n    }\n    .button-container {\n      width: 100%;\n      display: flex;\n      justify-content: flex-end;\n    }\n    button[type=\"submit\"] {\n      background-color: #000;\n      color: #fff;\n      padding: 10px 20px;\n      font-size: 16px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    button[type=\"submit\"]:hover {\n      background-color: #333;\n    }\n    .message {\n      text-align: center;\n      font-size: 18px;\n      margin-top: 30px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"title\" id=\"systemTitle\">Ticket System</div>\n  <div class=\"form-container\">\n    <form id=\"emailForm\">\n      <div class=\"label-container\">\n        <label for=\"emailInput\">Please enter your email:</label>\n      </div>\n      <div class=\"input-container\">\n        <input type=\"email\" id=\"emailInput\" name=\"email\" required />\n      </div>\n      <div class=\"button-container\">\n        <button type=\"submit\">Submit</button>\n      </div>\n    </form>\n  </div>\n  <script>\n    // Retrieve query parameters from the current URL.\n    const urlParams = new URLSearchParams(window.location.search);\n    const system = urlParams.get('system') || 'Ticket System';\n    const user = urlParams.get('user');\n    \n    // Set the page title and header to the system value.\n    document.getElementById('systemTitle').textContent = system;\n    document.title = system;\n    \n    // If the \"user\" parameter already exists, hide the email form and display a message.\n    if (user) {\n      document.getElementById('emailForm').style.display = 'none';\n      const message = document.createElement('p');\n      message.className = 'message';\n      message.textContent = 'Email already provided.';\n      document.body.appendChild(message);\n    }\n    \n    // When the form is submitted, append the \"user\" parameter and reload the page.\n    document.getElementById('emailForm').addEventListener('submit', function(event) {\n      event.preventDefault();\n      const email = document.getElementById('emailInput').value;\n      urlParams.set('user', email);\n      // Redirect to the same URL with the new query parameter.\n      window.location.search = urlParams.toString();\n    });\n  </script>\n</body>\n</html>`\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        -520
+      ],
+      "id": "7f9946bd-6026-4d5b-b2b8-139fd8127e76",
+      "name": "Code6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        -520
+      ],
+      "id": "ef84e629-ab19-4757-9abb-b26aba7f099f",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system and user appended as query parameters in a new tab.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' + encodeURIComponent(ts) + '&user=' + encodeURIComponent(userParam);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        140
+      ],
+      "id": "cd1d40fd-bd04-4eb7-bc45-6bc735b668fc",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystemId.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystemId]) {\n      uniqueSystems[rec.TicketSystemId] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the systems array alphabetically by the TicketSystem property\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(id) {\n  return String(id).replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem-id=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystemId)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystemId}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system ID and user appended as query parameters in a new tab.\n    function handleSubmitRequest(ticketSystemId) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystemId) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystemId.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const tsId = ticket.TicketSystemId;\n        if (!counts[tsId]) {\n          counts[tsId] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[tsId].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[tsId].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const tsId in counts) {\n        const safeElementId = 'status_' + safeId(tsId);\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[tsId].Active + \", Completed: \" + counts[tsId].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const tsId = card.getAttribute('data-ticketsystem-id');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' + encodeURIComponent(tsId) + '&user=' + encodeURIComponent(userParam);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        180
+      ],
+      "id": "a9b4c93d-69e8-4dcb-9880-45300fcd530f",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Compute the maximum TicketSystemId from the incoming records (assumes numeric IDs)\n// and then compute the next TicketSystemId (start at 1 if no valid ids found)\nlet maxTicketSystemId = 0;\nrecords.forEach(rec => {\n  if (rec.TicketSystemId && Number(rec.TicketSystemId) > maxTicketSystemId) {\n    maxTicketSystemId = Number(rec.TicketSystemId);\n  }\n});\nconst newTicketSystemId = maxTicketSystemId + 1;\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the ticket systems alphabetically by TicketSystem name\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\n// The card now includes a data-ticketsystemid attribute and displays the TicketSystemId.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-ticketsystemid=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p>Ticket System ID: ${system.TicketSystemId}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .action-bar {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n    .add-system {\n      background-color: green;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"action-bar\">\n    <button id=\"add-ticket-system\" class=\"add-system\">Add Ticket System</button>\n  </div>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Set the next available TicketSystemId computed from the backend.\n    const newTicketSystemId = ${newTicketSystemId};\n\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system and user appended as query parameters in a new tab.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // Event listener for the \"Add Ticket System\" button.\n    // The newTicketSystemId is appended as a parameter so the new system can be saved with the next incremental ID.\n    document.getElementById('add-ticket-system').addEventListener('click', function() {\n      const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?user=' + encodeURIComponent(userParam) + '&TicketSystemId=' + encodeURIComponent(newTicketSystemId);\n      window.open(url, '_blank');\n    });\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const ticketSystemId = card.getAttribute('data-ticketsystemid');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' \n                        + encodeURIComponent(ts) \n                        + '&user=' + encodeURIComponent(userParam)\n                        + '&TicketSystemId=' + encodeURIComponent(ticketSystemId);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        -440
+      ],
+      "id": "e931fcc8-8b79-4d6a-8c31-790bff426344",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Compute the maximum TicketSystemId from the incoming records (assumes numeric IDs)\n// and then compute the next TicketSystemId (start at 1 if no valid ids found)\nlet maxTicketSystemId = 0;\nrecords.forEach(rec => {\n  if (rec.TicketSystemId && Number(rec.TicketSystemId) > maxTicketSystemId) {\n    maxTicketSystemId = Number(rec.TicketSystemId);\n  }\n});\nconst newTicketSystemId = maxTicketSystemId + 1;\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the ticket systems alphabetically by TicketSystem name\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Group systems by Category into three sections: Issue, Checklist, Request.\nconst sections = {\n  Issue: [],\n  Checklist: [],\n  Request: []\n};\n\nsystems.forEach(system => {\n  // If the record has a valid Category (Issue, Checklist, Request), add it to that section.\n  // Otherwise, default to the Issue section.\n  if (system.Category && sections[system.Category]) {\n    sections[system.Category].push(system);\n  } else {\n    sections.Issue.push(system);\n  }\n});\n\n// Optionally, sort each section alphabetically by TicketSystem name.\nfor (const key in sections) {\n  sections[key].sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n}\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\n// The card now includes a data-ticketsystemid attribute and displays the TicketSystemId.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-ticketsystemid=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h3>${system.TicketSystem}</h3>\n      <p>Owner: ${system.Owner}</p>\n      <p>Ticket System ID: ${system.TicketSystemId}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for each section based on Category.\nconst sectionsHtml = Object.entries(sections).map(([sectionName, systemsArray]) => {\n  const cardsHtml = systemsArray.map(generateCard).join('\\n');\n  return `\n    <section id=\"${sectionName.toLowerCase()}-section\">\n      <h2>${sectionName}</h2>\n      <div class=\"cards-container\">\n        ${cardsHtml}\n      </div>\n    </section>\n  `;\n}).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .action-bar {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n    section {\n      margin-bottom: 40px;\n    }\n    section h2 {\n      font-size: 32px;\n      margin-bottom: 20px;\n      text-align: center;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h3 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n    .add-system {\n      background-color: green;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"action-bar\">\n    <button id=\"add-ticket-system\" class=\"add-system\">Add Ticket System</button>\n  </div>\n  ${sectionsHtml}\n\n  <script>\n    // Set the next available TicketSystemId computed from the backend.\n    const newTicketSystemId = ${newTicketSystemId};\n\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // Event listener for the \"Add Ticket System\" button.\n    document.getElementById('add-ticket-system').addEventListener('click', function() {\n      const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?user=' + encodeURIComponent(userParam) + '&TicketSystemId=' + encodeURIComponent(newTicketSystemId);\n      window.open(url, '_blank');\n    });\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const ticketSystemId = card.getAttribute('data-ticketsystemid');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' \n                        + encodeURIComponent(ts) \n                        + '&user=' + encodeURIComponent(userParam)\n                        + '&TicketSystemId=' + encodeURIComponent(ticketSystemId);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        -480
+      ],
+      "id": "c4558321-bee1-46f9-ad53-1f757f4e6d2a",
+      "name": "Code10"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node\n\n// Get the incoming JSON records (each record represents a ticket system question)\nconst records = items.map(item => item.json);\n\n// Create an object to store unique ticket systems keyed by TicketSystem.\n// Only include records that have an Owner defined (i.e. are user-owned).\nconst uniqueSystems = {};\nrecords.forEach(rec => {\n  if (rec.Owner) {\n    if (!uniqueSystems[rec.TicketSystem]) {\n      uniqueSystems[rec.TicketSystem] = rec;\n    }\n  }\n});\n\n// Convert the unique systems object to an array\nconst systems = Object.values(uniqueSystems);\n\n// Sort the ticket systems alphabetically by TicketSystem name\nsystems.sort((a, b) => a.TicketSystem.localeCompare(b.TicketSystem));\n\n// Helper function to create a safe id for HTML elements (replaces spaces with underscores)\nfunction safeId(ticketSystem) {\n  return ticketSystem.replace(/\\s+/g, '_');\n}\n\n// Helper function to generate the HTML for a single ticket system card.\nfunction generateCard(system) {\n  return `\n    <div class=\"card\" data-ticketsystem=\"${system.TicketSystem}\" data-ticketsystemid=\"${system.TicketSystemId}\" data-owner=\"${system.Owner}\">\n      <h2>${system.TicketSystem}</h2>\n      <p>Owner: ${system.Owner}</p>\n      <p id=\"status_${safeId(system.TicketSystem)}\" class=\"ticket-status\">Loading...</p>\n      <div class=\"buttons-container\">\n         <button class=\"submit-request\" onclick=\"handleSubmitRequest('${system.TicketSystem}')\">Submit Request</button>\n         <!-- Edit button will be added dynamically if user query param matches owner -->\n      </div>\n    </div>\n  `;\n}\n\n// Generate HTML for all cards\nconst cardsHtml = systems.map(generateCard).join('\\n');\n\n// Build the complete HTML page with the updated behavior\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Ticket Systems</title>\n  <style>\n    body {\n      font-family: \"Trebuchet MS\", Arial, sans-serif;\n      background-color: #ffffff;\n      margin: 0;\n      padding: 20px;\n    }\n    h1 {\n      text-align: center;\n      margin-bottom: 30px;\n      font-size: 42px;\n    }\n    .cards-container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n    }\n    .card {\n      border: 2px solid #d3d3d3;\n      border-radius: 8px;\n      margin: 10px;\n      padding: 20px;\n      width: 250px;\n      text-align: center;\n      background-color: #ffffff;\n    }\n    .card h2 {\n      font-size: 24px;\n      margin: 0 0 10px;\n    }\n    .card p {\n      font-size: 18px;\n      margin: 5px 0;\n    }\n    .ticket-status {\n      font-weight: bold;\n      margin-top: 10px;\n    }\n    .buttons-container {\n      margin-top: 15px;\n    }\n    button {\n      padding: 10px 20px;\n      border: none;\n      border-radius: 4px;\n      cursor: pointer;\n      font-size: 16px;\n      margin: 5px;\n    }\n    .submit-request {\n      background-color: #000;\n      color: #fff;\n    }\n    .edit-system {\n      background-color: red;\n      color: #fff;\n    }\n  </style>\n</head>\n<body>\n  <h1>Ticket Systems</h1>\n  <div class=\"cards-container\">\n    ${cardsHtml}\n  </div>\n\n  <script>\n    // Retrieve the \"user\" query parameter from the current URL\n    const urlParams = new URLSearchParams(window.location.search);\n    const userParam = urlParams.get('user') || '';\n\n    // Function to handle the Submit Request button click.\n    // It opens the Submit webhook URL with the ticket system and user appended as query parameters in a new tab.\n    function handleSubmitRequest(ticketSystem) {\n      const url = 'https://xl.epicpc.com/webhook/a5de8712-c0cd-4925-9510-f78b1dbdcf79?system=' + encodeURIComponent(ticketSystem) + '&user=' + encodeURIComponent(userParam);\n      window.open(url, '_blank');\n    }\n\n    // On page load, post to the webhook to retrieve ticket data.\n    async function fetchTicketData() {\n      try {\n        const response = await fetch('https://xl.epicpc.com/webhook/e979c162-8802-478b-8072-bab2ba11b4cc', {\n          method: 'POST'\n        });\n        if (!response.ok) {\n          throw new Error('Failed to fetch ticket data');\n        }\n        const data = await response.json();\n        updateTicketCounts(data);\n      } catch (error) {\n        console.error('Error fetching ticket data:', error);\n        // Update each card with an error message if needed.\n        const statusElems = document.querySelectorAll('.ticket-status');\n        statusElems.forEach(elem => {\n          elem.textContent = 'Status: Error loading data';\n        });\n      }\n    }\n\n    // Update the counts for each ticket system card based on the fetched data.\n    function updateTicketCounts(tickets) {\n      // Aggregate counts per TicketSystem.\n      const counts = {};\n      tickets.forEach(ticket => {\n        const ts = ticket.TicketSystem;\n        if (!counts[ts]) {\n          counts[ts] = { Active: 0, Completed: 0 };\n        }\n        if (ticket.Status === 'Active') {\n          counts[ts].Active++;\n        } else if (ticket.Status === 'Completed') {\n          counts[ts].Completed++;\n        }\n      });\n      \n      // Update each card's status element with the aggregated counts.\n      for (const ts in counts) {\n        const safeElementId = 'status_' + ts.replace(/\\\\s+/g, '_');\n        const elem = document.getElementById(safeElementId);\n        if (elem) {\n          elem.textContent = \"Active: \" + counts[ts].Active + \", Completed: \" + counts[ts].Completed;\n        }\n      }\n      \n      // For any cards with no counts, display zeros.\n      const statusElems = document.querySelectorAll('.ticket-status');\n      statusElems.forEach(elem => {\n        if (elem.textContent === 'Loading...') {\n          elem.textContent = 'Active: 0, Completed: 0';\n        }\n      });\n    }\n\n    // Add Edit System buttons based on the query parameter \"user\".\n    function addEditButtons() {\n      if (!userParam) return;\n      const cards = document.querySelectorAll('.card');\n      cards.forEach(card => {\n        const owner = card.getAttribute('data-owner');\n        if (owner && owner.toLowerCase() === userParam.toLowerCase()) {\n          const editBtn = document.createElement('button');\n          editBtn.className = 'edit-system';\n          editBtn.textContent = 'Edit System';\n          editBtn.onclick = function(e) {\n            e.stopPropagation(); // Prevent any unintended propagation.\n            const ts = card.getAttribute('data-ticketsystem');\n            const tsid = card.getAttribute('data-ticketsystemid');\n            const url = 'https://xl.epicpc.com/webhook/99d4ae83-d3f5-4126-9f6b-ea45add343c4?system=' + encodeURIComponent(ts) + '&TicketSystemId=' + encodeURIComponent(tsid) + '&user=' + encodeURIComponent(userParam);\n            window.open(url, '_blank');\n          };\n          const buttonsContainer = card.querySelector('.buttons-container');\n          if (buttonsContainer) {\n            buttonsContainer.appendChild(editBtn);\n          }\n        }\n      });\n    }\n\n    // Trigger the fetch and add edit buttons when the page loads.\n    window.addEventListener('DOMContentLoaded', () => {\n      fetchTicketData();\n      addEditButtons();\n    });\n  </script>\n</body>\n</html>`;\n\n// Return the generated HTML as the output JSON\nreturn [\n  {\n    json: {\n      html: html\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        280
+      ],
+      "id": "f77974da-1d44-42e7-89c0-aa941306e44d",
+      "name": "Code11"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.24",
+            "x-forwarded-for": "10.0.24.24",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) UNITY/1.5.7 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US",
+            "cookie": "XSRF-TOKEN=eyJpdiI6ImNpTGgzTnFUOFVlaVBET2F2dlwvSXJBPT0iLCJ2YWx1ZSI6IkdndVlwR0RZQmtaQStMdEN3cGFSSDlqSFNMZmRLT3dcL29GRkVwdktFMFVkemJncVllN09mZ3ZMQ2VTcFJseFpOIiwibWFjIjoiYzAxOWYzNDY3NzI0ZmI5MzE2Nzk3OTVmOTZkNTQ5NzQ5ZDk3Mjk3ODIxZjMzM2NhNjE0MTI1YjU4NTRkNjUwOSJ9; epic_session=eyJpdiI6IkNhdjR1UDdxckxXcmRobTlHK2taWVE9PSIsInZhbHVlIjoiME1KUllhbFYyVHF2UU1VSlwvSmRvWmtmODZIajIwZVBTNEdVT1JNVnVMa0dTdHhUNG1GTGF6RTJRNzNvVnhoZTIiLCJtYWMiOiI4NmE4ZjY5MDAzNGVhNmJkZWU4YjNlNjU2YjViM2I1NjlkNDY0N2I5YTk3MGE2OTUyMTcxNWYzYmZiMWU0MjFjIn0%3D",
+            "if-none-match": "W/\"4bfa-Y3Gs7g5MsIvTEw1uyC2RMb23cNg\""
+          },
+          "params": {},
+          "query": {
+            "user": "tstilwell@epichs.org",
+            "host": "Duo",
+            "app_version": "1.5.7",
+            "role": "Nuwell",
+            "organization": "unity",
+            "tab": "all-tickets-weassist"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/514a4954-d74e-4183-9694-94d76671c483",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-04-09T17:03:18.428Z",
+  "versionId": "a398f938-45b8-44d1-ba7f-41bcbda0e87a"
+}
