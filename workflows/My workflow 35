@@ -1,0 +1,63 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-11T17:44:11.958Z",
+  "id": "v4ryrdZMfipBTjqe",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 35",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7262c775-f390-4948-95c1-b9012d6d194d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "account",
+        "operation": "get"
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "fe29cf57-523d-49bf-a12e-370787d5cf74",
+      "name": "ActiveCampaign",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "mqZzv1jFCEEjdiEO",
+          "name": "ActiveCampaign account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-11T17:44:11.958Z",
+  "versionId": "9a2317f6-a8c6-47fc-a8d1-011ee3d738e2"
+}
