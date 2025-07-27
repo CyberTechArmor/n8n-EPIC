@@ -1,0 +1,56 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-05-06T21:59:27.207Z",
+  "id": "A0IoTfGlse0vq9RP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 13",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.165/oauth/issueToken",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "client_id",
+              "value": "n8n"
+            },
+            {
+              "name": "client_secret",
+              "value": "38213254337476aa7a4571bda439deff"
+            },
+            {
+              "name": "grant_type",
+              "value": "client_credentials"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "3406923e-e4b7-47e0-bb1f-18d605e34daf",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        420
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-06T22:02:07.881Z",
+  "versionId": "e3e1b4ac-eaa8-452b-9972-115d8aa0ad7f"
+}
