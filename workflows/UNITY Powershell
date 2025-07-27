@@ -1,0 +1,254 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-18T12:46:24.432Z",
+  "id": "qGgQBFTpWvr8at06",
+  "isArchived": false,
+  "meta": null,
+  "name": "UNITY Powershell",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9bf2764e-74ce-4757-bf95-ed1039ddc498",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d44fcbbf-283d-4ef7-91b3-fa1c2540b731",
+      "name": "Webhook",
+      "webhookId": "9bf2764e-74ce-4757-bf95-ed1039ddc498"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "msg * \"This is a powershell test\"",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        540,
+        0
+      ],
+      "id": "9269f6bb-eb02-4524-8e5b-174ee771ab8f",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b1dda44b-f009-449a-9d5d-b5eaf0601085",
+              "leftValue": "={{ $json.body.script }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "df7260e5-1a29-4895-9f79-74e60636b9ba",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.unitycarecrm.com/api/v1/webhook/on-power-shell?user=tstilwell",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "https://xl.epicpc.com/webhook/9bf2764e-74ce-4757-bf95-ed1039ddc498"
+            },
+            {
+              "name": "email",
+              "value": "tstilwell@epichs.org"
+            },
+            {
+              "name": "user",
+              "value": "tstilwell@epichs.org"
+            },
+            {
+              "name": "script",
+              "value": "msg"
+            },
+            {
+              "name": "key",
+              "value": "value"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        180
+      ],
+      "id": "44f97de2-dbe4-4842-bc92-9092abf42555",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Start-Process \"msedge.exe\" -ArgumentList \"--kiosk\", \"--start-fullscreen\", \"https://xl.epicpc.com/webhook/9306a560-ae8a-4cbc-8621-3723f3783e4c?reason=ADP%20reminder&user=$env:USERNAME\"",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        600,
+        180
+      ],
+      "id": "9e5aec45-a1b1-43db-a8ad-27d2e04022d6",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "path": "0aaaf11a-a21b-42da-9507-5ae0ba8ab373",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -240
+      ],
+      "id": "c55e16f6-0436-4252-8a54-fb67f1b5ced6",
+      "name": "Webhook1",
+      "webhookId": "0aaaf11a-a21b-42da-9507-5ae0ba8ab373"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Close Window Test</title>\n  <style>\n    /* Reset & box sizing */\n    * {\n      box-sizing: border-box;\n    }\n    /* Basic page layout */\n    body {\n      margin: 0;\n      padding: 0;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      background-color: #f9fafb; /* Light modern background */\n      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n    }\n    /* Card style */\n    .card {\n      background-color: #fff;   /* White background */\n      border: 2px solid #000;   /* Black border */\n      border-radius: 12px;      /* Rounded corners */\n      padding: 2rem;\n      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */\n      text-align: center;\n      max-width: 360px;\n    }\n    .card h1 {\n      margin-bottom: 1rem;\n      font-size: 1.5rem;\n    }\n    .card p {\n      margin-bottom: 2rem;\n      font-size: 1rem;\n      color: #333;\n    }\n    /* Button style */\n    .close-button {\n      background-color: #000;   /* Black background */\n      color: #fff;             /* White text */\n      border: none;\n      border-radius: 8px;      /* Rounded corners */\n      padding: 0.75rem 1.5rem;\n      font-size: 1rem;\n      cursor: pointer;\n      transition: background-color 0.2s ease;\n    }\n    .close-button:hover {\n      background-color: #333;  /* Darker on hover */\n    }\n  </style>\n</head>\n<body>\n  <div class=\"card\">\n    <h1>This is a test.</h1>\n    <p>Please click the button to close.</p>\n    <button class=\"close-button\" onclick=\"window.close();\">\n      Close this window\n    </button>\n  </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -240
+      ],
+      "id": "8df33892-7c3b-4c58-bf6c-fdc19291b718",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=Start-Process \"msedge.exe\" \"--kiosk https://xl.epicpc.com/webhook/0aaaf11a-a21b-42da-9507-5ae0ba8ab373 --edge-kiosk-type=fullscreen --kiosk-idle-timeout-minutes=5\"\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        180
+      ],
+      "id": "58a9fbcb-b5a7-468b-90fc-d3e8d4196011",
+      "name": "Respond to Webhook3"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.53",
+            "x-forwarded-for": "10.0.24.53",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "60",
+            "content-type": "application/json",
+            "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRzdGlsd2VsbEBlcGljaHMub3JnIiwiaWF0IjoxNzM1NjUzMzg4LCJleHAiOjE3MzYwODUzODh9.0GTZsl6-bHWDTrzjdKXP0hMhVyw6Aw2Dx0cc1yGO3Bc",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "key": "value",
+            "user": "tstilwell@epichs.org",
+            "script": "msg"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/9bf2764e-74ce-4757-bf95-ed1039ddc498",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2025-03-28T12:57:54.157Z",
+  "versionId": "47cf3468-3eee-4022-a176-507409ae71df"
+}
