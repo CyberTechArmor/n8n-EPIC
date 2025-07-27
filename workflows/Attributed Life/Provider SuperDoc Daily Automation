@@ -1,0 +1,805 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Read PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token4": {
+      "main": [
+        [
+          {
+            "node": "Check Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token4": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid2": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow3": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read PM Token4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Create Walk-in",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Create Walk-in": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-28T16:58:10.874Z",
+  "id": "um0xes4rLMCvVzjf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Attributed Life/Provider SuperDoc Daily Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -360
+      ],
+      "id": "bc6e1423-fc72-4168-9495-5abf69fb3a4e",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nwith threeyr_appt_app as(\nSELECT [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Sched_Location_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI],\n\t   p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE p.Appt_DateTime >= DATEADD(year, -3, GETDATE())\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('a') and p.Appt_Resource_Assoc_Prov_LFI not like 'Virtual%'\n  ),\n  resource_abb as(\n  select r.Practitioner_ID,r.Resource_ID,r.Abbreviation as Abbreviation_res,p.Abbreviation as Abbreviation_prac,p.Practitioner_ID as Practitioner_ID_prac,\n  p.First_Name,p.Last_Name,p.Is_Mid_Level,p.Is_Mid_Level_PA,p.Inactivation_Date,p.Is_Physician,\n  case \n  when r.Practitioner_ID = 1258 then 'EPIC Detroit 7 Mile'\n  when r.Practitioner_ID = 1282 then 'EPIC Ferndale 9 Mile'\n  when r.Practitioner_ID = 1262 then 'EPIC Flint Linden'\n  when r.Practitioner_ID = 2125 then 'EPIC Hamtramck Davison' \n  when r.Practitioner_ID = 2260 then 'EPIC Southfield 10 Mile' \n  when r.Practitioner_ID = 781 then 'EPIC Royal Oak Woodward'\n  when r.Practitioner_ID =781 then 'EPIC Southfield Telegraph'\n  when r.Practitioner_ID =2248 then 'EPIC Detroit Livernois'\n  when r.Practitioner_ID = 2249 then 'EPIC SCS Harper'\n  when r.Practitioner_ID =2249 then 'EPIC Clawson Maple'\n  end as Practitioner_ID_Super_Doc_For_Loc\n  from [PM].[Resources] r\n  full join [PM].[Practitioners] p on r.Practitioner_ID=p.Practitioner_ID\n  where  \n  p.Last_Name not like 'Dexa%'\n  and p.Last_Name not like 'Blue%'\n  and p.Last_Name not like 'Brod%'\n  and p.Last_Name not like 'Prov%'\n  and p.Abbreviation not like 'PTA%'\n  and p.Abbreviation not like 'PT%'\n  and p.Abbreviation not like 'FernCard%'\n  and p.Abbreviation not like 'Mammo%'\n  and p.Abbreviation not like 'PPS%'\n  and r.Resource_ID != 1007\n  and p.Last_Name not like 'Super%'\n  and p.Last_Name not like 'Ultra%'\n  and p.Abbreviation not like 'PSY%'\n  and p.Last_Name not like 'After%'\n  and p.Abbreviation not like 'PALAB%'\n  and p.Abbreviation not like 'ST%'\n  and p.Abbreviation not like 'VOV%' and p.Abbreviation not like 'GI%' and p.Abbreviation not like 'Slim%' and p.Abbreviation not like 'CM%'\n  and r.Resource_ID is not null or p.Last_Name='Godbold' or p.Last_Name ='Tam'\n  and r.Resource_ID !=1107\n ),\n add_super_doc_Res_and_pract_id_to_usual_prov as(\n  select t.*,\n  case \n  when t.Appt_Sched_Location_Descr ='EPIC Detroit 7 Mile' then 1258\n  when t.Appt_Sched_Location_Descr ='EPIC Ferndale 9 Mile' then 1282\n  when t.Appt_Sched_Location_Descr ='EPIC Flint Linden' then 1262\n  when t.Appt_Sched_Location_Descr ='EPIC Hamtramck Davison' then 1290\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield 10 Mile' then 1255\n  when t.Appt_Sched_Location_Descr ='EPIC Royal Oak Woodward' then 148\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield Telegraph' then 148\n  when t.Appt_Sched_Location_Descr ='EPIC Detroit Livernois' then 1240\n  when t.Appt_Sched_Location_Descr ='EPIC SCS Harper' then 1241\n  when t.Appt_Sched_Location_Descr ='EPIC Clawson Maple' then 148\n  end as Resource_ID_Super_Doc,\n  case \n  when t.Appt_Sched_Location_Descr ='EPIC Detroit 7 Mile' then 2264\n  when t.Appt_Sched_Location_Descr ='EPIC Ferndale 9 Mile' then 2124\n  when t.Appt_Sched_Location_Descr ='EPIC Flint Linden' then 2272\n  when t.Appt_Sched_Location_Descr ='EPIC Hamtramck Davison' then 2125\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield 10 Mile' then 2260\n  when t.Appt_Sched_Location_Descr ='EPIC Royal Oak Woodward' then 781\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield Telegraph' then 781\n  when t.Appt_Sched_Location_Descr ='EPIC Detroit Livernois' then 2248\n  when t.Appt_Sched_Location_Descr ='EPIC SCS Harper' then 2249\n  when t.Appt_Sched_Location_Descr ='EPIC Clawson Maple' then 781\n  end as Pract_ID_Super_Doc\n  from threeyr_appt_app t\n  ),\n  total_seen_in_past as(\nSELECT count([Patient_ID]) as Seen_In_Past\n      --,[Patient_Number]\n       ,[Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE cast(p.Appt_DateTime as date) between DATEADD(year, -3, cast(GETDATE() as date)) and cast(getdate() as date)\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('A')\n  group by [Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n),\nappts_in_future as(\nSELECT count([Patient_ID]) as Appt_in_future\n      --,[Patient_Number]\n       ,[Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE cast(p.Appt_DateTime as date) >= cast(getdate() as date)\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('s','c')\n  group by [Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n),\nappt_filter as(\nselect t.*,a.Appt_in_future,\ncase \nwhen a.Appt_Resource_ID is null then 0\nelse r.Practitioner_ID\nend as Has_Future_Sched_Appt_APP_Pract_ID\nfrom total_seen_in_past t\nleft join appts_in_future a on t.Appt_Resource_ID=a.Appt_Resource_ID\nleft join [PM].[Resources] r on t.Appt_Resource_ID=r.Resource_ID\n),\nfinal_usual_prov as(\nselect a.*,af.Has_Future_Sched_Appt_APP_Pract_ID,\ncase \nwhen af.Has_Future_Sched_Appt_APP_Pract_ID !=0 then af.Has_Future_Sched_Appt_APP_Pract_ID\nelse a.Pract_ID_Super_Doc\nend as UsualProvPractID\nfrom add_super_doc_Res_and_pract_id_to_usual_prov a\nleft join appt_filter af on a.Appt_Resource_ID=af.Appt_Resource_ID\n),\npartition_last_three_appt as(\nselect \nf.Patient_ID,\nf.Patient_Number,\nf.Appt_ID,\ncast(f.Appt_DateTime as date) as Appt_DateTime,\nf.Appt_Sched_Location_Descr,\nf.Appt_Resource_Assoc_Prov_LFI,\nf.Appt_Resource_ID,\nf.Resource_ID_Super_Doc,\nf.Pract_ID_Super_Doc,\nf.Has_Future_Sched_Appt_APP_Pract_ID,\nf.UsualProvPractID,\nr.Abbreviation_prac as UsualProvPracAbbrev,\nr.Abbreviation_res as UsualProvResAbbreb,\nrdoc.Abbreviation_prac as PCP_Pract_Abbrev,rdoc.Abbreviation_res as PCP_RES_Abbrev,\nROW_NUMBER()over(partition by f.patient_id order by cast(f.Appt_DateTime as date) desc) as rn\nfrom final_usual_prov f\nleft join resource_abb r on f.UsualProvPractID=r.Practitioner_ID\nleft join resource_abb rdoc on rdoc.Practitioner_ID=f.Pract_ID_Super_Doc\n)\n-- Get last two appointments for each patient\n, last_two_appointments AS (\n  SELECT \n    p.Patient_ID,\n    p.Patient_Number,\n    p.Appt_ID,\n    p.Appt_DateTime,\n    p.Appt_Sched_Location_Descr,\n    p.Appt_Resource_Assoc_Prov_LFI,\n    p.Appt_Resource_ID,\n    p.Resource_ID_Super_Doc,\n    p.Pract_ID_Super_Doc,\n    p.Has_Future_Sched_Appt_APP_Pract_ID,\n    p.UsualProvPractID,\n    p.UsualProvPracAbbrev,\n    p.UsualProvResAbbreb,\n    p.PCP_Pract_Abbrev,\n    p.PCP_RES_Abbrev,\n    p.rn,\n    ROW_NUMBER() OVER (PARTITION BY p.Patient_ID ORDER BY p.Appt_DateTime DESC) as Appt_Order\n  FROM partition_last_three_appt p\n  WHERE p.rn <= 2\n)\n\n-- Now pivot last two appointments to same row\n, pivot_last_two AS (\n  SELECT \n    Patient_ID,\n    MAX(CASE WHEN Appt_Order = 1 THEN Appt_Resource_Assoc_Prov_LFI END) as Last_Visit_Provider,\n    MAX(CASE WHEN Appt_Order = 2 THEN Appt_Resource_Assoc_Prov_LFI END) as Second_Last_Visit_Provider\n  FROM last_two_appointments\n  GROUP BY Patient_ID\n)\n\n-- Select the final preferred provider\n, preferred_provider AS (\n  SELECT \n    l.Patient_ID,\n    CASE \n      WHEN l.Last_Visit_Provider = l.Second_Last_Visit_Provider OR l.Second_Last_Visit_Provider IS NULL THEN l.Last_Visit_Provider\n      ELSE l.Last_Visit_Provider\n    END as Preferred_Provider\n  FROM pivot_last_two l\n)\n\n-- Final output with the last appointment from preferred provider\n, final_ranking AS (\n  SELECT \n    p.*,\n    ROW_NUMBER() OVER (PARTITION BY p.Patient_ID ORDER BY p.Appt_DateTime DESC) as Visit_Rank\n  FROM partition_last_three_appt p\n  INNER JOIN preferred_provider pref\n    ON p.Patient_ID = pref.Patient_ID\n   AND p.Appt_Resource_Assoc_Prov_LFI = pref.Preferred_Provider\n)\n\nSELECT \n  f.*,\n  p.Patient_Sex\nFROM final_ranking f\nLEFT JOIN [PM].[vwGenPatInfo] p ON f.Patient_ID = p.Patient_ID\nWHERE f.Visit_Rank = 1\n--ORDER BY f.Patient_Number\n"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -640
+      ],
+      "id": "f5ddb828-86a5-4731-9cf4-d18b4ae3791e",
+      "name": "Microsoft SQL",
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "cd6b597e-d441-42f0-96ca-2ef3877e0875",
+      "name": "Read PM Token4",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        580
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "1bdc56e2-b6b7-4654-a072-1472a88bf3af",
+      "name": "Extract PM Token4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        780,
+        580
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"wkiosk\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"L3tsgetC0nn3cted!!\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "f3cae2cc-b016-411a-afba-e36f0a1916b6",
+      "name": "Check Token4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "b13f4096-d4c0-497a-83b8-92d368c9954e",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "a7202fb1-e683-421b-983b-f5db5c5a5bb4",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1400,
+        680
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "e5466187-81ae-4c88-b58c-e01e25c62c6b",
+      "name": "IF PM Token Valid2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-wkiosk.txt",
+        "options": {}
+      },
+      "id": "11677a9b-0de6-4a36-90a9-0c73bbd102b5",
+      "name": "Read PM Token5",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        520
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "5c071097-340e-4ffa-84a5-9192405f8f16",
+      "name": "Extract PM Token5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        520
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "a909e62b-2cc9-4870-aa21-f0cf06b37740",
+      "name": "Execute Workflow3",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1b0bbdd7-9437-414f-9760-830bf3e4dffa",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1760,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication wkiosk",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "f571df34-d69c-417c-b771-c52bcdc40224",
+      "name": "Sticky Note16",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "SavePatient"
+            },
+            {
+              "name": "AppUserID",
+              "value": "wkiosk"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "="
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json.Token }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "="
+            },
+            {
+              "name": "Parameter2",
+              "value": "=<patient><patientID>{{ Number($json.Patient_ID) }}</patientID><gender>{{ $json.Patient_Sex }}</gender><pcp>{{ $json.PCP_Pract_Abbrev }}</pcp><usualprov>{{ $json.UsualProvPracAbbrev }}</usualprov></patient>"
+            },
+            {
+              "name": "Parameter3"
+            },
+            {
+              "name": "Parameter4"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6"
+            },
+            {
+              "name": "Data"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c0e39882-8d8c-4102-935a-00c04353f4f9",
+      "name": "HTTP Create Walk-in",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2180,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        560,
+        0
+      ],
+      "id": "183f387f-b63d-4959-a2a0-d2cd008445e4",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        1940,
+        40
+      ],
+      "id": "3eab2489-2068-4135-ad86-81eff6a20094",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nwith threeyr_appt_app as(\nSELECT [Patient_ID]\n      ,[Patient_Number]\n      ,[Appt_ID]\n      ,[Appt_DateTime]\n      ,[Appt_Sched_Location_Descr]\n      ,[Appt_Resource_Assoc_Prov_LFI],\n\t   p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE p.Appt_DateTime >= DATEADD(year, -3, GETDATE())\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('a') and p.Appt_Resource_Assoc_Prov_LFI not like 'Virtual%'\n  ),\n  resource_abb as(\n  select r.Practitioner_ID,r.Resource_ID,r.Abbreviation as Abbreviation_res,p.Abbreviation as Abbreviation_prac,p.Practitioner_ID as Practitioner_ID_prac,\n  p.First_Name,p.Last_Name,p.Is_Mid_Level,p.Is_Mid_Level_PA,p.Inactivation_Date,p.Is_Physician,\n  case \n  when r.Practitioner_ID = 1258 then 'EPIC Detroit 7 Mile'\n  when r.Practitioner_ID = 1282 then 'EPIC Ferndale 9 Mile'\n  when r.Practitioner_ID = 1262 then 'EPIC Flint Linden'\n  when r.Practitioner_ID = 2125 then 'EPIC Hamtramck Davison' \n  when r.Practitioner_ID = 2260 then 'EPIC Southfield 10 Mile' \n  when r.Practitioner_ID = 781 then 'EPIC Royal Oak Woodward'\n  when r.Practitioner_ID =781 then 'EPIC Southfield Telegraph'\n  when r.Practitioner_ID =2248 then 'EPIC Detroit Livernois'\n  when r.Practitioner_ID = 2249 then 'EPIC SCS Harper'\n  when r.Practitioner_ID =2249 then 'EPIC Clawson Maple'\n  end as Practitioner_ID_Super_Doc_For_Loc\n  from [PM].[Resources] r\n  full join [PM].[Practitioners] p on r.Practitioner_ID=p.Practitioner_ID\n  where  \n  p.Last_Name not like 'Dexa%'\n  and p.Last_Name not like 'Blue%'\n  and p.Last_Name not like 'Brod%'\n  and p.Last_Name not like 'Prov%'\n  and p.Abbreviation not like 'PTA%'\n  and p.Abbreviation not like 'PT%'\n  and p.Abbreviation not like 'FernCard%'\n  and p.Abbreviation not like 'Mammo%'\n  and p.Abbreviation not like 'PPS%'\n  and r.Resource_ID != 1007\n  and p.Last_Name not like 'Super%'\n  and p.Last_Name not like 'Ultra%'\n  and p.Abbreviation not like 'PSY%'\n  and p.Last_Name not like 'After%'\n  and p.Abbreviation not like 'PALAB%'\n  and p.Abbreviation not like 'ST%'\n  and p.Abbreviation not like 'VOV%' and p.Abbreviation not like 'GI%' and p.Abbreviation not like 'Slim%' and p.Abbreviation not like 'CM%'\n  and r.Resource_ID is not null or p.Last_Name='Godbold' or p.Last_Name ='Tam'\n  and r.Resource_ID !=1107\n ),\n add_super_doc_Res_and_pract_id_to_usual_prov as(\n  select t.*,\n  case \n  when t.Appt_Sched_Location_Descr ='EPIC Detroit 7 Mile' then 1258\n  when t.Appt_Sched_Location_Descr ='EPIC Ferndale 9 Mile' then 1282\n  when t.Appt_Sched_Location_Descr ='EPIC Flint Linden' then 1262\n  when t.Appt_Sched_Location_Descr ='EPIC Hamtramck Davison' then 1290\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield 10 Mile' then 1255\n  when t.Appt_Sched_Location_Descr ='EPIC Royal Oak Woodward' then 148\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield Telegraph' then 148\n  when t.Appt_Sched_Location_Descr ='EPIC Detroit Livernois' then 1240\n  when t.Appt_Sched_Location_Descr ='EPIC SCS Harper' then 1241\n  when t.Appt_Sched_Location_Descr ='EPIC Clawson Maple' then 148\n  end as Resource_ID_Super_Doc,\n  case \n  when t.Appt_Sched_Location_Descr ='EPIC Detroit 7 Mile' then 2264\n  when t.Appt_Sched_Location_Descr ='EPIC Ferndale 9 Mile' then 2124\n  when t.Appt_Sched_Location_Descr ='EPIC Flint Linden' then 2272\n  when t.Appt_Sched_Location_Descr ='EPIC Hamtramck Davison' then 2125\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield 10 Mile' then 2260\n  when t.Appt_Sched_Location_Descr ='EPIC Royal Oak Woodward' then 781\n  when t.Appt_Sched_Location_Descr ='EPIC Southfield Telegraph' then 781\n  when t.Appt_Sched_Location_Descr ='EPIC Detroit Livernois' then 2248\n  when t.Appt_Sched_Location_Descr ='EPIC SCS Harper' then 2249\n  when t.Appt_Sched_Location_Descr ='EPIC Clawson Maple' then 781\n  end as Pract_ID_Super_Doc\n  from threeyr_appt_app t\n  ),\n  total_seen_in_past as(\nSELECT count([Patient_ID]) as Seen_In_Past\n      --,[Patient_Number]\n       ,[Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE cast(p.Appt_DateTime as date) between DATEADD(year, -3, cast(GETDATE() as date)) and cast(getdate() as date)\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('A')\n  group by [Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n),\nappts_in_future as(\nSELECT count([Patient_ID]) as Appt_in_future\n      --,[Patient_Number]\n       ,[Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n  FROM [Ntier_EPIC].[dbo].[vwGenPatApptInfo] p\n  WHERE cast(p.Appt_DateTime as date) >= cast(getdate() as date)\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'CCM%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'PA,%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'Psych%'\n  and p.Appt_Sched_Location_Descr not like 'Diag%'\n  and p.Appt_Sched_Location_Descr not like 'EPIC Care%'\n  and p.Appt_Sched_Location_Descr not like 'BLUE%'\n  and p.Appt_Sched_Location_Descr not like 'SPEC%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'priori%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'cardio%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like 'terch%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%yos%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%solo%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%super%'\n  and p.Appt_Resource_Assoc_Prov_LFI not like '%Phys%'\n  and p.Appt_Sched_Location_Descr not in ('EPIC Eastpointe Kelly','EPIC Video Visits','EPIC Westland Palmer','Corewell WBH Farmginton Hills Hospital','EPIC Billing Office','EPIC Events','Surgeon''s Choice Hospital')\n  and p.Appt_Status in ('s','c')\n  group by [Appt_Resource_Assoc_Prov_LFI],\n       p.Appt_Resource_ID\n),\nappt_filter as(\nselect t.*,a.Appt_in_future,\ncase \nwhen a.Appt_Resource_ID is null then 0\nelse r.Practitioner_ID\nend as Has_Future_Sched_Appt_APP_Pract_ID\nfrom total_seen_in_past t\nleft join appts_in_future a on t.Appt_Resource_ID=a.Appt_Resource_ID\nleft join [PM].[Resources] r on t.Appt_Resource_ID=r.Resource_ID\n),\nfinal_usual_prov as(\nselect a.*,af.Has_Future_Sched_Appt_APP_Pract_ID,\ncase \nwhen af.Has_Future_Sched_Appt_APP_Pract_ID !=0 then af.Has_Future_Sched_Appt_APP_Pract_ID\nelse a.Pract_ID_Super_Doc\nend as UsualProvPractID\nfrom add_super_doc_Res_and_pract_id_to_usual_prov a\nleft join appt_filter af on a.Appt_Resource_ID=af.Appt_Resource_ID\n),\npartition_last_three_appt as(\nselect \nf.Patient_ID,\nf.Patient_Number,\nf.Appt_ID,\ncast(f.Appt_DateTime as date) as Appt_DateTime,\nf.Appt_Sched_Location_Descr,\nf.Appt_Resource_Assoc_Prov_LFI,\nf.Appt_Resource_ID,\nf.Resource_ID_Super_Doc,\nf.Pract_ID_Super_Doc,\nf.Has_Future_Sched_Appt_APP_Pract_ID,\nf.UsualProvPractID,\nr.Abbreviation_prac as UsualProvPracAbbrev,\nr.Abbreviation_res as UsualProvResAbbreb,\nrdoc.Abbreviation_prac as PCP_Pract_Abbrev,rdoc.Abbreviation_res as PCP_RES_Abbrev,\nROW_NUMBER()over(partition by f.patient_id order by cast(f.Appt_DateTime as date) desc) as rn\nfrom final_usual_prov f\nleft join resource_abb r on f.UsualProvPractID=r.Practitioner_ID\nleft join resource_abb rdoc on rdoc.Practitioner_ID=f.Pract_ID_Super_Doc\n)\n-- Get last two appointments for each patient\n, last_two_appointments AS (\n  SELECT \n    p.Patient_ID,\n    p.Patient_Number,\n    p.Appt_ID,\n    p.Appt_DateTime,\n    p.Appt_Sched_Location_Descr,\n    p.Appt_Resource_Assoc_Prov_LFI,\n    p.Appt_Resource_ID,\n    p.Resource_ID_Super_Doc,\n    p.Pract_ID_Super_Doc,\n    p.Has_Future_Sched_Appt_APP_Pract_ID,\n    p.UsualProvPractID,\n    p.UsualProvPracAbbrev,\n    p.UsualProvResAbbreb,\n    p.PCP_Pract_Abbrev,\n    p.PCP_RES_Abbrev,\n    p.rn,\n    ROW_NUMBER() OVER (PARTITION BY p.Patient_ID ORDER BY p.Appt_DateTime DESC) as Appt_Order\n  FROM partition_last_three_appt p\n  WHERE p.rn <= 2\n)\n\n-- Now pivot last two appointments to same row\n, pivot_last_two AS (\n  SELECT \n    Patient_ID,\n    MAX(CASE WHEN Appt_Order = 1 THEN Appt_Resource_Assoc_Prov_LFI END) as Last_Visit_Provider,\n    MAX(CASE WHEN Appt_Order = 2 THEN Appt_Resource_Assoc_Prov_LFI END) as Second_Last_Visit_Provider\n  FROM last_two_appointments\n  GROUP BY Patient_ID\n)\n\n-- Select the final preferred provider\n, preferred_provider AS (\n  SELECT \n    l.Patient_ID,\n    CASE \n      WHEN l.Last_Visit_Provider = l.Second_Last_Visit_Provider OR l.Second_Last_Visit_Provider IS NULL THEN l.Last_Visit_Provider\n      ELSE l.Last_Visit_Provider\n    END as Preferred_Provider\n  FROM pivot_last_two l\n)\n\n-- Final output with the last appointment from preferred provider\n, final_ranking AS (\n  SELECT \n    p.*,\n    ROW_NUMBER() OVER (PARTITION BY p.Patient_ID ORDER BY p.Appt_DateTime DESC) as Visit_Rank\n  FROM partition_last_three_appt p\n  INNER JOIN preferred_provider pref\n    ON p.Patient_ID = pref.Patient_ID\n   AND p.Appt_Resource_Assoc_Prov_LFI = pref.Preferred_Provider\n)\n\nSELECT \n  f.*,\n  p.Patient_Sex\nFROM final_ranking f\nLEFT JOIN [PM].[vwGenPatInfo] p ON f.Patient_ID = p.Patient_ID\nWHERE f.Visit_Rank = 1\n--ORDER BY f.Patient_Number\n"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -880
+      ],
+      "id": "13ad93c9-d73e-4654-8855-da9ef15f2472",
+      "name": "Microsoft SQL1",
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        -640
+      ],
+      "id": "99d48fde-c8cd-4a03-ad60-682570668cf6",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pxljjvlret24hg8",
+        "table": "m4sueeqb73zhe47",
+        "dataToSend": "autoMapInputData"
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        900,
+        -880
+      ],
+      "id": "8640dfce-7dbc-4915-bb4b-7cf7d59199b0",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "af2566ce-ac49-4a31-a69b-4642e8263bbb",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        20,
+        0
+      ],
+      "id": "c7f08990-fbbb-4113-bd49-d0d145a62158",
+      "name": "Webhook",
+      "webhookId": "af2566ce-ac49-4a31-a69b-4642e8263bbb"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        440,
+        -880
+      ],
+      "id": "329b0e7d-546c-4fc3-a49b-6d8d3b0a5f9e",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pxljjvlret24hg8",
+        "table": "m4sueeqb73zhe47",
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        280,
+        0
+      ],
+      "id": "e2239dc5-589b-4566-ae34-08ca69b8e416",
+      "name": "NocoDB1",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        2460,
+        40
+      ],
+      "id": "cc572d0b-349c-4bd1-9e31-2e252c763c8e",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pxljjvlret24hg8",
+        "table": "m4sueeqb73zhe47",
+        "id": "={{ $json.Id }}"
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        700
+      ],
+      "id": "62063b91-ab10-459f-a996-7a5c33aa68c4",
+      "name": "NocoDB2",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "http://10.0.1.199:5678/webhook/af2566ce-ac49-4a31-a69b-4642e8263bbb",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        -140
+      ],
+      "id": "20af5091-b611-4323-83a3-99932acfddbd",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {
+    "Microsoft SQL": [
+      {
+        "json": {
+          "Patient_ID": 62197,
+          "Patient_Number": "000081",
+          "Appt_ID": 25431932,
+          "Appt_DateTime": "2025-01-13T00:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Assoc_Prov_LFI": "Zawisa, Hannah",
+          "Appt_Resource_ID": 1231,
+          "Resource_ID_Super_Doc": 1255,
+          "Pract_ID_Super_Doc": 2260,
+          "Has_Future_Sched_Appt_APP_Pract_ID": 2244,
+          "UsualProvPractID": 2244,
+          "UsualProvPracAbbrev": "HZ-PA   ",
+          "UsualProvResAbbreb": "HZ-PA   ",
+          "PCP_Pract_Abbrev": "JG-MD   ",
+          "PCP_RES_Abbrev": "JG-MD   ",
+          "rn": "1",
+          "Visit_Rank": "1",
+          "Patient_Sex": "F"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 62273,
+          "Patient_Number": "000050",
+          "Appt_ID": 1478623,
+          "Appt_DateTime": "2022-09-16T00:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Assoc_Prov_LFI": "Gadoua, Christopher",
+          "Appt_Resource_ID": 1018,
+          "Resource_ID_Super_Doc": 1255,
+          "Pract_ID_Super_Doc": 2260,
+          "Has_Future_Sched_Appt_APP_Pract_ID": 2018,
+          "UsualProvPractID": 2018,
+          "UsualProvPracAbbrev": "CG-PA   ",
+          "UsualProvResAbbreb": "CG-PA   ",
+          "PCP_Pract_Abbrev": "JG-MD   ",
+          "PCP_RES_Abbrev": "JG-MD   ",
+          "rn": "1",
+          "Visit_Rank": "1",
+          "Patient_Sex": "F"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-07T12:27:02.467Z",
+  "versionId": "b796c002-ba0c-4eea-b8b6-7e02845440b0"
+}
