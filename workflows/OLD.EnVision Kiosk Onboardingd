@@ -1,0 +1,406 @@
+{
+  "active": false,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-11T23:34:32.591Z",
+  "id": "ePsuEhVrtyT2Esdo",
+  "isArchived": false,
+  "meta": null,
+  "name": "OLD.EnVision Kiosk Onboardingd",
+  "nodes": [
+    {
+      "parameters": {
+        "include": "selected",
+        "includeFields": "query.hostname",
+        "options": {}
+      },
+      "id": "b2186829-7aa1-43a2-8c9f-5932a011f5f8",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1180,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "3325e477-abfe-4a93-9f61-df638169c994",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "projectId": "pfwzvydzfm2v9fa",
+        "table": "m7igubj3fv8s26p",
+        "id": "={{ $json.Id }}"
+      },
+      "id": "ad647693-9f04-4afb-81a9-fabc82852d93",
+      "name": "NocoDB2",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2140,
+        1080
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $('Edit Fields').item.json[\"hostname\"] }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "notEqual",
+              "value2": "={{ $json.Hostname }}",
+              "outputKey": "="
+            },
+            {
+              "value2": "{{ $json.Hostname }}"
+            }
+          ]
+        }
+      },
+      "id": "f936e863-b7c4-4877-88ce-fafce41a0a84",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        880
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pfwzvydzfm2v9fa",
+        "table": "m7igubj3fv8s26p",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "4c52e8fb-a4ec-4d9d-aa76-d644b7e55c82",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        800
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Hostname",
+              "field2": "hostname"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e4826da6-6a7f-4591-8811-e52e49cbf44e",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1480,
+        880
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cf7c38f3-0970-4a5a-8e71-9473da357ecb",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2360,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <title>Professional AJAX Form Submission</title>     <style>         body {             font-family: Arial, sans-serif;             background-color: #f4f4f4;             padding: 20px;             margin: 0;         }         form {             background: white;             max-width: 500px;             margin: 20px auto;             padding: 20px;             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);             border-radius: 8px;         }         form div {             margin-bottom: 10px;         }         label {             display: block;             margin-bottom: 5px;             font-weight: bold;         }         input[type=\"text\"] {             width: 100%;             padding: 8px;             margin: 0 0 20px 0;             border: 1px solid #ccc;             border-radius: 4px;             box-sizing: border-box;         }         button {             background-color: #007bff;             color: white;             padding: 10px 20px;             border: none;             border-radius: 4px;             cursor: pointer;             font-size: 16px;         }         button:hover {             background-color: #0056b3;         }     </style> </head> <body>  <form id=\"dataForm\">     <div>         <label for=\"clientCode\">Client Code</label>         <input type=\"text\" id=\"clientCode\" name=\"clientCode\" required>     </div>     <div>         <label for=\"state\">State</label>         <input type=\"text\" id=\"state\" name=\"state\" required>     </div>     <div>         <label for=\"site\">Site</label>         <input type=\"text\" id=\"site\" name=\"site\" required>     </div>     <div>         <label for=\"room\">Room</label>         <input type=\"text\" id=\"room\" name=\"room\" required>     </div>     <button type=\"submit\">Submit</button> </form>  <script> document.getElementById('dataForm').addEventListener('submit', function(event) {     event.preventDefault(); // Prevent the default form submission      const formData = new FormData(this);     const searchParams = new URLSearchParams();      for (const pair of formData) {         searchParams.append(pair[0], pair[1]);     }      fetch('https://xl.epicpc.com/webhook/3b68512a-0182-48f5-af8a-32c7b81bac69', {         method: 'POST',         body: searchParams,         headers: {             'Content-Type': 'application/x-www-form-urlencoded',         },     })     .then(response => response.text())     .then(text => {         // Handle the response text (e.g., show a success message)         alert(\"Form submitted successfully: \" + text);     })     .catch(error => {         // Handle any errors that occurred during the fetch         console.error('Error:', error);         alert(\"An error occurred\");     }); }); </script>  </body> </html>",
+        "options": {}
+      },
+      "id": "ad1f0394-92a2-4d31-bcd7-892aedd74e0e",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pfwzvydzfm2v9fa",
+        "table": "m7igubj3fv8s26p",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Hostname",
+              "fieldValue": "={{ $('Webhook').item.json[\"query\"][\"hostname\"] }}"
+            },
+            {
+              "fieldName": "NewHostname",
+              "fieldValue": "={{ $json[\" Client Code\"] }}-{{ $json[\"State\"] }}-{{ $json[\"Site\"] }}-{{ $json[\"Room\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "4abdacd4-233b-4c14-93e6-3e3a18c9bf4d",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1180,
+        1160
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "f7b4f062-94c1-473d-8192-941acf800c03",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "34b2aafa-a946-42e8-843b-358e123aa7b3",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        920
+      ],
+      "webhookId": "f7b4f062-94c1-473d-8192-941acf800c03",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "c420086c-8019-4b3c-9e88-3d72d9d058d9",
+        "formTitle": "EnVision Onboarding",
+        "formDescription": "For registering devices.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Action",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Register and Restart"
+                  },
+                  {
+                    "option": "Register and Shutdown"
+                  },
+                  {
+                    "option": "Shutdown and Ship"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "dccee09a-a899-4103-9542-3b6d3b9e8a69",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        800,
+        -120
+      ],
+      "webhookId": "c420086c-8019-4b3c-9e88-3d72d9d058d9"
+    },
+    {
+      "parameters": {
+        "path": "c420086c-8019-4b3c-9e88-3d72d9d058d9",
+        "formFields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "d8edddb5-c5df-4651-9a4d-80a9bce157e7",
+      "name": "n8n Form Trigger1",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        -580
+      ],
+      "webhookId": "9fea0878-2116-4928-b2cb-72b9dba634bb"
+    },
+    {
+      "parameters": {
+        "content": "## Inactive, for reference only",
+        "height": 646.05886471329,
+        "width": 1831.4843166613443,
+        "color": 5
+      },
+      "id": "6791cd27-4496-4a79-9989-3e99b099361a",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        753.573042080234,
+        696.6797243868587
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields1": [
+      {
+        "json": {
+          "Id": 9,
+          "Hostname": "K01-MI-CLA-K1",
+          "CreatedAt": "2024-02-12 00:33:52+00:00",
+          "UpdatedAt": "2024-02-12 00:35:17+00:00",
+          "NewHostname": "K01-MI-CLA-K1",
+          "hostname": "K01-MI-CLA-K1"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-12T14:45:10.029Z",
+  "versionId": "e5b18597-f07b-44f7-8632-15e811d95a9d"
+}
