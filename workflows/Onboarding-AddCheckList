@@ -1,0 +1,1726 @@
+{
+  "active": true,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items4": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items6": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out6": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Medical Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Billing Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Provider Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HR Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IT Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marketing Checklist": {
+      "main": [
+        [
+          {
+            "node": "Split Out6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CC": {
+      "main": [
+        [
+          {
+            "node": "Split Out3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checks which CC Role": {
+      "main": [
+        [
+          {
+            "node": "CC",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Other CC",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items7": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update8": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out7": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items8": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Update9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Update9": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out8": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CM": {
+      "main": [
+        [
+          {
+            "node": "Split Out7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Other CC": {
+      "main": [
+        [
+          {
+            "node": "Split Out8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Provider Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Medical Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Billing Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Checks which CC Role",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HR Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IT Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Marketing Checklist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-04T20:00:07.959Z",
+  "id": "PcaN1Hzp97zghqO9",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Onboarding-AddCheckList",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"{{ $json.body.email }} {{ $json.body.description.slice(0, 10) }}\",\n       \"GROUP_ID\":\"54\",\n       \"RESPONSIBLE_ID\": \"19\",\n       \"DESCRIPTION\": \"{{ $json.body.description}}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "fde6755a-5b2d-4939-a3ec-177f35d89de7",
+      "name": "HTTP 24 Bitrix24 Create",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        160,
+        140
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"31115\"\n}\n",
+        "options": {}
+      },
+      "id": "67ab30c4-24c3-403a-b2f7-9d72c9078701",
+      "name": "HTTP 24 Bitrix24 Update1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -60,
+        340
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "return {\n  taskId: $json.result.task.id,\n  description: $json.result.task.description.replace(/\\n/g, '') + \" This is new\",\n  tags: \"Provider\"\n};\n"
+      },
+      "id": "ade80617-c520-42e6-b434-62aa6b61139e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        180,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "658efcb0-9ec4-40ca-acaf-67b74a155f9e",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        400,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4293b925-f523-4cfb-86f0-b16f32e3a940",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2100,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.providerlist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "bc8932e5-fba8-4271-a529-1b9e62e116d4",
+      "name": "HTTP 24 Bitrix24 Update",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        -440
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "providerlist",
+        "options": {}
+      },
+      "id": "942b0887-4c38-48c3-b3db-6a49bb3fa35d",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8c23370f-ea57-45b7-952a-247352053168",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.medicallist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "6d465b84-ceaa-4ee1-aabc-eb468d9ea2d4",
+      "name": "HTTP 24 Bitrix24 Update2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2400,
+        -100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "medicallist",
+        "options": {}
+      },
+      "id": "7111cf93-bea1-483a-9998-fb1a6d577ab9",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a1c17cc9-a157-44f2-89d1-186a4bd518c4",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2140,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.billinglist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "68640229-cc69-4d90-a70e-037dcbcd4f81",
+      "name": "HTTP 24 Bitrix24 Update3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        220
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "billinglist",
+        "options": {}
+      },
+      "id": "abf61452-3d8a-42db-9875-bf4b47651c85",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b9a79961-9cbe-4787-9414-9817eb1e4654",
+      "name": "Loop Over Items3",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3120,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.cclist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "d5e57c91-f88c-4e5c-b534-7b85ad5d1522",
+      "name": "HTTP 24 Bitrix24 Update4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3400,
+        400
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "cclist",
+        "options": {}
+      },
+      "id": "457d983d-ec0d-4bcc-ac46-c931af7f60bf",
+      "name": "Split Out3",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5f0a7ba6-8ac7-4200-83d1-04ae65f63abe",
+      "name": "Loop Over Items4",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2400,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.hrlist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "21a00702-77b5-46ec-89b8-bd59f2bdab73",
+      "name": "HTTP 24 Bitrix24 Update5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2680,
+        1340
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "hrlist",
+        "options": {}
+      },
+      "id": "1f1a2edc-7385-4836-b93d-53e2e941dcf9",
+      "name": "Split Out4",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2b6ab72e-bef7-4821-8d3d-0930c2c7f27b",
+      "name": "Loop Over Items5",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2380,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.itlist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "d0e89da9-8ec8-42e3-a70d-928c005aa574",
+      "name": "HTTP 24 Bitrix24 Update6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2660,
+        1640
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "itlist",
+        "options": {}
+      },
+      "id": "5fae545f-0be0-4cb2-9e85-c0d0d0a3b294",
+      "name": "Split Out5",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fdbe9c8a-ba08-444a-959f-0b544c920677",
+      "name": "Loop Over Items6",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2360,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.marketinglist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "305a802e-cd29-48d8-a7b1-546fc9b4aec1",
+      "name": "HTTP 24 Bitrix24 Update7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2640,
+        1980
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "marketinglist",
+        "options": {}
+      },
+      "id": "9e13cc4c-3dfc-4cc7-aaaf-d4a85478c656",
+      "name": "Split Out6",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst medical = [\n    \"PM & EHR Access\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"MR - Phreesia Access\"\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            medicallist: medical\n        }\n    }\n];\n"
+      },
+      "id": "07947e14-752c-4428-8599-ac8d1ac15be5",
+      "name": "Medical Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst billing = [\n    \"PM & EHR Access\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"Phreesia Access\",\n    \"\\\\nmnfp\\MIFERS-FP01\\FileShare\\Billing   Provide them folder access\"\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            billinglist: billing\n        }\n    }\n];\n"
+      },
+      "id": "c086b85e-8a03-4534-99e7-7900773623ec",
+      "name": "Billing Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst provider = [\n    \"PM & EHR Access\",\n    \"Laptop\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"Post 3CX Link and Extenion in Comment\",\n    \"Unity Learning\"\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            providerlist: provider\n        }\n    }\n];\n"
+      },
+      "id": "34df74c3-9a43-4e4a-af27-280005a86429",
+      "name": "Provider Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        -460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst hr = [\n    \"Office365\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\"\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            hrlist: hr\n        }\n    }\n];\n"
+      },
+      "id": "f922a09b-c89f-44f3-b102-5d12195e0dff",
+      "name": "HR Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst it = [\n    \"Admin PM & EHR Access\",\n    \"Admin Bitrix Login\",\n    \"Admin HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"It HelpDesk Training\"\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            itlist: it\n        }\n    }\n];\n"
+      },
+      "id": "9672cacd-8fcc-4277-83ca-c980aa21cb2c",
+      "name": "IT Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst marketing = [\n    \"Office365\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\"\n\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            marketinglist: marketing\n        }\n    }\n];\n"
+      },
+      "id": "f82f0544-27f1-41c0-baf1-34c4b49b01de",
+      "name": "Marketing Checklist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1960,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst cc = [\n    \"PM & EHR Access\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"3CX Training Document: \",\n\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            cclist: cc\n        }\n    }\n];\n"
+      },
+      "id": "6ed46d57-8ada-479b-8417-34f0c914842e",
+      "name": "CC",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.query.Name }}",
+                    "rightValue": "Care Coordinator",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CC"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "51a1d200-fb54-4ccf-b2e5-d61d79c0287b",
+                    "leftValue": "={{ $json.query.Name }}",
+                    "rightValue": "Care Management",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CM"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "e84eadc4-dfc3-432b-bab3-cf9e27d7f09c",
+      "name": "Checks which CC Role",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1440,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "91a9e98d-c8ae-4ab1-97c4-449517ea358e",
+      "name": "Loop Over Items7",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3140,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.cmlist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "37d4102f-7c91-4e11-90e2-f9a662687d39",
+      "name": "HTTP 24 Bitrix24 Update8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3420,
+        640
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "cmlist",
+        "options": {}
+      },
+      "id": "ae5bfe51-fc02-4be7-9c42-9f8c382b45e7",
+      "name": "Split Out7",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1b6966a0-27bd-4492-830e-8ebba423d64e",
+      "name": "Loop Over Items8",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3140,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/task.checklistitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $('Webhook').item.json.query.ID }}\",\n  \"FIELDS\": {\n  \"TITLE\": \"{{ $json.othercclist }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "7748f3d3-32ee-414c-80b4-4abca63d8475",
+      "name": "HTTP 24 Bitrix24 Update9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3420,
+        900
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "othercclist",
+        "options": {}
+      },
+      "id": "1d11c252-701e-4fa9-82dd-9b9fa18c709e",
+      "name": "Split Out8",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst cm = [\n    \"PM & EHR Access\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"3CX Training Document: \",\n\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            cmlist: cm\n        }\n    }\n];\n"
+      },
+      "id": "d843ff95-15f4-440e-917a-35dded2144c0",
+      "name": "CM",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2740,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define the array with checklist titles\nconst othercc = [\n    \"PM & EHR Access\",\n    \"Bitrix Login\",\n    \"HERO Access\",\n    \"Badge Access\",\n    \"Webmail\",\n    \"3CX Account\",\n    \"3CX Training Document: \",\n];\n\n// Pass the array to the output of this node\nreturn [\n    {\n        json: {\n            othercclist: othercc\n        }\n    }\n];\n"
+      },
+      "id": "2e9909f0-334f-46e4-9fc3-53da16a75cc7",
+      "name": "Other CC",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2740,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.query.Name.toTitleCase() }}",
+                    "rightValue": "Provider",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Provider"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "e1c0497e-d13c-4f38-ba95-c87e8760543a",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Medical",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Medical"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "31e7d3e4-0fe6-4f75-91e7-31a81aea0221",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Billing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Billing"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "97b1dba9-fc95-4feb-afd1-5827bbc0577a",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Call Center",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CC/CM"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "f7f0fa48-9b78-45aa-8be2-7395bad775b1",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Human Resource",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "HR"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "3629d529-5901-4ccf-af5a-a2830df53688",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Information Technology",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "072fbed2-a4ae-457b-b1e9-3533ad4d70af",
+                    "leftValue": "={{ $json.query.Description }}",
+                    "rightValue": "Marketing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Marketing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1e52bd74-8e27-4516-b62b-23c23dde3193",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.1,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fab39d5a-043a-417b-a562-2190f422f63b",
+        "options": {}
+      },
+      "id": "2342439f-6bb8-4657-9135-d896d4b0076a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        760,
+        420
+      ],
+      "webhookId": "fab39d5a-043a-417b-a562-2190f422f63b"
+    }
+  ],
+  "pinData": {
+    "HTTP 24 Bitrix24 Create": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "23840",
+              "parentId": null,
+              "title": "tstilwell@epichs.org Test",
+              "description": "Test",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "320",
+              "createdBy": "19",
+              "createdDate": "2024-09-04T11:50:58-04:00",
+              "responsibleId": "19",
+              "changedBy": "19",
+              "changedDate": "2024-09-04T11:50:58-04:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-09-04T11:50:58-04:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{d8c93b86-76f7-4a34-aa90-1b7bcd9ffe6e}",
+              "xmlId": null,
+              "commentsCount": null,
+              "serviceCommentsCount": null,
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": null,
+              "forumId": null,
+              "siteId": "ie",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "1",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-09-04T11:50:58-04:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "54",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "54",
+                "name": "Maintenance - MI",
+                "opened": false,
+                "membersCount": 2,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": ""
+              },
+              "responsible": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": ""
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1725465058.215005,
+            "finish": 1725465058.765061,
+            "duration": 0.550055980682373,
+            "processing": 0.4872629642486572,
+            "date_start": "2024-09-04T11:50:58-04:00",
+            "date_finish": "2024-09-04T11:50:58-04:00"
+          }
+        }
+      }
+    ],
+    "HTTP 24 Bitrix24 Update1": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "31115",
+              "parentId": null,
+              "title": "Thomas",
+              "description": "This is new text",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "Y",
+              "replicate": "N",
+              "stageId": "627",
+              "createdBy": "18",
+              "createdDate": "2024-09-19T17:18:17-04:00",
+              "responsibleId": "18",
+              "changedBy": "18",
+              "changedDate": "2024-09-19T17:37:05-04:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-09-19T17:18:17-04:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{7737958b-9b3e-44e1-8166-ed0a49ad4a0a}",
+              "xmlId": null,
+              "commentsCount": null,
+              "serviceCommentsCount": null,
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": null,
+              "forumId": null,
+              "siteId": "ie",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "57",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-09-19T17:37:05-04:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "85",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "85",
+                "name": "_RPA Development",
+                "opened": false,
+                "membersCount": 4,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "18",
+                "name": "Thomas Stilwell",
+                "link": "/company/personal/user/18/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": "IT Engineer"
+              },
+              "responsible": {
+                "id": "18",
+                "name": "Thomas Stilwell",
+                "link": "/company/personal/user/18/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": "IT Engineer"
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1726781827.050356,
+            "finish": 1726781827.188889,
+            "duration": 0.1385331153869629,
+            "processing": 0.07650423049926758,
+            "date_start": "2024-09-19T17:37:07-04:00",
+            "date_finish": "2024-09-19T17:37:07-04:00"
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "355",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "ID": "32510",
+            "Name": "New Hire Jaine Test Willson-Care Coordinator",
+            "Description": "Start Date: 10-04-2024_Location: HQ_Department: Call Center_EmployeeType: Staff"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "32510",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/fab39d5a-043a-417b-a562-2190f422f63b",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-04T16:41:42.910Z",
+  "versionId": "b06637c7-d7dd-42f5-84b2-fca1914915f3"
+}
