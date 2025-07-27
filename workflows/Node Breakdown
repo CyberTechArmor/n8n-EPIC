@@ -1,0 +1,130 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-04-06T12:07:54.795Z",
+  "id": "1GNLZSevkFouQ4GR",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Node Breakdown",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "da931548-fabb-4c1b-8769-33c2a817ff31",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        380,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "78c8299a-ea90-427f-8e7b-107be6b5ea24",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        600,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "path": "fbe6afc2-7212-4a79-9ad6-8c5e193a0f09",
+        "options": {}
+      },
+      "id": "2d6fb83a-a2c4-4272-99d2-2414264944cd",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        140
+      ],
+      "webhookId": "fbe6afc2-7212-4a79-9ad6-8c5e193a0f09"
+    },
+    {
+      "parameters": {
+        "path": "7acf1415-6409-427a-808d-540eb88b8c37",
+        "formFields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "f112bcfa-8250-49df-a7a1-c4846c3e248d",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        140
+      ],
+      "webhookId": "7acf1415-6409-427a-808d-540eb88b8c37"
+    },
+    {
+      "parameters": {},
+      "id": "15d4a511-2171-45fe-8722-7ade27f1c6ba",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ca0752cc-1077-4b41-870f-6bef935a9861",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        140
+      ],
+      "credentials": {
+        "imap": {
+          "id": "OV3AOzb6JRaNRb2Z",
+          "name": "EPIC LAB FAX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Trigger Nodes (not all, but most)\n \n",
+        "height": 323,
+        "width": 1420
+      },
+      "id": "942ad4fc-15c1-47dd-ad7c-96220d7950aa",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        340,
+        60
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-06T12:22:30.900Z",
+  "versionId": "657b67db-e9e8-4337-8bdb-fe2bc41c7430"
+}
