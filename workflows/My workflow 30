@@ -1,0 +1,35 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-12-24T20:03:58.406Z",
+  "id": "F5HCkP6DQJ4gzDf2",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 30",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f6cc0771-829a-4cc5-87dd-52473fd92547",
+      "name": "When chat message received",
+      "webhookId": "e7eea816-dc19-4e70-9766-80ea964de661"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-24T20:03:58.530Z",
+  "versionId": "abbcf66f-2557-47b5-97ab-286b33a10147"
+}
