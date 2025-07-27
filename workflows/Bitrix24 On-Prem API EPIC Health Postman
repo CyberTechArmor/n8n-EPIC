@@ -1,0 +1,301 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-07-05T19:13:44.174Z",
+  "id": "KEuxn6YvZq0wVdRo",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Bitrix24 On-Prem API EPIC Health Postman",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"id\":\"{{ $json.query.id }}\"\n}",
+        "options": {}
+      },
+      "id": "6d1fdb2d-b3ea-4717-9167-99b31f1d5027",
+      "name": "HTTP 24 Bitrix24 Check1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        460
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "id": "6b2a716d-cf20-495f-8ebb-5dd6b85e8d59",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/362/mz293ycf3h07sf19/integration.authentication.token.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Pre-Auth-Token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1iaGF0dGlAdGVjaHRpei5jbyIsImlhdCI6MTczMjExMDc3NSwiZXhwIjoxNzMyNTQyNzc1fQ.AZwnvKd69F5IGfARCWvZft2Us_FpLY_M5ctopFMKHPQ"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "mbhatti@techtiz.co"
+            },
+            {
+              "name": "password",
+              "value": "Techtiz#123456"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fb4580ee-fb9f-4246-aa9a-8c49f463299d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/362/mz293ycf3h07sf19/integration.authentication.token.json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Pre-Auth-Token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1iaGF0dGlAdGVjaHRpei5jbyIsImlhdCI6MTczMjExMDc3NSwiZXhwIjoxNzMyNTQyNzc1fQ.AZwnvKd69F5IGfARCWvZft2Us_FpLY_M5ctopFMKHPQ"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "vhabbo@epichs.org"
+            },
+            {
+              "name": "password",
+              "value": "fasfldsfafksadf"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5c59984-a50b-44d6-9230-f224e41cddaf",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        420
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP 24 Bitrix24 Check1": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "23869",
+              "parentId": null,
+              "title": "tstilwell@epichs.org Fifteen",
+              "description": "Fifteen\nhttps://xl.epicpc.com/webhook/600136fe-7026-4ee7-849a-d4334a07fc71?id=23869",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "320",
+              "createdBy": "19",
+              "createdDate": "2024-09-04T13:25:14-04:00",
+              "responsibleId": "19",
+              "changedBy": "19",
+              "changedDate": "2024-09-04T13:25:16-04:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-09-04T13:25:14-04:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{33971366-4a84-4d3c-be57-3f38d56b2723}",
+              "xmlId": null,
+              "commentsCount": null,
+              "serviceCommentsCount": null,
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": null,
+              "forumId": null,
+              "siteId": "ie",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "2",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-09-04T13:25:16-04:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "54",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "54",
+                "name": "Maintenance - MI",
+                "opened": false,
+                "membersCount": 2,
+                "image": "/bitrix/images/socialnetwork/workgroup/folder.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": ""
+              },
+              "responsible": {
+                "id": "19",
+                "name": "IT Help Desk",
+                "link": "/company/personal/user/19/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": ""
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1725471528.502864,
+            "finish": 1725471528.633452,
+            "duration": 0.13058805465698242,
+            "processing": 0.06797099113464355,
+            "date_start": "2024-09-04T13:38:48-04:00",
+            "date_finish": "2024-09-04T13:38:48-04:00"
+          }
+        }
+      }
+    ],
+    "HTTP Request1": [
+      {
+        "json": {
+          "result": {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjM2MiIsImV4cCI6MTczMjExMjQ4Nn0.s2_bR0LBp-EG6Zmj8upWCW01ylCwkAYgdjVBvV1LpYQ"
+          },
+          "time": {
+            "start": 1732112426.799617,
+            "finish": 1732112426.85889,
+            "duration": 0.05927300453186035,
+            "processing": 0.0014770030975341797,
+            "date_start": "2024-11-20T09:20:26-05:00",
+            "date_finish": "2024-11-20T09:20:26-05:00"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-20T21:20:55.434Z",
+  "versionId": "d05a27cb-756a-4b42-8c72-64e6afec4650"
+}
