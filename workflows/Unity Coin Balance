@@ -1,0 +1,562 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        []
+      ]
+    },
+    "SendGrid": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-05T21:24:07.106Z",
+  "id": "W6H9CuMXZyiHqXjW",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Unity Coin Balance",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "f09de367-9c97-4137-925e-bffe91707fb4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "48da1e22-7c31-46d5-9b2d-986b39232109",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        540
+      ],
+      "webhookId": "f09de367-9c97-4137-925e-bffe91707fb4"
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "empower@myunitycare.com",
+        "fromName": "Empower",
+        "toEmail": "={{ $json.query.Email }}",
+        "subject": "Unity Points Request",
+        "contentValue": "=Dear {{ $json[\"query\"][\"Name\"] }},\n\nThank you for your inquiry regarding your UNITY Coin balance. We appreciate your interest in keeping track of your rewards.\n\nYour UNITY COINS balance is {{ $json[\"data\"] }}.\n\nIf you have any further questions or require assistance with your UNITY COINS account, please do not hesitate to reach out to our dedicated support team at empower@myunitycare.com\n\nInterested in redeeming your coins now? \n(Store coming soon)\n \nBest regards,\nThe UNITY USA Team",
+        "additionalFields": {}
+      },
+      "id": "c956069a-7e50-4d9e-baa2-e013ead3a6cf",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        2840,
+        620
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mhbpfi8e5wnfqxw",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "308b442c-0e9b-4eaf-bcf4-152c9d3bf3e5",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1340,
+        -140
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "query.Email",
+              "field2": "PERSONAL_E_MAIL"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf164517-3228-4054-912a-54113ad2aefb",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1520,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "mrepyqkcazqmw85",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "dacb7443-3660-4a8e-8a0a-b69ddb05cd6e",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1740,
+        -140
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "ContactID",
+              "field2": "ContactID"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6d00846-cabb-4bba-bd01-7a2ba41a9479",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1980,
+        -40
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5c5c50b4-8a8f-405a-a8d8-d15dc31b67c1",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2400,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "da09857a-632e-432b-bda4-a116705b1b51",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2620,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "810cb467-9637-4014-81c2-6781a71a7dcf",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3320,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Unity</h1>\n    <h2></h2>\n    <p>Thank you for your request! Please check your email.</p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "74807f21-a37f-4029-8671-de4d19cec653",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        3060,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://usa.epicpc.com/wp-json/mycred/v1/points",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "access_key",
+              "value": "6E6U4w8UgEl/L~z~"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.query.Email }}"
+            },
+            {
+              "name": "type",
+              "value": "get"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "62ee8661-363f-4be8-a89b-f0263224b06f",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1620,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Code here will run only once, no matter how many input items there are.\n// More info and help: https://docs.n8n.io/nodes/n8n-nodes-base.function\n\n//Setup an empty variable to hold the count\nlet total = 0;\n\n//Loop over the incoming items of data\nfor (item of items) {\n  //For each item of data, add the amount_USD to our total counter\n  total += item.json.TransactionAmount;\n}\n\n//Returns a well formed JSON object with just the total_value . You can either add more data to this returned object OR use the set node afterwards to do it in a no-code way.\nreturn [ { json: { total_value: total } } ];S"
+      },
+      "id": "3c217954-7dcb-4acc-82ae-4c8c4fc3cd3e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Old",
+        "height": 640.7695390781566,
+        "width": 1570.0200400801598
+      },
+      "id": "e27ff1c0-3c70-4af4-83be-ceb4fe3b6c93",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "c45eb2e8-8e2e-4a4a-b843-e380353917a7",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2220,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ee920f3-3463-47cd-b17c-ca2c5065ccc0",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6e7ea42d-6981-4257-afe1-d6267f9b3581",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2560,
+        520
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.190",
+            "x-forwarded-for": "10.0.14.190",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImVtYWlsIjoiaXRoZWxwZGVza0BlcGljcGMuY29tIiwicGFzc3dvcmQiOiJkMGJkMGI0ZDQ5ZjRiNzRiZDRhODQ4MTE0ZTk0OTQwMzdlZDQzZmE5ZDZjYWJkMmY5ODMxNDlmMTA2ZTAxOGZiIiwiaWF0IjoxNzA3MTM2NDI2LCJleHAiOjE3MDc3NDEyMjZ9.kEupvuWyrFHXRqgZjvjE-n7ZORkIehVDxZ3pPHsa4ww; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FB9omsb%2BMSTBhAdHih0SLGzY%2BdNUIZL7tQM9hT740kRpPiac9fO5HynmHIdE5Mq5SbRgwJAYw1yg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19W8LmaweoB9AZ%2BepPj%2Fp15l2M2wUyOgXYxdPRJ9lm3aRwvJmFDPigLcuhRI6Z5Le6FU9dSKbURFc30jEcO94S%2FiysI6QAs72504PlDdoz%2BNW75jMDo%2FHBD4DltoQr%2BbhHCNxHaUTp7mEIEwhIR%2FjsOgFzqvNwcpSc%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FUgI2nWW1yAKj4Xqcb9HNDuAPdIiXOhLgXMawLGoIBCtYBrtwIlw8rOd4v5rhIOi2lCG8aW5b9MdqkyALjw%2FahYW4qOnp7XUemgwsrJ1V%2BQ2Iq37hpqWgZ%2BGnLUl9wzoLzKZezepv2Iw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1707169427539%2C%22018d7b27-ff4b-7fb7-9978-0935e9589738%22%2C1707168235338%5D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX181zZmb0DG3hnlu%2FYq7E4whaIMAM8XchcOYCbf46o6apAQ4Gjgug1RjY9Y%2FNkggKcq77HKvET6wyTSNqOLf4e5fIXfFpkKmIMANoBifC4G%2BeA3DYfLEN4%2B7fk7GlQ9IeBOM%2BY3DPge8aA%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "SID": "655758",
+            "ResponseID": "11",
+            "Email": "tstilwell@epichs.org",
+            "Name": "Thomas",
+            "LastName": "Stilwell",
+            "RequestType": "AO01",
+            "Redeeming": ""
+          },
+          "body": {}
+        }
+      }
+    ],
+    "Edit Fields": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1097417210.1679040667; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19RqpbfmtuHTJOSLRX7eWEBt2w3TiZelAk%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BgGa41a0202HZpOuA2%2F%2BykwUHqdpJTcG4%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiaWF0IjoxNzExODMzODYwLCJleHAiOjE3MTI0Mzg2NjB9.NlSqhjHI91tz5P-jtVARiX-TtZ51dkiNLM0UvfOmFoQ; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bp1IrAzlH12pJce0WJvGNChLTgGXpMtvrrHf3hh4byp3z7tRfnqWXMVIcv706gsnCOuXAsyO47RQ%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2B7BzVxbWOcyqpB%2FBzLOMy4a1rJ%2FNTvtGligrku3MyIy7g1Xi%2Ft3YOWbHUKKcsb0gMLAfLmRWE%2FwFh5FgPbMpDNCk5juEk7vIXqXiYa3NvzDl0GNlVWr43pOb5219QB3rrl%2FfVWz8wLQZOxdjRYXTyrZ1Yhn5h39kU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BlhVYdlyRa3%2Fk3eRcda8DlvwlCz79BZ1ud8ogMOK087pjpzCROZ%2FB%2BNilro63A8rKfS60UoBHu9I81%2Fzs4YNv6sP2yRiVu0EHvwXrprcJe7fyjXWAIWpzXhhFWC0ualt2EnUPfIAfkNQ%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1711837029126%2C%22018e916d-ca82-73a4-942f-27ae319d88a7%22%2C1711836875394%5D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BT5MlOs5AI4GAz%2FHgEXfTrXKArSqD89Ytbmbpgw2r8li%2BWRNkCfHKkbv8Ws067CaaYhGDvx%2FpWt4E5l40IpZI38NrBut8KaddVAqhhjSrjBU%2Bsfcxmsd7ADIM4Kc5LXhW7RxOLSZTiaA%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "SID": "655758",
+            "ResponseID": "28",
+            "Email": "thomas@tagarmor.com",
+            "Name": "Thomas",
+            "LastName": "Stilwell",
+            "RequestType": "AO01",
+            "Redeeming": ""
+          },
+          "body": {}
+        }
+      },
+      {
+        "json": {
+          "data": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-30T22:30:50.905Z",
+  "versionId": "91813e92-6346-4349-833f-0a38e576f2a1"
+}
