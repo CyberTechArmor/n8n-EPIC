@@ -1,0 +1,379 @@
+{
+  "active": false,
+  "connections": {
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code18": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token18",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token18": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token18": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow10": {
+      "main": [
+        [
+          {
+            "node": "USER10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "USER10": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "USER10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-07T13:44:21.364Z",
+  "id": "ri2oqBpPYy7AKCbM",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APM API Testing",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $json.user }}.txt",
+        "options": {}
+      },
+      "id": "a2692845-290d-4da8-9142-a0e5b9b0573d",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        660,
+        560
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "56416992-a0d7-4c55-9487-297af7d6972c",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        800,
+        560
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"{{ $('USER10').item.json.user }}\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"{{ $('USER10').item.json.password }}\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "b6fb0754-2198-421f-aa13-cdfc6a1649d4",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "3ae0f1ce-4b29-4e87-b350-18088dfe4324",
+      "name": "Code18",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "19272d3f-1666-4201-9930-0fef7df28d63",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        660
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "6daf2c45-e855-4431-8aee-bacaa6249ce4",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication HEROERP",
+        "height": 373.491094826977,
+        "width": 1498.6041394020742,
+        "color": 6
+      },
+      "id": "2347dd8f-2e5f-4bf7-8b26-cf4a0492fd34",
+      "name": "Sticky Note22",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=pmtoken-{{ $('USER10').item.json.user }}.txt",
+        "options": {}
+      },
+      "id": "3b227672-4b2b-43af-a4df-d402411800d4",
+      "name": "Read PM Token18",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        500
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "93f2c31b-bc00-4e27-acc1-13e246257e49",
+      "name": "Extract PM Token18",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        500
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "814138a1-e8a8-4b85-a58a-08b8f14e3b0a",
+      "name": "Execute Workflow10",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b36e635-bb74-4483-ba66-f77135437e8b",
+      "name": "Edit Fields11",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1780,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b806a87b-407c-47eb-b9ba-1aca0d81400d",
+              "name": "user",
+              "value": "HEROERP",
+              "type": "string"
+            },
+            {
+              "id": "c45539b3-dcfd-4d9b-a267-54d31648d3b0",
+              "name": "password",
+              "value": "Fwuser#12345",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dfd7ff41-f4ab-43f0-a81f-da71e15cff3c",
+      "name": "USER10",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        560
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f9f52317-a7ea-4dd7-ac10-6e24470d6827",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        560
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-07T13:45:45.982Z",
+  "versionId": "dad70fa6-edf4-49f3-a2ad-d85f3f148fa8"
+}
