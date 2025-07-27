@@ -1,0 +1,248 @@
+{
+  "active": false,
+  "connections": {
+    "Bitrix24_ID": {
+      "main": [
+        [
+          {
+            "node": "Get Contacts1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contacts1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Bitrix24_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-30T13:44:04.098Z",
+  "id": "DMR4b6lr1soGqbhT",
+  "isArchived": false,
+  "meta": null,
+  "name": "Limesurvey_Forms_Set_Token",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "= {{ $json.body.PLACEMENT_OPTIONS }}",
+        "include": "none",
+        "options": {}
+      },
+      "id": "8d818d9d-a9bf-429b-9402-854d749dfa8d",
+      "name": "Bitrix24_ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        180,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.ID }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 50000
+            }
+          }
+        }
+      },
+      "id": "820a8983-1298-497a-91f8-d923a670f11a",
+      "name": "Get Contacts1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {}
+      },
+      "id": "94ec71fa-4c68-41ef-80f1-738a1064853e",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        500,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {}
+      },
+      "id": "06d790e9-0e5a-49ef-9c36-3b8117d4bbd9",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        660,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "0454beea-ba2d-4bb4-9eb7-015c6eb3f7ec",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        840,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $('HTTP Request1').item.json.result }}\",\n         \"iSurveyID\": {{ $json[\"result\"][\"sid\"]}},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"NAME\"] }}\",\n                \"lastname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"LAST_NAME\"] }}\",\n                \"email\": \"{{ $('Get Contacts1').item.json[\"result\"][\"EMAIL\"][0][\"VALUE\"] }}\",\n                \"language\": \"en\",\n                \"token\": {{ $('Get Contacts1').item.json[\"result\"][\"SOURCE_DESCRIPTION\"] }},\n                \"attribute_1\": \"{{ $('Get Contacts1').item.json[\"result\"][\"SOURCE_DESCRIPTION\"] }}\" \n            }\n        ],\n        \"bCreateToken\": false\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "b104ff3c-f20c-4ed4-b205-ee690e2d5f46",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1040,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "34cebf04-9c86-4264-a354-92f377c76b46",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d7a3ea24-9724-4c94-90cf-12c349292e9f",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        20,
+        -40
+      ],
+      "webhookId": "34cebf04-9c86-4264-a354-92f377c76b46"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-30T16:18:37.115Z",
+  "versionId": "190239cf-17dd-4ad5-87b9-820591e59fd2"
+}
