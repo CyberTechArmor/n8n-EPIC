@@ -1,0 +1,324 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Encounter": {
+      "main": [
+        [
+          {
+            "node": "Postgres Bitrix24 Delta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Bitrix24 Delta": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres Bitrix24 Delta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-06T12:54:30.938Z",
+  "id": "NIX67JXuvtZ6Vb1h",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Add Bitrix24 Contact Through EHR_Depricated",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://nmnepic.bitrix24.com/crm/contact/details/{{ $json.ID }}/",
+        "options": {}
+      },
+      "id": "4315bdd8-62b1-401b-972d-c16e922ec9d9",
+      "name": "Respond to Webhook5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"UF_CRM_1701895781\": \"{{ $json[\"MRN\"] }}\" } }",
+        "options": {}
+      },
+      "id": "2ea1cabe-66a7-475b-9d39-076ce511bb08",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "63a66f27-4a05-4fb6-b3aa-1f7f6594d951",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "627cd13d-b7b6-4d3e-98df-94580d47560f",
+      "name": "EHR Encounter",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT m.\"SOURCE_DESCRIPTION\", m.\"ID\"\nFROM public.btxidtomrn m\nWHERE m.\"SOURCE_DESCRIPTION\" = '{{$json[\"MRN\"]}}'",
+        "options": {}
+      },
+      "id": "ad185213-b83a-4a22-b39d-ae8349f4a7a8",
+      "name": "Postgres Bitrix24 Delta",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        640,
+        460
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "536458b4-bcf6-43ee-af60-3965c1184e98",
+              "leftValue": "={{ $json.ID }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1bad8596-ac4f-4a5b-bfa8-6c403d8daebf",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        840,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10)='{{ $('EHR Encounter').item.json.MRN }}';\n\n  select top 2 upper(g.Patient_Number) as MRN,upper(g.Patient_First_Name) as FN,upper(g.Patient_Last_Name) as LN,FORMAT(g.Patient_DOB, 'MM-dd-yyyy') Patient_DOB,\nupper(g.Patient_Email) as EMAIL,g.Patient_Cell_Phone,g.Patient_Home_Phone\nfrom [PM].[vwGenPatInfo] g \nwhere g.Patient_Number = @MRN"
+      },
+      "id": "0e65da5a-cdef-4051-8e8f-4a4f0a3c6bd4",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        600
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.btxidtomrn (\"ID\", \"NAME\", \"LAST_NAME\", \"SOURCE_DESCRIPTION\", \"BIRTHDATE\", \"DATE_CREATE\", \"DATE_MODIFY\", \"LAST_ACTIVITY_TIME\")\nVALUES ('{{$json[\"ID\"]}}', '{{$json[\"NAME\"]}}', '{{$json[\"LAST_NAME\"]}}', '{{$json[\"SOURCE_DESCRIPTION\"]}}', '{{$json[\"BIRTHDATE\"]}}', '{{$json[\"DATE_CREATE\"]}}', '{{$json[\"DATE_MODIFY\"]}}', '{{$json[\"LAST_ACTIVITY_TIME\"]}}');",
+        "options": {}
+      },
+      "id": "3940509c-16f3-4fd3-be08-50a9b364969d",
+      "name": "Postgres Bitrix24 Delta1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1480,
+        780
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/v289y3m2yj2tqf8u/crm.contact.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n        \"NAME\": \"{{ $json[\"FN\"] }}\",\n        \"LAST_NAME\": \"{{ $json[\"LN\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $json[\"MRN\"] }}\",\n        \"BIRTHDATE\": \"{{ $json[\"Patient_DOB\"] }}\",\n        \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"{{ $json[\"Patient_Cell_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $json[\"Patient_Home_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ $json[\"EMAIL\"] }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "75c10906-e12d-446f-9d8a-46a9aaa032a5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1240,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://nmnepic.bitrix24.com/crm/contact/details/{{ $json.ID }}/",
+        "options": {}
+      },
+      "id": "83cf4d4d-8ef6-42cb-96f6-aa31d9007ba5",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        600
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4e85fc3e-cfae-411b-90f9-eae6cadad133",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        320,
+        1060
+      ]
+    }
+  ],
+  "pinData": {
+    "EHR Encounter": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-14T11:56:30.263Z",
+  "versionId": "23a6f23c-b70b-4ab4-a6c8-6a8e15d503a9"
+}
