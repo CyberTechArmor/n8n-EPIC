@@ -1,0 +1,2680 @@
+{
+  "active": true,
+  "connections": {
+    "n8n Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register and Shutdown": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shutdown": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Shutdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Execute Command7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command6": {
+      "main": [
+        [
+          {
+            "node": "Register and Restart1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register and Restart1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n Form Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Register and Shutdown1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ninja Test": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ninja Test1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register and Shutdown1": {
+      "main": [
+        [
+          {
+            "node": "Register and Shutdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Execute Command4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shutdown2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients1": {
+      "main": [
+        [
+          {
+            "node": "Split Out Sites",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents1": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Sites": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site1": {
+      "main": [
+        [
+          {
+            "node": "Map Site1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site1": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command7": {
+      "main": [
+        [
+          {
+            "node": "Register and Restart1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook6": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook7": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients": {
+      "main": [
+        [
+          {
+            "node": "Split Out Site Names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site": {
+      "main": [
+        [
+          {
+            "node": "Map Site",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Map Room to Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Room to Agent": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook11",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HERO VOV Thomas",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields10": {
+      "main": [
+        [
+          {
+            "node": "Execute Command8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register and Restart": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command8": {
+      "main": [
+        [
+          {
+            "node": "Register and Restart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook8": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get RMM Clients2": {
+      "main": [
+        [
+          {
+            "node": "Split Out Site Names1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out Site Names1": {
+      "main": [
+        [
+          {
+            "node": "Filter to CDN Site2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve All Site Agents2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter to CDN Site2": {
+      "main": [
+        [
+          {
+            "node": "Map Site2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Site2": {
+      "main": [
+        [
+          {
+            "node": "Retrieve All Site Agents2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields9": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields11": {
+      "main": [
+        [
+          {
+            "node": "Send Powershell CMD to RMM Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook9": {
+      "main": [
+        [
+          {
+            "node": "Get RMM Clients2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-12T14:45:24.392Z",
+  "id": "yPZPfqUQaMbEYgWc",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EnVision Device Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "c420086c-8019-4b3c-9e88-3d72d9d058d9",
+        "formTitle": "EnVision Onboarding",
+        "formDescription": "For registering devices.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Action",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Register and Restart"
+                  },
+                  {
+                    "option": "Register and Shutdown"
+                  },
+                  {
+                    "option": "Shutdown and Ship"
+                  },
+                  {
+                    "option": "EnVision"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "EnVision Device Name/Room"
+            }
+          ]
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "3c679ffa-b7f5-47a1-ab3a-d320918b648f",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        360
+      ],
+      "webhookId": "c420086c-8019-4b3c-9e88-3d72d9d058d9"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/form/e6234056-2cd9-47f0-ae6d-338ffb3e4d93",
+        "options": {}
+      },
+      "id": "cf5e8542-3c78-42da-9b08-499a5da2ef09",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        140
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "d280b167-7b18-4258-984d-148e477999c1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "b69fa45c-d7df-4137-8ff5-ff1074b0a82a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        140
+      ],
+      "webhookId": "d280b167-7b18-4258-984d-148e477999c1"
+    },
+    {
+      "parameters": {
+        "command": "echo \"Rename-Computer -NewName \"NewComputerName\"\n\" > registerandshutdown.ps1"
+      },
+      "id": "5f3e257b-6cf7-4aff-9626-6f27568156f1",
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        460,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"config.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "ba5d7a79-cf73-4638-9b5e-e32448b084fa",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7c538709-a276-4c7b-afc5-9e0a84fcace3",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        80,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"config.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "4d02b613-fe68-428c-8a18-7260d0e9d61c",
+      "name": "Respond to Webhook5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2220,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"config.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "43b856e7-f8d1-470d-a82c-054173801717",
+      "name": "Respond to Webhook6",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=registerandshutdown_{{ $('Edit Fields3').item.json[\"kiosk\"] }}.ps1"
+      },
+      "id": "3ac134c2-3d13-455e-875d-e16dc54c1941",
+      "name": "Register and Shutdown",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "shutdown.ps1"
+      },
+      "id": "aa92a949-f834-485c-af70-b3927d9fe8a7",
+      "name": "Shutdown",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        960,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/964b5e97-796d-49fd-8885-5854efa733b5",
+        "options": {}
+      },
+      "id": "412a6afb-5bb6-466b-9f2a-23ae560603e4",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        900,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/64e1269c-a42d-43b5-9fff-3d4cdb6c3040",
+        "options": {}
+      },
+      "id": "995d36d1-91aa-4e09-b216-fdb6c22a0c53",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        900,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "path": "964b5e97-796d-49fd-8885-5854efa733b5",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "521ce4a0-851c-4614-9b62-d686979e368c",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        360
+      ],
+      "webhookId": "964b5e97-796d-49fd-8885-5854efa733b5"
+    },
+    {
+      "parameters": {
+        "path": "64e1269c-a42d-43b5-9fff-3d4cdb6c3040",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "90df428a-3b4f-48b5-9f22-82f9fd9d9e26",
+      "name": "Webhook2",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        600
+      ],
+      "webhookId": "64e1269c-a42d-43b5-9fff-3d4cdb6c3040"
+    },
+    {
+      "parameters": {
+        "command": "echo \" \" > registerandrestart.ps1"
+      },
+      "id": "562601f0-6e22-453e-b026-62538acf0fc8",
+      "name": "Execute Command2",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        460,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "command": "echo \" \" > registerandshutdown.ps1"
+      },
+      "id": "e3d274ae-49c3-4725-987a-8bffcf85de8d",
+      "name": "Execute Command3",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "path": "e6234056-2cd9-47f0-ae6d-338ffb3e4d93",
+        "formTitle": "Register EnVision Device",
+        "formDescription": "Please specify the name to register as.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Client Code",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "State",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Site",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Room",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "5b24ce5d-1a4c-4fcf-a3ea-ddc43e69beb0",
+      "name": "n8n Form Trigger1",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        820,
+        140
+      ],
+      "webhookId": "e6234056-2cd9-47f0-ae6d-338ffb3e4d93"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "kiosk",
+              "stringValue": "={{ $('Edit Fields6').item.json[\"query\"][\"CC\"] }}-{{ $('Edit Fields6').item.json[\"query\"][\"State\"] }}-{{ $('Edit Fields6').item.json[\"query\"][\"Site\"] }}-{{ $('Edit Fields6').item.json[\"query\"][\"Room\"] }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "99c54820-f0ea-40a0-82e0-974b33eec0a8",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1640,
+        140
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "58c3fdcd-9dde-4a7c-ae96-88018bd38302",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1480,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=registerandrestart_{{ $('Edit Fields1').item.json[\"kiosk\"] }}.ps1"
+      },
+      "id": "7d69d711-c250-4680-9c46-598dd3ac0f6b",
+      "name": "Register and Restart1",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=echo \"Rename-Computer -NewName '{{ $json[\"kiosk\"] }}'\" > registerandrestart_{{ $json[\"kiosk\"] }}.ps1"
+      },
+      "id": "b19165df-94aa-4ea1-9736-be040171cabe",
+      "name": "Execute Command6",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://xl.epicpc.com/webhook/d280b167-7b18-4258-984d-148e477999c1?CC={{ $json[\"Client Code\"] }}&State={{ $json[\"State\"] }}&Site={{ $json[\"Site\"] }}&Room={{ $json[\"Room\"] }}",
+        "options": {}
+      },
+      "id": "f0f830a9-d106-446d-9e33-c4cc229025d8",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "path": "e6234056-2cd9-47f0-ae6d-338ffb3e4d94",
+        "formTitle": "Register EnVision Device",
+        "formDescription": "Please specify the name to register as.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Client Code",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "State",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Site",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Room",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "cdc83d0d-35c9-4e39-9331-5d23d1e431fe",
+      "name": "n8n Form Trigger2",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "da422d53-8558-4c04-866b-214c0fb02a1b"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/964b5e97-796d-49fd-8885-5854efa733b5",
+        "options": {}
+      },
+      "id": "85eba27e-d762-41e9-9c42-24791ee725e8",
+      "name": "Respond to Webhook7",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "kiosk",
+              "stringValue": "={{ $json[\"Client Code\"] }}-{{ $json[\"State\"] }}-{{ $json[\"Site\"] }}-{{ $json[\"Room\"] }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "93e72d22-2297-4494-9a75-469b3b7b65a3",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1680,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a00713e7-6bf3-4d24-a63b-deb3a4dd3cb8",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1520,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "ninja.ps1"
+      },
+      "id": "34c0e6ef-d886-4f67-b456-9a7d924f4734",
+      "name": "Ninja Test",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        960,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "bbb.ps1"
+      },
+      "id": "ead7eaf1-cd37-4941-95e9-a1612858dddd",
+      "name": "Ninja Test1",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        960,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "command": "echo \"& 'C:\\PC-SETUP\\New-PC-SetupDownloadMenuNinja.ahk'; & 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe' --kiosk https://vid.epicpc.com/rooms/3hm-awi-tma-fvj/join --edge-kiosk-type=fullscreen --BlockDangerousDownloads=allow\" > bbb.ps1"
+      },
+      "id": "8bde625f-9f68-425d-a841-be81a9d79b43",
+      "name": "Thomas Video Link",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "command": "echo \"& 'DownloadMenuNinja.ahk'\" > ninja.ps1"
+      },
+      "id": "c14bb15d-c4b2-441e-8ad6-9e81e263de06",
+      "name": "Ninja (ESC)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        680,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "command": "echo \"Stop-Computer -Force\" > shutdown.ps1"
+      },
+      "id": "a474ae90-4909-4039-90d0-ef475f45aabc",
+      "name": "Shutdown1",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        460,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=echo \"Rename-Computer -NewName\n'{{ $json[\"kiosk\"] }}'\" > registerandshutdown_{{ $json[\"kiosk\"] }}.ps1"
+      },
+      "id": "98a22a0c-01f1-4e18-9dbf-dad1c24238ab",
+      "name": "Register and Shutdown1",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        520
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "command": "=echo '{{ $json[\"envisioncdn\"][\"ps1\"] }}' > envisioncdn.ps1"
+      },
+      "id": "347cdebb-3c7a-4a4e-af66-9563c0d74f23",
+      "name": "Execute Command4",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "envisioncdn.ps1",
+              "stringValue": "& \"C:\\PC-SETUP\\New-PC-Setup\\DownloadMenuNinja.ahk\";cd \"C:\\PC-SETUP\\New-PC-Setup\";Remove-Item .\\envisioncdn.ps1 -Force;Invoke-WebRequest -Uri \"https://toms.app/tools/envisioncdn.txt\" -OutFile \".\\envisioncdn.ps1\";& \".\\envisioncdn.bat\""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de31eb9c-33c4-4dd4-bd98-0eb89145a291",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1560,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"config.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "dd29a2b2-820e-4a25-a916-6cd706f10080",
+      "name": "Respond to Webhook8",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "envisioncdn.ps1"
+      },
+      "id": "aee40557-350f-4b63-9d2b-4999d4105ad9",
+      "name": "Shutdown2",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "path": "64e1269c-a42d-43b5-9fff-3d4cdb6c304099",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "6dac8782-cd6d-46b1-a029-e4320961e12d",
+      "name": "Webhook3",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1940,
+        700
+      ],
+      "webhookId": "64e1269c-a42d-43b5-9fff-3d4cdb6c3040"
+    },
+    {
+      "parameters": {
+        "path": "041943ab-068f-4634-9c6c-626936c76fde",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "29303f98-2f1a-43dd-ab6b-41752e286b69",
+      "name": "Webhook4",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -60,
+        1760
+      ],
+      "webhookId": "041943ab-068f-4634-9c6c-626936c76fde"
+    },
+    {
+      "parameters": {
+        "command": "echo \"& 'c:\\pc-setup\\new-pc-setup\\envisioncdn.1 \" > registerandshutdown.ps1"
+      },
+      "id": "2c8532f1-82b1-4feb-b2ba-3a302bef4c73",
+      "name": "Execute Command5",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "path": "113cab42-0a26-4b8b-a6ee-a0b30ef1a607",
+        "options": {}
+      },
+      "id": "489f450f-6beb-4941-b43e-3d401300b95a",
+      "name": "Webhook5",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2580,
+        700
+      ],
+      "webhookId": "113cab42-0a26-4b8b-a6ee-a0b30ef1a607"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://hs.epicpc.com/idA4I",
+        "options": {}
+      },
+      "id": "fc3d98f5-5302-462e-99ed-95106e8bb9fc",
+      "name": "Respond to Webhook9",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        520,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## HERO Video Call",
+        "height": 346.89617301767055,
+        "width": 862.9872433922358,
+        "color": 4
+      },
+      "id": "913fd8d9-e373-4c96-a526-45d4de1dbcf6",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -132.80399671270948,
+        1628.7284861801058
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/c077f4df-6a3c-4ccd-af0d-8166b5dc51ae",
+        "options": {}
+      },
+      "id": "982cb127-ae5d-4a47-9a28-5004a33bc297",
+      "name": "VOV",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://toms.app/tools/bs.mp4",
+        "options": {}
+      },
+      "id": "3b254e91-8ba6-489c-8cf7-c4c70b4af94f",
+      "name": "Respond to Webhook10",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        580,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d54fc446-24ee-4650-a753-5db715aeef81",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/36ef01fd-b57b-4a0d-9a95-bbb21b4f2150",
+        "options": {}
+      },
+      "id": "b0a5217d-97f9-4c70-ba58-f511396ce2df",
+      "name": "Respond to Webhook11",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        780,
+        -200
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://hs.epicpc.com/EOh4m",
+        "options": {}
+      },
+      "id": "968d6f5f-2873-4d62-b7a1-8ba17382f140",
+      "name": "HERO VOV Thomas",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1f75f01d-12f8-49b1-b09a-9432289f8e7f",
+      "name": "Get RMM Clients1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2000,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a67df22c-7515-4647-bf60-47055b71f346",
+      "name": "Retrieve All Site Agents1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2620,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "94bfb397-5412-4b5f-b5d5-10497062a85e",
+      "name": "Split Out Sites",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "GE",
+                    "operator": {
+                      "type": "string",
+                      "operation": "endsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "bd3a0385-4589-4c0b-85a8-938f4c442405",
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Identify Room').item.json.ROOM_TEXT }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "endsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "617ea358-200f-417c-9f90-1b1ce0285b9b",
+      "name": "Map Room to Agent1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2820,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5dfb5df-8e25-46cd-8dcd-aaf2ea99f8a3",
+      "name": "Filter to CDN Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2320,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "=EPIC Southfield 10 Mile",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c2905e9f-56f4-4a4a-8437-4dc9485446d4",
+      "name": "Map Site1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2460,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://xl.epicpc.com/webhook/d280b167-7b18-4258-984d-148e477999c1",
+        "options": {}
+      },
+      "id": "22fd5a5d-9e75-4a80-8921-c3f5d88e3852",
+      "name": "Respond to Webhook12",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=echo \"& 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe' --kiosk https://xl.epicpc.com/webhook/5f6d17d9-98b1-4db3-86d3-e4c0fbd5d630?hostname=\\$(hostname) --edge-kiosk-type=fullscreen --edge-kiosk-type=fullscreen\" > registerandrestart_{{ $json[\"kiosk\"] }}.ps1"
+      },
+      "id": "b0a5f586-fce6-4698-a002-eb9579866107",
+      "name": "Execute Command7",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "path": "5f6d17d9-98b1-4db3-86d3-e4c0fbd5d630",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "4ed4e6b6-ac47-4ace-b308-537e6a110f01",
+      "name": "Webhook6",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        120
+      ],
+      "webhookId": "5f6d17d9-98b1-4db3-86d3-e4c0fbd5d630"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Simple Form Submission</title>\n    <style>\n        /* Center the form in the middle of the page */\n        body, html {\n            height: 100%;\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n\n        .center-form {\n            min-height: 100vh; /* Use full height of the viewport */\n            display: flex;\n            align-items: center; /* Vertical alignment */\n            justify-content: center; /* Horizontal alignment */\n        }\n\n        form {\n            border: 1px solid #ccc;\n            padding: 20px;\n            box-shadow: 0 2px 5px rgba(0,0,0,0.2);\n        }\n\n        input[type=\"text\"], input[type=\"submit\"] {\n            padding: 10px;\n            margin: 10px 0;\n            width: 200px; /* Set a fixed width for the input elements */\n            display: block;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"center-form\">\n        <!-- Action URL is set to http://example.com, method is POST -->\n        <form action=\"https://xl.epicpc.com/webhook/3bbf4ef1-3efa-4866-9887-8d1850bca353\" method=\"post\">\n            <!-- Simple text input field -->\n            <input type=\"text\" name=\"hostname\" placeholder=\"Enter Client-Location-Room Code\" required>\n            <!-- Submit button -->\n            <input type=\"submit\" value=\"Submit\">\n        </form>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "05c01c50-5a2d-4a48-8b02-9376eb9de482",
+      "name": "Respond to Webhook13",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2940,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "3bbf4ef1-3efa-4866-9887-8d1850bca353",
+        "options": {}
+      },
+      "id": "9b0b5906-e25c-405f-9e3c-e9e6fd86a793",
+      "name": "Webhook7",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        3160,
+        120
+      ],
+      "webhookId": "3bbf4ef1-3efa-4866-9887-8d1850bca353"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "96ebed13-e661-416f-b96c-dcdf2a11a3ca",
+      "name": "Get RMM Clients",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3360,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "12c094a9-abdb-4316-b2ae-69d6e6eaf81a",
+      "name": "Split Out Site Names",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "035d4fb6-5fc4-49ca-8bc1-0a319c5a117e",
+      "name": "Retrieve All Site Agents",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4000,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d05c14cb-286d-4685-ba5d-854cfb798542",
+      "name": "Filter to CDN Site",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3700,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "Inventory",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "91d30b6d-4986-41ed-9ebc-a41512fd564c",
+      "name": "Map Site",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3840,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c51cc68c-1002-4e4b-8af9-364ee0eab0dc",
+              "name": "currentname",
+              "value": "={{ $('Webhook7').item.json.headers.referer.params.get('hostname') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ceb3cff5-5205-4700-8d32-45303cb930b4",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4220,
+        120
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook7').item.json.headers.referer.replaceAll(\"https://xl.epicpc.com/webhook/5f6d17d9-98b1-4db3-86d3-e4c0fbd5d630?hostname=\",\"\") }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "endsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "209996a9-78f9-4e08-a2d6-d50daf5dc2c3",
+      "name": "Map Room to Agent",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        4420,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "773c3da9-d786-4870-b595-f2958ddf888f",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2ba27b53-3bc2-4af3-975f-006051f9d3fa",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4640,
+        120
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"Rename-Computer -NewName '{{ $('Webhook7').item.json[\"body\"][\"hostname\"] }}' -Force; Restart-Computer -Force\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":false}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "8b0b12e7-cfd9-4047-9207-4bbcc634ed82",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4860,
+        120
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.Action }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "Register and Restart"
+            },
+            {
+              "value2": "Register and Shutdown"
+            },
+            {
+              "value2": "Shutdown and Ship"
+            },
+            {
+              "value2": "VOV"
+            },
+            {
+              "value2": "BS Video Intro"
+            }
+          ]
+        }
+      },
+      "id": "6567a0dc-c8d1-4e5d-8b17-feb2e1096edb",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "binary",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "content-type",
+                "value": "application/octet-stream"
+              },
+              {
+                "name": "Content-Disposition",
+                "value": "attachment; filename=\"config.txt\""
+              }
+            ]
+          }
+        }
+      },
+      "id": "9f5f54f4-259b-4a08-aa54-b8940f90c056",
+      "name": "Respond to Webhook14",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "77e9b80e-ef90-4cb8-8d78-35343d0f41a3",
+      "name": "Edit Fields10",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1500,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "=registerandshutdown_.ps1"
+      },
+      "id": "d293917d-856f-4896-8621-6608f0e96eb2",
+      "name": "Register and Restart",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=echo \"& 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe' --kiosk https://xl.epicpc.com/webhook/6821bbb6-86f7-44dd-84a6-2b43befe6eb9?hostname=\\$(hostname) --edge-kiosk-type=fullscreen --edge-kiosk-type=fullscreen\" > registerandshutdown_.ps1"
+      },
+      "id": "a216a9d3-052a-4427-aa7b-2bed8ce258e7",
+      "name": "Execute Command8",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "path": "6821bbb6-86f7-44dd-84a6-2b43befe6eb9",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e6669d78-0ab9-460a-830f-060f0755060c",
+      "name": "Webhook8",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2520,
+        360
+      ],
+      "webhookId": "6821bbb6-86f7-44dd-84a6-2b43befe6eb9"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Simple Form Submission</title>\n    <style>\n        /* Center the form in the middle of the page */\n        body, html {\n            height: 100%;\n            margin: 0;\n            font-family: Arial, sans-serif;\n        }\n\n        .center-form {\n            min-height: 100vh; /* Use full height of the viewport */\n            display: flex;\n            align-items: center; /* Vertical alignment */\n            justify-content: center; /* Horizontal alignment */\n        }\n\n        form {\n            border: 1px solid #ccc;\n            padding: 20px;\n            box-shadow: 0 2px 5px rgba(0,0,0,0.2);\n        }\n\n        input[type=\"text\"], input[type=\"submit\"] {\n            padding: 10px;\n            margin: 10px 0;\n            width: 200px; /* Set a fixed width for the input elements */\n            display: block;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"center-form\">\n        <!-- Action URL is set to http://example.com, method is POST -->\n        <form action=\"https://xl.epicpc.com/webhook/0d595269-61f7-40e9-8bdc-48434fb2f468\" method=\"post\">\n            <!-- Simple text input field -->\n            <input type=\"text\" name=\"hostname\" placeholder=\"Enter Client-Location-Room Code\" required>\n            <!-- Submit button -->\n            <input type=\"submit\" value=\"Submit\">\n        </form>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "dcf27e56-0063-4571-be43-6fcb466ed22d",
+      "name": "Respond to Webhook15",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0d595269-61f7-40e9-8bdc-48434fb2f468",
+        "options": {}
+      },
+      "id": "1b0feaf5-4c9c-4238-bb06-bff859f538bb",
+      "name": "Webhook9",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        3160,
+        360
+      ],
+      "webhookId": "0d595269-61f7-40e9-8bdc-48434fb2f468"
+    },
+    {
+      "parameters": {
+        "url": " https://api.wiretapped.app/clients/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85435497-b04c-494b-a4d6-03dcb9533482",
+      "name": "Get RMM Clients2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3380,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "sites",
+        "options": {}
+      },
+      "id": "5ecdd035-8390-41a3-adce-90f74dc433b9",
+      "name": "Split Out Site Names1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.wiretapped.app/agents/?site={{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c252b798-f261-4b5a-8adc-69a7d1dfaa85",
+      "name": "Retrieve All Site Agents2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4020,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.client }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "faa5ce18-23cc-4dd2-99ba-a0370e1fcbd4",
+      "name": "Filter to CDN Site2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3720,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.name }}",
+                    "rightValue": "Inventory",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb27de72-fccb-45ca-abbf-062f61cf428c",
+      "name": "Map Site2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        3860,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c51cc68c-1002-4e4b-8af9-364ee0eab0dc",
+              "name": "currentname",
+              "value": "={{ $('Webhook7').item.json.headers.referer.params.get('hostname') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dc8f3e42-9224-40dc-81b1-a9c4f8ac3638",
+      "name": "Edit Fields9",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4240,
+        360
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "773c3da9-d786-4870-b595-f2958ddf888f",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a79f19b9-b5f3-4f63-8d37-9afbeca4b620",
+      "name": "Edit Fields11",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        4660,
+        360
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "= https://api.wiretapped.app/agents/{{ $json[\"agent_id\"] }}/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"Rename-Computer -NewName '{{ $('Webhook9').item.json[\"body\"][\"hostname\"] }}' -Force; Stop-Computer -ComputerName localhost -Force\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":false}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "70d4741a-30a2-44a3-930b-8eac157ccd45",
+      "name": "Send Powershell CMD to RMM Agent1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4880,
+        360
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.hostname }}",
+                    "rightValue": "={{ $('Webhook9').item.json[\"body\"][\"hostname\"] }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90aaff89-b334-4a34-b185-cdc5b3c6546c",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        4440,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "Action": "Register and Restart",
+          "submittedAt": "2024-02-12T18:28:57.904Z",
+          "formMode": "production"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Client Code": "K01",
+          "State": "MI",
+          "Site": "SOU",
+          "Room": "T1",
+          "submittedAt": "2024-02-12T18:55:08.755Z",
+          "formMode": "production",
+          "kiosk": "K01-MI-SOU-T1"
+        }
+      }
+    ],
+    "Edit Fields3": [
+      {
+        "json": {
+          "Client Code": "K01",
+          "State": "MI",
+          "Site": "SOU",
+          "Room": "T1",
+          "submittedAt": "2024-02-12T18:55:08.755Z",
+          "formMode": "production",
+          "kiosk": "K01-MI-SOU-T1"
+        }
+      }
+    ],
+    "Edit Fields4": [
+      {
+        "json": {
+          "Client Code": "K01",
+          "State": "MI",
+          "Site": "SOU",
+          "Room": "T1",
+          "submittedAt": "2024-02-12T18:53:24.068Z",
+          "formMode": "production"
+        }
+      }
+    ],
+    "n8n Form Trigger1": [
+      {
+        "json": {
+          "Client Code": "EH",
+          "State": "MI",
+          "Site": "SFD",
+          "Room": "A1",
+          "submittedAt": "2024-03-18T15:57:35.933Z",
+          "formMode": "production"
+        }
+      }
+    ],
+    "Edit Fields2": [
+      {
+        "json": {
+          "Client Code": "K01",
+          "State": "MI",
+          "Site": "SOU",
+          "Room": "T1",
+          "submittedAt": "2024-02-12T18:53:24.068Z",
+          "formMode": "production"
+        }
+      }
+    ],
+    "Edit Fields6": [
+      {
+        "json": {
+          "query": {
+            "CC": "EH",
+            "State": "MI",
+            "Site": "SFD",
+            "Room": "A1"
+          }
+        }
+      }
+    ],
+    "Webhook7": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.230",
+            "x-forwarded-for": "10.0.14.230",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "14",
+            "cache-control": "max-age=0",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "origin": "https://xl.epicpc.com",
+            "content-type": "application/x-www-form-urlencoded",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "referer": "https://xl.epicpc.com/webhook/5f6d17d9-98b1-4db3-86d3-e4c0fbd5d630?hostname=AUTOSTA-SQ8S16V",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "hostname": "TEST5"
+          }
+        }
+      }
+    ],
+    "Edit Fields8": [
+      {
+        "json": {
+          "agent_id": "UqKKohtZvljCrpeKXHEJIJNAjnVhbqSOTJCZkZER",
+          "alert_template": null,
+          "hostname": "AUTOSTA-SQ8S16V",
+          "site_name": "Inventory",
+          "client_name": "CDN",
+          "monitoring_type": "workstation",
+          "description": "",
+          "needs_reboot": false,
+          "pending_actions_count": 0,
+          "status": "online",
+          "overdue_text_alert": false,
+          "overdue_email_alert": false,
+          "overdue_dashboard_alert": false,
+          "last_seen": "2024-04-11T15:26:37.643074Z",
+          "boot_time": 1712847651,
+          "checks": {
+            "total": 0,
+            "passing": 0,
+            "failing": 0,
+            "warning": 0,
+            "info": 0,
+            "has_failing_checks": false
+          },
+          "maintenance_mode": false,
+          "logged_username": "autostart",
+          "italic": false,
+          "block_policy_inheritance": false,
+          "plat": "windows",
+          "goarch": "amd64",
+          "has_patches_pending": false,
+          "version": "2.6.2",
+          "operating_system": "Windows 10 Pro, 64 bit v22H2 (build 19045.3803)",
+          "public_ip": "76.252.196.177",
+          "cpu_model": [
+            "Intel(R) Celeron(R) N4500 @ 1.10GHz, 2C/2T"
+          ],
+          "graphics": "Intel(R) UHD Graphics",
+          "local_ips": "10.0.14.230",
+          "make_model": "ASUSTeK COMPUTER INC. Vivobook_ASUSLaptop TP1400KA TP1400KA_J1400KA",
+          "physical_disks": [
+            "Generic G1J38E 58GB SCSI"
+          ],
+          "custom_fields": [],
+          "serial_number": "N5N0CV03K71419B"
+        }
+      }
+    ],
+    "Edit Fields10": [
+      {
+        "json": {
+          "Client Code": "K01",
+          "State": "MI",
+          "Site": "SOU",
+          "Room": "T1",
+          "submittedAt": "2024-02-12T18:53:24.068Z",
+          "formMode": "production"
+        }
+      }
+    ],
+    "Edit Fields11": [
+      {
+        "json": {
+          "agent_id": "UqKKohtZvljCrpeKXHEJIJNAjnVhbqSOTJCZkZER",
+          "alert_template": null,
+          "hostname": "AUTOSTA-SQ8S16V",
+          "site_name": "Inventory",
+          "client_name": "CDN",
+          "monitoring_type": "workstation",
+          "description": "",
+          "needs_reboot": false,
+          "pending_actions_count": 0,
+          "status": "online",
+          "overdue_text_alert": false,
+          "overdue_email_alert": false,
+          "overdue_dashboard_alert": false,
+          "last_seen": "2024-04-11T15:26:37.643074Z",
+          "boot_time": 1712847651,
+          "checks": {
+            "total": 0,
+            "passing": 0,
+            "failing": 0,
+            "warning": 0,
+            "info": 0,
+            "has_failing_checks": false
+          },
+          "maintenance_mode": false,
+          "logged_username": "autostart",
+          "italic": false,
+          "block_policy_inheritance": false,
+          "plat": "windows",
+          "goarch": "amd64",
+          "has_patches_pending": false,
+          "version": "2.6.2",
+          "operating_system": "Windows 10 Pro, 64 bit v22H2 (build 19045.3803)",
+          "public_ip": "76.252.196.177",
+          "cpu_model": [
+            "Intel(R) Celeron(R) N4500 @ 1.10GHz, 2C/2T"
+          ],
+          "graphics": "Intel(R) UHD Graphics",
+          "local_ips": "10.0.14.230",
+          "make_model": "ASUSTeK COMPUTER INC. Vivobook_ASUSLaptop TP1400KA TP1400KA_J1400KA",
+          "physical_disks": [
+            "Generic G1J38E 58GB SCSI"
+          ],
+          "custom_fields": [],
+          "serial_number": "N5N0CV03K71419B"
+        }
+      }
+    ],
+    "Webhook9": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "22",
+            "cache-control": "max-age=0",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "origin": "https://xl.epicpc.com",
+            "content-type": "application/x-www-form-urlencoded",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "referer": "https://xl.epicpc.com/webhook/6821bbb6-86f7-44dd-84a6-2b43befe6eb9?hostname=CT-ECDN-WIN11",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "hostname": "CT-ECDN-WIN11"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:n8n Form Trigger": {
+      "hostname": "SFDTEL3"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 13,
+  "updatedAt": "2024-06-23T23:06:34.948Z",
+  "versionId": "d1dcdac2-7bb4-40ab-9f34-736bbbd5a24f"
+}
