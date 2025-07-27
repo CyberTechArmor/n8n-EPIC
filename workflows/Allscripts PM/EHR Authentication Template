@@ -1,0 +1,1345 @@
+{
+  "active": true,
+  "connections": {
+    "Read/Write Files from Disk6": {
+      "main": [
+        [
+          {
+            "node": "Extract from File4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk7": {
+      "main": [
+        [
+          {
+            "node": "Extract from File5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token2": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token2": {
+      "main": [
+        [
+          {
+            "node": "Check Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow2": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "Extract from File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk4": {
+      "main": [
+        [
+          {
+            "node": "Extract from File3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk5": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-22T20:33:22.354Z",
+  "id": "Gx9O3tBz818z6KFW",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Allscripts PM/EHR Authentication Template",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "e82e1b75-acac-410e-9cee-4b34bbb02c33",
+      "name": "Read/Write Files from Disk6",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        620,
+        1635
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "05591315-a887-45db-9820-12f3d49237b7",
+      "name": "Extract from File4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        800,
+        1635
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "ab7c8357-0794-4d6e-afa3-ff7b282cc5a2",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        1635
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "c3e7d810-7f00-4053-b57f-c66adc541327",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1400,
+        1735
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "d5e02e80-4294-4710-af56-0658e05042b6",
+      "name": "Read/Write Files from Disk7",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        1535
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "3507657a-305b-4249-9c5c-fb4631db3237",
+      "name": "Extract from File5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        1535
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json[\"data\"] }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "164e0082-68e5-473f-9189-e839bc392865",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        1635
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# EHR Authentication",
+        "height": 426.115682381651,
+        "width": 1345.3668054052762,
+        "color": 5
+      },
+      "id": "4d9e5adc-3980-4682-8688-fb2fb51e9ca3",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.Token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ceee3e6e-5b2a-4dee-b672-8bc8a2232d20",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1740,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "Gx9O3tBz818z6KFW",
+        "options": {}
+      },
+      "id": "c1b3253c-7fb6-4797-814d-83b48f915b79",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        1735
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.Token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5ad62859-086a-4874-9304-7db709dae427",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1720,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "a692e643-aa99-47d8-bb97-72dc1f1bca44",
+      "name": "Check Token1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "0fc8c4b9-f458-447c-ac29-8d443e09d59b",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "34f2173d-0d61-468a-9b31-b5a3be1aac27",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        2360
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "c935099d-d206-4904-9a45-5f35b194120e",
+      "name": "IF PM Token Valid1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication",
+        "height": 373.491094826977,
+        "width": 1286.8388663041949,
+        "color": 6
+      },
+      "id": "f6a25163-0ced-42b4-853e-665c2e1adf20",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        560,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "26ddf17d-376d-4d22-8cc0-238acd034cb6",
+      "name": "Read PM Token2",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        600,
+        2260
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "960dffac-5537-4055-8af1-f073f5e0924e",
+      "name": "Extract PM Token2",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        740,
+        2260
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "Gx9O3tBz818z6KFW",
+        "options": {}
+      },
+      "id": "930b469a-3f80-4373-a05e-bc5158b36f82",
+      "name": "Execute Workflow2",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "e4bde51c-6172-4bb3-b401-62c47e33376d",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        2200
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "4db073fa-0553-48e8-9c71-90ec1ed2e441",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        2200
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "548f3243-c874-415c-9801-dd1c736a4d79",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        2108
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "pmtoken.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "2f42eda1-22af-4d6b-ab9c-644891bc5026",
+      "name": "Read/Write Files from Disk1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -39,
+        2507
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "data",
+        "options": {}
+      },
+      "id": "c1f9457a-1f7f-4445-9d5d-7565058f4681",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -219,
+        2507
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "b92685e7-24a5-4168-9515-18128f0279b9",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -840,
+        2108
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "77d3c3f0-d4ea-4cde-9a48-de60e937885a",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        2348
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASPM Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 666.2861090173772,
+        "width": 1290.8012866477518,
+        "color": 6
+      },
+      "id": "a4006653-094a-404e-8680-1a3a3a1f043a",
+      "name": "Sticky Note10",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1060,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "height": 362.7737573665016,
+        "width": 646.6471275914764,
+        "color": 4
+      },
+      "id": "7c77a295-edb6-4f54-9b90-509d89251fa7",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -419,
+        2027
+      ]
+    },
+    {
+      "parameters": {
+        "height": 294.96556026709675,
+        "width": 656.1571203767965,
+        "color": 3
+      },
+      "id": "f3f29544-7cd6-42c3-9166-10d62a057572",
+      "name": "Sticky Note12",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -424,
+        2393
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-804c-NMNWokflow-prod\",      \"Password\":\"%paCpcN2nW!6FlaWt%St3Pp@B958\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "2d8df415-9469-4b65-bd05-1f256c2010f8",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -380,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken.txt",
+        "options": {}
+      },
+      "id": "9224e981-2a60-46c8-89d2-233342454960",
+      "name": "Read/Write Files from Disk2",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "2520ac26-9ad2-41fe-b502-5e82530fb480",
+      "name": "Extract from File1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "id": "40ce83b3-10e5-40be-b8ad-3a9cf25144ad",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1420,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "command": "realpath pmtoken.txt"
+      },
+      "id": "ee272217-d5e9-4d7d-a464-e0570ef187c3",
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        340,
+        2280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/GetToken",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{      \"Username\":\"56233400f:10031494^1^EPICP-804c-NMNWokflow-prod\",      \"Password\":\"%paCpcN2nW!6FlaWt%St3Pp@B958\"  }",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "c51b6525-6070-495c-acb9-981c64bda5ce",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -364,
+        1448
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "063825b9-edf0-4c3a-9a1b-f91f3db000b8",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -644,
+        1406
+      ]
+    },
+    {
+      "parameters": {
+        "height": 256.4039716193548,
+        "width": 648.6717174512601,
+        "color": 4
+      },
+      "id": "1b3a3ba1-0d42-4359-8f37-415c92c99b7f",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -399,
+        1105
+      ]
+    },
+    {
+      "parameters": {
+        "height": 299.62347464752673,
+        "width": 650.1509149056403,
+        "color": 3
+      },
+      "id": "e1011191-c52b-4aeb-a653-a08d5f4a0ceb",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json[\"data\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "737f1ca8-32c8-4aa0-b574-0f4830f087a2",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        56,
+        1188
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "67df838a-e8cf-439a-8c8b-085b77b5b56b",
+      "name": "Read/Write Files from Disk3",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -1000,
+        1220
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "5de96b5e-b837-46c9-8510-45a1a7a79e6c",
+      "name": "Extract from File2",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        1220
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "fa26cfdf-cca0-49c5-8778-26772d3402fc",
+      "name": "Read/Write Files from Disk4",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1200
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "3e03b761-4f0e-4f91-8dad-c65f3d00dc28",
+      "name": "Extract from File3",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        1200
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "ehrtoken.txt",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "2f77f020-129d-49c0-9adb-98a560a4c149",
+      "name": "Read/Write Files from Disk5",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        20,
+        1460
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "data",
+        "options": {}
+      },
+      "id": "8a02a184-30a3-43a0-bb5b-daf0ef22c5d4",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        1460
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"HEROERP\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json[\"data\"] }}\",     \"Parameter1\":\"3p1c#123456\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "880ee61a-e2a3-4723-8d17-b13787dd6265",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -824,
+        1406
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "id": "c3cc2be8-8b94-4f71-91b7-0cf8771bea9e",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1420,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "4377d568-158a-40a6-ab54-3e6052406f48",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -700,
+        2348
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## ASEHR Authentication\n**Check token: if yes (use), if no (get new)",
+        "height": 563.4038572291529,
+        "width": 1294.7853156722608,
+        "color": 5
+      },
+      "id": "1aee1637-e50b-43b4-b36f-3f987b58ad7a",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"Fwuser#12345\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "b76d2e3a-e6e6-4023-a031-d5536ee143b1",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -840,
+        2348
+      ],
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-23T17:11:16.388Z",
+  "versionId": "516cb8ee-a765-4168-a38b-27e188a860d1"
+}
