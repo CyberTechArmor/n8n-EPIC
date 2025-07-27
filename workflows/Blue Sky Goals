@@ -1,0 +1,33 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-10-08T11:38:55.825Z",
+  "id": "TsYosUxglrXqRyaC",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Blue Sky Goals",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "f34f8aea-4313-4808-b080-6dca1062bd50",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        620,
+        320
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-10-08T11:38:55.825Z",
+  "versionId": "46adc3db-9656-4a83-a2e2-fa519a04e229"
+}
