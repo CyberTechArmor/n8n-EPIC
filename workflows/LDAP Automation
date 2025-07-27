@@ -1,0 +1,358 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-08T21:40:20.312Z",
+  "id": "fr9IIpr245bPfDj7",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "LDAP Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "80bd500c-6df7-4cc4-add1-f9434cfebc22",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        360,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "lastLogon",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "a3f2eb58-7c8d-42e0-ada2-cc13a4e1324d",
+      "name": "Search LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        600,
+        620
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "7c5faf9c-c67b-487d-930d-c4ef9623d99e",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        860,
+        620
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "{{ $json.lastlogon }}"
+      },
+      "id": "648a23dc-f83b-472c-ae4d-59c761aef25e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.date }}",
+        "options": {}
+      },
+      "id": "582827cc-cc4a-42d6-8deb-7902e37feabb",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c84981b2-e461-461d-b30e-532f0247dee4",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "options": {}
+      },
+      "id": "79b88a12-67f5-4d77-9d70-8451efa0274c",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1ade342e-a4a2-4c51-bc1b-8dbbd7b0d53d",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1080,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "formattedDate",
+              "field2": "formattedDate"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a202a43d-0d7c-48c7-a669-0818eaf7854e",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1740,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "753bf798-3a5c-4c50-a5b6-63cd23046e57",
+              "name": "lastlogon",
+              "value": "=function convertWindowsFiletimeToDate(filetime) {\n    const ticksPerMillisecond = 10000n; // 10,000 100-nanosecond intervals, now BigInt\n    const epochDiff = 116444736000000000n; // ticks between AD epoch 1601 and Unix epoch 1970, now BigInt\n    const unixTimestampInMs = (filetime - epochDiff) / ticksPerMillisecond;\n    return new Date(Number(unixTimestampInMs)); // Convert BigInt to Number for Date constructor\n}\n\n// Usage example:\nconst filetime = {{ $json.lastLogon }}n; // The 'n' denotes a BigInt in JavaScript\nconst date = convertWindowsFiletimeToDate(filetime);\n\n// Return the result as an array of objects\nreturn [{ date: date.toString() }]; // Outputs the date in a format that matches your system's requirements\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "353afecf-3fcc-4a5a-bcfc-8d4dd1bd492f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1140,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "835c81db-6ccf-42d1-9ee1-5ce1a524a716",
+              "name": "lastlogon",
+              "value": "={{ $json.lastlogon }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "492ae49b-5207-4ec1-bd4e-a0b9accb47ac",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1360,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "{{ $json.lastlogon }}"
+      },
+      "id": "1c7dcb99-ce8b-4130-8076-0e96ce132d39",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        740
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-08T22:27:19.789Z",
+  "versionId": "041b1132-d1f7-4e09-a202-90492aab3d7e"
+}
