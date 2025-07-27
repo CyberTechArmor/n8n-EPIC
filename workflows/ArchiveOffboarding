@@ -1,0 +1,289 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NocoDB": {
+      "main": [
+        [
+          {
+            "node": "Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Complete": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "CreateArchive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateArchive": {
+      "main": [
+        [
+          {
+            "node": "DeleteCompleted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-14T20:55:15.302Z",
+  "id": "CqdnQbk4J12QzNlA",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ArchiveOffboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks"
+            }
+          ]
+        }
+      },
+      "id": "c0a238b4-c9d8-4297-8421-0aa0ac585d8b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        60,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "341a91b4-0875-4d35-ad3a-f412074e71b5",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        300,
+        420
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8ab6ba49-38ad-40d7-998c-d5da06347618",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "Complete",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0e537e3d-dcf3-4005-8e9c-d92aea4e0cbc",
+      "name": "Complete",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        520,
+        420
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "398237a7-0f7f-40aa-aa85-3369db986d8f",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a7598485-c658-44e0-bae7-b7d145ba0275",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        760,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "mapck42f5wksero",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('NocoDB').item.json.Username }}"
+            },
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('NocoDB').item.json.Name }}"
+            },
+            {
+              "fieldName": "Reason of Leave",
+              "fieldValue": "={{ $('NocoDB').item.json['Reason of Leave'] }}"
+            },
+            {
+              "fieldName": "Role",
+              "fieldValue": "={{ $('NocoDB').item.json.Role }}"
+            },
+            {
+              "fieldName": "Department",
+              "fieldValue": "={{ $('NocoDB').item.json.Department }}"
+            },
+            {
+              "fieldName": "Last Day of Employment",
+              "fieldValue": "={{ $('NocoDB').item.json['Last day of Employment'] }}"
+            },
+            {
+              "fieldName": "Resignation Date",
+              "fieldValue": "={{ $('NocoDB').item.json['Resignation Date'] }}"
+            },
+            {
+              "fieldName": "ApprovedBy",
+              "fieldValue": "={{ $('NocoDB').item.json.ApprovedBy }}"
+            },
+            {
+              "fieldName": "Model",
+              "fieldValue": "={{ $('NocoDB').item.json.Model }}"
+            },
+            {
+              "fieldName": "SerialNumber",
+              "fieldValue": "={{ $('NocoDB').item.json.SerialNumber }}"
+            }
+          ]
+        }
+      },
+      "id": "81292172-449f-492c-a93b-e2cf5129f713",
+      "name": "CreateArchive",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        980,
+        520
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "delete",
+        "projectId": "pvucn8uu0ownv91",
+        "table": "m35yaihecewbn7q",
+        "id": "={{ $('NocoDB').item.json.Id }}"
+      },
+      "id": "e321e7a2-a799-4395-84dd-645fe44f960f",
+      "name": "DeleteCompleted",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        1200,
+        520
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "zd060BM2p9Jgj1wN",
+          "name": "PowerAccount"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [],
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-09T13:16:07.356Z",
+  "versionId": "163a2429-699c-4386-bf33-ce4eb0c41836"
+}
