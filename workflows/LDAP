@@ -1,0 +1,338 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Get all records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all records": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-10T13:33:58.313Z",
+  "id": "cqGM2CsFkPKB9ygY",
+  "isArchived": false,
+  "meta": null,
+  "name": "LDAP",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "083f9fb0-bdba-4f82-8fcc-9f1b1e7e5dfe",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        500,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "custom",
+        "returnAll": true,
+        "options": {
+          "attributes": [
+            "displayName",
+            "lastLogon",
+            "lastLogoff",
+            "mail",
+            "sAMAccountName",
+            "accountExpires",
+            "lastLogonTimestamp"
+          ],
+          "pageSize": 5000
+        }
+      },
+      "id": "6dc87de7-bae3-47f5-9769-8a1d4ce151ad",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        720,
+        560
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "aduserlogs",
+          "mode": "list",
+          "cachedResultName": "aduserlogs"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "dn": "={{ $json.dn }}",
+            "displayname": "={{ $json.displayName }}",
+            "lastlogon": "={{ $json.lastLogon }}",
+            "lastlogoff": "={{ $json.lastLogoff }}",
+            "mail": "={{ $json.mail }}",
+            "samaccountname": "={{ $json.sAMAccountName }}",
+            "accountexpires": "={{ $json.accountExpires }}",
+            "lastlogontimestamp": "={{ $json.lastLogonTimestamp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "dn",
+              "displayName": "dn",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "displayname",
+              "displayName": "displayname",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastlogon",
+              "displayName": "lastlogon",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastlogoff",
+              "displayName": "lastlogoff",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "mail",
+              "displayName": "mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "samaccountname",
+              "displayName": "samaccountname",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "accountexpires",
+              "displayName": "accountexpires",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastlogontimestamp",
+              "displayName": "lastlogontimestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed65b5ee-c005-49d3-a7bb-1dd0fca9b5f7",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        940,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE aduserlogs\n-- ADD COLUMN dn VARCHAR(255),\n-- ADD COLUMN displayName VARCHAR(255),\n-- ADD COLUMN lastLogon VARCHAR(255),\nADD COLUMN mail VARCHAR(255),\nADD COLUMN sAMAccountName VARCHAR(255),\nADD COLUMN accountExpires VARCHAR(255),\nADD COLUMN lastLogonTimestamp VARCHAR(255);\n--ADD COLUMN lastLogoff VARCHAR(255);\n",
+        "options": {}
+      },
+      "id": "b83d7551-7dd5-457e-8e7c-e34e99d40464",
+      "name": "SET Columns",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        560
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM aduserlogs;",
+        "options": {}
+      },
+      "id": "010b2a72-0141-433f-83d8-e82335d109d4",
+      "name": "Get all records",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        800
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "aduserlogs",
+          "mode": "list",
+          "cachedResultName": "aduserlogs"
+        },
+        "options": {}
+      },
+      "id": "8c812742-923a-4a1c-be1b-8a12042acac6",
+      "name": "Remove all records",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        220,
+        980
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "6evGB8oNYEOyTU8b",
+          "name": "Postgres HR"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "83f49029-2990-4b6d-9fe9-fb771b052e85",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        440,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {}
+      },
+      "id": "24c116eb-5f07-4438-8e6a-5c710c4c1b41",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [
+        700,
+        800
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-14T17:23:53.776Z",
+  "versionId": "6550f3e0-64b8-46bc-aa49-491128baf959"
+}
