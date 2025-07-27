@@ -1,0 +1,72 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-08T18:19:21.023Z",
+  "id": "Aial7gzQc3o8pKNy",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Onboarding Create Accounts",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3b2b73ff-f939-4138-bc72-0f694d458e09",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        960,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "attributes": {
+          "attribute": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        }
+      },
+      "id": "3dc24082-43e4-4b2a-a22a-2c9ce00677ad",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        460
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-08T18:51:38.388Z",
+  "versionId": "d8af8c90-7251-4041-aca7-a96108eb8930"
+}
