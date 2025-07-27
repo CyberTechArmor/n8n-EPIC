@@ -1,0 +1,2926 @@
+{
+  "active": true,
+  "connections": {
+    "Bitrix24_ID": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Bitrix24_ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Item Lists4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Get Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get Contacts1": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contacts": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-06T18:09:36.151Z",
+  "id": "qUgFAYwuxsogMjYS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Limesurvey_Forms_Dynamic_Token Blue Sky",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "= {{ $json.body.PLACEMENT_OPTIONS }}",
+        "include": "none",
+        "options": {}
+      },
+      "id": "e48e0359-80e1-4eb2-bf04-712e7c8f1e85",
+      "name": "Bitrix24_ID",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        80,
+        -432
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://bsb.bitrix24.com/rest/41/q1peh1vh95hch7og/crm.contact.get.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "={{ $json.ID }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 50000
+            }
+          }
+        }
+      },
+      "id": "7c1bf25c-3a22-434d-94f9-564c5f086633",
+      "name": "Get Contacts1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        240,
+        -432
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnbluesky\",        \"password\": \"Blu3SkyForL!fe\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "6f7ce532-47bd-46b7-986d-54bbbd94c56c",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        560,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"list_surveys\",    \"params\": {        \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\"},    \"id\": 1} ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "36e33073-854b-4ea0-9096-6f98101af79d",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "07afd302-9718-49ad-a8f5-4e73e9e754c4",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        860,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "34cebf04-9c86-4264-a354-92f377c76b46bs",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e8e4af03-03ae-4a10-8afd-e3522727589c",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -432
+      ],
+      "webhookId": "6f315132-7137-44fc-9011-2348db95fc54"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html>\n\n<head>\n<style>\n\n.column {\n  float: left;\n  width: 33.33%;\n}\n\n/* Clear floats after the columns */\n.row:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n.my-div {\n    margin: 50px; /* Top, Right, Bottom, Left */\n}\n.column-title {\n    margin-bottom: 50px;\n}\n</style>\n</head>\n\n\n<body>\n\n<div class=\"my-div\"><center padding-top: 20px><p style=\"font-size:25px\" style=\"font-family:verdana\"><b>CLICK TO COPY QUESTION LINK AND PASTE INTO BODY OF SMS TO SEND TO PATIENT</b></p></center></div>\n<div class=\"row\">\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">CLINCAL<br></div><br>{{ $json[\"data\"][0][\"Copy\"].join('')}}</div>\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">CLERICAL</br></div><br>{{ $json[\"data\"][1][\"Copy\"].join('')}}</div>\n  <div class=\"column\"><div class=column-title\" style=\"font-family:verdana\">FINANCIAL<br></div><br>{{ $json[\"data\"][2][\"Copy\"].join('')}}</div>\n\n</div>\n\n\n</body>\n</html> ",
+        "options": {}
+      },
+      "id": "366e0458-a1d8-4879-9d44-502d190fc499",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Survey Title"
+            },
+            {
+              "fieldToAggregate": "sid"
+            },
+            {
+              "fieldToAggregate": "Copy"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9cbe2e2d-daa6-41e3-9413-b6e8611f57f5",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $('HTTP Request7').item.json.result }}\",\n         \"iSurveyID\": {{ $('Item Lists').item.json[\"result\"][\"sid\"] }},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"NAME\"] }}\",\n                \"lastname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"LAST_NAME\"] }}\",\n                \"email\": \"{{ $('Get Contacts1').item.json[\"result\"][\"EMAIL\"][0][\"VALUE\"] }}\",\n                \"language\": \"en\",\n                \"token\": {{ $('Get Contacts1').item.json[\"result\"][\"UF_CRM_1701895781\"] }},\n                \"attribute_1\": \"{{ $('Get Contacts1').item.json[\"result\"][\"UF_CRM_1701895781\"] }}\" \n            }\n        ],\n        \"bCreateToken\": true\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "e14e7d81-ce8a-4505-b574-934bf1aeb7fb",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1060,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "addSuffix"
+            }
+          },
+          "includeUnpaired": true
+        }
+      },
+      "id": "df2b31eb-7a10-4002-b272-e145e63ff991",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1240,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Bitrix24",
+        "height": 265.0782287052065,
+        "width": 545.6821198696921
+      },
+      "id": "3dbc2906-8d09-48eb-858f-48588f1efbd4",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Limesurvey",
+        "height": 367.76831584893114,
+        "width": 856.1405228623478
+      },
+      "id": "52dfcafa-b5ed-4a3b-9d81-ef685d9382e4",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        505.0727440859148,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## HTML",
+        "height": 495.3727690061681,
+        "width": 1799.719859925911
+      },
+      "id": "d1710617-4694-4fef-a551-3a610a12c479",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        -233.85724926587972
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "93fa52f2-a926-4e49-a781-3c7aff2b486b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1520,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6fd38f25-9aa0-40ab-b3cf-976dc50aa9ffbs",
+        "options": {}
+      },
+      "id": "807d632e-4235-4de1-809c-bb0835de76c1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        460
+      ],
+      "webhookId": "b8eb8bc9-b1b5-43a6-b6f4-89d9c8c863d2"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Survey Title",
+              "stringValue": "={{ $json[\"result_1\"][\"surveyls_title\"] }} <br>"
+            },
+            {
+              "name": "sid",
+              "stringValue": "=https://forms.epicpc.com/limesurvey/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y <br>"
+            },
+            {
+              "name": "Copy",
+              "stringValue": "=<button onclick=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\" id=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\">{{ $json[\"result_1\"][\"surveyls_title\"] }}</button>\n\n<script>\nfunction copyTextToClipboard{{ $json[\"result_1\"][\"sid\"]}}() {\n  // Predefined text\n  var textToCopy = \"https://forms.blueskypro.org/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n //   // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n    sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}();\n});\n\nfunction sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ffbs';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '{{ $json[\"result_1\"][\"sid\"] }}',\n        Firstname: '{{ $json[\"result_2\"][0][\"firstname\"] }}',\n        Lastname: '{{ $json[\"result_2\"][0][\"lastname\"] }}',\n        email: '{{ $json[\"result_2\"][0][\"email\"] }}',\n        token: '{{ $json[\"result_2\"][0][\"token\"] }}',\n        mrn: '{{ $('Get Contacts1').item.json[\"result\"][\"UF_CRM_1701895781\"] }}',\n        bitrixid: '{{ $('Get Contacts1').item.json[\"result\"][\"ID\"] }}',\n        capid: '',\n        sent: '{{ $('Date & Time').item.json[\"formattedDate\"] }}',\n        validuntil: '{{ $('Date & Time2').item.json[\"formattedDate\"] }}'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>\n\n\n\n\n\n<audio id=\"sound\" src=\"https://toms.app/tools/Confetti.mp3\"></audio> \n\n<script>\n    document.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n\nsetTimeout(function() {\n        window.location.href = 'https://xl.epicpc.com/webhook/986cebee-69bc-40ee-934f-9549d1107764';\n    }, 1000);\n    });\n</script>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2514c762-2589-4c04-afbb-00202a2313c5",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1680,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnsend\",        \"password\": \"5endUs3r#123456\"    },    \"id\": 1}",
+        "options": {}
+      },
+      "id": "db471460-cb54-4101-b1f2-1d02ba5fb04b",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        120,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"delete_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $('HTTP Request1').item.json[\"result\"] }}\",\n         \"iSurveyID\": {{ $json[\"result_1\"][\"sid\"] }},                \n         \"aTokenIDs\": [\"{{ $json[\"result_2\"][0][\"tid\"] }}\"]\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "cd2781a2-0f6f-4bc8-85ff-f2336fa9fb84",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1860,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $json[\"result\"] }}\",\n         \"iSurveyID\": {{ $('Webhook').item.json[\"body\"][\"SurveySent\"] }},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Webhook').item.json[\"body\"][\"Firstname\"] }}\",\n                \"lastname\": \"{{ $('Webhook').item.json[\"body\"][\"Lastname\"]}}\",\n                \"email\": \"{{ $('Webhook').item.json[\"body\"][\"email\"] }}\",\n                \"language\": \"en\",\n                \"token\": \"{{ $('Webhook').item.json[\"body\"][\"token\"] }}\",\n                \"attribute_1\": \"{{ $('Webhook').item.json[\"body\"][\"mrn\"] }}\",\n                \"attribute_2\": \"{{ $('Webhook').item.json[\"body\"][\"bitrixid\"] }}\",\n                \"attribute_3\": \"{{ $('Webhook').item.json[\"body\"][\"capid\"] }}\",\n                \"sent\": \"{{ $('Webhook').item.json[\"body\"][\"sent\"] }}\",\n                \"validuntil\": \"{{ $('Webhook').item.json[\"body\"][\"validuntil\"] }}\"\n            }\n        ],\n        \"bCreateToken\": false\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "7af871c4-6786-4fe4-ab85-332874428fe1",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        360,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Delete all participants",
+        "height": 266.8148170888348,
+        "width": 525.5661436456603
+      },
+      "id": "ec2c5321-30c2-440a-b713-582f9a2e3634",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Create participant on link copy",
+        "height": 274.44444688089436,
+        "width": 771.8941912178716
+      },
+      "id": "9889025c-d8f6-4035-ba15-d0c23bd5adab",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        383.21693256277985
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Survey Title"
+            },
+            {
+              "fieldToAggregate": "sid"
+            },
+            {
+              "fieldToAggregate": "Copy"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "92198478-c7d6-4a48-a61b-ecb9d04f4e4a",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "Survey Title"
+            },
+            {
+              "fieldToAggregate": "sid"
+            },
+            {
+              "fieldToAggregate": "Copy"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86dee147-796a-4cd3-a75b-db9e8fb93ebd",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2120,
+        80
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "58583e95-a1b2-4a1e-ba21-100afec495c9",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2600,
+        -120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "82827242-0d34-4ef4-842f-9cee4f714e07",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2780,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Clinical",
+              "stringValue": "={{ $json.Copy[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7080b8e8-0636-4d97-9ee9-3a5122c0e643",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Clerical",
+              "stringValue": "={{ $json.Copy[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06d74461-9caf-4642-a201-a4b42960cc2a",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Financial",
+              "stringValue": "={{ $json.Copy[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c3c1f92-e0ab-4b02-a5e6-33ffb244106c",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2340,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "967d1c16-8fc3-405a-b182-d062d8ffe367",
+      "name": "Item Lists4",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2940,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{$today}}",
+        "options": {}
+      },
+      "id": "8d44b74b-3481-48d3-85ac-b11f171c8a1d",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.result_1.surveyls_title }}",
+        "rules": {
+          "rules": [
+            {
+              "operation": "startsWith",
+              "value2": "Mental",
+              "outputKey": "Clinical"
+            },
+            {
+              "operation": "startsWith",
+              "value2": "Generic",
+              "outputKey": "=Care Managers"
+            },
+            {
+              "operation": "notStartsWith",
+              "outputKey": "Other"
+            },
+            {
+              "operation": "startsWith",
+              "value2": "TEMPLATE",
+              "outputKey": "TEMPLATE"
+            }
+          ]
+        },
+        "fallbackOutput": 2
+      },
+      "id": "4b10c71e-2081-4c7c-8491-a3aa78b03359",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1860,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{$today}}",
+        "duration": 2,
+        "options": {}
+      },
+      "id": "867208e3-4b97-483b-9b78-c40b031fb115",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "id": "fcbcc130-1cb7-4dd9-83f4-8329419736a5",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 348.3068307698944,
+        "width": 564.561366855428
+      },
+      "id": "58db2616-b37c-4a0b-a508-b2292cf7a9f5",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $('HTTP Request1').item.json.result }}\",\n         \"iSurveyID\": {{ $json[\"result\"][\"sid\"]}},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"NAME\"] }}\",\n                \"lastname\": \"{{ $('Get Contacts1').item.json[\"result\"][\"LAST_NAME\"] }}\",\n                \"email\": \"{{ $('Get Contacts1').item.json[\"result\"][\"EMAIL\"][0][\"VALUE\"] }}\",\n                \"language\": \"en\" \n            }\n        ],\n        \"bCreateToken\": true\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "e99024d9-87db-4f8a-a821-acb4d3eabc83",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1060,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Survey Title",
+              "stringValue": "={{ $json[\"result_1\"][\"surveyls_title\"] }} <br>"
+            },
+            {
+              "name": "sid",
+              "stringValue": "=https://forms.epicpc.com/limesurvey/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y <br>"
+            },
+            {
+              "name": "Copy",
+              "stringValue": "=<button onclick=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\" id=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\">{{ $json[\"result_1\"][\"surveyls_title\"] }}</button>\n\n<script>\nfunction copyTextToClipboard{{ $json[\"result_1\"][\"sid\"]}}() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n    sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}();\n});\n\nfunction sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '{{ $json[\"result_1\"][\"sid\"] }}',\n        Firstname: '{{ $json[\"result_2\"][0][\"firstname\"] }}',\n        Lastname: '{{ $json[\"result_2\"][0][\"lastname\"] }}',\n        email: '{{ $json[\"result_2\"][0][\"email\"] }}',\n        token: '{{ $json[\"result_2\"][0][\"token\"] }}',\n        mrn: '{{ $('Get Contacts1').item.json[\"result\"][\"SOURCE_DESCRIPTION\"] }}',\n        bitrixid: '{{ $('Get Contacts1').item.json[\"result\"][\"ID\"] }}',\n        capid: '',\n        sent: '{{ $('Date & Time').item.json[\"formattedDate\"] }}',\n        validuntil: '{{ $('Date & Time2').item.json[\"formattedDate\"] }}'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>\n\n\n\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js\"></script>\n    <script>\n        document.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n            var confettiSettings = { target: 'confettiCanvas' };\n            confetti(confettiSettings);\n        });\n    </script>\n\n<audio id=\"sound\" src=\"https://toms.app/tools/Confetti.mp3\"></audio> \n\n<script>\n    document.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n        var sound = document.getElementById('sound');\n        sound.play();\n    });\n</script>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e5eaeceb-a21f-4beb-bb46-6f8237ff08d0",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1680,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{    \"method\": \"get_session_key\",    \"params\": {        \"username\": \"nmnbluesky\",        \"password\": \"Blu3SkyForL!fe\"    },    \"id\": 1}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "e497e0de-d138-4c65-b1a7-c84be21bb57d",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        120,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "577303d5-df23-4c4f-9b50-fc57621b5399",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        -820
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://n8n.cybertech.app/webhook/34cebf04-9c86-4264-a354-92f377c76b46-BS?ID={{ $json[\"ID\"] }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "4a995ef6-39a3-4bbd-8fcf-bc75d50b2f65",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        280,
+        -820
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e3576c94-e53c-4a5a-804a-2b5bfd6c68df",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5eb236f2-342b-43ab-93ec-75cfe6962ba5",
+      "name": "Get Contacts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        500,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $('HTTP Request1').item.json.result }}\",\n         \"iSurveyID\": {{ $('Item Lists').item.json[\"result\"][\"sid\"] }},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Get Contacts').item.json[\"data\"][0][\"result\"][\"NAME\"] }}\",\n                \"lastname\": \"{{ $('Get Contacts').item.json[\"data\"][0][\"result\"][\"LAST_NAME\"] }}\",\n                \"email\": \"noemail@email.com\",\n                \"language\": \"en\"\n            }\n        ],\n        \"bCreateToken\": true\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "a8c542f8-4895-4405-a13e-04285969c347",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1040,
+        -360
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Survey Title",
+              "stringValue": "={{ $json[\"result_1\"][\"surveyls_title\"] }} <br>"
+            },
+            {
+              "name": "sid",
+              "stringValue": "=https://forms.blueskypro.org/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y <br>"
+            },
+            {
+              "name": "Copy",
+              "stringValue": "=<button onclick=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\" id=\"copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()\">{{ $json[\"result_1\"][\"surveyls_title\"] }}</button>\n\n<script>\nfunction copyTextToClipboard{{ $json[\"result_1\"][\"sid\"]}}() {\n  // Predefined text\n  var textToCopy = \"https://forms.blueskypro.org/index.php/{{ $json[\"result_1\"][\"sid\"] }}?token={{ $json[\"result_2\"][0][\"token\"] }}&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n //   // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n    sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}();\n});\n\nfunction sendPostRequest{{ $json[\"result_1\"][\"sid\"] }}() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ffbs';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '{{ $json[\"result_1\"][\"sid\"] }}',\n        Firstname: '{{ $('Get Contacts').item.json[\"data\"][0][\"result\"][\"NAME\"] }}',\n        Lastname: '{{ $('Get Contacts').item.json[\"data\"][0][\"result\"][\"LAST_NAME\"] }}',\n        email: 'noemail@email.com',\n        token: '{{ $json[\"result_2\"][0][\"token\"] }}',\n        sent: '{{ $('Date & Time').item.json[\"formattedDate\"] }}'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>\n\n\n\n\n\n<audio id=\"sound\" src=\"https://toms.app/tools/Confetti.mp3\"></audio> \n\n<script>\n    document.getElementById('copyTextToClipboard{{ $json[\"result_1\"][\"sid\"] }}()').addEventListener('click', function() {\n\nsetTimeout(function() {\n        window.location.href = 'https://xl.epicpc.com/webhook/986cebee-69bc-40ee-934f-9549d1107764';\n    }, 1000);\n    });\n</script>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "302142dc-ab85-4047-9d6b-97be687acc32",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1700,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.blueskypro.org/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $json[\"result\"] }}\",\n         \"iSurveyID\": {{ $('Webhook').item.json[\"body\"][\"SurveySent\"] }},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Webhook').item.json[\"body\"][\"Firstname\"] }}\",\n                \"lastname\": \"{{ $('Webhook').item.json[\"body\"][\"Lastname\"]}}\",\n                \"email\": \"{{ $('Webhook').item.json[\"body\"][\"email\"] }}\",\n                \"language\": \"en\",\n                \"token\": \"{{ $('Webhook').item.json[\"body\"][\"token\"] }}\"\n            }\n        ],\n        \"bCreateToken\": false\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "5df5d265-3344-42df-96f1-2d3e615b1316",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        360,
+        460
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Request": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ],
+    "Edit Fields": [
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 825565,
+            "surveyls_title": "Mental Health Depression Screen",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ZpC5T",
+              "attribute_1": "766690",
+              "tid": "211",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error_2": null
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 487514,
+            "surveyls_title": "MENTAL HEALTH Anxiety Screening",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "4yCzUT468bPOK7Z",
+              "attribute_1": "766690",
+              "tid": "54",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 818189,
+            "surveyls_title": "Generic Care Manager - Day 1 - Orientation",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ejlPKtWGnEcBKe1",
+              "attribute_1": "766690",
+              "tid": "656",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 777663,
+            "surveyls_title": "Generic Care Manager - Day 2 - Lifestyle",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "lFaPOZDuG6mqHZ7",
+              "attribute_1": "766690",
+              "tid": "81",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null
+        }
+      }
+    ],
+    "HTTP Request3": [
+      {
+        "json": {
+          "id": 1,
+          "result": "Hw_io_Q8X3DOo~2TeO_roQWlm~4gXoxa",
+          "error": null
+        }
+      }
+    ],
+    "HTTP Request4": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ],
+    "Edit Fields5": [
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 825565,
+            "surveyls_title": "Mental Health Depression Screen",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ZpC5T",
+              "attribute_1": "766690",
+              "tid": "211",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Mental Health Depression Screen <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard825565()\" id=\"copyTextToClipboard825565()\">Mental Health Depression Screen</button>\n\n<script>\nfunction copyTextToClipboard825565() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard825565()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard825565()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 487514,
+            "surveyls_title": "MENTAL HEALTH Anxiety Screening",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "4yCzUT468bPOK7Z",
+              "attribute_1": "766690",
+              "tid": "54",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "MENTAL HEALTH Anxiety Screening <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard487514()\" id=\"copyTextToClipboard487514()\">MENTAL HEALTH Anxiety Screening</button>\n\n<script>\nfunction copyTextToClipboard487514() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard487514()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard487514()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 818189,
+            "surveyls_title": "Generic Care Manager - Day 1 - Orientation",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ejlPKtWGnEcBKe1",
+              "attribute_1": "766690",
+              "tid": "656",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 1 - Orientation <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard818189()\" id=\"copyTextToClipboard818189()\">Generic Care Manager - Day 1 - Orientation</button>\n\n<script>\nfunction copyTextToClipboard818189() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard818189()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard818189()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 777663,
+            "surveyls_title": "Generic Care Manager - Day 2 - Lifestyle",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "lFaPOZDuG6mqHZ7",
+              "attribute_1": "766690",
+              "tid": "81",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 2 - Lifestyle <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard777663()\" id=\"copyTextToClipboard777663()\">Generic Care Manager - Day 2 - Lifestyle</button>\n\n<script>\nfunction copyTextToClipboard777663() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard777663()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard777663()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "112",
+            "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "sec-ch-ua-mobile": "?0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/34cebf04-9c86-4264-a354-92f377c76b46?DOMAIN=nmnepic.bitrix24.com&PROTOCOL=1&LANG=en&APP_SID=cab81df458ed6e73cc70a7431ccc0d8d",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "SurveySent": "777663",
+            "Firstname": "TEDDY",
+            "Lastname": "TEST",
+            "email": "test@gmail.com",
+            "token": "yzAv1sgTgbnHHLt"
+          }
+        }
+      }
+    ],
+    "Item Lists4": [
+      {
+        "json": {
+          "data": [
+            {
+              "Survey Title": [
+                "Mental Health Depression Screen <br>"
+              ],
+              "sid": [
+                "https://forms.epicpc.com/limesurvey/index.php/825565?token=PdFID&newtest=Y <br>"
+              ],
+              "Copy": [
+                "<button onclick=\"copyTextToClipboard825565()\" id=\"copyTextToClipboard825565()\">Mental Health Depression Screen</button>\n\n<script>\nfunction copyTextToClipboard825565() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/825565?token=PdFID&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard825565()').addEventListener('click', function() {\n    sendPostRequest825565();\n});\n\nfunction sendPostRequest825565() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '825565',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: 'PdFID'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+              ],
+              "Clinical": "<button onclick=\"copyTextToClipboard825565()\" id=\"copyTextToClipboard825565()\">Mental Health Depression Screen</button>\n\n<script>\nfunction copyTextToClipboard825565() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/825565?token=PdFID&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard825565()').addEventListener('click', function() {\n    sendPostRequest825565();\n});\n\nfunction sendPostRequest825565() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '825565',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: 'PdFID'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+            },
+            {
+              "Survey Title": [
+                "Generic Care Manager - Day 1 - Orientation <br>",
+                "Generic Care Manager - Day 2 - Lifestyle <br>"
+              ],
+              "sid": [
+                "https://forms.epicpc.com/limesurvey/index.php/818189?token=8BCCYSGHSArRe5M&newtest=Y <br>",
+                "https://forms.epicpc.com/limesurvey/index.php/777663?token=favVkNdnRgjKsSL&newtest=Y <br>"
+              ],
+              "Copy": [
+                "<button onclick=\"copyTextToClipboard818189()\" id=\"copyTextToClipboard818189()\">Generic Care Manager - Day 1 - Orientation</button>\n\n<script>\nfunction copyTextToClipboard818189() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/818189?token=8BCCYSGHSArRe5M&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard818189()').addEventListener('click', function() {\n    sendPostRequest818189();\n});\n\nfunction sendPostRequest818189() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '818189',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: '8BCCYSGHSArRe5M'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>",
+                "<button onclick=\"copyTextToClipboard777663()\" id=\"copyTextToClipboard777663()\">Generic Care Manager - Day 2 - Lifestyle</button>\n\n<script>\nfunction copyTextToClipboard777663() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/777663?token=favVkNdnRgjKsSL&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard777663()').addEventListener('click', function() {\n    sendPostRequest777663();\n});\n\nfunction sendPostRequest777663() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '777663',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: 'favVkNdnRgjKsSL'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+              ],
+              "Clerical": "<button onclick=\"copyTextToClipboard818189()\" id=\"copyTextToClipboard818189()\">Generic Care Manager - Day 1 - Orientation</button>\n\n<script>\nfunction copyTextToClipboard818189() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/818189?token=8BCCYSGHSArRe5M&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard818189()').addEventListener('click', function() {\n    sendPostRequest818189();\n});\n\nfunction sendPostRequest818189() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '818189',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: '8BCCYSGHSArRe5M'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+            },
+            {
+              "Survey Title": [
+                "MENTAL HEALTH Anxiety Screening <br>"
+              ],
+              "sid": [
+                "https://forms.epicpc.com/limesurvey/index.php/487514?token=CZMWmK1KQaoaCab&newtest=Y <br>"
+              ],
+              "Copy": [
+                "<button onclick=\"copyTextToClipboard487514()\" id=\"copyTextToClipboard487514()\">MENTAL HEALTH Anxiety Screening</button>\n\n<script>\nfunction copyTextToClipboard487514() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/487514?token=CZMWmK1KQaoaCab&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard487514()').addEventListener('click', function() {\n    sendPostRequest487514();\n});\n\nfunction sendPostRequest487514() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '487514',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: 'CZMWmK1KQaoaCab'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+              ],
+              "Financial": "<button onclick=\"copyTextToClipboard487514()\" id=\"copyTextToClipboard487514()\">MENTAL HEALTH Anxiety Screening</button>\n\n<script>\nfunction copyTextToClipboard487514() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/487514?token=CZMWmK1KQaoaCab&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard487514()').addEventListener('click', function() {\n    sendPostRequest487514();\n});\n\nfunction sendPostRequest487514() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        SurveySent: '487514',\n        Firstname: 'THOMAS',\n        Lastname: 'STILWELL',\n        email: 'nothing@nothing.com',\n        token: 'CZMWmK1KQaoaCab'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+            }
+          ]
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "316",
+            "cache-control": "max-age=0",
+            "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "origin": "https://nmnepic.bitrix24.com",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "content-type": "application/x-www-form-urlencoded",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "iframe",
+            "referer": "https://nmnepic.bitrix24.com/",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "DOMAIN": "nmnepic.bitrix24.com",
+            "PROTOCOL": "1",
+            "LANG": "en",
+            "APP_SID": "54679e6226912f5e0f6d7fbabe77df15"
+          },
+          "body": {
+            "AUTH_ID": "c3c890650069cb1d0066bfb100000007808f07f8fa0dfb60aa9ccb54f09f5b6770b8c6",
+            "AUTH_EXPIRES": "3600",
+            "REFRESH_ID": "b347b8650069cb1d0066bfb100000007808f070d522e04a2ebc5611205acf827b11e47",
+            "member_id": "30229212caf78f00e7fcf64083d66781",
+            "status": "L",
+            "PLACEMENT": "CRM_CONTACT_DETAIL_ACTIVITY",
+            "PLACEMENT_OPTIONS": "{\"ID\":\"344683\"}"
+          }
+        }
+      }
+    ],
+    "Date & Time": [
+      {
+        "json": {
+          "formattedDate": "12/30/2023"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "HTTP Request6": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ],
+    "Edit Fields6": [
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 825565,
+            "surveyls_title": "Mental Health Depression Screen",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ZpC5T",
+              "attribute_1": "766690",
+              "tid": "211",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Mental Health Depression Screen <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard825565()\" id=\"copyTextToClipboard825565()\">Mental Health Depression Screen</button>\n\n<script>\nfunction copyTextToClipboard825565() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard825565()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard825565()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 487514,
+            "surveyls_title": "MENTAL HEALTH Anxiety Screening",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "4yCzUT468bPOK7Z",
+              "attribute_1": "766690",
+              "tid": "54",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "MENTAL HEALTH Anxiety Screening <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard487514()\" id=\"copyTextToClipboard487514()\">MENTAL HEALTH Anxiety Screening</button>\n\n<script>\nfunction copyTextToClipboard487514() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard487514()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard487514()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 818189,
+            "surveyls_title": "Generic Care Manager - Day 1 - Orientation",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ejlPKtWGnEcBKe1",
+              "attribute_1": "766690",
+              "tid": "656",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 1 - Orientation <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard818189()\" id=\"copyTextToClipboard818189()\">Generic Care Manager - Day 1 - Orientation</button>\n\n<script>\nfunction copyTextToClipboard818189() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard818189()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard818189()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 777663,
+            "surveyls_title": "Generic Care Manager - Day 2 - Lifestyle",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "lFaPOZDuG6mqHZ7",
+              "attribute_1": "766690",
+              "tid": "81",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 2 - Lifestyle <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard777663()\" id=\"copyTextToClipboard777663()\">Generic Care Manager - Day 2 - Lifestyle</button>\n\n<script>\nfunction copyTextToClipboard777663() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard777663()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard777663()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      }
+    ],
+    "Item Lists": [
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 825565,
+            "surveyls_title": "Mental Health Depression Screen",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 487514,
+            "surveyls_title": "Mental Health Anxiety Screening",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 818189,
+            "surveyls_title": "Generic Care Manager - Day 1 - Orientation",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 777663,
+            "surveyls_title": "Generic Care Manager - Day 2 - Lifestyle",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 498113,
+            "surveyls_title": "TEMPLATE",
+            "startdate": null,
+            "expires": null,
+            "active": "N"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 952313,
+            "surveyls_title": "Financial E&B Confirm Current Information On File",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 252571,
+            "surveyls_title": "Financial Receivable Statement Display",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 557378,
+            "surveyls_title": "General Health Acute Symptom",
+            "startdate": null,
+            "expires": null,
+            "active": "N"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "error": null,
+          "result": {
+            "sid": 876792,
+            "surveyls_title": "Signature Test",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Get Contacts": [
+      {
+        "json": {
+          "data": [
+            {
+              "result": {
+                "ID": "37",
+                "POST": "",
+                "COMMENTS": "",
+                "HONORIFIC": "",
+                "NAME": "Thomas",
+                "SECOND_NAME": "",
+                "LAST_NAME": "Stilwell",
+                "PHOTO": null,
+                "LEAD_ID": null,
+                "TYPE_ID": "CLIENT",
+                "SOURCE_ID": "CALL",
+                "SOURCE_DESCRIPTION": "502880",
+                "COMPANY_ID": null,
+                "BIRTHDATE": "",
+                "EXPORT": "Y",
+                "HAS_PHONE": "Y",
+                "HAS_EMAIL": "N",
+                "HAS_IMOL": "N",
+                "DATE_CREATE": "2024-03-06T20:42:51+03:00",
+                "DATE_MODIFY": "2024-04-30T22:21:00+03:00",
+                "ASSIGNED_BY_ID": "29",
+                "CREATED_BY_ID": "29",
+                "MODIFY_BY_ID": "14",
+                "OPENED": "Y",
+                "ORIGINATOR_ID": null,
+                "ORIGIN_ID": null,
+                "ORIGIN_VERSION": null,
+                "FACE_ID": null,
+                "LAST_ACTIVITY_TIME": "2024-03-06T20:42:51+03:00",
+                "ADDRESS": null,
+                "ADDRESS_2": null,
+                "ADDRESS_CITY": null,
+                "ADDRESS_POSTAL_CODE": null,
+                "ADDRESS_REGION": null,
+                "ADDRESS_PROVINCE": null,
+                "ADDRESS_COUNTRY": null,
+                "ADDRESS_LOC_ADDR_ID": null,
+                "UTM_SOURCE": null,
+                "UTM_MEDIUM": null,
+                "UTM_CAMPAIGN": null,
+                "UTM_CONTENT": null,
+                "UTM_TERM": null,
+                "LAST_ACTIVITY_BY": "29",
+                "PHONE": [
+                  {
+                    "ID": "87551",
+                    "VALUE_TYPE": "MOBILE",
+                    "VALUE": "+12488726322",
+                    "TYPE_ID": "PHONE"
+                  }
+                ]
+              },
+              "time": {
+                "start": 1714568920.038028,
+                "finish": 1714568920.065759,
+                "duration": 0.027730941772460938,
+                "processing": 0.010988950729370117,
+                "date_start": "2024-05-01T16:08:40+03:00",
+                "date_finish": "2024-05-01T16:08:40+03:00",
+                "operating_reset_at": 1714569520,
+                "operating": 0
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP Request9": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ],
+    "Edit Fields7": [
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 825565,
+            "surveyls_title": "Mental Health Depression Screen",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ZpC5T",
+              "attribute_1": "766690",
+              "tid": "211",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Mental Health Depression Screen <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard825565()\" id=\"copyTextToClipboard825565()\">Mental Health Depression Screen</button>\n\n<script>\nfunction copyTextToClipboard825565() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/825565?token=ZpC5T&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard825565()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard825565()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 487514,
+            "surveyls_title": "MENTAL HEALTH Anxiety Screening",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "4yCzUT468bPOK7Z",
+              "attribute_1": "766690",
+              "tid": "54",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "MENTAL HEALTH Anxiety Screening <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard487514()\" id=\"copyTextToClipboard487514()\">MENTAL HEALTH Anxiety Screening</button>\n\n<script>\nfunction copyTextToClipboard487514() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/487514?token=4yCzUT468bPOK7Z&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard487514()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard487514()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 818189,
+            "surveyls_title": "Generic Care Manager - Day 1 - Orientation",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "ejlPKtWGnEcBKe1",
+              "attribute_1": "766690",
+              "tid": "656",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 1 - Orientation <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard818189()\" id=\"copyTextToClipboard818189()\">Generic Care Manager - Day 1 - Orientation</button>\n\n<script>\nfunction copyTextToClipboard818189() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/818189?token=ejlPKtWGnEcBKe1&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard818189()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard818189()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      },
+      {
+        "json": {
+          "id_1": 1,
+          "error_1": null,
+          "result_1": {
+            "sid": 777663,
+            "surveyls_title": "Generic Care Manager - Day 2 - Lifestyle",
+            "startdate": null,
+            "expires": null,
+            "active": "Y"
+          },
+          "id_2": 1,
+          "result_2": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "lFaPOZDuG6mqHZ7",
+              "attribute_1": "766690",
+              "tid": "81",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error_2": null,
+          "Survey Title": "Generic Care Manager - Day 2 - Lifestyle <br>",
+          "sid": "https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y <br>",
+          "Copy": "<button onclick=\"copyTextToClipboard777663()\" id=\"copyTextToClipboard777663()\">Generic Care Manager - Day 2 - Lifestyle</button>\n\n<script>\nfunction copyTextToClipboard777663() {\n  // Predefined text\n  var textToCopy = \"https://forms.epicpc.com/limesurvey/index.php/777663?token=lFaPOZDuG6mqHZ7&newtest=Y\";\n\n  // Create a temporary text area element\n  var textArea = document.createElement(\"textarea\");\n  textArea.value = textToCopy;\n\n  // Prevent the textarea from being visible\n  textArea.style.position = \"fixed\";\n  textArea.style.left = \"-9999px\";\n\n  document.body.appendChild(textArea);\n  textArea.focus();\n  textArea.select();\n\n  try {\n    // Copy the text inside the text area\n    var successful = document.execCommand('copy');\n    \n    // Display a confirmation message\n    var msg = successful ? \"Survey link copied: \" + textToCopy : \"Unable to copy\";\n    alert(msg);\n  } catch (err) {\n    console.error('Fallback: Oops, unable to copy', err);\n  }\n\n  // Clean up and remove the temporary text area\n  document.body.removeChild(textArea);\n}\n</script>\n<br>\n\n<script>\ndocument.getElementById('copyTextToClipboard777663()').addEventListener('click', function() {\n    sendPostRequest();\n});\n\nfunction sendPostRequest() {\n    // URL to which the request is sent\n    var url = 'https://xl.epicpc.com/webhook/6fd38f25-9aa0-40ab-b3cf-976dc50aa9ff';\n\n    // Data to be sent in the POST request\n    var data = {\n        buttonId: 'copyTextToClipboard777663()'\n    };\n\n    // Using fetch to send a POST request\n    fetch(url, {\n        method: 'POST', \n        headers: {\n            'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(data), // Convert the data object to a JSON string\n    })\n    .then(response => response.json())\n    .then(data => {\n        console.log('Success:', data);\n    })\n    .catch((error) => {\n        console.error('Error:', error);\n    });\n}\n</script>"
+        }
+      }
+    ],
+    "HTTP Request10": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-03-01T19:30:28.995Z",
+      "updatedAt": "2024-03-01T19:30:28.995Z",
+      "id": "xnEUKHXPb1ETPnjS",
+      "name": "Blue Sky"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2024-08-29T16:00:54.322Z",
+  "versionId": "dd8f5683-aae2-463c-9832-344aab3d84fb"
+}
