@@ -1,0 +1,217 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-20T12:08:18.226Z",
+  "id": "y4fkKG9mNH3EDbGB",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Self-Scheduler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7f887a0f-d5ca-4e27-aaba-f8fbfdbcfadf",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        440,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "--DECLARE @MRN VARCHAR(10)= '197520';\nDECLARE @MRN VARCHAR(10)= '{{ $json.query.mrn }}';\n \nwith genpatinfo as(\nselect g.Patient_ID,g.Patient_Number AS MRN, g.Patient_Name,g.Patient_LFI,\ng.Patient_First_Name,g.Patient_Last_Name\nfrom [PM].[vwGenPatInfo] g\n),\npatid as(\nselect p.Patient_ID,p.Patient_Number,p.Date_Registered,\np.Comments,p.Account_ID,p.Contact_ID\nfrom [PM].[Patients]p\n)\nselect g.Patient_ID,g.MRN,g.Patient_Name,g.Patient_First_Name,g.Patient_Last_Name,\ng.Patient_LFI\nfrom genpatinfo g\nleft join patid p on p.Patient_ID=g.Patient_ID\nwhere g.MRN = @MRN"
+      },
+      "id": "7c8cc561-5197-41f2-93fc-2d444ffcf62f",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        900,
+        480
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://visit.epicpc.com/?fullName={{ $json[\"Patient_First_Name\"] }}+{{ $json[\"Patient_Last_Name\"] }}&patientId={{ $json[\"Patient_ID\"] }}",
+        "options": {}
+      },
+      "id": "2fd6f167-192a-4cdd-a1ea-7f992ad40c86",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://visit.epicpc.com/?fullName={{ $json[\"Patient_First_Name\"] }}+{{ $json[\"Patient_Last_Name\"] }}&patientId={{ $json[\"Patient_ID\"] }}",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "19b9d99b-acb7-44c3-b3f4-ee25e839331d",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1080,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "094fc924-a0de-47e4-868d-f427da356dbf",
+              "name": "query.mrn",
+              "value": "={{ $json.query.mrn }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6807d91b-5859-4911-81af-738d8d6fbd1b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        440,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "path": "d3ea8d58-34ce-454d-9977-f2d7238d509f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "9965c33a-e7ca-4a4b-8760-8c3d573b3c33",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        480
+      ],
+      "webhookId": "d3ea8d58-34ce-454d-9977-f2d7238d509f"
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "query": {
+            "mrn": 502880
+          }
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "172.58.121.254",
+            "x-forwarded-for": "172.58.121.254",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Google Chrome\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "dnt": "1",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "_ga=GA1.2.1801787080.1657225628; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19SL%2BeJUrlGUI44Uq0s1%2FiGo%2BuWfHE2uqA%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BmO1h2bZxFxAfT71q%2BBEKjS2eYCPuQ9IQ%3D; __ssid=b094e84f053e7d414fe35d5a20a76ff; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiaWF0IjoxNzEzNjk1MDk5LCJleHAiOjE3MTQyOTk4OTl9.FksEOj-6caTvd80FC0uyJvpxGXpHDqGXMZnLjsu__3I; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2BXo8IAriJ3QgZOPOzbyrJmYFHmmdVnUeuzrTu42erU0FQHHXH7ec7eYtOqFewjkk8swveEtJozyg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BjCY2bXSUUzn8eWCI9vjD3YNPIJtUUC4xKb8%2FA9PxmbcEBfCy2h4JGWRLf3SBw71OndMzGno7h5icmY8qgnCccrOAhln1uaNRA%2B6FlGhS3EXOKWlscssQgYYVRSh3ZbL67stdZCBJu%2Faonpke8JK%2F6YCYMHhpFtgw%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19D%2FDchzOxmGZzLhRcnCd3JRlMia69voKdVkYo4wzuGpP9ogoFe4ZUXQmz%2FGmChdJygVXkqR6i0mPKxLklNXUgkFNtEd6NyPWn6CWEpB%2FvipNClF1yzeBa8eXznlwWc1Rz%2BSjch8vJ6Sg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1713804345791%2C%22018f06b3-01bf-7685-a32a-ca7f7756029d%22%2C1713804345791%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19T8g5Syk%2FLgPEGVMfIqmS4tSNqn5bDoi0EripXt4JCy%2B%2FKDEIYtsbOl2atN1x7PHmmNFryvB%2FmvCY85r1EekrMCU6dZRD1%2FD%2FqRhboSAa%2B0fNbY%2BEu7pJxex1oQtPbk8LCJZWHGjmCog%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "mrn": "502880"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/d3ea8d58-34ce-454d-9977-f2d7238d509f",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-22T18:22:24.793Z",
+  "versionId": "0066416e-9414-409c-8fdf-4ed461571176"
+}
