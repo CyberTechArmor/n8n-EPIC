@@ -1,0 +1,1175 @@
+{
+  "active": true,
+  "connections": {
+    "LockedOutCount": {
+      "main": [
+        [
+          {
+            "node": "IncrementLockCount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ChecksDB": {
+      "main": [
+        [
+          {
+            "node": "CreateRow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ChecksTable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IncrementLockCount": {
+      "main": [
+        [
+          {
+            "node": "LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckLockOutTime": {
+      "main": [
+        [
+          {
+            "node": "GetRows",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PasswordExpiredEnabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetRows": {
+      "main": [
+        [
+          {
+            "node": "FilterUsername",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FilterUsername": {
+      "main": [
+        [
+          {
+            "node": "ChecksDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateRow": {
+      "main": [
+        [
+          {
+            "node": "LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ChecksTable": {
+      "main": [
+        [
+          {
+            "node": "LockedOutCount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check if it's an MA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LDAP1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4thAttempt": {
+      "main": [
+        [
+          {
+            "node": "4thAttempt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PasswordExpireDate": {
+      "main": [
+        [
+          {
+            "node": "PwdExpiredEnabled",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "CheckLockOutTime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PasswordExpiredEnabled": {
+      "main": [
+        [
+          {
+            "node": "UserIsNotLocked-Enabled",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UserIsNotLocked1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PwdExpiredEnabled": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "UserDoesNotExist",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PasswordExpireDate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "ECOE\\",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "LDAP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetToLowerCase": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if it's an MA": {
+      "main": [
+        [
+          {
+            "node": "LockedOutCount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "4thAttempt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "SetToLowerCase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-17T13:54:19.623Z",
+  "id": "p3lwESuQNTBXugXg",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Reset/Unlock Form",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e4126cca-f4db-4acf-8cf0-d7b938626c99",
+              "name": "Id",
+              "value": "={{ $json.Id }}",
+              "type": "number"
+            },
+            {
+              "id": "7a71b4f0-7e24-452a-8f7c-9f26b98f2a93",
+              "name": "LockedOutCount",
+              "value": "={{ $json.LockedOutCount +1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4111bcb9-4008-4d21-a738-d8cdda5eac15",
+      "name": "LockedOutCount",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        3100,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "update",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mpygd4o98ajh3bv",
+        "dataToSend": "autoMapInputData"
+      },
+      "id": "ef958b1a-326a-4c2c-a1c9-e3ccb620a68e",
+      "name": "IncrementLockCount",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3280,
+        240
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mf9xtgtyfz6ocey",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Name",
+              "fieldValue": "={{ $('LDAP').item.json.cn }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            }
+          ]
+        }
+      },
+      "id": "a0da6c2f-e3d9-431b-acc4-093a901cc440",
+      "name": "4thAttempt",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        3180,
+        700
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mpygd4o98ajh3bv",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "First",
+              "fieldValue": "={{ $('LDAP').item.json.givenName }}"
+            },
+            {
+              "fieldName": "LastName",
+              "fieldValue": "={{ $('LDAP').item.json.sn }}"
+            },
+            {
+              "fieldName": "Username",
+              "fieldValue": "={{ $('LDAP').item.json.sAMAccountName }}"
+            }
+          ]
+        }
+      },
+      "id": "a5137e64-6e2f-4d08-859c-382077b240bd",
+      "name": "CreateRow",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2960,
+        80
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "74c8dd5a-ff21-4d93-baaa-ff5d9692ec50",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "=[empty]",
+              "operator": {
+                "type": "object",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "dd4a3522-68b6-49dd-a62c-89fb9d35aa85",
+      "name": "ChecksDB",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2520,
+        300
+      ],
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "={{ $('SetToLowerCase').item.json.query.Username }}",
+        "limit": 1,
+        "options": {}
+      },
+      "id": "de26e8b0-02f9-451b-8576-b8ba90e9409f",
+      "name": "LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        600,
+        360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "df0dee03-3c2c-4c6e-b766-22dadd8fb6bb",
+              "leftValue": "={{ parseInt($('LDAP').item.json.lockoutTime) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "026f44a5-def6-4c19-a2e3-dadc1aae4363",
+              "leftValue": "={{ $('Webhook').item.json.query.Task }}",
+              "rightValue": "Unlock Account",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "eb6b51eb-a807-4477-b478-c3587e525ddd",
+      "name": "CheckLockOutTime",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "pn7sdec7lgrteil",
+        "table": "mpygd4o98ajh3bv",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "8fb927a5-126a-497d-bbb5-8f323d5bcf7d",
+      "name": "GetRows",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        2080,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "4jIldmfI5e41fyo8",
+          "name": "NocoDB Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5292efd7-44d5-47e4-95c5-78b26403c993",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('LDAP').item.json.sAMAccountName }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "daeca14e-85ff-455c-8c2a-8823bb0b3a40",
+      "name": "FilterUsername",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2300,
+        300
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dn": "={{ $('LDAP').item.json.dn }}",
+        "attributes": {
+          "replace": [
+            {
+              "id": "lockoutTime",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "id": "c6a50497-1571-4b1e-ad7e-672e4552d146",
+      "name": "LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        240
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "9xIn6eVIIen5iGtz",
+          "name": "power"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "df0dee03-3c2c-4c6e-b766-22dadd8fb6bb",
+              "leftValue": "={{ $json.Username }}",
+              "rightValue": "={{ $('LDAP').item.json.sAMAccountName }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "bb36639f-d71b-4954-9ee8-2f07c87870c8",
+              "leftValue": "={{ $json.LockedOutCount }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e3434cc8-bdff-47c5-8bcb-d2541b594b58",
+      "name": "ChecksTable",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2740,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Now Unlocked </h1>\n                <h2> Your Password Expires On: {{ $('Date & Time').item.json.formattedDate }} </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "97174936-778f-48a3-854e-2fdaa5a9a446",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3700,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Daily Cap Have Been Reached </h1>\n                <h2> Please Place A Ticket For Your Account To Be Unlocked </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "4e747d54-e0db-4208-80c8-4d4258001764",
+      "name": "4thAttempt1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3340,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to calculate password expiration date\nfunction calculatePasswordExpiry(pwdLastSet, maxPwdAgeDays) {\n    const pwdLastSetDate = ldapTimestampToDate(pwdLastSet);\n    const expiryDate = new Date(pwdLastSetDate);\n    expiryDate.setDate(expiryDate.getDate() + maxPwdAgeDays);\n    return expiryDate;\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item and calculate the password expiration date\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const pwdExpiryDate = calculatePasswordExpiry(pwdLastSetValue, maxPwdAgeDays);\n\n    // Return the item with the new pwdExpiryDate field\n    return {\n        json: {\n            ...item.json,\n            pwdExpiryDate: pwdExpiryDate.toISOString() // Convert date to ISO string for readability\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "49de478e-90e5-4a87-843a-2a2d69c6cff6",
+      "name": "PasswordExpireDate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('PasswordExpireDate').item.json.pwdExpiryDate }}",
+        "format": "MM-dd-yyyy",
+        "options": {}
+      },
+      "id": "cac1c89d-1023-41b6-9a65-a720c1f1c1a2",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "74148ec4-2c4a-46c8-8744-cbfb32ddae8d",
+              "leftValue": "={{ $('PwdExpiredEnabled').item.json.passwordExpirationEnabled }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f702f96e-1b58-4e4d-974c-f0733ed13fc5",
+      "name": "PasswordExpiredEnabled",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function to convert LDAP timestamp to JavaScript Date\nfunction ldapTimestampToDate(ldapTimestamp) {\n    // Convert LDAP timestamp to milliseconds\n    const milliseconds = ldapTimestamp / 10000;\n    // Add the milliseconds to the Windows epoch (January 1, 1601)\n    const date = new Date('1601-01-01T00:00:00Z');\n    date.setTime(date.getTime() + milliseconds);\n    return date;\n}\n\n// Function to check if the password expiration is enabled\nfunction isPasswordExpirationEnabled(userAccountControl) {\n    // The DONT_EXPIRE_PASSWORD flag is 0x10000 (65536)\n    const DONT_EXPIRE_PASSWORD = 0x10000;\n    // Check if the flag is set\n    return (userAccountControl & DONT_EXPIRE_PASSWORD) === 0;\n}\n\n// Maximum password age in days (this should be fetched or known from the domain policy)\nconst maxPwdAgeDays = 90; // Example: 90 days\n\n// Assuming the LDAP node provides the data in items\nconst items = $input.all();\n\n// Process each item to determine password expiration status and date\nconst output = items.map(item => {\n    const pwdLastSetValue = item.json.pwdLastSet;\n    const userAccountControlValue = item.json.userAccountControl;\n    const msDSUserPasswordExpiryTimeComputedValue = item.json[\"msDS-UserPasswordExpiryTimeComputed\"];\n\n    let passwordExpirationEnabled = isPasswordExpirationEnabled(userAccountControlValue);\n    let pwdExpiryDate;\n\n    // If msDS-UserPasswordExpiryTimeComputed is available, use it\n    if (msDSUserPasswordExpiryTimeComputedValue) {\n        pwdExpiryDate = ldapTimestampToDate(msDSUserPasswordExpiryTimeComputedValue);\n    } else if (passwordExpirationEnabled) {\n        // Calculate expiration date using pwdLastSet and maxPwdAgeDays\n        const pwdLastSetDate = ldapTimestampToDate(pwdLastSetValue);\n        pwdExpiryDate = new Date(pwdLastSetDate);\n        pwdExpiryDate.setDate(pwdExpiryDate.getDate() + maxPwdAgeDays);\n    } else {\n        pwdExpiryDate = 'Password does not expire';\n    }\n\n    // Return the item with the new fields\n    return {\n        json: {\n            ...item.json,\n            passwordExpirationEnabled,\n            pwdExpiryDate: pwdExpiryDate instanceof Date ? pwdExpiryDate.toISOString() : pwdExpiryDate\n        }\n    };\n});\n\n// Return the output array\nreturn output;\n"
+      },
+      "id": "f3734dcc-37ba-47e2-b56f-ca4a38f937cb",
+      "name": "PwdExpiredEnabled",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Not Locked Out </h1>\n                <h2> Your Password Expires On: {{ $('Date & Time').item.json.formattedDate }}\nIf Your Password Expired. Please Place A Ticket. </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "589c9497-8d42-4d4f-be44-43c0d6203fe2",
+      "name": "UserIsNotLocked1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Not Locked Out  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "2c448bf0-0b6d-4d54-9b84-5ef5a06939a0",
+      "name": "UserIsNotLocked-Enabled",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6e48f864-b50b-4f0a-b81a-701d992eef36",
+              "leftValue": "={{ $json.cn }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "55066882-9d40-4030-848a-8c1d4605f891",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('Webhook').item.json.query.Username }} Does Not Exist  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "e08790ff-79d2-4fc5-a8eb-fe511486ee89",
+      "name": "UserDoesNotExist",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3e8cb0be-68dd-4b58-bb8c-b69ac0a50d59",
+              "leftValue": "={{ $('Webhook').item.json.query.Username }}",
+              "rightValue": "ECOE",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "8840f8ae-4985-4bcc-8b15-cdb176ca2cb6",
+              "leftValue": "={{ $('Webhook').item.json.query.Username }}",
+              "rightValue": "ecoe",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "f116ae14-a3c1-4ad1-b0da-8433b13d7bc3",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t<h1 class=\"cs-title\" >{{ $('Webhook').item.json.query.Username }} You do not need to enter in ECOE\\. Please try again.  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "96fd7023-90ec-487f-bc6e-9c4cc50b6ecb",
+      "name": "ECOE\\",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a175c995-e071-48a8-8f4b-f49105bd74b7",
+              "name": "query.Username",
+              "value": "={{ $json.query.Username.toLowerCase().replaceAll(' ', '')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dac91173-3da8-4dd0-aa4d-7cd830758436",
+      "name": "SetToLowerCase",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        140,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "7182b177-fc27-4f80-9724-b3fabf0c4392",
+              "leftValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "rightValue": "ma",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "5c0c19aa-1f6c-4a7a-81ff-797c91dddbd9",
+              "leftValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "rightValue": "Ma",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "fcebb9b4-5083-45cb-9303-c11c6e2a9639",
+              "leftValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "rightValue": "MA",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "957ce7ff-5cc7-4264-8d9b-1ffc50791310",
+              "leftValue": "={{ $('SetToLowerCase').item.json.query.Username }}",
+              "rightValue": "mA",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "1825f530-09d2-458f-8f14-6f3eb877b2a1",
+      "name": "Check if it's an MA",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2960,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "path": "EPIC-IT-Forms",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "9c3e2391-e5a0-4331-b6a7-5e171e77c3a9",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        360
+      ],
+      "webhookId": "df627030-3472-4b57-af60-09b34001ba92"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://n8n.cybertech.app/webhook/2df4b0f2-01d3-4084-a368-2f52769bd202?SID={SID}&ResponseID={SAVEDID}&Email={Q00}&Name={G01Q06}&RequestRole={G01Q04.shown}&Locatoin={G01Q02.shown}&IssueCategory={G01Q05.shown}&IssueComment={G01Q07.shown}",
+        "options": {}
+      },
+      "id": "0d5a8336-f13a-4eec-ab0b-194c88ea3aee",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1440,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://n8n.cybertech.app/webhook/2df4b0f2-01d3-4084-a368-2f52769bd202?",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Name",
+              "value": "={{ $json.query.Username }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a6182018-e3db-4a8e-a195-d3b72aa68625",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t<h1 class=\"cs-title\" >{{ $('Webhook').item.json.query.Username }} You do not need to enter in ECOE\\. Please try again.  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "603857bc-a53d-4c7e-92d0-e5499aae009c",
+      "name": "ECOE\\1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('Webhook').item.json.query.Username }} Does Not Exist  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "99a37f77-b33a-471c-ad93-92d997d603b7",
+      "name": "UserDoesNotExist1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1000,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Not Locked Out </h1>\n                <h2> Your Password Expires On: {{ $('Date & Time').item.json.formattedDate }}\nIf Your Password Expired. Please Place A Ticket. </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "1c948102-e148-4255-8199-01fabeab2f39",
+      "name": "UserIsNotLocked",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Not Locked Out  </h1>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "9c0cb7d1-46f9-4be3-b1d9-41d57eb2fdd0",
+      "name": "UserIsNotLocked-Enabled1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2080,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Daily Cap Have Been Reached </h1>\n                <h2> Please Place A Ticket For Your Account To Be Unlocked </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "5f5920ac-64c7-43bf-b784-3eb34bd6844e",
+      "name": "4thAttempt2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3360,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <style>\n        :root {\n            /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */\n            --primary: #ff6a3e;\n            --primaryLight: #ffba43;\n            --secondary: #ffba43;\n            --secondaryLight: #ffba43;\n            --headerColor: #1a1a1a;\n            --bodyTextColor: #4e4b66;\n            --bodyTextColorWhite: #fafbfc;\n            /* 13px - 16px */\n            --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);\n            /* 31px - 49px */\n            --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);\n            --bodyFontSize: 1rem;\n            /* 60px - 100px top and bottom */\n            --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;\n        }\n\n        body {\n            margin: 0;\n            padding: 0;\n        }\n\n        *, *:before, *:after {\n            /* prevents padding from affecting height and width */\n            box-sizing: border-box;\n        }\n\n        .cs-topper {\n            font-size: var(--topperFontSize);\n            line-height: 1.2em;\n            text-transform: uppercase;\n            text-align: inherit;\n            letter-spacing: .1em;\n            font-weight: 700;\n            color: var(--primary);\n            margin-bottom: 0.25rem;\n            display: block;\n        }\n\n        .cs-title {\n            font-size: var(--headerFontSize);\n            font-weight: 900;\n            line-height: 1.2em;\n            text-align: inherit;\n            max-width: 43.75rem;\n            margin: 0 0 1rem 0;\n            color: var(--headerColor);\n            position: relative;\n        }\n\n        .cs-text {\n            font-size: var(--bodyFontSize);\n            line-height: 1.5em;\n            text-align: inherit;\n            width: 100%;\n            max-width: 40.625rem;\n            margin: 0;\n            color: var(--bodyTextColor);\n        }\n        .cs-logo{\n        \t    \n   \t\t \tposition: absolute;\n    \t\tpadding: 2em;    \t\t\n\t\t\tleft: 75%;\n    \t\ttop: 0%;\n    \t\ttransform: translateX(-50%);\n\n        }\n\n        /* -------------------------- */\n        /*          Services          */\n        /* -------------------------- */\n\n        /* Mobile - 360px */\n        @media only screen and (min-width: 0rem) {\n            #services-1628 {\n                padding: var(--sectionPadding);\n                background-color: #f7f7f7;\n            }\n            #services-1628 .cs-container {\n                width: 100%;\n                max-width: 34.375em;\n                margin: auto;\n                display: flex;\n                flex-direction: column;\n                align-items: center;\n                gap: clamp(3rem, 6vw, 4rem);\n            }\n            #services-1628 .cs-content {\n                text-align: left;\n                width: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-title {\n                max-width: 20ch;\n            }\n            #services-1628 .cs-text {\n                max-width: 40rem;\n                position: relative;\n                z-index: 1;\n            }\n            #services-1628 .cs-text:after {\n                content: \"\";\n                width: 100%;\n                height: 1px;\n                margin-top: 1.5rem;\n                background: var(--primary);\n                opacity: 1;\n                display: block;\n                position: relative;\n            }\n            #services-1628 .cs-chevron {\n                --chevronColor: var(--primary);\n                width: 3rem;\n                height: auto;\n            }\n            #services-1628 .cs-card-group {\n                width: 100%;\n                margin: 0;\n                padding: 0;\n                display: grid;\n                grid-template-columns: repeat(12, 1fr);\n                column-gap: clamp(1rem, 2.5vw, 1.25rem);\n                row-gap: clamp(1.75rem, 2.5vw, 2.5rem);\n            }\n            #services-1628 .cs-item {\n                list-style: none;\n                width: 100%;\n                display: flex;\n                grid-column: span 12;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-item:hover .cs-picture img {\n                opacity: .5;\n                transform: scale(1.2);\n            }\n            #services-1628 .cs-link {\n                text-decoration: none;\n                height: 100%;\n                display: flex;\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            #services-1628 .cs-picture {\n                width: 100%;\n                height: 15rem;\n                position: relative;\n                overflow: hidden;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-picture img {\n                object-fit: cover;\n                height: 100%;\n                width: 100%;\n                opacity: 1;\n                transform: scale(1);\n                transition: .5s ease;\n            }\n            #services-1628 .cs-item-text {\n                color: var(--black);\n                margin-top: 0;\n                margin-bottom: 1.5rem;\n            }\n            #services-1628 .cs-ithelpdesk-link {\n                display: flex;\n                gap: 1rem;\n                align-items: center;\n                color: var(--primary);\n                font-weight: 700;\n            }\n            #services-1628 .cs-ithelpdesk-link img {\n                height: 1rem;\n                width: auto;\n                --chevronColor: var(--primary);\n            }\n        }\n\n        /* Tablet - 768px */\n        @media only screen and (min-width: 48em) {\n            #services-1628 .cs-container {\n                max-width: 80em;\n            }\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 6;\n            }\n        }\n\n        /* Desktop - 1024px */\n        @media only screen and (min-width: 64em) {\n            #services-1628 .cs-card-group {\n                grid-template-columns: repeat(12, 1fr);\n            }\n            #services-1628 .cs-item {\n                grid-column: span 4;\n            }\n        }\n    </style>\n\n<!-- ============================================ -->\n<!--                  Services                    -->\n<!-- ============================================ -->\n\n<section id=\"services-1628\">\n    <div class=\"cs-container\">\n\n        <div class=\"cs-content\">\n        \n                            <div class=\"cs-flex\">\n                            \n                    <span class=\"cs-topper\">EPIC Health</span>\n                    <h2 class=\"cs-title\">IT HelpDesk</h2>\n                    \n                </div>\n                            <div class=\"cs-logo\"> \n                            <a href=\"https://xl.epicpc.com/webhook/IT-HelpDesk\"><img  aria-hidden=\"true\" loading=\"lazy\" decoding=\"async\" src=\"https://i.postimg.cc/SQzYBM0H/EH-New-Logo-Gradient-with-Drop-Shadow.png\" alt=\"icon\" width=\"120\" height=\"140\"></a>\n      </div>\n\t <h1 class=\"cs-title\" >{{ $('LDAP').item.json.cn }} Is Now Unlocked </h1>\n                <h2> Your Password Expires On: {{ $('Date & Time').item.json.formattedDate }} </h2>\n      \n                <p class=\"cs-text\">\n   \t\t\t\tClick on the link's provided that can help resolve your issues.\n                </p>\n                \n            </div>                  \n        <ul class=\"cs-card-group\">\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/292538?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHU0a2RjMTczMmR3YWw2eWl6bWU1ZmpmamJjeDA1cXIyY2F4NmVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gHPOb1fEVWu5GHL2tk/giphy.webp\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Unlock Form</h3>\n                        <p class=\"cs-item-text\">\n                            If your account is currently locked. Please click on this link to unlock your account.\n                        </p>\n                        <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/118136?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/I5KbvAcXtjQAAAAi/peach-goma.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">IT Ticket Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you're having other issues and need IT assistance, please click here to place a ticket.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/339323?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/5cdHhm2p9IIAAAAi/lets-build-pengu.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Maintenance Form</h3>\n                    <p class=\"cs-item-text\">\n                        John A. provides some of the most reliable services and solutions.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n            <li class=\"cs-item\">\n                <a href=\"https://forms.epicpc.com/limesurvey/index.php/351729?newtest=Y&lang=en\" class=\"cs-link\">\n                    <picture class=\"cs-picture\">\n                        <!--Mobile Image-->\n                        <source media=\"(max-width: 600px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <!--Tablet and above Image-->\n                        <source media=\"(min-width: 601px)\" srcset=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\">\n                        <img loading=\"lazy\" decoding=\"async\" src=\"https://media.tenor.com/cG5-wSuBxCsAAAAi/peach-cat.gif\" alt=\"room\" width=\"413\" height=\"420\">\n                    </picture>\n                    <h3 class=\"cs-h3\">Laptop Request/Replacement Form</h3>\n                    <p class=\"cs-item-text\">\n                        If you need a laptop or need to replace a broken laptop. Click here to place your request.\n                    </p>\n                    <span class=\"cs-ithelpdesk-link\">\n                        Click Here\n                        <img class=\"cs-icon\" src=\"https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-chevron-right.svg\" alt=\"\" width=\"20\" height=\"20\" loading=\"lazy\" decoding=\"async\" aria-hidden=\"true\">\n                    </span>\n                </a>\n            </li>\n        </ul>\n    </div>\n</section>\n                                ",
+        "options": {}
+      },
+      "id": "22b77971-353c-4ae5-8cb3-5ef5b7784dfa",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3720,
+        440
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "192.168.110.56",
+            "x-forwarded-for": "192.168.110.56",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "SID": "292538",
+            "ResponseID": "1137",
+            "Username": "jwilson",
+            "Task": "Unlock Account"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/EPIC-IT-Forms",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-07-08T17:38:55.591Z",
+      "updatedAt": "2024-07-08T17:38:55.591Z",
+      "id": "FD2jDQ4ashwE4ESm",
+      "name": "Ricky"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-06T16:01:29.737Z",
+  "versionId": "d2b414bd-2318-4da3-9db8-538336f4ae05"
+}
