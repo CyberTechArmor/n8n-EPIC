@@ -1,0 +1,319 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-29T17:57:29.046Z",
+  "id": "lPkEQpeYf4UdBAbB",
+  "isArchived": false,
+  "meta": null,
+  "name": "Procedure Authorizations",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "a1ae04df-2f87-46fd-846f-2eeac44933a9",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "80616220-2650-47d2-8aef-6ef882dff822",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        440
+      ],
+      "webhookId": "a1ae04df-2f87-46fd-846f-2eeac44933a9"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<html><body>Thank you!</body></html>",
+        "options": {}
+      },
+      "id": "b618051b-aee4-45b1-a4fb-389ff1408c53",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"Procedure Authorizations\",\n       \"GROUP_ID\":\"73\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"Procedure Authorization TOKEN: {{ $json[\"query\"][\"TOKEN\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "5c974d15-e4cc-4a85-9253-6ed90b4f0683",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "{\n    \"method\": \"get_session_key\",\n    \"params\": {\n        \"username\": \"nmnsend\",\n        \"password\": \"5endUs3r#123456\"\n    },\n    \"id\": 1\n}\n",
+        "options": {}
+      },
+      "id": "e845adcd-f5ba-4221-b090-d4e4fb1054e3",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        700,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "=application/json",
+        "body": "={    \"method\": \"add_participants\",\n    \"params\": {\n         \"sSessionKey\": \"{{ $json[\"result\"] }}\",\n         \"iSurveyID\": {{ $('Webhook').item.json[\"body\"][\"SurveySent\"] }},                \n         \"aParticipantData\": [\n            {\n                \"firstname\": \"{{ $('Webhook').item.json[\"body\"][\"Firstname\"] }}\",\n                \"lastname\": \"{{ $('Webhook').item.json[\"body\"][\"Lastname\"]}}\",\n                \"email\": \"{{ $('Webhook').item.json[\"body\"][\"email\"] }}\",\n                \"language\": \"en\",\n                \"token\": \"{{ $('Webhook').item.json[\"body\"][\"token\"] }}\",\n                \"attribute_1\": \"{{ $('Webhook').item.json[\"body\"][\"mrn\"] }}\",\n                \"attribute_2\": \"{{ $('Webhook').item.json[\"body\"][\"bitrixid\"] }}\",\n                \"attribute_3\": \"{{ $('Webhook').item.json[\"body\"][\"capid\"] }}\",\n                \"sent\": \"{{ $('Webhook').item.json[\"body\"][\"sent\"] }}\",\n                \"validuntil\": \"{{ $('Webhook').item.json[\"body\"][\"validuntil\"] }}\"\n            }\n        ],\n        \"bCreateToken\": false\n    },\n    \"id\": 1\n}",
+        "options": {}
+      },
+      "id": "5a693698-4c40-4a9c-8b16-959206843462",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        900,
+        200
+      ]
+    }
+  ],
+  "pinData": {
+    "HTTP Request3": [
+      {
+        "json": {
+          "id": 1,
+          "result": "Hw_io_Q8X3DOo~2TeO_roQWlm~4gXoxa",
+          "error": null
+        }
+      }
+    ],
+    "HTTP Request": [
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "8lBmb",
+              "attribute_1": "766690",
+              "tid": "202",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null,
+              "attribute_2": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "0ufknlKOgzCoi3r",
+              "attribute_1": "766690",
+              "tid": "45",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "aOmscI349zgvsaZ",
+              "attribute_1": "766690",
+              "tid": "647",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      },
+      {
+        "json": {
+          "id": 1,
+          "result": [
+            {
+              "sent": "N",
+              "remindersent": "N",
+              "remindercount": 0,
+              "completed": "N",
+              "usesleft": 1,
+              "emailstatus": "OK",
+              "firstname": "CAROLYN",
+              "lastname": "AARON",
+              "email": "carolyn.aaron50@gmail.com",
+              "language": "en",
+              "token": "2rjxzFrpTCZrOcQ",
+              "attribute_1": "766690",
+              "tid": "72",
+              "participant_id": null,
+              "blacklisted": null,
+              "validfrom": null,
+              "validuntil": null,
+              "mpid": null
+            }
+          ],
+          "error": null
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.14.180",
+            "x-forwarded-for": "10.0.14.180",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "cache-control": "max-age=0",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Google Chrome\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "referer": "https://forms.epicpc.com/",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "SAVEID": "7",
+            "TOKEN": "xuM9n",
+            "SID": "155161",
+            "NAME": ""
+          },
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-31T21:06:29.315Z",
+  "versionId": "f1fc4022-d549-4507-879f-2a307bd47961"
+}
