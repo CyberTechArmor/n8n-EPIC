@@ -1,0 +1,88 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "PM D-CARE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PM D-CARE": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-29T17:43:58.246Z",
+  "id": "6y60Y6sZaRCa7aQe",
+  "isArchived": false,
+  "meta": null,
+  "name": "TEST FOR TRUNCATED SCHEDULE DB",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @RES VARCHAR(50) = '%%';\nDECLARE @LOC VARCHAR(250) = '%%';\nDECLARE @APPT_TYPE VARCHAR(250) = '%%';\nDECLARE @STARTDATE DATE = '2024-12-1';\nDECLARE @ENDDATE DATE = '2024-12-31'; \n\n\nWITH sched_appt_avail AS (\n    SELECT  \n        s.[Available_Date],\n        s.[Start_Time],\n        s.[End_Time],\n        s.[Sched_Loc_Abbr],\n        s.[Sched_Dept_Abbr],\n        s.[Resource_Desc],\n        s.[Resource_Abbr],\n        s.[Activity_Type_Abbr],\n        s.Resource_ID,\n        s.Scheduling_Location_ID,\n\t\tcase when s.Scheduling_Location_ID=89 then 'Royal Oak Diagnostics'\n\n\t\tend as SchedulingLocationName\n\t\t,\n        CASE WHEN s.Booking_Factor = 1 THEN 'BookableSlot' END AS BookableAppt\n    FROM [PM].[vwApptSchedAvail] s\n    WHERE s.Available_Date BETWEEN @STARTDATE AND @ENDDATE\n      AND s.Resource_Abbr NOT LIKE 'PALAB'\n      AND s.Activity_Type_Abbr NOT LIKE 'BREAK'\n      AND s.Activity_Type_Abbr NOT LIKE 'lunch'\n      AND s.Activity_Type_Abbr NOT LIKE 'Blocked'\n     AND s.Resource_Desc like @RES\n),\nscheduled_appt_slots AS (\n    SELECT \n        p.[Patient_ID],\n        p.[Patient_Number],\n        p.[Appt_ID],\n        p.[Appt_DateTime],\n        p.[Appt_Resource_ID],\n        p.[Appt_Status],\n        CASE WHEN p.Patient_ID IS NOT NULL THEN 'BookedAppt' END AS BookedAppt\n    FROM [Ntier_EPIC].[PM].[vwGenPatApptInfo] p\n    WHERE CAST(p.Appt_DateTime AS DATE) BETWEEN @STARTDATE AND @ENDDATE\n    AND p.Appt_Resource_Descr like @RES\n),\nres_pract_info as(\nselect \nr.Resource_ID as res_resource_id,r.Abbreviation as res_abbreviation,r.Description as res_description,r.Appointment_Group_ID as res_appointment_group_id,ag.Abbreviation as appt_gp_abbreviation,\nag.Description as appt_gp_description,r.Practitioner_ID as res_practitioner_id,\np.Practitioner_ID as prac_practitioner_id,\np.Is_Ref_Source,p.Is_Physician,p.Abbreviation as prac_abbreviation,\nUPPER(p.First_Name) First_Name,upper(p.Last_Name) Last_Name,p.Sex,p.Street1,p.City,p.State,p.Zip_Code,p.Phone,p.Phone_Ext,\np.Fax_Number,p.UPIN,p.Specialty_ID,p.Is_Non_Person,p.Specialty_ID spec_Specialty_Id,s.Abbreviation spec_abbreviation,s.Description spec_description,\np.Is_Mid_Level,p.Is_Mid_Level_PA,\np.Inactivation_Date,p.Is_Locum_Tenan\nfrom [PM].[Resources] r \nleft join [PM].[Practitioners] p on r.Practitioner_ID=p.Practitioner_ID\nleft join [PM].[Specialties] s on p.Specialty_ID=s.Specialty_ID\nLEFT JOIN [PM].[Appointment_Groups] ag on r.Appointment_Group_ID=ag.Appointment_Group_ID\nwhere r.Description not like 'zz%' and r.Description not like 'CM%'\nand r.Description not like 'super%' and r.Description not like 'blue%'\nand r.Description not like 'bella%' and r.Description not like 'surg%'\nand r.Description not like 'uop' and r.Description not like 'Tin%'\nand r.Description not like 'dunc%' and p.Inactivation_Date is null\nand r.Description not like 'prior%'\nand r.Description not like 'chee%' and r.Description not like 'PA,%'\nand r.Description not like 'PharmD - Sabbagh, Hussein' and r.Description  not like'%event%'\n),\nadd_pa_lab as(\nSELECT \n    a.Available_Date,a.Start_Time,a.End_Time,a.Resource_Abbr,a.Resource_Desc,a.Resource_ID,a.Activity_Type_Abbr,\n\ta.Sched_Dept_Abbr,a.Sched_Loc_Abbr,a.SchedulingLocationName,\n\ta.Scheduling_Location_ID,s.Abbreviation,s.Description,s.Location_ID,\n\ta.BookableAppt,\n\tr.appt_gp_abbreviation,\n\tr.appt_gp_description,\n\tcase \n\twhen r.First_Name is null then 'LAB X-RAY'\n\telse r.First_Name\n\tend as First_Name,\n\tcase \n\twhen r.Last_Name is null then a.Resource_Desc\n\telse r.Last_Name\n\tend as Last_Name,\n\tr.prac_abbreviation,\n\tr.prac_practitioner_id,\n\tr.res_practitioner_id,\n\tr.res_abbreviation,\n\tr.res_appointment_group_id\n\nFROM \n    sched_appt_avail a\nLEFT JOIN \n    scheduled_appt_slots b \n    ON a.Available_Date = CAST(b.Appt_DateTime AS DATE)\n    AND a.Start_Time = DATEPART(HOUR, b.Appt_DateTime) * 100 + DATEPART(MINUTE, b.Appt_DateTime) \n    AND a.Resource_ID = b.Appt_Resource_ID\nLEFT JOIN res_pract_info r ON r.res_resource_id=a.Resource_ID\nleft join [Ntier_EPIC].[PM].[Scheduling_Locations] s on s.Scheduling_Location_ID=a.Scheduling_Location_ID\nWHERE \n    b.Patient_ID IS NULL  -- Only show slots with no booked appointment\n    AND a.BookableAppt = 'BookableSlot'\n\tand r.res_appointment_group_id not in ('42','19','75','79','31')--31 is Pt, 79 PandBSP,42 is Pcare\n\tand (s.Description not like 'z%' and ( s.Description like 'EPIC%' or s.Description like 'DIAG%')and s.Description not in ('DIAG Eastpointe Kelly','DIAG Westland','EPIC Billing Office','EPIC Events','EPIC HS ADMIN','EPIC Events','EPIC Billing Office','EPIC Westland Palmer','EPIC Wyandotte Biddle','EPIC Care Management','EPIC Eastpointe Kelly','EPIC Southfield Greenfield'))\n--ORDER BY a.Available_Date, a.Start_Time; \n\n),\npick_res as(\nselect a.Abbreviation,\na.Activity_Type_Abbr,\na.appt_gp_description,a.appt_gp_abbreviation,a.Available_Date,a.BookableAppt,\n\nCASE \n        WHEN a.Description ='DIAG EP Ferndale' THEN 'Diagnostic Testing at Ferndale 9 Mile'\n        WHEN a.Description ='DIAG EP Livernois' THEN 'Diagnostic Testing at Detroit Livernois'\n\t\tWHEN a.Description ='DIAG EP Southfield' THEN 'Diagnostic Testing at Southfield 10 Mile'\n\t\tWHEN a.Description ='DIAG EP DAVISON' THEN 'Diagnostic Testing at Hamtramck Davison'\n\t\tWHEN a.Description ='DIAG EP 7 Mile' THEN 'Diagnostic Testing at Detroit 7 Mile'\n\t\tWHEN a.Description like 'DIAG EP%' THEN replace(a.description,'Diag EP', 'Diagnostic Testing at')\n\t\twhen a.Last_Name like 'Allerg%' then 'Diagnostic Testing at Southfield 10 Mile'\n\t\tEND AS Description,\na.End_Time,a.First_Name,\ncase when a.Last_Name ='Telemetry Monitor' then 'Heart Rhythm (Zio/Holter) Monitor'\nelse a.Last_Name\nend as Last_Name,\na.Location_ID,a.Location_ID as res_location_id,a.prac_abbreviation,a.prac_practitioner_id,a.res_abbreviation,\na.res_appointment_group_id,a.res_practitioner_id,a.Resource_Abbr,a.Resource_Desc,a.Resource_ID,a.Sched_Dept_Abbr,\na.Sched_Loc_Abbr,a.Scheduling_Location_ID,a.Start_Time\nfrom add_pa_lab a\n),\nAPPT_TYPE_DIS AS(\nSELECT \n      a.[Appointment_Type_ID]\n      ,a.[Abbreviation] AT_Abbreviation\n\t  ,CASE \n        WHEN a.[Appointment_Type_ID] = 275 THEN 'Colonoscopy Screening (With Biopsy If Needed)'\n        WHEN a.[Appointment_Type_ID] = 45 THEN 'Mammogram Breast Bilateral Screening'\n        WHEN a.[Appointment_Type_ID] = 80 THEN 'Echocardiogram'\n        WHEN a.[Appointment_Type_ID] = 251 THEN 'Stress Test Treadmill Not with MPI or Lexiscan or Dobutamine'\n        WHEN a.[Appointment_Type_ID] = 61 THEN 'Sleep Study for home'\n        WHEN a.[Appointment_Type_ID] = 261 THEN 'Heart Rhythm Monitor (Zio or Holter)'\n        WHEN a.[Appointment_Type_ID] = 48 THEN 'Arterial Doppler Ultrasound Bilateral Limbs'\n        when a.Appointment_Type_ID = 247 then 'Mammogram Same Day'\n       -- WHEN a.[Appointment_Type_ID] = 240 THEN 'Screening Computed Tomography of Thorax for Malignant Neoplasm'\n        --WHEN a.[Appointment_Type_ID] = 240 THEN 'US Abdomen Complete'\n        WHEN a.[Appointment_Type_ID] = 258 THEN 'Pelvic Ultrasound with transvaginal probe'\n        WHEN a.[Appointment_Type_ID] = 245 THEN 'Carotid and Vertebral Doppler ultrasound'\n        WHEN a.[Appointment_Type_ID] = 253 THEN 'ABI- Rest and Exercise'\n        WHEN a.[Appointment_Type_ID] = 276 THEN 'Colonoscopy (Diagnostic) or EGD (Diagnostic)'\n        WHEN a.[Appointment_Type_ID] = 219 THEN 'Breast Unilateral (One Breast) Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 248 THEN 'Lower Extremity Venous Doppler'\n        WHEN a.[Appointment_Type_ID] = 219 THEN 'Breast Bilateral (Both Breasts) Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 213 THEN 'Scrotum and Testicular Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 261 THEN '24-48 HR Holter Monitor'\n        WHEN a.[Appointment_Type_ID] = 241 THEN 'Renal Artery Doppler Ultrsound'\n        WHEN a.[Appointment_Type_ID] = 276 THEN 'EGD, with Biopsy'\n        --WHEN a.[Appointment_Type_ID] = 248 THEN 'Venous Duplex Scan for Venous Insufficiency-Bilateral'\n        --WHEN a.[Appointment_Type_ID] = 239 THEN 'LE Arterial Doppler (Unilateral)'\n        WHEN a.[Appointment_Type_ID] = 253 THEN 'Arterial Doppler Ultrasound of Both Lower Extremities'\n       -- WHEN a.[Appointment_Type_ID] = 45 THEN 'PET-CT Entire Body'\n        --WHEN a.[Appointment_Type_ID] = 241 THEN 'Doppler Ultrasound of Renal Artery'\n        WHEN a.[Appointment_Type_ID] = 257 THEN 'Pelvic Ultrasound (Without Transvaginal Probe)'\n        WHEN a.[Appointment_Type_ID] = 175 THEN 'Thyroid (Neck/Head) Ultrasound' \n       -- WHEN a.[Appointment_Type_ID] = 240 THEN 'Abdomen Right Upper Quadrant Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 241 THEN 'Abdominal Aorta Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Soft Tissue Chest Ultrasound'\n       -- WHEN a.[Appointment_Type_ID] = 219 THEN 'Diagnostic Mammogram Right Breast'\n       -- WHEN a.[Appointment_Type_ID] = 45 THEN 'Diagnostic Mammogram Bilateral'\n       -- WHEN a.[Appointment_Type_ID] = 45 THEN 'Screening Mammography with Tomosynthesis'\n       -- WHEN a.[Appointment_Type_ID] = 236 THEN 'Bone Densitometry'\n        WHEN a.[Appointment_Type_ID] = 261 THEN 'Holter Monitoring 48 Hours or Less'\n        WHEN a.[Appointment_Type_ID] = 61 THEN 'Home Sleep Study'\n        WHEN a.[Appointment_Type_ID] = 154 THEN 'Prostate Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 239 THEN 'Arterial Doppler Ultrasound Upper or Lower limbs'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Popliteal Fossa Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Soft Tissue Ultrasound of Lower Extremity'\n        --WHEN a.[Appointment_Type_ID] = 154 THEN 'Hysteroscopy with Endometrial Sampling'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Soft Tissue Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 213 THEN 'Scrotum and Testicular Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 240 THEN 'Abdominal Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 257 THEN 'Pelvis Ultrasound Complete without TransVaginal Probe'\n        WHEN a.[Appointment_Type_ID] = 222 THEN 'Kidney and Bladder Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 175 THEN 'Head Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 236 THEN 'Continous Glucose Monitor (CGM)'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Soft Tissue Ultrasound Extremity'\n        WHEN a.[Appointment_Type_ID] = 48 THEN 'Arterial Doppler Ultrasound of limbs'\n       -- WHEN a.[Appointment_Type_ID] = 219 THEN 'Diagnostic Mammogram Left Breast'\n        WHEN a.[Appointment_Type_ID] = 257 THEN 'Pelvis Ultrasound Without Transvaginal'\n        WHEN a.[Appointment_Type_ID] = 248 THEN 'Venous Doppler Ultrasound of Bilateral lower limbs'\n        WHEN a.[Appointment_Type_ID] = 253 THEN 'Arterial Doppler Measurement of Segmental Pressure'\n        WHEN a.[Appointment_Type_ID] = 241 THEN 'Renal Artery Doppler'\n        --WHEN a.[Appointment_Type_ID] = 239 THEN 'Lower Arterial Doppler'\n        WHEN a.[Appointment_Type_ID] = 258 THEN 'Pelvic Ultrasound with Transvaginal Probe'\n        WHEN a.[Appointment_Type_ID] = 175 THEN 'Neck Ultrasound'\n        WHEN a.[Appointment_Type_ID] = 241 THEN 'Abdominal Aorta US'\n        WHEN a.[Appointment_Type_ID] = 256 THEN 'Popliteal Ultrasound'\n\t\tWHEN A.Appointment_Type_ID = 131 THEN 'Heart Rhythm Monitor (Zio or Holter)'\n\t\twhen a.Appointment_Type_ID = 150 then 'Venous Doppler Ultrasound of limbs'\n\t\twhen a.Appointment_Type_ID = 199  then 'Bladder Ultrasound'\n\t\twhen a.Appointment_Type_ID = 215  then 'Prostate Ultrasound Transabdominal (Not Rectal)'\n\t\twhen a.Appointment_Type_ID = 223  then 'Rotator Cuff Ultrasound'\n\t\twhen a.Appointment_Type_ID = 393  then 'Blue Sky Whole Body Dexa Scan'\n\t\twhen a.Appointment_Type_ID = 421  then 'Blue Sky Abdominal Ultrasound'\n\t\twhen a.Appointment_Type_ID =  422 then 'Blue Sky Abdominal Aortic Ultrasound'\n\t\twhen a.Appointment_Type_ID =  431 then 'Blue Sky Bone Density Scan'\n\t\twhen a.Appointment_Type_ID = 423 then 'Blue Sky Echocardiogram'\n\t\twhen a.Appointment_Type_ID = 423 then 'Blue Sky Echocardiogram'\n\t\twhen a.Appointment_Type_ID = 417 then 'Blue Sky Stress test and V02Max'\n\t\twhen a.Appointment_Type_ID = 392 then 'Blue Sky V02Max Only'\n\t\tWHEN a.[Appointment_Type_ID] = 429 THEN 'Allergy Testing'\n        ELSE 'DontUse'\n\t  end as 'AppoinmentTypeToDisplay'\n\t  ,a.[Description] \n\t -- ,ac.[Appointment_Category_ID]\n\t  --,ac.Abbreviation,ac.Description\n      ,[Virtual_Visit]\n\t  ,ag.Appointment_Group_ID\n\t  ,ag.Abbreviation AG_Abbreviation\n\t  ,ag.Description AG_Description\n     \n  FROM [Ntier_EPIC].[PM].[Appointment_Types] a \n  left join [PM].[Appt_Group_Membership] am on a.Appointment_Type_ID=am.Appointment_Type_ID\n  left join [PM].[Appointment_Groups] ag on am.Appointment_Group_ID =ag.Appointment_Group_ID and am.Appointment_Type_ID=a.Appointment_Type_ID\n  --left join [PM].[Appointment_Categories] ac on a.Appointment_Category_ID=ac.Appointment_Category_ID \n -- where a.Appointment_Type_ID in ('46','163','211','234')\n where ag.Appointment_Group_ID in ('32','38','39','49','81','20','51','71','52','34','10','60','82','40','80','10','16','35')--5 PSYCH 44 CARDS 77 SPEC CARDS\n --AND AG.Appointment_Group_ID NOT IN ('42','30','31','5','46','45','47','59','60')\n),\nfilter_appt_type as(\n SELECT A.*\n FROM APPT_TYPE_DIS A\n WHERE A.Appointment_Group_ID not in ('42')\n --and a.AppoinmentTypeToDisplay like @APPT_TYPE\n-- order by a.Appointment_Group_ID\n)\nselect p.*,f.AppoinmentTypeToDisplay\nfrom pick_res p \nleft join filter_appt_type f on p.res_appointment_group_id=f.Appointment_Group_ID\nwhere f.AppoinmentTypeToDisplay like @APPT_TYPE \nand p.Description like @LOC\n "
+      },
+      "id": "038ed370-51b7-4eb8-84cd-d27ad9bf233e",
+      "name": "PM D-CARE",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        -200
+      ],
+      "id": "d0fcfaa2-da92-4466-914e-3d330d3fd712",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        -200
+      ],
+      "id": "e05bad23-82c5-48cb-9784-d6cd22bb1945",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-29T17:45:13.340Z",
+  "versionId": "9a3e239a-647e-4a4a-aefc-3e4d79590c97"
+}
