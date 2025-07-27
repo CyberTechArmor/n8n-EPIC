@@ -1,0 +1,2871 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SODSummary": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PatientSODSummary": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Health Profile": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnVision Connect": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Crypto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Crypto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto2": {
+      "main": [
+        [
+          {
+            "node": "SendGrid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Powershell CMD to RMM Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto3": {
+      "main": [
+        [
+          {
+            "node": "SendGrid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Crypto3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "Patient Health Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Patient Health Profile1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Health Profile1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Profile": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Health Profile2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Patient Health Profile2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Encounter": {
+      "main": [
+        [
+          {
+            "node": "Postgres Bitrix24 Delta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Bitrix24 Delta": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields11": {
+      "main": [
+        [
+          {
+            "node": "Postgres Bitrix24 Delta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "EHR Encounter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Encounter1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Bitrix24 Delta2": {
+      "main": [
+        []
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Microsoft SQL5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR to CRM Contact": {
+      "main": [
+        [
+          {
+            "node": "EHR Encounter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Postgres Bitrix24 Delta3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Supervision Signoff": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields13": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR TO HERO": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL7": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-14T21:35:51.712Z",
+  "id": "NW5p90hjRemWxKAz",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EHR Partner Portal",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "7b25471f-07f6-4c42-a1b1-d2d28bd49aa1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "219ba2f0-b929-4a9b-bba6-9e0c8636056d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        500
+      ],
+      "webhookId": "7b25471f-07f6-4c42-a1b1-d2d28bd49aa1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "36be60ad-96e6-42bd-b3c3-00f057139fc7",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        640,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "4b344fa9-2aab-48ec-b577-b6b8e64dbec2",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        500
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "stringValue": "={{ $json.query.SSOToken }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2be34760-ca5d-4f61-bd4a-a0c2b971f446",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -680,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>NMNCRM</h1>\n    <h2>This is patient {{ $json.DEM_FIRSTNAME }}</h2>\n    <p></p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "974d5356-cae1-492a-891a-908c202e76d7",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        380,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "DEM_FIRSTNAME",
+              "stringValue": "={{ $json.DEM_FIRSTNAME }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "93e77f43-034c-4209-98dd-f7f8135030a9",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        200,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "path": "0d49d135-09c1-49bc-8f2e-a78bde0edc7c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ce4b53e4-1a99-4e8f-86af-e54d7e43c2f9",
+      "name": "SODSummary",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        940
+      ],
+      "webhookId": "0d49d135-09c1-49bc-8f2e-a78bde0edc7c"
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "https://dw.epicpc.com/api/v1/authentication/login",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cookie",
+              "value": ".prism=%7B%22name%22%3A%22.prism%22%2C%22tenantId%22%3A%226541331a43f2dc001b3161e3%22%2C%22allowedTenants%22%3A%5B%226541331a43f2dc001b3161e3%22%5D%2C%22token%22%3A%22eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjRmMjc0M2IzZjI5OTE2N2RjMTUxYWJmIiwiYXBpU2VjcmV0IjoiMWEzZmUxZDgtYmNiZS1kODRlLWRiOGEtM2NjYWRjYzA5NDkxIiwiYWxsb3dlZFRlbmFudHMiOlsiNjU0MTMzMWE0M2YyZGMwMDFiMzE2MWUzIl0sInRlbmFudElkIjoiNjU0MTMzMWE0M2YyZGMwMDFiMzE2MWUzIiwiaWF0IjoxNzA3OTU5ODIwfQ.LG4yO_GKLESZXfsJSHDwBtR7HEBtLLwZ917Cjvcl5IE%22%2C%22isPersistent%22%3Afalse%2C%22expiration%22%3A%222024-02-22T01%3A17%3A00.131Z%22%2C%22issueDate%22%3A%222024-02-15T01%3A17%3A00.133Z%22%7D;XSRF-TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGYyNzQzYjNmMjk5MTY3ZGMxNTFhYmYiLCJ0ZW5hbnRJZCI6IjY1NDEzMzFhNDNmMmRjMDAxYjMxNjFlMyIsImFsbG93ZWRUZW5hbnRzIjpbIjY1NDEzMzFhNDNmMmRjMDAxYjMxNjFlMyJdLCJjc3JmVG9rZW4iOiI0Mmlydkgra29tY05PVVo3R29hUERNNXh2d3pBSWN1TW9Id21RaCtzZXRMcmZWVWk3V29UR0RXS1RiZGZocm8yIiwiZXhwIjoxNzA4NTY0NjIwLCJpYXQiOjE3MDc5NTk4MjB9.BLhJslLVQOnqTN4D0wvSAYNcClxGyccf80_HXKDVBnY;server.session=s%3A4Q0wbKktFLq5lG6N1K06W3QPrOTq2ous.Ij0ECVl3773Ekk%2Fp4td%2BdDcuaxx2dDPCLfl1mvUjDTk;"
+            },
+            {
+              "name": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNWVkZDMyYjRkMTU4M2IyMjdjOGIwMGZkIiwiYXBpU2VjcmV0IjoiYzEyZjcxYjgtYmU3Yy02MDBiLTUwNzItMTVkMWIwMjA4ZmVjIiwiYWxsb3dlZFRlbmFudHMiOlsiNjU0MTMzMWE0M2YyZGMwMDFiMzE2MWUzIl0sInRlbmFudElkIjoiNjU0MTMzMWE0M2YyZGMwMDFiMzE2MWUzIiwiaWF0IjoxNzA3OTU4MDQ5fQ.e1Lrq_iy27BpbwZ96FhmapjndMx0V_3WZXQt_H824Po"
+            },
+            {
+              "name": "X-XSRF-TOKEN",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Y2Q0OTczNjIwMmI0ZmY0NTVjNGVhYmEiLCJ0ZW5hbnRJZCI6IjY1NDEzMzFhNDNmMmRjMDAxYjMxNjFlMyIsImFsbG93ZWRUZW5hbnRzIjpbIjY1NDEzMzFhNDNmMmRjMDAxYjMxNjFlMyJdLCJjc3JmVG9rZW4iOiIxMmdVVHNmWG5McUIxaG5ESE9XVEM3czBmMkliYXZkTFJOR1dGaGRQbjJsWWZUSllia3VxQ2lRelRiV1NmbkNEIiwiZXhwIjoxNzA4NTYyOTcxLCJpYXQiOjE3MDc5NTgxNzF9.pB2q5hwS7gsz7YqlhaCVkrLdmGKybIZO3IlXpJ11SYM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "username",
+              "value": "power"
+            },
+            {
+              "name": "password",
+              "value": "M@kesomeapps#123"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "fbd50f4c-8fc3-4be4-bec8-344bd5ab0ddd",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -480,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "path": "d1eef15f-0bcc-443d-9c56-e6f815cc2d17",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "f82fc926-6a8c-4f8a-9607-581a755e5417",
+      "name": "PatientSODSummary",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        1120
+      ],
+      "webhookId": "016df734-7a09-44fb-848f-473af77ca6ae"
+    },
+    {
+      "parameters": {
+        "url": "https://dw.epicpc.com/api/v1/dashboards/63231b49f895992684eaf8c6/widgets/63231ff4f895992684eaf8d2",
+        "options": {}
+      },
+      "id": "99188648-f250-4a98-9917-8cca0efb59be",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        440,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html>\n<body>\n\n<iframe src=\"https://sbapi.epicpc.com/api/bitrix-care-chart/{{ $json[\"MRN\"] }}/{{ $json[\"encodedText\"] }}\" style=\"border:none;height: 95.7vh;width: 100%; overflow: none !important;\" title=\"Iframe Example\"></iframe>\n\n</body>\n</html> ",
+        "options": {}
+      },
+      "id": "8cb5b15a-b373-48d3-986a-862b8bddf689",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "path": "b70b7ec1-3f60-4420-a7a6-e18868310d98",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a2de4cdf-dda7-4bca-a810-a6d84f672fda",
+      "name": "Patient Profile",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        1720
+      ],
+      "webhookId": "b70b7ec1-3f60-4420-a7a6-e18868310d98",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.MRN }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "62c429cb-a83f-4db2-9a0a-ea918aed77e0",
+      "name": "Patient Health Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1880,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "={{ $json.loginurl }}",
+        "options": {}
+      },
+      "id": "275c9a13-5696-4dce-9b25-e4029d311823",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3400,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "5538922d-8233-4d6e-9534-59fd20c37fb8",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        520
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "45827bd7-56d2-442c-b929-9d147cfae249",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "ac647bc5-83e8-4cd8-89ee-636d32da05f1",
+      "name": "EnVision Connect",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        520
+      ],
+      "webhookId": "45827bd7-56d2-442c-b929-9d147cfae249",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=create{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "dbd37ed8-0867-45e1-8eca-fa84b001819d",
+      "name": "Crypto",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "b885b604-6d55-4154-b02f-cc5a15e4c3fa",
+      "name": "Crypto1",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        3420,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://vid.epicpc.com/bigbluebutton/api/create?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "5943d12d-fab3-4a96-a267-fc99167e10b8",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3060,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName={{ $('Microsoft SQL1').item.json[\"UserName\"] }}&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb9defd7-f58c-48ea-be06-2e39cf478ada",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        3300,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "options": {}
+      },
+      "id": "d17a7745-f7b9-4d2d-9f0e-9bd5d40849cc",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3660,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=allowStartStopRecording=true&attendeePW=ap&autoStartRecording=false&meetingID={{ $json[\"EncounterID\"] }}&moderatorPW=mp&name={{ $json[\"DEM_FIRSTNAME\"] }}_{{ $json[\"DEM_LASTNAME\"] }}&record=false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "36afd422-24c5-4637-abfe-e4d2f8fa9c57",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2740,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "f195525f-e975-4b3e-8a95-ebbb9c45d267",
+      "name": "Crypto2",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Thomas&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR&userID=1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "76280139-b4ea-4430-b0f7-644da0a1001a",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        3320,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "envisionconnect@epicpc.com",
+        "fromName": "EnVision Connect",
+        "toEmail": "tstilwell@epichs.org",
+        "subject": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}",
+        "contentValue": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}\n\nhttps://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "additionalFields": {}
+      },
+      "id": "515924f8-a5a9-44fa-a113-942f0e533136",
+      "name": "SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3820,
+        800
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/tasks.task.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n       \"TITLE\": \"EnVision Connect\",\n       \"GROUP_ID\":\"107\",\n       \"RESPONSIBLE_ID\": \"229\",\n       \"DESCRIPTION\": \"EnVision Connect:  https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}\",\n       \"UF_CRM_TASK\":[\"C_344683\"]\n   }\n}",
+        "options": {}
+      },
+      "id": "8ed80134-c4d0-4be1-8973-e85e19b5e03a",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3660,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/7/7ph530802yz1xd35/task.commentitem.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"taskId\":\"{{ $json[\"result\"][\"task\"][\"id\"] }}\",\n   \"fields\": {\n       \"POST_MESSAGE\":\"{{ $json[\"result\"][\"task\"][\"description\"] }}\"\n   }\n}",
+        "options": {}
+      },
+      "id": "f7d2eb1e-e47e-4f3f-90ff-e4e81ff519af",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3820,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "type": "SHA512",
+        "value": "=join{{ $json[\"apicall\"] }}tnhHaNJ807fmPZTThp3TqjsH5glzz2Dh9hDaCdeEJ8"
+      },
+      "id": "d23ffce0-a93c-48c8-89c5-315713e5d1d1",
+      "name": "Crypto3",
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "apicall",
+              "stringValue": "=fullName=Ted&meetingID={{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}&password=mp&redirect=true&role=MODERATOR"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f28be709-a87f-4475-b024-f76c3c6b45dd",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        3320,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "mail",
+        "fromEmail": "envisionconnect@epicpc.com",
+        "fromName": "EnVision Connect",
+        "toEmail": "tnaman@epichs.org",
+        "subject": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}",
+        "contentValue": "=EnVision: {{ $('Microsoft SQL1').item.json[\"EncounterID\"] }}, {{ $('Microsoft SQL1').item.json[\"DEM_FIRSTNAME\"] }} {{ $('Microsoft SQL1').item.json[\"DEM_LASTNAME\"] }}\n\nhttps://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}",
+        "additionalFields": {}
+      },
+      "id": "133ad410-222b-4087-ac02-830ae4b7ebe6",
+      "name": "SendGrid1",
+      "type": "n8n-nodes-base.sendGrid",
+      "typeVersion": 1,
+      "position": [
+        3620,
+        700
+      ],
+      "credentials": {
+        "sendGridApi": {
+          "id": "tC3AFJ3SI4sGi9Xt",
+          "name": "SendGrid account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "b1256403-8366-4a2e-90d9-c50891a96ba2",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        1720
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "617dddab-852a-4b8b-bf53-e4b7a60a6132",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        3900,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Have an EPIC day!</h1>\n    <h2>The patient selected has not been found in the system.</h2>\n    <p>A message has been sent to the team, please try the dropdown again.</p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "aaae6705-6835-49cb-8549-8ea4783df7e5",
+      "name": "HTML1",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        3720,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.errorcode }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "invalidparameter"
+            },
+            {
+              "operation": "notEqual",
+              "value2": "invalidparameter"
+            }
+          ]
+        }
+      },
+      "id": "e3016d7f-ca2a-45fc-a277-96ff5ef4d0c8",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        2440,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "wsfunction",
+              "value": "core_user_create_users"
+            },
+            {
+              "name": "users[0][email]",
+              "value": "={{ $json.email }}"
+            },
+            {
+              "name": "users[0][username]",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "users[0][password]",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "users[0][firstname]",
+              "value": "={{ $json.firstname }}"
+            },
+            {
+              "name": "users[0][lastname]",
+              "value": "={{ $json.lastname }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cookie",
+              "value": "MoodleSession=jg9tj9hfqgnsbca62k9265oe42;"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "dce55eda-9822-448d-9b93-2e4fae52f4d9",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2900,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10) = '{{ $json.MRN }}';\n \nWITH LastAppointment AS (\n    SELECT \n        a.Patient_ID,a.appt_datetime,\n        ROW_NUMBER() OVER (PARTITION BY a.patient_id ORDER BY a.Appt_DateTime DESC) AS rn\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatApptInfo] a\n    WHERE \n        Appt_DateTime >= '2020-01-01'\n),\ngenpatinfo AS (\n    SELECT la.appt_datetime,g.Patient_Number,g.Patient_First_Name,g.Patient_Last_Name,g.Patient_Email\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatInfo] g\n\t\tleft join LastAppointment la on la.Patient_ID=g.Patient_ID\n    WHERE la.rn=1\n)\nselect g.Patient_Number as username,UPPER(g.Patient_First_Name) as firstname,\nUPPER(g.Patient_Last_Name) as lastname,SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 12) AS password,\ncase \nwhen  UPPER(g.Patient_Email) is null then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nwhen  UPPER(g.Patient_Email) in ('NA','N/A','NO EMAIL','NOEMAIL') then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nelse UPPER(g.patient_email)\nend AS email\nfrom genpatinfo g\nwhere g.Patient_Number = @MRN"
+      },
+      "id": "70feed76-ee8e-438e-8ac4-6ea07dcc632c",
+      "name": "Microsoft SQL3",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1840
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "MRN",
+              "stringValue": "={{ $('Microsoft SQL2').item.json.MRN.padStart(6, '0') }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "6c96f922-c771-4b17-a995-395276788908",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2580,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "include": "={{ $json.MRN }}",
+        "options": {}
+      },
+      "id": "6e1c3817-aa66-42fd-9369-717e6972b7a3",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2720,
+        2080
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.MRN }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9e83e7e8-391e-4e28-8397-31abcd1e7cd8",
+      "name": "Patient Health Profile1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3120,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "fbe0eaf1-bffe-4af5-bde1-7a5f5476eb3a",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2980,
+        2140
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10) = '18449';\n \nWITH LastAppointment AS (\n    SELECT \n        a.Patient_ID,a.appt_datetime,\n        ROW_NUMBER() OVER (PARTITION BY a.patient_id ORDER BY a.Appt_DateTime DESC) AS rn\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatApptInfo] a\n    WHERE \n        Appt_DateTime >= '2020-01-01'\n),\ngenpatinfo AS (\n    SELECT la.appt_datetime,g.Patient_Number,g.Patient_First_Name,g.Patient_Last_Name,g.Patient_Email\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatInfo] g\n\t\tleft join LastAppointment la on la.Patient_ID=g.Patient_ID\n    WHERE la.rn=1\n)\nselect g.Patient_Number as username,UPPER(g.Patient_First_Name) as firstname,\nUPPER(g.Patient_Last_Name) as lastname,SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 12) AS password,\ncase \nwhen  UPPER(g.Patient_Email) is null then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nwhen  UPPER(g.Patient_Email) in ('NA','N/A','NO EMAIL','NOEMAIL') then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nelse UPPER(g.patient_email)\nend AS email\nfrom genpatinfo g\nwhere g.Patient_Number = @MRN"
+      },
+      "id": "aaf2fd60-2be4-41ec-b428-ee2e8c33b493",
+      "name": "Microsoft SQL4",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        2200
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $('Microsoft SQL2').item.json.MRN }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "baf39a3c-d852-4747-bd30-e74fedd385f3",
+      "name": "Patient Health Profile2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2260,
+        1720
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.25
+      },
+      "id": "3ae6adbd-7185-4008-837a-1d557edfb935",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2060,
+        1720
+      ],
+      "webhookId": "22ccd94b-7ddd-4c8b-b661-97aba46da17b"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": " https://api.wiretapped.app/agents/BYEnOKRGGuBekvUlBIisnySHmIsSFeeHIXTSVAqj/cmd/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "YTKN6UOV8EZMJOG591GUCESFVTPEJLUG"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\"shell\":\"powershell\",\"cmd\":\"& 'C:\\\\\\\\Program Files (x86)\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\msedge.exe' --kiosk 'https://vid.epicpc.com/bigbluebutton/api/join?{{ $json[\"apicall\"] }}&checksum={{ $json[\"data\"] }}' --edge-kiosk-type=fullscreen\",\"timeout\":30,\"custom_shell\":null,\"run_as_user\":true}",
+        "options": {}
+      },
+      "id": "eaec3dbb-b99f-473a-afad-1c2cf5b2cd24",
+      "name": "Send Powershell CMD to RMM Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3820,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "height": 930.9050701655782,
+        "width": 1804.908419587055,
+        "color": 5
+      },
+      "id": "bc1f1e48-5736-4471-a8e9-77fec2da46be",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2274.858413232756,
+        409.50583211660273
+      ]
+    },
+    {
+      "parameters": {
+        "height": 887.5957965607712,
+        "width": 2639.333757706351
+      },
+      "id": "faa886d7-393b-418e-a710-51c8d914f986",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1445.7079338362164,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "path": "e3b3722c-6622-4490-ab0f-49d137b2b089",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "79a33d59-bd54-434a-9996-3cc3b89c931b",
+      "name": "EHR to CRM Contact",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -820,
+        2360
+      ],
+      "webhookId": "e3b3722c-6622-4490-ab0f-49d137b2b089"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "=https://nmnepic.bitrix24.com/crm/contact/details/{{ $json.ID }}/",
+        "options": {}
+      },
+      "id": "44ec2f7c-8320-42ce-b844-06994c83aac5",
+      "name": "Respond to Webhook5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        680,
+        1660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"BIRTHDATE\": \"{{ $json[\"Date Of Birth\"] }}\", \"NAME\":\"{{ $json[\"First Name\"] }}\", \"LAST_NAME\":\"{{ $json[\"Last Name\"] }}\" } }",
+        "options": {}
+      },
+      "id": "76cd6283-3947-4e57-ac79-ad58cd99f6c8",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2500,
+        2980
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://nmnepic.bitrix24.com/rest/229/ovmu87rocingpwzg/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"UF_CRM_1701895781\": \"{{ $json[\"MRN\"] }}\" } }",
+        "options": {}
+      },
+      "id": "47cb6f36-abe7-4a02-97fa-761be935c936",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        360,
+        1660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3c2cd42-be24-4b11-9cce-e0620a93410a",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5414da02-0dab-4f66-a604-f9d79ab62323",
+      "name": "Edit Fields9",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2660,
+        2980
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "result",
+        "options": {}
+      },
+      "id": "c2653f31-6a91-4250-936a-9bb780e188a4",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        520,
+        1660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8d7fde6e-a08f-4b1f-9b0a-2acc2d6966f2",
+              "name": "ID",
+              "value": "={{ $json.ID }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b44eba66-aec8-4868-b972-89cd4cf23363",
+      "name": "Edit Fields10",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2600,
+        3180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "7cea064c-787d-43e1-a94a-42fc0d0acf7b",
+      "name": "EHR Encounter",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -480,
+        1660
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select m.\"SOURCE_DESCRIPTION\",m.\"ID\"\nfrom public.btxidtomrn m",
+        "options": {}
+      },
+      "id": "874dc571-f112-4733-8516-e65a7974d0d1",
+      "name": "Postgres Bitrix24 Delta",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -300,
+        1660
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "536458b4-bcf6-43ee-af60-3965c1184e98",
+              "leftValue": "={{ $json.ID }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c117ddbd-43bc-483e-83ef-0dd7f46fedbc",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        80,
+        1660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT m.\"SOURCE_DESCRIPTION\", m.\"ID\"\nFROM public.btxidtomrn m\nWHERE m.\"SOURCE_DESCRIPTION\"::INT = {{$json.\"mrn\"}}",
+        "options": {}
+      },
+      "id": "a47e9e10-4096-43d5-b3b7-f333ac7adf06",
+      "name": "Postgres Bitrix24 Delta1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2080,
+        2860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "39567a8a-0fa7-408b-b024-9f6e6bb5c3b2",
+              "name": "MRN",
+              "value": "={{ $json.MRN }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c8485113-7cb7-4e97-b82a-f85751590f94",
+      "name": "Edit Fields11",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1640,
+        2720
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.SOURCE_DESCRIPTION }}",
+                    "rightValue": "={{ $('EHR Encounter').item.json.MRN }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6288718c-62c1-490d-b686-f89f4aa60c8f",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -140,
+        1660
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "3a01ef6a-5123-4f0c-bb01-78aaf3da2691",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -680,
+        1900
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "58a062ae-0ef6-4268-aa05-dc0c3d9d7b36",
+      "name": "EHR Encounter1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        2360
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT m.\"SOURCE_DESCRIPTION\", m.\"ID\"\nFROM public.btxidtomrn m\nWHERE m.\"SOURCE_DESCRIPTION\" = '{{$json[\"MRN\"]}}'",
+        "options": {}
+      },
+      "id": "886b2fa1-635b-4480-8ace-a99bb9a8682b",
+      "name": "Postgres Bitrix24 Delta2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -440,
+        2160
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "536458b4-bcf6-43ee-af60-3965c1184e98",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b21e0e5d-14e0-4711-9a05-fe29d55ea202",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10)='{{ $('EHR Encounter1').item.json.MRN }}';\n\n  select top 2 upper(g.Patient_Number) as MRN,upper(g.Patient_First_Name) as FN,upper(g.Patient_Last_Name) as LN,FORMAT(g.Patient_DOB, 'MM-dd-yyyy') Patient_DOB,\nupper(g.Patient_Email) as EMAIL,g.Patient_Cell_Phone,g.Patient_Home_Phone\nfrom [PM].[vwGenPatInfo] g \nwhere g.Patient_Number = @MRN"
+      },
+      "id": "de371f4d-31cc-44dd-901c-9940b2374c84",
+      "name": "Microsoft SQL5",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        2500
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.btxidtomrn (\"ID\", \"NAME\", \"LAST_NAME\", \"SOURCE_DESCRIPTION\", \"BIRTHDATE\", \"DATE_CREATE\", \"DATE_MODIFY\", \"LAST_ACTIVITY_TIME\")\nVALUES ('{{ $json.result }}', '{{ $json.FN }}', '{{ $json.LN }}', '{{ $json.MRN }}', '{{ $json.Patient_DOB }}', '{{ $json.time.date_finish }}', '{{ $json.time.date_finish }}', '{{ $json.time.date_finish }}');",
+        "options": {}
+      },
+      "id": "6e79305b-f274-48e9-bbb0-c4e8a931df07",
+      "name": "Postgres Bitrix24 Delta3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        420,
+        2840
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Q6RIpOzlSExUJy1c",
+          "name": "Postgres n8nautoxl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.add.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"fields\": {\n        \"NAME\": \"{{ $json[\"FN\"] }}\",\n        \"LAST_NAME\": \"{{ $json[\"LN\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $json[\"MRN\"] }}\",\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $json[\"MRN\"] }}\",\n        \"BIRTHDATE\": \"{{ $json[\"Patient_DOB\"] }}\",\n        \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"+1{{ $json[\"Patient_Cell_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"+1{{ $json[\"Patient_Home_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ /^[^\\s@]+@[^\\s@]+\\.[a-zA-Z]+$/.test(( $json[\"EMAIL\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, ''))) ?  $json[\"EMAIL\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, '') : 'nothing@email.com' }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "601e9107-160f-49c9-8219-f22cee5df54a",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        220,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "5093f867-38e2-4d6c-a527-78cc0124cd92",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        2840
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c07aa63d-6c30-4df8-b9a4-c2ef29664649",
+              "name": "result",
+              "value": "={{ $json.result }}",
+              "type": "string"
+            },
+            {
+              "id": "6a346c73-cc8d-40d4-8ac4-f6a4e2a6a1c6",
+              "name": "MRN",
+              "value": "={{ $json.MRN }}",
+              "type": "string"
+            },
+            {
+              "id": "ec96ce55-ccfa-4609-8027-dcf0cfd04905",
+              "name": "FN",
+              "value": "={{ $json.FN }}",
+              "type": "string"
+            },
+            {
+              "id": "e04f3c9d-18fb-47dc-9ecb-7366f4181d99",
+              "name": "LN",
+              "value": "={{ $json.LN }}",
+              "type": "string"
+            },
+            {
+              "id": "ec3e2401-538a-4c48-92c5-63800cc1fddb",
+              "name": "Patient_DOB",
+              "value": "={{ $json.Patient_DOB }}",
+              "type": "string"
+            },
+            {
+              "id": "8bf176ef-63b4-4989-b02c-9b674e9d44b6",
+              "name": "EMAIL",
+              "value": "={{ $json.EMAIL }}",
+              "type": "string"
+            },
+            {
+              "id": "dd5f1d0b-ba0b-4a0e-851d-6b2f5aa356c6",
+              "name": "Patient_Cell_Phone",
+              "value": "={{ $json.Patient_Cell_Phone }}",
+              "type": "string"
+            },
+            {
+              "id": "f126eaa7-3f9e-452d-996c-3da874410b85",
+              "name": "Patient_Home_Phone",
+              "value": "={{ $json.Patient_Home_Phone }}",
+              "type": "string"
+            },
+            {
+              "id": "31ee15da-9930-4494-928c-1737dfde4e47",
+              "name": "time.date_finish",
+              "value": "={{ $json.time.date_finish }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2845d69b-3de5-4830-ae09-c97ac19e30e5",
+      "name": "Edit Fields12",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -20,
+        3060
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "32fb9507-fe15-4ea4-af09-551e74cda706",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "3f9e0253-6927-417c-8acc-0f0e2c1dbf94",
+      "name": "EHR Supervision Signoff",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -760,
+        3440
+      ],
+      "webhookId": "32fb9507-fe15-4ea4-af09-551e74cda706"
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "https://supervision.epicpc.com/",
+        "options": {}
+      },
+      "id": "00841b83-c139-4b6a-b22a-30fff2a401e0",
+      "name": "Respond to Webhook8",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        -540,
+        3440
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body, html {\n            margin: 0;\n            padding: 0;\n            height: 100%;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            font-size: 28px;\n        }\n    </style>\n</head>\n<body>\n    Patient has been updated (:\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "d45e4333-661a-4040-aa24-714208bff9eb",
+      "name": "Respond to Webhook11",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        440,
+        2300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html>\n<head>\n    <style>\n        body, html {\n            margin: 0;\n            padding: 0;\n            height: 100%;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            font-size: 28px;\n        }\n    </style>\n</head>\n<body>\n    Patient has been added (:\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "230f1003-45e3-47eb-bda4-71824d3ceb81",
+      "name": "Respond to Webhook12",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        460,
+        2500
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e5b63d4-44f3-4ea1-bb55-bee96caa69ea",
+              "name": "UserName",
+              "value": "={{ $json.UserName }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71f27524-9226-4a3d-8299-b0964065e983",
+      "name": "Edit Fields13",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        140,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Replace 'inputData.text' with the correct path to your input text\nconst inputText = items[0].json.UserName;\n\n// Encode the text to base64\nconst encodedText = Buffer.from(inputText).toString('base64');\n\n// Return the encoded text in a new property\nreturn [\n  {\n    json: {\n      encodedText: encodedText\n    }\n  }\n];\n"
+      },
+      "id": "b916adbe-c35c-4ae7-ac11-dac1f4c44d3d",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "7aa0e6d6-b0fe-4396-8333-df4a13ed8913",
+      "name": "Microsoft SQL6",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        740
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "83189bee-61de-4795-85c0-fa69f02805c1",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html>\n<body>\n\n<iframe src=\"https://sbapi.epicpc.com/api/bitrix-care-chart/{{ $json[\"MRN\"] }}\" style=\"border:none;height: 95.7vh;width: 100%; overflow: none !important;\" title=\"Iframe Example\"></iframe>\n\n</body>\n</html> ",
+        "options": {}
+      },
+      "id": "3443c407-47e9-41ba-8179-ad723d2f008e",
+      "name": "Respond to Webhook13",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "path": "b1ebbbac-6b05-438b-bd5d-49fff55d3f80",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "34fdc20d-1393-4871-ac0e-0c2d065ab310",
+      "name": "EHR TO HERO",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -480,
+        740
+      ],
+      "webhookId": "b1ebbbac-6b05-438b-bd5d-49fff55d3f80"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"filter\": {\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $json.MRN }}\"\n    }\n}",
+        "options": {}
+      },
+      "id": "9b244d3a-d5e7-4ce1-afcd-dda69dad2f08",
+      "name": "HTTP Request12",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -420,
+        2360
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10)='{{ $('EHR Encounter1').item.json.MRN }}';\n\n  select top 2 upper(g.Patient_Number) as MRN,upper(g.Patient_First_Name) as FN,upper(g.Patient_Last_Name) as LN,FORMAT(g.Patient_DOB, 'MM-dd-yyyy') Patient_DOB,\nupper(g.Patient_Email) as EMAIL,g.Patient_Cell_Phone,g.Patient_Home_Phone\nfrom [PM].[vwGenPatInfo] g \nwhere g.Patient_Number = @MRN"
+      },
+      "id": "a646c3a7-d713-4380-8e6b-748a3d5a3af0",
+      "name": "Microsoft SQL7",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        20,
+        2300
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.update.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"ID\": {{ $('If1').item.json.result[0].ID }},\n   \"fields\": {\n        \"NAME\": \"{{ $json[\"FN\"] }}\",\n        \"LAST_NAME\": \"{{ $json[\"LN\"] }}\",\n        \"SOURCE_DESCRIPTION\": \"{{ $json[\"MRN\"] }}\",\n        \"UF_CRM_EHS_PATIENT_NO\": \"{{ $json[\"MRN\"] }}\",\n        \"BIRTHDATE\": \"{{ $json[\"Patient_DOB\"] }}\",\n        \"PHONE\": [\n            {\n                \n                \"VALUE_TYPE\": \"MOBILE\",\n                \"VALUE\": \"+1{{ $json[\"Patient_Cell_Phone\"]}}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"+1{{ $json[\"Patient_Home_Phone\"] }}\",\n                \"TYPE_ID\": \"PHONE\"\n            },\n            {\n                \n                \"VALUE_TYPE\": \"OTHER\",\n                \"VALUE\": \"\",\n                \"TYPE_ID\": \"PHONE\"\n            }\n        ],\n        \"EMAIL\": [\n            {\n                \n                \"VALUE_TYPE\": \"HOME\",\n                \"VALUE\": \"{{ /^[^\\s@]+@[^\\s@]+\\.[a-zA-Z]+$/.test(( $json[\"EMAIL\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, ''))) ?  $json[\"EMAIL\"].replace(/,/g, '.').replace(/&/g, '').replace(/</g, '').replace(/>/g, '').replace(/\\.$/, '').replace(/[^a-zA-Z0-9](?=@)/g, '').replace(/^[^a-zA-Z0-9]+/, '') : 'nothing@email.com' }}\",\n                \"TYPE_ID\": \"EMAIL\"\n            }\n        ]\n\n    },\n\t\t\"params\": {\"REGISTER_SONET_EVENT\": \"Y\" }\n}",
+        "options": {}
+      },
+      "id": "f5de338d-1164-413d-9d03-51989d711fb5",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        220,
+        2300
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.53",
+            "x-forwarded-for": "10.0.1.53",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "none",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "SSOToken": "60e152d5-eb34-4952-a77c-2e4dc98be203",
+            "AccountID": "AS-PRO-EPICPC"
+          },
+          "body": {}
+        }
+      }
+    ],
+    "Microsoft SQL": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Microsoft SQL1": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Crypto": [
+      {
+        "json": {
+          "SingleSignOnToken": "98774AF7-4CF6-4154-8E58-D3EDB836B8B4",
+          "SessionToken": "4606BCE9-DF34-4A26-A4CF-F7414F329452",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-03-21T07:42:07.073Z",
+          "EncounterID": "21558095",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z",
+          "apicall": "allowStartStopRecording=true&attendeePW=ap&autoStartRecording=false&meetingID=21558095&moderatorPW=mp&name=THOMAS_STILWELL&record=false",
+          "data": "98738499a158ed461cf2c80ffde3a1719c5797e516ba390f96a7cc1936762ead90955be0b825bbbdee607ed425f97f21ca26a335e382eec292a01611832a9c8a"
+        }
+      }
+    ],
+    "HTTP Request4": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "74165",
+              "parentId": null,
+              "title": "Duplicate Patients in Bitrix24",
+              "description": "EnVision Connect:  https://vid.epicpc.com/bigbluebutton/api/join?fullName=Thomas&meetingID=21558095&password=mp&redirect=true&checksum=e727da23eef7c903f0ae92697cccce3c6b5370ab71bb35e0a779f62762c16d9b22533dee837e5a037ddf0937897ff1ba745dbb2867a6f12c9904aaadcf723055",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "N",
+              "replicate": "N",
+              "stageId": "719",
+              "createdBy": "7",
+              "createdDate": "2024-03-21T15:30:49+03:00",
+              "responsibleId": "229",
+              "changedBy": "7",
+              "changedDate": "2024-03-21T15:30:49+03:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-03-21T15:30:49+03:00",
+              "dateStart": null,
+              "deadline": null,
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{c45c36a4-491c-440c-abb2-22b4a36cde30}",
+              "xmlId": null,
+              "commentsCount": "1",
+              "serviceCommentsCount": "1",
+              "allowChangeDeadline": "N",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": "72101",
+              "forumId": "11",
+              "siteId": "s1",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "2",
+              "viewedDate": "2024-03-21T15:30:49+03:00",
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-03-21T15:30:49+03:00",
+              "durationPlan": null,
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "107",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "107",
+                "name": "Consumer App Outbound ",
+                "opened": false,
+                "membersCount": 8,
+                "image": "https://cdn.bitrix24.com/b26816037/socialnetwork/0df/0df3f41e6409358519e5203450850799/HeroShield.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "7",
+                "name": "Thomas Stilwell",
+                "link": "/company/personal/user/7/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "229",
+                "name": "IT Helpdesk",
+                "link": "/company/personal/user/229/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 7,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1711024249.201917,
+            "finish": 1711024249.57128,
+            "duration": 0.36936306953430176,
+            "processing": 0.3484017848968506,
+            "date_start": "2024-03-21T15:30:49+03:00",
+            "date_finish": "2024-03-21T15:30:49+03:00",
+            "operating_reset_at": 1711024849,
+            "operating": 0.348391056060791
+          }
+        }
+      }
+    ],
+    "Microsoft SQL2": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Patient Health Profile": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Microsoft SQL3": [
+      {
+        "json": {
+          "username": "502880",
+          "firstname": "THOMAS",
+          "lastname": "STILWELL",
+          "password": "6EAD3F07-713",
+          "email": "THOMAS@TAGARMOR.COM"
+        },
+        "pairedItem": [
+          {
+            "item": 0
+          }
+        ]
+      }
+    ],
+    "Patient Health Profile1": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Patient Health Profile2": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Edit Fields9": [
+      {
+        "json": {
+          "result": [
+            {
+              "ID": "344683",
+              "POST": null,
+              "COMMENTS": "",
+              "HONORIFIC": null,
+              "NAME": "THOMAS",
+              "SECOND_NAME": null,
+              "LAST_NAME": "STILWELL",
+              "PHOTO": null,
+              "LEAD_ID": null,
+              "TYPE_ID": "CLIENT",
+              "SOURCE_ID": "OTHER",
+              "SOURCE_DESCRIPTION": "502880",
+              "COMPANY_ID": null,
+              "BIRTHDATE": "1988-02-01T03:00:00+03:00",
+              "EXPORT": "Y",
+              "HAS_PHONE": "Y",
+              "HAS_EMAIL": "Y",
+              "HAS_IMOL": "N",
+              "DATE_CREATE": "2023-12-07T15:19:18+03:00",
+              "DATE_MODIFY": "2024-04-03T18:46:05+03:00",
+              "ASSIGNED_BY_ID": "229",
+              "CREATED_BY_ID": "229",
+              "MODIFY_BY_ID": "0",
+              "OPENED": "Y",
+              "ORIGINATOR_ID": null,
+              "ORIGIN_ID": null,
+              "ORIGIN_VERSION": null,
+              "FACE_ID": null,
+              "LAST_ACTIVITY_TIME": "2024-04-03T18:45:11+03:00",
+              "ADDRESS": null,
+              "ADDRESS_2": null,
+              "ADDRESS_CITY": null,
+              "ADDRESS_POSTAL_CODE": null,
+              "ADDRESS_REGION": null,
+              "ADDRESS_PROVINCE": null,
+              "ADDRESS_COUNTRY": null,
+              "ADDRESS_LOC_ADDR_ID": null,
+              "UTM_SOURCE": null,
+              "UTM_MEDIUM": null,
+              "UTM_CAMPAIGN": null,
+              "UTM_CONTENT": null,
+              "UTM_TERM": null,
+              "LAST_ACTIVITY_BY": "229"
+            }
+          ],
+          "total": 1,
+          "time": {
+            "start": 1712176596.377332,
+            "finish": 1712176598.635697,
+            "duration": 2.2583649158477783,
+            "processing": 2.2345800399780273,
+            "date_start": "2024-04-03T23:36:36+03:00",
+            "date_finish": "2024-04-03T23:36:38+03:00",
+            "operating_reset_at": 1712177196,
+            "operating": 2.2345669269561768
+          }
+        }
+      }
+    ],
+    "EHR Encounter": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "EHR Encounter1": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "HTTP Request6": [
+      {
+        "json": {
+          "result": 412669,
+          "time": {
+            "start": 1712411112.660536,
+            "finish": 1712411112.80439,
+            "duration": 0.14385390281677246,
+            "processing": 0.1256999969482422,
+            "date_start": "2024-04-06T16:45:12+03:00",
+            "date_finish": "2024-04-06T16:45:12+03:00",
+            "operating_reset_at": 1712411712,
+            "operating": 0.1256868839263916
+          }
+        }
+      }
+    ],
+    "Microsoft SQL5": [
+      {
+        "json": {
+          "MRN": "961960",
+          "FN": "HEATHER",
+          "LN": "SCHENK",
+          "Patient_DOB": "08-16-1985",
+          "EMAIL": "HEATHERSHENL85@GMAIL.COM",
+          "Patient_Cell_Phone": "7343183599",
+          "Patient_Home_Phone": "7343183599"
+        }
+      }
+    ],
+    "Microsoft SQL6": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Postgres Bitrix24 Delta2": [
+      {
+        "json": {
+          "SOURCE_DESCRIPTION": "1132930",
+          "ID": "undefined"
+        }
+      }
+    ],
+    "HTTP Request12": [
+      {
+        "json": {
+          "result": [
+            {
+              "ID": "92689",
+              "POST": null,
+              "COMMENTS": "",
+              "HONORIFIC": "",
+              "NAME": "THOMAS",
+              "SECOND_NAME": "",
+              "LAST_NAME": "STILWELL",
+              "PHOTO": null,
+              "LEAD_ID": null,
+              "TYPE_ID": "1",
+              "SOURCE_ID": null,
+              "SOURCE_DESCRIPTION": "502880",
+              "COMPANY_ID": null,
+              "BIRTHDATE": "1988-01-31T19:00:00-05:00",
+              "EXPORT": "N",
+              "HAS_PHONE": "Y",
+              "HAS_EMAIL": "Y",
+              "HAS_IMOL": "N",
+              "DATE_CREATE": "2024-07-19T11:23:06-04:00",
+              "DATE_MODIFY": "2024-11-29T11:45:15-05:00",
+              "ASSIGNED_BY_ID": "19",
+              "CREATED_BY_ID": "19",
+              "MODIFY_BY_ID": "244",
+              "OPENED": "N",
+              "ORIGINATOR_ID": null,
+              "ORIGIN_ID": null,
+              "ORIGIN_VERSION": null,
+              "FACE_ID": null,
+              "LAST_ACTIVITY_TIME": "2024-11-29T11:45:15-05:00",
+              "ADDRESS": null,
+              "ADDRESS_2": null,
+              "ADDRESS_CITY": null,
+              "ADDRESS_POSTAL_CODE": null,
+              "ADDRESS_REGION": null,
+              "ADDRESS_PROVINCE": null,
+              "ADDRESS_COUNTRY": null,
+              "ADDRESS_LOC_ADDR_ID": null,
+              "UTM_SOURCE": null,
+              "UTM_MEDIUM": null,
+              "UTM_CAMPAIGN": null,
+              "UTM_CONTENT": null,
+              "UTM_TERM": null,
+              "PARENT_ID_143": null,
+              "PARENT_ID_153": null,
+              "PARENT_ID_164": null,
+              "LAST_ACTIVITY_BY": "244"
+            }
+          ],
+          "total": 1,
+          "time": {
+            "start": 1732912770.210359,
+            "finish": 1732912771.221833,
+            "duration": 1.0114738941192627,
+            "processing": 0.9582569599151611,
+            "date_start": "2024-11-29T15:39:30-05:00",
+            "date_finish": "2024-11-29T15:39:31-05:00"
+          }
+        }
+      }
+    ],
+    "Microsoft SQL7": [
+      {
+        "json": {
+          "MRN": "502880",
+          "FN": "THOMAS",
+          "LN": "STILWELL",
+          "Patient_DOB": "02-01-1988",
+          "EMAIL": "THOMAS@TAGARMOR.COM",
+          "Patient_Cell_Phone": "2488726322",
+          "Patient_Home_Phone": "2488726322"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 6,
+  "updatedAt": "2024-11-29T20:40:42.805Z",
+  "versionId": "73c4820b-9d9c-403e-8cd7-60b1c9ddb5e9"
+}
