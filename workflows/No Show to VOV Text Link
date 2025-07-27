@@ -1,0 +1,385 @@
+{
+  "active": false,
+  "connections": {
+    "8:15 AM to 9:00 AM": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "9:00 AM to 5:00 PM": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5:00 PM to 5:15 PM": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Twilio VOV SMS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Twilio VOV SMS1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-17T18:16:16.433Z",
+  "id": "us86dR0SfcCCj01G",
+  "isArchived": false,
+  "meta": null,
+  "name": "No Show to VOV Text Link",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery"
+      },
+      "id": "1ad23152-3c0a-4771-b98d-a57a0f97d38f",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "15-55/5 8 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "d31d3499-5532-405f-849f-ead1eec5c76d",
+      "name": "8:15 AM to 9:00 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        -220
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "*/5 9-16 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "5407d4f3-0d62-4a8a-88e5-d1260f36955b",
+      "name": "9:00 AM to 5:00 PM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        -60
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0-15/5 17 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "26760ef0-8a50-4809-9229-b9c3b8d9e1e5",
+      "name": "5:00 PM to 5:15 PM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        100
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "from": "+12489654288",
+        "to": "={{ $json.number }}",
+        "message": "Welcome to your virtual visit: https://doxy.me/jenniferfindlan",
+        "options": {}
+      },
+      "id": "07ff4d18-f94a-43f2-9e44-1e3350d3f61d",
+      "name": "Twilio VOV SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        880,
+        100
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8bfe6f90-6971-4ed1-ace8-1eff2d8f23da",
+        "options": {}
+      },
+      "id": "2c511322-7b84-4f15-92f9-7a674fb14803",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        460
+      ],
+      "webhookId": "8bfe6f90-6971-4ed1-ace8-1eff2d8f23da"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Number",
+              "stringValue": "={{ $json.body.fields.DESCRIPTION }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1904b3dc-d53f-4b45-9cd9-e8ddbe6b97ca",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        -40
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Description",
+              "stringValue": "={{ $json.body.fields.DESCRIPTION }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "65c69445-80d9-44ca-ab0d-b1c4612341be",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        540,
+        100
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "id": "a89a1e63-24cc-4c3f-990a-bb6d0f88bd42",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        -40
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "number",
+              "stringValue": "={{ $json[\"Description\"].match(/\\+\\d{11}/) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "10e6305c-207a-49f9-8639-ae40fe3905b2",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        700,
+        100
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "from": "+12489654288",
+        "to": "={{ $json.body.fields.Number }}",
+        "message": "Hi from EPIC! We missed you at your appt today. We have instant virtual options to help prioritize your health and personal life https://doxy.me/jenniferfindlan",
+        "options": {}
+      },
+      "id": "3d1f8d50-56c5-4b49-b2ba-b43214df2968",
+      "name": "Twilio VOV SMS1",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        260,
+        460
+      ],
+      "credentials": {
+        "twilioApi": {
+          "id": "qBB51xMHsgQyVoRt",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "height": 571,
+        "width": 1508
+      },
+      "id": "809e019a-b211-4a10-8e1f-d120376dcf1f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        -300
+      ]
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.1",
+            "x-forwarded-for": "10.0.1.1",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "344",
+            "user-agent": "python-requests/2.28.1",
+            "accept-encoding": "gzip, deflate",
+            "accept": "*/*",
+            "content-type": "application/json"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "fields": {
+              "ID": 95,
+              "PARENT_ID": 95,
+              "GROUP_ID": 95,
+              "TITLE": "Patient Missed Appointment Advocate884570",
+              "DESCRIPTION": "PatientMRN: 884570, Patient FirstName: Kiana, LastName: Kidd, Number: +12488726322; Welcome to your virtual visit: https://doxy.me/jenniferfindlan",
+              "RESPONSIBLE_ID": 341,
+              "CREATED_BY": 229,
+              "PRIORITY": 1,
+              "STATUS": 2
+            }
+          },
+          "Number": "0 "
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:8:15 AM to 9:00 AM": {
+      "recurrencyRules": []
+    },
+    "node:9:00 AM to 5:00 PM": {
+      "recurrencyRules": []
+    },
+    "node:5:00 PM to 5:15 PM": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-11-21T17:32:52.601Z",
+  "versionId": "ea9edcc7-09b6-4817-8d7f-dfa3b72df7e4"
+}
