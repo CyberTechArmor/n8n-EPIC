@@ -1,0 +1,720 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SmartScreen2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SmartScreen": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Price": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Yogesh": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Straith": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook3": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-06T18:15:22.188Z",
+  "id": "V8mb4FtzsGCwVGYS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "KIOSK Marketing",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "18c0758c-143e-4260-86a0-d54f751220c6",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "27231d4f-e29b-4a9f-8b7d-d9b25a5b0106",
+      "name": "Webhook",
+      "webhookId": "18c0758c-143e-4260-86a0-d54f751220c6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Tap to Navigate</title>\n  <style>\n    /* Make sure the page fills the entire viewport */\n    html, body {\n      height: 100%;\n      margin: 0;\n      padding: 0;\n    }\n    /* Set the background image to cover the entire screen */\n    body {\n      background: url('https://file.cybertech.app/Kiosk/EPIC/Marketing/TapThis/TapThis1.png') no-repeat center center fixed;\n      background-size: cover;\n      cursor: pointer; /* Indicate it's tappable */\n    }\n  </style>\n</head>\n<body>\n  <script>\n    // Flag to disable additional taps after the first\n    let tapped = false;\n\n    function handleTap() {\n      if (tapped) return;\n      tapped = true;\n      // Remove event listeners to disable further taps\n      document.removeEventListener('click', handleTap);\n      document.removeEventListener('touchstart', handleTap);\n      \n      // Define the base URL for navigation\n      var baseUrl = 'https://xl.epicpc.com/webhook/da435cb5-1b72-425d-a6e4-14a90bc6105e';\n      // Get the current URL's query parameters (includes the \"?\" if present)\n      var queryParams = window.location.search;\n      // Combine the base URL with the query parameters\n      var targetUrl = baseUrl + queryParams;\n      \n      // Navigate to the constructed URL\n      window.location.href = targetUrl;\n    }\n\n    // Listen for both click and touchstart events (once)\n    document.addEventListener('click', handleTap, { once: true });\n    document.addEventListener('touchstart', handleTap, { once: true });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "2125c618-3b87-4b33-8996-05eedc0dca42",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "path": "6442183a-1cf4-41c8-84e9-60b68d4dd9b6",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -220
+      ],
+      "id": "5b7dec2b-8d27-451a-a9e7-cd9e5b48703d",
+      "name": "Webhook1",
+      "webhookId": "6442183a-1cf4-41c8-84e9-60b68d4dd9b6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Iframe with Timeout and Updated Professional Popup</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* Reset and full-screen styles */\n    html, body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n      font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;\n      background: #f9fafb;\n    }\n    iframe {\n      border: none;\n      width: 100%;\n      height: 100%;\n      display: block;\n    }\n    /* Overlay for popup */\n    #overlay {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0, 0, 0, 0.5);\n      z-index: 999;\n      display: none;\n    }\n    /* Updated popup style with modern animation */\n    #popup {\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      background: rgba(255, 255, 255, 0.95);\n      border-radius: 12px;\n      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);\n      padding: 24px;\n      width: 340px;\n      max-width: 90%;\n      z-index: 1000;\n      text-align: center;\n      display: none;\n      animation: fadeInScale 0.3s ease;\n    }\n    @keyframes fadeInScale {\n      0% {\n        opacity: 0;\n        transform: translate(-50%, -50%) scale(0.8);\n      }\n      100% {\n        opacity: 1;\n        transform: translate(-50%, -50%) scale(1);\n      }\n    }\n    #popup h2 {\n      margin: 0 0 16px 0;\n      font-size: 1.5rem;\n      color: #111827;\n    }\n    #popup p {\n      margin: 0.5rem 0;\n      color: #374151;\n    }\n    #countdown {\n      font-size: 2.5rem;\n      font-weight: 600;\n      color: #ef4444;\n      margin: 16px 0;\n    }\n    button {\n      background: linear-gradient(90deg, #3b82f6, #2563eb);\n      color: #ffffff;\n      border: none;\n      padding: 12px 20px;\n      border-radius: 8px;\n      font-size: 1rem;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n    button:hover {\n      background: linear-gradient(90deg, #2563eb, #1d4ed8);\n    }\n  </style>\n</head>\n<body>\n  <!-- The iframe loads the given URL (src is set via JavaScript) -->\n  <iframe id=\"myIframe\"></iframe>\n  \n  <!-- Popup overlay and content -->\n  <div id=\"overlay\"></div>\n  <div id=\"popup\">\n    <h2>Session Timeout</h2>\n    <p>Would you like more time?</p>\n    <div id=\"countdown\">30</div>\n    <button id=\"moreTimeBtn\">More Time, Please</button>\n  </div>\n  \n  <script>\n    (function(){\n      var iframe = document.getElementById(\"myIframe\");\n      // Base URL for the iframe content\n      var baseUrl = \"https://xl.epicpc.com/webhook/18c0758c-143e-4260-86a0-d54f751220c6\";\n      // Get the current page's query parameters (if any)\n      var queryParams = window.location.search;\n      // Append query parameters to the base URL.\n      // If the base URL already contains a \"?\", use \"&\" otherwise use \"?\"\n      var originalUrl = baseUrl + (queryParams ? (baseUrl.indexOf('?') > -1 ? '&' + queryParams.substring(1) : queryParams) : \"\");\n      \n      // Set the iframe src to the constructed URL\n      iframe.src = originalUrl;\n      \n      // Flag to indicate the initial load\n      var initialLoadDone = false;\n      // Timer variables\n      var tenMinuteTimerId = null;\n      var countdownIntervalId = null;\n      var countdownSeconds = 30;\n      \n      // Start a 10-minute timer that will show the popup when expired\n      function start10MinuteTimer() {\n        if (tenMinuteTimerId) return;\n        tenMinuteTimerId = setTimeout(function(){\n          showPopup();\n        }, 1 * 60 * 1000);\n      }\n      \n      // Cancel the 10-minute timer if needed\n      function cancel10MinuteTimer() {\n        if (tenMinuteTimerId) {\n          clearTimeout(tenMinuteTimerId);\n          tenMinuteTimerId = null;\n        }\n      }\n      \n      // Display the popup and begin a 30-second countdown\n      function showPopup() {\n        document.getElementById(\"overlay\").style.display = \"block\";\n        var popup = document.getElementById(\"popup\");\n        popup.style.display = \"block\";\n        document.getElementById(\"countdown\").textContent = countdownSeconds;\n        \n        document.getElementById(\"moreTimeBtn\").addEventListener(\"click\", onMoreTimeClick);\n        \n        countdownIntervalId = setInterval(function(){\n          countdownSeconds--;\n          document.getElementById(\"countdown\").textContent = countdownSeconds;\n          if (countdownSeconds <= 0) {\n            clearInterval(countdownIntervalId);\n            countdownIntervalId = null;\n            hidePopup();\n            // Redirect the iframe back to the original URL with params\n            iframe.src = originalUrl;\n            cancel10MinuteTimer();\n            countdownSeconds = 30; // reset for next time\n          }\n        }, 1000);\n      }\n      \n      // Hide the popup overlay and remove event listener\n      function hidePopup() {\n        document.getElementById(\"overlay\").style.display = \"none\";\n        document.getElementById(\"popup\").style.display = \"none\";\n        document.getElementById(\"moreTimeBtn\").removeEventListener(\"click\", onMoreTimeClick);\n      }\n      \n      // \"More Time, Please\" button click handler\n      function onMoreTimeClick() {\n        clearInterval(countdownIntervalId);\n        countdownIntervalId = null;\n        countdownSeconds = 30; // reset countdown\n        hidePopup();\n        cancel10MinuteTimer();\n        start10MinuteTimer();\n      }\n      \n      // Listen for load events on the iframe to detect navigation changes\n      iframe.addEventListener(\"load\", function(){\n        // First load is the expected page; subsequent loads are considered navigations\n        if (!initialLoadDone) {\n          initialLoadDone = true;\n          return;\n        }\n        try {\n          var currentUrl = iframe.contentWindow.location.href;\n          if (currentUrl !== originalUrl) {\n            start10MinuteTimer();\n          } else {\n            cancel10MinuteTimer();\n          }\n        } catch (e) {\n          // If cross-origin access fails, assume navigation away and start the timer\n          start10MinuteTimer();\n        }\n      });\n      \n    })();\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        -220
+      ],
+      "id": "99367a40-77fc-4087-b9c2-1930ea2b1d4b",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "path": "da435cb5-1b72-425d-a6e4-14a90bc6105e",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        200
+      ],
+      "id": "d1e88163-f929-4ab6-bdcc-a83c44ba0e34",
+      "name": "Webhook2",
+      "webhookId": "da435cb5-1b72-425d-a6e4-14a90bc6105e"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>EPIC Health - Schedule</title>\n  <style>\n    html, body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      overflow: hidden; /* Hide any overflow */\n      cursor: pointer;  /* Show pointer to indicate it's clickable */\n    }\n    img {\n      display: block;\n      width: 100%;\n      height: auto;\n      border: 0;\n    }\n  </style>\n</head>\n<body>\n  <img src=\"https://file.cybertech.app/Kiosk/EPIC/Marketing/TapThis/TapThisSchedule.png\" \n       alt=\"Tap to schedule\">\n\n  <script>\n    // Build new URL by appending the current URL’s query parameters\n    const baseUrl = \"https://xl.epicpc.com/webhook/740dec40-0ecd-4ce3-964c-bea05503f4e1\";\n    const currentParams = window.location.search; // e.g., ?param1=abc&param2=def\n    const targetUrl = baseUrl + currentParams;\n\n    let hasNavigated = false;\n    function handleClick() {\n      // Only navigate once\n      if (!hasNavigated) {\n        hasNavigated = true;\n        window.location.href = targetUrl;\n      }\n    }\n\n    // Make the entire page clickable\n    document.body.addEventListener(\"click\", handleClick);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        200
+      ],
+      "id": "b4cf7885-9376-4d4b-bed6-2deb50269726",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Epic Health</title>\n  <style>\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n      font-family: Arial, sans-serif;\n    }\n    body {\n      background-color: #FFD52B; /* Yellow background */\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100vh;\n      text-align: center;\n    }\n    .container {\n      max-width: 600px;\n      margin: 0 auto;\n      padding: 20px;\n    }\n    .heading {\n      font-size: 1.1rem;\n      color: #000000;\n      margin-bottom: 20px;\n      line-height: 1.5;\n    }\n    .schedule-button {\n      display: inline-block;\n      background-color: #000000;\n      color: #ffffff;\n      text-decoration: none;\n      padding: 15px 30px;\n      font-size: 1rem;\n      border-radius: 4px;\n      transition: background-color 0.2s ease;\n    }\n    .schedule-button:hover {\n      background-color: #333333;\n    }\n    .logo {\n      margin-top: 30px;\n      font-weight: bold;\n      color: #000;\n    }\n    /* If you have an actual logo image, you could use:\n    .logo img {\n      max-width: 100px;\n    }\n    */\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"heading\">\n      <p>Oh hey, we’re flattered. Your health is the key to living a long, happy life, and Epic Health is here to help you stay at your best. Schedule an appointment today and take the next step toward a healthier, happier you!</p>\n    </div>\n    <a class=\"schedule-button\" \n       href=\"https://xl.epicpc.com/webhook/f0d240c5-da77-4580-b85e-be38eac4f1a6?campaign=&source=SFD+Telegraph&medium=kiosk&event=&other=\" \n       target=\"_blank\">\n       SCHEDULE NOW\n    </a>\n    <div class=\"logo\">\n      <!-- Replace with an actual image if desired -->\n      <p>EPIC HEALTH</p>\n    </div>\n  </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        200
+      ],
+      "id": "86e2602e-45ff-410a-bb0c-5b4b6d2d4635",
+      "name": "Respond to Webhook3"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Iframe with Timeout and Updated Professional Popup</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* Reset and full-screen styles */\n    html, body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n      font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;\n      background: #f9fafb;\n    }\n    iframe {\n      border: none;\n      width: 100%;\n      height: 100%;\n      display: block;\n    }\n    /* Overlay for popup */\n    #overlay {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0, 0, 0, 0.5);\n      z-index: 999;\n      display: none;\n    }\n    /* Updated popup style with modern animation */\n    #popup {\n      position: fixed;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      background: rgba(255, 255, 255, 0.95);\n      border-radius: 12px;\n      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);\n      padding: 24px;\n      width: 340px;\n      max-width: 90%;\n      z-index: 1000;\n      text-align: center;\n      display: none;\n      animation: fadeInScale 0.3s ease;\n    }\n    @keyframes fadeInScale {\n      0% {\n        opacity: 0;\n        transform: translate(-50%, -50%) scale(0.8);\n      }\n      100% {\n        opacity: 1;\n        transform: translate(-50%, -50%) scale(1);\n      }\n    }\n    #popup h2 {\n      margin: 0 0 16px 0;\n      font-size: 1.5rem;\n      color: #111827;\n    }\n    #popup p {\n      margin: 0.5rem 0;\n      color: #374151;\n    }\n    #countdown {\n      font-size: 2.5rem;\n      font-weight: 600;\n      color: #ef4444;\n      margin: 16px 0;\n    }\n    button {\n      background: linear-gradient(90deg, #3b82f6, #2563eb);\n      color: #ffffff;\n      border: none;\n      padding: 12px 20px;\n      border-radius: 8px;\n      font-size: 1rem;\n      cursor: pointer;\n      transition: background 0.3s ease;\n    }\n    button:hover {\n      background: linear-gradient(90deg, #2563eb, #1d4ed8);\n    }\n  </style>\n</head>\n<body>\n  <!-- The iframe loads the given URL -->\n  <iframe id=\"myIframe\" src=\"https://xl.epicpc.com/webhook/18c0758c-143e-4260-86a0-d54f751220c6\"></iframe>\n  \n  <!-- Popup overlay and content -->\n  <div id=\"overlay\"></div>\n  <div id=\"popup\">\n    <h2>Session Timeout</h2>\n    <p>Would you like more time?</p>\n    <div id=\"countdown\">30</div>\n    <button id=\"moreTimeBtn\">More Time, Please</button>\n  </div>\n  \n  <script>\n    (function(){\n      // The original URL we expect in the iframe\n      var originalUrl = \"https://xl.epicpc.com/webhook/18c0758c-143e-4260-86a0-d54f751220c6\";\n      var iframe = document.getElementById(\"myIframe\");\n      \n      // Flag to indicate the initial load\n      var initialLoadDone = false;\n      // Timer variables\n      var tenMinuteTimerId = null;\n      var countdownIntervalId = null;\n      var countdownSeconds = 30;\n      \n      // Start a 10-minute timer that will show the popup when expired\n      function start10MinuteTimer() {\n        if (tenMinuteTimerId) return;\n        tenMinuteTimerId = setTimeout(function(){\n          showPopup();\n        }, 1 * 60 * 1000);\n      }\n      \n      // Cancel the 10-minute timer if needed\n      function cancel10MinuteTimer() {\n        if (tenMinuteTimerId) {\n          clearTimeout(tenMinuteTimerId);\n          tenMinuteTimerId = null;\n        }\n      }\n      \n      // Display the popup and begin a 30-second countdown\n      function showPopup() {\n        document.getElementById(\"overlay\").style.display = \"block\";\n        var popup = document.getElementById(\"popup\");\n        popup.style.display = \"block\";\n        document.getElementById(\"countdown\").textContent = countdownSeconds;\n        \n        document.getElementById(\"moreTimeBtn\").addEventListener(\"click\", onMoreTimeClick);\n        \n        countdownIntervalId = setInterval(function(){\n          countdownSeconds--;\n          document.getElementById(\"countdown\").textContent = countdownSeconds;\n          if (countdownSeconds <= 0) {\n            clearInterval(countdownIntervalId);\n            countdownIntervalId = null;\n            hidePopup();\n            // Redirect the iframe back to the original URL\n            iframe.src = originalUrl;\n            cancel10MinuteTimer();\n            countdownSeconds = 30; // reset for next time\n          }\n        }, 1000);\n      }\n      \n      // Hide the popup overlay and remove event listener\n      function hidePopup() {\n        document.getElementById(\"overlay\").style.display = \"none\";\n        document.getElementById(\"popup\").style.display = \"none\";\n        document.getElementById(\"moreTimeBtn\").removeEventListener(\"click\", onMoreTimeClick);\n      }\n      \n      // \"More Time, Please\" button click handler\n      function onMoreTimeClick() {\n        clearInterval(countdownIntervalId);\n        countdownIntervalId = null;\n        countdownSeconds = 30; // reset countdown\n        hidePopup();\n        cancel10MinuteTimer();\n        start10MinuteTimer();\n      }\n      \n      // Listen for load events on the iframe to detect navigation changes\n      iframe.addEventListener(\"load\", function(){\n        // First load is the expected page; subsequent loads are considered navigations\n        if (!initialLoadDone) {\n          initialLoadDone = true;\n          return;\n        }\n        try {\n          var currentUrl = iframe.contentWindow.location.href;\n          if (currentUrl !== originalUrl) {\n            start10MinuteTimer();\n          } else {\n            cancel10MinuteTimer();\n          }\n        } catch (e) {\n          // If cross-origin access fails, assume navigation away and start the timer\n          start10MinuteTimer();\n        }\n      });\n      \n    })();\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        -220
+      ],
+      "id": "a9076ddb-a8b7-4a74-852c-eeae18549314",
+      "name": "Respond to Webhook4"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Tap to Navigate</title>\n  <style>\n    /* Make sure the page fills the entire viewport */\n    html, body {\n      height: 100%;\n      margin: 0;\n      padding: 0;\n    }\n    /* Set the background image to cover the entire screen */\n    body {\n      background: url('https://file.cybertech.app/Kiosk/EPIC/Marketing/TapThis/TapThis1.png') no-repeat center center fixed;\n      background-size: cover;\n      cursor: pointer; /* Indicate it's tappable */\n    }\n  </style>\n</head>\n<body>\n  <script>\n    // Flag to disable additional taps after the first\n    let tapped = false;\n\n    function handleTap() {\n      if (tapped) return;\n      tapped = true;\n      // Remove event listeners to disable further taps\n      document.removeEventListener('click', handleTap);\n      document.removeEventListener('touchstart', handleTap);\n      // Navigate to the URL\n      window.location.href = 'https://xl.epicpc.com/webhook/da435cb5-1b72-425d-a6e4-14a90bc6105e';\n    }\n\n    // Listen for both click and touchstart events\n    document.addEventListener('click', handleTap, { once: true });\n    document.addEventListener('touchstart', handleTap, { once: true });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ],
+      "id": "317bdcf6-2864-4dde-8d3c-080bd6299f82",
+      "name": "Respond to Webhook5"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pkcn1xguo9xrl3w",
+        "table": "mpf5zdt58w4r6ud",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "KioskName",
+              "fieldValue": "SmartScreen"
+            },
+            {
+              "fieldName": "CurrentLocation",
+              "fieldValue": "SFD Telegraph"
+            },
+            {
+              "fieldName": "URL",
+              "fieldValue": "https://xl.epicpc.com/webhook/6442183a-1cf4-41c8-84e9-60b68d4dd9b6?campaign=&source=SFD+Telegraph&medium=kiosk&event=&other="
+            },
+            {
+              "fieldName": "Configuration",
+              "fieldValue": "Kiosk Mode - Web Page - SmartScreen"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        220,
+        400
+      ],
+      "id": "50a4c4e2-4c54-4968-8c7d-a95af5f86bcd",
+      "name": "NocoDB",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Scheduling",
+        "height": 900,
+        "width": 1000
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -220,
+        -300
+      ],
+      "typeVersion": 1,
+      "id": "eac8c289-5f6f-419e-9388-4b7b6ae5a1c7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Alliance Event</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            overflow: hidden;\n        }\n        body {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            background-color: black;\n        }\n        img {\n            width: 100vw;\n            height: 100vh;\n            object-fit: cover;\n        }\n    </style>\n</head>\n<body>\n    <img src=\"https://file.cybertech.app/Kiosk/EPIC/Events/whatupdoe.png\" alt=\"What up doe?\">\n    <audio id=\"audio\" src=\"https://file.cybertech.app/Kiosk/EPIC/Events/313day.mp3\"></audio>\n    \n    <script>\n        document.body.addEventListener(\"click\", function() {\n            let audio = document.getElementById(\"audio\");\n            audio.play();\n        });\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        -140
+      ],
+      "id": "fdefa942-2a28-4f79-935a-c7331f8fb83e",
+      "name": "Respond to Webhook6"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Alliance Event</title>\n    <style>\n        * {\n            margin: 0;\n            padding: 0;\n            overflow: hidden;\n        }\n        body {\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            background-color: black;\n        }\n        img {\n            width: 100vw;\n            height: 100vh;\n            object-fit: cover;\n        }\n    </style>\n</head>\n<body>\n    <img src=\"https://file.cybertech.app/Kiosk/EPIC/Events/thiscouldbeus.png\" alt=\"This could be us\">\n    <audio id=\"audio\" src=\"https://file.cybertech.app/Kiosk/EPIC/Events/output_audio.mp3\"></audio>\n    \n    <script>\n        document.body.addEventListener(\"click\", function() {\n            let audio = document.getElementById(\"audio\");\n            audio.play();\n        });\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        60
+      ],
+      "id": "34ca698e-f807-46a9-b3c3-95d22a55f4e6",
+      "name": "Respond to Webhook7"
+    },
+    {
+      "parameters": {
+        "path": "7a32644b-6336-4a53-90c0-66b4119acb202",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        60
+      ],
+      "id": "3333ead4-8392-462b-9277-7de42cd556b3",
+      "name": "SmartScreen2",
+      "webhookId": "7a32644b-6336-4a53-90c0-66b4119acb20"
+    },
+    {
+      "parameters": {
+        "path": "7a32644b-6336-4a53-90c0-66b4119acb20",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        -140
+      ],
+      "id": "da2859ab-7721-4662-8615-0f774d6b50bc",
+      "name": "SmartScreen",
+      "webhookId": "7a32644b-6336-4a53-90c0-66b4119acb20"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Welcome Event</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            background: url('https://file.cybertech.app/Kiosk/EPIC/Events/Price%20Royal%20Oak/price_isright.jpg') no-repeat center center fixed;\n            background-size: cover;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            cursor: pointer;\n        }\n        button {\n            font-size: 24px;\n            padding: 15px 30px;\n            border: none;\n            border-radius: 50px;\n            background-color: #FFD700;\n            color: #000;\n            font-weight: bold;\n            cursor: pointer;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            transition: transform 0.2s ease;\n        }\n        button:hover {\n            transform: scale(1.1);\n        }\n    </style>\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n</head>\n<body id=\"clickArea\">\n    <button id=\"welcomeButton\">Welcome Rep. Natalie Price!</button>\n    <audio id=\"themeSong\" src=\"https://file.cybertech.app/Kiosk/EPIC/Events/Price%20Royal%20Oak/Price_theme.mp3\"></audio>\n    \n    <script>\n        function triggerEvent() {\n            const audio = document.getElementById('themeSong');\n            audio.play();\n\n            confetti({\n                particleCount: 200,\n                spread: 90,\n                origin: { y: 0.6 },\n                colors: ['#FFD700', '#FF0000', '#0000FF']\n            });\n        }\n\n        document.getElementById('welcomeButton').addEventListener('click', triggerEvent);\n        document.getElementById('clickArea').addEventListener('click', triggerEvent);\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        300
+      ],
+      "id": "43f276c2-2c2a-4eae-a6a1-a07c77121e2b",
+      "name": "Respond to Webhook8"
+    },
+    {
+      "parameters": {
+        "path": "e603e153-6c50-4272-a38b-0c280ee81977",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        300
+      ],
+      "id": "72c90089-1ca5-4c65-814b-c4e1324051e8",
+      "name": "Price",
+      "webhookId": "e603e153-6c50-4272-a38b-0c280ee81977"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Welcome Event</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            background: url('https://file.cybertech.app/Kiosk/EPIC/Events/Price%20Royal%20Oak/price_isright.jpg') no-repeat center center fixed;\n            background-size: cover;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n        }\n        button {\n            font-size: 24px;\n            padding: 15px 30px;\n            border: none;\n            border-radius: 50px;\n            background-color: #FFD700;\n            color: #000;\n            font-weight: bold;\n            cursor: pointer;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            transition: transform 0.2s ease;\n        }\n        button:hover {\n            transform: scale(1.1);\n        }\n    </style>\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n</head>\n<body>\n    <button id=\"welcomeButton\">Welcome Rep. Natalie Price!</button>\n    <audio id=\"themeSong\" src=\"https://file.cybertech.app/Kiosk/EPIC/Events/Price%20Royal%20Oak/Price_theme.mp3\"></audio>\n    \n    <script>\n        document.getElementById('welcomeButton').addEventListener('click', function() {\n            const audio = document.getElementById('themeSong');\n            audio.play();\n\n            confetti({\n                particleCount: 200,\n                spread: 90,\n                origin: { y: 0.6 },\n                colors: ['#FFD700', '#FF0000', '#0000FF']\n            });\n        });\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -420,
+        300
+      ],
+      "id": "324350d6-afb3-4cca-9996-ab1ae37c829a",
+      "name": "Respond to Webhook9"
+    },
+    {
+      "parameters": {
+        "path": "2dc19441-1510-46ff-b0e0-85c4f4ecb55c",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -780,
+        500
+      ],
+      "id": "74686f17-b9eb-457c-bc41-7aab08ad32c6",
+      "name": "Yogesh",
+      "webhookId": "2dc19441-1510-46ff-b0e0-85c4f4ecb55c"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>Do you know Yogesh?</title>\n  <style>\n    /* Make sure the body fills the screen and uses the yellow background */\n    html, body {\n      margin: 0;\n      padding: 0;\n      height: 100%;\n      background-color: #FFD100; /* bright yellow */\n      font-family: Arial, sans-serif;\n    }\n\n    /* Container to hold title and the two halves */\n    .container {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      height: 100%;\n      text-align: center;\n    }\n\n    /* Large bold text for \"Do you know Yogesh?\" */\n    .title {\n      font-size: 8vw;  /* scale with viewport width */\n      font-weight: bold;\n      color: #000;\n      margin-bottom: 2rem;\n    }\n\n    /* Horizontal split container for YES/NO halves */\n    .split-container {\n      display: flex;\n      width: 100%;\n      height: 50%;\n    }\n\n    /* Each half's styling */\n    .split {\n      flex: 1;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      font-size: 6vw;\n      font-weight: bold;\n      color: #000;\n      transition: background-color 0.3s;\n    }\n\n    /* Hover effect */\n    .split:hover {\n      background-color: #ffe033; /* a slightly lighter shade */\n    }\n\n    /* Popup modal (initially hidden) */\n    .modal {\n      display: none; /* hidden by default */\n      position: fixed;\n      z-index: 9999; /* on top of everything */\n      left: 0;\n      top: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.5); /* translucent dark overlay */\n    }\n\n    /* Modal content area */\n    .modal-content {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      background-color: #fff;\n      padding: 1rem;\n      border-radius: 5px;\n      text-align: center;\n    }\n\n    /* The image in the modal should not exceed screen dimensions */\n    .modal-content img {\n      max-width: 80vw;\n      max-height: 80vh;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"title\">Do you know Yogesh?</div>\n    <div class=\"split-container\">\n      <!-- YES half -->\n      <div class=\"split\" id=\"yesSplit\">YES</div>\n      <!-- NO half -->\n      <div class=\"split\" id=\"noSplit\">NO</div>\n    </div>\n  </div>\n\n  <!-- Popup modal for the \"No\" side -->\n  <div class=\"modal\" id=\"noModal\">\n    <div class=\"modal-content\">\n      <img src=\"https://file.cybertech.app/Kiosk/EPIC/Events/Yogesh/Nour.jpg\" alt=\"Nour\" />\n    </div>\n  </div>\n\n  <script>\n    // Get references to elements\n    const yesSplit = document.getElementById('yesSplit');\n    const noSplit = document.getElementById('noSplit');\n    const noModal = document.getElementById('noModal');\n\n    // YES button: plays two sounds in sequence\n    yesSplit.addEventListener('click', () => {\n      // First sound\n      const audio1 = new Audio('https://www.myinstants.com/media/sounds/dj-airhorn-sound-effect-kingbeatz_1.mp3');\n      // Second sound\n      const audio2 = new Audio('https://file.cybertech.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3');\n\n      audio1.play();\n      audio1.onended = () => {\n        audio2.play();\n      };\n    });\n\n    // NO button: shows popup image, then plays two sounds in sequence\n    noSplit.addEventListener('click', () => {\n      noModal.style.display = 'block';\n\n      // First sound\n      const audio3 = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/Yogesh/yo_yogesh.mp3');\n      // Second sound\n      const audio4 = new Audio('https://file.cybertech.app/EPIC/Audio/Other/ElevenLabs_2025-02-28T12_59_51_Mark%20-%20Natural%20Conversations_pvc_s34_sb75_se23_b_m2.mp3');\n\n      audio3.play();\n      audio3.onended = () => {\n        audio4.play();\n      };\n\n      // Once the second audio ends, hide the popup\n      audio4.onended = () => {\n        noModal.style.display = 'none';\n      };\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -560,
+        500
+      ],
+      "id": "94c8b264-e1b8-40c7-921a-b67b8e050add",
+      "name": "Respond to Webhook10"
+    },
+    {
+      "parameters": {
+        "path": "6a2222e4-4c76-4e87-b5a1-1fe3fce1cfd8",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -780,
+        720
+      ],
+      "id": "7cb74eb0-8ab2-4f70-94ee-dde4a87fd579",
+      "name": "Straith",
+      "webhookId": "6a2222e4-4c76-4e87-b5a1-1fe3fce1cfd8"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Interactive Full Page Background with Overlay</title>\n  <style>\n    /* Reset margins, padding, and enforce full-page layout */\n    html, body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n    }\n\n    /* Full-screen background image */\n    body {\n      background: url('https://file.cybertech.app/Kiosk/EPIC/Events/Straith/Straith.png')\n                  no-repeat center center fixed;\n      background-size: cover;\n    }\n\n    /* Blue overlay with 20% opacity, placed above the background */\n    .blue-overlay {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 255, 0.2);\n      z-index: 1;\n      pointer-events: none; /* Let clicks/touches pass through */\n    }\n\n    /* EPIC image on the right, vertically centered */\n    .bottom-right-img {\n      position: absolute;\n      right: 0;\n      top: 50%;\n      transform: translateY(-50%);\n      width: 50vw; /* Doubled in size */\n      height: auto;\n      opacity: 0.9;\n      border-radius: 10px;\n      z-index: 2;\n    }\n  </style>\n</head>\n<body>\n  <!-- Blue overlay placed over the background -->\n  <div class=\"blue-overlay\"></div>\n  \n  <!-- EPIC image on the right, vertically centered -->\n  <img \n    class=\"bottom-right-img\" \n    src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\" \n    alt=\"EPIC Image\"\n  />\n\n  <!-- Include the canvas-confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    /**\n     * Launches repeated bursts of confetti for a given duration.\n     * @param {number} duration - Duration in milliseconds (default is 2000ms)\n     */\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Create an audio element for the provided MP3 file\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/Straith/straith.mp3');\n\n    // Function to play audio and launch confetti\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;  // Restart the audio from the beginning\n      audio.play().catch(error => {\n        console.error(\"Audio play error:\", error);\n      });\n      launchConfetti();\n    }\n\n    // Listen for both touch and click events on the document\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n    document.addEventListener('click', playAudioAndConfetti);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -560,
+        720
+      ],
+      "id": "031a6222-55ff-4b78-b451-d7c288fac785",
+      "name": "Respond to Webhook11"
+    },
+    {
+      "parameters": {
+        "path": "013f41d7-d4b0-46fa-b432-7f306091324d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        920
+      ],
+      "id": "b78f908a-e599-4723-9823-7bcb79e4486b",
+      "name": "Webhook3",
+      "webhookId": "013f41d7-d4b0-46fa-b432-7f306091324d"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Natalie Price & David Knezek - EPIC</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* Basic Reset */\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    html, body {\n      width: 100%;\n      height: 100%;\n      overflow: hidden; /* Remove if scrolling is needed */\n      font-family: \"Helvetica Neue\", Arial, sans-serif;\n    }\n\n    /*\n      Fullscreen background image\n      shows \"Welcome To EPIC Health\" on the right side\n    */\n    body {\n      background: url(\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\")\n                  no-repeat center center;\n      background-size: cover;\n      position: relative;\n    }\n\n    /*\n      Dark gray/charcoal semi‑transparent overlay on the left.\n      - Occupies ~30% of width\n    */\n    .left-overlay {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 30%;               /* Adjust as needed (e.g., 25%, 35%) */\n      height: 100%;\n      background: rgba(50, 50, 50, 0.7); /* Charcoal at 70% opacity */\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    /*\n      White cards for Natalie & David\n      - Appear stacked in the overlay\n    */\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      animation: fadeIn 0.6s forwards;\n      opacity: 0;\n    }\n\n    /* Slight stagger if you wish (delaying David’s fade-in) */\n    .card.david {\n      animation-delay: 0.2s;\n    }\n\n    @keyframes fadeIn {\n      to { opacity: 1; }\n    }\n\n    /* Portrait images */\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    /* Headings */\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #fdb600; /* gold accent */\n      line-height: 1.3;\n    }\n\n    /* Responsive adjustments for smaller screens */\n    @media (max-width: 768px) {\n      .left-overlay {\n        width: 100%;  /* Takes full width on small screens */\n        background: rgba(50, 50, 50, 0.8);\n        padding: 1rem;\n        justify-content: flex-start;\n        overflow-y: auto; /* Scroll if needed */\n      }\n      .card {\n        width: 90%;\n        max-width: 340px;\n        margin: 1rem auto;\n      }\n      .card img {\n        max-width: 240px;\n      }\n      .card h1 {\n        font-size: 1.4rem;\n      }\n      .card h2 {\n        font-size: 0.9rem;\n      }\n    }\n  </style>\n</head>\n<body>\n\n  <!-- Left Overlay for the two cards -->\n  <div class=\"left-overlay\">\n    <!-- Natalie Price Card (on top) -->\n    <div class=\"card natalie\">\n      <img\n        src=\"https://file.cybertech.app/Kiosk/EPIC/Events/David/NataliePrice.png\"\n        alt=\"Portrait of Natalie Price\"\n      />\n      <h1>Welcome, Natalie Price</h1>\n      <h2>State Representative<br>Michigan House of Representatives</h2>\n    </div>\n\n    <!-- David Knezek Card (below) -->\n    <div class=\"card david\">\n      <img\n        src=\"https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/David_Knezek_small.jpg?rev=387f512f52a140b3924ad4a539ad64d7&hash=DF81ACDFEF85E5B764AF66186BDF796B&w=+1400\"\n        alt=\"Portrait of David Knezek\"\n      />\n      <h1>Welcome, David Knezek</h1>\n      <h2>Michigan Department of Health & Human Services</h2>\n    </div>\n  </div>\n\n  <!-- Confetti & Audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    // Launch repeated confetti bursts for a given duration (ms).\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Optional audio\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/David/welcomeDavid.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error(\"Audio play error:\", err));\n      launchConfetti();\n    }\n\n    // Fire confetti & audio on click/touch\n    document.addEventListener('click', playAudioAndConfetti);\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n  </script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -500,
+        920
+      ],
+      "id": "5d1ffce4-1db7-4a12-bac1-0d522b3c99aa",
+      "name": "Respond to Webhook12"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, David Knezek - MDHHS & EPIC</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* Reset */\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    html, body {\n      width: 100%;\n      height: 100%;\n      overflow: hidden; /* Remove if scrolling is needed */\n      font-family: \"Helvetica Neue\", Arial, sans-serif;\n    }\n\n    /* Full-screen EPIC image background */\n    body {\n      background: url(\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\")\n                  no-repeat center center;\n      background-size: cover;\n      position: relative;\n    }\n\n    /*\n      David's Card:\n      - Moved further left to 15% (tweak as necessary).\n      - Kept faint yellow background (#fffbea).\n      - Slightly wider (480px) to accommodate bigger photo.\n    */\n    .knezek-card {\n      position: absolute;\n      top: 50%;\n      left: 15%; /* Adjust if needed to avoid covering the 'W' */\n      transform: translate(-50%, -50%);\n      background: #fffbea;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 480px;\n      padding: 2rem;\n      text-align: center;\n      opacity: 0;\n      animation: fadeIn 0.8s forwards;\n      z-index: 2;\n    }\n\n    /* Fade-in animation */\n    @keyframes fadeIn {\n      to { opacity: 1; }\n    }\n\n    /*\n      David’s Portrait:\n      - Increased ~10% from 480px to 528px max-width\n      - Ensures the card fully covers the shield\n    */\n    .knezek-card img {\n      display: block;\n      width: 90%;\n      max-width: 528px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    /* Headings */\n    .knezek-card h1 {\n      font-size: 2rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .knezek-card h2 {\n      font-size: 1.2rem;\n      color: #fdb600; /* Gold accent */\n      line-height: 1.3;\n    }\n\n    /* Responsive for smaller screens */\n    @media (max-width: 768px) {\n      .knezek-card {\n        width: 80%;\n        left: 50%;\n        padding: 1.5rem;\n      }\n      .knezek-card img {\n        max-width: 350px;\n      }\n      .knezek-card h1 {\n        font-size: 1.6rem;\n      }\n      .knezek-card h2 {\n        font-size: 1rem;\n      }\n    }\n  </style>\n</head>\n<body>\n\n  <!-- David Knezek Card -->\n  <div class=\"knezek-card\">\n    <img \n      src=\"https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/David_Knezek_small.jpg?rev=387f512f52a140b3924ad4a539ad64d7&hash=DF81ACDFEF85E5B764AF66186BDF796B&w=+1400\"\n      alt=\"Portrait of David Knezek\"\n    />\n    <h1>Welcome, David Knezek</h1>\n    <h2>Michigan Department of Health & Human Services</h2>\n  </div>\n\n  <!-- Confetti & Audio Script -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    /**\n     * Launch repeated bursts of confetti for the specified duration (ms).\n     */\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Optional audio (replace URL or remove).\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/David/welcomeDavid.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error(\"Audio play error:\", err));\n      launchConfetti();\n    }\n\n    // Trigger confetti & audio on click/tap\n    document.addEventListener('click', playAudioAndConfetti);\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n  </script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -260,
+        920
+      ],
+      "id": "f30955a6-e17f-4c59-80c0-a8e357708584",
+      "name": "Respond to Webhook13"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Natalie Price & David Knezek - EPIC</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* Basic Reset */\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    html, body {\n      width: 100%;\n      height: 100%;\n      overflow: hidden; /* Remove if scrolling is needed */\n      font-family: \"Helvetica Neue\", Arial, sans-serif;\n    }\n\n    /*\n      Fullscreen background image\n      shows \"Welcome To EPIC Health\" on the right side\n    */\n    body {\n      background: url(\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\")\n                  no-repeat center center;\n      background-size: cover;\n      position: relative;\n    }\n\n    /*\n      Semi-transparent EPIC yellow overlay\n      - Occupies ~30% of the left side\n    */\n    .left-overlay {\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 30%; /* Adjust if needed (e.g., 25%, 35%) */\n      height: 100%;\n      background: rgba(253, 182, 0, 0.7); /* EPIC gold at 70% opacity */\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    /*\n      White cards for Natalie & David\n      - Appear stacked in the overlay\n    */\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      animation: fadeIn 0.6s forwards;\n      opacity: 0;\n    }\n\n    /* Natalie on top, David below */\n    .card.david {\n      animation-delay: 0.2s; /* Slight fade-in stagger if desired */\n    }\n\n    @keyframes fadeIn {\n      to { opacity: 1; }\n    }\n\n    /* Portrait images */\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    /* Headings */\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #fdb600; /* Gold accent */\n      line-height: 1.3;\n    }\n\n    /* Responsive adjustments for smaller screens */\n    @media (max-width: 768px) {\n      .left-overlay {\n        width: 100%;  \n        background: rgba(253, 182, 0, 0.8);\n        padding: 1rem;\n        justify-content: flex-start;\n        overflow-y: auto; \n      }\n      .card {\n        width: 90%;\n        max-width: 340px;\n        margin: 1rem auto;\n      }\n      .card img {\n        max-width: 240px;\n      }\n      .card h1 {\n        font-size: 1.4rem;\n      }\n      .card h2 {\n        font-size: 0.9rem;\n      }\n    }\n  </style>\n</head>\n<body>\n\n  <!-- Left Overlay for the two cards -->\n  <div class=\"left-overlay\">\n    <!-- Natalie Price Card (on top) -->\n    <div class=\"card natalie\">\n      <img\n        src=\"https://file.cybertech.app/Kiosk/EPIC/Events/David/NataliePrice.png\"\n        alt=\"Portrait of Natalie Price\"\n      />\n      <h1>Welcome, Natalie Price</h1>\n      <h2>State Representative<br>Michigan House of Representatives</h2>\n    </div>\n\n    <!-- David Knezek Card (below) -->\n    <div class=\"card david\">\n      <img\n        src=\"https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/David_Knezek_small.jpg?rev=387f512f52a140b3924ad4a539ad64d7&hash=DF81ACDFEF85E5B764AF66186BDF796B&w=+1400\"\n        alt=\"Portrait of David Knezek\"\n      />\n      <h1>Welcome, David Knezek</h1>\n      <h2>Michigan Department of Health & Human Services</h2>\n    </div>\n  </div>\n\n  <!-- Confetti & Audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    // Launch repeated confetti bursts for a given duration (ms).\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    // Updated audio link\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/David/DavidNatalie.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error(\"Audio play error:\", err));\n      launchConfetti();\n    }\n\n    // Fire confetti & audio on click/tap\n    document.addEventListener('click', playAudioAndConfetti);\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n  </script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -440,
+        1140
+      ],
+      "id": "a827a32d-6643-4d7a-a2e5-6998b303dd20",
+      "name": "Respond to Webhook14"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Natalie Price &amp; David Knezek – EPIC</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* reset & full-page setup */\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    html, body {\n      width: 100vw;\n      height: 100vh;\n      overflow: hidden;\n      font-family: \"Helvetica Neue\", Arial, sans-serif;\n      background: #fffbea;\n    }\n\n    /* container spans full viewport */\n    .container {\n      display: flex;\n      width: 100%;\n      height: 100%;\n    }\n\n    /* left: fixed 30% width, full height */\n    .left-overlay {\n      flex: 0 0 30%;\n      height: 100%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      overflow-y: auto; /* if cards ever exceed, scroll only left */\n      padding: 1rem;\n    }\n\n    /* welcome cards */\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      opacity: 0;\n      animation: fadeIn 0.6s forwards;\n    }\n    .card.knezek { animation-delay: 0.2s; }\n\n    @keyframes fadeIn {\n      to { opacity: 1; }\n    }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #fdb600;\n      line-height: 1.3;\n    }\n\n    /* right: 70% width, full height */\n    .right-panel {\n      flex: 0 0 70%;\n      height: 100%;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: flex-start;\n      padding: 1rem;\n      overflow: hidden;\n    }\n\n    /* EPIC image container */\n    .epic-card {\n      flex: 1;\n      width: 100%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      overflow: hidden;\n    }\n    .epic-card img {\n      max-width: 100%;\n      max-height: 100%;\n      object-fit: contain;\n    }\n\n    @media (max-width: 768px) {\n      .container {\n        flex-direction: column;\n      }\n      .left-overlay, .right-panel {\n        flex: 0 0 auto;\n        width: 100%;\n        height: 50vh;\n      }\n      .right-panel {\n        padding: 0.5rem;\n      }\n      .epic-card {\n        height: 100%;\n      }\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"container\">\n    <!-- Left Cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card natalie\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/EPIC/Events/David/NataliePrice.png\"\n          alt=\"Portrait of Natalie Price\"\n        />\n        <h1>Welcome, Natalie Price</h1>\n        <h2>State Representative<br>Michigan House of Representatives</h2>\n      </div>\n\n      <div class=\"card knezek\">\n        <img\n          src=\"https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/David_Knezek_small.jpg?rev=387f512f52a140b3924ad4a539ad64d7&hash=DF81ACDFEF85E5B764AF66186BDF796B&w=+1400\"\n          alt=\"Portrait of David Knezek\"\n        />\n        <h1>Welcome, David Knezek</h1>\n        <h2>Michigan Department of Health &amp; Human Services</h2>\n      </div>\n    </div>\n\n    <!-- Right Image (full EPIC wall, no overflow) -->\n    <div class=\"right-panel\">\n      <div class=\"epic-card\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\"\n          alt=\"Welcome to EPIC Health\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti & Audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: { x: Math.random(), y: Math.random() - 0.2 }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/David/WelcomeDavidNatatile.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error(\"Audio play error:\", err));\n      launchConfetti();\n    }\n\n    document.addEventListener('click', playAudioAndConfetti);\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -80,
+        1100
+      ],
+      "id": "2388a545-4f97-4132-a0b7-fea04e3efee4",
+      "name": "Respond to Webhook15"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no\" />\n  <title>Kiosk Go Live</title>\n  <style>\n    html, body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      overflow: hidden;\n    }\n    #container {\n      position: relative;\n      width: 100%;\n      height: 100%;\n      touch-action: manipulation;\n    }\n    #mainImg {\n      width: 100%;\n      height: 100%;\n      object-fit: cover;\n      display: block;\n    }\n    #navbar {\n      display: none;\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 50px;\n      background-color: #333;\n      color: #fff;\n      align-items: center;\n      justify-content: flex-end;\n      padding: 0 1em;\n      box-sizing: border-box;\n      z-index: 30;\n      display: flex;\n    }\n    #navbar button {\n      background-color: #fff;\n      color: #333;\n      border: none;\n      padding: 0.5em 1em;\n      font-size: 1em;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n    #scheduleIframe {\n      display: none;\n      position: absolute;\n      top: 50px;\n      left: 0;\n      width: 100%;\n      height: calc(100% - 50px);\n      border: none;\n      z-index: 10;\n    }\n    #loader {\n      display: none;\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: #fff;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      z-index: 20;\n    }\n    .spinner {\n      border: 8px solid rgba(0,0,0,0.1);\n      border-top: 8px solid #333;\n      border-radius: 50%;\n      width: 60px;\n      height: 60px;\n      animation: spin 1s linear infinite;\n      margin-bottom: 1em;\n    }\n    @keyframes spin {\n      to { transform: rotate(360deg); }\n    }\n    #loaderMessage {\n      font-size: 2em;\n      text-align: center;\n      opacity: 1;\n      transition: opacity 0.5s ease-in-out;\n    }\n    #promptOverlay {\n      display: none;             /* hidden by default */\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background: rgba(0,0,0,0.6);\n      align-items: center;\n      justify-content: center;\n      z-index: 40;\n      /* removed duplicate “display: flex;” so it stays hidden until JS shows it */\n    }\n    #promptBox {\n      background: #fff;\n      padding: 2em;\n      border-radius: 8px;\n      text-align: center;\n      max-width: 80%;\n    }\n    #promptBox p {\n      font-size: 1.5em;\n      margin-bottom: 1em;\n      color: #333;\n    }\n    #promptBox button {\n      background-color: #2ecc71;\n      color: #fff;\n      border: none;\n      padding: 0.75em 1.5em;\n      font-size: 1em;\n      border-radius: 4px;\n      cursor: pointer;\n    }\n  </style>\n</head>\n<body>\n  <div id=\"container\">\n    <img\n      id=\"mainImg\"\n      src=\"https://file.cybertech.app/Kiosk/EPIC/GoLive/WDavison/Design4a.png\"\n      alt=\"Go Live\"\n    />\n    <div id=\"navbar\">\n      <button id=\"startOverBtn\">Start Over</button>\n    </div>\n    <iframe id=\"scheduleIframe\" allow=\"fullscreen\"></iframe>\n    <div id=\"loader\">\n      <div class=\"spinner\"></div>\n      <div id=\"loaderMessage\"></div>\n    </div>\n    <div id=\"promptOverlay\">\n      <div id=\"promptBox\">\n        <p>Would you like more time?</p>\n        <button id=\"yesBtn\">Yes</button>\n      </div>\n    </div>\n  </div>\n\n  <script>\n    const img1 = 'https://file.cybertech.app/Kiosk/EPIC/GoLive/WDavison/Design4a.png';\n    const img2 = 'https://file.cybertech.app/Kiosk/EPIC/GoLive/WDavison/Design4b.png';\n    const scheduleURL = 'https://xl.epicpc.com/webhook/740dec40-0ecd-4ce3-964c-bea05503f4e1?campaign=&source=&medium=kiosk&event=WDavisonGoLive&other=';\n    const loaderMsgs = [\n      'Telling you how awesome you are 😉',\n      'Searching for providers',\n      'Loading available appointments'\n    ];\n\n    let state = 0; // 0 = first image, 1 = second image, 2 = scheduling\n    const container     = document.getElementById('container');\n    const mainImg       = document.getElementById('mainImg');\n    const navbar        = document.getElementById('navbar');\n    const iframe        = document.getElementById('scheduleIframe');\n    const loader        = document.getElementById('loader');\n    const loaderMsg     = document.getElementById('loaderMessage');\n    const promptOverlay = document.getElementById('promptOverlay');\n    const yesBtn        = document.getElementById('yesBtn');\n    let rotateInterval, promptTimer, reloadTimer;\n\n    // Advance state on any touch/click\n    container.addEventListener('pointerdown', () => {\n      if (state === 0) {\n        state = 1;\n        mainImg.src = img2;\n        navbar.style.display = 'flex';\n      } else if (state === 1) {\n        state = 2;\n        startLoadingIframe();\n      } else if (state === 2) {\n        resetIdleTimers();\n      }\n    });\n\n    // “Start Over” reloads everything\n    document.getElementById('startOverBtn').addEventListener('click', () => {\n      location.reload();\n    });\n\n    function startLoadingIframe() {\n      navbar.style.display = 'flex';\n      mainImg.style.display = 'none';\n      loader.style.display = 'flex';\n\n      // rotate through loader messages\n      let idx = 0;\n      loaderMsg.textContent = loaderMsgs[idx];\n      rotateInterval = setInterval(() => {\n        loaderMsg.style.opacity = 0;\n        setTimeout(() => {\n          idx = (idx + 1) % loaderMsgs.length;\n          loaderMsg.textContent = loaderMsgs[idx];\n          loaderMsg.style.opacity = 1;\n        }, 500);\n      }, 3000);\n\n      iframe.style.display = 'none';\n      iframe.src = scheduleURL;\n      iframe.addEventListener('load', () => {\n        clearInterval(rotateInterval);\n        loader.style.display = 'none';\n        iframe.style.display = 'block';\n        // only now start idle timers for prompt + reload\n        startIdleTimers(30000);\n      }, { once: true });\n    }\n\n    function startIdleTimers(initialDelay) {\n      clearTimeout(promptTimer);\n      clearTimeout(reloadTimer);\n      promptOverlay.style.display = 'none';\n      // show prompt after `initialDelay`\n      promptTimer = setTimeout(showPrompt, initialDelay);\n      // reload back to first image 15s after prompt\n      reloadTimer = setTimeout(() => location.reload(), initialDelay + 15000);\n    }\n\n    function resetIdleTimers() {\n      // user interacted—give full initialDelay again\n      startIdleTimers(30000);\n    }\n\n    function showPrompt() {\n      // guard: only if we're in scheduling state and iframe is visible\n      if (state === 2 && iframe.style.display === 'block') {\n        promptOverlay.style.display = 'flex';\n      }\n    }\n\n    yesBtn.addEventListener('click', () => {\n      // on “Yes”, give them an extra 60s before re-prompt\n      startIdleTimers(60000);\n    });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -320,
+        60
+      ],
+      "id": "e2f726d0-4690-4aa0-af60-7082a7bfac5d",
+      "name": "Respond to Webhook16"
+    },
+    {
+      "parameters": {
+        "path": "a849b80c-c386-4cb3-b02b-3647b074fc59",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -680,
+        1400
+      ],
+      "id": "de6f714a-921a-4bce-8a4d-fc8ea9864a26",
+      "name": "Webhook4",
+      "webhookId": "a849b80c-c386-4cb3-b02b-3647b074fc59"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Patricia Graham &amp; Nicole Felix – Meridian of Michigan</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* reset & full-page setup */\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    html, body { width: 100%; height: 100%; font-family: \"Helvetica Neue\", Arial, sans-serif; background: #fffbea; }\n\n    .container {\n      display: flex;\n      height: 100vh;\n      width: 100%;\n    }\n\n    /* left panel holds the two “cards” */\n    .left-overlay {\n      width: 30%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      opacity: 0;\n      animation: fadeIn 0.6s forwards;\n    }\n    .card.patricia { animation-delay: 0.2s; }\n    .card.felix    { animation-delay: 0.4s; }\n\n    @keyframes fadeIn { to { opacity: 1; } }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #f9a800; /* Meridian gold */\n      line-height: 1.3;\n    }\n\n    /* right panel shows Meridian branding */\n    .right-panel {\n      width: 70%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem;\n    }\n    .meridian-card {\n      width: 100%;\n      max-width: 600px;\n      border-radius: 20px;\n      background: #fff;\n      padding: 1rem;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n    .meridian-card img {\n      width: 80%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    @media (max-width: 768px) {\n      .container { flex-direction: column; }\n      .left-overlay, .right-panel { width: 100%; }\n      .right-panel { padding: 1rem; }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Left: welcome cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card patricia\">\n        <img\n          src=\"https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80\"\n          alt=\"Portrait of Patricia Graham (sample headshot)\"\n        />\n        <h1>Welcome, Patricia Graham</h1>\n        <h2>Chief Executive Officer<br>Meridian of Michigan</h2>\n      </div>\n      <div class=\"card felix\">\n        <img\n          src=\"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80\"\n          alt=\"Portrait of Nicole Felix (sample headshot)\"\n        />\n        <h1>Welcome, Nicole Felix</h1>\n        <h2>VP, Legislative &amp; Government Affairs</h2>\n      </div>\n    </div>\n\n    <!-- Right: Meridian logo or branding -->\n    <div class=\"right-panel\">\n      <div class=\"meridian-card\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/Meridian/HQ/meridian_logo.png\"\n          alt=\"Meridian of Michigan Logo\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- confetti + audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 10,\n          startVelocity: 30,\n          spread: 360,\n          origin: { x: Math.random(), y: Math.random() - 0.2 }\n        });\n        if (Date.now() < end) requestAnimationFrame(frame);\n      })();\n    }\n\n    // welcome audio (replace with your MP3)\n    const audio = new Audio('https://file.cybertech.app/Kiosk/Meridian/Events/WelcomePatriciaNicole.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error('Audio play error:', err));\n      launchConfetti();\n    }\n\n    // fire on first interaction\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n    document.addEventListener('click', playAudioAndConfetti);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -460,
+        1400
+      ],
+      "id": "72d751cf-39d5-4354-9da0-b847f1e03416",
+      "name": "Respond to Webhook17"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Patricia Graham &amp; Nicole Felix – Meridian of Michigan</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* reset & full-page setup */\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    html, body { width: 100%; height: 100%; font-family: \"Helvetica Neue\", Arial, sans-serif; background: #fffbea; }\n\n    .container {\n      display: flex;\n      height: 100vh;\n      width: 100%;\n    }\n\n    /* left panel holds the two “cards” */\n    .left-overlay {\n      width: 30%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      opacity: 0;\n      animation: fadeIn 0.6s forwards;\n    }\n    .card.patricia { animation-delay: 0.2s; }\n    .card.felix    { animation-delay: 0.4s; }\n\n    @keyframes fadeIn { to { opacity: 1; } }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #f9a800; /* Meridian gold */\n      line-height: 1.3;\n    }\n\n    /* right panel shows Meridian logo + EPIC wall */\n    .right-panel {\n      width: 70%;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: flex-start;\n      height: 100%;\n      padding: 2rem;\n    }\n    .meridian-card {\n      width: 100%;\n      max-width: 600px;\n      border-radius: 20px;\n      background: #fff;\n      padding: 1rem;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      margin-bottom: 1.5rem;\n    }\n    .meridian-card img {\n      width: 80%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    /* EPIC wall: fully visible, no cropping */\n    .epic-wall-container {\n      flex: 1;\n      width: 100%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n    .epic-wall {\n      max-width: 100%;\n      max-height: 100%;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    @media (max-width: 768px) {\n      .container { flex-direction: column; }\n      .left-overlay, .right-panel { width: 100%; }\n      .right-panel { padding: 1rem; }\n      .meridian-card { margin-bottom: 1rem; }\n      .epic-wall { width: 100%; height: auto; }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Left: welcome cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card patricia\">\n        <img\n          src=\"https://www.mimeridian.com/content/dam/centene/meridian/mi/Images/Patty_Graham_Headshot.jpg\"\n          alt=\"Portrait of Patricia Graham\"\n        />\n        <h1>Welcome, Patricia Graham</h1>\n        <h2>Chief Executive Officer<br>Meridian of Michigan</h2>\n      </div>\n      <div class=\"card felix\">\n        <img\n          src=\"https://media.licdn.com/dms/image/D5603AQHGo8GD7PvDxQ/profile-displayphoto-shrink_800_800/0/1688066332033?e=2147483647&amp;v=beta&amp;t=duJogdvl-CypwqFEZtrgEjAuFNZ2IsyAzfWNZixVNWs\"\n          alt=\"Portrait of Nicole Felix\"\n        />\n        <h1>Welcome, Nicole Felix</h1>\n        <h2>VP, Legislative &amp; Government Affairs</h2>\n      </div>\n    </div>\n\n    <!-- Right: Meridian logo + EPIC wall -->\n    <div class=\"right-panel\">\n      <div class=\"meridian-card\">\n        <img\n          src=\"https://www.mimeridian.com/content/dam/centene/meridian/images/Meridian-RGB.png\"\n          alt=\"Meridian of Michigan Logo\"\n        />\n      </div>\n      <div class=\"epic-wall-container\">\n        <img\n          class=\"epic-wall\"\n          src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\"\n          alt=\"EPIC Health Wall\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- confetti + audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 10,\n          startVelocity: 30,\n          spread: 360,\n          origin: { x: Math.random(), y: Math.random() - 0.2 }\n        });\n        if (Date.now() < end) requestAnimationFrame(frame);\n      })();\n    }\n\n    // welcome audio (replace URL with your MP3 if desired)\n    const audio = new Audio('https://file.cybertech.app/Kiosk/Meridian/Events/WelcomePatriciaNicole.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error('Audio play error:', err));\n      launchConfetti();\n    }\n\n    // trigger on first interaction\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n    document.addEventListener('click', playAudioAndConfetti);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -360,
+        1540
+      ],
+      "id": "6a5b3a23-6876-4749-b2af-e12116ab92d6",
+      "name": "Respond to Webhook18"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Patricia Graham & Nicole Felix – Meridian of Michigan</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* reset & full-page setup */\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    html, body { width: 100%; height: 100%; font-family: \"Helvetica Neue\", Arial, sans-serif; background: #fffbea; }\n\n    .container {\n      display: flex;\n      height: 100vh;\n      width: 100%;\n    }\n\n    /* left panel holds the two “cards” */\n    .left-overlay {\n      width: 30%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      opacity: 0;\n      animation: fadeIn 0.6s forwards;\n    }\n    .card.patricia { animation-delay: 0.2s; }\n    .card.felix    { animation-delay: 0.4s; }\n\n    @keyframes fadeIn { to { opacity: 1; } }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #f9a800; /* Meridian gold */\n      line-height: 1.3;\n    }\n\n    /* right panel shows Meridian branding */\n    .right-panel {\n      width: 70%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem;\n      position: relative;\n    }\n    .meridian-card {\n      width: 100%;\n      max-width: 600px;\n      border-radius: 20px;\n      background: #fff;\n      padding: 1rem;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n    .meridian-card img {\n      width: 80%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    @media (max-width: 768px) {\n      .container { flex-direction: column; }\n      .left-overlay, .right-panel { width: 100%; }\n      .right-panel { padding: 1rem; }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Left: welcome cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card patricia\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/Meridian/Events/PatriciaGraham.png\"\n          alt=\"Portrait of Patricia Graham\"\n        />\n        <h1>Welcome, Patricia Graham</h1>\n        <h2>Chief Executive Officer<br>Meridian of Michigan</h2>\n      </div>\n      <div class=\"card felix\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/Meridian/Events/NicoleFelix.png\"\n          alt=\"Portrait of Nicole Felix\"\n        />\n        <h1>Welcome, Nicole Felix</h1>\n        <h2>VP, Legislative & Government Affairs</h2>\n      </div>\n    </div>\n\n    <!-- Right: Meridian logo or branding -->\n    <div class=\"right-panel\">\n      <div class=\"meridian-card\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/Meridian/HQ/meridian_logo.png\"\n          alt=\"Meridian of Michigan\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- confetti + audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 10,\n          startVelocity: 30,\n          spread: 360,\n          origin: { x: Math.random(), y: Math.random() - 0.2 }\n        });\n        if (Date.now() < end) requestAnimationFrame(frame);\n      })();\n    }\n\n    // welcome audio (replace with your MP3)\n    const audio = new Audio('https://file.cybertech.app/Kiosk/Meridian/Events/WelcomePatriciaNicole.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error('Audio play error:', err));\n      launchConfetti();\n    }\n\n    // fire on first touch or click\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n    document.addEventListener('click', playAudioAndConfetti);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -260,
+        1660
+      ],
+      "id": "88bea53d-bac6-48a0-8986-666c156cf436",
+      "name": "Respond to Webhook19"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, Patricia Graham &amp; Nicole Felix – Meridian of Michigan</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    /* reset & full-page setup */\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    html, body { width: 100%; height: 100%; font-family: \"Helvetica Neue\", Arial, sans-serif; background: #fffbea; }\n\n    .container {\n      display: flex;\n      height: 100vh;\n      width: 100%;\n    }\n\n    /* left panel holds the two “cards” */\n    .left-overlay {\n      width: 30%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      opacity: 0;\n      animation: fadeIn 0.6s forwards;\n    }\n    .card.patricia { animation-delay: 0.2s; }\n    .card.felix    { animation-delay: 0.4s; }\n\n    @keyframes fadeIn { to { opacity: 1; } }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #f9a800; /* Meridian gold */\n      line-height: 1.3;\n    }\n\n    /* right panel shows Meridian branding */\n    .right-panel {\n      width: 70%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem;\n    }\n    .meridian-card {\n      width: 100%;\n      max-width: 600px;\n      border-radius: 20px;\n      background: #fff;\n      padding: 1rem;\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n    .meridian-card img {\n      width: 80%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    @media (max-width: 768px) {\n      .container { flex-direction: column; }\n      .left-overlay, .right-panel { width: 100%; }\n      .right-panel { padding: 1rem; }\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <!-- Left: welcome cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card patricia\">\n        <img\n          src=\"https://www.mimeridian.com/content/dam/centene/meridian/mi/Images/Patty_Graham_Headshot.jpg\"\n          alt=\"Portrait of Patricia Graham\"\n        />\n        <h1>Welcome, Patricia Graham</h1>\n        <h2>Chief Executive Officer<br>Meridian of Michigan</h2>\n      </div>\n      <div class=\"card felix\">\n        <img\n          src=\"https://media.licdn.com/dms/image/D5603AQHGo8GD7PvDxQ/profile-displayphoto-shrink_800_800/0/1688066332033?e=2147483647&amp;v=beta&amp;t=duJogdvl-CypwqFEZtrgEjAuFNZ2IsyAzfWNZixVNWs\"\n          alt=\"Portrait of Nicole Felix\"\n        />\n        <h1>Welcome, Nicole Felix</h1>\n        <h2>VP, Legislative &amp; Government Affairs</h2>\n      </div>\n    </div>\n\n    <!-- Right: Meridian logo -->\n    <div class=\"right-panel\">\n      <div class=\"meridian-card\">\n        <img\n          src=\"https://www.mimeridian.com/content/dam/centene/meridian/images/Meridian-RGB.png\"\n          alt=\"Meridian of Michigan Logo\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- confetti + audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 10,\n          startVelocity: 30,\n          spread: 360,\n          origin: { x: Math.random(), y: Math.random() - 0.2 }\n        });\n        if (Date.now() < end) requestAnimationFrame(frame);\n      })();\n    }\n\n    // welcome audio (replace URL with your MP3 if desired)\n    const audio = new Audio('https://file.cybertech.app/Kiosk/Meridian/Events/WelcomePatriciaNicole.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error('Audio play error:', err));\n      launchConfetti();\n    }\n\n    // fire on first interaction\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n    document.addEventListener('click', playAudioAndConfetti);\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -100,
+        1540
+      ],
+      "id": "00774b25-dd8b-458c-aea7-c4da3fdab009",
+      "name": "Respond to Webhook20"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Welcome, David Knezek & Natalie Price - EPIC</title>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n    html, body {\n      width: 100%;\n      height: 100%;\n      font-family: \"Helvetica Neue\", Arial, sans-serif;\n      background: #fffbea;\n    }\n\n    .container {\n      display: flex;\n      height: 100vh;\n      width: 100%;\n    }\n\n    .left-overlay {\n      width: 30%;\n      background: rgba(255, 251, 234, 0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem 1rem;\n    }\n\n    .card {\n      background: #fff;\n      border-radius: 10px;\n      box-shadow: 0 4px 12px rgba(0,0,0,0.2);\n      width: 90%;\n      max-width: 360px;\n      text-align: center;\n      padding: 1.5rem;\n      margin-bottom: 1.5rem;\n      animation: fadeIn 0.6s forwards;\n      opacity: 0;\n    }\n\n    .card.knezek {\n      animation-delay: 0.2s;\n    }\n\n    @keyframes fadeIn {\n      to {\n        opacity: 1;\n      }\n    }\n\n    .card img {\n      display: block;\n      width: 80%;\n      max-width: 300px;\n      margin: 0 auto 1rem;\n      border-radius: 8px;\n      box-shadow: 0 2px 6px rgba(0,0,0,0.1);\n    }\n\n    .card h1 {\n      font-size: 1.6rem;\n      margin-bottom: 0.5rem;\n      color: #333;\n    }\n    .card h2 {\n      font-size: 1rem;\n      color: #fdb600;\n      line-height: 1.3;\n    }\n\n    .right-panel {\n      width: 70%;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      padding: 2rem;\n    }\n\n    .epic-card {\n      width: 100%;\n      height: 90;\n      border-radius: 20px;\n      background: #fff;\n      padding: 0.5rem; /* Tighter, equal padding on all sides */\n      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n\n    .epic-card img {\n      width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 12px;\n    }\n\n    @media (max-width: 768px) {\n      .container {\n        flex-direction: column;\n      }\n      .left-overlay, .right-panel {\n        width: 100%;\n      }\n      .right-panel {\n        padding: 1rem;\n        height: auto;\n      }\n      .epic-card {\n        height: auto;\n      }\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"container\">\n    <!-- Left Cards -->\n    <div class=\"left-overlay\">\n      <div class=\"card natalie\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/EPIC/Events/David/NataliePrice.png\"\n          alt=\"Portrait of Natalie Price\"\n        />\n        <h1>Welcome, Natalie Price</h1>\n        <h2>State Representative<br>Michigan House of Representatives</h2>\n      </div>\n\n      <div class=\"card knezek\">\n        <img\n          src=\"https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/David_Knezek_small.jpg?rev=387f512f52a140b3924ad4a539ad64d7&hash=DF81ACDFEF85E5B764AF66186BDF796B&w=+1400\"\n          alt=\"Portrait of David Knezek\"\n        />\n        <h1>Welcome, David Knezek</h1>\n        <h2>Michigan Department of Health & Human Services</h2>\n      </div>\n    </div>\n\n    <!-- Right Image -->\n    <div class=\"right-panel\">\n      <div class=\"epic-card\">\n        <img\n          src=\"https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png\"\n          alt=\"Welcome to EPIC Health\"\n        />\n      </div>\n    </div>\n  </div>\n\n  <!-- Confetti & Audio -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js\"></script>\n  <script>\n    function launchConfetti(duration = 2000) {\n      const end = Date.now() + duration;\n      (function frame() {\n        confetti({\n          particleCount: 8,\n          startVelocity: 20,\n          spread: 360,\n          origin: {\n            x: Math.random(),\n            y: Math.random() - 0.2\n          }\n        });\n        if (Date.now() < end) {\n          requestAnimationFrame(frame);\n        }\n      })();\n    }\n\n    const audio = new Audio('https://file.cybertech.app/Kiosk/EPIC/Events/David/WelcomeDavidNatatile.mp3');\n\n    function playAudioAndConfetti() {\n      audio.currentTime = 0;\n      audio.play().catch(err => console.error(\"Audio play error:\", err));\n      launchConfetti();\n    }\n\n    document.addEventListener('click', playAudioAndConfetti);\n    document.addEventListener('touchstart', playAudioAndConfetti, { passive: true });\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        60,
+        1100
+      ],
+      "id": "e2cdde57-af41-4f33-9858-0f772135da72",
+      "name": "Respond to Webhook21"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.43",
+            "x-forwarded-for": "10.0.24.43",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Not(A:Brand\";v=\"99\", \"Microsoft Edge\";v=\"133\", \"Chromium\";v=\"133\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-dest": "iframe",
+            "referer": "https://xl.epicpc.com/webhook/6442183a-1cf4-41c8-84e9-60b68d4dd9b6?test=123",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bi2wlGyWUrU8csBnMpC2ky94UMvv6i1l8%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BlOAQjwoHJTIaa%2BnRWw%2FuYu7Q4OoFm%2BVc%3D; cw_conversation=eyJhbGciOiJIUzI1NiJ9.eyJzb3VyY2VfaWQiOiJkOGU0ZmExYy0yMTk2LTQ3ODAtYjFhMi0zNGI5NzYyYWZhMjciLCJpbmJveF9pZCI6MX0.0lRACgYRzS4v3ie0Q3KCpE2J2om9Qu4ndLgNQa8saXU; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiYW9ldjhjM1NoOG5jMDNLc1A4R2dYK1dkUElNWFVaTWE0ejl6WjNZVndjZz0iLCJpYXQiOjE3NDEwMjM2NTQsImV4cCI6MTc0MTYyODQ1NH0.sHY3zdqHs-543bkdFekI-5nHiWEmr5pBzOnDJTAtU8A; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FBnpy7TuCp49pzyXJM6ZA5hJc4t6XFLJ%2Fso%2BqLSfN75zVUJgAAC4xKdSE3Wxvn7PLdnAD7KREErg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BjTEVtQt6UGTsCdKoApX8J9%2FZDjFQeUrLRWH66qseMVOJgypDvjeKDzQd22q%2FGJ4L4POBnP7D7ohgJmaGTXULCXF1CpxXQ1Ev4LU2GVaD43osjgSAz%2F26FCt93QCu%2F4IXWUKi4xsRzRn3Tt6ZIfsEjEiA134ZqxHA%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19La7FNm2r7TOqxaEkCLuZsmH%2FGloWxHQ7ic8FtdV4Q4GrtWKKTKkSTsl1BW8hUK9%2BYNjLZ%2FJ2At4eFdU3XjVhFYQsNBnew%2BHOwmrEY4WmBP%2FQMYEyqv3eoPvFnk2vDjEUcnQjCmuwzkA%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1741299720371%2C%2201956d8d-209d-7e6d-916a-819259e651c5%22%2C1741299720349%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2BpaynGQJlRs9VumtIPANUix4%2F4RbMcdEz48orh9hMKj5xtILDJTQuIYoniUM22nIYkGnpmBjBrZusvV1%2B%2Be6Pm%2Fkt7BC3keHGoxfKZVoEwIdnkrn%2FdhkLQ4Uqujj2fwSflzP4JyABXZw%3D%3D",
+            "if-none-match": "W/\"4dc-9I4RU/PyF0n2GszxE7soEQpHKiA\""
+          },
+          "params": {},
+          "query": {
+            "test": "123"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/18c0758c-143e-4260-86a0-d54f751220c6",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 10,
+  "updatedAt": "2025-06-20T12:34:08.806Z",
+  "versionId": "836393fb-62c4-4fa9-8fe6-b9bc27d2bd8c"
+}
