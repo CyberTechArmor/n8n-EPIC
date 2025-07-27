@@ -1,0 +1,143 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "NocoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NocoDB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-30T14:17:08.648Z",
+  "id": "cABe2eW5bPvKrmL6",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "EHR Check Webhooks",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "p3hb5s2opbotr1f",
+        "table": "mnw77dpsv1v54m3",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Hostname",
+              "fieldValue": "={{ $json.query.hostname }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "={{ $json.query.status }}"
+            }
+          ]
+        }
+      },
+      "id": "cd845da2-2aa0-4b6e-bbd3-a8930cee5e0d",
+      "name": "NocoDB",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        680,
+        460
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "p3hb5s2opbotr1f",
+        "table": "mg86jglo5qmeb27",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "Hostname",
+              "fieldValue": "={{ $json.query.hostname }}"
+            },
+            {
+              "fieldName": "Status",
+              "fieldValue": "={{ $json.query.status }}"
+            }
+          ]
+        }
+      },
+      "id": "41888e29-e7a4-408d-94dc-75957ecf875d",
+      "name": "NocoDB1",
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        680,
+        680
+      ],
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "NQp5MuqQIS7vyAPq",
+          "name": "NocoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "9c562997-78ef-4743-a8cd-d2619ff40daf",
+        "options": {}
+      },
+      "id": "d102c1bb-86a8-4bba-9680-9eed6724ac97",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        460,
+        680
+      ],
+      "webhookId": "9c562997-78ef-4743-a8cd-d2619ff40daf"
+    },
+    {
+      "parameters": {
+        "path": "9146da97-9f65-4e75-bcbf-f20363f604ec",
+        "options": {}
+      },
+      "id": "a83a4533-1a4b-4052-adfc-9fd8f5e9f7c2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        460,
+        460
+      ],
+      "webhookId": "9146da97-9f65-4e75-bcbf-f20363f604ec"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-06-30T14:17:22.537Z",
+  "versionId": "76dcca49-b475-4172-b777-11579d369c3b"
+}
