@@ -1,0 +1,107 @@
+{
+  "active": true,
+  "connections": {
+    "Incident To": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Laptop Agreement": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-26T16:32:50.232Z",
+  "id": "SvSFjtE01A65kVpV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Messaging and Signoff Docuseal",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>EPIC Big Voice</title>\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <style>\n    :root {\n      --epic-yellow: #f6c71a;\n    }\n    .container {\n      max-width: 800px;\n      margin: 0 auto;\n    }\n    .card {\n      background: white;\n      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n      border-radius: 12px;\n      padding: 20px;\n      margin-bottom: 20px;\n    }\n    .message {\n      background: var(--epic-yellow);\n      color: black;\n      padding: 20px;\n      border-radius: 12px;\n      font-size: 1.5rem;\n      font-weight: bold;\n      text-align: center;\n      line-height: 1.5;\n    }\n    .video-container {\n      aspect-ratio: 16 / 9;\n      overflow: hidden;\n      border-radius: 12px;\n    }\n    iframe {\n      width: 100%;\n      height: 100%;\n      border: none;\n    }\n    #popup {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-color: rgba(0, 0, 0, 0.5);\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      z-index: 9999;\n    }\n    #popup-content {\n      background: white;\n      padding: 20px;\n      border-radius: 12px;\n      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);\n      text-align: center;\n    }\n    #popup button {\n      background-color: var(--epic-yellow);\n      color: black;\n      padding: 10px 20px;\n      border: none;\n      border-radius: 8px;\n      font-size: 1rem;\n      cursor: pointer;\n      margin-top: 10px;\n    }\n    #popup button:hover {\n      background-color: #e0b417;\n    }\n    .scroll-arrow-container {\n      position: fixed;\n      right: 20px;\n      bottom: 20px;\n      text-align: center;\n    }\n    .scroll-arrow {\n      font-size: 2rem;\n      color: #007bff;\n      animation: bounce 2s infinite;\n      cursor: pointer;\n    }\n    .scroll-arrow-text {\n      font-size: 0.9rem;\n      color: #333;\n      margin-bottom: 5px;\n    }\n    @keyframes bounce {\n      0%, 100% {\n        transform: translateY(0);\n      }\n      50% {\n        transform: translateY(-10px);\n      }\n    }\n\n.video-container {\n  position: relative;\n  width: 100%;\n  padding-top: 56.25%; /* 16:9 Aspect Ratio */\n  overflow: hidden;\n  border-radius: 12px;\n  background-color: #000; /* Fallback background */\n}\n\n.video-container video {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  object-fit: cover; /* Ensures the video fits the container without distortion */\n}\n\n  </style>\n</head>\n<body class=\"bg-gray-100 font-sans\">\n\n  <!-- Popup -->\n  <div id=\"popup\">\n    <div id=\"popup-content\">\n      <p class=\"font-bold text-lg mb-4\">IMPORTANT NOTICE</p>\n      <p>You are required to watch this video and sign an acknowledgement.</p>\n      <button onclick=\"closePopup()\">I Will Sign the Document</button>\n    </div>\n  </div>\n\n  <!-- Top Section -->\n  <div class=\"container px-4 py-6\">\n    <div class=\"message\">\n      IMPORTANT NOTICE <br>\nYOU ARE REQUIRED TO WATCH THIS VIDEO AND SIGN AN ACKNOWLEDGEMENT BY WEDNESDAY, DECEMBER 4, 2024.\n    </div>\n  </div>\n\n  <!-- Middle Section -->\n  <div class=\"container px-4 py-6\">\n    <div class=\"card\">\n      <h2 class=\"text-lg font-semibold mb-4\">Big Voice!</h2>\n      <div class=\"video-container\">\n   <video controls>\n        <source src=\"https://file.taskfire.app/EPIC/BigVoice/Big%20Voice%20For%20Thanksgiving(1).mp4\" type=\"video/mp4\"> </video>\n\n      </div>\n    </div>\n  </div>\n\n  <!-- Bottom Section -->\n  <div class=\"container px-4 py-6\" id=\"document-section\">\n    <div class=\"card\">\n      <h2 class=\"text-lg font-semibold mb-4\">Acknowledgement Signoff</h2>\n      <docuseal-form data-src=\"https://docu.epicpc.com/d/7TuKrg1bjhi3J6\"></docuseal-form>\n    </div>\n  </div>\n\n  <!-- Scroll Down Arrow -->\n  <div class=\"scroll-arrow-container\">\n    <div class=\"scroll-arrow-text\">Go To Document</div>\n    <div class=\"scroll-arrow\" onclick=\"scrollToDocument()\">⬇</div>\n  </div>\n\n  <script>\n    function closePopup() {\n      document.getElementById('popup').style.display = 'none';\n    }\n\n    function scrollToDocument() {\n      const documentSection = document.getElementById('document-section');\n      documentSection.scrollIntoView({ behavior: 'smooth' });\n    }\n  </script>\n\n  <!-- Docuseal Form Script -->\n  <script src=\"https://cdn.docuseal.com/js/form.js\"></script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "b8a12c7b-4b51-481b-bb3c-d879dcaa301a",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1020,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "path": "bigvoice-61",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "25ad9536-79e7-4ef7-9d60-8b15fbf45b4b",
+      "name": "Incident To",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        420
+      ],
+      "webhookId": "d2c10766-9725-4966-8287-50d9720ca07f"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>EPIC Big Voice</title>\n  <script src=\"https://cdn.tailwindcss.com\"></script>\n  <style>\n    :root {\n      --epic-yellow: #f6c71a;\n    }\n    .container {\n      max-width: 800px;\n      margin: 0 auto;\n    }\n    .message {\n      background: var(--epic-yellow);\n      color: black;\n      padding: 20px;\n      border-radius: 12px;\n      font-size: 1.5rem;\n      font-weight: bold;\n      text-align: center;\n      line-height: 1.5;\n    }\n    .card {\n      background: white;\n      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);\n      border-radius: 12px;\n      padding: 20px;\n      margin: 20px auto;\n      width: 90%;\n    }\n    body, html {\n      height: 100%;\n      margin: 0;\n      font-family: Arial, sans-serif;\n    }\n    .full-height {\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n      height: 100%;\n    }\n  </style>\n</head>\n<body class=\"bg-gray-100 font-sans\">\n\n  <!-- Top Section -->\n  <div class=\"full-height\">\n    <div class=\"container\">\n      <div class=\"message\">\n        Laptop Agreement\n      </div>\n    </div>\n\n    <!-- Agreement Section -->\n    <div class=\"container\" id=\"document-section\">\n      <div class=\"card\">\n        <h2 class=\"text-lg font-semibold mb-4\">Acknowledgement Signoff</h2>\n        <docuseal-form data-src=\"https://docu.epicpc.com/d/Dq5GtYR5sLWJnR\"></docuseal-form>\n      </div>\n    </div>\n  </div>\n\n  <!-- Docuseal Form Script -->\n  <script src=\"https://cdn.docuseal.com/js/form.js\"></script>\n\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1020,
+        600
+      ],
+      "id": "840e61fe-be16-43ab-940c-c8de4cf7ae84",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "path": "Laptop_Agreement",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        820,
+        600
+      ],
+      "id": "2cb5789b-a387-4730-8f23-01043f1ea2f5",
+      "name": "Laptop Agreement",
+      "webhookId": "5471f42f-de21-447c-b8ff-41dbe658f72b"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-12-05T22:20:25.968Z",
+  "versionId": "14d2c799-346a-4fab-baeb-2c8c6f0df1b0"
+}
