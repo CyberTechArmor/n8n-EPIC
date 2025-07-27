@@ -1,0 +1,746 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get many rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Search LDAP1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Create a row",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "NCDB Reference",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NCDB Reference": {
+      "main": [
+        [
+          {
+            "node": "INFORMATION1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many rows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EMERGENCY": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NCDB Reference1": {
+      "main": [
+        [
+          {
+            "node": "INFORMATION1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "INFORMATION1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-16T22:27:02.830Z",
+  "id": "f2wXmMEPV5pelWVu",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "UNITY ABC ERP CASCOM",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -280
+      ],
+      "id": "0b692fb6-cf21-41f8-bcb6-9813fc22c376",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "This is a test of the Information Broadcast System.\n<br>Quick Scheduler and Instant Visits are back up.\n<br>Thank you for clicking on the acknowledgement link.<br>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1160,
+        -220
+      ],
+      "id": "dc412eb3-1549-4323-afda-30dca50f19bd",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "={{ $json.User }}@epichs.org"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    margin:0 auto;\n    border:1px solid #dcdcdc;\n    border-radius:6px;\n    overflow:hidden;\n    font-family:'Segoe UI',Arial,sans-serif;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#e81123;\n        padding:14px 12px;\n        border-bottom:2px solid #c50f1f;\n      \"\n    >\n      <span\n        style=\"\n          font-size:20px;\n          font-weight:600;\n          color:#ffffff;\n          letter-spacing:1px;\n        \"\n      >\n        EMERGENCY BROADCAST ANNOUNCEMENT\n      </span>\n    </td>\n  </tr>\n\n  <!-- Core Message -->\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.Message }}\n<br>\n    </td>\n  </tr>\n\n  <!-- Details Label + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#f9f9f9;\n        padding:12px 16px;\n        border-top:1px solid #dcdcdc;\n      \"\n    >\n      <strong\n        style=\"\n          font-size:14px;\n          color:#323130;\n          margin-right:6px;\n        \"\n      >\n        Details:\n      {{ $json.Link }}\n    </td>\n  </tr>\n\n  <!-- Image -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"background-color:#ffffff;padding:12px 16px 16px;\"\n    >\n      <img\n        src=\"{{ $json.ImageURL }}\"\n        alt=\"Emergency Alert Illustration\"\n        style=\"\n          display:block;\n          max-width:100%;\n          height:auto;\n          border-radius:4px;\n          border:1px solid #dcdcdc;\n        \"\n      />\n    </td>\n  </tr>\n</table>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        -260
+      ],
+      "id": "82c27d67-8f97-4474-9fbb-359681215d3d",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "df4c70f6-21cf-430d-9550-1295b1d8f899",
+      "name": "Search LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -580
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP IT Helpdesk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e8940711-3a00-4ff6-9ac8-4dc2aa5a6012",
+              "leftValue": "={{ $json.mail }}",
+              "rightValue": "@epichs.org",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        360,
+        -280
+      ],
+      "id": "68fa760c-118f-4809-ac18-9dcb022ca70d",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        660,
+        -300
+      ],
+      "id": "954bb4ad-aeb7-4bc3-9d6e-3411d6e76fa1",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "path": "c0553a95-c895-4920-8065-4c73334ddaa4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        280,
+        40
+      ],
+      "id": "b98bd243-38a8-4d10-8424-868222c4aa88",
+      "name": "Webhook",
+      "webhookId": "c0553a95-c895-4920-8065-4c73334ddaa4"
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "create",
+        "projectId": "pgonbiu01evr0cz",
+        "table": "md15xdnlm4dkcgk",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldName": "User",
+              "fieldValue": "={{ $json.query.user }}"
+            },
+            {
+              "fieldName": "Message",
+              "fieldValue": "={{ $json.query.message }}"
+            },
+            {
+              "fieldName": "Acknowledged",
+              "fieldValue": "Yes"
+            },
+            {
+              "fieldName": "Medium",
+              "fieldValue": "Teams Link"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        500,
+        140
+      ],
+      "id": "5e060d29-44e3-49c9-9cca-493d24a8cc65",
+      "name": "Create a row",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "tJrRYhH9PABi968X",
+          "name": "NCDB http"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Thank You</title>\n  <style>\n    /* Base reset */\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    html, body { height: 100%; }\n\n    /* Flex-centered container */\n    body {\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      background-color: #f4f6f8;\n      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n      color: #344054;\n      overflow: hidden;\n    }\n\n    .container {\n      text-align: center;\n      padding: 2rem;\n      background: #ffffff;\n      border-radius: 8px;\n      box-shadow: 0 4px 16px rgba(0,0,0,0.1);\n    }\n\n    h1 {\n      font-size: 2.5rem;\n      margin-bottom: 0.5rem;\n    }\n\n    p {\n      font-size: 1.125rem;\n      color: #555555;\n    }\n\n    /* Full-viewport canvas for confetti */\n    #confetti-canvas {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      pointer-events: none;\n      z-index: 10;\n    }\n  </style>\n</head>\n<body>\n  <!-- Confetti canvas -->\n  <canvas id=\"confetti-canvas\"></canvas>\n\n  <!-- Thank-you message -->\n  <div class=\"container\">\n    <h1>Thank You!</h1>\n    <p>We appreciate your acknowledgement. </p>\n  </div>\n\n  <!-- Canvas-Confetti library -->\n  <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n  <script>\n    // Create a confetti instance tied to our canvas\n    const myConfetti = confetti.create(\n      document.getElementById('confetti-canvas'),\n      { resize: true, useWorker: true }\n    );\n\n    // Launch confetti for 3 seconds\n    const duration = 3 * 1000;\n    const end = Date.now() + duration;\n\n    (function frame() {\n      // Left and right bursts\n      myConfetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });\n      myConfetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });\n\n      if (Date.now() < end) {\n        requestAnimationFrame(frame);\n      }\n    }());\n  </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        780,
+        40
+      ],
+      "id": "451893ff-992d-410a-88a9-c7b2e39de298",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1320,
+        -360
+      ],
+      "id": "752859f9-10ae-463e-9eed-1ca56eb638bb",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36602703-df31-4559-942c-41eebefb6a28",
+              "name": "User",
+              "value": "={{ $json.sAMAccountName }}",
+              "type": "string"
+            },
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "={{ $json.Message }}",
+              "type": "string"
+            },
+            {
+              "id": "ab68f638-f7f8-4f12-8af3-c88bc2da2bf3",
+              "name": "Link",
+              "value": "=      <a\n        href=\"https://xl.epicpc.com/webhook/c0553a95-c895-4920-8065-4c73334ddaa4?user={{ $json.sAMAccountName }}&message={{ encodeURIComponent($json.Message) }}\"\n        style=\"\n          font-size:14px;\n          color:#005A9E;\n          text-decoration:underline;\n        \"\n      >\n        <!-- Message -->Please acknowlege\n      </a>",
+              "type": "string"
+            },
+            {
+              "id": "baf3b448-4351-481d-bf68-87f9d9314156",
+              "name": "ImageURL",
+              "value": "https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -260
+      ],
+      "id": "e51dae4a-2f12-4b29-945c-cf2cd7df700a",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "phartwig",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "ce32febf-c85c-4b81-a23c-21f58fcb3212",
+      "name": "Search LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        120,
+        -100
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP IT Helpdesk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "nocoDbApiToken",
+        "operation": "getAll",
+        "projectId": "p257znxo6bo2bx6",
+        "table": "mq63a3a3ogw5mui",
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.nocoDb",
+      "typeVersion": 3,
+      "position": [
+        140,
+        -400
+      ],
+      "id": "8c7f34cd-2042-421e-85aa-042eb33f81fc",
+      "name": "Get many rows",
+      "credentials": {
+        "nocoDbApiToken": {
+          "id": "tJrRYhH9PABi968X",
+          "name": "NCDB http"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36602703-df31-4559-942c-41eebefb6a28",
+              "name": "User",
+              "value": "={{ $json.Email }}",
+              "type": "string"
+            },
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "={{ $json.Message }}",
+              "type": "string"
+            },
+            {
+              "id": "ab68f638-f7f8-4f12-8af3-c88bc2da2bf3",
+              "name": "Link",
+              "value": "=      <a\n        href=\"https://xl.epicpc.com/webhook/c0553a95-c895-4920-8065-4c73334ddaa4?user={{ $json.Email }}&message={{ encodeURIComponent($json.Message) }}\"\n        style=\"\n          font-size:14px;\n          color:#005A9E;\n          text-decoration:underline;\n        \"\n      >\n        <!-- Message -->Please acknowlege\n      </a>",
+              "type": "string"
+            },
+            {
+              "id": "baf3b448-4351-481d-bf68-87f9d9314156",
+              "name": "ImageURL",
+              "value": "https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        -480
+      ],
+      "id": "6e42832b-3403-4b07-9643-ad282b17838e",
+      "name": "NCDB Reference"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "={{ $json.User }}"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    margin:0 auto;\n    border:1px solid #dcdcdc;\n    border-radius:6px;\n    overflow:hidden;\n    font-family:'Segoe UI',Arial,sans-serif;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#e81123;\n        padding:14px 12px;\n        border-bottom:2px solid #c50f1f;\n      \"\n    >\n      <span\n        style=\"\n          font-size:20px;\n          font-weight:600;\n          color:#ffffff;\n          letter-spacing:1px;\n        \"\n      >\n        EMERGENCY BROADCAST ANNOUNCEMENT\n      </span>\n    </td>\n  </tr>\n\n  <!-- Core Message -->\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.Message }}\n<br>\n    </td>\n  </tr>\n\n  <!-- Details Label + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#f9f9f9;\n        padding:12px 16px;\n        border-top:1px solid #dcdcdc;\n      \"\n    >\n      <strong\n        style=\"\n          font-size:14px;\n          color:#323130;\n          margin-right:6px;\n        \"\n      >\n        Details:\n      {{ $json.Link }}\n    </td>\n  </tr>\n\n  <!-- Image -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"background-color:#ffffff;padding:12px 16px 16px;\"\n    >\n      <img\n        src=\"{{ $json.ImageURL }}\"\n        alt=\"Emergency Alert Illustration\"\n        style=\"\n          display:block;\n          max-width:100%;\n          height:auto;\n          border-radius:4px;\n          border:1px solid #dcdcdc;\n        \"\n      />\n    </td>\n  </tr>\n</table>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        -180
+      ],
+      "id": "264be8d1-da3a-4209-8d4b-acf3322fe96f",
+      "name": "EMERGENCY"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36602703-df31-4559-942c-41eebefb6a28",
+              "name": "User",
+              "value": "tstilwell@epichs.org",
+              "type": "string"
+            },
+            {
+              "id": "3b3b9b2d-de6e-4a05-9971-c9f227ac2ba4",
+              "name": "Message",
+              "value": "={{ $json.Message }}",
+              "type": "string"
+            },
+            {
+              "id": "ab68f638-f7f8-4f12-8af3-c88bc2da2bf3",
+              "name": "Link",
+              "value": "=      <a\n        href=\"https://xl.epicpc.com/webhook/c0553a95-c895-4920-8065-4c73334ddaa4?user={{ $json.Email }}&message={{ encodeURIComponent($json.Message) }}\"\n        style=\"\n          font-size:14px;\n          color:#005A9E;\n          text-decoration:underline;\n        \"\n      >\n        <!-- Message -->Please acknowlege\n      </a>",
+              "type": "string"
+            },
+            {
+              "id": "baf3b448-4351-481d-bf68-87f9d9314156",
+              "name": "ImageURL",
+              "value": "https://file.cybertech.app/Kiosk/EPIC/HQ/epic%20health%20wall%20yellow.png",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -700
+      ],
+      "id": "f8e52f68-8db9-4b8a-a3e4-2a40586f1b61",
+      "name": "NCDB Reference1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "={{ $json.User }}"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    width:100%;\n    margin:0 auto;\n    border:1px solid #a3b1c6;\n    border-radius:8px;\n    overflow:hidden;\n    font-family:'Segoe UI', Arial, sans-serif;\n    background-color:#fefefe;\n    color:#1e293b;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#1e40af;\n        padding:24px 12px;\n        border-bottom:2px solid #1e3a8a;\n        color:#ffffff;\n        font-weight:700;\n        font-size:22px;\n        letter-spacing:1px;\n        line-height:28px;\n      \"\n    >\n      INFORMATIONAL UPDATE\n    </td>\n  </tr>\n\n  <!-- Core Message with highlighted white text background -->\n  <tr>\n    <td\n      style=\"\n        padding:24px 18px;\n        font-size:17px;\n        line-height:1.6;\n        background-color:#ffffff; /* block background white */\n        color:#000000; /* black text */\n        word-break:break-word;\n        white-space: pre-wrap;\n        overflow-wrap: break-word;\n        word-wrap: break-word;\n      \"\n    >\n      <pre\n        style=\"\n          margin:0;\n          font-family: 'Segoe UI', Arial, monospace;\n          white-space: pre-wrap;\n          word-break: break-word;\n          overflow-wrap: break-word;\n          color:#000000;\n          font-size:17px;\n          line-height:1.6;\n          background-color:#ffffff; /* highlight background white */\n          padding:6px 10px;\n          border-radius:4px;\n          display:inline-block;\n          max-width:100%;\n        \"\n      >\n&gt; <span style=\"background-color:#ffffff;\">{{ $json.Message }}</span>\n      </pre>\n    </td>\n  </tr>\n\n  <!-- Details Label + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#e0ebff;\n        padding:18px;\n        border-top:1px solid #a3b1c6;\n        font-size:16px;\n        color:#1e40af;\n        line-height:20px;\n        word-break:break-word;\n        overflow-wrap: break-word;\n        word-wrap: break-word;\n      \"\n    >\n      <strong\n        style=\"\n          color:#1e40af;\n          font-weight:700;\n          line-height:22px;\n          display:block;\n          padding-bottom:6px;\n        \"\n      >\n        Details:\n      </strong>\n      {{ $json.Link }}\n    </td>\n  </tr>\n\n  <!-- Image (optional) -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#fefefe;\n        padding:20px 12px 28px 12px;\n      \"\n    >\n      <img\n        src=\"{{ $json.ImageURL }}\"\n        alt=\"Informational Update Illustration\"\n        style=\"\n          display:block;\n          max-width:100%;\n          height:auto;\n          border-radius:4px;\n          border:1px solid #a3b1c6;\n        \"\n        loading=\"lazy\"\n      />\n    </td>\n  </tr>\n</table>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1980,
+        -360
+      ],
+      "id": "bb5ad076-7ae5-44bc-836e-a4af6361f7e7",
+      "name": "INFORMATION1"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        -200
+      ],
+      "id": "f0c23dd3-83ed-4200-bb87-9f95e8dd37be",
+      "name": "Wait",
+      "webhookId": "62e5a851-8860-4689-a8f6-36eddcaa21ba"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "24.127.131.242",
+            "x-forwarded-for": "24.127.131.242",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Microsoft Edge\";v=\"138\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "document",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2BbUfCSPcUWWdCnq%2FMAojWpAQUa2kZWR58%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX19P8E84LiY98aOuIBjTwB56MpuOWyxdieM%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiaUJna2RzOWJrRzgwSThNRUZqODNFOEEzSWRxeW8rYit0L2hPNnk5RHYwVT0iLCJpYXQiOjE3NTI0MzU5MjEsImV4cCI6MTc1MzA0MDcyMX0.wLAN4H7W9IEWYUKRKAUWsrM8vsPxpuQKLsBnQvfWoGE; _fbp=fb.1.1752436066638.233812261132029407; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX184JI4zaXTl26eXQA4EoVCD%2BGp1zeMEI2zqk2b0oJftOVtO6N8%2BekWRjh18l2iyoQebMurk0YZnyA%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19Z7hl0sBewKPwjY17pvaZUy5YNyALajB3RLWZnsGp2gRzjAYen2JPv3sZd%2BW5Mz8Dn2PFEKalPqFYu0k8e9ZDohZqJjWt5ZY0PHMA0TPd2ZzZd8ANSyEM6XLT0kDEGsv7NaRJsXPTYqBPTy2m4w47Pk7CW3WNNceA%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18%2FGNHvQp%2FkpIEQKsvrB3Uhrm3V03M7ptBxMakpY9rBvbuxGA5KjfIyefvtmhM0lMgdSHldS1nHfXmXT0kIQCpJY9XThVYPQxw1piPiJzSI%2BZihZiFjpth54EZcv4P6aRYq12A2DRwdvw%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1752707426305%2C%2201981558-0cb1-73c8-9d6e-75d75ce66a44%22%2C1752704748721%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX18s4cGqNeznA9H%2BtZEbeaC12x6yvva4keb%2FIg9cV8kRTHEymc1o%2B2D9Vw13NveaKtEPTRfdhnKBc90M9ENy7IZAC8IFGc9RD%2BU3lhtyrwh7keSNFKoUAqww7GzdVRR9rq8rXOH3JE2K1w%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "user": "msarafa",
+            "message": "<br> HQ Fire Update - The building is reopened and safe for occupancy. <br>*All employees are safe, thank you everyone for your calm and collected actions.<br>"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/c0553a95-c895-4920-8065-4c73334ddaa4",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-21T17:47:17.518Z",
+  "versionId": "587ff155-61c1-42ab-acfc-ebb4cede24b2"
+}
