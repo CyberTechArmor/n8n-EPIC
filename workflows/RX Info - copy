@@ -1,0 +1,217 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "XML1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-21T17:25:00.265Z",
+  "id": "Ho6xEY7w7yVnsbhT",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "RX Info - copy",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "de79c6aa-e67d-4b19-ba00-6102cf658564",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        560,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \nd.DEM_FIRSTNAME,d.DEM_LASTNAME,d.DEM_DATEOFBIRTH,d.DEM_EXTERNALID,\nd.DEM_HOMEADDR,d.DEM_SEX,d.DEM_PHARMACYCODE,d.DEM_PHARMACYCODE,d.DEM_MAILPHARMACYCODE,d.HOME_CARPHONE,d.HOME_ADDRESS,\nd.HOME_CITY,d.HOME_COUNTY,d.HOME_EMAILADDRESS,d.HOME_PHONE,d.HOME_ZIP,d.HOME_STATE,d.MAILPHARMACY_NAME,d.PHARMACY_NAME,\nc.PROV_FIRSTNAME,c.PROV_LASTNAME,c.IMREPROV_CODE,[ERXMESSAGE_ID]\n,[ERXMESSAGE_PROVIDER_ID],[ERXMESSAGE_SCRIPT_ID],[ERXMESSAGE_TYPE]\n,[ERXMESSAGE_STATUS],[ERXMESSAGE_XML],[ERXMESSAGE_ERROR],[ERXMESSAGE_DATE]\n,[ERXMESSAGE_PATIENT_ID],[NCPDP],[MED_ID],[REV_ID],[LOCALMAIL_FLAG],[CANCELED_FLAG]\n,[NOTIFY_FLAG],[ERXMESSAGE_XML_TYPE],[RETRY_COUNT],[RETRY_START_TIME],[REASON]\n--,[ERXMESSAGE_JSON],[ERXMESSAGE_PROCESSDATE]\n  FROM [EMR].[HPSITE].[ERXMESSAGE] M\n  left join [HPSITE].[DEMOGRAPHICS_VIEW] D on d.IMREDEM_CODE=m.ERXMESSAGE_PATIENT_ID\n  left join [HPSITE].[ALLCAREGIVERS_VIEW] C on c.IMREPROV_CODE=m.ERXMESSAGE_PROVIDER_ID\n  WHERE M.ERXMESSAGE_XML LIKE '%RITE%' AND CAST(M.ERXMESSAGE_DATE AS DATE) > DATEADD(DAY,-2,CAST(GETDATE() AS date))\n  ORDER BY M.ERXMESSAGE_DATE DESC\n\n\n"
+      },
+      "id": "441548fe-a7a8-4ccd-b91f-cb2a4805fb74",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        780,
+        180
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "={{ $json[\"ERXMESSAGE_XML\"] }}",
+        "options": {}
+      },
+      "id": "3b37f3e3-4fe7-4dd8-86c7-59bde19768b1",
+      "name": "XML",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c89c1f3c-aefd-4d4a-8c45-2fae9fa8c6b2",
+              "name": "ERXMESSAGE_XML",
+              "value": "={{ $json.ERXMESSAGE_XML }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d407b1b5-720f-49f3-bbb1-45ebe88280c8",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1040,
+        -340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "ERXMESSAGE_XML",
+        "options": {}
+      },
+      "id": "d93d2c2c-7421-49e0-9e19-9a19f43cfc8b",
+      "name": "XML1",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6851dceb-ee60-4635-a561-d2235e0cb5ab",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c53b1c44-8f3c-4175-a92a-8b7063db02d9",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1640,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "4d0e3388-fed0-4a40-96f0-f4ae6df58fd4",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1000,
+        180
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-06-01T20:41:48.993Z",
+      "updatedAt": "2024-06-01T20:41:48.993Z",
+      "id": "N7jx3FSOuxvAbK8V",
+      "name": "Thomas"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-23T13:20:39.158Z",
+  "versionId": "4e6e6b67-c2e0-4854-97f5-3eaeff04de7b"
+}
