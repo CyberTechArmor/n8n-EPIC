@@ -1,0 +1,211 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Search LDAP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search LDAP1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-28T11:59:13.199Z",
+  "id": "fPNuOEHwraBeKlHa",
+  "isArchived": false,
+  "meta": null,
+  "name": "LDAP Search",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a67fbf59-2db9-4e00-8574-f7bab6b07af6",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "f974539e-d467-4906-9c32-0038c0e4e011",
+      "name": "Search LDAP",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2c1a8f03-3df9-4ad0-8081-825e941d0b5b",
+              "name": "sAMAccountName",
+              "value": "={{ $json.sAMAccountName }}",
+              "type": "string"
+            },
+            {
+              "id": "5ac89536-8745-4c3e-9dc9-d004c52e5a36",
+              "name": "mail",
+              "value": "={{ $json.mail }}",
+              "type": "string"
+            },
+            {
+              "id": "e38b684b-8de4-4539-9fd2-d83360d8197f",
+              "name": "proxyAddresses",
+              "value": "={{ $json.proxyAddresses }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        -220
+      ],
+      "id": "e181104c-ada9-4624-91c5-a8800ebc4b13",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "baseDN": "OU=Service Accounts,OU=Other,OU=Exclus1ve Physicians,DC=ecoe,DC=local",
+        "searchFor": "(objectclass=user)",
+        "attribute": "sAMAccountName",
+        "searchText": "*",
+        "returnAll": true,
+        "options": {
+          "pageSize": 5000
+        }
+      },
+      "id": "cab94c47-f49d-4b96-9316-43a9c3ca2b5e",
+      "name": "Search LDAP1",
+      "type": "n8n-nodes-base.ldap",
+      "typeVersion": 1,
+      "position": [
+        220,
+        220
+      ],
+      "credentials": {
+        "ldap": {
+          "id": "lMuN0cx6hMG02pC1",
+          "name": "LDAP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2c1a8f03-3df9-4ad0-8081-825e941d0b5b",
+              "name": "sAMAccountName",
+              "value": "={{ $json.sAMAccountName }}",
+              "type": "string"
+            },
+            {
+              "id": "5ac89536-8745-4c3e-9dc9-d004c52e5a36",
+              "name": "mail",
+              "value": "={{ $json.mail }}",
+              "type": "string"
+            },
+            {
+              "id": "e38b684b-8de4-4539-9fd2-d83360d8197f",
+              "name": "proxyAddresses",
+              "value": "={{ $json.proxyAddresses }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        220
+      ],
+      "id": "1b2cc1c1-4f4a-4485-969f-76f053ba6688",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        220
+      ],
+      "id": "09c952bf-cea8-4a36-b51c-68e41d9f977a",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-03-28T21:24:56.623Z",
+  "versionId": "86e4a665-ce3d-4d7e-9af5-c3dfd6bd4e8b"
+}
