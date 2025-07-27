@@ -1,0 +1,2251 @@
+{
+  "active": true,
+  "connections": {
+    "Client Login into MarianaAI": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk6": {
+      "main": [
+        [
+          {
+            "node": "Extract from File4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk7": {
+      "main": [
+        [
+          {
+            "node": "Extract from File5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "USER12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "USER12": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Client Login into MarianaAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "MarianAI document upload call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook Thank You",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "USER12",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Patient Info": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EHR Patient Info1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Appointment Status2": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "PM Patient Info2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PM Patient Info2": {
+      "main": [
+        [
+          {
+            "node": "EHR Patient Info1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token": {
+      "main": [
+        [
+          {
+            "node": "Check Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Token": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF PM Token Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF PM Token Valid": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Extract PM Token1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PM Token1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Read PM Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Appointment Status3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Appointment Status3": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-24T21:57:14.350Z",
+  "id": "7ofQncCmRsMd8eIX",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MarianaAI Reason for visit",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "33c20e15-4b9d-4d61-9ee3-ad7fac1035ec",
+      "name": "[Demo Only step. Not needed by systems] Intermediate step to merge results.",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2060,
+        -760
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.marianaai.com/v1/uploadDocument",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "content-type",
+              "value": "multipart/form-data"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "document",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "documentGroup",
+              "value": "epichs"
+            },
+            {
+              "name": "linkedTo",
+              "value": "encounter"
+            },
+            {
+              "name": "entityId",
+              "value": "=epichs-{{ $json.getencounterbyapptidinfo[0][0].EncounterID }}"
+            },
+            {
+              "name": "documentDescriptor",
+              "value": "Reason for visit"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "114ef9af-260c-4857-9ffb-f4de620e34cf",
+      "name": "MarianAI document upload call",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2240,
+        -380
+      ],
+      "alwaysOutputData": true,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "url": "https://morth.nic.in/sites/default/files/dd12-13_0.pdf",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "downloadedFile"
+            }
+          }
+        }
+      },
+      "id": "1bc68984-c23a-4288-846d-02938be53e08",
+      "name": "Download dummy pdf file",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        -680
+      ],
+      "alwaysOutputData": false,
+      "notesInFlow": true,
+      "notes": "Download a dummy pdf file for uplaoding"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://app.marianaai.com/realms/external-client-webhook/protocol/openid-connect/token",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "content-type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "grant_type",
+              "value": "password"
+            },
+            {
+              "name": "client_id",
+              "value": "external-access"
+            },
+            {
+              "name": "username",
+              "value": "tnaman@epichs.org"
+            },
+            {
+              "name": "password",
+              "value": "UzbB2q&9^EKa"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "809bc561-faff-40a5-97bd-0d3c5e7aeeca",
+      "name": "Client Login into MarianaAI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1740,
+        -220
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "aca7e7d7-c2bc-4f55-9e12-acf11da7c011",
+      "name": "Read/Write Files from Disk6",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -460,
+        -80
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "921b3ff9-2646-4363-8f27-425de2cd9997",
+      "name": "Extract from File4",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -280,
+        -80
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "98d611f1-c749-4394-9258-69c4099d4d01",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        100,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "ffa9b435-740f-451c-b927-61a38e708aec",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        20
+      ],
+      "webhookId": "68208181-d1f9-48be-aa40-c046f9fecefa"
+    },
+    {
+      "parameters": {
+        "fileSelector": "ehrtoken.txt",
+        "options": {}
+      },
+      "id": "a057b201-e639-447f-9b6a-e65ee44f6fbe",
+      "name": "Read/Write Files from Disk7",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -180
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "1c1f8b67-0db8-44bc-8b30-8e25d8b41c41",
+      "name": "Extract from File5",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        460,
+        -180
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"Action\":\"GetUserAuthentication\",     \"AppUserID\":\"{{ $('USER12').item.json.user }}\",     \"Appname\":\"EPICPC.NMNWokflow.TestApp\",     \"PatientID\":\"\",     \"Token\":\"{{ $json[\"data\"] }}\",     \"Parameter1\":\"{{ $('USER12').item.json.password }}\"    } ",
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "1c4fc90e-7214-48f9-867d-d84262b9dda3",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -80,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# EHR Authentication - HEROERP",
+        "height": 426.115682381651,
+        "width": 1586.9735546694517,
+        "color": 5
+      },
+      "id": "fc9b7bb5-3241-40aa-9b4a-dfd766f1b154",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "6b7bc3fa-ce19-4200-a189-84e39a5f566f",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        540,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0d5be33e-49ee-4520-97ba-62448a098f4d",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        660,
+        -175
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b806a87b-407c-47eb-b9ba-1aca0d81400d",
+              "name": "user",
+              "value": "HEROERP",
+              "type": "string"
+            },
+            {
+              "id": "c45539b3-dcfd-4d9b-a267-54d31648d3b0",
+              "name": "password",
+              "value": "3p1c#123456",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9a5ea770-17ea-4c74-b089-6fda7a77244d",
+      "name": "USER12",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -620,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=GetEncounterByApptID"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Merge2').item.json.IMREDEM_CODE }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Webhook').item.json.query.appointmentid }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=PM"
+            },
+            {
+              "name": "Parameter3",
+              "value": "="
+            },
+            {
+              "name": "Parameter4",
+              "value": "N"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Y"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "b65724ac-810a-42cb-9a07-67e5d0de00c6",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pdf.epicpc.com/api/v1/convert/markdown/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "fileInput",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "034a85cc-f25f-47cd-b567-8defbcdb7a54",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.data }}",
+        "options": {}
+      },
+      "id": "dc75318a-ca9a-42e7-b59a-360952ad6ab7",
+      "name": "Markdown",
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://pdf.epicpc.com/",
+        "options": {}
+      },
+      "id": "1529de78-3348-467f-b958-44791fc6422f",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -780,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "marianaai-test.md",
+        "options": {}
+      },
+      "id": "8cdab383-20fd-4c3a-b486-b96c7b0fccd2",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "data",
+        "options": {}
+      },
+      "id": "475f96ef-973e-47d9-a9b3-1302985e14b8",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "marianaai-test.md",
+        "options": {
+          "fileName": "marianaai-test.md"
+        }
+      },
+      "id": "b31ef65e-7e88-4c9e-9914-4581cd4b5266",
+      "name": "Read/Write Files from Disk1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        60,
+        -1000
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5c273d73-ea0f-4e07-a265-8855fe903f01",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "getencounterbyapptidinfo"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "83563f05-9d78-4208-972e-0b0d210c6da1",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "554436a8-2db9-43a9-954a-c37ad899819d",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1940,
+        -380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "16316d5b-64c5-464d-9edf-a0852a33284b",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1320,
+        -400
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Thank You!</title>\n    <style>\n        body {\n            font-family: 'Arial', sans-serif;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            height: 100vh;\n            margin: 0;\n            background: #f5b800;\n            color: #fff;\n            text-align: center;\n        }\n        .container {\n            background: #333;\n            padding: 50px;\n            border-radius: 10px;\n            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n            max-width: 600px;\n            width: 100%;\n        }\n        h1 {\n            font-size: 2.4em;\n            margin-bottom: 30px;\n            text-align: center;\n        }\n        p {\n            font-size: 1.5em;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Thank You!</h1>\n        <p>Your appointment has been confirmed.</p>\n    </div>\n\n    <!-- Confetti Canvas -->\n    <canvas id=\"confettiCanvas\" style=\"position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;\"></canvas>\n\n    <!-- Confetti Script -->\n    <script src=\"https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js\"></script>\n    <script>\n        document.addEventListener('DOMContentLoaded', function() {\n            var confettiCanvas = document.getElementById('confettiCanvas');\n            var myConfetti = confetti.create(confettiCanvas, { resize: true });\n\n            function launchConfetti() {\n                myConfetti({\n                    particleCount: 100,\n                    spread: 70,\n                    origin: { y: 0.6 }\n                });\n            }\n\n            // Launch confetti when the page loads\n            launchConfetti();\n            // Launch confetti every 5 seconds\n            setInterval(launchConfetti, 5000);\n        });\n    </script>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "963ad6fa-9225-4bfe-861e-32ae6187c6fd",
+      "name": "Respond to Webhook Thank You",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -900,
+        -1200
+      ]
+    },
+    {
+      "parameters": {
+        "path": "14d42e15-ba35-4749-b678-01b0601d8bc8",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e19db4fa-f056-4b3b-8e6a-14e3545214d1",
+      "name": "Webhook1",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1180,
+        -1200
+      ],
+      "webhookId": "14d42e15-ba35-4749-b678-01b0601d8bc8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4d1b9e3-d7bf-49b1-87c7-6966158c1eef",
+              "name": "Reason For Visit",
+              "value": "=Reason for visit:\n{{ $json.body.reasonforvisit }}\n\nAdditional Information:\n{{ $json.body.symptoms }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "14f8f051-c69d-4557-8dab-9d9bb5d4640c",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -560,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "Reason For Visit",
+        "options": {}
+      },
+      "id": "cc92768b-2a12-479c-9b87-dc3acf8c78c7",
+      "name": "Convert to File1",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://pdf.epicpc.com/api/v1/convert/file/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "fileInput",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a5f34145-6e5c-45d4-b943-58f0b2dbe98d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=mrn-{{ $('Webhook').item.json.query.mrn }}_appt-{{ $('Webhook').item.json.query.appointmentid }}.txt",
+        "options": {}
+      },
+      "id": "91e61ecc-8f4a-4144-a811-c942240fb099",
+      "name": "Read/Write Files from Disk2",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.fileName }}",
+        "options": {
+          "fileName": "marianaai-test.md"
+        }
+      },
+      "id": "55d3bbd8-884b-45ea-a19d-f9c967239357",
+      "name": "Read/Write Files from Disk3",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        60,
+        -540
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e31e5a5f-b83d-4116-8fbb-547549d1b57e",
+        "options": {}
+      },
+      "id": "4b9c6332-79c2-4733-8cdf-dbdaf68393ef",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2600,
+        -500
+      ],
+      "webhookId": "e31e5a5f-b83d-4116-8fbb-547549d1b57e"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=GetEncounterByApptID"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "=80076"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Webhook').item.json.query.appointmentid }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=PM"
+            },
+            {
+              "name": "Parameter3",
+              "value": "="
+            },
+            {
+              "name": "Parameter4",
+              "value": "N"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Y"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "c3c4b1fd-7533-4dd9-9989-2b139c4bfb1c",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "8a07dd0c-0063-44fc-b45a-66543d22c106",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -1000,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT [IMREDEM_CODE]\n      ,[DEM_EXTERNALID]\n      ,[DEM_LASTNAME]\n      ,[DEM_FIRSTNAME]\n      ,[DEM_FULLNAME_REVERSED]\n      ,[DEM_FULLNAME]\n      ,[DEM_SEX]\n      ,[DEM_DATEOFBIRTH]\n      ,[DEM_STATUS]\n      ,[DEM_HOMEADDR]\n      ,[HOME_ADDRESS]\n      ,[HOME_CITY]\n      ,[HOME_STATE]\n      ,[HOME_ZIP]\n      ,[HOME_PHONE]\n      ,[HOME_CARPHONE]\n      ,[HOME_EMAILADDRESS]\n\n  FROM [EMR].[HPSITE].[DEMOGRAPHICS_VIEW]\n\nWHERE DEM_EXTERNALID = '{{ $json.query.mrn }}'"
+      },
+      "id": "0ae60bd7-bd77-48bd-b0b0-534cc16c37f4",
+      "name": "EHR Patient Info",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -1120,
+        560
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=GetEncounterByApptID"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Merge2').item.json.IMREDEM_CODE }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Webhook').item.json.query.appointmentid }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=PM"
+            },
+            {
+              "name": "Parameter3",
+              "value": "="
+            },
+            {
+              "name": "Parameter4",
+              "value": "N"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Y"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "9efcc2ab-b7c9-42b5-8e54-76623c175ff2",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT [IMREDEM_CODE]\n      ,[DEM_EXTERNALID]\n      ,[DEM_LASTNAME]\n      ,[DEM_FIRSTNAME]\n      ,[DEM_FULLNAME_REVERSED]\n      ,[DEM_FULLNAME]\n      ,[DEM_SEX]\n      ,[DEM_DATEOFBIRTH]\n      ,[DEM_STATUS]\n      ,[DEM_HOMEADDR]\n      ,[HOME_ADDRESS]\n      ,[HOME_CITY]\n      ,[HOME_STATE]\n      ,[HOME_ZIP]\n      ,[HOME_PHONE]\n      ,[HOME_CARPHONE]\n      ,[HOME_EMAILADDRESS]\n\n  FROM [EMR].[HPSITE].[DEMOGRAPHICS_VIEW]\n\nWHERE DEM_EXTERNALID = '{{ $json.Patient_Number }}'"
+      },
+      "id": "2069da70-f676-4b01-8358-d7de5777195c",
+      "name": "EHR Patient Info1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -1160,
+        0
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"HEROERP\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook').item.json.body.appt.replace(/\\?.*$/, '') }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9ee9db20-3882-465b-823e-11c796f881a7",
+      "name": "HTTP Appointment Status2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1540,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook').item.json.body.appt.replace(/\\?.*$/, '') }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "f2681d5c-ab5a-4e53-a697-5eaddf41d3ee",
+      "name": "HTTP Appointment Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1720,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "getappointmentbyidinfo",
+        "options": {}
+      },
+      "id": "4abfe62a-957b-4f79-87ee-4d9f41a8f5a9",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -1540,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n\nWHERE Patient_ID = '{{ $json.Patient_ID }}'"
+      },
+      "id": "e041212a-148b-48d8-96e3-d4517f599793",
+      "name": "PM Patient Info2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -1340,
+        0
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n\nWHERE Patient_Number = '137836'"
+      },
+      "id": "765f2122-10fc-45c8-98c2-236480e67741",
+      "name": "PM Patient Info",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -1340,
+        740
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n        g.Patient_ID,\n        g.Patient_Number,\n        g.Patient_Name,\n        g.Patient_LFI,\n        g.Patient_First_Name,\n        g.Patient_Last_Name,\n        g.Patient_Street1,\n        g.Patient_City,\n        g.Patient_State,\n        g.Patient_Zip_Code,\n        g.Patient_SSN,\n        g.Patient_Sex,\n        g.Patient_DOB, \n        g.Patient_Age,\n        g.Patient_Marital_Status,\n        g.Patient_Home_Phone,\n        g.Patient_Cell_Phone,\n        g.Patient_Primary_Phone_Number,\n       CASE \n            WHEN g.Patient_Email IS NULL OR g.Patient_Email NOT LIKE '%_@__%.__%' THEN 'nothing@nothing.com'\n            ELSE g.Patient_Email\n        END AS patient_email,\n        'EHS Patient' AS BitrixPatientStatus\n    FROM [PM].[vwGenPatInfo] g\n\nWHERE Patient_Number = '{{ $json.query.mrn }}'"
+      },
+      "id": "6f3bb2e0-33c1-469a-aa9b-d749e106cf04",
+      "name": "PM Patient Info3",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -1340,
+        540
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "d5d0496b-656e-4558-b52d-d7500bd35593",
+      "name": "Read PM Token",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -3200,
+        180
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "a11fb08b-5b3b-45ed-812a-1d8840d1c19f",
+      "name": "Extract PM Token",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -3060,
+        180
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetUserAuthentication\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json[\"data\"] }}\",\n\"Parameter1\":\"C0nn3ctme#1234\"\n}\n",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "75a5a49a-564d-4d80-84d6-a03f48ce9b45",
+      "name": "Check Token",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -2880,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.data = JSON.parse(item.json.data);\n}\n\nreturn $input.all();"
+      },
+      "id": "00741eff-03dc-4382-aa1b-bf8d5389b49c",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2740,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "id": "e899e7fc-2bfc-462b-901f-1797e42452d9",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -2400,
+        280
+      ],
+      "webhookId": "d93c0e71-11e4-419a-9098-23934fd85b91"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data[0].getuserauthenticationinfo[0].ValidUser }}",
+              "value2": "YES"
+            }
+          ]
+        }
+      },
+      "id": "a9138715-d599-4417-851e-0d8d06427579",
+      "name": "IF PM Token Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -2560,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# ASPM Authentication APPTCONF",
+        "height": 373.491094826977,
+        "width": 1403.1472052879556,
+        "color": 6
+      },
+      "id": "b8226c27-4a5c-4171-9993-56ee77662d90",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -3240,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": "pmtoken-apptconf.txt",
+        "options": {}
+      },
+      "id": "7c438048-588e-451e-a7e3-083e3531371a",
+      "name": "Read PM Token1",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        -2340,
+        120
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "id": "a7844688-3a00-484b-9bc1-01e9121986b3",
+      "name": "Extract PM Token1",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -2200,
+        120
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "aUCNcTe36bHU5YKn",
+        "options": {}
+      },
+      "id": "20ed5757-8ec0-4b0d-b554-74559bb258a2",
+      "name": "Execute Workflow1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        -2220,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7588a9fa-9c56-4c5d-8e77-30bda7a5d1ef",
+              "name": "Token",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6de1ff5e-848a-4425-8c28-bbfeac3f99ca",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -2040,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.47:10443/UnityPM/UnityService.svc/json/magicjson",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"Action\":\"GetAppointmentById\",\n\"AppUserID\":\"apptconf\",\n\"Appname\":\"EPICPC.NMNWokflow.TestApp\",\n\"PatientID\":\"\",\n\"Token\":\"{{ $json.Token }}\",\n\"Parameter1\":\"{{ $('Webhook').item.json.body.appt.replace(/\\?.*$/, '') }}\",\n\"Parameter2\":\"\",\n\"Parameter3\":\"\",\n\"Parameter4\":\"\",\n\"Parameter5\":\"\",\n\"Parameter6\":\"\",\n\"Data\":\"\"\n \n}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "6710bbc9-c294-4df8-8668-17cb7d5f925e",
+      "name": "HTTP Appointment Status3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1800,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://10.0.1.46/Unity/UnityService.svc/json/MagicJson",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Action",
+              "value": "=GetEncounterByApptID"
+            },
+            {
+              "name": "AppUserID",
+              "value": "heroerp"
+            },
+            {
+              "name": "Appname",
+              "value": "EPICPC.NMNWokflow.TestApp"
+            },
+            {
+              "name": "PatientID",
+              "value": "={{ $('Merge2').item.json.IMREDEM_CODE }}"
+            },
+            {
+              "name": "Token",
+              "value": "={{ $json[\"Token\"] }}"
+            },
+            {
+              "name": "Parameter1",
+              "value": "={{ $('Webhook').item.json.query.appointmentid }}"
+            },
+            {
+              "name": "Parameter2",
+              "value": "=PM"
+            },
+            {
+              "name": "Parameter3",
+              "value": "="
+            },
+            {
+              "name": "Parameter4",
+              "value": "N"
+            },
+            {
+              "name": "Parameter5"
+            },
+            {
+              "name": "Parameter6",
+              "value": "Y"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true
+        }
+      },
+      "id": "d0728943-6ff4-4676-af5e-5bc3a7dde17a",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        0
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.161",
+            "x-forwarded-for": "10.0.1.161",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "125",
+            "content-type": "application/json",
+            "accept": "*/*",
+            "accept-language": "*",
+            "sec-fetch-mode": "cors",
+            "user-agent": "node",
+            "accept-encoding": "br, gzip, deflate"
+          },
+          "params": {},
+          "query": {
+            "mrn": "197520",
+            "appointmentid": "25329267"
+          },
+          "body": {
+            "submittedAt": "2024-10-25T20:53:01.924Z",
+            "reasonforvisit": "my cough",
+            "symptoms": "2 days ago",
+            "appt": "2345345",
+            "pn": "197520"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/e31e5a5f-b83d-4116-8fbb-547549d1b57e",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP Request4": [
+      {
+        "json": {
+          "getencounterbyapptidinfo": [
+            {
+              "EncounterNoteStartedFlag": "N",
+              "EncounterLockFlag": "Y",
+              "EncounterCloseTime": "",
+              "EncounterBillingModifier2": "",
+              "EncounterBillingModifier1": "",
+              "EncounterTypeID": "98",
+              "EncounterSignedOff": "N",
+              "EncounterStartTime": "10/25/2024 12:21:28 PM",
+              "EncounterBillingLevel": "",
+              "EncounterID": "24974339",
+              "EncounterProviderID": "12138",
+              "EncounterProviderCode": "HEROERP",
+              "EncounterTypeName": "Review"
+            }
+          ]
+        }
+      },
+      {
+        "json": {
+          "getencounterbyapptidinfo1": [
+            {
+              "status": "success",
+              "ContactID": "35950554",
+              "EncounterID": "24974339"
+            }
+          ]
+        }
+      }
+    ],
+    "EHR Patient Info": [
+      {
+        "json": {
+          "IMREDEM_CODE": 80076,
+          "DEM_EXTERNALID": "197520",
+          "DEM_LASTNAME": "TEST",
+          "DEM_FIRSTNAME": "TEDDY",
+          "DEM_FULLNAME_REVERSED": "TEST, TEDDY MR",
+          "DEM_FULLNAME": "TEDDY TEST, MR",
+          "DEM_SEX": 1,
+          "DEM_DATEOFBIRTH": "1971-02-01T00:00:00.000Z",
+          "DEM_STATUS": 1,
+          "DEM_HOMEADDR": 41844170,
+          "HOME_ADDRESS": "1111 PROVIDENCE DR.,",
+          "HOME_CITY": "DETROIT",
+          "HOME_STATE": "MI   ",
+          "HOME_ZIP": "48235",
+          "HOME_PHONE": "(234) 232-9342",
+          "HOME_CARPHONE": "(248) 677-1838",
+          "HOME_EMAILADDRESS": "test@gmail.com"
+        }
+      }
+    ],
+    "HTTP Request5": [
+      {
+        "json": {
+          "getencounterbyapptidinfo": [
+            {
+              "EncounterNoteStartedFlag": "N",
+              "EncounterLockFlag": "Y",
+              "EncounterCloseTime": "",
+              "EncounterBillingModifier2": "",
+              "EncounterBillingModifier1": "",
+              "EncounterTypeID": "98",
+              "EncounterSignedOff": "N",
+              "EncounterStartTime": "10/25/2024 6:19:25 PM",
+              "EncounterBillingLevel": "",
+              "EncounterID": "24978309",
+              "EncounterProviderID": "12138",
+              "EncounterProviderCode": "HEROERP",
+              "EncounterTypeName": "Review"
+            }
+          ]
+        }
+      },
+      {
+        "json": {
+          "getencounterbyapptidinfo1": [
+            {
+              "status": "success",
+              "ContactID": "35957170",
+              "EncounterID": "24978309"
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP Appointment Status2": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP Appointment Status": [
+      {
+        "json": {
+          "getappointmentbyidinfo": [
+            {
+              "Noshow_Op_LastName": "",
+              "Resource_Abbr": "PALAB",
+              "Has_Benefit_Plan_FLAG": "",
+              "Specialist_CoPay_Applies": "",
+              "DepartmentAbbr": "EP      ",
+              "Ref_Dr_Practitioner_ID": "2164",
+              "AttendingFirstName": "Lab X-Ray",
+              "Patient_ID": "137836",
+              "Patient_DOB": "02/01/1971",
+              "Appt_Sched_Location_Abbr": "EPICBill",
+              "Check_Out_Time": "",
+              "Scheduling_Department_ID": "12",
+              "Noshow_Op_MI": "",
+              "Cancellation_Op_FirstName": "",
+              "Patient_Cell_Phone": "2486771838",
+              "Noshow_Operator_Abbr": "",
+              "Scheduled_by_Op_LastName": "Naman",
+              "Scheduling_Location_ID": "88",
+              "Patient_Last_Name": "TEST",
+              "Scheduled_by_Op_MI": " ",
+              "Linked_Incoming_Referral_ID": "0",
+              "Resource_ID": "7",
+              "AttendingPractitionerID": "2102",
+              "Coverage_Type": "M",
+              "Ailment_ID": "",
+              "Pending_Avail_Update_Count": "0",
+              "Scheduled_By_Operator_ID": "1368",
+              "Bumped_Op_MI": "",
+              "Is_Group_Appointment": "0",
+              "Cancellation_Reason_ID": "",
+              "Bumped_Reason_ID": "",
+              "Patient_First_Name": "TEDDY",
+              "Check_In_Time": "",
+              "Bumped_By_Operator_ID": "4362",
+              "Cancellation_Reason_Abbr": "",
+              "LocationAbbr": "",
+              "Appt_Type_Desc": "PA/Lab - Other",
+              "Patient_Email_Address": "test@gmail.com",
+              "Cancellation_Op_LastName": "",
+              "DateTime_Cancelled": "",
+              "CoPayment_Amount": "",
+              "Status": "B",
+              "DateTime_Scheduled": "8/1/2024 1:40:08 PM",
+              "Patient_Comments": "Patient preferst to be called Ted",
+              "Appointment_ID": "25201003",
+              "Appt_Sched_Department_Abbr": "EPIC PC",
+              "LastRequestDateTime": "",
+              "DateTime_NoShow": "",
+              "Appt_Sched_Department_Desc": "EPIC PC",
+              "Division_Abbr": "",
+              "AttendingSuffix": "",
+              "Link_Control_Number": "0",
+              "Patient_Suffix": "MR",
+              "Scheduled_by_Op_FirstName": "Ted",
+              "LastResponseDateTime": "",
+              "Patient_Number": "197520",
+              "Location_ID": "",
+              "Eligibility_Status_Coverage": "",
+              "Is_Forced_Appointment": "True",
+              "DateTime_Bumped": "8/1/2024 1:52:30 PM",
+              "NoShow_By_Operator_ID": "",
+              "AttendingMI": "",
+              "Bumped_Op_LastName": "conf",
+              "Cancellation_Operator": "",
+              "Duration": "5",
+              "AttendingSpecialty": "",
+              "Appt_Type_Abbr": "Lab/Xray",
+              "Patient_Middle_Initial": "",
+              "Cancellation_Reason_Desc": "",
+              "Bumped_Reason_Abbr": "",
+              "Cancellation_Op_MI": "",
+              "Appt_Sched_Location_Desc": "EPIC Billing Office",
+              "Appt_Comments": "test for THomas",
+              "Noshow_Op_FirstName": "",
+              "Visit_Type_ID": "",
+              "Bumped_Op_FirstName": "appt",
+              "Department_ID": "9",
+              "Encounter_Number": "",
+              "Appointment_DateTime": "08/04/2024 8:00AM",
+              "Scheduled_by_Operator": "epictnam",
+              "Bumped_Reason_Desc": "",
+              "Division_ID": "",
+              "Attached_Incoming_Referral_ID": "0",
+              "Ailment_Comments": "",
+              "Eligibility_Status": "0",
+              "Bumped_Operator": "apptconf",
+              "Cancelled_By_Operator_ID": "",
+              "AttendingLastName": "PA",
+              "DateTIme_Confirmed": "8/1/2024 1:48:16 PM",
+              "AttendingAbbreviation": "PALAB",
+              "Eligible_RealTime": "",
+              "Appointment_Type_ID": "38"
+            }
+          ]
+        }
+      }
+    ],
+    "PM Patient Info3": [
+      {
+        "json": {
+          "Patient_ID": 137836,
+          "Patient_Number": "197520",
+          "Patient_Name": "TEDDY TEST MR",
+          "Patient_LFI": "TEST, TEDDY",
+          "Patient_First_Name": "TEDDY",
+          "Patient_Last_Name": "TEST",
+          "Patient_Street1": "1111 PROVIDENCE DR.,",
+          "Patient_City": "DETROIT",
+          "Patient_State": "MI",
+          "Patient_Zip_Code": "48235",
+          "Patient_SSN": "123456789",
+          "Patient_Sex": "F",
+          "Patient_DOB": "1971-02-01T00:00:00.000Z",
+          "Patient_Age": 53,
+          "Patient_Marital_Status": "Separated",
+          "Patient_Home_Phone": "2342329342",
+          "Patient_Cell_Phone": "2486771838",
+          "Patient_Primary_Phone_Number": null,
+          "patient_email": "test@gmail.com",
+          "BitrixPatientStatus": "EHS Patient"
+        }
+      }
+    ],
+    "HTTP Request6": [
+      {
+        "json": {
+          "getencounterbyapptidinfo": [
+            {
+              "EncounterNoteStartedFlag": "N",
+              "EncounterLockFlag": "Y",
+              "EncounterCloseTime": "",
+              "EncounterBillingModifier2": "",
+              "EncounterBillingModifier1": "",
+              "EncounterTypeID": "98",
+              "EncounterSignedOff": "N",
+              "EncounterStartTime": "10/25/2024 6:19:25 PM",
+              "EncounterBillingLevel": "",
+              "EncounterID": "24978309",
+              "EncounterProviderID": "12138",
+              "EncounterProviderCode": "HEROERP",
+              "EncounterTypeName": "Review"
+            }
+          ]
+        }
+      },
+      {
+        "json": {
+          "getencounterbyapptidinfo1": [
+            {
+              "status": "success",
+              "ContactID": "35957170",
+              "EncounterID": "24978309"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-10-26T15:27:22.669Z",
+  "versionId": "9c33467c-bda6-4344-8680-7e33791a1b7a"
+}
