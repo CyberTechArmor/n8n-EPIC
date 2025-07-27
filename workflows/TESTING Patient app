@@ -1,0 +1,221 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-20T12:55:25.753Z",
+  "id": "4Xnx0S8ohdW420Q0",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "TESTING Patient app",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a63b6949-2f2f-4510-bcb7-a709de9a73de",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(250) = '1223400'; -- Example MRN\nDECLARE @cpt VARCHAR(250) = '%%';\n\nSELECT\n    P.IMRECONTACT_CODE,\n    dm.DEM_EXTERNALID AS MRN,\n    P.IMREDEMEC_CODE,\n    P.PROC_CODE,\n    P.PROC_TITLE,\n    CAST(P.PROC_COLLECTEDDATE AS DATE) AS PROC_COLLECTIONDATE,\n    CAST(P.PROC_REVIEWEDDATE AS DATE) AS PROC_REVIEWEDDATE,\n    P.TAG_SYSTEMDATE,\n    CAST(P.PROC_ORDERDATE AS DATE) AS PROC_ORDERDATE,\n    m.*,\n    dp.*,\n    s.*,\n    CASE\n        WHEN dp.FILELOCATION IS NULL THEN 'NoDocumentToDisplay'\n        ELSE dp.FILELOCATION\n    END AS FILELOCATION,\n    dp.PAGENUMBER,\n    CASE\n        WHEN s.IMREDEM_CODE = P.IMREDEMEC_CODE THEN 'correct_imredem_code'\n        ELSE 'dont_display_wrong_chart'\n    END AS [correct_patient]\nFROM [EMR].[HPSITE].[UAIProceduresView] p\nLEFT JOIN [HPSITE].[SCAN_DOCUMENTMAP] m ON p.IMREPROC_CODE = m.CODE\nLEFT JOIN [HPSITE].[SCAN_DOCUMENTPAGE] dp ON m.DOCUMENT_ID = dp.DOCUMENT_ID\nLEFT JOIN [HPSITE].[SCAN_DOCUMENT] s ON s.DOCUMENT_ID = dp.DOCUMENT_ID\nLEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] dm ON p.IMREDEMEC_CODE = dm.IMREDEM_CODE\nWHERE CAST(p.PROC_ORDERDATE AS DATE) BETWEEN '2020-08-01' AND CAST(GETDATE() AS DATE)\n  AND dm.DEM_EXTERNALID = @MRN\n  AND (s.IMREDEM_CODE = P.IMREDEMEC_CODE OR s.IMREDEM_CODE IS NULL) -- Match or NULL\nORDER BY p.TAG_SYSTEMDATE;\n"
+      },
+      "id": "53723025-456c-49b2-a355-db8569174822",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        420
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cea78b1b-ff14-4dc4-9476-449dfb9bc495",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1260,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(250) = '1223400'; -- Example MRN\nDECLARE @cpt VARCHAR(250) = '%%';\n\nSELECT\n    P.IMRECONTACT_CODE,\n    dm.DEM_EXTERNALID AS MRN,\n    P.IMREDEMEC_CODE,\n    P.PROC_CODE,\n    P.PROC_TITLE,\n    CAST(P.PROC_COLLECTEDDATE AS DATE) AS PROC_COLLECTIONDATE,\n    CAST(P.PROC_REVIEWEDDATE AS DATE) AS PROC_REVIEWEDDATE,\n    P.TAG_SYSTEMDATE,\n    CAST(P.PROC_ORDERDATE AS DATE) AS PROC_ORDERDATE,\n    m.*,\n    dp.*,\n    s.*,\n    CASE\n        WHEN dp.FILELOCATION IS NULL THEN 'NoDocumentToDisplay'\n        ELSE dp.FILELOCATION\n    END AS FILELOCATION,\n    dp.PAGENUMBER,\n    CASE\n        WHEN s.IMREDEM_CODE = P.IMREDEMEC_CODE THEN 'correct_imredem_code'\n        ELSE 'dont_display_wrong_chart'\n    END AS [correct_patient]\nFROM [EMR].[HPSITE].[UAIProceduresView] p\nLEFT JOIN [HPSITE].[SCAN_DOCUMENTMAP] m ON p.IMREPROC_CODE = m.CODE\nLEFT JOIN [HPSITE].[SCAN_DOCUMENTPAGE] dp ON m.DOCUMENT_ID = dp.DOCUMENT_ID\nLEFT JOIN [HPSITE].[SCAN_DOCUMENT] s ON s.DOCUMENT_ID = dp.DOCUMENT_ID\nLEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] dm ON p.IMREDEMEC_CODE = dm.IMREDEM_CODE\nWHERE CAST(p.PROC_ORDERDATE AS DATE) BETWEEN '2020-08-01' AND CAST(GETDATE() AS DATE)\n  AND dm.DEM_EXTERNALID = @MRN\n  AND s.IMREDEM_CODE = P.IMREDEMEC_CODE -- Add condition for matching codes\nORDER BY p.TAG_SYSTEMDATE;\n"
+      },
+      "id": "d43cbcb2-7032-40b3-9860-a0638e95e420",
+      "name": "Microsoft SQL1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1040,
+        240
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const email = 'vhabbo@epichs.org';\nconst password = 'thisisatest';\n\nconst payload = { email };\nconst validationKey = process.env.BITRIX_VALIDATION_KEY; // Make sure this is set in your environment\n\ntry {\n  // Generate the JWT token (manually if needed)\n  const token = await this.jwtService.signAsync(payload, {\n    secret: validationKey,\n  });\n\n  // Define the webhook URL\n  const webhookUrl =\n    'https://ehs.unitycarecrm.com/rest/362/mz293ycf3h07sf19/integration.authentication.token.json';\n\n  // Make the POST request\n  const response = await axios.post(webhookUrl, null, {\n    headers: {\n      'Content-Type': 'application/json',\n      'Pre-Auth-Token': token,\n    },\n  });\n\n  // Log and return the response\n  console.log('Response:', response.data);\n  return response.data;\n} catch (error) {\n  // Log any errors for debugging\n  console.error('Error:', error.message);\n  throw new Error(`Failed to execute request: ${error.message}`);\n}\n"
+      },
+      "id": "b23c747d-3f0f-4884-954c-e590f9efbd96",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6ff70e89-5f98-4748-84a4-8f2eefd0ddb5",
+              "name": "email",
+              "value": "vhabbo@epichs.org",
+              "type": "string"
+            },
+            {
+              "id": "0e776652-2e89-4e81-981c-c586393e2acf",
+              "name": "password",
+              "value": "thisisatest",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5032d1eb-7c7c-4056-a56a-d806167c942c",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "useJson": true,
+        "claimsJson": "  {\n    \"payload\": {\n      \"email\": \"vhabbo@epichs.org\",\n      \"iat\": \"1732202811\",\n      \"exp\": \"1732235211\"\n    }\n  }\n",
+        "options": {}
+      },
+      "id": "aa6f8950-0d90-46d6-9bf1-3a8f36eeec6a",
+      "name": "JWT",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        -240
+      ],
+      "credentials": {
+        "jwtAuth": {
+          "id": "VUqcszGoIJPF4DCJ",
+          "name": "JWT Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "decode",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1iaGF0dGlAdGVjaHRpei5jbyIsImlhdCI6MTczMjExMDc3NSwiZXhwIjoxNzMyNTQyNzc1fQ.AZwnvKd69F5IGfARCWvZft2Us_FpLY_M5ctopFMKHPQ",
+        "options": {}
+      },
+      "id": "d0f57684-ae5f-4140-944a-78cec709786b",
+      "name": "JWT1",
+      "type": "n8n-nodes-base.jwt",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        -40
+      ],
+      "credentials": {
+        "jwtAuth": {
+          "id": "VUqcszGoIJPF4DCJ",
+          "name": "JWT Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "JWT1": [
+      {
+        "json": {
+          "payload": {
+            "email": "vhabbo@epichs.org",
+            "iat": "1732202811",
+            "exp": "1732235211"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-21T17:21:08.907Z",
+  "versionId": "64b0ff49-87d5-4b5d-a3fe-92df54faca47"
+}
