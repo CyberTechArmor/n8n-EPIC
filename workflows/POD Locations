@@ -1,0 +1,107 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "POD Location",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-29T12:44:26.704Z",
+  "id": "NOHEnn7ziB233YhM",
+  "isArchived": false,
+  "meta": null,
+  "name": "POD Locations",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        0
+      ],
+      "id": "97992921-a5e6-4e4e-96d9-d683aff126e4",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "genai",
+          "mode": "list",
+          "cachedResultName": "genai"
+        },
+        "table": {
+          "__rl": true,
+          "value": "patient_insurance_info",
+          "mode": "list",
+          "cachedResultName": "patient_insurance_info"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        340,
+        -220
+      ],
+      "id": "079c6217-f3db-4a08-b68b-d67104b42882",
+      "name": "Insurance Info",
+      "credentials": {
+        "postgres": {
+          "id": "l9wOaKDbxuHi9VJg",
+          "name": "GenAI and Insurance"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "pod_locations",
+          "mode": "list",
+          "cachedResultName": "pod_locations"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        340,
+        0
+      ],
+      "id": "34499be9-95e9-425b-9414-0ce9e13606e4",
+      "name": "POD Location",
+      "credentials": {
+        "postgres": {
+          "id": "Wd6SqsRS68hqFMoo",
+          "name": "POD Locations"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-12-29T13:33:13.941Z",
+  "versionId": "12023d77-cc11-4eaf-b7ce-28ec60347832"
+}
