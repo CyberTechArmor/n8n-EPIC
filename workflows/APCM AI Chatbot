@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-12T20:31:54.700Z",
+  "id": "iyYCFNYi9391iiHu",
+  "isArchived": false,
+  "meta": null,
+  "name": "APCM AI Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "d48f9cd1-5664-4053-94af-b65e81cfd720",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "532c0d37-d074-4af2-8b3c-d4a5072b4147",
+      "name": "Webhook",
+      "webhookId": "d48f9cd1-5664-4053-94af-b65e81cfd720"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<script type=\"text/javascript\">\n  window.tiledeskSettings = {\n        projectid: \"6797ae36b05cd900122000db\"\n  };\n  (function(d, s, id) {\n       var w=window; var d=document; var i=function(){i.c(arguments);};\n       i.q=[]; i.c=function(args){i.q.push(args);}; w.Tiledesk=i;\n       var js, fjs=d.getElementsByTagName(s)[0];\n       if (d.getElementById(id)) return;\n       js=d.createElement(s);\n       js.id=id; js.async=true; js.src=\"https://chat.myunitycare.com/widget/launch.js\";\n       fjs.parentNode.insertBefore(js, fjs);\n  }(document,'script','tiledesk-jssdk'));\n</script>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "1fb9cbdd-b632-4371-818b-88c94d43cc03",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-02-12T20:33:44.322Z",
+  "versionId": "d4d08e83-693b-4cc1-80a1-841d3d18d02e"
+}
