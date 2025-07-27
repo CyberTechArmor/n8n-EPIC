@@ -1,0 +1,3073 @@
+{
+  "active": true,
+  "connections": {
+    "Patient Health Profile": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "EnVisionID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Patient Health Profile1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Health Profile2": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Risk HTML Block": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wellness HTML Block": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Wellness HTML Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wellness HTML Block1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Risk HTML Block",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EnVisionID": {
+      "main": [
+        [
+          {
+            "node": "Patient Health Profile2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTML1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient App Block": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Patient App Block1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Patient App Block",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Patient App Block1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch5": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge8",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge8": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request10": {
+      "main": [
+        [
+          {
+            "node": "Merge9",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge10": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge9": {
+      "main": [
+        [
+          {
+            "node": "Merge10",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patient Profile": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-24T13:29:14.319Z",
+  "id": "BZTy7vowvEn6fsDf",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Patient Health Profile",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.MRN }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "d7464fd2-691d-479d-8752-6fdcbe00cfe4",
+      "name": "Patient Health Profile",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -820,
+        2340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "={{ $('Patient Health Profile2').item.json[\"loginurl\"] }}",
+        "options": {}
+      },
+      "id": "ee2fd335-e603-43e8-8d12-767a0e43249c",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        4920,
+        1160
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "411a0951-658a-4a27-ac50-e59ee964f773",
+      "name": "Microsoft SQL2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        860,
+        200
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "wsfunction",
+              "value": "core_user_create_users"
+            },
+            {
+              "name": "users[0][email]",
+              "value": "={{ $json.email }}"
+            },
+            {
+              "name": "users[0][username]",
+              "value": "={{ $json.username }}"
+            },
+            {
+              "name": "users[0][password]",
+              "value": "={{ $json.password }}"
+            },
+            {
+              "name": "users[0][firstname]",
+              "value": "={{ $json.firstname }}"
+            },
+            {
+              "name": "users[0][lastname]",
+              "value": "={{ $json.lastname }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "cookie",
+              "value": "MoodleSession=jg9tj9hfqgnsbca62k9265oe42;"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ea689689-66b3-4506-972f-a889ed0e746e",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        40,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10) = '{{ $json.MRN }}';\n \nWITH LastAppointment AS (\n    SELECT \n        a.Patient_ID,a.appt_datetime,\n        ROW_NUMBER() OVER (PARTITION BY a.patient_id ORDER BY a.Appt_DateTime DESC) AS rn\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatApptInfo] a\n    WHERE \n        Appt_DateTime >= '2020-01-01'\n),\ngenpatinfo AS (\n    SELECT la.appt_datetime,g.Patient_Number,g.Patient_First_Name,g.Patient_Last_Name,g.Patient_Email\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatInfo] g\n\t\tleft join LastAppointment la on la.Patient_ID=g.Patient_ID\n    WHERE la.rn=1\n)\nselect g.Patient_Number as username,UPPER(g.Patient_First_Name) as firstname,\nUPPER(g.Patient_Last_Name) as lastname,SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 12) AS password,\ncase \nwhen  UPPER(g.Patient_Email) is null then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nwhen  UPPER(g.Patient_Email) in ('NA','N/A','NO EMAIL','NOEMAIL') then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nelse UPPER(g.patient_email)\nend AS email\nfrom genpatinfo g\nwhere g.Patient_Number = @MRN"
+      },
+      "id": "c06d8c87-bc37-4852-82c7-563ecd06dd9b",
+      "name": "Microsoft SQL3",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        2160
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "MRN",
+              "stringValue": "={{ $('Microsoft SQL2').item.json.MRN.padStart(6, '0') }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "34d2e17b-285d-419f-aaa4-ffd853fecd81",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -280,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "include": "={{ $json.MRN }}",
+        "options": {}
+      },
+      "id": "fea29e8b-5335-49d9-8178-cd81cd8ddacf",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -280,
+        2360
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.MRN }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "81e6378c-ab65-4773-8ca9-7cf03b0d1b7d",
+      "name": "Patient Health Profile1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        260,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "29bae292-0a80-4112-8b2c-070fbc8d06c3",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -80,
+        2360
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN VARCHAR(10) = '18449';\n \nWITH LastAppointment AS (\n    SELECT \n        a.Patient_ID,a.appt_datetime,\n        ROW_NUMBER() OVER (PARTITION BY a.patient_id ORDER BY a.Appt_DateTime DESC) AS rn\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatApptInfo] a\n    WHERE \n        Appt_DateTime >= '2020-01-01'\n),\ngenpatinfo AS (\n    SELECT la.appt_datetime,g.Patient_Number,g.Patient_First_Name,g.Patient_Last_Name,g.Patient_Email\n    FROM \n        [Ntier_EPIC].[PM].[vwGenPatInfo] g\n\t\tleft join LastAppointment la on la.Patient_ID=g.Patient_ID\n    WHERE la.rn=1\n)\nselect g.Patient_Number as username,UPPER(g.Patient_First_Name) as firstname,\nUPPER(g.Patient_Last_Name) as lastname,SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 12) AS password,\ncase \nwhen  UPPER(g.Patient_Email) is null then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nwhen  UPPER(g.Patient_Email) in ('NA','N/A','NO EMAIL','NOEMAIL') then upper(g.patient_first_name) + UPPER(g.patient_last_name) + '@nothing.com'\nelse UPPER(g.patient_email)\nend AS email\nfrom genpatinfo g\nwhere g.Patient_Number = @MRN"
+      },
+      "id": "32377293-34c4-4415-86f8-41d14a59bbfc",
+      "name": "Microsoft SQL4",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        120,
+        2360
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.loginurl }}",
+        "options": {}
+      },
+      "id": "5068e1ac-f8c3-4cd0-82d1-1da4da1ecb83",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -680,
+        2340
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "URL"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "738e9c31-c0ac-4dc0-9cb2-e068e524e327",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -1060,
+        2340
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 0.25,
+        "unit": "seconds"
+      },
+      "id": "6f0e0d6c-3a32-4adf-af66-c1393acd31c1",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -820,
+        2160
+      ],
+      "webhookId": "97c1bd07-ea7a-4697-b1fb-350ad067bfcb",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.username }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "8d30d715-a14c-46f0-b59b-8d9c2d9b226c",
+      "name": "Patient Health Profile2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {}
+      },
+      "id": "703f4526-d052-4b36-b25e-4639b4e8dad0",
+      "name": "Respond to Webhook3",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        -380
+      ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html>\n\n<html>\n<head>\n  <meta charset=\"UTF-8\" />\n  <title>My HTML document</title>\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Have an EPIC day!</h1>\n    <h2>The patient selected has not been found in the system.</h2>\n    <p>A message has been sent to the team, please try the dropdown again.</p>\n  </div>\n</body>\n</html>\n\n<style>\n.container {\n  background-color: #ffffff;\n  text-align: center;\n  padding: 16px;\n  border-radius: 8px;\n}\n\nh1 {\n  color: #ff6d5a;\n  font-size: 24px;\n  font-weight: bold;\n  padding: 8px;\n}\n\nh2 {\n  color: #909399;\n  font-size: 18px;\n  font-weight: bold;\n  padding: 8px;\n}\n</style>\n\n<script>\nconsole.log(\"Hello World!\");\n</script>"
+      },
+      "id": "d3dc790a-84f6-4731-af09-bf42109f7d9b",
+      "name": "HTML1",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        -380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select c.* \nfrom public.\"CWE_AWVdueforappt\" c",
+        "options": {}
+      },
+      "id": "352e29f0-302f-475e-9b84-a189636525ac",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -1060,
+        1980
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "fgPA42YYbJlRydgk",
+          "name": "PatientRiskProfile"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "7"
+            },
+            {
+              "name": "users[0][customfields][0][type]",
+              "value": "wellness"
+            },
+            {
+              "name": "users[0][customfields][0][value]",
+              "value": "=<!DOCTYPE html>%0A<html>%0A<head>%0A<style>%0A  table %7B%0A    font-family: Arial%2C sans-serif%3B%0A    border-collapse: collapse%3B%0A    width: 100%%3B%0A  %7D%0A  th%2C td %7B%0A    border: 1px solid %23dddddd%3B%0A    text-align: left%3B%0A    padding: 8px%3B%0A  %7D%0A  th %7B%0A    background-color: %23e9e9e9%3B%0A  %7D%0A</style>%0A</head>%0A<body>%0A%0A<table>%0A  <tr>%0A    <th>Patient_ID</th>%0A    <th>Patient_Number</th>%0A    <th>Patient_Sex</th>%0A    <th>Patient_Name</th>%0A    <th>Patient_DOB</th>%0A    <th>Patient_Age</th>%0A    <th>Patient_Home_Phone</th>%0A    <th>prim_Carrierid</th>%0A    <th>prim_insurance</th>%0A    <th>sec_Carrierid</th>%0A    <th>sec_insurance</th>%0A    <th>lastcwedone</th>%0A    <th>lastcwecpt</th>%0A    <th>lastcwebillingcarriername</th>%0A    <th>lastawvdone</th>%0A    <th>lastawvcpt</th>%0A    <th>lastawvbillingcarriername</th>%0A    <th>APMCARRIERIDPERNIL</th>%0A    <th>Carrier name</th>%0A    <th>AWV Eligible (G0402%2C G0438%2C G0439)</th>%0A    <th>CWE Eligible</th>%0A    <th>Dual Eligible (OV %26 CWE/AWV)</th>%0A    <th>Calendar Year Plans (CWE)</th>%0A    <th>Calendar Year Plans (AWV)</th>%0A    <th>Seconday Eligible AWV</th>%0A    <th>Seconday Elgibile CWE</th>%0A    <th>Comments</th>%0A    <th>CWE Due</th>%0A    <th>AWV Due</th>%0A    <th>AWV CPT</th>%0A    <th>currentdate</th>%0A  </tr>%0A  <tr>%0A    <td>211500</td>%0A    <td>870000</td>%0A    <td>M</td>%0A    <td>Ted Teddy</td>%0A    <td>2/1/2023 0:00</td>%0A    <td>1</td>%0A    <td>2487097800</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>1/1/1900 0:00</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>1/1/1900 0:00</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NULL</td>%0A    <td>NEW</td>%0A    <td>NO</td>%0A    <td>NULL</td>%0A    <td>3/20/2024 7:00</td>%0A  </tr>%0A</table>%0A%0A</body>%0A</html>%0A"
+            },
+            {
+              "name": "users[0][customfields][3][type]",
+              "value": "mrn"
+            },
+            {
+              "name": "users[0][customfields][3][value]",
+              "value": "={{ $json.Patient_Number }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "74aea491-1a36-4a82-bfe9-8461e63b582d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -600,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.Patient_Number }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "000042"
+            }
+          ]
+        }
+      },
+      "id": "dcad2cfa-7846-42aa-9685-e3e7b7adf48b",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        -820,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][0][type]",
+              "value": "risk"
+            },
+            {
+              "name": "users[0][customfields][0][value]",
+              "value": "={{ $json['risk'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "bc97c0b3-e9b9-46de-a83d-ddba226f13a3",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3660,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.Patient_Number }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "000042"
+            }
+          ]
+        }
+      },
+      "id": "a054a072-b123-4167-9816-99d2bb066f41",
+      "name": "Switch2",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        -280,
+        1980
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5cf01c4e-4002-40a7-b47a-a8878f901cfb",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        900,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT u.id, u.username, u.firstname, u.lastname, u.email\n\nFROM envisionmoodledb.mdl_user u\n\nWHERE u.username REGEXP '^[0-9]+$' and u.username={{ $('Microsoft SQL2').item.json[\"MRN\"] }}",
+        "options": {}
+      },
+      "id": "f4427ec7-faae-4845-a6d8-d23ca208ee88",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        2880,
+        80
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "3eNA03IGMcPkmVeb",
+          "name": "MySQL EnVision Moodle"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "63807bd4-ff3d-4478-b008-da987fa8d8f3",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3120,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Not sure?",
+        "height": 1144.653297050503,
+        "width": 1810.9195571581558,
+        "color": 6
+      },
+      "id": "eca923d6-4404-4ce4-887b-c9117064cf7f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1280,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Reference",
+        "height": 244.52071828865766,
+        "width": 467.3315871212171
+      },
+      "id": "c78775c9-3556-4dbf-bf2c-b5a5eb369c95",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        540,
+        -320
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a725de00-7134-4e80-97b7-339646c31fdd",
+      "name": "Login URL",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        560,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6370409e-87dd-45c1-82d5-ccbe7a365f10",
+              "name": "MRN",
+              "value": 197520,
+              "type": "string"
+            },
+            {
+              "id": "3c1b071e-67c7-4f88-9801-415988d1ea89",
+              "name": "",
+              "value": "={{ $('Microsoft SQL2').item.json[\"MRN\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5971d54b-e56a-4526-9052-3efc5b904c23",
+      "name": "MRN",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        760,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## No Profile Found",
+        "height": 276.5803010878038,
+        "width": 432.3574967948764,
+        "color": 3
+      },
+      "id": "0a1b797c-e638-4ad0-9cba-8c638c09d020",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1e169c97-e0b6-4e3d-99f1-67749938f806",
+              "name": "risk",
+              "value": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Risk Table</title>\n    <style>\n        table {\n            width: 100%;\n            border-collapse: collapse;\n        }\n        th, td {\n            border: 1px solid black;\n            padding: 8px;\n            text-align: left;\n        }\n        th {\n            background-color: #f2f2f2;\n        }\n    </style>\n</head>\n<body>\n    <table id=\"riskTable\">\n        <thead>\n            <tr>\n                <th>Elixhauser Risk Category</th>\n                <th>Critical Alert Risk</th>\n                <th>Showrate Risk Category</th>\n                <th>Age-Based Risk</th>\n                <th>Overall Vitals Risk Category</th>\n                <th>Total Risk Classification</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>{{ $json[\"Elixhauser_risk_category\"] }}</td>\n                <td>{{ $json[\"CriticalAlertRisk\"] }}</td>\n                <td>{{ $json[\"Showrate_Risk_Category\"] }}</td>\n                <td>{{ $json[\"age_based_risk\"] }}</td>\n                <td>{{ $json[\"Overall_Vitals_Risk_Category\"] }}</td>\n                <td>{{ $json[\"Total_Risk_Classification\"] }}</td>\n            </tr>\n            <!-- Add more rows as needed -->\n        </tbody>\n    </table>\n</body>\n</html>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "826ae84e-6193-4af1-a91a-7fd0a0efa757",
+      "name": "Risk HTML Block",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "ad2f6bea-57d8-4909-a1db-0dcec8fa03ac",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3380,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1e169c97-e0b6-4e3d-99f1-67749938f806",
+              "name": "wellness",
+              "value": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Insurance Details Table</title>\n    <style>\n        table {\n            width: 100%;\n            border-collapse: collapse;\n        }\n        th, td {\n            border: 1px solid black;\n            padding: 8px;\n            text-align: left;\n        }\n        th {\n            background-color: #f2f2f2;\n        }\n    </style>\n</head>\n<body>\n    <table id=\"insuranceDetailsTable\">\n        <thead>\n            <tr>\n                <th>Primary Insurance</th>\n                \n                <th>Secondary Insurance</th>\n                <th>Last CWE CPT</th>\n                <th>Last CWE Billing Carrier Name</th>\n                <th>Last AWV Done</th>\n                <th>Last AWV CPT</th>\n                <th>Last AWV Billing Carrier Name</th>\n                \n                <th>CWE Due</th>\n                <th>AWV Due</th>\n                <th>Comments</th>\n                <th>Current Date</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- Rows will be added here by JavaScript -->\n        </tbody>\n    </table>\n\n    <script>\n        // Example data array\n        const data = [\n            {\n                \"prim_Carrierid\": null,\n                \"prim_insurance\": null,\n                \"sec_Carrierid\": null,\n                \"sec_insurance\": null,\n                \"lastcwecpt\": \"99396\",\n                \"lastcwebillingcarriername\": null,\n                \"lastawvdone\": \"1900-01-01T05:32:11.000Z\",\n                \"lastawvcpt\": null,\n                \"lastawvbillingcarriername\": null,\n                \"APMCARRIERIDPERNIL\": null,\n                \"$json\": {\n                    \"CWE Due\": \"NO\",\n                    \"AWV Due\": \"NO\",\n                },\n                \"Comments\": null,\n                \"currentdate\": \"2024-04-06T11:00:23.315Z\"\n            }\n            // Add more objects here if needed\n        ];\n\n        // Function to insert data into the table\n        function populateTable(data) {\n            const tableBody = document.getElementById('insuranceDetailsTable').getElementsByTagName('tbody')[0];\n            data.forEach(item => {\n                let html = '<tr>';\n                \n                html += `<td>{{ $json[\"prim_insurance\"] }}</td>`;\n                \n                html += `<td>{{ $json[\"sec_insurance\"] }}</td>`;\n                html += `<td>{{ $('Merge5').item.json[\"cweDate\"] }}</td>`;\n                html += `<td>{{ $json[\"lastcwebillingcarriername\"] }}</td>`;\n                html += `<td>{{ $('Merge5').item.json[\"awvDate\"] }}</td>`;\n                html += `<td>{{ $json[\"lastawvcpt\"] }}</td>`;\n                html += `<td>{{ $json[\"lastawvbillingcarriername\"] }}</td>`;\n                \n                html += `<td>{{ $json[\"CWE Due\"] }}</td>`;\n                html += `<td>{{ $json[\"AWV Due\"] }}</td>`;\n                html += `<td>{{ $json[\"Comments\"] }}</td>`;\n                html += `<td>{{ $('Merge5').item.json[\"currentDate\"] }}</td>`;\n                html += '</tr>';\n                tableBody.innerHTML += html;\n            });\n        }\n\n        // Call function to populate the table with data\n        populateTable(data);\n    </script>\n</body>\n</html>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0813576-9c8c-40fa-915c-ff869400b55f",
+      "name": "Wellness HTML Block",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        3180,
+        620
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "842360e1-3a43-48db-8de1-6d6326a60755",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        3860,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lastcwedone }}",
+        "outputFieldName": "cweDate",
+        "options": {}
+      },
+      "id": "0d0bd896-f0b4-482b-bf6b-6b39429eddbe",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2180,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lastawvdone }}",
+        "outputFieldName": "awvDate",
+        "options": {}
+      },
+      "id": "bb8d9422-4b10-43af-93ef-0066e669683f",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2180,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentdate }}",
+        "outputFieldName": "currentDate",
+        "options": {}
+      },
+      "id": "c1c0ac47-ef77-4c4d-ae38-a70d8c07111a",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        2180,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "c7ea4eb0-513c-4f2d-864e-aa11adae496c",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2520,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "7c030db0-dd30-4689-92a6-10589881288d",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2700,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "208708ca-9293-4469-b2fb-f4cd80485184",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2880,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1e169c97-e0b6-4e3d-99f1-67749938f806",
+              "name": "wellness",
+              "value": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Insurance Details Table</title>\n    <style>\n        table {\n            width: 100%;\n            border-collapse: collapse;\n        }\n        th, td {\n            border: 1px solid black;\n            padding: 8px;\n            text-align: left;\n        }\n        th {\n            background-color: #f2f2f2;\n        }\n    </style>\n</head>\n<body>\n    <table id=\"insuranceDetailsTable\">\n        <thead>\n            <tr>\n                <th>Primary Insurance</th>\n                \n                <th>Secondary Insurance</th>\n                <th>Last CWE CPT</th>\n                <th>Last CWE Billing Carrier Name</th>\n                <th>Last AWV Done</th>\n                <th>Last AWV CPT</th>\n                <th>Last AWV Billing Carrier Name</th>\n                \n                <th>CWE Due</th>\n                <th>AWV Due</th>\n                <th>Comments</th>\n                <th>Current Date</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- Rows will be added here by JavaScript -->\n        </tbody>\n    </table>\n\n    <script>\n        // Example data array\n        const data = [\n            {\n                \"prim_Carrierid\": null,\n                \"prim_insurance\": null,\n                \"sec_Carrierid\": null,\n                \"sec_insurance\": null,\n                \"lastcwecpt\": \"99396\",\n                \"lastcwebillingcarriername\": null,\n                \"lastawvdone\": \"1900-01-01T05:32:11.000Z\",\n                \"lastawvcpt\": null,\n                \"lastawvbillingcarriername\": null,\n                \"APMCARRIERIDPERNIL\": null,\n                \"$json\": {\n                    \"CWE Due\": \"NO\",\n                    \"AWV Due\": \"NO\",\n                },\n                \"Comments\": null,\n                \"currentdate\": \"2024-04-06T11:00:23.315Z\"\n            }\n            // Add more objects here if needed\n        ];\n\n        // Function to insert data into the table\n        function populateTable(data) {\n            const tableBody = document.getElementById('insuranceDetailsTable').getElementsByTagName('tbody')[0];\n            data.forEach(item => {\n                let html = '<tr>';\n                \n                html += `<td></td>`;\n                \n                html += `<td></td>`;\n                html += `<td>04/09/2022</td>`;\n                html += `<td></td>`;\n                html += `<td>01/01/1900</td>`;\n                html += `<td></td>`;\n                html += `<td></td>`;\n                \n                html += `<td>NO</td>`;\n                html += `<td>NO</td>`;\n                html += `<td></td>`;\n                html += `<td>04/06/2024</td>`;\n                html += '</tr>';\n                tableBody.innerHTML += html;\n            });\n        }\n\n        // Call function to populate the table with data\n        populateTable(data);\n    </script>\n</body>\n</html>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98e9771e-adc9-41f0-a861-6dfbadb0d468",
+      "name": "Wellness HTML Block1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        -600,
+        2840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "b2ef3cad76be5d3843eb809ee6278a07"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "=517"
+            },
+            {
+              "name": "users[0][customfields][0][type]",
+              "value": "wellness"
+            },
+            {
+              "name": "users[0][customfields][0][value]",
+              "value": "={{ $json['wellness'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b004810d-6c94-447c-9dcb-bebd1103785f",
+      "name": "HTTP Request5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -340,
+        2860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][1][type]",
+              "value": "wellness"
+            },
+            {
+              "name": "users[0][customfields][1][value]",
+              "value": "={{ $json['wellness'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b3f02c09-1a93-49a7-b046-2da759464bc2",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3660,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "88b92a92-cc58-47cf-a59c-b5055e7f94ab",
+              "name": "",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "1a95fa3e-db2a-4c9c-8d0c-396a28c2b867",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf553f70-0d16-4137-bebc-762be803e84c",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1760,
+        20
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Elixhauser_risk_category }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "0622b231-5135-4bdf-82fc-9595436bcbb8",
+                    "leftValue": "={{ $json.Elixhauser_risk_category }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "54eaea41-8263-4f4e-9dc6-64e70aae42c4",
+      "name": "Switch3",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2060,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "={{ $('Patient Health Profile2').item.json[\"loginurl\"] }}",
+        "options": {}
+      },
+      "id": "fa926644-c8b8-4abd-8baf-32a279ca5da6",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select \nr.\"Elixhauser_risk_category\",\nr.\"CriticalAlertRisk\",\nr.\"Showrate_Risk_Category\",\nr.\"age_based_risk\",\nr.\"Overall_Vitals_Risk_Category\",\nr.\"Total_Risk_Classification\"\nfrom public.daily_risk_scores r\nwhere r.\"MRN\" = {{ $('Microsoft SQL2').item.json[\"MRN\"] }}",
+        "options": {}
+      },
+      "id": "9829e40f-a5cd-4bf8-ac46-46748874a114",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1760,
+        180
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "fgPA42YYbJlRydgk",
+          "name": "PatientRiskProfile"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select * from \npublic.\"Allpat_cweawvdue\" c\nwhere c.\"Patient_Number\" = '{{ $('Microsoft SQL2').item.json[\"MRN\"] }}'",
+        "options": {}
+      },
+      "id": "f4194493-02ad-4f98-9c49-3d5513cb946d",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1760,
+        560
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "fgPA42YYbJlRydgk",
+          "name": "PatientRiskProfile"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT u.id, u.username, u.firstname, u.lastname, u.email\nFROM envisionmoodledb.mdl_user u\nWHERE u.username REGEXP '^[0-9]+$' and u.username='{{ $json.MRN }}'",
+        "options": {}
+      },
+      "id": "96eae7dc-546c-4476-9654-e4c090ebd291",
+      "name": "EnVisionID",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.2,
+      "position": [
+        980,
+        20
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "3eNA03IGMcPkmVeb",
+          "name": "MySQL EnVision Moodle"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][1][type]",
+              "value": "wellness"
+            },
+            {
+              "name": "users[0][customfields][1][value]",
+              "value": "={{ $json['wellness'] }}"
+            },
+            {
+              "name": "users[0][customfields][0][type]",
+              "value": "risk"
+            },
+            {
+              "name": "users[0][customfields][0][value]",
+              "value": "{{ $json['risk'] }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "f8a09226-6c56-42f5-8f53-281fcb71a325",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3800,
+        0
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.errorcode }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "invalidparameter"
+            },
+            {
+              "operation": "notEqual",
+              "value2": "invalidparameter"
+            }
+          ]
+        }
+      },
+      "id": "a289416e-efad-438a-bec4-f38b2b52e6cd",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 2,
+      "position": [
+        1420,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Wellness",
+        "height": 742.6329459195865,
+        "width": 2330.7880834434936,
+        "color": 5
+      },
+      "id": "8e3fdcd0-a887-4962-9ae4-6d0f22debc34",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        497.2122825554088
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Risk",
+        "height": 545.7128123298626,
+        "width": 2087.920730771962,
+        "color": 3
+      },
+      "id": "d44a2f75-8d0d-44b9-95b2-7a2d0566b951",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1690.4618354102217,
+        -61.365632981547265
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1c16c69a-969a-41fe-8b75-27df8ef75edd",
+              "name": "patientApp",
+              "value": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Patient App Link</title> </head> <body> <h1>Connected Health</h1> <button id=\"sendLinkButton\">Coming soon: Click to Send Patient App Link</button>       <script>         document.getElementById('sendLinkButton').addEventListener('click', function() {             var xhr = new XMLHttpRequest();             xhr.open(\"GET\", \"https://webhook.sendlinkforpatientapplink\", true);             xhr.onreadystatechange = function () {                 if (xhr.readyState === 4 && xhr.status === 200) {                     alert('Link sent successfully!');                 }             };             xhr.send();         }); </script> </body> </html>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9f389d8-d37c-4a02-8b8e-4916a9900493",
+      "name": "Patient App Block",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2540,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][3][type]",
+              "value": "patientapp"
+            },
+            {
+              "name": "users[0][customfields][3][value]",
+              "value": "={{ $json.patientApp }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "56db1215-f42f-4a95-b630-959c9d70bdd9",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3660,
+        1420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3b891a77-dc0f-4d68-9c83-eaba31a6123b",
+      "name": "Merge6",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4220,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Patient App",
+        "height": 588.5625917732286,
+        "width": 2344.7266706664495
+      },
+      "id": "7f316bf5-b45d-4ef1-8103-8d25e4db8349",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        1330.1789140026438
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM public.\"CAPAccountCreations\" c\nwhere c.mapping_status ='COMPLETED'\nORDER BY id ASC",
+        "options": {}
+      },
+      "id": "ea2703a7-ea6f-46d1-9c5b-c54b0c403924",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1680,
+        1440
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "4mYTSbVhy383Riba",
+          "name": "Postgres ConsumerApp"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "88309fcf-5872-4c82-b266-1155a700008f",
+              "leftValue": "={{ $json.mrn }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "070ac441-68d2-4d97-bb7d-bf55bd3e77c9",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        1580
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][3][type]",
+              "value": "patientapp"
+            },
+            {
+              "name": "users[0][customfields][3][value]",
+              "value": "={{ $json.patientApp }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c6c3d860-4f49-4992-bafc-bd2fcc9b328e",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3660,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1c16c69a-969a-41fe-8b75-27df8ef75edd",
+              "name": "patientApp",
+              "value": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Patient App Link</title> </head> <body> <h1>Party time, the patient has successfully signed into the app!</h1>        <script>         document.getElementById('sendLinkButton').addEventListener('click', function() {             var xhr = new XMLHttpRequest();             xhr.open(\"GET\", \"https://webhook.sendlinkforpatientapplink\", true);             xhr.onreadystatechange = function () {                 if (xhr.readyState === 4 && xhr.status === 200) {                     alert('Link sent successfully!');                 }             };             xhr.send();         }); </script> </body> </html>",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c25ddd2-c08d-45f5-96ae-734001061d65",
+      "name": "Patient App Block1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2540,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "0671456c-0661-4701-b8a9-e070a82128e0",
+      "name": "Merge7",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        660,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @MRN varchar(10)= '{{ $('Microsoft SQL2').item.json.MRN }}';\nDECLARE @CURRENTDATE DATETIME = CAST(GETDATE() AS smalldatetime);\nDECLARE @ENCOUNTERNUMBER INT =0; --PLACE ENCOUNTER NUMBER FOR CURRENTAPPT AND IF NO ENCOUNTER STATE NEEDS TO BE ON SCHEDULE example 22999090\nDECLARE @ENCOUNTERDATEIFNOENCOUNTER DATETIME ='2024-02-14 08:55:00'; -- MUST MATCH DATETIME FIELD\n \nwith pastappt as (\nselect a.Patient_ID,a.Patient_Number,a.Appt_ID,a.Appt_Encounter_Number,\ncast(a.Appt_DateTime as smalldatetime) as Appt_DateTime,a.Appt_Sched_Location_Descr,\na.Appt_Resource_Descr,a.Appt_Type_Descr,\ncase \nwhen a.Appt_Status = 'A' then 'Showed'\nwhen a.Appt_Status = 'N' then 'NoShowed'\nwhen a.Appt_Status = 'X' then 'Cancelled'\nwhen a.Appt_Status = 'B' then 'Bumped'\nwhen a.Appt_Status = 'S' then 'Scheduled'\nwhen a.Appt_Status = 'C' then 'NoShowed'\nend as 'Appt_Status',\n'PastAppt' as ApptInsight\nfrom [dbo].[vwGenPatApptInfo] a\nwhere a.Patient_Number = @MRN and cast(a.Appt_DateTime as smalldatetime) < @CURRENTDATE\n),\ncurrentappt as(\nselect a.Patient_ID,a.Patient_Number,a.Appt_ID,a.Appt_Encounter_Number,\ncast(a.Appt_DateTime as smalldatetime) as Appt_DateTime,a.Appt_Sched_Location_Descr,\na.Appt_Resource_Descr,a.Appt_Type_Descr,\ncase \nwhen a.Appt_Status = 'A' then 'Showed'\nwhen a.Appt_Status = 'N' then 'NoShowed'\nwhen a.Appt_Status = 'X' then 'Cancelled'\nwhen a.Appt_Status = 'B' then 'Bumped'\nwhen a.Appt_Status = 'S' then 'Scheduled'\nwhen a.Appt_Status = 'C' then 'NoShowed'\nend as 'Appt_Status',\n'CurrentAppt' as ApptInsight\nfrom [dbo].[vwGenPatApptInfo] a\nwhere a.Patient_Number = @MRN and\na.Appt_Encounter_Number =@ENCOUNTERNUMBER or (a.Patient_Number = @MRN and cast(a.Appt_DateTime as smalldatetime) =@ENCOUNTERDATEIFNOENCOUNTER)\n),\nfutureappt as(\nselect a.Patient_ID,a.Patient_Number,a.Appt_ID,a.Appt_Encounter_Number,\ncast(a.Appt_DateTime as smalldatetime) as Appt_DateTime,a.Appt_Sched_Location_Descr,\na.Appt_Resource_Descr,a.Appt_Type_Descr,\ncase \nwhen a.Appt_Status = 'A' then 'Showed'\nwhen a.Appt_Status = 'N' then 'NoShowed'\nwhen a.Appt_Status = 'X' then 'Cancelled'\nwhen a.Appt_Status = 'B' then 'Bumped'\nwhen a.Appt_Status = 'S' then 'Scheduled'\nwhen a.Appt_Status = 'C' then 'NoShowed'\nend as 'Appt_Status',\n'FutureAppt' as ApptInsight\nfrom [dbo].[vwGenPatApptInfo] a\nwhere a.Patient_Number = @MRN and cast(a.Appt_DateTime as smalldatetime) >= @CURRENTDATE\n)\nselect p.*\nfrom pastappt p\nunion all\nselect c.*\nfrom currentappt c\nunion all\nselect f.*\nfrom futureappt f"
+      },
+      "id": "47a8f37b-889e-4c8c-b9fb-cb4dac842e1e",
+      "name": "Microsoft SQL",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        2080
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.ApptInsight }}",
+                    "rightValue": "PastAppt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "d6b48c47-427b-4bfd-b008-8624b635a6bf",
+                    "leftValue": "={{ $json.ApptInsight }}",
+                    "rightValue": "CurrentAppt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "04c10dc9-a2fb-43a6-a2b5-01f69a30cc53",
+                    "leftValue": "={{ $json.ApptInsight }}",
+                    "rightValue": "FutureAppt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9bc8d9b7-aebb-4756-9b5a-911db5e19b6a",
+      "name": "Switch5",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1960,
+        2080
+      ]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "Appt_DateTime",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9e238d55-bbd8-4e1d-8b25-09a223b2f738",
+      "name": "Sort",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "id": "7d64bc64-5ce6-421b-8f0f-42b24fd2b1fb",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        2060
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f2a3986c-8b4e-4790-a5d5-8624065cf45f",
+      "name": "Merge8",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2320,
+        2240
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mrn }}",
+                    "rightValue": "={{ $('Microsoft SQL2').item.json.MRN }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "62377399-3319-44bc-8c22-4baa8bf994b2",
+      "name": "Switch4",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1900,
+        1560
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][4][type]",
+              "value": "pastappts"
+            },
+            {
+              "name": "users[0][customfields][4][value]",
+              "value": "={{ $json.pastappts }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "320c41e3-2bb6-40c3-a13a-20a95eb3ee83",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3680,
+        2040
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "core_user_update_users"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "users[0][id]",
+              "value": "={{ $('EnVisionID').item.json[\"id\"] }}"
+            },
+            {
+              "name": "users[0][customfields][5][type]",
+              "value": "currentandfutureappts"
+            },
+            {
+              "name": "users[0][customfields][5][value]",
+              "value": "={{ $json.currentandfutureappts }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "d22b5893-5fe2-49b5-856f-185aaa7bf285",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3680,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "id": "487667f3-f3e0-408e-889f-53654e51bddc",
+      "name": "Limit1",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        2260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "726bae45-29c5-4370-9588-cfcdbaa9393f",
+      "name": "Merge9",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4240,
+        2120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "cdeb6838-0c8a-4cae-b956-9de8db52c9b8",
+      "name": "Merge10",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        4500,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "21b7efc9-ab20-4bdc-a72a-d455f2891efa",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f09bf2d-ac41-4fc5-a756-de00aa45b996",
+              "name": "pastappts",
+              "value": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Appointment Details</title>\n    <style>\n        table {\n            width: 100%;\n            border-collapse: collapse;\n        }\n        th, td {\n            border: 1px solid black;\n            padding: 8px;\n            text-align: left;\n        }\n        th {\n            background-color: #f2f2f2;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n            <tr>\n                <th>Appt_DateTime</th>\n                <th>Appt_Sched_Location_Descr</th>\n                <th>Appt_Resource_Descr</th>\n                <th>Appt_Type_Descr</th>\n                <th>Appt_Status</th>\n                <th>ApptInsight</th>\n            </tr>\n        </thead>\n        <tbody>\n<tr>\n    <td>{{ $json[\"data\"][0][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][1][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][2][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][3][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][4][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n\n    <td>{{ $json[\"data\"][5][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][6][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][7][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][8][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][9][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"ApptInsight\"] }}</td>\n</tr>\n        </tbody>\n    </table>\n</body>\n</html>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7361b41f-8a67-4f9f-a72c-48c44dc1ced2",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        3400,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "fda5fef6-c253-46e6-8766-3d7f99aeca93",
+      "name": "Aggregate1",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        2280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3f09bf2d-ac41-4fc5-a756-de00aa45b996",
+              "name": "currentandfutureappts",
+              "value": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Appointment Details</title>\n    <style>\n        table {\n            width: 100%;\n            border-collapse: collapse;\n        }\n        th, td {\n            border: 1px solid black;\n            padding: 8px;\n            text-align: left;\n        }\n        th {\n            background-color: #f2f2f2;\n        }\n    </style>\n</head>\n<body>\n    <table>\n        <thead>\n            <tr>\n                <th>Appt_DateTime</th>\n                <th>Appt_Sched_Location_Descr</th>\n                <th>Appt_Resource_Descr</th>\n                <th>Appt_Type_Descr</th>\n                <th>Appt_Status</th>\n                <th>ApptInsight</th>\n            </tr>\n        </thead>\n        <tbody>\n<tr>\n    <td>{{ $json[\"data\"][0][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][0][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][1][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][1][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][2][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][2][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][3][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][3][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][4][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][4][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][5][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][5][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][6][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][6][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][7][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][7][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][8][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][8][\"ApptInsight\"] }}</td>\n</tr>\n<tr>\n    <td>{{ $json[\"data\"][9][\"Appt_DateTime\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Sched_Location_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Resource_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Type_Descr\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"Appt_Status\"] }}</td>\n    <td>{{ $json[\"data\"][9][\"ApptInsight\"] }}</td>\n</tr>\n        </tbody>\n    </table>\n</body>\n</html>\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0e69f87-e421-4b4e-9aa8-1e38637211b4",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        3420,
+        2280
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "24fc45cf-8d80-4a2d-a5ef-b05306f09465",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4680,
+        1220
+      ],
+      "webhookId": "3e238410-170f-4451-b2f5-552f6c9e7552"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Loading Page</title>\n<style>\n    body, html {\n        margin: 0;\n        padding: 0;\n        height: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n        align-items: center;\n        background-color: #f0f0f0;\n    }\n    \n    .loading-text {\n        font-size: 24px;\n        text-align: center;\n        animation: fadeIn 2s ease-in-out;\n    }\n\n    @keyframes fadeIn {\n        0% {\n            opacity: 0;\n        }\n        100% {\n            opacity: 1;\n        }\n    }\n\n    .rocket {\n        width: 100px;\n        height: 200px;\n        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/AlienUfo.svg/1200px-AlienUfo.svg.png');\n        background-size: contain;\n        background-repeat: no-repeat;\n        animation: flyUp 6s linear;\n    }\n\n    @keyframes flyUp {\n        0% {\n            transform: translateY(100%);\n        }\n        100% {\n            transform: translateY(-100%);\n        }\n    }\n\n    .countdown {\n        font-size: 18px;\n        margin-top: 20px;\n        animation: fadeIn 2s ease-in-out;\n    }\n</style>\n</head>\n<body>\n    <div class=\"loading-text\">Loading awesome....</div>\n    <div class=\"rocket\"></div>\n    <div id=\"countdown\" class=\"countdown\">7</div>\n    <script>\n        let seconds = 7;\n        const countdownElement = document.getElementById('countdown');\n\n        const countdownInterval = setInterval(() => {\n            seconds--;\n            countdownElement.textContent = seconds;\n            if (seconds <= 0) {\n                clearInterval(countdownInterval);\n                window.location.href = \"https://xl.epicpc.com/webhook/a4361e1d-52d3-47bc-97b0-215a6a428248?php={{ $('Patient Health Profile2').item.json[\"loginurl\"] }}\"; // Redirect URL\n            }\n        }, 1000);\n    </script>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "f41dd4c3-2c12-43ae-ab56-58354cbc3705",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1420,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "redirect",
+        "redirectURL": "={{ $json.query.php }}",
+        "options": {}
+      },
+      "id": "1ffb9d82-b48b-442f-aa7c-358461ad5041",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        5140,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "path": "a4361e1d-52d3-47bc-97b0-215a6a428248",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "65a9305f-6e10-4498-be12-f637f3536f9f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        4920,
+        1020
+      ],
+      "webhookId": "a4361e1d-52d3-47bc-97b0-215a6a428248"
+    },
+    {
+      "parameters": {
+        "content": "# Appointments",
+        "height": 519.4805194805193,
+        "width": 2363.181818181818
+      },
+      "id": "c7f5004f-8105-4ac0-8d8a-62fdabe45951",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        1980
+      ]
+    },
+    {
+      "parameters": {
+        "path": "b70b7ec1-3f60-4420-a7a6-e18868310d98",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "78bc5276-c349-470b-9665-2e2f45bd2cca",
+      "name": "Patient Profile",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        520,
+        200
+      ],
+      "webhookId": "b70b7ec1-3f60-4420-a7a6-e18868310d98",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://envision.epicpc.com/webservice/rest/server.php",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "wsfunction",
+              "value": "auth_userkey_request_login_url"
+            },
+            {
+              "name": "moodlewsrestformat",
+              "value": "json"
+            },
+            {
+              "name": "wstoken",
+              "value": "bf5525edbc39b1433913c5f4cfc524b1"
+            },
+            {
+              "name": "user[username]",
+              "value": "={{ $json.username }}"
+            }
+          ]
+        },
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "77452e2f-8a64-4c06-8424-35c5a1d03018",
+      "name": "Patient Health Profile3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Patient Health Profile": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Microsoft SQL2": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "Microsoft SQL3": [
+      {
+        "json": {
+          "username": "502880",
+          "firstname": "THOMAS",
+          "lastname": "STILWELL",
+          "password": "6EAD3F07-713",
+          "email": "THOMAS@TAGARMOR.COM"
+        }
+      }
+    ],
+    "Patient Health Profile1": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Edit Fields": [
+      {
+        "json": {
+          "loginurl": "https://envision.epicpc.com/auth/userkey/login.php?key=4d2bf10cddba9adb04c1e608e091f5be"
+        }
+      }
+    ],
+    "Patient Health Profile2": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ],
+    "Login URL": [
+      {
+        "json": {
+          "loginurl": "https://envision.epicpc.com/auth/userkey/login.php?key=073108aab46256b3546d4ce3ba7e03d2"
+        }
+      }
+    ],
+    "Date & Time2": [
+      {
+        "json": {
+          "currentDate": "04/06/2024"
+        }
+      }
+    ],
+    "Date & Time1": [
+      {
+        "json": {
+          "awvDate": "01/01/1900"
+        }
+      }
+    ],
+    "Date & Time": [
+      {
+        "json": {
+          "cweDate": "04/09/2022"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "Elixhauser_risk_category": "High",
+          "CriticalAlertRisk": "Low",
+          "Showrate_Risk_Category": "High",
+          "age_based_risk": "Medium",
+          "Overall_Vitals_Risk_Category": "Medium",
+          "Total_Risk_Classification": "High"
+        }
+      }
+    ],
+    "Postgres2": [
+      {
+        "json": {
+          "Patient_ID": "137836",
+          "Patient_Number": "197520",
+          "Patient_Sex": "F",
+          "Patient_Name": "TEDDY TEST MR",
+          "Patient_DOB": "1971-02-01T05:00:00.000Z",
+          "Patient_Age": "53",
+          "Patient_Home_Phone": "2342329342",
+          "prim_Carrierid": null,
+          "prim_insurance": null,
+          "sec_Carrierid": null,
+          "sec_insurance": null,
+          "lastcwedone": "2022-04-09T04:00:00.000Z",
+          "lastcwecpt": "99396",
+          "lastcwebillingcarriername": null,
+          "lastawvdone": "1900-01-01T05:32:11.000Z",
+          "lastawvcpt": null,
+          "lastawvbillingcarriername": null,
+          "APMCARRIERIDPERNIL": null,
+          "Carrier name": null,
+          "AWV Eligible (G0402, G0438, G0439)": null,
+          "CWE Eligible": null,
+          "Dual Eligible (OV & CWE/AWV)": null,
+          "Calendar Year Plans (CWE)": null,
+          "Calendar Year Plans (AWV )": null,
+          "Seconday Eligible AWV": null,
+          "Seconday Elgibile CWE": null,
+          "Comments": null,
+          "CWE Due": "NO",
+          "AWV Due": "NO",
+          "AWV CPT": null,
+          "currentdate": "2024-04-06T11:00:23.315Z"
+        }
+      }
+    ],
+    "Limit": [
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2226038,
+          "Appt_Encounter_Number": 24344110,
+          "Appt_DateTime": "2024-05-08T09:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Type_Descr": "ACT -  Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2186107,
+          "Appt_Encounter_Number": 24125760,
+          "Appt_DateTime": "2024-04-24T08:00:00.000Z",
+          "Appt_Sched_Location_Descr": "DIAG EP Southfield",
+          "Appt_Resource_Descr": "VASCULAR/GENERAL - Tanisha",
+          "Appt_Type_Descr": "US - Abdominal",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2186103,
+          "Appt_Encounter_Number": 23945140,
+          "Appt_DateTime": "2024-04-12T09:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Type_Descr": "ACT -  Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2131576,
+          "Appt_Encounter_Number": null,
+          "Appt_DateTime": "2024-04-11T13:20:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Care Management",
+          "Appt_Resource_Descr": "CM - Carlo, Junn",
+          "Appt_Type_Descr": "ACM - Post Visit CMV",
+          "Appt_Status": "Cancelled",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2131568,
+          "Appt_Encounter_Number": 23866700,
+          "Appt_DateTime": "2024-04-08T09:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Type_Descr": "ACT -  Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2169646,
+          "Appt_Encounter_Number": 23721530,
+          "Appt_DateTime": "2024-03-28T09:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Kalabat, Amber",
+          "Appt_Type_Descr": "ACT - Walk-in / Same Day Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2156388,
+          "Appt_Encounter_Number": 23606810,
+          "Appt_DateTime": "2024-03-21T09:15:00.000Z",
+          "Appt_Sched_Location_Descr": "DIAG EP Southfield",
+          "Appt_Resource_Descr": "Mammogram",
+          "Appt_Type_Descr": "Mammogram",
+          "Appt_Status": "Cancelled",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2138125,
+          "Appt_Encounter_Number": 23400470,
+          "Appt_DateTime": "2024-03-08T10:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Gadoua, Christopher",
+          "Appt_Type_Descr": "ACT - Walk-in / Same Day Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2129707,
+          "Appt_Encounter_Number": 23330480,
+          "Appt_DateTime": "2024-03-05T08:40:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Southfield 10 Mile",
+          "Appt_Resource_Descr": "Webster, Shannon PAC",
+          "Appt_Type_Descr": "ACT -  Office Visit",
+          "Appt_Status": "Showed",
+          "ApptInsight": "PastAppt"
+        }
+      },
+      {
+        "json": {
+          "Patient_ID": 211251,
+          "Patient_Number": "867540",
+          "Appt_ID": 2041272,
+          "Appt_Encounter_Number": null,
+          "Appt_DateTime": "2024-02-13T09:00:00.000Z",
+          "Appt_Sched_Location_Descr": "EPIC Care Management",
+          "Appt_Resource_Descr": "CM - Hill, Ariel",
+          "Appt_Type_Descr": "ACM - Post Visit CMV",
+          "Appt_Status": "Cancelled",
+          "ApptInsight": "PastAppt"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.53",
+            "x-forwarded-for": "10.0.1.53",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-dest": "document",
+            "referer": "https://xl.epicpc.com/webhook/b70b7ec1-3f60-4420-a7a6-e18868310d98?SSOToken=d09974e8-df28-4d1a-b943-c2ad997ee203&AccountID=HEROERP",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FFSBaxwmss4IXGO0AfpH5sziAf%2FKDgD%2BEe8J5WEAv%2FvohzSb0SPaybVK%2FloL%2BASfq0lqkQrWNmSA%3D%3D; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2B6kBAJQBMZ9UPR7mZcR1zJXmBEta7g2oY%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BYgcSBsZj1pDGqLzuD1b%2FIfsvqrUqYYU0%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX18x55m0uEL9RCpTGV%2F2racvuhUHOC58r6j3AFA9QlgHPpjG8aKiHctPDvTmGsRSHiq2dLg%2BiqRNEbgOjetywB3Fa%2BJ4Xy8NtM0Dk5zuRl8sfiix715lUvPAGlJ8UVkfeXzEDiwfCpLMu7R%2BftYC4BHC5%2FwSpoRWj5w%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18%2BNN0iUEX%2B%2F0c%2F0hqLkxJ2mZ7N%2Be5bIAxXk16S%2BGlCsuDGeZxjn1GKy%2F4nO5pQuBYSJTVXiFDuUSq3RDtEBT%2BYz8hjfUFd%2Bc9e7h%2F%2FBw2gWVjWUp7EN7lAQBWk%2BmFJFd35yYuDy6sxyg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1713141524860%2C%22018edf31-2970-7e05-81fb-62f6c837339b%22%2C1713141524848%5D%2C%22%24epp%22%3Atrue%7D; rl_session=RudderEncrypt%3AU2FsdGVkX187P3UQSFblPY1Sv0u4o2XOhCbrv9KQ3lsbxRh21ruCEJ%2BttsJ1swcM2InFQf7BwvCFN6HaT9mJ02YSD7W%2FsUtxCNWb5MUpGsPmBr7YbOSAmWaSFdjNOqQmmU0mFgQxRy5%2FDh1UyNGI9A%3D%3D"
+          },
+          "params": {},
+          "query": {
+            "php": "https://envision.epicpc.com/auth/userkey/login.php?key=5256af220513c5d88b2eaa392fa1673a"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/a4361e1d-52d3-47bc-97b0-215a6a428248",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Patient Health Profile3": [
+      {
+        "json": {
+          "exception": "invalid_parameter_exception",
+          "errorcode": "invalidparameter",
+          "message": "Invalid parameter value detected"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-24T23:15:29.146Z",
+  "versionId": "a5369d22-024c-4977-9a23-7c54791b5a52"
+}
