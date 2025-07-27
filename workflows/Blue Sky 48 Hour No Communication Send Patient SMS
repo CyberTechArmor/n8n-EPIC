@@ -1,0 +1,1041 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 24 Bitrix24 Check1": {
+      "main": [
+        [
+          {
+            "node": "HTTP 24 Bitrix24 Check3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-13T11:01:55.202Z",
+  "id": "xzG1lI54Gzg36iR7",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Blue Sky 48 Hour No Communication Send Patient SMS",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8aeb06cd-3fc5-4d53-ac60-28d0439c3d61",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "position": [
+        580,
+        1140
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={     \"filter\": { \"BIRTHDATE\": \"{{ $json[\"Patient_DOB\"] }}\", \"NAME\":\"{{ $json[\"Patient_First_Name\"] }}\", \"LAST_NAME\":\"{{ $json[\"Patient_Last_Name\"] }}\" } }",
+        "options": {}
+      },
+      "id": "21e39bd3-fd9b-4d83-a1ad-d36ed398f746",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        500,
+        1580
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b465121e-d61c-4e0f-a980-c585f3dd434d",
+        "options": {}
+      },
+      "id": "a0ee8d8b-cdf4-432a-9f73-811199318cc4",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        800,
+        1140
+      ],
+      "webhookId": "b465121e-d61c-4e0f-a980-c585f3dd434d"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bsp.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"id\":\"{{ $('Webhook').item.json.query.id }}\"\n}",
+        "options": {}
+      },
+      "id": "4ebccb9d-99ad-4b1c-9624-f4bb2acbc5db",
+      "name": "HTTP 24 Bitrix24 Check1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2960,
+        940
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bsp.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.list.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"filter\": {\n      \"ID\": \"{{ $json.query.id }}\"\n   },\n   \"select\": [\"ID\", \"TITLE\", \"UF_CRM_TASK\"]\n}",
+        "options": {}
+      },
+      "id": "3d2a6aa7-dc98-4de9-8b66-e558d34bdbd9",
+      "name": "HTTP 24 Bitrix24 Check",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1040,
+        940
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://bsp.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/crm.contact.get.json",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"id\": \"{{ $json.result.tasks[0].ufCrmTask[0].replaceAll(\"C_\",\"\") }}\"\n}",
+        "options": {}
+      },
+      "id": "507fa75e-2bdb-4a73-8691-bdef42c7bca9",
+      "name": "HTTP 24 Bitrix24 Check2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        940
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:5678/webhook/37766daf-1972-44f6-a8ee-c02141e7a10f2",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "patient",
+              "value": "={{ $json.result.PHONE[0].VALUE }}"
+            },
+            {
+              "name": "twilio",
+              "value": "18448444412"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8b2f6ff5-f080-4fc0-8a59-855670af0d58",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1520,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "chatHistory",
+        "options": {}
+      },
+      "id": "d25196ae-443a-4f7c-8196-f951907c9e63",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "id": "e01c2b1a-484b-44f1-930a-0fac225bc1bd",
+      "name": "Limit",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the date_created value (assuming it's in a valid date format)\nconst dateCreated = new Date($json.date_created);\n\n// Get the current date and time\nconst now = new Date();\n\n// Calculate the difference in time (in milliseconds)\nconst timeDifference = now - dateCreated;\n\n// Convert the time difference from milliseconds to hours\nconst hoursDifference = timeDifference / (1000 * 60 * 60);\n\n// Check if the difference is greater than 48 hours (2 days)\nif (hoursDifference > $json.HourDifference) {\n    return [{ json: { result: 'Date is older than ' + $json.HourDifference + ' hours' } }];\n} else {\n    return [{ json: { result: 'Date is within ' + $json.HourDifference + ' hours' } }];\n}\n\n"
+      },
+      "id": "9b4c9973-d714-4fef-8b1c-02eaa75e751e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2500,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b4caaae5-b61f-45ce-a0d6-3bb4af0e478d",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "older",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "306ace4f-dbab-461e-873a-c9a294e0cc8e",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        2700,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ehs.unitycarecrm.com/rest/19/oqk9f0x6y0kopjiq/tasks.task.update",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"taskId\": \"{{ $json.result.task.id }}\",\n  \"fields\": {\n    \"TITLE\": \"{{ $json.result.task.title }}\",\n    \"DESCRIPTION\": \"{{ $json.result.task.description }}\",\n    \"TAGS\": \"Send SMS\"\n  }\n}\n",
+        "options": {}
+      },
+      "id": "c5dc1540-204a-4196-92af-573a30ad079a",
+      "name": "HTTP 24 Bitrix24 Check3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3180,
+        940
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "id": "6b863d38-7c54-4853-a793-c90e79640a12",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5630af86-e7e2-4602-9a40-ec4bac68634e",
+              "name": "HourDifference",
+              "value": 48,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae1b0ae5-d3b0-4682-9efe-b6d4541d975f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2220,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "id": "c2e936eb-fa14-40be-b597-af58a2a621a7",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2320,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "051cbdb0-119f-464e-aeed-b2145318b7f0",
+              "name": "HourDifference",
+              "value": "={{ $json.HourDifference }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "efe08ae6-65b9-4735-ba5c-33a70399df15",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2380,
+        600
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "355",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "id": "20213"
+          },
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "20213",
+            "auth[domain]": "bsp.unitycarecrm.com",
+            "auth[client_endpoint]": "https://bsp.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/b465121e-d61c-4e0f-a980-c585f3dd434d",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "HTTP 24 Bitrix24 Check": [
+      {
+        "json": {
+          "result": {
+            "tasks": [
+              {
+                "id": "20213",
+                "title": "Salam Kalabat - Baseline",
+                "ufCrmTask": [
+                  "C_8375"
+                ],
+                "ufMailMessage": null,
+                "group": []
+              }
+            ]
+          },
+          "total": 1,
+          "time": {
+            "start": 1728819186.736263,
+            "finish": 1728819186.837192,
+            "duration": 0.10092902183532715,
+            "processing": 0.03660082817077637,
+            "date_start": "2024-10-13T07:33:06-04:00",
+            "date_finish": "2024-10-13T07:33:06-04:00"
+          }
+        }
+      }
+    ],
+    "HTTP 24 Bitrix24 Check2": [
+      {
+        "json": {
+          "result": {
+            "ID": "8375",
+            "POST": null,
+            "COMMENTS": "",
+            "HONORIFIC": "",
+            "NAME": "SALAM",
+            "SECOND_NAME": "",
+            "LAST_NAME": "KALABAT",
+            "PHOTO": null,
+            "LEAD_ID": null,
+            "TYPE_ID": "UC_36KZEQ",
+            "SOURCE_ID": null,
+            "SOURCE_DESCRIPTION": "008367",
+            "COMPANY_ID": null,
+            "BIRTHDATE": "1957-07-21T20:00:00-04:00",
+            "EXPORT": "N",
+            "HAS_PHONE": "Y",
+            "HAS_EMAIL": "Y",
+            "HAS_IMOL": "N",
+            "DATE_CREATE": "2024-07-16T21:47:28-04:00",
+            "DATE_MODIFY": "2024-08-28T08:45:13-04:00",
+            "ASSIGNED_BY_ID": "486",
+            "CREATED_BY_ID": "19",
+            "MODIFY_BY_ID": "472",
+            "OPENED": "N",
+            "ORIGINATOR_ID": null,
+            "ORIGIN_ID": null,
+            "ORIGIN_VERSION": null,
+            "FACE_ID": null,
+            "LAST_ACTIVITY_TIME": "2024-07-16T21:47:28-04:00",
+            "ADDRESS": null,
+            "ADDRESS_2": null,
+            "ADDRESS_CITY": null,
+            "ADDRESS_POSTAL_CODE": null,
+            "ADDRESS_REGION": null,
+            "ADDRESS_PROVINCE": null,
+            "ADDRESS_COUNTRY": null,
+            "ADDRESS_LOC_ADDR_ID": null,
+            "UTM_SOURCE": null,
+            "UTM_MEDIUM": null,
+            "UTM_CAMPAIGN": null,
+            "UTM_CONTENT": null,
+            "UTM_TERM": null,
+            "PARENT_ID_143": null,
+            "PARENT_ID_153": null,
+            "PARENT_ID_164": null,
+            "LAST_ACTIVITY_BY": "19",
+            "UF_CRM_EHS_ACCT_TYPE": "84",
+            "UF_CRM_EHS_ACCT_COMMENTS": "",
+            "UF_CRM_EHS_PATIENT_NO": "008367",
+            "UF_CRM_EHS_SSN": "",
+            "UF_CRM_SEX": "",
+            "UF_CRM_EHS_ENTERPRISE_NO": "",
+            "UF_CRM_EHS_USUAL_PROV": "",
+            "UF_CRM_REFERRING_DR": "",
+            "UF_CRM_EHS_PCP": "",
+            "UF_CRM_MED_REC_LOC": "",
+            "UF_CRM_MED_REC_NO": "",
+            "UF_CRM_MARITAL": "",
+            "UF_CRM_EMPLOYMENT": "",
+            "UF_CRM_STUDENT": "",
+            "UF_CRM_INACTIVATION_DATE": "",
+            "UF_CRM_HIPAA_STMT_EXP": "",
+            "UF_CRM_EHS_REL_TO_GUAR": "190",
+            "UF_CRM_ACC_SEX": "",
+            "UF_CRM_EHS_ACC_DOB": "",
+            "UF_CRM_EHS_ACC_SSN": "",
+            "UF_CRM_EHS_ACC_HTEL": "",
+            "UF_CRM_EHS_ACC_WTEL": "",
+            "UF_CRM_EHS_ACC_CELL": "",
+            "UF_CRM_EHS_ACC_EMAIL": "",
+            "UF_CRM_DIVISION": "",
+            "UF_CRM_EHS_ASSOCIATED_STATUS": "",
+            "UF_CRM_EHS_RATING_STATUS": "",
+            "UF_CRM_EHS_INSURNACE_ACCEPTING": "",
+            "UF_CRM_EHS_ACCESS_MECH": [],
+            "UF_CRM_EHS_INSURANCE_PLANS": [],
+            "UF_CRM_INSURANCE_ID_NUMBER": "",
+            "UF_CRM_GROUP_ID_NO": "",
+            "UF_CRM_EHS_PATIENT_TYPE": [],
+            "UF_CRM_PT_APP_STATUS": "",
+            "UF_CRM_DATE_REGISTERED": "",
+            "UF_CRM_EHS_ACTIVE": "0",
+            "UF_CRM_LAST_ACKNOWLEGED_APP": "",
+            "UF_CRM_EHS_TOTAL_PRIOR_APPS": "",
+            "UF_CRM_EHS_SHOW_RATE": "",
+            "UF_CRM_REGION": [],
+            "UF_CRM_SAM_CONSUMER_APP": "0",
+            "UF_CRM_SAM_CONSUMER_APP_LAST_ACTIVE": "",
+            "UF_CRM_CCM_USERNAME": "",
+            "UF_CRM_CCM_LAST_UPDATED": "",
+            "UF_CRM_CCM_CONSENT_DATE_EMR": "",
+            "UF_CRM_EHS_GUARANTOR_FULL_NAME": "",
+            "UF_CRM_EHS_GUARANTOR_MOBILE": "",
+            "UF_CRM_EHS_GUARANTOR_PHONE": "",
+            "UF_CRM_EHS_PREF_PROVIDER": "",
+            "UF_CRM_EHS_INS_ASSIGNED_PCP": "",
+            "UF_CRM_STATE": "0",
+            "UF_CRM_CITY": "",
+            "UF_CRM_ZIP": "48328",
+            "UF_CRM_1725463377": "",
+            "UF_CRM_1725463409": "",
+            "UF_CRM_1725463451": "",
+            "UF_CRM_1725463474": "",
+            "UF_CRM_1725467554": "",
+            "UF_CRM_6708164E6E8CA": "",
+            "PHONE": [
+              {
+                "ID": "27456",
+                "VALUE_TYPE": "MOBILE",
+                "VALUE": "+12483209001",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "27457",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "+12483209001",
+                "TYPE_ID": "PHONE"
+              },
+              {
+                "ID": "27458",
+                "VALUE_TYPE": "OTHER",
+                "VALUE": "+12483209001",
+                "TYPE_ID": "PHONE"
+              }
+            ],
+            "EMAIL": [
+              {
+                "ID": "27459",
+                "VALUE_TYPE": "HOME",
+                "VALUE": "salam@kalabat.com",
+                "TYPE_ID": "EMAIL"
+              }
+            ]
+          },
+          "time": {
+            "start": 1728819379.202285,
+            "finish": 1728819379.356575,
+            "duration": 0.15428996086120605,
+            "processing": 0.09415483474731445,
+            "date_start": "2024-10-13T07:36:19-04:00",
+            "date_finish": "2024-10-13T07:36:19-04:00"
+          }
+        }
+      }
+    ],
+    "HTTP Request": [
+      {
+        "json": {
+          "chatHistory": [
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Good morning Salam, this is Blue Sky Provention Center. I am reaching out to get you scheduled for your first baseline appointment. Please let me know your availability, thank you. (Fri Jun 07 2024 08:03 AM)",
+              "date_created": "Fri, 07 Jun 2024 12:03:04 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, did you drink water first thing this morning? Start each day with a glass of water to kickstart your metabolism!\r\nhttps://tinyurl.com/3ej3tmsz (Mon Jul 08 2024 02:00 PM)",
+              "date_created": "Mon, 08 Jul 2024 18:00:34 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you meditate today? How did it make you feel? Practice mindfulness to reduce stress with this 5-Minute Meditation: https://tinyurl.com/25nwfvz5 (Tue Jul 09 2024 03:01 PM)",
+              "date_created": "Tue, 09 Jul 2024 19:01:02 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: How much time did you spend outdoors today? Spending time in nature can both boost your mood and reduce stress! https://tinyurl.com/3f38f4f3 (Thu Jul 11 2024 03:30 PM)",
+              "date_created": "Thu, 11 Jul 2024 19:30:48 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you eat enough fruits and vegetables today? Incorporate more fruits and vegetables into your diet with these tips: https://tinyurl.com/49dveuke (Fri Jul 12 2024 02:00 PM)",
+              "date_created": "Fri, 12 Jul 2024 18:00:54 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Have you tried any new exercises recently? It's important to create variety in your routine - Try yoga for beginners: https://tinyurl.com/3unumhn3 (Sat Jul 13 2024 10:00 AM)",
+              "date_created": "Sat, 13 Jul 2024 14:00:54 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, what are three things you’re grateful for today? Keep a gratitude journal to focus on the positive aspects of your life. https://tinyurl.com/t5h7fmva (Sun Jul 14 2024 11:01 AM)",
+              "date_created": "Sun, 14 Jul 2024 15:01:10 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Do you typically avoid screens at night time? Limiting screen time before bed can help your body prepare for sleep. https://tinyurl.com/bd39re9j (Mon Jul 15 2024 03:01 PM)",
+              "date_created": "Mon, 15 Jul 2024 19:01:08 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, how much water have you had so far today? Stay hydrated all day long and find your recommended amount of water here: https://tinyurl.com/4zwtrtbw (Tue Jul 16 2024 02:00 PM)",
+              "date_created": "Tue, 16 Jul 2024 18:00:31 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you take regular breaks today? How did it affect your productivity? Take breaks during your workday to avoid burnout and stay refreshed. https://tinyurl.com/3px7w4fy (Wed Jul 17 2024 03:30 PM)",
+              "date_created": "Wed, 17 Jul 2024 19:30:51 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you have any whole grains today? Including whole grains in your diet allows for better digestion and sustained energy. https://tinyurl.com/mbbb8jsw (Thu Jul 18 2024 01:00 PM)",
+              "date_created": "Thu, 18 Jul 2024 17:00:37 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What do you include in your bedtime routine? Create a relaxing bedtime routine to signal your body it's time to sleep. https://tinyurl.com/3tmpheec (Fri Jul 19 2024 04:00 PM)",
+              "date_created": "Fri, 19 Jul 2024 20:00:55 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, do you practice deep breathing regularly? Calm your body and mind through deep breathing with these techniques: https://tinyurl.com/2s3ffr36 (Sat Jul 20 2024 10:00 AM)",
+              "date_created": "Sat, 20 Jul 2024 14:00:59 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, what are your health goals for the next month? Explore what a health goal is and why you should set them here: https://tinyurl.com/ytma5xwj (Sun Jul 21 2024 11:01 AM)",
+              "date_created": "Sun, 21 Jul 2024 15:01:12 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What's a hobby you've always wanted to try but haven't yet? What’s stopping you? See why hobbies are important here: https://tinyurl.com/mrxc22r6 (Mon Jul 22 2024 02:00 PM)",
+              "date_created": "Mon, 22 Jul 2024 18:00:54 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What did you drink today? Any sugary drinks you could cut down on? Avoid sugary drinks and opt for water or herbal teas. https://tinyurl.com/yeyt2xes (Tue Jul 23 2024 03:30 PM)",
+              "date_created": "Tue, 23 Jul 2024 19:30:38 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Does your sleep environment change with the seasons, and what adjustments do you make? Sleep-friendly environment tips: https://tinyurl.com/4ms72fde (Wed Jul 24 2024 02:30 PM)",
+              "date_created": "Wed, 24 Jul 2024 18:30:31 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, did you stretch this morning? Start your day with this 10-minute stretch to wake up your muscles: https://tinyurl.com/4h2z942s (Thu Jul 25 2024 03:00 PM)",
+              "date_created": "Thu, 25 Jul 2024 19:00:48 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you track your sleep last night? What did you learn? Track your sleep patterns to identify areas for improvement. https://tinyurl.com/3z9fetbu (Fri Jul 26 2024 03:30 PM)",
+              "date_created": "Fri, 26 Jul 2024 19:30:26 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you do any strength training today? Incorporate strength training into your routine to do more than build muscle: https://tinyurl.com/3p68hdcm (Sat Jul 27 2024 10:30 AM)",
+              "date_created": "Sat, 27 Jul 2024 14:30:56 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you plan your meals this week? Plan ahead to ensure you’re getting all the nutrients you need with these tips & tricks: https://tinyurl.com/3cau589z (Sun Jul 28 2024 10:00 AM)",
+              "date_created": "Sun, 28 Jul 2024 14:00:54 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What's your go-to late night snack? Do you think it impacts your ability to fall asleep? Best & worst foods to eat before bed: https://tinyurl.com/26hujbeu (Mon Jul 29 2024 02:00 PM)",
+              "date_created": "Mon, 29 Jul 2024 18:00:35 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, did you use the stairs today? How did it feel? Use the stairs instead of the elevator whenever possible. https://tinyurl.com/2anw8r74 (Tue Jul 30 2024 03:00 PM)",
+              "date_created": "Tue, 30 Jul 2024 19:00:42 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Did you connect with anyone today? Connect with friends or family to strengthen your social support network. https://tinyurl.com/2p8wf6uh (Wed Jul 31 2024 02:30 PM)",
+              "date_created": "Wed, 31 Jul 2024 18:30:50 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, how many times did you get up and move around today? Stay active throughout the day with desk exercises: https://tinyurl.com/4sn862zy (Thu Aug 01 2024 03:31 PM)",
+              "date_created": "Thu, 01 Aug 2024 19:31:09 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What relaxation techniques do you use before bed? Try reading or listening to calming music to improve relaxation, before bed. https://tinyurl.com/yc8vdrsh (Fri Aug 02 2024 02:01 PM)",
+              "date_created": "Fri, 02 Aug 2024 18:01:18 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: Salam, what type of physical activity did you do today? Aim for at least 30 minutes of physical activity each day. https://tinyurl.com/vmjy4jzt (Sat Aug 03 2024 10:00 AM)",
+              "date_created": "Sat, 03 Aug 2024 14:00:57 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: What progress have you made this month? How will you reward yourself? Celebrating big and small wins are equally important! https://tinyurl.com/bd8bc925 (Sun Aug 04 2024 11:00 AM)",
+              "date_created": "Sun, 04 Aug 2024 15:00:27 +0000"
+            },
+            {
+              "direction": "outbound-api",
+              "from": "+18448444412",
+              "to": "+12483209001",
+              "body": "To: +12483209001: We're sure your hair health is always on the top of your mind. We're so excited to announce our newest test, the Comprehensive Hair & Scalp Analysis! Check it out at the link below & ask us about it at your next visit!\r\n\r\nhttps://youtu.be/5a4YcsBTHsI (Fri Aug 09 2024 01:29 PM)",
+              "date_created": "Fri, 09 Aug 2024 17:29:10 +0000"
+            }
+          ]
+        }
+      }
+    ],
+    "HTTP 24 Bitrix24 Check1": [
+      {
+        "json": {
+          "result": {
+            "task": {
+              "id": "20213",
+              "parentId": "0",
+              "title": "Salam Kalabat - Baseline",
+              "description": "",
+              "mark": null,
+              "priority": "1",
+              "multitask": "N",
+              "notViewed": "Y",
+              "replicate": "N",
+              "stageId": "328",
+              "createdBy": "472",
+              "createdDate": "2024-08-27T09:07:05-04:00",
+              "responsibleId": "472",
+              "changedBy": "18",
+              "changedDate": "2024-10-13T07:15:42-04:00",
+              "statusChangedBy": null,
+              "closedBy": null,
+              "closedDate": null,
+              "activityDate": "2024-10-13T07:15:39-04:00",
+              "dateStart": null,
+              "deadline": "2024-10-20T07:15:38-04:00",
+              "startDatePlan": null,
+              "endDatePlan": null,
+              "guid": "{2f3b950a-c526-4f40-bef1-6ea9710cbbcc}",
+              "xmlId": null,
+              "commentsCount": "1",
+              "serviceCommentsCount": "1",
+              "allowChangeDeadline": "Y",
+              "allowTimeTracking": "N",
+              "taskControl": "N",
+              "addInReport": "N",
+              "forkedByTemplateId": null,
+              "timeEstimate": "0",
+              "timeSpentInLogs": null,
+              "matchWorkTime": "N",
+              "forumTopicId": "15072",
+              "forumId": "8",
+              "siteId": "gy",
+              "subordinate": "N",
+              "exchangeModified": null,
+              "exchangeId": null,
+              "outlookVersion": "14",
+              "viewedDate": null,
+              "sorting": null,
+              "durationFact": null,
+              "isMuted": "N",
+              "isPinned": "N",
+              "isPinnedInGroup": "N",
+              "descriptionInBbcode": "Y",
+              "status": "2",
+              "statusChangedDate": "2024-10-13T07:15:42-04:00",
+              "durationPlan": "0",
+              "durationType": "days",
+              "favorite": "N",
+              "groupId": "52",
+              "auditors": [],
+              "accomplices": [],
+              "checklist": [],
+              "group": {
+                "id": "52",
+                "name": "Subscriber Status",
+                "opened": false,
+                "membersCount": 5,
+                "image": "/bitrix/images/socialnetwork/workgroup/checks.png",
+                "additionalData": []
+              },
+              "creator": {
+                "id": "472",
+                "name": "Alexandra Harding",
+                "link": "/company/personal/user/472/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "responsible": {
+                "id": "472",
+                "name": "Alexandra Harding",
+                "link": "/company/personal/user/472/",
+                "icon": "/bitrix/images/tasks/default_avatar.png",
+                "workPosition": null
+              },
+              "accomplicesData": [],
+              "auditorsData": [],
+              "newCommentsCount": 0,
+              "action": {
+                "accept": false,
+                "decline": false,
+                "complete": true,
+                "approve": false,
+                "disapprove": false,
+                "start": true,
+                "pause": false,
+                "delegate": true,
+                "remove": true,
+                "edit": true,
+                "defer": true,
+                "renew": false,
+                "create": true,
+                "changeDeadline": true,
+                "checklistAddItems": true,
+                "addFavorite": true,
+                "deleteFavorite": false,
+                "rate": true,
+                "edit.originator": false,
+                "checklist.reorder": true,
+                "elapsedtime.add": true,
+                "dayplan.timer.toggle": false,
+                "edit.plan": true,
+                "checklist.add": true,
+                "favorite.add": true,
+                "favorite.delete": false
+              },
+              "checkListTree": {
+                "nodeId": 0,
+                "fields": {
+                  "id": null,
+                  "copiedId": null,
+                  "entityId": null,
+                  "userId": 19,
+                  "createdBy": null,
+                  "parentId": null,
+                  "title": "",
+                  "sortIndex": null,
+                  "displaySortIndex": "",
+                  "isComplete": false,
+                  "isImportant": false,
+                  "completedCount": 0,
+                  "members": [],
+                  "attachments": []
+                },
+                "action": [],
+                "descendants": []
+              },
+              "checkListCanAdd": true
+            }
+          },
+          "time": {
+            "start": 1728846488.313089,
+            "finish": 1728846488.56218,
+            "duration": 0.24909114837646484,
+            "processing": 0.18676209449768066,
+            "date_start": "2024-10-13T15:08:08-04:00",
+            "date_finish": "2024-10-13T15:08:08-04:00"
+          }
+        }
+      }
+    ],
+    "Limit": [
+      {
+        "json": {
+          "direction": "inbound",
+          "from": "+12488726322",
+          "to": "+18448444412",
+          "body": "From: +12488726322: Media attached (Sun Oct 13 2024 06:02 PM)",
+          "date_created": "Sun, 13 Oct 2024 22:02:05 +0000"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-15T12:58:16.915Z",
+  "versionId": "1985d18a-d7ea-4da1-a2a0-6aa92681546e"
+}
