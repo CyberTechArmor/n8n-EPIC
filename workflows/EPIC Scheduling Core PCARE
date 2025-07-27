@@ -1,0 +1,41 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-06-20T16:51:43.943Z",
+  "id": "I959katT6Eolt4yh",
+  "isArchived": false,
+  "meta": null,
+  "name": "EPIC Scheduling Core PCARE",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @RES VARCHAR(50) = '%%';\nDECLARE @LOC VARCHAR(250) = '%%';\nDECLARE @APPT_TYPE VARCHAR(250) = '%%';\nDECLARE @STARTDATE DATE = '2025-06-20';\nDECLARE @ENDDATE DATE =  '2025-08-25';\n\nWITH sched_appt_avail AS (\n    SELECT  \n        s.[Available_Date],\n        s.[Start_Time],\n        s.[End_Time],\n        s.[Sched_Loc_Abbr],\n        s.[Sched_Dept_Abbr],\n        s.[Resource_Desc],\n        s.[Resource_Abbr],\n        s.[Activity_Type_Abbr],\n        s.Resource_ID,\n        s.Scheduling_Location_ID,\n\t\tsl.Description,sl.Abbreviation\n        ,CASE WHEN s.Booking_Factor = 1 THEN 'BookableSlot' END AS BookableAppt\n \n    FROM [PM].[vwApptSchedAvail] s\n\tleft join [Ntier_EPIC].[PM].[Scheduling_Locations] sl on s.Scheduling_Location_ID=sl.Scheduling_Location_ID\n    WHERE s.Available_Date BETWEEN @STARTDATE AND @ENDDATE\n      AND s.Resource_Abbr NOT LIKE 'PALAB'\n      AND s.Activity_Type_Abbr NOT LIKE 'BREAK'\n      AND s.Activity_Type_Abbr NOT LIKE 'lunch'\n      AND s.Activity_Type_Abbr NOT LIKE 'Blocked'\n      AND s.Activity_Type_Abbr NOT LIKE 'Dayoff'\n      AND s.Activity_Type_Abbr NOT LIKE 'HOLIDAY' \n      AND s.Resource_Desc like @RES\n \n)\n--select * from sched_appt_avail\n,\nscheduled_appt_slots AS (\n    SELECT \n        p.[Patient_ID],\n        p.[Patient_Number],\n        p.[Appt_ID],\n        p.[Appt_DateTime],\n        p.[Appt_Resource_ID],\n        p.[Appt_Status],\n        CASE WHEN p.Patient_ID IS NOT NULL THEN 'BookedAppt' END AS BookedAppt\n \n    FROM [Ntier_EPIC].[PM].[vwGenPatApptInfo] p\n    WHERE CAST(p.Appt_DateTime AS DATE) BETWEEN @STARTDATE AND @ENDDATE\n    AND p.Appt_Resource_Descr like @RES\n \n),\nres_pract_info as(\nselect \nr.Resource_ID as res_resource_id,r.Abbreviation as res_abbreviation,r.Description as res_description,r.Appointment_Group_ID as res_appointment_group_id,ag.Abbreviation as appt_gp_abbreviation,\nag.Description as appt_gp_description,r.Practitioner_ID as res_practitioner_id,\np.Practitioner_ID as prac_practitioner_id,\np.Is_Ref_Source,p.Is_Physician,p.Abbreviation as prac_abbreviation,\nUPPER(p.First_Name) First_Name,upper(p.Last_Name) Last_Name,p.Sex,p.Street1,p.City,p.State,p.Zip_Code,p.Phone,p.Phone_Ext,\np.Fax_Number,p.UPIN,p.Specialty_ID,p.Is_Non_Person,p.Specialty_ID spec_Specialty_Id,s.Abbreviation spec_abbreviation,s.Description spec_description,\np.Is_Mid_Level,p.Is_Mid_Level_PA,\np.Inactivation_Date,p.Is_Locum_Tenan\nfrom [PM].[Resources] r \nleft join [PM].[Practitioners] p on r.Practitioner_ID=p.Practitioner_ID\nleft join [PM].[Specialties] s on p.Specialty_ID=s.Specialty_ID\nLEFT JOIN [PM].[Appointment_Groups] ag on r.Appointment_Group_ID=ag.Appointment_Group_ID\nwhere r.Description not like 'zz%' and r.Description not like 'CM%'\nand r.Description not like 'super%' and r.Description not like 'blue%'\nand r.Description not like 'bella%' and r.Description not like 'surg%'\nand r.Description not like 'uop' and r.Description not like 'Tin%'\nand r.Description not like 'dunc%' and p.Inactivation_Date is null\nand r.Description not like 'prior%'\nand r.Description not like 'chee%' and r.Description not like 'PA,%'\nand r.Description not like 'PharmD - Sabbagh, Hussein' and r.Description  not like'%event%'\n),\nappt_status_summary AS (\n    SELECT \n        CAST(p.Appt_DateTime AS DATE) AS Appt_Date,\n        DATEPART(HOUR, p.Appt_DateTime) * 100 + DATEPART(MINUTE, p.Appt_DateTime) AS Start_Time,\n        p.Appt_Resource_ID,\n        COUNT(*) AS Total_Appts,\n        SUM(CASE WHEN p.Appt_Status IN ('s', 'c', 'a') THEN 1 ELSE 0 END) AS Has_Conflicting_Status\n    FROM [Ntier_EPIC].[PM].[vwGenPatApptInfo] p\n    WHERE CAST(p.Appt_DateTime AS DATE) BETWEEN @STARTDATE AND @ENDDATE\n    GROUP BY \n        CAST(p.Appt_DateTime AS DATE),\n        DATEPART(HOUR, p.Appt_DateTime) * 100 + DATEPART(MINUTE, p.Appt_DateTime),\n        p.Appt_Resource_ID\n)\n--select * from appt_status_summary a\n \n,filter_sp_app AS (\n    SELECT \n        a.Available_Date,\n        a.Start_Time,\n        a.End_Time,\n        a.Resource_Abbr,\n        a.Resource_Desc,\n        a.Resource_ID,\n        a.Activity_Type_Abbr,\n        a.Sched_Dept_Abbr,\n        a.Sched_Loc_Abbr,\n        a.Scheduling_Location_ID,\n        a.Abbreviation,a.Description ,\n        --CASE \n        --    WHEN a.Description LIKE 'Spec ep%' THEN REPLACE(a.Description, 'SPEC EP', 'Specialist at')\n        --END AS Description,\n        r.*,\n        CASE \n            WHEN aps.Has_Conflicting_Status IS NULL OR aps.Has_Conflicting_Status = 0 THEN 'Bookable_Appt'\n            ELSE 'Not_Bookable'\n        END AS BookableAppt\n    FROM sched_appt_avail a\n    LEFT JOIN appt_status_summary aps\n        ON a.Available_Date = aps.Appt_Date\n        AND a.Start_Time = aps.Start_Time\n        AND a.Resource_ID = aps.Appt_Resource_ID\n    LEFT JOIN res_pract_info r \n        ON r.res_resource_id = a.Resource_ID\n    WHERE \n        a.BookableAppt = 'BookableSlot'\n        --AND (\n        --    r.res_appointment_group_id IN ('79','42')\n        --   -- OR a.Sched_Loc_Abbr LIKE '%SEP%'\n        --)\n        AND r.appt_gp_description LIKE 'act%'\n\t\tor r.res_appointment_group_id in ('89','42','79')\n)\n--select * from filter_sp_app\n,bookability_flag AS (\n    SELECT \n        Available_Date,\n        Start_Time,\n        Resource_ID,\n        MAX(CASE WHEN BookableAppt = 'Not_Bookable' THEN 1 ELSE 0 END) AS Has_Not_Bookable\n\t\t--,Appt_Status\n    FROM filter_sp_app\n    GROUP BY Available_Date, Start_Time, Resource_ID--,Appt_Status\n)\n \nSELECT f.*, \n    CASE \n        WHEN f.First_Name = 'FERNDALE' AND f.Last_Name = 'CARDIOLOGY' THEN 'SPECIALIST'\n        ELSE f.First_Name\n    END AS FIRST_NAME_TO_USE_FOR_WHEN_WANT_TO_CHANGE_NAME\nFROM filter_sp_app f\nWHERE f.BookableAppt = 'Bookable_Appt'\n  AND f.Abbreviation not LIKE 'SEPSTel%'\n  and f.Description like @LOC\n \n--group by f.Abbreviation\nORDER BY f.Start_Time"
+      },
+      "id": "2c8ac207-ffe5-4e1a-a7e1-f8e5de91e81f",
+      "name": "PM P-CARE1",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        40,
+        240
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "wyNxSZ4e8ERWmP4v",
+          "name": "Microsoft SQL PM"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-20T17:50:58.516Z",
+  "versionId": "f8c8c007-ef8b-424f-bf65-a0bbef354687"
+}
