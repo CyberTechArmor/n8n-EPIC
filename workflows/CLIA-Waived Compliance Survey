@@ -1,0 +1,414 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-03-14T00:24:58.310Z",
+  "id": "CrtvmgLsdxby5oWS",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CLIA-Waived Compliance Survey",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/json\"\n}\n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"method\": \"get_session_key\",\n  \"params\": [\n    \"wwong\",\n    \"Wwuser#123456\"\n  ],\n  \"id\": 1\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "37f8a676-f910-4d09-b4a6-c046552b837a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2c16aaa7-ff0a-4c99-b5bf-6ec10d769643",
+              "name": "session_key",
+              "value": "={{$json[\"result\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        0
+      ],
+      "id": "59ac7f28-7637-4dc0-a1fa-ba29b3f9368c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://forms.epicpc.com/limesurvey/index.php/admin/remotecontrol",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/json\"\n}\n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"method\": \"export_responses\",\n  \"params\": [\n    \"{{ $json.session_key }}\",\n    124392,\n    \"json\"\n  ],\n  \"id\": 1\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ],
+      "id": "805400f7-8cff-42ae-aff7-90c24f38426b",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const base64String = $json[\"result\"];\nconst decoded = Buffer.from(base64String, 'base64').toString('utf-8');\nreturn { json: JSON.parse(decoded) };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ],
+      "id": "f0e4ee97-6735-4df7-8d53-96a6fbe572c8",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        0
+      ],
+      "id": "98928ac3-b9f3-4769-8077-197ee681ca65",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const staticData = $getWorkflowStaticData(\"global\");\n\n// Get last processed date or set a default date\nlet lastProcessedDate = staticData.lastProcessedDate || \"2000-01-01 00:00:00\";\n\n// Extract submitdate from the current response (assuming single response)\nlet currentResponseDate = $json.responses[0].submitdate;\n\n// Compare dates\nif (new Date(currentResponseDate) > new Date(lastProcessedDate)) {\n  // Update the last processed date\n  staticData.lastProcessedDate = currentResponseDate;\n\n  return { newResponse: true, responses: $json.responses };\n} else {\n  return { newResponse: false };\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        0
+      ],
+      "id": "87b7fcaa-77bc-4962-b711-cec64c564851",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const officeCode = $json.responses[0][\"G01Q05\"];\n\nconst officeManagers = {\n  \"AO01\": { name: \"Kristi Rankin\", email: \"wwong@epichs.org\" },\n  \"AO02\": { name: \"Alex Clarke\", email: \"aclarke@epichs.org\" },\n  \"AO03\": { name: \"Allise Moore\", email: \"amoore2@epichs.org\" },\n  \"AO04\": { name: \"Jamette Chaney\", email: \"jchaney@epichs.org\" },\n  \"AO05\": { name: \"Anne Waters\", email: \"awaters@epichs.org\" },\n  \"AO06\": { name: \"Michael Lee\", email: \"michaellee@example.com\" },\n  \"AO07\": { name: \"Jessica Green\", email: \"jessicagreen@example.com\" },\n  \"AO08\": { name: \"Lakeisha Eubanks\", email: \"leubanks@epichs.org\" },\n  \"AO09\": { name: \"Cora Fitzpatrick\", email: \"cfitzpatrick@epichs.org\" },\n  \"AO10\": { name: \"Kate Wagner\", email: \"kwagner@epichs.org\" },\n  \"AO11\": { name: \"Cora Fitzpatrick\", email: \"cfitzpatrick@epichs.org\" },\n  \"AO12\": { name: \"Natasha Feimster\", email: \"nfeimster@epichs.org\" }\n};\n\nconst managerInfo = officeManagers[officeCode];\n\nif (!managerInfo) {\n  throw new Error(`No manager found for office code: ${officeCode}`);\n}\n\nreturn {\n  officeCode,\n  managerName: managerInfo.name,\n  managerEmail: managerInfo.email,\n  responses: $json.responses\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ],
+      "id": "1b5f9fcd-298a-4c5b-8113-0c9e74a64f9d",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const responses = $json.responses[0];\n\n// Mapping object for all offices\nconst officeMapping = {\n  \"AO01\": \"Ferndale 9 Mile\",\n  \"AO02\": \"Southfield - 10 Mile\",\n  \"AO03\": \"Detroit Livernois\",\n  \"AO04\": \"Hamtramck E Davison\",\n  \"AO05\": \"Detroit 7 Mile\",\n  \"AO06\": \"Warren\",\n  \"AO07\": \"Davison\",\n  \"AO08\": \"Saint Clair Shores Harper\",\n  \"AO09\": \"Southfield Telegraph Primary Care\",\n  \"AO10\": \"Royal Oak Woodward\",\n  \"AO11\": \"Southfield Telegraph Specialty Care\",\n  \"AO12\": \"Flint Linden\"\n};\n\n// Helper to format a date to YYYY-MM-DD\nconst formatDate = (datetime) => {\n  if (!datetime) return '';\n  return datetime.split(' ')[0];\n};\n\n// Helper to make strings filename-safe\nconst toFileSafe = (str) => str.replace(/[^a-zA-Z0-9]/g, '-');\n\n// Function to determine compliance\nconst qcCompliance = (answer) => {\n  return (answer === \"Y\") ? \"Noncompliant\" : \"Compliant\";\n};\n\n// Extract values\nconst officeCode = responses[\"G01Q05\"];\nconst officeSurveyed = officeMapping[officeCode] || officeCode;\nconst submitDate = responses.submitdate;\nconst surveyDate = responses.G01Q06;\nconst submitDateFormatted = formatDate(submitDate);\nconst surveyDateFormatted = formatDate(surveyDate);\n\nreturn {\n  officeCode,\n  officeSurveyed,\n  managerName: $json.managerName,\n  managerEmail: $json.managerEmail,\n  submitDate,\n  submitDateFormatted,\n  surveyDate,\n  surveyDateFormatted,\n\n  envLogCompliance: responses[\"G01Q05[AO01]\"] === \"Y\" ? \"Yes\" : \"No\",\n\n  // QC Compliance Responses\n  QC_A1c_status: qcCompliance(responses[\"G01Q01[SQ001]\"]),\n  QC_CovidAntigen_status: qcCompliance(responses[\"G01Q01[SQ002]\"]),\n  QC_Influenza_status: qcCompliance(responses[\"G01Q01[SQ003]\"]),\n  QC_Glucose_status: qcCompliance(responses[\"G01Q01[SQ004]\"]),\n  QC_Hemoglobin_status: qcCompliance(responses[\"G01Q01[SQ005]\"]),\n  QC_PTINR_status: qcCompliance(responses[\"G01Q01[SQ006]\"]),\n  QC_RSV_status: qcCompliance(responses[\"G01Q01[SQ007]\"]),\n  QC_StrepA_status: qcCompliance(responses[\"G01Q01[SQ008]\"]),\n  QC_UrineHCG_status: qcCompliance(responses[\"G01Q01[SQ009]\"]),\n  QC_Urinalysis_status: qcCompliance(responses[\"G01Q01[SQ010]\"]),\n  QC_UrineMicroalbumin_status: qcCompliance(responses[\"G01Q01[SQ011]\"]),\n\n  noTestsNonCompliance: responses[\"G01Q01[SQ012]\"] === \"Y\" ? \"Yes\" : \"No\",\n  noTestsNonComplianceComment: responses[\"G01Q01[SQ012comment]\"] || \"\",\n\n  expiredInventory: responses[\"G02Q05[AO01]\"] === \"Y\" ? \"Yes\" : \"No\",\n  mixingTestKits: responses[\"G02Q06[AO01]\"] === \"Y\" ? \"Yes\" : \"No\",\n  specimenCollectionCompliance: responses[\"G02Q07[SQ001]\"] === \"Y\" ? \"Yes\" : \"No\",\n  specimenCollectionComment: responses[\"G02Q07[SQ001comment]\"] || \"\",\n\n  // Filename-friendly fields\n  fileSafeOffice: toFileSafe(officeSurveyed),\n  fileSafeDate: surveyDateFormatted\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        0
+      ],
+      "id": "be2afaf5-9dd7-40e5-b9a6-8d87825bfa05",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://rest.apitemplate.io/v2/create-pdf?template_id=2c877b2393f279cc",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"X-API-KEY\": \"f8b4MjYzMjE6MjM0NzY6OERUQ0pRaU1GaGJhM3l4aw=\",\n  \"Content-Type\": \"application/json\"\n}\n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"overrides\": [\n    { \"name\": \"officeCode\", \"value\": \"{{ $json.officeCode }}\" },\n    { \"name\": \"managerName\", \"value\": \"{{ $json.managerName }}\" },\n    { \"name\": \"submitDateFormatted\", \"value\": \"{{ $json.submitDateFormatted }}\" },\n    { \"name\": \"surveyDateFormatted\", \"value\": \"{{ $json.surveyDateFormatted }}\" },\n    { \"name\": \"officeSurveyed\", \"value\": \"{{ $json.officeSurveyed }}\" },\n    { \"name\": \"envLogCompliance\", \"value\": \"{{ $json.envLogCompliance }}\" },\n    { \"name\": \"QC_A1c_status\", \"value\": \"{{ $json.QC_A1c_status }}\" },\n    { \"name\": \"QC_CovidAntigen_status\", \"value\": \"{{ $json.QC_CovidAntigen_status }}\" },\n    { \"name\": \"QC_Influenza_status\", \"value\": \"{{ $json.QC_Influenza_status }}\" },\n    { \"name\": \"QC_Glucose_status\", \"value\": \"{{ $json.QC_Glucose_status }}\" },\n    { \"name\": \"QC_Hemoglobin_status\", \"value\": \"{{ $json.QC_Hemoglobin_status }}\" },\n    { \"name\": \"QC_PTINR_status\", \"value\": \"{{ $json.QC_PTINR_status }}\" },\n    { \"name\": \"QC_RSV_status\", \"value\": \"{{ $json.QC_RSV_status }}\" },\n    { \"name\": \"QC_StrepA_status\", \"value\": \"{{ $json.QC_StrepA_status }}\" },\n    { \"name\": \"QC_UrineHCG_status\", \"value\": \"{{ $json.QC_UrineHCG_status }}\" },\n    { \"name\": \"QC_Urinalysis_status\", \"value\": \"{{ $json.QC_Urinalysis_status }}\" },\n    { \"name\": \"QC_UrineMicroalbumin_status\", \"value\": \"{{ $json.QC_UrineMicroalbumin_status }}\" },\n    { \"name\": \"noTestsNonCompliance\", \"value\": \"{{ $json.noTestsNonCompliance }}\" },\n    { \"name\": \"noTestsNonComplianceComment\", \"value\": \"{{ $json.noTestsNonComplianceComment }}\" },\n    { \"name\": \"expiredInventory\", \"value\": \"{{ $json.expiredInventory }}\" },\n    { \"name\": \"mixingTestKits\", \"value\": \"{{ $json.mixingTestKits }}\" },\n    { \"name\": \"specimenCollectionCompliance\", \"value\": \"{{ $json.specimenCollectionCompliance }}\" },\n    { \"name\": \"specimenCollectionComment\", \"value\": \"{{ $json.specimenCollectionComment }}\" }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        0
+      ],
+      "id": "2c571e0e-0805-4e88-9a2b-995350ec55c1",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "toRecipients": "={{ $('Code2').item.json.managerEmail }}",
+        "subject": "=CLIA-Waived Compliance Survey - {{ $('Code3').item.json.officeSurveyed }} - {{ $('Code3').item.json.fileSafeDate }}",
+        "bodyContent": "=Dear {{ $('Code3').item.json.managerName }},\n\nPlease find attached the CLIA-Waived Compliance Survey report for {{ $('Code3').item.json.officeSurveyed }} conducted on {{ $('Code3').item.json.fileSafeDate }}.\n\nBest regards,  \nEpichs\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        0
+      ],
+      "id": "6efda986-d0f7-4e26-b8db-c473c1ca080d",
+      "name": "Microsoft Outlook",
+      "webhookId": "3845829f-dd74-4e53-86b5-9668b253ad1e",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "uHwONlXuBcfHWf9I",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.download_url }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1980,
+        0
+      ],
+      "id": "38ede77e-2b08-4838-9edb-fc7a7053e840",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const binary = $binary.data;\n\n// Get data from Code3 node\nconst officeSurveyed = $('Code3').first().json.officeSurveyed;\nconst surveyDate = $('Code3').first().json.surveyDate;\n\n// Extract just the date (YYYY-MM-DD) from the surveyDate\nconst formattedDate = surveyDate.split(' ')[0]; // removes time\n\n// Replace spaces in office name with dashes (optional)\nconst formattedOffice = officeSurveyed.replace(/\\s+/g, '-');\n\n// Set the cleaned-up file name\nbinary.fileName = `Compliance_Survey_${formattedOffice}_${formattedDate}.pdf`;\n\nreturn {\n  binary: {\n    data: binary\n  },\n  json: $json\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        0
+      ],
+      "id": "8c8e9377-f2ba-47c0-b8d6-1520a6013486",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "fromEmail": "ithelpdesk.epicpc.com",
+        "toEmail": "tstilwell@epichs.org",
+        "subject": "Test",
+        "html": "Test",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2320,
+        -380
+      ],
+      "id": "02dec52d-5b73-40db-957a-b14584b72928",
+      "name": "Send Email",
+      "webhookId": "ad2c74b9-afed-4c10-8e42-2608939a16e0",
+      "credentials": {
+        "smtp": {
+          "id": "taSmxTplYsNY9P3Q",
+          "name": "SMTP EPIC Sendgrid"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        -380
+      ],
+      "id": "fed8ddab-f915-4cb1-a38f-ed64586dd8de",
+      "name": "When clicking ‘Test workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    },
+    "global": {
+      "lastProcessedDate": "2025-03-28 22:37:35"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-11-16T03:03:49.897Z",
+      "updatedAt": "2024-11-16T03:03:49.897Z",
+      "id": "quzhQBMKVBr9D9nv",
+      "name": "Whitney"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-24T14:57:49.126Z",
+  "versionId": "01505c83-5e51-4559-864a-65d4c69ce300"
+}
