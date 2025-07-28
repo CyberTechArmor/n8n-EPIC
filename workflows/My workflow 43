@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2025-04-15T16:22:56.070Z",
-  "id": "uhMkhlsEAXUbgTBW",
+  "createdAt": "2025-04-15T16:22:56.090Z",
+  "id": "24qxnAmfTBfYEKuT",
   "isArchived": false,
   "meta": null,
   "name": "My workflow 43",
@@ -36,6 +36,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-04-15T16:22:56.070Z",
-  "versionId": "8c34641d-c659-46d8-8edf-16c5ccce80cc"
+  "updatedAt": "2025-04-15T16:22:56.090Z",
+  "versionId": "78f4d6fd-fcb9-4018-b3f8-b55b96eb0455"
 }
