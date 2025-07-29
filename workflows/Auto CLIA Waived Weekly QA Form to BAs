@@ -320,7 +320,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"template_id\": 206,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"nfeimster@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
+        "jsonBody": "{\n  \"template_id\": 206,\n  \"order\":\"preserved\",\n  \"submitters\": [\n    {\n      \"role\": \"BA\",\n      \"email\": \"jcarmell@epichs.org\"},\n    {\n      \"role\": \"Recepient\",\n      \"email\": \"epiclab@epicpc.com\"}\n  ]\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -479,6 +479,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-23T20:26:43.504Z",
-  "versionId": "d84e24d0-cb53-43f3-8111-1dd356214e20"
+  "updatedAt": "2025-07-28T17:22:09.644Z",
+  "versionId": "1f2d73b1-9323-4d75-b155-eb10ae778d39"
 }
