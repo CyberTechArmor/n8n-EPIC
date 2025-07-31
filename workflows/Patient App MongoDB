@@ -315,6 +315,61 @@
           }
         ]
       ]
+    },
+    "Webhook4": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook5": {
+      "main": [
+        [
+          {
+            "node": "MongoDB6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB6": {
+      "main": [
+        [
+          {
+            "node": "MongoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MongoDB7": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "MongoDB7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-05-31T11:50:38.488Z",
@@ -503,7 +558,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Collecting all input data\nconst inputData = $input.all();\n\n// Debugging: Log input data to verify its structure\nconsole.log(\"Input Data:\", inputData);\n\n// Formatting the response structure correctly with safe checks\nconst formattedResponse = inputData.map(item => {\n    // Debugging: Log each item to ensure the data fields exist as expected\n    console.log(\"Processing Item:\", item);\n\n    // Safely accessing nested properties with optional chaining and default values\n    const contactDetails = item.json.contact_details || {}; // Default to empty object if null\n\n    return {\n        firstName: item.json.first_name || '', // Default to empty string if undefined\n        lastName: item.json.last_name || '',\n        dob: item.json.dob ? new Date(item.json.dob).toISOString().split('T')[0] : '', // Format DOB or use empty string\n        contactDetails: `${contactDetails.country_code || ''} ${contactDetails.mobile_number || ''}`, // Safely access nested properties\n        email: item.json.email || '',\n        mappingStatus: item.json.mapping_status || ''\n    };\n});\n\n// Debugging: Log the formatted response to check its structure before returning\nconsole.log(\"Formatted Response:\", formattedResponse);\n\n// Return the correctly formatted response\nreturn [{ results: formattedResponse }];\n"
+        "jsCode": "// Collecting all input data\nconst inputData = $input.all();\n\n// Debugging: Log input data to verify its structure\nconsole.log(\"Input Data:\", inputData);\n\n// Formatting the response structure correctly with safe checks\nconst formattedResponse = inputData.map(item => {\n    // Debugging: Log each item to ensure the data fields exist as expected\n    console.log(\"Processing Item:\", item);\n\n    // Safely accessing nested properties with optional chaining and default values\n    const contactDetails = item.json.contact_details || {}; // Default to empty object if null\n\n    return {\n        _id: item.json._id || '',\n        firstName: item.json.first_name || '', // Default to empty string if undefined\n        lastName: item.json.last_name || '',\n        dob: item.json.dob ? new Date(item.json.dob).toISOString().split('T')[0] : '', // Format DOB or use empty string\n        contactDetails: `${contactDetails.country_code || ''} ${contactDetails.mobile_number || ''}`, // Safely access nested properties\n        email: item.json.email || '',\n        mappingStatus: item.json.mapping_status || ''\n    };\n});\n\n// Debugging: Log the formatted response to check its structure before returning\nconsole.log(\"Formatted Response:\", formattedResponse);\n\n// Return the correctly formatted response\nreturn [{ results: formattedResponse }];\n"
       },
       "id": "95452c16-bc14-46f5-badf-9f751dd21f34",
       "name": "Code2",
@@ -684,7 +739,7 @@
     {
       "parameters": {
         "respondWith": "text",
-        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Patient App Signup Details</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f9f9f9;\n            color: #333;\n            margin: 0;\n            padding: 0;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            min-height: 100vh;\n        }\n\n        .container {\n            width: 90%;\n            max-width: 1200px;\n            background-color: white;\n            padding: 20px;\n            border: 2px solid #333;\n            border-radius: 12px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            display: flex;\n            flex-direction: column;\n        }\n\n        .header {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            margin-bottom: 20px;\n        }\n\n        .header h1 {\n            margin: 0;\n            font-size: 1.8em;\n        }\n\n        .clear-btn {\n            background-color: #ff4d4d;\n            color: white;\n            border: none;\n            padding: 10px 20px;\n            border-radius: 5px;\n            cursor: pointer;\n        }\n\n        .clear-btn:hover {\n            background-color: #e60000;\n        }\n\n        .search-panel {\n            display: flex;\n            flex-direction: column;\n            margin-right: 20px;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n            padding: 10px;\n            background: #f4f4f4;\n        }\n\n        .search-panel input {\n            margin-bottom: 10px;\n            padding: 8px;\n            border: 1px solid #ddd;\n            border-radius: 4px;\n        }\n\n        .results-panel {\n            flex-grow: 1;\n            display: flex;\n            flex-direction: column;\n            overflow-x: auto;\n        }\n\n        .results-table {\n            border-collapse: collapse;\n            width: 100%;\n        }\n\n        .results-table th,\n        .results-table td {\n            border: 1px solid #ddd;\n            padding: 10px;\n            text-align: left;\n        }\n\n        .results-table th {\n            background-color: #f2f2f2;\n        }\n\n        .button-56 {\n            align-items: center;\n            background-color: #fff;\n            border: 2px solid #111;\n            border-radius: 8px;\n            box-sizing: border-box;\n            color: #111;\n            cursor: pointer;\n            display: flex;\n            font-family: Inter, sans-serif;\n            font-size: 16px;\n            height: 48px;\n            justify-content: center;\n            line-height: 24px;\n            max-width: 100%;\n            padding: 0 25px;\n            position: relative;\n            text-align: center;\n            text-decoration: none;\n            user-select: none;\n            -webkit-user-select: none;\n            touch-action: manipulation;\n            margin-bottom: 10px;\n        }\n\n        .button-56:after {\n            background-color: #111;\n            border-radius: 8px;\n            content: \"\";\n            display: block;\n            height: 48px;\n            left: 0;\n            width: 100%;\n            position: absolute;\n            top: -2px;\n            transform: translate(8px, 8px);\n            transition: transform .2s ease-out;\n            z-index: -1;\n        }\n\n        .button-56:hover:after {\n            transform: translate(0, 0);\n        }\n\n        .button-56:active {\n            background-color: #ffdeda;\n            outline: 0;\n        }\n\n        .button-56:hover {\n            outline: 0;\n        }\n\n        @media (min-width: 768px) {\n            .button-56 {\n                padding: 0 40px;\n            }\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>EPIC Patient App Signup Details</h1>\n            <div style=\"display: flex; gap: 10px;\">\n                <button class=\"button-56\" onclick=\"goBack()\">Back</button>\n                <button class=\"clear-btn\" onclick=\"clearSearch()\">Clear / Refresh</button>\n            </div>\n        </div>\n\n        <div style=\"display: flex;\">\n            <div class=\"search-panel\">\n                <input type=\"text\" id=\"firstname\" placeholder=\"Enter First Name\"\n                    onkeypress=\"handleKeyPress(event, 'firstname')\">\n                <button class=\"button-56\" onclick=\"search('firstname')\">Search First Name</button>\n\n                <input type=\"text\" id=\"lastname\" placeholder=\"Enter Last Name\"\n                    onkeypress=\"handleKeyPress(event, 'lastname')\">\n                <button class=\"button-56\" onclick=\"search('lastname')\">Search Last Name</button>\n\n                <input type=\"text\" id=\"phone\" placeholder=\"Enter Phone Number\"\n                    onkeypress=\"handleKeyPress(event, 'phone')\">\n                <button class=\"button-56\" onclick=\"search('phone')\">Search Phone</button>\n\n                <input type=\"text\" id=\"email\" placeholder=\"Enter Email\" onkeypress=\"handleKeyPress(event, 'email')\">\n                <button class=\"button-56\" onclick=\"search('email')\">Search Email</button>\n            </div>\n\n            <div class=\"results-panel\">\n                <input type=\"text\" id=\"filter\" placeholder=\"Search within results\" oninput=\"filterResults()\"\n                    style=\"margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;\">\n                <table class=\"results-table\" id=\"results\">\n                    <thead>\n                        <tr>\n                            <th>First Name</th>\n                            <th>Last Name</th>\n                            <th>DOB</th>\n                            <th>Phone Number</th>\n                            <th>Email</th>\n                            <th>Mapping Status</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"results-body\">\n                        <!-- Results will be populated here -->\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n\n    <script>\n        function search(param) {\n            const value = document.getElementById(param).value;\n            const data = { [param]: value };\n\n            fetch('https://xl.epicpc.com/webhook/6a411f07-dbc9-4adf-a0cc-66e8dc607daf', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json',\n                },\n                body: JSON.stringify(data),\n            })\n                .then(response => response.json())\n                .then(data => {\n                    updateResults(data.results);\n                })\n                .catch(error => {\n                    console.error('Error:', error);\n                });\n        }\n\n        function updateResults(results) {\n            const resultsBody = document.getElementById('results-body');\n            resultsBody.innerHTML = '';\n\n            results.forEach(result => {\n                const row = document.createElement('tr');\n                row.innerHTML = `\n                    <td>${result.firstName || ''}</td>\n                    <td>${result.lastName || ''}</td>\n                    <td>${result.dob || ''}</td>\n                    <td>${result.contactDetails || ''}</td>\n                    <td>${result.email || ''}</td>\n                    <td>${result.mappingStatus || ''}</td>\n                `;\n                resultsBody.appendChild(row);\n            });\n        }\n\n        function filterResults() {\n            const filter = document.getElementById('filter').value.toLowerCase();\n            const rows = document.getElementById('results-body').getElementsByTagName('tr');\n\n            for (let row of rows) {\n                let text = row.textContent || row.innerText;\n                row.style.display = text.toLowerCase().includes(filter) ? '' : 'none';\n            }\n        }\n\n        function clearSearch() {\n            document.querySelectorAll('.search-panel input').forEach(input => input.value = '');\n            document.getElementById('results-body').innerHTML = '';\n            document.getElementById('filter').value = '';\n        }\n\n        function handleKeyPress(event, param) {\n            if (event.key === 'Enter') {\n                search(param);\n            }\n        }\n\n        function goBack() {\n            window.history.back();\n        }\n    </script>\n\n</body>\n\n</html>\n",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>EPIC Patient App Signup Details</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f9f9f9;\n            color: #333;\n            margin: 0;\n            padding: 0;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            min-height: 100vh;\n        }\n\n        .container {\n            width: 90%;\n            max-width: 1200px;\n            background-color: white;\n            padding: 20px;\n            border: 2px solid #333;\n            border-radius: 12px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            display: flex;\n            flex-direction: column;\n        }\n\n        .header {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            margin-bottom: 20px;\n        }\n\n        .header h1 {\n            margin: 0;\n            font-size: 1.8em;\n        }\n\n        .clear-btn {\n            background-color: #ff4d4d;\n            color: white;\n            border: none;\n            padding: 10px 20px;\n            border-radius: 5px;\n            cursor: pointer;\n        }\n\n        .clear-btn:hover {\n            background-color: #e60000;\n        }\n\n        .search-panel {\n            display: flex;\n            flex-direction: column;\n            margin-right: 20px;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n            padding: 10px;\n            background: #f4f4f4;\n        }\n\n        .search-panel input {\n            margin-bottom: 10px;\n            padding: 8px;\n            border: 1px solid #ddd;\n            border-radius: 4px;\n        }\n\n        .results-panel {\n            flex-grow: 1;\n            display: flex;\n            flex-direction: column;\n            overflow-x: auto;\n        }\n\n        .results-table {\n            border-collapse: collapse;\n            width: 100%;\n        }\n\n        .results-table th,\n        .results-table td {\n            border: 1px solid #ddd;\n            padding: 10px;\n            text-align: left;\n            vertical-align: middle;\n        }\n\n        .results-table th {\n            background-color: #f2f2f2;\n        }\n\n        .button-56 {\n            align-items: center;\n            background-color: #fff;\n            border: 2px solid #111;\n            border-radius: 8px;\n            box-sizing: border-box;\n            color: #111;\n            cursor: pointer;\n            display: flex;\n            font-family: Inter, sans-serif;\n            font-size: 16px;\n            height: 48px;\n            justify-content: center;\n            line-height: 24px;\n            max-width: 100%;\n            padding: 0 25px;\n            position: relative;\n            text-align: center;\n            text-decoration: none;\n            user-select: none;\n            -webkit-user-select: none;\n            touch-action: manipulation;\n            margin-bottom: 10px;\n        }\n\n        .button-56:after {\n            background-color: #111;\n            border-radius: 8px;\n            content: \"\";\n            display: block;\n            height: 48px;\n            left: 0;\n            width: 100%;\n            position: absolute;\n            top: -2px;\n            transform: translate(8px, 8px);\n            transition: transform 0.2s ease-out;\n            z-index: -1;\n        }\n\n        .button-56:hover:after {\n            transform: translate(0, 0);\n        }\n\n        .button-56:active {\n            background-color: #ffdeda;\n            outline: 0;\n        }\n\n        .button-56:hover {\n            outline: 0;\n        }\n\n        @media (min-width: 768px) {\n            .button-56 {\n                padding: 0 40px;\n            }\n        }\n\n        /* New styles for DELETE ACCOUNT button */\n        .delete-btn {\n            background-color: #ff4d4d;\n            color: white;\n            border: none;\n            padding: 6px 12px;\n            border-radius: 5px;\n            cursor: pointer;\n            font-weight: bold;\n            font-size: 14px;\n            transition: background-color 0.3s ease;\n            min-width: 110px;\n            display: inline-flex;\n            justify-content: center;\n            align-items: center;\n        }\n\n        .delete-btn:hover:not(:disabled) {\n            background-color: #e60000;\n        }\n\n        .delete-btn:disabled {\n            opacity: 0.6;\n            cursor: not-allowed;\n        }\n\n        .loader {\n            border: 3px solid #f3f3f3; /* Light grey */\n            border-top: 3px solid white; /* White */\n            border-radius: 50%;\n            width: 16px;\n            height: 16px;\n            animation: spin 1s linear infinite;\n            margin-left: 8px;\n        }\n\n        @keyframes spin {\n            0% { transform: rotate(0deg);}\n            100% { transform: rotate(360deg);}\n        }\n    </style>\n</head>\n\n<body>\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>EPIC Patient App Signup Details</h1>\n            <div style=\"display: flex; gap: 10px;\">\n                <button class=\"button-56\" onclick=\"goBack()\">Back</button>\n                <button class=\"clear-btn\" onclick=\"clearSearch()\">Clear / Refresh</button>\n            </div>\n        </div>\n\n        <div style=\"display: flex;\">\n            <div class=\"search-panel\">\n                <input type=\"text\" id=\"firstname\" placeholder=\"Enter First Name\"\n                    onkeypress=\"handleKeyPress(event, 'firstname')\" />\n                <button class=\"button-56\" onclick=\"search('firstname')\">Search First Name</button>\n\n                <input type=\"text\" id=\"lastname\" placeholder=\"Enter Last Name\"\n                    onkeypress=\"handleKeyPress(event, 'lastname')\" />\n                <button class=\"button-56\" onclick=\"search('lastname')\">Search Last Name</button>\n\n                <input type=\"text\" id=\"phone\" placeholder=\"Enter Phone Number\"\n                    onkeypress=\"handleKeyPress(event, 'phone')\" />\n                <button class=\"button-56\" onclick=\"search('phone')\">Search Phone</button>\n\n                <input type=\"text\" id=\"email\" placeholder=\"Enter Email\" onkeypress=\"handleKeyPress(event, 'email')\" />\n                <button class=\"button-56\" onclick=\"search('email')\">Search Email</button>\n            </div>\n\n            <div class=\"results-panel\">\n                <input type=\"text\" id=\"filter\" placeholder=\"Search within results\" oninput=\"filterResults()\"\n                    style=\"margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;\" />\n                <table class=\"results-table\" id=\"results\">\n                    <thead>\n                        <tr>\n                            <th>First Name</th>\n                            <th>Last Name</th>\n                            <th>DOB</th>\n                            <th>Phone Number</th>\n                            <th>Email</th>\n                            <th>Mapping Status</th>\n                            <th>Action</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"results-body\">\n                        <!-- Results will be populated here -->\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n\n    <script>\n        // POST endpoint for deleting accounts\n        const DELETE_WEBHOOK_URL = 'https://xl.epicpc.com/webhook/feb1a05c-ee89-4f5e-91f2-84e2175f5752';\n\n        function search(param) {\n            const value = document.getElementById(param).value;\n            const data = { [param]: value };\n\n            fetch('https://xl.epicpc.com/webhook/6a411f07-dbc9-4adf-a0cc-66e8dc607daf', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json',\n                },\n                body: JSON.stringify(data),\n            })\n                .then(response => response.json())\n                .then(data => {\n                    updateResults(data.results);\n                })\n                .catch(error => {\n                    console.error('Error:', error);\n                });\n        }\n\n        function updateResults(results) {\n            const resultsBody = document.getElementById('results-body');\n            resultsBody.innerHTML = '';\n\n            results.forEach(result => {\n                const row = document.createElement('tr');\n\n                const mappingStatus = result.mappingStatus || '';\n                const isComplete = mappingStatus.trim().toLowerCase() === 'complete';\n\n                // Build the row cells\n                row.innerHTML = `\n                    <td>${result.firstName || ''}</td>\n                    <td>${result.lastName || ''}</td>\n                    <td>${result.dob || ''}</td>\n                    <td>${result.contactDetails || ''}</td>\n                    <td>${result.email || ''}</td>\n                    <td>${mappingStatus}</td>\n                    <td class=\"action-cell\"></td>\n                `;\n\n                // Add Delete button if mappingStatus NOT complete (case insensitive)\n                if (!isComplete) {\n                    const actionCell = row.querySelector('.action-cell');\n                    const deleteBtn = document.createElement('button');\n\n                    deleteBtn.className = 'delete-btn';\n                    deleteBtn.textContent = 'DELETE ACCOUNT';\n                    deleteBtn.title = 'Delete this patient account';\n\n                    // Attach click event\n                    deleteBtn.addEventListener('click', () => handleDeleteAccount(deleteBtn, result));\n                    actionCell.appendChild(deleteBtn);\n                }\n\n                resultsBody.appendChild(row);\n            });\n        }\n\n        async function handleDeleteAccount(button, patient) {\n            if (!confirm(`Are you sure you want to DELETE ACCOUNT for ${patient.firstName || ''} ${patient.lastName || ''}? This action cannot be undone.`)) {\n                return;\n            }\n\n            // Disable button and show loader\n            button.disabled = true;\n            showLoader(button);\n\n            try {\n                // Prepare payload - you can customize this depending on what the webhook expects\n                const payload = { \n                    _id: patient._id ||  '',\n                    firstName: patient.firstName || '',\n                    lastName: patient.lastName || '',\n                    dob: patient.dob || '',\n                    contactDetails: patient.contactDetails || '',\n                    email: patient.email || '',\n                    mappingStatus: patient.mappingStatus || ''\n                };\n\n                const response = await fetch(DELETE_WEBHOOK_URL, {\n                    method: 'POST',\n                    headers: {\n                        'Content-Type': 'application/json',\n                    },\n                    body: JSON.stringify(payload),\n                });\n\n                if (!response.ok) {\n                    throw new Error(`HTTP error! status: ${response.status}`);\n                }\n\n                const result = await response.json();\n\n                if (result.status_of_delete && result.status_of_delete.toLowerCase() === 'success') {\n                    // Success: Remove row or update UI accordingly\n                    const row = button.closest('tr');\n                    if (row) {\n                        row.remove();\n                    }\n                    alert('Account deleted successfully.');\n                } else {\n                    throw new Error('Deletion not confirmed by server.');\n                }\n            } catch (error) {\n                alert('Error deleting account: ' + error.message);\n                console.error('Delete account error:', error);\n                button.disabled = false;\n                hideLoader(button);\n            }\n        }\n\n        function showLoader(button) {\n            // Add a small spinner loader inside the button\n            if (!button.querySelector('.loader')) {\n                const loader = document.createElement('span');\n                loader.className = 'loader';\n                button.appendChild(loader);\n            }\n        }\n\n        function hideLoader(button) {\n            const loader = button.querySelector('.loader');\n            if (loader) loader.remove();\n        }\n\n        function filterResults() {\n            const filter = document.getElementById('filter').value.toLowerCase();\n            const rows = document.getElementById('results-body').getElementsByTagName('tr');\n\n            for (let row of rows) {\n                let text = row.textContent || row.innerText;\n                row.style.display = text.toLowerCase().includes(filter) ? '' : 'none';\n            }\n        }\n\n        function clearSearch() {\n            document.querySelectorAll('.search-panel input').forEach(input => input.value = '');\n            document.getElementById('results-body').innerHTML = '';\n            document.getElementById('filter').value = '';\n        }\n\n        function handleKeyPress(event, param) {\n            if (event.key === 'Enter') {\n                search(param);\n            }\n        }\n\n        function goBack() {\n            window.history.back();\n        }\n    </script>\n</body>\n\n</html>",
         "options": {}
       },
       "id": "e07316ee-5ba0-4217-a283-72cf6c143dfe",
@@ -1106,6 +1161,144 @@
       ],
       "id": "a41264fd-6b37-4363-aa6a-ce27428626a9",
       "name": "Code3"
+    },
+    {
+      "parameters": {
+        "path": "e0bb3513-1dad-4c4e-8831-14a7d1a18aab",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -360
+      ],
+      "id": "d5697a55-951f-48c1-9612-d7f5b563584f",
+      "name": "Webhook4",
+      "webhookId": "e0bb3513-1dad-4c4e-8831-14a7d1a18aab"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "feb1a05c-ee89-4f5e-91f2-84e2175f5752",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        1540
+      ],
+      "id": "d895949f-e345-4292-ae50-cbf71bf43a7f",
+      "name": "Webhook5",
+      "webhookId": "feb1a05c-ee89-4f5e-91f2-84e2175f5752"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "{ \"status_of_delete\":\"success\" }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1380,
+        1540
+      ],
+      "id": "11af0f1a-6353-4721-97ea-d8a2e46e79d4",
+      "name": "Respond to Webhook7"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>EPIC Patient App Signup Details</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            background-color: #f9f9f9;\n            color: #333;\n            margin: 0;\n            padding: 0;\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            min-height: 100vh;\n        }\n\n        .container {\n            width: 90%;\n            max-width: 1200px;\n            background-color: white;\n            padding: 20px;\n            border: 2px solid #333;\n            border-radius: 12px;\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\n            display: flex;\n            flex-direction: column;\n        }\n\n        .header {\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n            margin-bottom: 20px;\n        }\n\n        .header h1 {\n            margin: 0;\n            font-size: 1.8em;\n        }\n\n        .clear-btn {\n            background-color: #ff4d4d;\n            color: white;\n            border: none;\n            padding: 10px 20px;\n            border-radius: 5px;\n            cursor: pointer;\n        }\n\n        .clear-btn:hover {\n            background-color: #e60000;\n        }\n\n        .search-panel {\n            display: flex;\n            flex-direction: column;\n            margin-right: 20px;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n            padding: 10px;\n            background: #f4f4f4;\n        }\n\n        .search-panel input {\n            margin-bottom: 10px;\n            padding: 8px;\n            border: 1px solid #ddd;\n            border-radius: 4px;\n        }\n\n        .results-panel {\n            flex-grow: 1;\n            display: flex;\n            flex-direction: column;\n            overflow-x: auto;\n        }\n\n        .results-table {\n            border-collapse: collapse;\n            width: 100%;\n        }\n\n        .results-table th,\n        .results-table td {\n            border: 1px solid #ddd;\n            padding: 10px;\n            text-align: left;\n        }\n\n        .results-table th {\n            background-color: #f2f2f2;\n        }\n\n        .button-56 {\n            align-items: center;\n            background-color: #fff;\n            border: 2px solid #111;\n            border-radius: 8px;\n            box-sizing: border-box;\n            color: #111;\n            cursor: pointer;\n            display: flex;\n            font-family: Inter, sans-serif;\n            font-size: 16px;\n            height: 48px;\n            justify-content: center;\n            line-height: 24px;\n            max-width: 100%;\n            padding: 0 25px;\n            position: relative;\n            text-align: center;\n            text-decoration: none;\n            user-select: none;\n            -webkit-user-select: none;\n            touch-action: manipulation;\n            margin-bottom: 10px;\n        }\n\n        .button-56:after {\n            background-color: #111;\n            border-radius: 8px;\n            content: \"\";\n            display: block;\n            height: 48px;\n            left: 0;\n            width: 100%;\n            position: absolute;\n            top: -2px;\n            transform: translate(8px, 8px);\n            transition: transform .2s ease-out;\n            z-index: -1;\n        }\n\n        .button-56:hover:after {\n            transform: translate(0, 0);\n        }\n\n        .button-56:active {\n            background-color: #ffdeda;\n            outline: 0;\n        }\n\n        .button-56:hover {\n            outline: 0;\n        }\n\n        @media (min-width: 768px) {\n            .button-56 {\n                padding: 0 40px;\n            }\n        }\n    </style>\n</head>\n\n<body>\n\n    <div class=\"container\">\n        <div class=\"header\">\n            <h1>EPIC Patient App Signup Details</h1>\n            <div style=\"display: flex; gap: 10px;\">\n                <button class=\"button-56\" onclick=\"goBack()\">Back</button>\n                <button class=\"clear-btn\" onclick=\"clearSearch()\">Clear / Refresh</button>\n            </div>\n        </div>\n\n        <div style=\"display: flex;\">\n            <div class=\"search-panel\">\n                <input type=\"text\" id=\"firstname\" placeholder=\"Enter First Name\"\n                    onkeypress=\"handleKeyPress(event, 'firstname')\">\n                <button class=\"button-56\" onclick=\"search('firstname')\">Search First Name</button>\n\n                <input type=\"text\" id=\"lastname\" placeholder=\"Enter Last Name\"\n                    onkeypress=\"handleKeyPress(event, 'lastname')\">\n                <button class=\"button-56\" onclick=\"search('lastname')\">Search Last Name</button>\n\n                <input type=\"text\" id=\"phone\" placeholder=\"Enter Phone Number\"\n                    onkeypress=\"handleKeyPress(event, 'phone')\">\n                <button class=\"button-56\" onclick=\"search('phone')\">Search Phone</button>\n\n                <input type=\"text\" id=\"email\" placeholder=\"Enter Email\" onkeypress=\"handleKeyPress(event, 'email')\">\n                <button class=\"button-56\" onclick=\"search('email')\">Search Email</button>\n            </div>\n\n            <div class=\"results-panel\">\n                <input type=\"text\" id=\"filter\" placeholder=\"Search within results\" oninput=\"filterResults()\"\n                    style=\"margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;\">\n                <table class=\"results-table\" id=\"results\">\n                    <thead>\n                        <tr>\n                            <th>First Name</th>\n                            <th>Last Name</th>\n                            <th>DOB</th>\n                            <th>Phone Number</th>\n                            <th>Email</th>\n                            <th>Mapping Status</th>\n                        </tr>\n                    </thead>\n                    <tbody id=\"results-body\">\n                        <!-- Results will be populated here -->\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n\n    <script>\n        function search(param) {\n            const value = document.getElementById(param).value;\n            const data = { [param]: value };\n\n            fetch('https://xl.epicpc.com/webhook/6a411f07-dbc9-4adf-a0cc-66e8dc607daf', {\n                method: 'POST',\n                headers: {\n                    'Content-Type': 'application/json',\n                },\n                body: JSON.stringify(data),\n            })\n                .then(response => response.json())\n                .then(data => {\n                    updateResults(data.results);\n                })\n                .catch(error => {\n                    console.error('Error:', error);\n                });\n        }\n\n        function updateResults(results) {\n            const resultsBody = document.getElementById('results-body');\n            resultsBody.innerHTML = '';\n\n            results.forEach(result => {\n                const row = document.createElement('tr');\n                row.innerHTML = `\n                    <td>${result.firstName || ''}</td>\n                    <td>${result.lastName || ''}</td>\n                    <td>${result.dob || ''}</td>\n                    <td>${result.contactDetails || ''}</td>\n                    <td>${result.email || ''}</td>\n                    <td>${result.mappingStatus || ''}</td>\n                `;\n                resultsBody.appendChild(row);\n            });\n        }\n\n        function filterResults() {\n            const filter = document.getElementById('filter').value.toLowerCase();\n            const rows = document.getElementById('results-body').getElementsByTagName('tr');\n\n            for (let row of rows) {\n                let text = row.textContent || row.innerText;\n                row.style.display = text.toLowerCase().includes(filter) ? '' : 'none';\n            }\n        }\n\n        function clearSearch() {\n            document.querySelectorAll('.search-panel input').forEach(input => input.value = '');\n            document.getElementById('results-body').innerHTML = '';\n            document.getElementById('filter').value = '';\n        }\n\n        function handleKeyPress(event, param) {\n            if (event.key === 'Enter') {\n                search(param);\n            }\n        }\n\n        function goBack() {\n            window.history.back();\n        }\n    </script>\n\n</body>\n\n</html>\n",
+        "options": {}
+      },
+      "id": "f54a43ba-893c-48a3-baa2-3a67db4656c4",
+      "name": "Respond to Webhook8",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        740,
+        -420
+      ]
+    },
+    {
+      "parameters": {
+        "collection": "users",
+        "options": {},
+        "query": "={\n  \"_id\": \"{{$json.body._id}}\"\n}\n"
+      },
+      "id": "62e9f376-5c83-46f9-bbbe-b681c63a16e1",
+      "name": "MongoDB6",
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1,
+      "position": [
+        380,
+        1780
+      ],
+      "credentials": {
+        "mongoDb": {
+          "id": "GcDoZP6kqt3fgy9H",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "collection": "users",
+        "query": "={ \"$expr\": { \"$eq\": [\"$_id\", { \"$toObjectId\": \"{{$json[\"_id\"]}}\" }] } }"
+      },
+      "id": "6615c273-e408-47ae-950c-8291e2a96fc2",
+      "name": "MongoDB7",
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1,
+      "position": [
+        940,
+        1440
+      ],
+      "credentials": {
+        "mongoDb": {
+          "id": "GcDoZP6kqt3fgy9H",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "collection": "users",
+        "query": "={\n  \"_id\": \"{{$json.body._id}}\"\n}\n"
+      },
+      "id": "e5469546-8e74-4059-b002-47746792287a",
+      "name": "MongoDB8",
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1,
+      "position": [
+        460,
+        1580
+      ],
+      "credentials": {
+        "mongoDb": {
+          "id": "GcDoZP6kqt3fgy9H",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\nreturn $input.all().map(item => ({\n  json: {\n    _id: item.json._id,\n    _id_object: { \"$castObjectId\": item.json._id }\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        600,
+        1780
+      ],
+      "id": "e9e71a35-859d-4a45-91c9-06e944b1ea0e",
+      "name": "Code4"
     }
   ],
   "pinData": {
@@ -1407,6 +1600,88 @@
           ]
         }
       }
+    ],
+    "Webhook5": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.120",
+            "x-forwarded-for": "10.0.24.120",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "187",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Microsoft Edge\";v=\"138\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-storage-access": "active",
+            "referer": "https://xl.epicpc.com/webhook/a0c664fa-5822-49b8-abfc-5a86685238ef?user=tstilwell",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "_id": "6508519ba09d3837fea26ffe",
+            "firstName": "Thomas",
+            "lastName": "Stilwell",
+            "dob": "1988-02-01",
+            "contactDetails": "+1 2488726322",
+            "email": "thomas@tagarmor.com",
+            "mappingStatus": "COMPLETED"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/feb1a05c-ee89-4f5e-91f2-84e2175f5752",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "MongoDB6": [
+      {
+        "json": {
+          "_id": "686414455de596074111d680",
+          "first_name": "Lynn",
+          "last_name": "Frost",
+          "email": "lfrostmoon@gmail.com",
+          "password": "3f578fe44b08281ae5f23ce74ca332a95d346c6289a222528dec2cce7701455b",
+          "dob": "2025-05-02T04:00:00.000Z",
+          "contact_details": {
+            "country_code": "+1",
+            "mobile_number": "2485356882"
+          },
+          "is_new_patient": true,
+          "patient_id": "",
+          "patient_number": "",
+          "player_ids": [
+            "dCOWVMTtRK6I4O_C_GLrkb:APA91bFH6mflbvkN3tG5fapmB9LyKUR8fExIhSQRBaQCJX8Emfl39Go5QL3StM0GhlgWTvfO5b-4MOpdFlMxt8a5TePpE7SemsWFU8P5VqEpg96COZR--xQ"
+          ],
+          "device_tokens": [],
+          "mapping_status": "NOT_FOUND",
+          "createdAt": "2025-07-01T17:00:53.278Z",
+          "updatedAt": "2025-07-18T14:02:35.898Z",
+          "__v": 3,
+          "affiliation": "686414455de596074111d683",
+          "contact": "",
+          "mapping_email": "",
+          "mapping_phone": ""
+        }
+      }
+    ],
+    "Code4": [
+      {
+        "json": {
+          "_id": "686414455de596074111d680",
+          "_id_object": {
+            "$castObjectId": "686414455de596074111d680"
+          }
+        }
+      }
     ]
   },
   "settings": {
@@ -1414,7 +1689,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 4,
-  "updatedAt": "2025-07-20T18:15:33.992Z",
-  "versionId": "48c4cc9c-3bc1-4c0f-9fd7-7feb04ebb4a1"
+  "triggerCount": 6,
+  "updatedAt": "2025-07-30T19:31:46.256Z",
+  "versionId": "5290fb02-4b70-4a86-bdbf-1b84de57ee20"
 }
