@@ -46,6 +46,11 @@
             "node": "Extract from File5",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "MongoDB6",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -54,32 +59,7 @@
       "main": [
         [
           {
-            "node": "MongoDB3",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "MongoDB1",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "MongoDB4",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "MongoDB",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "MongoDB5",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Compare Datasets",
+            "node": "Compare Datasets1",
             "type": "main",
             "index": 0
           }
@@ -145,7 +125,7 @@
       "main": [
         [
           {
-            "node": "EHR Patient Info",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -295,6 +275,41 @@
           }
         ]
       ]
+    },
+    "MongoDB6": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Compare Datasets1": {
+      "main": [
+        [],
+        [],
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-30T20:05:46.619Z",
@@ -356,7 +371,7 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        0,
+        -980,
         0
       ],
       "alwaysOutputData": true,
@@ -373,8 +388,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1700,
-        -80
+        -1760,
+        200
       ],
       "id": "42c53fd2-0092-42a0-8b86-7d5c8fae3a93",
       "name": "No Operation, do nothing"
@@ -390,8 +405,8 @@
       "type": "n8n-nodes-base.mongoDb",
       "typeVersion": 1,
       "position": [
-        460,
-        740
+        -1920,
+        2180
       ],
       "credentials": {
         "mongoDb": {
@@ -411,8 +426,8 @@
       "type": "n8n-nodes-base.mongoDb",
       "typeVersion": 1,
       "position": [
-        460,
-        360
+        -1920,
+        1800
       ],
       "credentials": {
         "mongoDb": {
@@ -432,8 +447,8 @@
       "type": "n8n-nodes-base.mongoDb",
       "typeVersion": 1,
       "position": [
-        460,
-        160
+        -1920,
+        1600
       ],
       "credentials": {
         "mongoDb": {
@@ -453,8 +468,8 @@
       "type": "n8n-nodes-base.mongoDb",
       "typeVersion": 1,
       "position": [
-        460,
-        560
+        -1920,
+        2000
       ],
       "credentials": {
         "mongoDb": {
@@ -474,8 +489,8 @@
       "type": "n8n-nodes-base.mongoDb",
       "typeVersion": 1,
       "position": [
-        480,
-        940
+        -1900,
+        2380
       ],
       "credentials": {
         "mongoDb": {
@@ -491,8 +506,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        960,
-        440
+        -1420,
+        1880
       ],
       "id": "a7b6c9a5-5a0f-4838-9673-9f3d2ba2c80d",
       "name": "Merge"
@@ -502,8 +517,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -220,
-        -140
+        -2360,
+        560
       ],
       "id": "09a4bd53-e1f4-4a5b-a605-9d4a356d9e89",
       "name": "When clicking ‘Execute workflow’"
@@ -537,8 +552,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1160,
-        180
+        -1220,
+        1620
       ],
       "id": "a6be8ace-a4e9-42d7-bb09-069c7714d189",
       "name": "If"
@@ -550,8 +565,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1840,
-        -20
+        -540,
+        1420
       ],
       "id": "6f14eb10-798d-4a24-9e4e-498470613b67",
       "name": "Loop Over Items"
@@ -565,8 +580,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1500,
-        -20
+        -880,
+        1420
       ],
       "id": "41c1bb0a-2972-493b-9a0a-1a7e6dad6f78",
       "name": "Merge1"
@@ -600,8 +615,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2460,
-        0
+        80,
+        1440
       ],
       "id": "78dc0a34-bb8d-4149-9611-e9e33181f92e",
       "name": "If1"
@@ -614,8 +629,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2200,
-        0
+        -180,
+        1440
       ],
       "id": "814600b5-d365-4f1b-aa8c-76c829cb91d0",
       "name": "Edit Fields"
@@ -627,8 +642,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2220,
-        -280
+        -160,
+        1160
       ],
       "id": "06cedd84-7111-4f37-856c-ac30a6724f52",
       "name": "Code"
@@ -642,8 +657,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -2020,
-        -80
+        -2060,
+        -240
       ],
       "id": "5551cb34-7908-40c6-8fd0-b1a063e3f06a",
       "name": "Webhook",
@@ -687,8 +702,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2460,
-        260
+        80,
+        1700
       ],
       "id": "98adaf6a-71d0-4906-bfdc-8c2fb6226637",
       "name": "Edit Fields1"
@@ -710,8 +725,8 @@
       "type": "n8n-nodes-base.compareDatasets",
       "typeVersion": 2.3,
       "position": [
-        1700,
-        -360
+        -680,
+        1080
       ],
       "id": "b7707fd5-e64c-4a31-96ba-5c849e11b59c",
       "name": "Compare Datasets"
@@ -724,11 +739,96 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1380,
-        280
+        -1000,
+        1720
       ],
       "id": "544db5eb-0b39-4251-b3ed-fbe75bbaf8e5",
       "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "collection": "users",
+        "options": {},
+        "query": "={}"
+      },
+      "id": "6120bb7e-70b9-4fd0-9adb-95226306990f",
+      "name": "MongoDB6",
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        200
+      ],
+      "credentials": {
+        "mongoDb": {
+          "id": "GcDoZP6kqt3fgy9H",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "DEM_EXTERNALID",
+              "field2": "patient_number"
+            }
+          ]
+        },
+        "resolve": "preferInput1",
+        "fuzzyCompare": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        -640,
+        0
+      ],
+      "id": "4c4e33e0-9f1e-4a9e-aba0-66262eb9b697",
+      "name": "Compare Datasets1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "5e6e4d34-c566-49b2-8f4b-ba0a1e6c781d",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "fromEmail": "=automation@epicpc.com",
+        "toEmail": "=vhabbo@epicpc.com",
+        "subject": "=Patients who have app",
+        "html": "=Patients who have app",
+        "options": {
+          "appendAttribution": false,
+          "attachments": "data"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        0
+      ],
+      "id": "5dfa7f49-21df-4594-8239-d3eafcca3f1f",
+      "name": "Send email",
+      "webhookId": "1816f8d2-ae49-412c-b8e5-56ad9cca37af",
+      "credentials": {
+        "smtp": {
+          "id": "NcCiFd4vSQuJ0cby",
+          "name": "EPIC Sendgrid"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "pinData": {
@@ -1494,6 +1594,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-07-30T21:51:15.983Z",
-  "versionId": "873ef3bf-fa90-4902-adf3-2b379a51832b"
+  "updatedAt": "2025-07-31T17:48:32.361Z",
+  "versionId": "cf2b8e04-79b4-494a-b920-59b278b0033f"
 }
