@@ -5,7 +5,80 @@
       "main": [
         [
           {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
             "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call ParseRefererURL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call ParseRefererURL": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL6": {
+      "main": [
+        [
+          {
+            "node": "Pass User",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pass User": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -44,20 +117,243 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        220,
-        0
+        1560,
+        -20
       ],
       "id": "e2ecd437-e734-4792-80ea-237a24e18f19",
       "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6fa3e069-ea94-453d-8540-75b124821d6b",
+              "leftValue": "={{ $json.query.user }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "2b2a095a-6aed-411a-bd76-68809bcdc7e4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "declare @MRN varchar(25)='%%';\ndeclare @RES varchar(25)='%%';\ndeclare @LOC varchar(25)='%{{ $json.location }}%';\ndeclare @RM_ABBR varchar(20)='{{ $json.room }}';\ndeclare @TimeBefore time='';\ndeclare @timeafter time='';\n \n \nselect\ns.IMRESCHED_CODE,s.IMREDEM_CODE,s.DEM_EXTERNALID,s.IMREPROV_CODE,\ns.SCHED_TIMEIN,s.SCHED_TIMESTART,s.SCHED_TIMEOUT,\ns.LOCATION_NAME,s.LOCATION_ID,s.PATIENT_FIRSTNAME,s.PATIENT_LASTNAME,\ns.PATIENT_PHONE,s.SCHED_DATE,s.SCHED_PMSID,s.SCHED_TEXT,s.CAREGIVER_NAME\n,l.ROOM_ABBR_TEXT,l.ROOM_TEXT,\nt.TRACKINGSTATUS_TEXT\nfrom [HPSITE].[SCHEDULE_VIEW] s\nleft join [HPSITE].[LOCATION_ROOM] l on s.ROOM_ID=l.ROOM_ID and s.LOCATION_ID=l.LOCATION_ID\nleft join [HPSITE].[SCHEDULE_TRACKINGSTATUS] st on s.IMRESCHED_CODE=st.IMRESCHED_CODE and s.TRACKINGSTATUS_ID=st.TRACKINGSTATUS_ID\nleft join [HPSITE].[LOCATION_TRACKINGSTATUS] t on t.TRACKINGSTATUS_ID=st.TRACKINGSTATUS_ID\nwhere s.SCHED_TIMEIN is not null\nand cast(s.sched_date as date) between DATEADD(day,-7,cast(getdate() as date)) and DATEADD(day,0,cast(getdate() as date))\nand s.DEM_EXTERNALID like @MRN\nand s.LOCATION_NAME like @LOC and l.ROOM_ABBR_TEXT like @RM_ABBR\nand s.SCHED_TIMEOUT is null\n--or s.CAREGIVER_NAME like @RES\norder by s.SCHED_DATE desc"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        100
+      ],
+      "id": "2eec4eb3-e6d4-48fc-bdbe-41573363f9c0",
+      "name": "Microsoft SQL6",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "KNgVXL2hFKx1iVFm",
+          "mode": "list",
+          "cachedResultName": "ParseRefererURL"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        100
+      ],
+      "name": "Call ParseRefererURL",
+      "id": "3f0c871a-2306-4572-879c-8a3c508290c1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b076e952-f7f6-4173-a6b4-a987f28a2844",
+              "name": "query.user",
+              "value": "={{ $json.DEM_EXTERNALID }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1080,
+        100
+      ],
+      "id": "b03af321-1c0d-4d93-9973-c3bc5f965508",
+      "name": "Pass User"
+    },
+    {
+      "parameters": {
+        "path": "2d66988a-5115-4bd9-9ff1-2dfe502b7c10",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        -380
+      ],
+      "id": "66c9d7d6-db3f-47a3-9973-00408fdbe2bf",
+      "name": "Webhook1",
+      "webhookId": "2d66988a-5115-4bd9-9ff1-2dfe502b7c10"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "declare @MRN varchar(25)='%%';\ndeclare @RES varchar(25)='%%';\ndeclare @LOC varchar(25)='%{{ $json.location }}%';\ndeclare @RM_ABBR varchar(20)='{{ $json.room }}';\ndeclare @TimeBefore time='';\ndeclare @timeafter time='';\n \n \nselect\ns.IMRESCHED_CODE,s.IMREDEM_CODE,s.DEM_EXTERNALID,s.IMREPROV_CODE,\ns.SCHED_TIMEIN,s.SCHED_TIMESTART,s.SCHED_TIMEOUT,\ns.LOCATION_NAME,s.LOCATION_ID,s.PATIENT_FIRSTNAME,s.PATIENT_LASTNAME,\ns.PATIENT_PHONE,s.SCHED_DATE,s.SCHED_PMSID,s.SCHED_TEXT,s.CAREGIVER_NAME\n,l.ROOM_ABBR_TEXT,l.ROOM_TEXT,\nt.TRACKINGSTATUS_TEXT\nfrom [HPSITE].[SCHEDULE_VIEW] s\nleft join [HPSITE].[LOCATION_ROOM] l on s.ROOM_ID=l.ROOM_ID and s.LOCATION_ID=l.LOCATION_ID\nleft join [HPSITE].[SCHEDULE_TRACKINGSTATUS] st on s.IMRESCHED_CODE=st.IMRESCHED_CODE and s.TRACKINGSTATUS_ID=st.TRACKINGSTATUS_ID\nleft join [HPSITE].[LOCATION_TRACKINGSTATUS] t on t.TRACKINGSTATUS_ID=st.TRACKINGSTATUS_ID\nwhere s.SCHED_TIMEIN is not null\nand cast(s.sched_date as date) between DATEADD(day,-7,cast(getdate() as date)) and DATEADD(day,0,cast(getdate() as date))\nand s.DEM_EXTERNALID like @MRN\nand s.LOCATION_NAME like @LOC and l.ROOM_ABBR_TEXT like @RM_ABBR\nand s.SCHED_TIMEOUT is null\n--or s.CAREGIVER_NAME like @RES\norder by s.SCHED_DATE desc"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        280
+      ],
+      "id": "fb25f8fe-1f8e-4fcd-abcb-5dc0380aaa24",
+      "name": "Microsoft SQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "\n  {\n    \"headers\": {\n      \"host\": \"xl.epicpc.com\",\n      \"x-real-ip\": \"10.0.16.92\",\n      \"x-forwarded-for\": \"10.0.16.92\",\n      \"x-forwarded-proto\": \"https\",\n      \"connection\": \"upgrade\",\n      \"sec-ch-ua\": \"\\\"Not)A;Brand\\\";v=\\\"8\\\", \\\"Chromium\\\";v=\\\"138\\\", \\\"Microsoft Edge\\\";v=\\\"138\\\"\",\n      \"sec-ch-ua-mobile\": \"?0\",\n      \"sec-ch-ua-platform\": \"\\\"Windows\\\"\",\n      \"upgrade-insecure-requests\": \"1\",\n      \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0\",\n      \"accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\",\n      \"sec-fetch-site\": \"same-origin\",\n      \"sec-fetch-mode\": \"navigate\",\n      \"sec-fetch-user\": \"?1\",\n      \"sec-fetch-dest\": \"iframe\",\n      \"referer\": \"https://xl.epicpc.com/webhook/9635c884-df57-4076-9d04-e32de5c22829?location=EPIC%20SCS%20Harper&room=A1&hostname=MI-SCS-HAR-A1&reason=You%20have%20logged%20out%20of%20the%20conference&reason=You%20have%20logged%20out%20of%20the%20conference\",\n      \"accept-encoding\": \"gzip, deflate, br, zstd\",\n      \"accept-language\": \"en-US,en;q=0.9\",\n      \"if-none-match\": \"W/\\\"26ab-f+rrgyleTMfRarvQzBIvYuCx2Lc\\\"\"\n    },\n    \"params\": {},\n    \"query\": {\n      \"user\": \"\",\n      \"fullName\": \"undefined undefined\",\n      \"schedTimeIn\": \"\",\n      \"schedTimeStart\": \"\",\n      \"locationName\": \"\",\n      \"roomAbbr\": \"\",\n      \"caregiverName\": \"\"\n    },\n    \"body\": {},\n    \"webhookUrl\": \"https://xl.epicpc.com/webhook/aa888bfa-2c88-44ed-af20-40eaa3146aa7\",\n    \"executionMode\": \"production\"\n  }\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        200,
+        -380
+      ],
+      "id": "dfda3c49-c736-4d74-9852-b58614873bb8",
+      "name": "Edit Fields"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.16.87",
+            "x-forwarded-for": "10.0.16.87",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Microsoft Edge\";v=\"138\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-user": "?1",
+            "sec-fetch-dest": "iframe",
+            "referer": "https://xl.epicpc.com/webhook/9635c884-df57-4076-9d04-e32de5c22829?location=EPIC%20SCS%20Harper&room=A2&hostname=MI-SCS-HAR-A2",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "if-none-match": "W/\"26ab-f+rrgyleTMfRarvQzBIvYuCx2Lc\""
+          },
+          "params": {},
+          "query": {
+            "user": "",
+            "fullName": "undefined undefined",
+            "schedTimeIn": "",
+            "schedTimeStart": "",
+            "locationName": "",
+            "roomAbbr": "",
+            "caregiverName": ""
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/aa888bfa-2c88-44ed-af20-40eaa3146aa7",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Microsoft SQL": [
+      {
+        "json": {
+          "IMRESCHED_CODE": 2814585,
+          "IMREDEM_CODE": 138580,
+          "DEM_EXTERNALID": "772880",
+          "IMREPROV_CODE": 13427,
+          "SCHED_TIMEIN": "2025-08-05T20:41:00.000Z",
+          "SCHED_TIMESTART": "2025-08-05T21:10:00.000Z",
+          "SCHED_TIMEOUT": null,
+          "LOCATION_NAME": "EPIC SCS Harper",
+          "LOCATION_ID": 72,
+          "PATIENT_FIRSTNAME": "RAJAHCHRISTMAN",
+          "PATIENT_LASTNAME": "HDARRIS",
+          "PATIENT_PHONE": "(586) 751-1921",
+          "SCHED_DATE": "2025-08-05T21:00:00.000Z",
+          "SCHED_PMSID": "25645066",
+          "SCHED_TEXT": "RAJAHCHRISTMAN HDARRIS",
+          "CAREGIVER_NAME": "Toubia, Allen FNP",
+          "ROOM_ABBR_TEXT": "A2",
+          "ROOM_TEXT": "A2",
+          "TRACKINGSTATUS_TEXT": "CIERRA"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-06-30T17:50:06.077Z",
-  "versionId": "52a3b060-5853-4769-8cc3-b72b3a4e4028"
+  "triggerCount": 2,
+  "updatedAt": "2025-08-05T21:49:30.422Z",
+  "versionId": "5255ed1a-f780-4fa6-aaa8-94e78409a655"
 }
