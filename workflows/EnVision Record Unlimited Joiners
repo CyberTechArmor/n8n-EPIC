@@ -4471,7 +4471,7 @@
             },
             {
               "name": "teamsmessage",
-              "value": "=<div style=\"padding:16px;border:none !important;box-shadow:none !important;border-radius:8px;font-family:'Segoe UI',sans-serif;max-width:400px;\">\n  <h2 style=\"margin:0 0 8px;color:#0F4C81;font-size:18px;\">🚑 Instant Visit Notification</h2>\n  <table style=\"width:100%;border-collapse:collapse;font-size:14px;color:#000000; background-color:#ffffff;\">\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Patient:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientFirstName }} {{ $('SuperVision EnVision').item.json.query.PatientLastName }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>MRN:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientMrn }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Provider:</strong></td>\n      <td style=\"padding:4px 0;\">{{ decodeURIComponent($('SuperVision EnVision').item.json.query.ProviderFirstName) }}</td>\n    </tr>\n  </table>\n\n  <!-- Added extra line breaks for spacing -->\n  <br><br>\n\n  <div style=\"text-align:right;\">\n    <a href=\"https://xl.epicpc.com/webhook/06bacab3-131a-4318-b874-c78d1a087c01?MRN={{ $('Manual Record1').item.json['MRN'] }}&Name={{ encodeURIComponent($('SuperVision EnVision').item.json.query.calledProviderUsername) }}&provider=%26password%3Dmp%26redirect%3Dtrue%26role%3DMODERATOR\" target=\"_blank\" style=\"font-size:24px;line-height:1.2;color:#0078D4;text-decoration:none;\">\n      Join Video Link\n    </a>\n  </div>\n</div>"
+              "value": "=<div style=\"padding:16px;border:none !important;box-shadow:none !important;border-radius:8px;font-family:'Segoe UI',sans-serif;max-width:400px;\">\n  <h2 style=\"margin:0 0 8px;color:#0F4C81;font-size:18px;\">🚑 Instant Visit Notification</h2>\n  <table style=\"width:100%;border-collapse:collapse;font-size:14px;color:#000000; background-color:#ffffff;\">\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Patient:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientFirstName }} {{ $('SuperVision EnVision').item.json.query.PatientLastName }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>MRN:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientMrn }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Provider:</strong></td>\n      <td style=\"padding:4px 0;\">{{ decodeURIComponent($('SuperVision EnVision').item.json.query.ProviderFirstName) }}</td>\n    </tr>\n  </table>\n\n  <!-- Added extra line breaks for spacing -->\n  <br><br>\n\n  <div style=\"text-align:right;\">\n    <a href=\"https://xl.epicpc.com/webhook/06bacab3-131a-4318-b874-c78d1a087c01?MRN={{ $('Manual Record1').item.json['MRN'] }}&Name={{ \n  $('SuperVision EnVision').item.json.query.calledProviderUsername && $('SuperVision EnVision').item.json.query.calledProviderUsername.trim() !== '' \n    ? encodeURIComponent($('SuperVision EnVision').item.json.query.calledProviderUsername) \n    : 'Provider' \n}}&provider=%26password%3Dmp%26redirect%3Dtrue%26role%3DMODERATOR\" target=\"_blank\" style=\"font-size:24px;line-height:1.2;color:#0078D4;text-decoration:none;\">\n      Join Video Link\n    </a>\n  </div>\n</div>"
             }
           ]
         },
@@ -5382,6 +5382,46 @@
         0,
         680
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-07.westus.logic.azure.com:443/workflows/2fa07b9c70584bec969489e72808a41b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=HVf5RnWtRZDEUoiwUTti4anU7Cxz1HGqImvs6HhJ-EY",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "={{ $('SuperVision EnVision').item.json.query.calledProviderUsername}}@epichs.org"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<div style=\"padding:16px;border:none !important;box-shadow:none !important;border-radius:8px;font-family:'Segoe UI',sans-serif;max-width:400px;\">\n  <h2 style=\"margin:0 0 8px;color:#0F4C81;font-size:18px;\">🚑 Instant Visit Notification</h2>\n  <table style=\"width:100%;border-collapse:collapse;font-size:14px;color:#000000; background-color:#ffffff;\">\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Patient:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientFirstName }} {{ $('SuperVision EnVision').item.json.query.PatientLastName }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>MRN:</strong></td>\n      <td style=\"padding:4px 0;\">{{ $('SuperVision EnVision').item.json.query.PatientMrn }}</td>\n    </tr>\n    <tr>\n      <td style=\"padding:4px 0;\"><strong>Provider:</strong></td>\n      <td style=\"padding:4px 0;\">{{ decodeURIComponent($('SuperVision EnVision').item.json.query.ProviderFirstName) }}</td>\n    </tr>\n  </table>\n\n  <!-- Added extra line breaks for spacing -->\n  <br><br>\n\n  <div style=\"text-align:right;\">\n    <a href=\"https://xl.epicpc.com/webhook/06bacab3-131a-4318-b874-c78d1a087c01?MRN={{ $('Manual Record1').item.json['MRN'] }}&Name={{ encodeURIComponent($('SuperVision EnVision').item.json.query.calledProviderUsername) }}&provider=%26password%3Dmp%26redirect%3Dtrue%26role%3DMODERATOR\" target=\"_blank\" style=\"font-size:24px;line-height:1.2;color:#0078D4;text-decoration:none;\">\n      Join Video Link\n    </a>\n  </div>\n</div>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        -480
+      ],
+      "id": "e6cb9c9b-cb32-49e2-b425-8ca7dc7c114f",
+      "name": "HTTP Request24"
     }
   ],
   "pinData": {
@@ -6082,6 +6122,6 @@
     }
   ],
   "triggerCount": 6,
-  "updatedAt": "2025-07-24T22:01:12.088Z",
-  "versionId": "2f245f4b-84f8-4390-816f-477b02aae3f9"
+  "updatedAt": "2025-08-05T20:23:09.358Z",
+  "versionId": "c9cc9095-f950-4ee5-aa08-4aaf1636de41"
 }
