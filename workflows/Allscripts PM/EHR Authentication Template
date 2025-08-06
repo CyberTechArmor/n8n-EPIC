@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Read/Write Files from Disk6": {
       "main": [
@@ -1029,7 +1029,8 @@
       "position": [
         -1420,
         1780
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -1340,6 +1341,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-01-23T17:11:16.388Z",
-  "versionId": "516cb8ee-a765-4168-a38b-27e188a860d1"
+  "updatedAt": "2025-08-01T13:44:51.592Z",
+  "versionId": "1c1a709c-a77e-4f04-b3d2-65d35b4884be"
 }
