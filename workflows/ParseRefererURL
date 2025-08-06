@@ -1,0 +1,62 @@
+{
+  "active": false,
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Parse Referer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T21:26:21.777Z",
+  "id": "KNgVXL2hFKx1iVFm",
+  "isArchived": false,
+  "meta": null,
+  "name": "ParseRefererURL",
+  "nodes": [
+    {
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        100
+      ],
+      "id": "321398b5-4beb-4762-9d21-1151769ac622",
+      "name": "Parse Referer",
+      "disabled": false,
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "return $input.all().map(item => {\n  const referer = item.json.headers?.referer || \"\";\n  let params = {};\n\n  if (referer) {\n    // Find the first \"?\" and extract everything after as the query string\n    const queryIndex = referer.indexOf('?');\n    if (queryIndex !== -1 && queryIndex + 1 < referer.length) {\n      const queryString = referer.slice(queryIndex + 1);\n      // Support fragment/hash (#) in the URL by removing it from the query string\n      const cleanQuery = queryString.split('#')[0];\n\n      // Split into key-value pairs\n      cleanQuery.split('&').forEach(pair => {\n        const [key, value] = pair.split('=');\n        if (key) {\n          // Decode URI components for better output\n          params[decodeURIComponent(key)] = value ? decodeURIComponent(value) : \"\";\n        }\n      });\n    }\n  }\n\n  return { json: params };\n});\n",
+        "notice": ""
+      }
+    },
+    {
+      "id": "2de30519-cc6a-4d0d-aa60-b782c7d6196f",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        220,
+        100
+      ],
+      "parameters": {
+        "inputSource": "passthrough"
+      }
+    }
+  ],
+  "pinData": null,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-05T21:26:21.777Z",
+  "versionId": "e35793de-64e4-4450-956f-f8b2db0da1f1"
+}
