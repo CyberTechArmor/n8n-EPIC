@@ -1,0 +1,119 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-05T17:21:16.549Z",
+  "id": "jArbnL9zRejYdF8p",
+  "isArchived": false,
+  "meta": null,
+  "name": "NIT Order Teams Message",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "600cb48a-7dd2-4026-8bb5-5104acc8ca53",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9a1efd0f-bc16-49ae-b799-446490f6d809",
+      "name": "Webhook",
+      "webhookId": "600cb48a-7dd2-4026-8bb5-5104acc8ca53"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://prod-103.westus.logic.azure.com:443/workflows/3161dd3c9b0e401483b3c668aa3f61d7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nL5rPx0pK2tGzLnUYG1eqtMuaNpHZoBCxZ0GbWsbxXQ",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "user",
+              "value": "=tstilwell@epichs.org"
+            },
+            {
+              "name": "taskid",
+              "value": "="
+            },
+            {
+              "name": "description",
+              "value": "="
+            },
+            {
+              "name": "comments",
+              "value": "=test"
+            },
+            {
+              "name": "teamsmessage",
+              "value": "=<table\n  width=\"100%\"\n  cellpadding=\"0\"\n  cellspacing=\"0\"\n  style=\"\n    max-width:550px;\n    margin:0 auto;\n    border:1px solid #dcdcdc;\n    border-radius:6px;\n    overflow:hidden;\n    font-family:'Segoe UI',Arial,sans-serif;\n  \"\n>\n  <!-- Header -->\n  <tr>\n    <td\n      align=\"center\"\n      style=\"\n        background-color:#2563eb;\n        padding:14px 12px;\n        border-bottom:2px solid #1d4ed8;\n      \"\n    >\n      <span\n        style=\"\n          font-size:20px;\n          font-weight:600;\n          color:#ffffff;\n          letter-spacing:1px;\n        \"\n      >\n        NIT Order Request\n      </span>\n    </td>\n  </tr>\n\n  <!-- Core Message -->\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.query.title }}\n    </td>\n  </tr> <!-- <-- ADDED -->\n\n  <!-- Assignment Details + Link -->\n  <tr>\n    <td\n      style=\"\n        background-color:#f9f9f9;\n        padding:12px 16px;\n        border-top:1px solid #dcdcdc;\n      \"\n    >\n      <strong\n        style=\"\n          font-size:14px;\n          color:#2563eb;\n          margin-right:6px;\n        \"\n      >\n       TASK:\n      </strong>\n      <a href=\"https://nit.unitycarecrm.com/workgroups/group/280/tasks/task/view/{{ $json.body['document_id[2]'] }}/\" style=\"color:#2563eb;text-decoration:underline;\">\n       ORDER\n      </a>\n    </td>\n  </tr>\n\n  <!-- Image (Optional, remove this block if not used) -->\n\n  <tr>\n    <td\n      style=\"\n        background-color:#ffffff;\n        padding:16px;\n        color:#323130;\n        font-size:15px;\n        line-height:1.5;\n      \"\n    >\n      {{ $json.query.description }}\n    </td>\n  </tr> <!-- <-- ADDED -->\n</table>\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        300,
+        0
+      ],
+      "id": "e550bed9-1384-4d73-ab6e-8e0ffea0892d",
+      "name": "HTTP Request15"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "3.217.33.54",
+            "x-forwarded-for": "3.217.33.54",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "356",
+            "user-agent": "Bitrix24 Webhook Engine",
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "document_id[0]": "tasks",
+            "document_id[1]": "Bitrix\\Tasks\\Integration\\Bizproc\\Document\\Task",
+            "document_id[2]": "488484",
+            "auth[domain]": "ehs.unitycarecrm.com",
+            "auth[client_endpoint]": "https://ehs.unitycarecrm.com/rest/",
+            "auth[server_endpoint]": "https://oauth.bitrix.info/rest/",
+            "auth[member_id]": "0df7468020f7762ef98e03da5b82d497"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/600cb48a-7dd2-4026-8bb5-5104acc8ca53",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-05T20:30:41.853Z",
+  "versionId": "a6e0baf0-4df2-431d-ac67-789aed3212ed"
+}
