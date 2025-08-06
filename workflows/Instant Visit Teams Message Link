@@ -26,12 +26,12 @@
       "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "Merge",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Merge",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -200,6 +200,46 @@
           }
         ]
       ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Instant Tablet": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-06-11T19:16:52.759Z",
@@ -244,7 +284,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        60,
+        280,
         140
       ],
       "id": "368351fd-5a03-4352-9ffb-a9b294b2a2bb",
@@ -319,7 +359,7 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.3,
       "position": [
-        220,
+        440,
         300
       ],
       "id": "db6ece55-f044-4f93-afb0-6f4d17cc5b8b",
@@ -372,7 +412,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -320,
+        -100,
         320
       ],
       "id": "adb66aed-2cf4-495e-a01e-2afa49eafb99",
@@ -385,7 +425,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -120,
+        100,
         300
       ],
       "id": "4805b137-b7cc-4c17-8d48-12dddce5186a",
@@ -785,6 +825,105 @@
       ],
       "id": "e5fd7546-da7f-4a6c-a93b-a6f1087e64b2",
       "name": "Code6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cee89038-af13-4cb6-9d5b-7e1977544343",
+              "leftValue": "https://xl.epicpc.com/webhook/c5d8bd6f-8803-4296-a9fe-789df93c5385",
+              "rightValue": "={{ $json.headers.referer }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -440,
+        540
+      ],
+      "id": "f506afca-6870-43a8-85e3-8faaf09a637b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "http://n8n-main:5678/webhook/5d41a48c-e148-4281-a174-592a6d350b5e",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "PatientMrn",
+              "value": "={{ $json.body.patientNumber }}"
+            },
+            {
+              "name": "=PatientFirstName",
+              "value": "={{ $json.body.patientName }}"
+            },
+            {
+              "name": "PatientLastName",
+              "value": "="
+            },
+            {
+              "name": "ProviderFirstName",
+              "value": "={{ $json.body.provider }}"
+            },
+            {
+              "name": "calledProviderUsername",
+              "value": "={{ $json.body.calledProviderUsername }}"
+            },
+            {
+              "name": "calledProviderName",
+              "value": "={{ $json.body.calledProviderName }}"
+            },
+            {
+              "name": "reasonForVisit",
+              "value": "={{ $json.body.reasonForVisit }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -120,
+        620
+      ],
+      "id": "a36d77d9-6126-4132-b8b7-4e99ba8d3d9f",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -460,
+        700
+      ],
+      "id": "16834a47-50a8-4a1f-b0cd-3f331028adc5",
+      "name": "Instant Tablet"
     }
   ],
   "pinData": {
@@ -11896,6 +12035,49 @@
           "executionMode": "production"
         }
       }
+    ],
+    "Instant Tablet": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.24.43",
+            "x-forwarded-for": "10.0.24.43",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "content-length": "211",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Microsoft Edge\";v=\"138\"",
+            "content-type": "application/json",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://xl.epicpc.com",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/c5d8bd6f-8803-4296-a9fe-789df93c5385",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19HeWDhUb3iU5I%2FUHEi2kQApth8DxlwXZw%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18tluzLvsA%2FZvOmEFKWShtIAK8PbzplV%2BI%3D; _fbp=fb.1.1753890009105.885725218583635644; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5YWFiYmJkLTZiNjktNGIwMC1iMGUzLWQ5MTQzYTYzYWUzNCIsImhhc2giOiJZaXdOcHpaYzdGIiwiYnJvd3NlcklkIjoiTFlWeGg3ZzRQZzhpZzhjR1NqWjNHSWwvY3k0VkQxUEhJNkpYcDhFZHg2ND0iLCJpYXQiOjE3NTQzMDg3MTQsImV4cCI6MTc1NDkxMzUxNH0.0M5gYMPa8cx7UvBdMkmx-M91h4iV_zh44SLOnymRDG0; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX187jq6FoyvBl7EWRTLyzUbkqcazBDy%2BZ87NN8fqxWnMh2%2F7Di8fP2zI%2BoVITpNxpDYp6QuSC%2FRSNg%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19t917ovboFgLI2DCl1p%2BnjMzBt7b%2B9GjPbPLViUwle%2FN9Y4k8yXPhKJVJB4tqynJGFeyZIqboR4qCWG1Q48phBCSUFc2PIKsSIx4J3sHmIXdnsIhzvlRiRCl6wYQXCp4waiyRTMeIht5jYapKFJhu1e6d2d76sq2A%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BnUezlpgWEzlU9mBQDt923Bk3u5dcPTAnMO8JVCYfcFy2beQi1ZBjf6kYNVtZ40F5inrkclRpYWRZbgbsRqivanF314s8MKH97ReN7UgX%2BiioSrys32dOE23YGds6ZvM69sTV79WzYwg%3D%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22fbbaa0fe7164b93e2c831f7816129952355ab8de07812c802f276efe6e8da0f3%23f9aabbbd-6b69-4b00-b0e3-d9143a63ae34%22%2C%22%24sesid%22%3A%5B1754424703667%2C%2201987bd8-9271-7b20-a1c2-2f9618df47a2%22%2C1754424447601%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fxl.epicpc.com%2Fsignin%3Fredirect%3D%25252F%22%7D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2FDod90PMsw9p2CCc7wxSshffWeTi%2B9ObqspnkgBsl2w1ZLImB88L%2BfpbA1Xt0CLo9dotFN%2FXCAhUAjxVegPZ%2F1IX33vVB83rU%2BefxIJLipQBpQs0f2PMO9UYGDq1F7Ia%2BI5UQDKeKU2Q%3D%3D"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "calledProviderUsername": "",
+            "calledProviderName": "",
+            "patientName": "KNIAZ, CATHERINE",
+            "patientNumber": "004087",
+            "provider": "",
+            "appointmentGroup": "Allergy Testing",
+            "specialty": "",
+            "city": "",
+            "reasonForVisit": "test"
+          },
+          "webhookUrl": "https://xl.epicpc.com/webhook/e850608b-e046-49e7-825f-f52e1d912958",
+          "executionMode": "production"
+        }
+      }
     ]
   },
   "settings": {
@@ -11904,6 +12086,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2025-07-23T20:46:13.261Z",
-  "versionId": "06b10e75-5bfb-44c8-9823-79f7f91c7eb7"
+  "updatedAt": "2025-08-05T20:16:56.680Z",
+  "versionId": "66e500c2-8ebd-4338-89cf-a1a1ed693c72"
 }
