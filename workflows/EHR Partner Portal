@@ -619,6 +619,17 @@
           }
         ]
       ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "EHR Encounter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-14T21:35:51.712Z",
@@ -1897,7 +1908,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.singlesignontoken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
       },
       "id": "58a062ae-0ef6-4268-aa05-dc0c3d9d7b36",
       "name": "EHR Encounter1",
@@ -2335,6 +2346,42 @@
         220,
         2300
       ]
+    },
+    {
+      "parameters": {
+        "path": "8b71e409-8602-4827-af8f-056705f37872",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -820,
+        2200
+      ],
+      "id": "1d4283ac-2fdc-4beb-8486-d02e5ae9bfbe",
+      "name": "Webhook1",
+      "webhookId": "8b71e409-8602-4827-af8f-056705f37872"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DECLARE @SSO VARCHAR(100) = '{{ $json.query.SSOToken }}';\n \nSELECT [SingleSignOnToken]\n      ,[SessionToken]\n      ,[UserName]\n      ,[CreatedOn]\n      ,[EncounterID]\n      ,[PatientID]\n\t  ,d.DEM_EXTERNALID as MRN\n\t  ,d.DEM_FIRSTNAME\n\t  ,d.DEM_LASTNAME\n\t  ,d.DEM_DATEOFBIRTH\n  FROM [EMR].[HPSITE].[UAI_SingleSignOnTokens] s\n  LEFT JOIN [HPSITE].[DEMOGRAPHICS_VIEW] d on s.PatientID=d.IMREDEM_CODE\n \n  WHERE S.SingleSignOnToken = @SSO\n  order by s.CreatedOn desc"
+      },
+      "id": "75949c65-779d-4657-aec9-e9cc2efbce02",
+      "name": "EHR Encounter2",
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        2520
+      ],
+      "credentials": {
+        "microsoftSql": {
+          "id": "qYagSGVTKE5tZdos",
+          "name": "Microsoft SQL EHR"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2858,6 +2905,61 @@
           "Patient_Home_Phone": "2488726322"
         }
       }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "xl.epicpc.com",
+            "x-real-ip": "10.0.1.53",
+            "x-forwarded-for": "10.0.1.53",
+            "x-forwarded-proto": "https",
+            "connection": "upgrade",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://xl.epicpc.com/webhook/b70b7ec1-3f60-4420-a7a6-e18868310d98?SSOToken=29a8dd39-3c72-4a53-9083-4aa73e53bd54&AccountID=HEROERP",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "params": {},
+          "query": {
+            "singlesignontoken": "29A8DD39-3C72-4A53-9083-4AA73E53BD54",
+            "username": "TSTILWELL",
+            "createdon": "2025-07-29T16:22:42.970Z",
+            "encounterid": "28234730",
+            "patientid": "199031",
+            "mrn": "1350280",
+            "dem_firstname": "Audra",
+            "dem_lastname": "Test",
+            "dem_dateofbirth": "2000-01-28T00:00:00.000Z"
+          },
+          "body": {},
+          "webhookUrl": "https://xl.epicpc.com/webhook/e3b3722c-6622-4490-ab0f-49d137b2b089",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "EHR Encounter2": [
+      {
+        "json": {
+          "SingleSignOnToken": "047F539E-F1A7-4CBC-982D-0142CEBF4A5B",
+          "SessionToken": "84C2D5FC-DBBB-4D30-8FF0-AA7DF3A3B712",
+          "UserName": "TSTILWELL",
+          "CreatedOn": "2024-02-22T09:25:02.490Z",
+          "EncounterID": "21105855",
+          "PatientID": "158536",
+          "MRN": "502880",
+          "DEM_FIRSTNAME": "THOMAS",
+          "DEM_LASTNAME": "STILWELL",
+          "DEM_DATEOFBIRTH": "1988-02-01T00:00:00.000Z"
+        }
+      }
     ]
   },
   "settings": {
@@ -2865,7 +2967,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 6,
-  "updatedAt": "2024-11-29T20:40:42.805Z",
-  "versionId": "73c4820b-9d9c-403e-8cd7-60b1c9ddb5e9"
+  "triggerCount": 7,
+  "updatedAt": "2025-07-29T20:27:50.780Z",
+  "versionId": "7edbbac9-587f-43df-a413-bc3d4c8834ce"
 }
